@@ -1,0 +1,26 @@
+@import "settings.scss";
+
+.report{
+  border: 2px solid $bdrc_48B;padding:30px 30px 60px;margin-top: 40px; position: relative;
+    header{
+      position: relative; padding-bottom: 20px;
+      h2{
+        background-color:$white; padding: 0 10px; position: absolute;top: -42px;left: 50px; font-size: 18px;
+      }
+      p{color:$textc_9d; font-size: 16px;}
+    }
+
+    label{display: block; font-size: 16px; line-height: 30px; padding-bottom:10px;}
+    ul {
+      li{
+        width: 25%;float:left; display: inline; position: relative;
+        input{ width:90%;padding: 0 5px;}
+      }
+      .getCode{ position: absolute;right: 10px; width: 125px; line-height: 38px;height: 38px; border: 1px solid $bdrc_48B; background-color: $bgc_E5F; text-align: center;}
+      .submitBtn{
+        color: $white;position: absolute;right: 10%;bottom:0px;line-height: 40px;height: 40px; width:120px; ;
+        border:1px solid $bdrc_48B;background-color:$bgc_48B; font-size: 16px;
+      }
+    }
+
+}

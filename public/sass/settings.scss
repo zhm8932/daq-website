@@ -1,0 +1,113 @@
+//公共属性设置
+
+$topBarHeight:40px;
+$f2:#F2F2F2;          //顶部背景色
+
+//文字颜色
+$textColor:#4A4A4A;
+$textOnColor:#48BED8;
+$textc_9d:#9d9d9d;
+$textc_48B:#48BED8;
+$textc_f2:#f2f2f2;
+$red_ED9:#ED9E9A;
+
+
+$white:#FFF;
+$gray9B:#9B9B9B;  //顶部文字颜色
+$gray_D8:#D8D8D8;   //返回顶部背景色
+$red_D03:#D03A02;
+
+
+
+//背景色
+$bgc_F2:#F2F2F2;
+$bgc_E5F:#e5faff;
+$bgc_48B:#48BED8;
+
+//导航背景
+$navBgColor:#48BED8;
+$navBgOnColor:#4A4A4A;
+
+//边框颜色
+$bdrc_ddd:#dddddd;
+$bdrc_f2:#f2f2f2;
+$bdrc_48B:#48BED8;
+
+$bdrc_ED9:#ED9E9A;
+
+
+$bdrc:#41688d;
+$bdrc1:#c9c9c9;
+$bdrc2:#747474;
+$bdrc3:#999;
+$header-size:60px;
+
+
+$bdr:1px solid #989898;
+$bdr-leftMenu-color:#989898;
+
+//分辨率
+/*
+
+
+设备像素\宽度：17种
+
+320 ， 480 ， 540 ， 600 ， 640 ， 720 ， 768 ， 800 ， 1024 ， 1080 ， 1200 ， 1280 ， 1366 ， 1536 ， 1600 ， 1920 ， 2048  2560
+
+
+设备像素\高度：15种
+
+480 ， 600 ， 720 ， 768 ， 800 ， 854 ， 960 ， 1024 ， 1080 ， 1136 ， 1280 ， 1536 ， 1920 ， 2048 ， 2560
+
+*/
+
+$wrapperWidth:1024px; //默认宽
+
+
+$win_320:320px;
+
+$win_360:360px;
+
+$win_375:375px;
+$win_384:384px;
+$win_414:414px;
+
+$win_600:600px;
+
+$win_768:768px;
+$win_800:800px;
+$win_1024:1024px;
+
+$winW_1280:1280px;
+$winW_1360:1360px;
+$winW_1366:1366px;
+
+$winW_1440:1440px;
+$winW_1660:1660px;
+$winW_1680:1680px;
+$winW_1920:1920px;
+$winW_2560:2560px;
+
+
+@mixin transition($varb){
+  -webkit-transition:$varb ;
+  -moz-transition:$varb ;
+  -ms-transition:$varb ;
+  -o-transition:$varb ;
+  transition: $varb;
+}
+
+@mixin bdr($bdrc){
+  border: 1px solid $bdrc;
+}
+
+@mixin btn($bgc,$bgcHover,$textc,$textcHover){
+  background-color:$bgc; border: none; color:$textc; line-height: 30px; cursor: pointer; padding: 0 20px; margin:10px 0;display: inline-block; font-family: "微软雅黑","Microsoft Himalaya";
+  &:hover{
+    @include transition(all .3s);
+    background-color: $bgcHover;color: $textcHover;
+  }
+}
+@mixin lineBar($bgc){
+  width: 5px;height: 18px;display: inline-block;vertical-align: middle;background-color: $bgc;border-radius: 10px;top:0px;margin-right: 10px;position: relative;top:-1px;
+}

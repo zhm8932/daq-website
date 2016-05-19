@@ -1,0 +1,58 @@
+extends ../layout
+
+block content
+    link(href='/css/healths/health_list.css',rel='styleSheet')
+    include ../includes/responsive
+    include ../includes/nav
+    .positon.wrapper
+        |您的为位置：首页<em>#{sep}</em>健康常识
+        //-if get_goods_category_success
+                each item in get_goods_category
+                    if item.id==categoryId
+                        em #{sep}
+                        |#{item.name}
+    section.wrapper.health.clearfix
+        //div= JSON.stringify(get_article_list)
+        .item_list.health_list
+            header
+                h2
+                    i
+                    | 科普知识
+            if get_article_list_success
+            .lr_list.clearfix
+                each item in get_article_list
+                    figure
+                        if item.imgs.length
+                            a(href='/healths/list/article/#{item.id}',target='_blank')
+                                img(src='#{item.imgs[0].imageUrl}')
+                        figcaption
+                            h4: a(href='/healths/list/article/#{item.id}',target='_blank') #{item.title}
+                            time 发表于：#{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')}
+                            p
+                                if item.brief.length>60
+                                    |#{item.brief.substring(0,60)}……
+                                else
+                                    |#{item.brief}
+
+                //-figure
+                    a(href='javascript:;',target='_blank')
+                        img(src='/images/product1.png')
+                    figcaption
+                        h4: a(href='javascript:;') 男性体检项目有哪些?
+                        time 发表于：2015-12-11 10:16:22
+                        p 男人是一个家庭的顶梁柱，承担着家庭的带给男人巨大的负担，所以，男人必须奋斗，在奋斗的过程中难免会有身体上的伤痕，伤痕怎么办呢?那就进行体检来检查一下。
+
+
+            include ../includes/pagination
+        aside
+            //-病原体
+            include list_diseases
+            //-有问有答
+            include  list_ask
+
+
+
+
+    include ../includes/footer
+    script.
+        seajs.use('/js/screenings/goods.js')

@@ -1,0 +1,30 @@
+@import "../settings.scss";
+
+.yuyue{
+    header{
+      position: relative; padding-bottom: 20px;
+      h2{
+        background-color:$white; padding: 20px 10px 0;font-size: 20px;
+      }
+      p{color:$textc_9d; font-size: 16px;}
+    }
+
+    h4{ display: inline-block; font-size: 16px; font-weight: bold;}
+    mark{font-size: 14px;color: $textc_9d; padding-left: 10px;}
+    label{display: inline-block;width: 140px;font-size: 16px; line-height: 30px; text-align: right;padding-right: 30px;}
+    form{
+      border: 1px solid $bdrc_ddd; padding: 30px 50px;
+    }
+    ul {
+      li{
+        position: relative;padding-bottom: 15px;
+        input{ width:220px;padding: 0 5px; line-height: 32px;height: 32px;}
+        a{color: $textc_48B; margin-left: 175px;}
+      }
+      .submitBtn{
+        color: $white;line-height: 40px;height: 40px; width:120px; ;
+        border:1px solid $bdrc_48B;background-color:$bgc_48B; font-size: 16px; margin-left: 175px;
+      }
+    }
+
+}

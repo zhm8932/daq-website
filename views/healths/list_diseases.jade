@@ -1,0 +1,14 @@
+if get_article_list_diseases_success
+    .category
+        h3
+            i
+            | 病原体
+        ul.clearfix
+            each item in get_article_list_diseases
+                li: a(href='/healths/list/article/#{item.id}')
+                    i
+                    | #{item.title}
+
+            //-li: a(href='javascript:;')
+                i
+                | 衣原体

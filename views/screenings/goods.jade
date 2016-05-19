@@ -1,0 +1,53 @@
+extends ../layout
+
+block content
+    //link(href='/css/search_report.css',rel='styleSheet')
+    include ../includes/responsive
+    include ../includes/nav
+    .positon.wrapper
+        |您的为位置：首页<em>#{sep}</em>筛查服务
+        if get_goods_category_success
+                each item in get_goods_category
+                    if item.id==categoryId
+                        em #{sep}
+                        |#{item.name}
+    section.wrapper.tab.clearfix
+        if get_goods_category_success
+            ul
+              each item in get_goods_category
+                li: a(href='/screenings/goods/#{item.id}') #{item.name}
+              img(src='/images/goods_ban01.png')
+    section.item_list.clearfix
+        .wrapper
+            .pic_list.goods_list
+                if get_goods_list_success
+                    ul
+                        each item in get_goods_list
+                            li
+                                a(href='/screenings/goods/detail/#{item.id}')
+                                    //-img(data-original='images/product1.png')
+                                    if item.goodsImages
+                                        img(data-original='#{item.goodsImages[0].imageUrl}', width='330',height='225',alt='#{item.goodsName}')
+                                    h4 #{item.goodsName}
+                                if item.productKeyAttributeList
+                                    each arr in item.productKeyAttributeList
+                                        if arr.attributeName == 'fit_people'
+                                            p
+                                                if arr.value.length > 50
+                                                    | #{arr.value.substring(0, 50)}……
+                                                else
+                                                    | #{arr.value}
+                                .price
+                                    span.new
+                                        em ￥
+                                        | #{parseInt(item.discountPrice)/100}
+                                    span.old
+                                        | 原价￥#{parseInt(iitem.price)/100}
+
+                //-div
+                    a.more(href='javascript:;')
+                        | 查看全部
+                        i.icon
+    include ../includes/footer
+    script.
+        seajs.use('/js/screenings/goods.js')

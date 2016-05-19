@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";;;;;;;;;;;;;;AAEA,SAAS;EACP,UAAU,EAAE,MAAM;EAClB,aAAG;IAAC,MAAM,EAAE,SAAS;EACrB,cAAI;IAAC,OAAO,EAAE,UAAU;EACxB,WAAC;IAAC,KAAK,ECGE,OAAO;IDFd,iBAAO;MACL,gBAAgB,ECCX,OAAO;MDDiB,KAAK,ECMjC,IAAI;MA8ET,kBAAkB,EDpFiD,QAAO;MCqF1E,eAAe,EDrFoD,QAAO;MCsF1E,cAAc,EDtFqD,QAAO;MCuF1E,aAAa,EDvFsD,QAAO;MCwF1E,UAAU,EDxFyD,QAAO",
+"sources": ["../sass/error404.scss","../sass/settings.scss"],
+"names": [],
+"file": "error404.css"
+}

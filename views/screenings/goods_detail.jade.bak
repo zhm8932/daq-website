@@ -1,0 +1,155 @@
+extends ../layout
+
+block content
+    link(href='/css/screenings/goods_detail.css',rel='styleSheet')
+    include ../includes/responsive
+    include ../includes/nav
+    .positon.wrapper.
+
+        您的为位置：首页 <em>#{sep}</em> 筛查服务 <em>#{sep}</em> 生殖感染(CT/NG)核酸筛查套餐
+
+    section.goods_basic.clearfix
+        .wrapper
+            dl
+                dt.slideBox
+                    .touchslider-viewport
+                        .bd
+                            p: img(src='/images/product_b.png',alt='生殖感染(CT/NG)核酸筛查套餐')
+                            p: img(src='/images/product_b.png',alt='生殖感染(CT/NG)核酸筛查套餐')
+                            p: img(src='/images/product_b.png',alt='生殖感染(CT/NG)核酸筛查套餐')
+                            p: img(src='/images/product_b.png',alt='生殖感染(CT/NG)核酸筛查套餐')
+                            p: img(src='/images/product_b.png',alt='生殖感染(CT/NG)核酸筛查套餐')
+                            p: img(src='/images/product_b.png',alt='生殖感染(CT/NG)核酸筛查套餐')
+                    .switch
+                        .prev
+                            i.icon
+                        .next
+                            i.icon
+                    .tit
+                        div
+                            span: img(src='/images/product_s1.png',alt='生殖感染(CT/NG)核酸筛查套餐')
+                            span: img(src='/images/product_s2.png',alt='生殖感染(CT/NG)核酸筛查套餐')
+                            span: img(src='/images/product_s1.png',alt='生殖感染(CT/NG)核酸筛查套餐')
+                            span: img(src='/images/product_s2.png',alt='生殖感染(CT/NG)核酸筛查套餐')
+                            span: img(src='/images/product_s1.png',alt='生殖感染(CT/NG)核酸筛查套餐')
+                            span: img(src='/images/product_s2.png',alt='生殖感染(CT/NG)核酸筛查套餐')
+
+
+                dd
+                    h1 生殖感染(CT/NG)核酸筛查套餐
+                    .price
+                        span.new
+                            em ￥
+                            | 800.00
+                        span.old
+                            | 原价￥1000
+                    p
+                        label 检测人群：
+                        | 适用上班族
+                    p
+                        label 样品种类：
+                        | 尿液，血样
+                    div
+                        label 服务方式：
+                        aside.service_type
+                            span.on
+                                | 上门取样
+                                mark 优惠￥20
+                            span
+                                | 快递取样
+                                mark 优惠￥20
+                            span
+                                | 门诊取样
+                                mark 优惠￥20
+
+                    p
+                        label 取样地址
+                        select
+                            option(value='1') 广州
+                            option(value='1') 北京
+                            option(value='1') 上海
+                        select
+                            option(value='1') 天河区
+                            option(value='1') 越秀区
+                            option(value='1') 海珠区
+                            option(value='1') 荔湾区
+                    .submitBox
+                        button.submitBtn.buyBtn 立即购买
+                        button.submitBtn.addCartBtn 立即购买
+
+
+
+
+    section.goods_detail.wrapper
+        .tab
+            a(href='javascript:;') 套餐详情
+            a(href='javascript:;') 检测须知
+            a(href='javascript:;') 相关问题
+        article
+            h3
+             i.icon
+             |套餐详情
+            pre.
+                CT（衣原体）和NG（淋球菌）是引起生殖健康的两大罪魁祸首
+                据WHO统计，2008年全球生殖道CT感染者达1亿人，NG感染者达3640万人[1]
+
+                隐藏在身体中的定时炸弹
+                CT/NG感染最大危害在于感染后毫无症状，极易被忽略，进而引发女性盆腔炎、不孕、宫外孕及男性前列腺炎及不育，且可增加艾滋病感染风险6-10倍。
+
+                选择都安全  私享好生活
+                快速+轻松
+                APP、PC官网、移动网站、微信等多种工具轻松预约
+                便捷+隐私
+                提供自取样邮寄、上门取样、门诊取样，匿名登记、账号查询报告、就诊环境区隔等隐私保护
+                权威+精准
+                全国三甲医院教授、博士、主治医生领衔，并与罗氏诊断、默沙东、碧迪等世界500强深度合作
+        article
+            h3
+                i.icon
+                | 检测须知
+            pre.
+                服务区域：（关联区域）
+                上门服务区域：天河区、越秀区、海珠区、黄浦区、番禺区
+                广州市其他区域可选择自取样邮寄或门诊检测服务。
+
+                报告时限： 4小时（样本到达实验室后）
+
+                采样须知：
+                1、	晨起第一次尿液最佳，截留首段尿液2ml
+                2、	非晨起第一次尿液，建议距上次排尿至少2小时再取
+                尿液邮寄须知：
+                1、收到采样包，打开后应24小时内使用
+                2、请遵从说明书采取尿液，并于4小时内寄出
+                3、请仔细检查采样包，如有渗漏，请及时联系更换
+                4、如采样包内液体不慎接触皮肤或眼睛，应立即用清水冲洗
+
+                服务流程：
+                自取样邮寄：下单—邮寄采样工具—自取样—邮寄样本至实验室—出报告
+                上门取样：下单—预约上门时间—护士上门取样—送检—出报告
+                门诊取样：预约—到诊登记—护士取样—送检—出报告
+
+                专家建议：
+                1、	建议正常人群每年筛查一次，高危人群及时筛查
+                2、	检测报告结果为阳性，应及时到都安全门诊就诊
+                3、	有尿道或生殖道不舒适者，应尽早进行检查
+                4、	爱护自己和性伴，正确使用安全套
+        article
+            h3
+                i.icon
+                | 检测须知
+            pre.
+                1、平常身体没有异常也要检查CT/NG感染吗？
+                答：感染衣原体（CT）后约50%的男性和70%的女性无不适和症状，感染淋球菌（NG）后约10%的男性和50%的女性无不适和症状表现，一旦有症状，说明CT/NG感染已经严重到可致疾病发生，所以最好的办法就是最早期筛查，早排除，早干预，可完全治愈。
+
+                2、你们如何保证我的隐私？
+                答：都安全门诊提供匿名预约检查， 对一些项目提供客户自己在家取样邮寄服务，不用到门诊排队挂号检查，并提供唯一的账号密码给客户查询检查报告。此外，都安全设置的取样室高度分隔，私密性强，方便客户到都安全门诊做检查，全程保护您的个人隐私。
+
+                3、CT/NG感染是怎么传染的？
+                答：性行为是CT/NG感染传播的主要途径，另外，感染的女性也会通过产道传染给新生儿，且传染概率达到50%，通过被污染过的毛巾、浴盆、被褥、马桶等途径也可传播，对经常更换新性伴侣或有多个性伴侣、有性病感染史、不戴安全套的性行为，以及性工作者及吸毒者等高危人群更应该及时定期筛查。
+
+                4、CT/NG感染传染性强吗？
+                答：每五位有性生活的女性中有一位是衣原体（CT）感染者，淋球菌（NG）通过男性感染者传给女性的几率为80%，无论是衣原体还是淋球菌女性传给新生儿的几率均为50%！
+
+    include ../includes/footer
+    script.
+        seajs.use('/js/screenings/goods_detail.js')

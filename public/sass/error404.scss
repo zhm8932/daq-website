@@ -1,0 +1,12 @@
+@import "settings.scss";
+
+.error404{
+  text-align: center;
+  img{margin: 50px auto}
+  .msg{padding: 0 0 20px 0}
+  a{color: $textc_48B;
+    &:hover{
+      background-color: $textc_48B;color: $white;@include transition(all .3s);
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@import "../settings.scss";
+
+.health_detail{
+  width: 690px;float: left;
+  text-align: center;
+
+  header{
+
+    border-bottom: 1px solid $bdrc_ddd;padding-bottom: 20px;margin-bottom: 20px;
+    h1{font-size: 24px;line-height:50px;}
+    time{color:$gray9B;}
+  }
+  article{
+    text-align:left;
+    p,pre{
+      word-break:break-word;text-indent: 2em;
+    }
+    img{display: block;margin: 10px auto;}
+  }
+}
+
+.recommend{
+    padding:30px 0;margin-bottom:-50px;
+    h2{padding:0 0 20px; font-size:24px;border_bottom:1px solid $gray9B}
+    ul{
+      font-size: 16px;
+      i{width: 6px;height: 6px;border-radius: 100%;background-color:$gray9B;display: inline-block;margin-right: 10px;vertical-align:middle}
+      li{width: 50%;float: left;line-height:40px; ;
+        a{display: block;}
+      }
+    }
+}

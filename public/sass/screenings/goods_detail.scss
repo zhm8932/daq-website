@@ -1,0 +1,91 @@
+@import "../settings.scss";
+
+.goods_basic{
+  dl{
+    dt{
+      width: 470px;float: left;overflow: hidden;
+      .tit{
+        margin: 20px 20px 0;height: 90px;overflow:hidden;
+        div{width: 1000px;}
+        span{
+          margin: 0 5px 10px; float: left;display: inline;cursor: pointer;
+          img{vertical-align: text-top;border: 1px solid $white;width: 73px;}
+          &.on{
+            img{
+              border: 1px solid $bdrc_48B;
+            }
+
+          }
+        }
+      }
+      .switch{position: relative;
+        div{
+          position: absolute;top: 38px;cursor: pointer;
+          i{width: 24px;height: 30px;}
+
+        }
+        .prev{
+          left: 0px;
+          i{background-position: 0px -128px;}
+          &:hover{
+            i{background-position: 0px -163px;}
+          }
+        }
+        .next{
+          right: 0px;
+          i{background-position: -21px -128px}
+          &:hover{
+            i{background-position: -21px -163px;}
+          }
+        }
+      }
+    }
+    .slideBox{
+      .bd{
+        img{width: 100%;height: auto;}
+      }
+    }
+    dd{
+      width: 500px;float: right;
+      h1{font-size: 24px;}
+      .price{
+        padding: 20px 0;margin-bottom:20px;border-bottom: 1px solid $bdrc_ddd;
+        .new{ font-size: 24px;color:$red_ED9; padding-right: 15px;}
+        .old{ color: $gray9B; text-decoration: line-through;}
+      }
+      p,div{line-height: 30px;
+        select{margin-right: 10px;}
+      }
+      label{padding-right: 5px;}
+      .service_type{display: inline-block;padding:5px 0 15px; margin-left: -3px;
+        span{border: 1px solid $bdrc_ddd;padding:5px 10px; display: inline-block;margin: 0 20px 0 0px;line-height: 20px;vertical-align: middle;
+          &:hover,&.on{border-color: $bdrc_ED9;cursor: pointer; }
+        }
+        mark{display: block;color:$red_ED9;line-height: 18px;}
+      }
+    }
+    .submitBox{
+      padding-top: 30px;
+      .submitBtn{padding: 0 40px;line-height: 50px; font-size: 18px;margin-right:30px;@include bdr($bdrc_48B);}
+      .addCartBtn{background-color: $bgc_E5F;color: $textc_48B;}
+    }
+
+
+  }
+
+}
+
+.goods_detail{
+  .tab{
+    background-color:$bgc_F2; line-height: 50px;border-bottom:2px solid $bdrc_48B ;margin:20px 0;
+    a,span{padding: 0 30px;display: inline-block;font-size: 16px;}
+  }
+  article{
+    h3{color: $textc_48B;font-size: 16px;font-weight: bold;
+      i{background-position:-175px 7px;margin-right: 5px;}
+    }
+    p,pre{
+      word-break:break-word;
+    }
+  }
+}

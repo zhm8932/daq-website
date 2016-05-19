@@ -1,0 +1,21 @@
+if get_article_list_ask_success
+    .list
+        h3
+            | 有问有答
+        ul
+            each item in get_article_list_ask
+                li: a(href='/healths/list/article/#{item.id}')
+                    i.icon
+                    |#{item.title}
+            //-li: a(href='javascript:;')
+                i.icon
+                | 女性经期要注意些什么？
+        if ask_pageCount>=2
+           .pages
+               if ask_currentPage==1
+                   a.prev.disable(href='javascript:;'): i.icon
+                   a.next(href='javascript:;',data-page=parseInt(ask_currentPage)+1): i.icon
+                //a.prev(href='javascript:;'): i.icon
+                //a.prev(href='javascript:;'): i.icon.disable
+                //a.next(href='javascript:;'): i.icon.disable
+                //a.next(href='javascript:;'): i.icon

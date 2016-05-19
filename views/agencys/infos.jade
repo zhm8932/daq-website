@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+    link(href='/css/agencys/agency_infos.css',rel='styleSheet')
+    include ../includes/responsive
+    include ../includes/nav
+    .positon.wrapper
+        |您的为位置：首页<em>/</em>机构网络
+    section
+        .wrapper.info_tel.clearfix
+            h2 深圳市都安全健康产业有限公司
+            p
+                em 总部电话
+                |400-666-4000
+            p
+                em 网络传真
+                | 400-666-4000
+            p 热线和免费电话咨询服务将在工作日提供：周一至周五 9:00-17：00
+    section.info_detail.clearfix
+        .wrapper
+            h3 广东省门诊部
+            hgroup
+                h4
+                    i.icon
+                    |门诊介绍
+                p 打分了深刻的副教授李的开发及水电费
+            hgroup
+                h4
+                    i.icon
+                    |门诊地址
+            #mymap
+    section.info_list.clearfix
+        .wrapper
+    include ../includes/footer
+    //script.
+        seajs.use('/js/screenings/goods.js')

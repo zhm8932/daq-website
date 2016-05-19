@@ -1,0 +1,119 @@
+@import "settings.scss";
+$conWidth:1600px;
+@media only  screen and (min-width: 1920px){
+  .header ul,.container,.item{ width:$conWidth; margin: 0 auto }
+  .container{ margin-top: 60px;}
+  .leftMenu nav{left: 50%; margin-left: -$conWidth/2;}
+
+}
+
+@media only  screen and (min-width: 1440px) and (max-width: 1920px){
+
+}
+
+//@media only  screen and (min-width: $winW_1366) and (max-width: 1439px){
+@media only  screen and (min-width: $winW_1366) and (max-width: $winW_1440 - 1px){
+  .wrapper{width: 980px;}
+  .item_list .pic_list{
+    li{width: 315px;
+      h4{line-height: 40px;height: 40px;}
+    }
+  }
+  .rightNav{margin-right: -660px;}
+  .health aside{width: 30%;}
+  .health_detail{width: 65%;}
+}
+
+@media only screen and (min-width: 1280px) and (max-width: 1365px){
+  .wrapper{width: 900px;}
+  .item_list .pic_list{
+    li{width: 288px;
+      h4{line-height: 40px;height: 40px;}
+    }
+  }
+  .rightNav{margin-right: -610px;}
+
+  .health aside{width: 30%;}
+  .health_detail{width: 65%;}
+}
+
+
+
+
+
+
+
+@media only screen and (min-width: $win_1024) and (max-width: $winW_1280 - 1px){
+  .wrapper{width:800px;}
+  .item_list .pic_list{
+    li{width: 255px;
+      h4{line-height: 40px;height: 40px;}
+    }
+  }
+  .rightNav{margin-right: -610px;}
+  .header .slogan{
+    margin-left: 20px;width: 320px; display: inline-block;
+    img{width: 100%;}
+  }
+
+  .health aside{width: 30%;}
+  .health_detail{width: 65%;}
+
+}
+
+@media only screen and (min-width: $win_768) and (max-width: $win_1024 - 1px ){
+
+  .wrapper{width: auto;margin:0 10px;}
+
+  .home{width: auto;left: 0px;
+    .nav{left: 10px;top:140px;}
+  }
+
+  .item_list .pic_list{
+    ul{
+      margin-left: -1.3%;
+      li{width: 32%;margin-left: 1.3%}
+    }
+  }
+  .rightNav{display: none;}
+
+  .health aside{width: 30%;}
+  .health_detail{width: 65%;}
+}
+
+
+@media only screen and (width: $win_768){
+  .wrapper{width: auto;margin:0 10px;}
+
+  .home{width: auto;left: 0px;
+    .nav{left: 10px;top:140px;}
+  }
+
+  .item_list .pic_list{
+    ul{
+      margin-left: -1.3%;
+      li{width: 32%;margin-left: 1.3%}
+    }
+  }
+}
+@media only screen and (min-width: $win_768) and (max-width: $win_1024 - 1px){
+
+}
+
+
+@media only screen and (max-width:$win_768 - 1px){
+  .wrapper{width: auto;margin: 0 10px;}
+  .item_list .pic_list{
+    li{width: 200px;
+      h4{line-height: 40px;height: 40px;}
+    }
+  }
+
+  .rightNav{display: none;}
+}
+@media only screen and (max-width: 600px){
+
+}
+@media only screen and (min-width: 320px) and (max-width: 360px){
+
+}

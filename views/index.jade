@@ -1,0 +1,135 @@
+extends layout
+
+block content
+  link(href='/css/index.css',rel='styleSheet')
+  include includes/responsive
+
+  .banner
+    img(src='images/BG.png')
+    .wrapper
+      dl
+        dt
+          h3 我们的核心优势
+          p
+            i.icon
+            |以客户为中心的全流程的闭合循环医疗服务系
+          p
+            i.icon
+            |国际化标准的实验室
+        dd
+          h3 我们的服务特色
+          p
+            i.icon
+            |肿瘤精准医疗
+          p
+            i.icon
+            |肿瘤精准医疗
+  .home.wrapper
+    include includes/nav
+  section.item_list.clearfix
+    //div #{JSON.stringify(get_goods_list)}
+    .wrapper
+      header
+        h2
+          i.icon
+          |精准检测
+        p 整合国际国内最精准、最快速的检测技术、方法、设备、试剂等，为有需求的客户提供便捷、快速、精准、及时的检测服务。
+      .pic_list
+        //div #{parseInt(5*Math.random())+1}
+        mixin randoms(n)
+          #{parseInt(n*Math.random())+1}
+        //-div(class='line line01')
+          +randoms(5)
+        if get_goods_list_success
+          ul
+            each item in get_goods_list
+              li
+                  a(href='#')
+                    //img(data-original='images/product1.png')
+                    if item.goodsImages
+                      img(data-original='#{item.goodsImages[0].fullImageUrl}', width='330',height='225',alt='#{item.goodsName}')
+                    h4 #{item.goodsName}
+                  if item.productKeyAttributeList
+                    each arr in item.productKeyAttributeList
+                      if arr.attributeName=='fit_people'
+                        p
+                          if arr.value.length > 50
+                            | #{arr.value.substring(0, 50)}……
+                          else
+                            | #{arr.value}
+                  .price
+                    span.new
+                      em ￥
+                      | #{item.discountPrice}
+                    span.old
+                      | 原价￥#{item.price}
+          div
+            a.more(href='javascript:;')
+             |查看全部
+             i.icon
+  section.item_list.boxBg.clearfix
+    .wrapper
+      //-div #{JSON.stringify(get_department)}
+      header
+        h2
+          i.icon
+          |个性化诊疗
+        p 基于国际、国内权威机构的诊疗指南，整合医疗行业优势资源，用标准化的流程，为客户提供个性化的、隐私的、便捷的、精准的、及时的、温馨的诊疗服务。。
+      .pic_list.department_list
+        if get_department
+        ul
+          each item in get_department
+            li
+              img(data-original='images/product1.png')
+              h4 #{item.deptName}
+              p
+                if item.description.length>60
+                  |#{item.description.substring(0,60)}……
+                else
+                  |#{item.description}
+
+        div.clear
+          a.more(href='javascript:;')
+            |查看全部
+            i.icon
+  section.item_list.clearfix
+    .wrapper
+        header.tc
+          h2 “尽力治愈、总是安慰、始终关怀”
+          p 基于“互联网+健康”的理念和精准医学前沿技术，打造精准医学领域020闭合循环的连续性医疗服务生态系统
+        .feature
+          ul
+            li
+              figure
+                img(data-original='images/convenent.png')
+                figcaption 便捷
+                em CONVENIENT
+              p 客户足不出户，即可享受随需定制的健康资讯、在线咨询、在线预约、上门检测、上门问诊服务；也可以选择门诊检测与诊疗服务。
+            li
+              figure
+                img(data-original='images/accurate.png')
+                figcaption 精准
+                em CONVENIENT
+              p 采用国际最先进的核酸检测技术，整合国内外最先进的设备、试剂和检验方法，大大提升检测的精准度。
+            li
+              figure
+                img(data-original='images/respecet.png')
+                figcaption 尊重
+                em RESPECET
+              p 采用国际诊疗指南与以客户为中心的服务流程，在尊重医学本质的基础上，提升客户的就医体验。
+            li
+              figure
+                img(data-original='images/early.png')
+                figcaption 及早
+                em EARLY
+              p 通过引入最先进的技术手段缩短窗口期。早发现，早治疗；早排除，早安心。
+            li
+              figure
+                img(data-original='images/secret.png')
+                figcaption 隐私
+                em SECRET
+              p 分时预约、身份条码、装修分割设计、一对一服务等，保证客户的就医隐私性。
+
+  include includes/footer
+  script.
+    seajs.use('/js/index.js')

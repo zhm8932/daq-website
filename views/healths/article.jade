@@ -1,0 +1,74 @@
+extends ../layout
+
+block content
+    link(href='/css/healths/health_article.css',rel='styleSheet')
+    include ../includes/responsive
+    include ../includes/nav
+    .positon.wrapper
+        |您的为位置：首页<em>#{sep}</em>健康常识<em>#{sep}</em>男性体检项目有哪些？
+        //-if get_goods_category_success
+                each item in get_goods_category
+                    if item.id==categoryId
+                        em #{sep}
+                        |#{item.name}
+    section.wrapper.health.clearfix
+        .health_detail
+          if get_article_detail_success  
+            header
+                h1 #{get_article_detail.title}
+                time 发表于：#{moment(get_article_detail).format('YYYY-MM-DD hh:mm:ss')}
+            //-article!= get_article_detail_content
+            article!= markdown.toHTML(get_article_detail.content)
+
+
+                //#{markdown.toHTML(get_article_detail.content)}
+                //-pre.
+                //-#{get_article_detail.content}
+        aside
+            .ads
+                img(src='/images/img1.png')
+            //-病原体
+            include list_diseases
+            //-科普知识
+            include list_kepu
+            //-有问有答
+            include  list_ask
+    section.boxBg
+        .wrapper.recommend.clearfix
+            h2 相关推荐  
+            ul
+                 li: a(href='javascript:;')
+                    i
+                    |女性经期要注意些什么？ 
+                 li: a(href='javascript:;')
+                    i
+                    |女性经期要注意些什么？
+                 li: a(href='javascript:;')
+                    i
+                    |女性经期要注意些什么？
+                 li: a(href='javascript:;')
+                    i
+                    |女性经期要注意些什么？
+                 li: a(href='javascript:;')
+                    i
+                    |女性经期要注意些什么？
+                 li: a(href='javascript:;')
+                    i
+                    |女性经期要注意些什么？ 
+                 li: a(href='javascript:;')
+                    i
+                    |女性经期要注意些什么？
+                 li: a(href='javascript:;')
+                    i
+                    |女性经期要注意些什么？
+                 li: a(href='javascript:;')
+                    i
+                    |女性经期要注意些什么？
+                 li: a(href='javascript:;')
+                    i
+                    |女性经期要注意些什么？                              
+
+
+    include ../includes/footer
+    script.
+        seajs.use('/js/screenings/goods.js')
