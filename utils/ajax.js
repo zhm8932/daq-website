@@ -5,6 +5,7 @@ var http = require('http');
 var config = require('../config');
 var md5 = require("blueimp-md5");
 var request = require("request");
+var BufferHelper = require('./bufferhelper');//处理buffer接收问题
 
 function signParam(sysParam,bizParam) {
     var params = {};//把bizParam和sysParam一起存放到params里
@@ -29,10 +30,6 @@ function signParam(sysParam,bizParam) {
     }
 
     var str =  config.secret + paramsArr.join('') + config.secret;
-
-    var sign = md5(str);
-
-    console.log('signParam--->origin:'+ str + '---sign--->' + sign);
 
     return md5(str);
 
@@ -71,6 +68,7 @@ module.exports.ajax = function (method,apiName,bizParam,callback) {
 
     var path = config.path;
 
+    console.log('---param:'+param);
     console.log('---method:'+method);
     console.log('---bizParam:'+JSON.stringify(bizParam));
     console.log('---sysPara:'+sysPara);
@@ -80,7 +78,7 @@ module.exports.ajax = function (method,apiName,bizParam,callback) {
     }
 
     var url = 'http://' + config.hostname_test + ":" + config.port_test + path;
-    console.log(url)
+    //console.log(url)
     var options = {
         hostname : config.hostname_test,
         port : config.port_test,
@@ -129,44 +127,37 @@ module.exports.ajax = function (method,apiName,bizParam,callback) {
 
     }else {
         var req = http.request(options,function(response) {
-
-            var body = '';
+            var bufferHelper = new BufferHelper();
 
             response.on('data', function (chunk) {
-                body += chunk;
+                bufferHelper.concat(chunk);
             }).on('end',function() {
+                var body = bufferHelper.toBuffer().toString('utf-8');
 
-                // console.log("body1:",body);
+                console.log(body);
 
                 var success = true;
 
                 var resObj = null;
 
-                // try {
-                //     resObj = JSON.parse(body);
-                //     success = resObj.success;
-                // }catch (err) {
-                //     success = false;
-                // }
-
-                if(typeof body=='string'){
-                    console.log('body:',body)
-                    body = JSON.parse(body);
-                    success = body.success
-
+                try {
+                    resObj = JSON.parse(body);     
+                    success = resObj.success;
+                }catch (err) {
+                    success = false;
                 }
+
                 callback && callback(body,success);
             });
 
         }).on('error', function (e) {
             console.log('problem with request: ' + e.message);
-            console.log('problem with request: ',e);
-            callback && callback(e);
+            callback && callback(null,false);
         });
 
         if(method != 'GET') {req.write(param);}
 
-        //console.log(req);
+        // console.log(req);
         req.end();
 
     }
@@ -212,6 +203,6 @@ function extend() {
         }
     }
     // Return the modified object
-    // console.log('target:',target)
+    console.log('target:',target)
     return target;
 };

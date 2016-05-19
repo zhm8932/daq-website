@@ -16,6 +16,7 @@ var screenings = require('./routes/screening');
 var searchs = require('./routes/search');
 var treats = require('./routes/treat');
 var users = require('./routes/users');
+var carts = require('./routes/cart');
 
 var app = express();
 
@@ -48,6 +49,7 @@ app.use('/screenings', screenings);
 app.use('/searchs', searchs);
 app.use('/treats', treats);
 app.use('/users', users);
+app.use('/cart', carts);
 
 //捕获404错误并转发到错误处理中间件
 app.use(function(req, res, next) {

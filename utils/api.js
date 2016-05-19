@@ -109,6 +109,11 @@ module.exports = {
     cancelReservationGroup:'cancelReservationGroup',
 
     //webIM
-    MessageHistory:"pagingQueryMessageHistory"
+    MessageHistory:"pagingQueryMessageHistory",
+
+
+
+    //购物车
+    GetCartList:"trade.pagingQueryCartItem"
 
 };

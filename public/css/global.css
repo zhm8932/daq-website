@@ -28,6 +28,12 @@
 .gray {
   color: #018FEC; }
 
+.fl {
+  float: left; }
+
+.fr {
+  float: right; }
+
 .wrapper {
   width: 1024px;
   margin: 0 auto;

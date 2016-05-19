@@ -1,0 +1,54 @@
+@import "../settings.scss";
+
+.cart {
+  .cart-step {
+    width:80%;
+    .step-wrapper {
+      display: inline-block;
+      width: 100px;
+      span {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+      }
+    }
+    .cart {
+      text-align:center;
+      i {
+        width: 58px;
+        height: 44px;
+        background-position: 0 -271px;
+      }
+    }
+    .check {
+      position:absolute;
+      i {
+        width: 73px;
+        height: 44px;
+        background-position: -75px -334px;
+      }
+    }
+    .commit {
+      i {
+        width: 58px;
+        height: 44px;
+        background-position: -163px -334px;
+      }
+    }
+
+  }
+  header {
+    position: relative;
+    padding-bottom: 20px;
+    h2 {
+      background-color: $white;
+      padding: 20px 10px 0;
+      font-size: 20px;
+    }
+    p {
+      color: $textc_9d;
+      font-size: 16px;
+    }
+  }
+
+}
