@@ -103,7 +103,7 @@ header {
     span {
       width: 60%;
       float: right;
-      padding: 10px 0 10px 13px;
+      padding-left:13px;
       line-height: 17px;
       box-sizing: border-box;
     }
@@ -156,7 +156,6 @@ header {
       em {
         margin: 5px
       }
-    ;
       .price {
         font-size: 20px;
         margin-left: 10px;
@@ -214,6 +213,22 @@ header {
       }
     }
   }
+
+  .goods-list{
+    margin-bottom:60px;
+    img {
+      width: 40%;
+      height: 85px;
+      float: left;
+    }
+    span {
+      width: 60%;
+      float: right;
+      padding-left: 13px;
+      line-height: 17px;
+      box-sizing: border-box;
+    }
+  }
 }
 
 .cart{
@@ -235,3 +250,4 @@ header {
     }
   }
 }
+

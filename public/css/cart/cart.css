@@ -94,7 +94,7 @@ header {
     .table-div .name span {
       width: 60%;
       float: right;
-      padding: 10px 0 10px 13px;
+      padding-left: 13px;
       line-height: 17px;
       box-sizing: border-box; }
   .table-div .price {
@@ -158,6 +158,18 @@ header {
   background-position: -75px -334px; }
 .confirm-buy .trade-step .commit i {
   background-position: -163px -334px; }
+.confirm-buy .goods-list {
+  margin-bottom: 60px; }
+  .confirm-buy .goods-list img {
+    width: 40%;
+    height: 85px;
+    float: left; }
+  .confirm-buy .goods-list span {
+    width: 60%;
+    float: right;
+    padding-left: 13px;
+    line-height: 17px;
+    box-sizing: border-box; }
 
 .cart .trade-step .cart i {
   background-position: 0 -271px; }

@@ -26,49 +26,58 @@ block content
             header
                 h2 核对订单信息
             .list-info 商品信息
-            table.table.cart-table
-                thead.back-sec
-                    th.text-center
-                    th(width="30%") 商品名称
+            table.table.goods-list
+                thead
+                    th(width="35%") 商品名称
                     th 单价
-                    th 取样信息
+                    th(width="35%") 取样方式
                     th 小计
-                    th 操作
                 tbody
                     tr
                         td
-                            input(type="checkbox")
-                        td
-                            img(src="")
+                            img(src="/images/ban01.png")
                             span 生殖感染看到发动机是客观啊
-                        td $800
-                        td.text-sec
-                            p 服务方式:上门取样
-                            p 服务区域:广东省深圳市南山区
-                        td.text-stress $800
+                        td ￥800
                         td
-                            a 删除
+                            p 上门取样
+                            p.text-sec 服务区域:广东省深圳市南山区
+                        td.text-stress ￥800
                     tr
                         td
-                            input(type="checkbox")
-                        td
-                            img(src="")
+                            img(src="/images/ban01.png")
                             span 生殖感染看到发动机是客观啊
-                        td $800
-                        td.text-sec
-                            p 服务方式:上门取样
-                            p 服务区域:广东省深圳市南山区
-                        td.text-stress $800
+                        td ￥800
                         td
-                            a 删除
+                            p 上门取样
+                            p.text-sec 服务区域:广东省深圳市南山区
+                        td.text-stress ￥800
+            .list-info 使用优惠券
+            table.table
+                thead
+                    th
+                    th 优惠券
+                    th(width="35%") 运用条件
+                    th 使用范围
+                    th 有效期
+                tbody
                     tr
-                        td(colspan="2")
-                            input(type="checkbox")
-                            span 全选
-                        td(colspan="4")
-                            span 共<em class="text-stress">1</em>件商品,商品总价:
-                                span.price.text-stress $1480
-                            input.btn.back-stress.text-primary.submit-btn(type="button",value="提交订单")
+                        td
+                            input(type="radio")
+                        td 800元
+                        td 无门槛
+                        td 限广东地区使用
+                        td 有效期至2016-08-09
+                    tr
+                        td
+                            input(type="radio")
+                        td 800元
+                        td 无门槛
+                        td 限广东地区使用
+                        td 有效期至2016-08-09
+            .list-info.text-stress 有兑换码?
+                .form-box
+                    input(type='text')
+                    span.getCode 获取短信验证码
             .table-div
                 .tfoot.back-info.clearfix
                     .checkbox

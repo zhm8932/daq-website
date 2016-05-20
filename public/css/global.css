@@ -68,12 +68,18 @@
   text-align: center; }
 
 .table {
-  text-align: left; }
-  .table thead th {
-    padding: 10px;
-    font-weight: normal; }
+  text-align: left;
+  width: 100%; }
+  .table thead {
+    height: 40px; }
+    .table thead th {
+      padding: 10px;
+      font-weight: normal; }
+  .table tbody tr {
+    border-bottom: 1px solid #DDDDDD; }
   .table tbody td {
-    padding: 20px 10px; }
+    padding: 20px 10px;
+    vertical-align: top; }
 
 table, th, td {
   border-collapse: collapse;
