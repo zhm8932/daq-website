@@ -12,40 +12,158 @@
 480 ， 600 ， 720 ， 768 ， 800 ， 854 ， 960 ， 1024 ， 1080 ， 1136 ， 1280 ， 1536 ， 1920 ， 2048 ， 2560
 
 */
-.cart .cart-step {
-  width: 80%; }
-  .cart .cart-step .step-wrapper {
+.list-info {
+  margin-bottom: 15px; }
+
+.trade-step {
+  position: relative;
+  height: 85px; }
+  .trade-step .step-wrapper {
+    position: absolute;
+    top: 0;
+    z-index: 2;
     display: inline-block;
     width: 100px; }
-    .cart .cart-step .step-wrapper span {
+    .trade-step .step-wrapper span {
       display: inline-block;
       width: 100%;
       text-align: center; }
-  .cart .cart-step .cart {
+  .trade-step .cart {
+    left: 0;
     text-align: center; }
-    .cart .cart-step .cart i {
+    .trade-step .cart i {
       width: 58px;
-      height: 44px;
-      background-position: 0 -271px; }
-  .cart .cart-step .check {
-    position: absolute; }
-    .cart .cart-step .check i {
+      height: 44px; }
+  .trade-step .check {
+    left: 240px; }
+    .trade-step .check i {
       width: 73px;
-      height: 44px;
-      background-position: -75px -334px; }
-  .cart .cart-step .commit i {
-    width: 58px;
-    height: 44px;
-    background-position: -163px -334px; }
-.cart header {
+      height: 44px; }
+  .trade-step .commit {
+    left: 492px; }
+    .trade-step .commit i {
+      width: 58px;
+      height: 44px; }
+  .trade-step .line {
+    position: absolute;
+    top: 21px;
+    width: 200px;
+    border-bottom: 2px solid;
+    z-index: 1; }
+  .trade-step .line1 {
+    left: 58px; }
+  .trade-step .line2 {
+    left: 319px; }
+
+header {
   position: relative;
   padding-bottom: 20px; }
-  .cart header h2 {
+  header h2 {
     background-color: #FFF;
-    padding: 20px 10px 0;
+    padding: 20px 0;
     font-size: 20px; }
-  .cart header p {
+  header p {
     color: #9d9d9d;
     font-size: 16px; }
+
+.table-div {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 200px; }
+  .table-div .mask {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%; }
+    .table-div .mask span {
+      position: absolute;
+      bottom: 13px;
+      right: 16px;
+      padding: 0 5px;
+      color: #fff;
+      border: 1px solid; }
+  .table-div .checkbox {
+    width: 5%;
+    text-align: center; }
+  .table-div .name {
+    width: 30%; }
+    .table-div .name img {
+      width: 40%;
+      height: 85px;
+      float: left; }
+    .table-div .name span {
+      width: 60%;
+      float: right;
+      padding: 10px 0 10px 13px;
+      line-height: 17px;
+      box-sizing: border-box; }
+  .table-div .price {
+    width: 15%; }
+  .table-div .info {
+    width: 25%; }
+  .table-div .tot-price {
+    width: 15%; }
+  .table-div .operation {
+    width: 10%; }
+  .table-div .thead {
+    position: relative; }
+    .table-div .thead div {
+      float: left;
+      padding: 10px;
+      box-sizing: border-box; }
+  .table-div .table-tr {
+    position: relative; }
+    .table-div .table-tr div {
+      float: left;
+      padding: 20px 10px;
+      box-sizing: border-box; }
+  .table-div .tfoot {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    margin-top: 34px; }
+    .table-div .tfoot div {
+      float: left;
+      box-sizing: border-box; }
+    .table-div .tfoot .check-all {
+      width: 15%; }
+    .table-div .tfoot .price-text {
+      float: right;
+      text-align: right;
+      padding-right: 30px; }
+      .table-div .tfoot .price-text em {
+        margin: 5px; }
+      .table-div .tfoot .price-text .price {
+        font-size: 20px;
+        margin-left: 10px; }
+    .table-div .tfoot .submit-div {
+      float: right;
+      width: 160px; }
+      .table-div .tfoot .submit-div .btn {
+        border: #ED9E9A;
+        width: 100%;
+        height: 60px;
+        font-size: 20px; }
+
+.cart .trade-step .cart i {
+  background-position: 0 -271px; }
+.cart .trade-step .check i {
+  background-position: -75px -334px; }
+.cart .trade-step .commit i {
+  background-position: -163px -334px; }
+
+.confirm-buy .trade-step .cart i {
+  background-position: 0 -271px; }
+.confirm-buy .trade-step .check i {
+  background-position: -75px -334px; }
+.confirm-buy .trade-step .commit i {
+  background-position: -163px -334px; }
+
+.cart .trade-step .cart i {
+  background-position: 0 -271px; }
+.cart .trade-step .check i {
+  background-position: -75px -334px; }
+.cart .trade-step .commit i {
+  background-position: -163px -334px; }
 
 /*# sourceMappingURL=cart.css.map */

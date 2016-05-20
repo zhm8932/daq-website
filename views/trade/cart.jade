@@ -1,0 +1,147 @@
+extends ../layout
+
+block content
+    link(href='/css/cart/cart.css',rel='styleSheet')
+    include ../includes/responsive
+    include ../includes/nav
+    .positon.wrapper
+        |您的位置：首页<em>#{sep}</em>购物车
+    section.wrapper
+        .cart
+            .trade-step
+                p.cart.step-wrapper
+                    span
+                        i.icon
+                    span 我的购物车
+                p.line.line1.text-info
+                p.check.step-wrapper
+                    span
+                        i.icon
+                    span.text-sec 核对订单信息
+                p.line.line2.text-info
+                p.commit.step-wrapper
+                    span
+                        i.icon
+                    span.text-sec 成功提交订单
+            header
+                h2 我的购物车
+            .list-info 商品信息
+            //table.table.cart-table
+            //    thead.back-sec
+            //        th.text-center
+            //        th(width="30%") 商品名称
+            //        th 单价
+            //        th 取样信息
+            //        th 小计
+            //        th 操作
+            //    tbody
+            //        tr
+            //            td
+            //                input(type="checkbox")
+            //            td
+            //                img(src="")
+            //                span 生殖感染看到发动机是客观啊
+            //            td $800
+            //            td.text-sec
+            //                p 服务方式:上门取样
+            //                p 服务区域:广东省深圳市南山区
+            //            td.text-stress $800
+            //            td
+            //                a 删除
+            //        tr
+            //            td
+            //                input(type="checkbox")
+            //            td
+            //                img(src="")
+            //                span 生殖感染看到发动机是客观啊
+            //            td $800
+            //            td.text-sec
+            //                p 服务方式:上门取样
+            //                p 服务区域:广东省深圳市南山区
+            //            td.text-stress $800
+            //            td
+            //                a 删除
+            //        tr
+            //            td(colspan="2")
+            //                input(type="checkbox")
+            //                span 全选
+            //            td(colspan="4")
+            //                span 共<em class="text-stress">1</em>件商品,商品总价:
+            //                    span.price.text-stress $1480
+            //                input.btn.back-stress.text-primary.submit-btn(type="button",value="提交订单")
+            .table-div
+                .thead.back-sec.clearfix
+                    .checkbox
+                    .name 商品名称
+                    .price 单价
+                    .info 取样信息
+                    .tot-price 小计
+                    .operation 操作
+                .table-tr.clearfix
+                    .checkbox
+                        input(type="checkbox")
+                    .name
+                        img(src="/images/ad.png")
+                        span 生殖感染看到发动机是客观啊
+                    .price ￥800
+                    .info.text-sec
+                        p 服务方式:上门取样
+                        p 服务区域:广东省深圳市南山区
+                    .tot-price.text-stress ￥800
+                    .operation
+                        a 删除
+                .table-tr.clearfix
+                    .checkbox
+                        input(type="checkbox")
+                    .name
+                        img(src="/images/ad.png")
+                        span 生殖感染看到发动机是客观啊
+                    .price ￥800
+                    .info.text-sec
+                        p 服务方式:上门取样
+                        p 服务区域:广东省深圳市南山区
+                    .tot-price.text-stress ￥800
+                    .operation 删除
+                .table-tr.clearfix
+                    .checkbox
+                        input(type="checkbox")
+                    .name
+                        img(src="/images/ban01.png")
+                        span 生殖感染看到发动机是客观啊生殖感染看到发动机是客观啊生殖
+                    .price ￥800
+                    .info.text-sec
+                        p 服务方式:上门取样
+                        p 服务区域:广东省深圳市南山区
+                    .tot-price.text-stress ￥800
+                    .operation 删除
+                    .mask.back-mask
+                        span 广州市
+                .table-tr.clearfix
+                    .checkbox
+                        input(type="checkbox")
+                    .name
+                        img(src="/images/ban01.png")
+                        span 生殖感染看到发动机是客观啊
+                    .price ￥800
+                    .info.text-sec
+                        p 服务方式:上门取样
+                        p 服务区域:广东省深圳市南山区
+                    .tot-price.text-stress ￥800
+                    .operation 删除
+                .tfoot.back-info.clearfix
+                    .checkbox
+                        input(type="checkbox")
+                    .check-all 全选
+                    .submit-div
+                        input.btn.back-stress.text-primary.submit-btn(type="button",value="提交订单")
+                    .price-text 共<em class="text-stress">1</em>件商品,商品总价:
+                        span.price.text-stress ￥1480
+
+
+
+
+
+
+    include ../includes/footer
+    script.
+        seajs.use('/js/search_report.js')

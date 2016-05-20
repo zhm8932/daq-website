@@ -3,9 +3,9 @@
 * */
 var express = require('express');
 var router = express.Router();
-var request = require('../requests/cart.request');
+var request = require('../requests/trade.request');
 
-router.get('/list',function(req,res,next) {
+router.get('/cart/list',function(req,res,next) {
     request.GetCartList(req,function(json,success) {
         if(success){
             // var query = req.query;
@@ -19,13 +19,21 @@ router.get('/list',function(req,res,next) {
             // res.locals.query = queryStr;
             // res.locals.category = query.category || '1';
             // res.locals.tc = query.tc || '';
-            res.render('cart/list',{
+            res.render('trade/cart',{
                 title:'健康科普_文章列表',
                 data:json.data.data
             });
         }else{
             res.json(json);
         }
+    });
+});
+
+
+router.get('/order/comfirmView',function(req,res,next) {
+    res.render('trade/orderConfirm',{
+        title:'健康科普_文章列表',
+        data:json.data.data
     });
 });
 
