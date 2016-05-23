@@ -7,12 +7,8 @@ var config = require('../config');
 
 
 exports.GetCartList = function (req, callback) {
-    var currentPage = req.query.page || 1;
-
     var bizParam = {
-        "pageIndex": currentPage,
-        "pageSize": config.pageSize,
-        "accountId": '15018510347'
+        "accountId": '2110021051481592077'
     };
     
     util.ajax('GET', api.GetCartList, bizParam, function (data, success) {

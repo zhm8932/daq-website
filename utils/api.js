@@ -114,6 +114,6 @@ module.exports = {
 
 
     //购物车
-    GetCartList:"trade.pagingQueryCartItem"
+    GetCartList:"trade.getAllCartItemDTO"
 
 };

@@ -20,8 +20,8 @@ router.get('/cart/list',function(req,res,next) {
             // res.locals.category = query.category || '1';
             // res.locals.tc = query.tc || '';
             res.render('trade/cart',{
-                title:'健康科普_文章列表',
-                data:json.data.data
+                title:'购物车',
+                data:json.data
             });
         }else{
             res.json(json);
@@ -33,7 +33,21 @@ router.get('/cart/list',function(req,res,next) {
 router.get('/order/comfirmView',function(req,res,next) {
     res.render('trade/orderConfirm',{
         title:'健康科普_文章列表',
-        data:json.data.data
+        data:{}
+    });
+});
+
+router.get('/order/orderSuccess',function(req,res,next) {
+    res.render('trade/orderSuccess',{
+        title:'健康科普_文章列表',
+        data:{}
+    });
+});
+
+router.get('/order/paySuccess',function(req,res,next) {
+    res.render('trade/paySuccess',{
+        title:'健康科普_文章列表',
+        data:{}
     });
 });
 

@@ -1,28 +1,28 @@
 extends ../layout
 
 block content
-    link(href='/css/cart/cart.css',rel='styleSheet')
+    link(href='/css/trade/trade.css',rel='styleSheet')
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
-        |您的位置：首页<em>#{sep}</em>确认购买
+        |您的位置：首页<em>#{sep}</em>筛查服务<em>#{sep}</em>核对订单信息<em>#{sep}</em>成功提交订单
     section.wrapper
         .confirm-buy
             .trade-step
                 p.cart.step-wrapper
                     span
                         i.icon
-                    span 我的购物车
+                    span.text-info 我的购物车
                 p.line.line1.text-stress
                 p.check.step-wrapper
                     span
                         i.icon
-                    span.text-sec 核对订单信息
+                    span 核对订单信息
                 p.line.line2.text-info
                 p.commit.step-wrapper
                     span
                         i.icon
-                    span.text-sec 成功提交订单
+                    span.text-info 成功提交订单
             header
                 h2 核对订单信息
             .list-info 商品信息
@@ -75,18 +75,20 @@ block content
                         td 限广东地区使用
                         td 有效期至2016-08-09
             .list-info.text-stress 有兑换码?
-                .form-box
-                    input(type='text')
-                    span.getCode 获取短信验证码
+            .code-box.clearfix
+                input.border-default.fl(type='text',placeholder="请输入优惠券兑换码")
+                button.border-default.btn.back-sec.fl 添加
             .table-div
-                .tfoot.back-info.clearfix
-                    .checkbox
-                        input(type="checkbox")
-                    .check-all 全选
+                .tfoot.back-sec.clearfix
+                    .service-area
+                        span.text-sec.desp 服务区域:
+                        span 广东省深圳市
                     .submit-div
-                        input.btn.back-stress.text-primary.submit-btn(type="button",value="提交订单")
-                    .price-text 共<em class="text-stress">1</em>件商品,商品总价:
+                        input.btn.back-stress.text-primary.submit-btn(type="button",value="去支付")
+                    .price-text
+                        span.text-sec 应支付:
                         span.price.text-stress ￥1480
+                        span (已优惠￥140)
 
 
 

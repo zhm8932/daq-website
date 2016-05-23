@@ -1,0 +1,44 @@
+extends ../layout
+
+block content
+    link(href='/css/trade/trade.css',rel='styleSheet')
+    include ../includes/responsive
+    include ../includes/nav
+    .positon.wrapper
+        |您的位置：首页<em>#{sep}</em>筛查服务<em>#{sep}</em>核对订单信息<em>#{sep}</em>成功提交订单
+    section.wrapper
+        .pay-success
+            .trade-step
+                p.cart.step-wrapper
+                    span
+                        i.icon
+                    span.text-info 我的购物车
+                p.line.line1.text-stress
+                p.check.step-wrapper
+                    span
+                        i.icon
+                    span.text-info 核对订单信息
+                p.line.line2.text-stress
+                p.commit.step-wrapper
+                    span
+                        i.icon
+                    span.text-info 成功提交订单
+
+            .order-box.border-default
+                i.icon.success
+                span.pay-tip.text-stress 订单支付成功
+                span.order-num-price
+                    span 订单号 : 12345
+                    span 支付金额 : $1000
+                span.order-detail.text-main 订单详情>>
+                span.order-tel.text-info 电话预约筛查:
+                    span.text-main 400-4557452
+
+
+
+
+
+
+    include ../includes/footer
+    script.
+        seajs.use('/js/search_report.js')

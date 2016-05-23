@@ -45,6 +45,10 @@
   color: #ED9E9A;
 }
 
+.text-main {
+  color: #48BED8;
+}
+
 .text-info {
   color: #C4C4C4;
 }
@@ -73,9 +77,12 @@
   text-align: center;
 }
 
+.border-default{border:1px solid #DDDDDD;}
+
 .table {
   text-align: left;
   width: 100%;
+  margin-bottom:60px;
   thead {
     height: 40px;
     th {

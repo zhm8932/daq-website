@@ -46,6 +46,9 @@
 .text-stress {
   color: #ED9E9A; }
 
+.text-main {
+  color: #48BED8; }
+
 .text-info {
   color: #C4C4C4; }
 
@@ -67,9 +70,13 @@
 .text-center {
   text-align: center; }
 
+.border-default {
+  border: 1px solid #DDDDDD; }
+
 .table {
   text-align: left;
-  width: 100%; }
+  width: 100%;
+  margin-bottom: 60px; }
   .table thead {
     height: 40px; }
     .table thead th {
