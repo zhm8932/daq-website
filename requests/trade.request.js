@@ -17,5 +17,11 @@ exports.GetCartList = function (req, callback) {
     });
 };
 
+exports.DelCartItem = function (req, callback) {
+    var bizParam = req.body;
 
+    util.ajax('DELETE', api.DelCartItem, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
 

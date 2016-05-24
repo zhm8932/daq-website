@@ -5,7 +5,7 @@ block content
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
-        |您的位置：首页<em>#{sep}</em>购物车
+        | 您的位置：首页<em>#{sep}</em>购物车
     section.wrapper
         .cart
             .trade-step
@@ -28,7 +28,7 @@ block content
             .list-info 商品信息
             .table-div
                 .thead.back-sec.clearfix
-                    .checkbox
+                    .check
                     .name 商品名称
                     .price 单价
                     .info 取样信息
@@ -36,70 +36,49 @@ block content
                     .operation 操作
                 each item in data
                     .table-tr.clearfix
-                        .checkbox
-                            input(type="checkbox")
+                        .check
+                            span.checkbox
                         .name
-                            img(src="/images/ad.png")
-                            span 生殖感染看到发动机是客观啊
-                        .price ￥800
+                            img(src="#{item.goodsImageDTOs[0].imageUrl}")
+                            span #{item.goodsName}
+                        -var price = parseInt(item.discountPrice)/100;
+                        -var favPrice = 0;
+                        -var area = '';
+                        -var city = '';
+                        .price ￥#{price}
                         .info.text-sec
-                            p 服务方式:上门取样
-                            p 服务区域:广东省深圳市南山区
-                        .tot-price.text-stress ￥800
-                        .operation
+                            -var json = {"sampling_home":"上门取样","sampling_delivery":"快递取样","sampling_clinic":"门诊取样"}
+                            each cartItemAttr,index in item.cartItemAttrs
+                                -var value = JSON.parse(cartItemAttr.value);
+                                if 'transmit_type' == cartItemAttr.attributeName
+                                    -for(var type in value)
+                                    -favPrice = parseInt(value[type])/100;
+                                    p 服务方式:#{json[type]}(优惠￥#{favPrice})
+                                if 'address' == cartItemAttr.attributeName
+                                    p 服务区域:
+                                        each areaObj,i in value
+                                            if i==1
+                                                -city = areaObj.name;
+                                            if i<2
+                                                -area += areaObj.name;
+                                            | #{areaObj.name}
+                        -var subTotal = price-favPrice;
+                        .tot-price.text-stress ￥#{subTotal}
+                        .operation(data-id="#{item.id}",data-goodsId="#{item.goodsId}",data-subTotal="#{subTotal}",data-area="#{area}",data-city="#{city}")
                             a.del-cart-item 删除
-                .table-tr.clearfix
-                    .checkbox
-                        input(type="checkbox")
-                    .name
-                        img(src="/images/ad.png")
-                        span 生殖感染看到发动机是客观啊
-                    .price ￥800
-                    .info.text-sec
-                        p 服务方式:上门取样
-                        p 服务区域:广东省深圳市南山区
-                    .tot-price.text-stress ￥800
-                    .operation 删除
-                .table-tr.clearfix
-                    .checkbox
-                        input(type="checkbox")
-                    .name
-                        img(src="/images/ban01.png")
-                        span 生殖感染看到发动机是客观啊生殖感染看到发动机是客观啊生殖
-                    .price ￥800
-                    .info.text-sec
-                        p 服务方式:上门取样
-                        p 服务区域:广东省深圳市南山区
-                    .tot-price.text-stress ￥800
-                    .operation 删除
-                    .mask.back-mask
-                        span 广州市
-                .table-tr.clearfix
-                    .checkbox
-                        input(type="checkbox")
-                    .name
-                        img(src="/images/ban01.png")
-                        span 生殖感染看到发动机是客观啊
-                    .price ￥800
-                    .info.text-sec
-                        p 服务方式:上门取样
-                        p 服务区域:广东省深圳市南山区
-                    .tot-price.text-stress ￥800
-                    .operation 删除
+                        .mask.back-mask.none
+                            span #{city}
+
+
                 .tfoot.back-sec.border-default.clearfix
-                    .checkbox
-                        input(type="checkbox")
-                    .check-all 全选
+                    .check
+                        span.checkbox.check-all
+                    .check-text 全选
                     .submit-div
                         input.btn.back-stress.text-primary.submit-btn(type="button",value="提交订单")
                     .price-text 共<em class="text-stress">1</em>件商品,商品总价:
-                        span.price.text-stress ￥1480
-
-
-
-
-
+                        span.price.text-stress ￥0
 
     include ../includes/footer
     script.
-        seajs.use('/js/search_report.js')
+        seajs.use('/js/trade/cart.js')

@@ -8,17 +8,6 @@ var request = require('../requests/trade.request');
 router.get('/cart/list',function(req,res,next) {
     request.GetCartList(req,function(json,success) {
         if(success){
-            // var query = req.query;
-            res.locals.pagecount=json.data.pageCount;
-            res.locals.currentpage = req.query.page||1;
-            // delete query.page;
-            // var queryStr = '';
-            // for(var attr in query){
-            //     queryStr += attr + '=' + query[attr] + '&';
-            // }
-            // res.locals.query = queryStr;
-            // res.locals.category = query.category || '1';
-            // res.locals.tc = query.tc || '';
             res.render('trade/cart',{
                 title:'购物车',
                 data:json.data
@@ -26,6 +15,12 @@ router.get('/cart/list',function(req,res,next) {
         }else{
             res.json(json);
         }
+    });
+});
+
+router.post('/cart/delItem',function(req,res,next) {
+    request.DelCartItem(req,function(data,success) {
+        res.json(data);
     });
 });
 

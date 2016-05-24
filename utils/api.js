@@ -114,6 +114,7 @@ module.exports = {
 
 
     //购物车
-    GetCartList:"trade.getAllCartItemDTO"
+    GetCartList:"trade.getAllCartItemDTO",
+    DelCartItem:"trade.removeCartItemById"
 
 };

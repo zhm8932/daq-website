@@ -12,6 +12,9 @@
 480 ， 600 ， 720 ， 768 ， 800 ， 854 ， 960 ， 1024 ， 1080 ， 1136 ， 1280 ， 1536 ， 1920 ， 2048 ， 2560
 
 */
+.none {
+  display: none; }
+
 .red {
   color: #FF0000; }
 
@@ -69,6 +72,18 @@
 
 .text-center {
   text-align: center; }
+
+a.disabled {
+  color: #DDDDDD; }
+
+.checkbox {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: url(../images/icon.png) 0 -707px; }
+
+.checkbox.checked {
+  background-position: -47px -707px; }
 
 .border-default {
   border: 1px solid #DDDDDD; }

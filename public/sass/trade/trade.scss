@@ -91,7 +91,7 @@ header {
       border: 1px solid;
     }
   }
-  .checkbox {
+  .check{
     width: 5%;
     text-align: center;
   }
@@ -132,6 +132,7 @@ header {
   }
   .table-tr {
     position: relative;
+    //border-bottom: 1px solid #DDDDDD;
     div {
       float: left;
       padding: 20px 10px;
@@ -148,7 +149,7 @@ header {
       float: left;
       box-sizing: border-box;
     }
-    .check-all {
+    .check-text {
       width: 15%;
     }
     .service-area{
