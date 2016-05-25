@@ -9,7 +9,6 @@ define(function(require, exports, module){
     $(function () {
         var $body = $('body')
 
-        console.log(window.location)
         var location = window.location
         var curPathname = location.pathname;
         var $nav_A = $('.nav li a')
