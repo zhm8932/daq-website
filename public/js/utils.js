@@ -279,8 +279,20 @@ define(function (require, exports, module) {
         var seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
         var time = hours + ':' + minutes + ':' + seconds;
         return time;
-    };
+    }
 
+    function getLoacalDateString(timestamp) {
+        if(timestamp){
+            var date = new Date(timestamp);
+        }else{
+            var date = new Date();
+        }
+        var year = date.getFullYear();
+        var month = date.getMonth() < 10 ? '0' + date.getMonth() : date.getMonth();
+        var d = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+        var time = year + '-' + month + '-' + d;
+        return time;
+    }
 
     String.prototype.trim = function () {
 
@@ -299,6 +311,15 @@ define(function (require, exports, module) {
         return serializeObj
     }
 
+    function checkRadio($this, selector,fun) {
+        if ($this.hasClass('checked') || $this.hasClass('disabled')) {
+            return;
+        }
+        $(selector).removeClass('checked');
+        $this.addClass('checked');
+        fun && fun();
+    }
+
     module.exports = {
         Popup: Popup,
         MsgShow: MsgShow,
@@ -310,7 +331,9 @@ define(function (require, exports, module) {
         AddCookie: addCookie,
         GetCookie: getCookie,
         DeleteCookie: deleteCookie,
-        GetLoacalTimeString: getLoacalTimeString
+        GetLoacalTimeString: getLoacalTimeString,
+        GetLoacalDateString:getLoacalDateString,
+        CheckRadio:checkRadio
     }
 
 })

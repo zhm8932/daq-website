@@ -33,68 +33,44 @@ block content
                     th(width="35%") 取样方式
                     th 小计
                 tbody
-                    tr
-                        td
-                            img(src="/images/ban01.png")
-                            span 生殖感染看到发动机是客观啊
-                        td ￥800
-                        td
-                            p 上门取样
-                            p.text-sec 服务区域:广东省深圳市南山区
-                        td.text-stress ￥800
-                    tr
-                        td
-                            img(src="/images/ban01.png")
-                            span 生殖感染看到发动机是客观啊
-                        td ￥800
-                        td
-                            p 上门取样
-                            p.text-sec 服务区域:广东省深圳市南山区
-                        td.text-stress ￥800
+                    each item in JSON.parse(data.items)
+                        tr
+                            td
+                                img(src="#{item.imgUrl}")
+                                span #{item.goodsName}
+                            td ￥#{item.discountPrice/100}
+                            td
+                                p #{item.transmitType}(优惠￥#{item.favPrice/100})
+                                p.text-sec 服务区域:#{item.area}
+                            td.text-stress ￥#{item.subTotal/100}
             .list-info 使用优惠券
-            table.table
+            table#coupon-table.table
                 thead
                     th
                     th 优惠券
-                    th(width="35%") 运用条件
-                    th 使用范围
+                    th 运用条件
+                    th(width="40%") 使用范围
                     th 有效期
                 tbody
-                    tr
-                        td
-                            input(type="radio")
-                        td 800元
-                        td 无门槛
-                        td 限广东地区使用
-                        td 有效期至2016-08-09
-                    tr
-                        td
-                            input(type="radio")
-                        td 800元
-                        td 无门槛
-                        td 限广东地区使用
-                        td 有效期至2016-08-09
+
             .list-info.text-stress 有兑换码?
             .code-box.clearfix
-                input.border-default.fl(type='text',placeholder="请输入优惠券兑换码")
-                button.border-default.btn.back-sec.fl 添加
+                input#coupon-code.border-default.fl(type='text',placeholder="请输入优惠券号码")
+                button.add-coupon.border-default.btn.back-sec.fl 添加
             .table-div
                 .tfoot.back-sec.clearfix
                     .service-area
                         span.text-sec.desp 服务区域:
-                        span 广东省深圳市
+                        span #{data.proCity}
                     .submit-div
                         input.btn.back-stress.text-primary.submit-btn(type="button",value="去支付")
                     .price-text
                         span.text-sec 应支付:
-                        span.price.text-stress ￥1480
+                        span.price.text-stress ￥#{data.totalPrice/100}
                         span (已优惠￥140)
-
-
-
-
-
+            input(type="hidden",id="goodsTotalPrice",value="#{data.totalPrice}")
+            input(type="hidden",id="cityId",value="#{data.cityId}")
 
     include ../includes/footer
     script.
-        seajs.use('/js/search_report.js')
+        seajs.use('/js/trade/orderConfirm.js')

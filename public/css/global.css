@@ -85,6 +85,18 @@ a.disabled {
 .checkbox.checked {
   background-position: -47px -707px; }
 
+.radio {
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  background: url(../images/icon.png) 0 -668px; }
+
+.radio.checked {
+  background-position: -47px -668px; }
+
+.radio.disabled {
+  background-position: -75px -668px; }
+
 .border-default {
   border: 1px solid #DDDDDD; }
 

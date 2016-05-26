@@ -36,35 +36,41 @@ block content
                     .operation 操作
                 each item in data
                     .table-tr.clearfix
+                        -var imgUrl = item.goodsImageDTOs[0].imageUrl;
+                        -var discountPrice = parseInt(item.discountPrice);
+                        -var favPrice = 0;
+                        -var proCity = '';
+                        -var area = '';
+                        -var city = '';
+                        -var transmitType = '';
                         .check
                             span.checkbox
                         .name
-                            img(src="#{item.goodsImageDTOs[0].imageUrl}")
+                            img(src="#{imgUrl}")
                             span #{item.goodsName}
-                        -var price = parseInt(item.discountPrice)/100;
-                        -var favPrice = 0;
-                        -var area = '';
-                        -var city = '';
-                        .price ￥#{price}
+                        .price ￥#{discountPrice/100}
                         .info.text-sec
                             -var json = {"sampling_home":"上门取样","sampling_delivery":"快递取样","sampling_clinic":"门诊取样"}
                             each cartItemAttr,index in item.cartItemAttrs
                                 -var value = JSON.parse(cartItemAttr.value);
                                 if 'transmit_type' == cartItemAttr.attributeName
                                     -for(var type in value)
-                                    -favPrice = parseInt(value[type])/100;
-                                    p 服务方式:#{json[type]}(优惠￥#{favPrice})
+                                        -favPrice = parseInt(value[type]);
+                                        -transmitType = json[type];
+                                        p 服务方式:#{json[type]}(优惠￥#{favPrice/100})
                                 if 'address' == cartItemAttr.attributeName
                                     p 服务区域:
                                         each areaObj,i in value
+                                            -area += areaObj.name;
                                             if i==1
                                                 -city = areaObj.name;
+                                                -cityId = areaObj.categoryId;
                                             if i<2
-                                                -area += areaObj.name;
+                                               -proCity += areaObj.name;
                                             | #{areaObj.name}
-                        -var subTotal = price-favPrice;
-                        .tot-price.text-stress ￥#{subTotal}
-                        .operation(data-id="#{item.id}",data-goodsId="#{item.goodsId}",data-subTotal="#{subTotal}",data-area="#{area}",data-city="#{city}")
+                        -var subTotal = discountPrice-favPrice;
+                        .tot-price.text-stress ￥#{subTotal/100}
+                        .operation(data-id="#{item.id}",data-goodsId="#{item.goodsId}",data-goodsName="#{item.goodsName}",data-imgUrl="#{imgUrl}",data-discountPrice="#{discountPrice}",data-transmitType="#{transmitType}",data-subTotal="#{subTotal}",data-favPrice="#{favPrice}",data-proCity="#{proCity}",data-area="#{area}",data-city="#{city}",data-cityId="#{cityId}")
                             a.del-cart-item 删除
                         .mask.back-mask.none
                             span #{city}
@@ -75,10 +81,14 @@ block content
                         span.checkbox.check-all
                     .check-text 全选
                     .submit-div
-                        input.btn.back-stress.text-primary.submit-btn(type="button",value="提交订单")
-                    .price-text 共<em class="text-stress num">1</em>件商品,商品总价:
+                        input.btn.text-primary.submit-btn(type="button",value="提交订单")
+                    .price-text 共<em class="text-stress num">0</em>件商品,商品总价:
                         span.price.text-stress ￥0
-
+            form#submitForm(action = "/trade/order/comfirmView",method="POST")
+                input(type="hidden",name="items")
+                input(type="hidden",name="totalPrice")
+                input(type="hidden",name="cityId")
+                input(type="hidden",name="proCity")
     include ../includes/footer
     script.
         seajs.use('/js/trade/cart.js')

@@ -13,8 +13,6 @@ define(function(require, exports, module){
         var curPathname = location.pathname;
         var $nav_A = $('.nav li a')
         var href = ''
-        console.log($nav_A)
-        console.log("curPathname:",curPathname)
 
         $.each($nav_A,function (index,arr) {
             href = $(arr).attr('href')

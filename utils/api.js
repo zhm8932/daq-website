@@ -115,6 +115,8 @@ module.exports = {
 
     //购物车
     GetCartList:"trade.getAllCartItemDTO",
-    DelCartItem:"trade.removeCartItemById"
+    DelCartItem:"trade.removeCartItemById",
+    GetCouponList:"promotion.pageQueryUserCoupon",
+    AddCouponByInvite:"promotion.addCouponCodeByInviteCode"
 
 };
