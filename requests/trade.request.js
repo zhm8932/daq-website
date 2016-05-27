@@ -25,6 +25,14 @@ exports.DelCartItem = function (req, callback) {
     });
 };
 
+exports.AddCartItem = function (req, callback) {
+    var bizParam = req.body;
+
+    util.ajax('POST', api.AddCartItem, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
 
 exports.GetCouponList = function (req, callback) {
     var query = req.query;

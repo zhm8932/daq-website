@@ -18,6 +18,12 @@ router.get('/cart/list',function(req,res,next) {
     });
 });
 
+router.post('/cart/addItem',function(req,res,next) {
+    request.AddCartItem(req,function(data,success) {
+        res.json(data);
+    });
+});
+
 router.post('/cart/delItem',function(req,res,next) {
     request.DelCartItem(req,function(data,success) {
         res.json(data);
