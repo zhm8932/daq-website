@@ -10,8 +10,7 @@ exports.GetListByTypeAndLevel = function (req, callback) {
     var bizParam = req.query;
     
     util.ajax('GET', api.GetListByTypeAndLevel, bizParam, function (data, success) {
-        var json = JSON.parse(data);
-        callback && callback(json, success);
+        callback && callback(data, success);
     });
 };
 

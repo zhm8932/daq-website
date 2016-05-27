@@ -12,7 +12,8 @@ exports.GetCartList = function (req, callback) {
     };
     
     util.ajax('GET', api.GetCartList, bizParam, function (data, success) {
-        var json = JSON.parse(data);
+        // var json = JSON.parse(data);
+        var json = data;
         callback && callback(json, success);
     });
 };

@@ -7,12 +7,14 @@ var request = require('../requests/dictionary.request');
 
 router.get('/list/typeAndLevel',function(req,res,next) {
     request.GetListByTypeAndLevel(req,function(data,success) {
+        data = JSON.stringify(data);
         res.json(data);
     });
 });
 
 router.get('/list/parentId',function(req,res,next) {
     request.GetListByParentId(req,function(data,success) {
+        data = JSON.stringify(data);
         res.json(data);
     });
 });

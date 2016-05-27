@@ -7,7 +7,7 @@ var request = require('../requests/trade.request');
 
 router.get('/cart/list',function(req,res,next) {
     request.GetCartList(req,function(json,success) {
-        json = JSON.stringify(json);
+        // json = JSON.stringify(json);
         if(success){
             res.render('trade/cart',{
                 title:'购物车',

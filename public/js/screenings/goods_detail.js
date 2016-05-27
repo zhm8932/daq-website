@@ -6,29 +6,29 @@ define(function(require){
 
     $(function(){
         //获取省份
-        getAddress({
-            id:'province',
-            url:'/dic/list/typeAndLevel',
-            param:{activeState:1,type:'district',level:'1'}
-        });
-
-        $('#province').on('change',function(){
-            var parentId = $(this).val();
-            getAddress({
-                id:'city',
-                url:'/dic/list/parentId',
-                param:{activeState:1,parentId:parentId}
-            });
-        });
-
-        $('#city').on('change',function(){
-            var parentId = $(this).val();
-            getAddress({
-                id:'area',
-                url:'/dic/list/parentId',
-                param:{activeState:1,parentId:parentId}
-            });
-        });
+        // getAddress({
+        //     id:'province',
+        //     url:'/dic/list/typeAndLevel',
+        //     param:{activeState:1,type:'district',level:'1'}
+        // });
+        //
+        // $('#province').on('change',function(){
+        //     var parentId = $(this).val();
+        //     getAddress({
+        //         id:'city',
+        //         url:'/dic/list/parentId',
+        //         param:{activeState:1,parentId:parentId}
+        //     });
+        // });
+        //
+        // $('#city').on('change',function(){
+        //     var parentId = $(this).val();
+        //     getAddress({
+        //         id:'area',
+        //         url:'/dic/list/parentId',
+        //         param:{activeState:1,parentId:parentId}
+        //     });
+        // });
 
 
         $(".slideBox").touchSlider({
@@ -48,7 +48,7 @@ define(function(require){
         });
 
         $('.addCartBtn').on('click',function(){
-
+            window.location.href = '/trade/cart/list';
         });
 
     });
