@@ -111,7 +111,6 @@ exports.get_department =function(req,res,next){
 
     util.ajax('GET',api.DepartmentAll,bizParam,function (data,success) {
         // var json = JSON.parse(data);
-        console.log("get_department:",data)
         var json = data;
         if(json) {
             req.get_department = json;

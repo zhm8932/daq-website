@@ -10,7 +10,10 @@ $conWidth:1600px;
 @media only  screen and (min-width: 1440px) and (max-width: 1920px){
 
 }
-
+@media only  screen and (max-width: $winW_1440 - 1px){
+  .health aside,.info_list .lr_list figure img{width: 30%;}
+  .health_detail,.health_list,.info_list .lr_list figure figcaption{width: 68%;}
+}
 //@media only  screen and (min-width: $winW_1366) and (max-width: 1439px){
 @media only  screen and (min-width: $winW_1366) and (max-width: $winW_1440 - 1px){
   .wrapper{width: 980px;}
@@ -21,7 +24,7 @@ $conWidth:1600px;
   }
   .rightNav{margin-right: -660px;}
   .health aside{width: 30%;}
-  .health_detail{width: 65%;}
+  .health_detail,.health_list{width: 68%;}
 }
 
 @media only screen and (min-width: 1280px) and (max-width: 1365px){
@@ -64,6 +67,7 @@ $conWidth:1600px;
 @media only screen and (min-width: $win_768) and (max-width: $win_1024 - 1px ){
 
   .wrapper{width: auto;margin:0 10px;}
+  .positon{margin-bottom: 10px;}
 
   .home{width: auto;left: 0px;
     .nav{left: 10px;top:140px;}
@@ -103,6 +107,8 @@ $conWidth:1600px;
 
 @media only screen and (max-width:$win_768 - 1px){
   .wrapper{width: auto;margin: 0 10px;}
+  .positon{margin-bottom: 10px;}
+  .lr_list figure h4{font-size: 16px; padding: 10px 0; margin-bottom: 10px;}
   .item_list .pic_list{
     li{width: 200px;
       h4{line-height: 40px;height: 40px;}

@@ -46,6 +46,8 @@ exports.get_article = function (req,res) {
         get_article_list=get_article_list.data.data;
     }
     if(get_article_list_ask.success){
+        res.locals.ask_pageCount = get_article_list_ask.data.pageCount;
+        res.locals.ask_currentPage = get_article_list_ask.data.currentPage;
         get_article_list_ask = get_article_list_ask.data.data;
     }
     if(get_article_list_diseases.success){

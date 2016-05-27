@@ -18,8 +18,8 @@ block content
                 h1 #{get_article_detail.title}
                 time 发表于：#{moment(get_article_detail).format('YYYY-MM-DD hh:mm:ss')}
             //-article!= get_article_detail_content
-            article!= markdown.toHTML(get_article_detail.content)
-
+            //-article!= markdown.toHTML(get_article_detail.content)
+            article!= get_article_detail.content
 
                 //#{markdown.toHTML(get_article_detail.content)}
                 //-pre.
