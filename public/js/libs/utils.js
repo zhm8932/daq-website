@@ -104,6 +104,7 @@ define(function(require,exports,module) {
         var defaults = {
             closeBtn:'.closeBtn',
             mainCell:'msgBox',
+            otherBox:'',
             title:'提示语',
             delayTime:1500,
             interTime:1500,
@@ -135,7 +136,7 @@ define(function(require,exports,module) {
 
         },
         setHtml:function(){
-            return '<div class="'+this.options.mainCell+'"></div>'
+            return '<div class="'+this.options.mainCell+' '+this.options.otherBox+'"></div>'
         },
         hideMsg:function(cb){
             var self = this;
@@ -161,7 +162,10 @@ define(function(require,exports,module) {
                 $('.'+opts.mainCell).show();
             }
             $('.'+opts.mainCell).html(this.options.title)
-            $('.'+opts.mainCell).css({width:width+'px',height:height+'px','line-height':height+'px','margin-left':-width/2,'margin-top':-height/2}).show()
+            if(!opts.otherBox){
+                $('.'+opts.mainCell).css({width:width+'px',height:height+'px','line-height':height+'px','margin-left':-width/2,'margin-top':-height/2}).show()
+            }
+
 
 
         }

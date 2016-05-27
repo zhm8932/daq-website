@@ -632,6 +632,31 @@ select {
   .popupBox .otherMsg {
     margin-top: 10px; }
 
+.msgBox {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  line-height: 30px;
+  display: none;
+  z-index: 99999;
+  font-size: 18px;
+  background-color: rgba(134, 134, 134, 0.54);
+  border-radius: 30px;
+  text-align: center; }
+
+.successBox {
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  margin: 0px;
+  background-color: #48BED8;
+  line-height: 40px;
+  color: #FFF;
+  border-radius: 0px; }
+  .successBox i {
+    background-position: -51px -94px;
+    margin: 4px 10px 0 0; }
+
 .loginBox .getCode {
   position: absolute;
   right: 0px;
@@ -645,7 +670,8 @@ select {
   color: #ED9E9A;
   position: absolute;
   left: 0px;
-  bottom: -24px; }
+  bottom: -24px;
+  display: none; }
   .loginBox .prompt i {
     background-position: -178px -22px; }
 

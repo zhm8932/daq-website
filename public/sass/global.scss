@@ -748,7 +748,13 @@ select {
   }
 
 }
-
+.msgBox{
+  position: fixed; left: 50%; top: 50%; line-height: 30px; display: none;z-index: 99999;
+  font-size: 18px; background-color:rgba(134, 134, 134, 0.54);border-radius: 30px; text-align: center;//border-left: none;border-right: none;
+}
+.successBox{width: 100%;left: 0px;top:0px;margin: 0px;background-color:$bgc_48B;line-height: 40px;color: $white;border-radius: 0px;
+  i{background-position: -51px -94px;margin: 4px 10px 0 0;}
+}
 .loginBox {
   .getCode {
     position: absolute;
@@ -765,6 +771,7 @@ select {
     position: absolute;
     left: 0px;
     bottom: -24px;
+    display: none;
     i {
       background-position: -178px -22px;
     }
@@ -1010,7 +1017,6 @@ $rightNavLI: 50px;
   _position: absolute;
   _top: expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight);
   ul {
-
     li {
       text-align: center;
       font-size: 16px;
