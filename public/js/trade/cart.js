@@ -1,7 +1,5 @@
 define(function (require, exports, module) {
     var utils = require('../utils.js');
-    var cityId = '';
-    var proCity = '';
 
     $(function () {
         $(".del-cart-item").on('click', function () {

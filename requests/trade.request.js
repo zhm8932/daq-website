@@ -12,7 +12,8 @@ exports.GetCartList = function (req, callback) {
     };
     
     util.ajax('GET', api.GetCartList, bizParam, function (data, success) {
-        var json = JSON.parse(data);
+        // var json = JSON.parse(data);
+        var json = data;
         callback && callback(json, success);
     });
 };
@@ -21,6 +22,14 @@ exports.DelCartItem = function (req, callback) {
     var bizParam = req.body;
 
     util.ajax('DELETE', api.DelCartItem, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
+exports.AddCartItem = function (req, callback) {
+    var bizParam = req.body;
+
+    util.ajax('POST', api.AddCartItem, bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };

@@ -46,14 +46,14 @@ exports.login = function (req,res,next) {
     util.ajax('GET',api.Login,bizParam,function (data,success) {
         var json = data;
         if(json.success){
-            res.cookie('userAllInfo',json.data.userAllInfo, { maxAge: 1000*60*60*12 });
+            res.cookie('userInfo',json.data.userAllInfo, { maxAge: 1000*60*60*12 });
         }
         res.send(json)
     });
 
 };
 exports.logout = function (req,res,next) {
-    res.cookie('userAllInfo','null',{maxAge:0});
+    res.cookie('userInfo','null',{maxAge:0});
     res.send({code:200,success:true})
 
 }
