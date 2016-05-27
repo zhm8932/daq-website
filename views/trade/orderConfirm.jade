@@ -63,11 +63,11 @@ block content
                         span.text-sec.desp 服务区域:
                         span #{data.proCity}
                     .submit-div
-                        input.btn.back-stress.text-primary.submit-btn(type="button",value="去支付")
-                    .price-text
+                        input#submit-btn.btn.back-stress.text-primary(type="button",value="去支付")
+                    #actualTotal.price-text
                         span.text-sec 应支付:
                         span.price.text-stress ￥#{data.totalPrice/100}
-                        span (已优惠￥140)
+                        span.fav (已优惠￥0)
             input(type="hidden",id="goodsTotalPrice",value="#{data.totalPrice}")
             input(type="hidden",id="cityId",value="#{data.cityId}")
 

@@ -312,11 +312,15 @@ define(function (require, exports, module) {
     }
 
     function checkRadio($this, selector,fun) {
-        if ($this.hasClass('checked') || $this.hasClass('disabled')) {
+        if ($this.hasClass('disabled')) {
             return;
         }
-        $(selector).removeClass('checked');
-        $this.addClass('checked');
+        if($this.hasClass('checked')){
+            $this.removeClass('checked');
+        }else{
+            $(selector).removeClass('checked');
+            $this.addClass('checked');
+        }
         fun && fun();
     }
 

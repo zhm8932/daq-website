@@ -117,7 +117,7 @@ define(function (require, exports, module) {
         var num = checkboxs.length;
         var totalPrice = 0;
         checkboxs.each(function (index, ele) {
-            var subTotal = parseInt($(ele).closest('.table-tr').find('.operation').attr('data-subTotal'));
+            var subTotal = parseFloat($(ele).closest('.table-tr').find('.operation').attr('data-subTotal'));
             totalPrice += subTotal;
         });
         $('.tfoot .price').html('￥' + totalPrice/100);
