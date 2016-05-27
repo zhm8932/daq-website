@@ -1,0 +1,20 @@
+{
+  "appenders": [
+    {
+      "type": "dateFile",
+      "filename": "./logs/app.log",
+      "category": "app",
+      "pattern": "-yyyy-MM-dd"
+    },
+    {
+      "type": "dateFile",
+      "filename": "./logs/request.log",
+      "category": "request",
+      "pattern": "-yyyy-MM-dd"
+    }
+  ],
+  "levels": [{
+    "app": "INFO",
+    "request": "INFO"
+  }]
+}

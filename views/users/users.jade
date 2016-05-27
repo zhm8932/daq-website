@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+    link(href='/css/search_report.css',rel='styleSheet')
+    include ../includes/responsive
+    include ../includes/nav
+    .positon.wrapper
+        |您的为位置：首页<em>#{sep}</em>查询报告
+    section.wrapper
+        .report
+            header
+                h2 检测结果查询
+                p 匿名检测，以服务条件码作为全程身份识别标志，打造全程隐私体验
+            form.formBox
+                ul.clearfix
+                    li
+                        label 服务条形码
+                        input#code(type='text',required,autofocus='true')
+                    li
+                        label 预设密码
+                        input(type='text',required='true')
+                    li
+                        label 短信验证码
+                        input(type='text')
+                        span.getCode 获取短信验证码
+
+                    button(class='submitBtn') 提交
+    include ../includes/footer
+    script.
+        seajs.use('/js/search_report.js')

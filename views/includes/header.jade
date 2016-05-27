@@ -5,9 +5,15 @@
                 | 深圳
                 i.icon
             i.icon.devidel
-            a.loginBtn(href='javascript:;') 登录
+            aside
+                if userAllInfo
+                    a.logout(href='/users/orders') 个人中心
+                    i.icon.devidel
+                    a.logoutBtn(href='javascript:;') 退出
+                else
+                    a.loginBtn(href='javascript:;') 登录
             i.icon.devidel
-            a.cartBtn(href='/trade/cart/list')
+            a.cartBtn(href='javascript:;')
                 i.icon
                 span.cartNum (0)
 .header

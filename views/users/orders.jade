@@ -1,0 +1,67 @@
+extends ../layout
+
+block content
+    link(href='/css/users/user.css',rel='styleSheet')
+    include ../includes/responsive
+    include ../includes/nav
+    .positon.wrapper
+        |您的为位置：首页<em>#{sep}</em>我的订单
+    section.wrapper.userBox
+        aside
+            dl
+                dt
+                    img(src='/images/doctor.png')
+                    span.tel 15919740039
+                dd
+                    p: a(href='/users/orders') 我的订单
+                    p: a(href='/users/bookings') 我的预约
+                    p: a(href='/users/registers') 我的挂号
+                    p: a(href='/users/coupons') 我的优惠券
+                    p: a(href='/users/patients') 就诊人
+        .user_main
+            dl
+                dt
+                    |订单编号：JB2435210
+                    time 2016-02-24 10:00
+                dd
+                    .col-l.col
+                        .row
+                            span
+                                img(src='/images/product_s1.png')
+                                h5: a(href='#') 生殖感染(CT/NG)核酸筛查套餐
+                            span
+                                p 未使用
+                                p 上门取样
+                                p.red 密码：123456
+                            span
+                                |电话预约
+                                |400-4557-452
+                        .row
+                            span
+                                img(src='/images/product_s1.png')
+                                h5: a(href='#') 生殖感染(CT/NG)核酸筛查套餐
+                            span
+                                p 未使用
+                                p 上门取样
+                                p.red 密码：123456
+                            span
+                                | 电话预约
+                                | 400-4557-452
+                    .col-c.col
+                        .row
+                            |已支付
+                        p 总额：￥1600
+                        p 商品合计：￥2000
+                        p 优惠券：-￥200
+                        p 服务优惠：-￥200
+
+                    .col-r.col
+                        p: a(href='javascript:;') 订单详情
+
+
+
+
+
+    include ../includes/footer
+    //-script.
+        seajs.use('/js/search_report.js')

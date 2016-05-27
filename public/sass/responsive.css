@@ -23,6 +23,12 @@
   .leftMenu nav {
     left: 50%;
     margin-left: -800px; } }
+@media only screen and (max-width: 1439px) {
+  .health aside, .info_list .lr_list figure img {
+    width: 30%; }
+
+  .health_detail, .health_list, .info_list .lr_list figure figcaption {
+    width: 68%; } }
 @media only screen and (min-width: 1366px) and (max-width: 1439px) {
   .wrapper {
     width: 980px; }
@@ -39,8 +45,8 @@
   .health aside {
     width: 30%; }
 
-  .health_detail {
-    width: 65%; } }
+  .health_detail, .health_list {
+    width: 68%; } }
 @media only screen and (min-width: 1280px) and (max-width: 1365px) {
   .wrapper {
     width: 900px; }
@@ -89,6 +95,9 @@
     width: auto;
     margin: 0 10px; }
 
+  .positon {
+    margin-bottom: 10px; }
+
   .home {
     width: auto;
     left: 0px; }
@@ -131,6 +140,14 @@
   .wrapper {
     width: auto;
     margin: 0 10px; }
+
+  .positon {
+    margin-bottom: 10px; }
+
+  .lr_list figure h4 {
+    font-size: 16px;
+    padding: 10px 0;
+    margin-bottom: 10px; }
 
   .item_list .pic_list li {
     width: 200px; }

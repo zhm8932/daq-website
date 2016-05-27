@@ -5,7 +5,9 @@ var http = require('http');
 var config = require('../config');
 var md5 = require("blueimp-md5");
 var request = require("request");
-var BufferHelper = require('./bufferhelper');//处理buffer接收问题
+// var logFactory = require('./logFactory');
+
+// var logger = logFactory.getLogger('request');
 
 function signParam(sysParam,bizParam) {
     var params = {};//把bizParam和sysParam一起存放到params里
@@ -30,6 +32,10 @@ function signParam(sysParam,bizParam) {
     }
 
     var str =  config.secret + paramsArr.join('') + config.secret;
+
+    var sign = md5(str);
+
+    console.log('signParam--->origin:'+ str + '---sign--->' + sign);
 
     return md5(str);
 
@@ -68,7 +74,6 @@ module.exports.ajax = function (method,apiName,bizParam,callback) {
 
     var path = config.path;
 
-    console.log('---param:'+param);
     console.log('---method:'+method);
     console.log('---bizParam:'+JSON.stringify(bizParam));
     console.log('---sysPara:'+sysPara);
@@ -78,7 +83,7 @@ module.exports.ajax = function (method,apiName,bizParam,callback) {
     }
 
     var url = 'http://' + config.hostname_test + ":" + config.port_test + path;
-    //console.log(url)
+    console.log(url)
     var options = {
         hostname : config.hostname_test,
         port : config.port_test,
@@ -127,37 +132,46 @@ module.exports.ajax = function (method,apiName,bizParam,callback) {
 
     }else {
         var req = http.request(options,function(response) {
-            var bufferHelper = new BufferHelper();
+
+            var body = '';
 
             response.on('data', function (chunk) {
-                bufferHelper.concat(chunk);
+                body += chunk;
             }).on('end',function() {
-                var body = bufferHelper.toBuffer().toString('utf-8');
 
-                console.log(body);
+                // console.log("body1:",body);
 
                 var success = true;
 
                 var resObj = null;
 
-                try {
-                    resObj = JSON.parse(body);     
-                    success = resObj.success;
-                }catch (err) {
-                    success = false;
-                }
+                // try {
+                //     resObj = JSON.parse(body);
+                //     success = resObj.success;
+                // }catch (err) {
+                //     success = false;
+                // }
+                //打印请求日志
+                // logger.info('请求地址：', url, '请求方法:', options.method, '响应数据：', body);
+                // logger.info({'请求地址':url});
+                if(typeof body=='string'){
+                    console.log('body:',body)
+                    body = JSON.parse(body);
+                    success = body.success
 
+                }
                 callback && callback(body,success);
             });
 
         }).on('error', function (e) {
             console.log('problem with request: ' + e.message);
-            callback && callback(null,false);
+            console.log('problem with request: ',e);
+            callback && callback(e);
         });
 
         if(method != 'GET') {req.write(param);}
 
-        // console.log(req);
+        //console.log(req);
         req.end();
 
     }
@@ -203,6 +217,6 @@ function extend() {
         }
     }
     // Return the modified object
-    console.log('target:',target)
+    // console.log('target:',target)
     return target;
 };

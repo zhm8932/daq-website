@@ -19,7 +19,7 @@ block content
                     i
                     | 科普知识
             if get_article_list_success
-            .lr_list.clearfix
+              .lr_list.clearfix
                 each item in get_article_list
                     figure
                         if item.imgs.length
@@ -29,7 +29,8 @@ block content
                             h4: a(href='/healths/list/article/#{item.id}',target='_blank') #{item.title}
                             time 发表于：#{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')}
                             p
-                                if item.brief.length>60
+
+                                if item.brief&&item.brief.length>60
                                     |#{item.brief.substring(0,60)}……
                                 else
                                     |#{item.brief}

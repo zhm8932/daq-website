@@ -4,8 +4,13 @@
 
 function get_article_list(req,res,next,obj) {
     var query = req.query;
+    var currentPage = 1;
+    if(obj.getPage){
+        currentPage = query.page||req.body.pageIndex||currentPage;
+    }else{
+        currentPage = req.body.pageIndex||currentPage;
+    }
 
-    var currentPage = query.page||req.body.pageIndex||1;
     var category='';
     console.log('currentPage::::',currentPage)
     var get_articles_category = req.get_articles_category
@@ -24,7 +29,7 @@ function get_article_list(req,res,next,obj) {
     var bizParam={
         "pageIndex": currentPage,
         "pageSize": obj.pageSize||6,
-        "category":category||query.category,
+        "category":category||query.category||1,
         "tc":query.tc || ''
     };
 
@@ -32,10 +37,13 @@ function get_article_list(req,res,next,obj) {
 
     util.ajax('GET',api.ArticleSearch,bizParam,function (json,success) {
         var json = json;
-        console.log(json)
         res.locals[obj.data_name+'_success'] = json.success;
-        res.locals.currentPage = currentPage;
-        res.locals.pageCount = json.data.pageCount;
+        if(json.success){
+            res.locals.currentPage = currentPage;
+            res.locals.pageCount = json.data.pageCount;
+        }
+
+
         req[obj.data_name] = json;
         if(obj.send){
             res.send(json)
@@ -48,7 +56,8 @@ function get_article_list(req,res,next,obj) {
 exports.get_article_list = function (req,res,next) {
     get_article_list(req,res,next,{
         category_name:'健康常识',
-        data_name:'get_article_list'
+        data_name:'get_article_list',
+        getPage:true
     })
 }
 
@@ -57,7 +66,7 @@ exports.get_article_list_ask = function (req,res,next) {
     get_article_list(req,res,next,{
         category_name:'问答',
         data_name:'get_article_list_ask',
-        pageSize:2
+        //pageSize:2
     })
 }
 exports.get_list_ask_web = function (req,res,next) {
@@ -65,7 +74,7 @@ exports.get_list_ask_web = function (req,res,next) {
     get_article_list(req,res,next,{
         category_name:'问答',
         data_name:'get_article_list_ask',
-        pageSize:2,
+        //pageSize:2,
         send:true
     })
 }

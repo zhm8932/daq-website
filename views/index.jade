@@ -44,10 +44,10 @@ block content
           ul
             each item in get_goods_list
               li
-                  a(href='#')
+                  a(href='/screenings/goods/#{item.id}',target='_blank')
                     //img(data-original='images/product1.png')
                     if item.goodsImages
-                      img(data-original='#{item.goodsImages[0].fullImageUrl}', width='330',height='225',alt='#{item.goodsName}')
+                      img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}',title='#{item.goodsName}')
                     h4 #{item.goodsName}
                   if item.productKeyAttributeList
                     each arr in item.productKeyAttributeList
@@ -64,7 +64,7 @@ block content
                     span.old
                       | 原价￥#{item.price}
           div
-            a.more(href='javascript:;')
+            a.more(href='/screenings/goods')
              |查看全部
              i.icon
   section.item_list.boxBg.clearfix
@@ -80,16 +80,18 @@ block content
         ul
           each item in get_department
             li
-              img(data-original='images/product1.png')
+              a(href='/agencys')
+                img(data-original='images/product1.png')
               h4 #{item.deptName}
               p
-                //if item.description.length>60
-                //  |#{item.description.substring(0,60)}……
-                //else
-                //  |#{item.description}
+                if item.description
+                  if item.description.length>60
+                    |#{item.description.substring(0,60)}……
+                  else
+                    |#{item.description}
 
         div.clear
-          a.more(href='javascript:;')
+          a.more(href='/agencys',target='_blank')
             |查看全部
             i.icon
   section.item_list.clearfix

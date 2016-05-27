@@ -1,7 +1,8 @@
 exports.get_goods_list = function(req,res) {
-    var get_goods_list = req.get_goods_list
-    res.locals.get_goods_list_success = get_goods_list.success
+    var get_goods_list = req.get_goods_list;
 
+    console.log('get_goods_list:',typeof get_goods_list)
+    res.locals.get_goods_list_success = true;
     if(get_goods_list.success){
         get_goods_list=get_goods_list.data.data
     }
