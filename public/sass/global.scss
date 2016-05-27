@@ -179,14 +179,12 @@ select {
   float: right;
   color: $gray9B;
   .icon {
-    width: 12px;
-    margin: 0 5px;
-    position: relative;
-    top: 10px;
+    width: 12px;  margin: 0 5px;  position: relative;  top: 10px;
   }
   .devidel {
     background-position: -19px 3px;
   }
+  aside{display:inline-block;}
   a {
     color: $gray9B;
     &:hover {

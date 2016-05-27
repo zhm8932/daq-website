@@ -195,6 +195,8 @@ select {
     top: 10px; }
   .topBar_info .devidel {
     background-position: -19px 3px; }
+  .topBar_info aside {
+    display: inline-block; }
   .topBar_info a {
     color: #9B9B9B; }
     .topBar_info a:hover {
