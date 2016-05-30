@@ -61,13 +61,14 @@ block content
                                 if 'address' == cartItemAttr.attributeName
                                     p 服务区域:
                                         each areaObj,i in value
-                                            -area += areaObj.name;
-                                            if i==1
-                                                -city = areaObj.name;
-                                                -cityId = areaObj.categoryId;
-                                            if i<2
-                                               -proCity += areaObj.name;
-                                            | #{areaObj.name}
+                                            if areaObj
+                                                -area += areaObj.name;
+                                                if i==1
+                                                    -city = areaObj.name;
+                                                    -cityId = areaObj.categoryId;
+                                                if i<2
+                                                   -proCity += areaObj.name;
+                                                | #{areaObj.name}
                         -var subTotal = discountPrice-favPrice;
                         .tot-price.text-stress ￥#{subTotal/100}
                         .operation(data-id="#{item.id}",data-goodsId="#{item.goodsId}",data-goodsName="#{item.goodsName}",data-imgUrl="#{imgUrl}",data-discountPrice="#{discountPrice}",data-transmitType="#{transmitType}",data-subTotal="#{subTotal}",data-favPrice="#{favPrice}",data-proCity="#{proCity}",data-area="#{area}",data-city="#{city}",data-cityId="#{cityId}")

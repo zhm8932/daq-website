@@ -8,6 +8,7 @@ define(function(require){
         var address = JSON.parse($('#locals_address').val());
         var oTypes = $('#transmit-type .type');
         var isSampleHome = false;
+        var isNeedArea = true;
         oTypes.each(function(index,ele){
             var $this = $(ele);
             $this.on('click',function(){
@@ -16,6 +17,16 @@ define(function(require){
                 if($this.attr('data-transmitType') == 'sampling_home'){
                     isSampleHome = true;
                     $('#area').removeClass('none');
+                    if(isNeedArea){
+                        //获取区域
+                        var parentId = address[1].categoryId;
+                        getAddress({
+                            id:'area',
+                            url:'/dic/list/parentId',
+                            param:{activeState:1,parentId:parentId}
+                        });
+                        isNeedArea = false;
+                    }
                 }else{
                     isSampleHome = false;
                     $('#area').addClass('none');
@@ -23,13 +34,7 @@ define(function(require){
             });
         });
 
-        //获取区域
-        // var parentId = address[1].categoryId;
-        // getAddress({
-        //     id:'area',
-        //     url:'/dic/list/parentId',
-        //     param:{activeState:1,parentId:parentId}
-        // });
+
 
         // getAddress({
         //     id:'province',
@@ -82,30 +87,7 @@ define(function(require){
 
 
         $('.addCartBtn').on('click',function(){
-            var transmitValue = oTypes.filter('.on').attr('data-value');
-            var goodsId = $('#goodsId').val();
-
-            if(isSampleHome){
-                var area = $('#area').val();
-                address.push(area);
-            }
-
-            var param = {
-                "address":JSON.stringify(address),
-                "transmit_type":transmitValue,
-                "goodsId": goodsId
-            };
-
-            utils.SendAjax({
-                url: '/trade/cart/addItem',
-                param: param,
-                method: 'POST',
-                tipText: '加入购物车',
-                callback: function (result) {
-                    utils.AlertTip('success','加入购物车成功');
-                }
-            });
-
+            addToCart(oTypes,isSampleHome,address);
         });
 
     });
@@ -131,6 +113,32 @@ define(function(require){
             }
         });
     }
-    
+
+    function addToCart(oTypes,isSampleHome,address){
+        var transmitValue = oTypes.filter('.on').attr('data-value');
+        var goodsId = $('#goodsId').val();
+
+        if(isSampleHome){
+            var area = $('#area').val();
+            address.push(area);
+        }
+
+        var param = {
+            "address":JSON.stringify(address),
+            "transmit_type":transmitValue,
+            "goodsId": goodsId
+        };
+
+        utils.SendAjax({
+            url: '/trade/cart/addItem',
+            param: param,
+            method: 'POST',
+            tipText: '加入购物车',
+            callback: function (result) {
+                utils.AlertTip('success','加入购物车成功');
+            }
+        });
+
+    }
 
 });

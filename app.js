@@ -41,7 +41,7 @@ app.locals.sep = '>';
 
 app.locals.locals_sample = JSON.stringify(config.sample);//取样方式及其对应的中文,存入配置文件
 //当前选中的地址
-var addressJSON = [{"categoryId":"11111","name":"广东省","level":1},{"categoryId":"222","name":"深圳市","level":2}];
+var addressJSON = [{"categoryId":"2140010947025762019","name":"广东省","level":1},{"categoryId":"2140010947572735021","name":"深圳市","level":2}];
 app.locals.locals_address = JSON.stringify(addressJSON);
 
 //指定路由

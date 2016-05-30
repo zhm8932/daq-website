@@ -35,7 +35,6 @@ define(function(require, exports, module){
         $gotoTop = $('.gotoTop')
         $(window).scroll(function () {
             var scrollTop = $(window).scrollTop()
-            console.log(scrollTop)
             if(scrollTop>winHeight/2){
                 $gotoTop.show()
             }else{
