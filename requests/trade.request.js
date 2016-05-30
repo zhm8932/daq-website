@@ -26,11 +26,28 @@ exports.DelCartItem = function (req, callback) {
     });
 };
 
-exports.AddCartItem = function (req, callback) {
-    var bizParam = req.body;
+exports.AddCartItem = function (req, res,dataType,callback) {
+    var body = req.body;
+    var bizParam = {
+        "cartItem": {
+            "cartItemAttrs": [
+                {
+                    "attributeName": "address",
+                    "value": body.address
+                },
+                {
+                    "attributeName": "transmit_type",
+                    "value": body.transmit_type
+                }
+            ],
+            "count": 1,
+            "goodsId": body.goodsId,
+            "accountId":"2110021051481592077"
+        }
+    };
 
-    util.ajax('POST', api.AddCartItem, bizParam, function (data, success) {
-        callback && callback(data, success);
+    util.ajax('POST', api.AddCartItem, bizParam, res,dataType,function (data, success) {
+        callback && callback(data);
     });
 };
 

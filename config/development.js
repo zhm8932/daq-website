@@ -25,6 +25,8 @@ var config = {
 
     //文章父级目录,用来查询所有文章
     articleParentCategory:'2140011038422147048',
+    //用来对应各种取样方式
+    sample:{"sampling_home":"上门取样","sampling_delivery":"快递取样","sampling_clinic":"门诊取样"},
 
     //=========测试环境
     // //用于访问静态文件

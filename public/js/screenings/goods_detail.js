@@ -5,37 +5,63 @@ define(function(require){
     require('touchslider');
 
     $(function(){
-        //获取省份
-        getAddress({
-            id:'province',
-            url:'/dic/list/typeAndLevel',
-            param:{activeState:1,type:'district',level:'1'},
-            fun:function(){
-                $('#province').trigger('change');
-            }
-        });
-
-
-        $('#province').on('change',function(){
-            var proId = JSON.parse($('#province').val()).id;
-            getAddress({
-                id:'city',
-                url:'/dic/list/parentId',
-                param:{activeState:1,parentId:proId},
-                fun:function(){
-                    $('#city').trigger('change');
+        var address = JSON.parse($('#locals_address').val());
+        var oTypes = $('#transmit-type .type');
+        var isSampleHome = false;
+        oTypes.each(function(index,ele){
+            var $this = $(ele);
+            $this.on('click',function(){
+                oTypes.removeClass('on');
+                $this.addClass('on');
+                if($this.attr('data-transmitType') == 'sampling_home'){
+                    isSampleHome = true;
+                    $('#area').removeClass('none');
+                }else{
+                    isSampleHome = false;
+                    $('#area').addClass('none');
                 }
             });
         });
 
-        $('#city').on('change',function(){
-            var parentId = JSON.parse($('#city').val()).id;
-            getAddress({
-                id:'area',
-                url:'/dic/list/parentId',
-                param:{activeState:1,parentId:parentId}
-            });
-        });
+        //获取区域
+        // var parentId = address[1].categoryId;
+        // getAddress({
+        //     id:'area',
+        //     url:'/dic/list/parentId',
+        //     param:{activeState:1,parentId:parentId}
+        // });
+
+        // getAddress({
+        //     id:'province',
+        //     url:'/dic/list/typeAndLevel',
+        //     param:{activeState:1,type:'district',level:'1'},
+        //     fun:function(){
+        //         $('#province').trigger('change');
+        //     }
+        // });
+        //
+        //
+        // $('#province').on('change',function(){
+        //     var proId = JSON.parse($('#province').val()).id;
+        //     getAddress({
+        //         id:'city',
+        //         url:'/dic/list/parentId',
+        //         param:{activeState:1,parentId:proId},
+        //         fun:function(){
+        //             $('#city').trigger('change');
+        //         }
+        //     });
+        // });
+        //
+        // $('#city').on('change',function(){
+        //     var parentId = JSON.parse($('#city').val()).id;
+        //     getAddress({
+        //         id:'area',
+        //         url:'/dic/list/parentId',
+        //         param:{activeState:1,parentId:parentId}
+        //     });
+        // });
+
 
 
         $(".slideBox").touchSlider({
@@ -50,12 +76,36 @@ define(function(require){
             currentClass: "on", // current 样式指定
             prev: ".prev", // prev 样式指定
             // scroller: viewport.children(),
-            autoplay: true, // 自动播放
+            autoplay: false, // 自动播放
             viewport: ".touchslider-viewport"  //内容区域
         });
 
+
         $('.addCartBtn').on('click',function(){
-            window.location.href = '/trade/cart/list';
+            var transmitValue = oTypes.filter('.on').attr('data-value');
+            var goodsId = $('#goodsId').val();
+
+            if(isSampleHome){
+                var area = $('#area').val();
+                address.push(area);
+            }
+
+            var param = {
+                "address":JSON.stringify(address),
+                "transmit_type":transmitValue,
+                "goodsId": goodsId
+            };
+
+            utils.SendAjax({
+                url: '/trade/cart/addItem',
+                param: param,
+                method: 'POST',
+                tipText: '加入购物车',
+                callback: function (result) {
+                    utils.AlertTip('success','加入购物车成功');
+                }
+            });
+
         });
 
     });

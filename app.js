@@ -38,6 +38,12 @@ app.locals.markdown = require( "markdown" ).markdown; //markdown编辑语法
 app.locals.query = '';
 app.locals.sep = '>';
 
+
+app.locals.locals_sample = JSON.stringify(config.sample);//取样方式及其对应的中文,存入配置文件
+//当前选中的地址
+var addressJSON = [{"categoryId":"11111","name":"广东省","level":1},{"categoryId":"222","name":"深圳市","level":2}];
+app.locals.locals_address = JSON.stringify(addressJSON);
+
 //指定路由
 app.use('/routes', routes);
 app.use('/', indexs);
