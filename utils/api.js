@@ -29,6 +29,7 @@ module.exports = {
     ArticleCreate: "cms.article.add",
     ArticleChange: "cms.article.update",
     ArticleSearch: "cms.article.pageQueryArticleByTitleOrContent",
+    ArticlPageQueryArticleByCategory: "cms.article.pageQueryArticleByCategory",
 
     GoodsStateChange: "domain.goods.changeGoodsState",
     GoodsPriorityChange: "domain.goods.changeGoodsPriority",

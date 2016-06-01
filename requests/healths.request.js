@@ -14,6 +14,7 @@ function get_article_list(req,res,next,obj) {
     var category='';
     console.log('currentPage::::',currentPage)
     var get_articles_category = req.get_articles_category
+    console.log('get_articles_category:',get_articles_category)
     if(get_articles_category.success){
         get_articles_category = get_articles_category.data
         get_articles_category.forEach(function (item,index) {
@@ -30,12 +31,13 @@ function get_article_list(req,res,next,obj) {
         "pageIndex": currentPage,
         "pageSize": obj.pageSize||6,
         "category":category||query.category||1,
+        "status":obj.status,  //status 置顶:2, 推荐:1, 正常:0
         "tc":query.tc || ''
     };
 
     if(bizParam.tc){bizParam.tc = encodeURI(bizParam.tc);}
 
-    util.ajax('GET',api.ArticleSearch,bizParam,function (json,success) {
+    util.ajax('GET',api.ArticlPageQueryArticleByCategory,bizParam,function (json,success) {
         var json = json;
         res.locals[obj.data_name+'_success'] = json.success;
         if(json.success){
@@ -55,8 +57,9 @@ function get_article_list(req,res,next,obj) {
 }
 exports.get_article_list = function (req,res,next) {
     get_article_list(req,res,next,{
-        category_name:'健康常识',
+        category_name:'科普知识',
         data_name:'get_article_list',
+        status:'0',
         getPage:true
     })
 }
@@ -66,6 +69,7 @@ exports.get_article_list_ask = function (req,res,next) {
     get_article_list(req,res,next,{
         category_name:'问答',
         data_name:'get_article_list_ask',
+        status:'0',
         //pageSize:2
     })
 }
@@ -74,6 +78,7 @@ exports.get_list_ask_web = function (req,res,next) {
     get_article_list(req,res,next,{
         category_name:'问答',
         data_name:'get_article_list_ask',
+        status:'0',
         //pageSize:2,
         send:true
     })
@@ -85,6 +90,7 @@ exports.get_article_list_diseases = function (req,res,next) {
     get_article_list(req,res,next,{
         category_name:'病原体',
         data_name:'get_article_list_diseases',
+        status:'0',
         pageSize:20
     })
 }

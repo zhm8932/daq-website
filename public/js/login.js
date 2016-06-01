@@ -4,7 +4,6 @@ define(function(require,exports,module) {
     // require('./libs/jquery.touchslider')
     require('touchslider')
     // console.log(TouchSlide)
-    console.log(utils)
     var $topBarAside = $('.topBar_info aside')
     var loginHtml = '<a href="javascript:;" class="loginBtn">登录</a>'
     var logoutHtml = '<a href="/users/orders" class="logout">个人中心</a><i class="icon devidel"></i><a href="javascript:;" class="logoutBtn">退出</a>';
@@ -23,7 +22,6 @@ define(function(require,exports,module) {
                 //var json = JSON.parse(json)
                 console.log(typeof json)
                 if(json.success){
-                    console.log('登录测试2')
                     var myMsg = new utils.MsgShow({
                         delayTime:2000,
                         title:'<i class="icon"></i>登录成功!',
@@ -109,16 +107,13 @@ define(function(require,exports,module) {
 
 
     $('body').on('click','.loginBtn',function () {
-        console.log('222')
         showLogin()
     })
     $('body').on('click','.logoutBtn',function () {
-        console.log('222')
         logout()
     })
 
     $('body').on('click keyup keydown change','.password',function () {
-        console.log('2222222')
         var index = $('.popupBox article .tit span.on').index()
         $('.popupBox article').find('ul').eq(index).find('.prompt').hide()
     })
