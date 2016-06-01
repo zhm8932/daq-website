@@ -31,8 +31,8 @@ exports.get_goods_category = function(req,res,next){
         "activeState":1
     }
 
-    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,bizParam,function (json,success) {
-        // var json = JSON.parse(data)
+    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,bizParam,function (data,success) {
+        var json = JSON.parse(data);
         if(json) {
             // console.log("goods_category:",json)
             req.get_goods_category = json
@@ -50,8 +50,8 @@ exports.get_articles_category = function(req,res,next){
         "activeState":1
     }
 
-    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,bizParam,function (json,success) {
-        // var json = JSON.parse(data)
+    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,bizParam,function (data,success) {
+        var json = JSON.parse(data);
         if(json) {
             // console.log("goods_category:",json)
             req.get_articles_category = json
@@ -110,8 +110,7 @@ exports.get_department =function(req,res,next){
     }
 
     util.ajax('GET',api.DepartmentAll,bizParam,function (data,success) {
-        // var json = JSON.parse(data);
-        var json = data;
+        var json = JSON.parse(data);
         if(json) {
             req.get_department = json;
         }

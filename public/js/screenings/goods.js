@@ -48,9 +48,9 @@ define(function(require){
                     beforeSend:function () {
                         console.log('数据请求中……')
                     },
-                    success:function(json){
+                    success:function(data){
                         console.log(json)
-                        var json = json,
+                        var json = JSON.parse(data),
                             $list = $('#list_ask ul')
                         if(json.success){
                             var data = json.data.data,

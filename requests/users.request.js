@@ -10,9 +10,9 @@ exports.get_goods_list = function (req,res,next) {
     };
 
     util.ajax('GET',api.GoodsQuery,bizParam,function (data,success) {
-        // var json = JSON.parse(data);
+        var json = JSON.parse(data);
         console.log(data)
-        req.get_goods_list = data
+        req.get_goods_list = json;
         next()
     });
 };

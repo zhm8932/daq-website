@@ -16,9 +16,8 @@ exports.get_goods_list = function (req,res,next) {
     };
 
     util.ajax('GET',api.GoodsQuery,bizParam,function (data,success) {
-        // var json = JSON.parse(data);
-        console.log(data)
-        req.get_goods_list = data
+        var json = JSON.parse(data);
+        req.get_goods_list = json;
         next()
     });
 };
@@ -44,16 +43,15 @@ exports.login = function (req,res,next) {
         }
     };
     util.ajax('GET',api.Login,bizParam,function (data,success) {
-        var json = data;
-        if(json.success){
-            res.cookie('userInfo',json.data.userAllInfo, { maxAge: 1000*60*60*12 });
+        if(success){
+            res.cookie('userInfo',JSON.parse(data).data.userAllInfo, { maxAge: 1000*60*60*12 });
         }
-        res.send(json)
+        res.send(data)
     });
 
 };
 exports.logout = function (req,res,next) {
     res.cookie('userInfo','null',{maxAge:0});
-    res.send({code:200,success:true})
+    res.send('{"code":"200","success":"true"}');
 
 }

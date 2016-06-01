@@ -18,9 +18,9 @@ define(function(require,exports,module) {
             type:'post',
             url:'/login',
             data:data,
-            success:function(json){
+            success:function(data){
                 console.log(json)
-                //var json = JSON.parse(json)
+                var json = JSON.parse(data);
                 console.log(typeof json)
                 if(json.success){
                     console.log('登录测试2')
@@ -51,8 +51,8 @@ define(function(require,exports,module) {
             type:'post',
             url:'/logout',
             //data:data,
-            success:function(json){
-                console.log(json)
+            success:function(data){
+                var json = JSON.parse(data);
                 if(json.success){
                     $topBarAside.html(loginHtml)
                 }

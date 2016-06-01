@@ -6,8 +6,8 @@ var router = express.Router();
 var request = require('../requests/trade.request');
 
 router.get('/cart/list',function(req,res,next) {
-    request.GetCartList(req,function(json,success) {
-        // json = JSON.stringify(json);
+    request.GetCartList(req,function(data,success) {
+        var json = JSON.parse(data);
         if(success){
             res.render('trade/cart',{
                 title:'购物车',
@@ -21,14 +21,12 @@ router.get('/cart/list',function(req,res,next) {
 
 router.post('/cart/addItem',function(req,res,next) {
     request.AddCartItem(req,function(data,success) {
-        data = JSON.stringify(data);
         res.json(data);
     });
 });
 
 router.post('/cart/delItem',function(req,res,next) {
     request.DelCartItem(req,function(data,success) {
-        data = JSON.stringify(data);
         res.json(data);
     });
 });
@@ -43,23 +41,22 @@ router.post('/order/comfirmView',function(req,res,next) {
 
 router.post('/order/create',function(req,res,next) {
     request.CreateOrder(req,function(data,success) {
+        var json = JSON.parse(data);
         res.render('trade/orderSuccess', {
             title: '成功提交订单',
-            data: {}
+            data: json
         });
     });
 });
 
 router.get('/coupon/list',function(req,res,next) {
     request.GetCouponList(req,function(data,success) {
-        data = JSON.stringify(data);
         res.json(data);
     });
 });
 
 router.post('/coupon/addByInvite',function(req,res,next) {
     request.AddCouponByInvite(req,function(data,success) {
-        data = JSON.stringify(data);
         res.json(data);
     });
 });

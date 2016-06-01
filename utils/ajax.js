@@ -152,10 +152,10 @@ module.exports.ajax = function (method,apiName,bizParam,callback) {
                 try {
                     resObj = JSON.parse(body);
                     success = resObj.success;
-                    callback && callback(resObj,success);
+                    callback && callback(body,success);
                 }catch (err) {
                     success = false;
-                    callback && callback(errorJson,success);
+                    callback && callback(JSON.stringify(errorJson),success);
                 }
             });
 

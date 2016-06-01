@@ -35,8 +35,8 @@ function get_article_list(req,res,next,obj) {
 
     if(bizParam.tc){bizParam.tc = encodeURI(bizParam.tc);}
 
-    util.ajax('GET',api.ArticleSearch,bizParam,function (json,success) {
-        var json = json;
+    util.ajax('GET',api.ArticleSearch,bizParam,function (data,success) {
+        var json = JSON.parse(data);
         res.locals[obj.data_name+'_success'] = json.success;
         if(json.success){
             res.locals.currentPage = currentPage;
@@ -91,8 +91,8 @@ exports.get_article_list_diseases = function (req,res,next) {
 exports.get_article_detail = function(req,res,next){
     var id = req.params.id
     var bizParam = {"id": id};
-    util.ajax('GET', api.ArticleDetail, bizParam, function (json, success) {
-        var json = json;
+    util.ajax('GET', api.ArticleDetail, bizParam, function (data, success) {
+        var json = JSON.parse(data);
         res.locals.get_article_detail_success = json.success
         req.get_article_detail=json
         next();

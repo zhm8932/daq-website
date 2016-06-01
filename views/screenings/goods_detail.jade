@@ -185,7 +185,7 @@ html
 
 
             input#locals_address(type="hidden",value="#{locals_address}")
-            input#goods(type="hidden",data-id="#{item.id}",data-goodsId="#{item.goodsId}",data-goodsName="#{item.goodsName}",data-imgUrl="#{imgUrl}",data-discountPrice="#{discountPrice}",data-transmitType="#{transmitType}",data-subTotal="#{subTotal}",data-favPrice="#{favPrice}",data-address="#{address}",data-city="#{city}")
+            //input#goods(type="hidden",data-id="#{item.id}",data-goodsId="#{item.goodsId}",data-goodsName="#{item.goodsName}",data-imgUrl="#{imgUrl}",data-discountPrice="#{discountPrice}",data-transmitType="#{transmitType}",data-subTotal="#{subTotal}",data-favPrice="#{favPrice}",data-address="#{address}",data-city="#{city}")
             form#submitForm(action = "/trade/order/comfirmView",method="POST")
                 input(type="hidden",name="items")
                 input(type="hidden",name="totalPrice")
