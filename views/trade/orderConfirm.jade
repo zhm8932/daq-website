@@ -33,15 +33,25 @@ block content
                     th(width="35%") 取样方式
                     th 小计
                 tbody
-                    each item in JSON.parse(data.items)
-                        tr
+                    -var cityId='',proCity='';
+                    -var addressJson = JSON.parse(locals_address);
+                    -var sampleJson = JSON.parse(locals_sample);
+                    each item,i in JSON.parse(data.items)
+                        tr(data-address="#{item.address}",data-transmitType="#{item.transmitType}",data-goodsId="#{item.goodsId}")
                             td
                                 img(src="#{item.imgUrl}")
                                 span #{item.goodsName}
                             td ￥#{item.discountPrice/100}
                             td
-                                p #{item.transmitType}(优惠￥#{item.favPrice/100})
-                                p.text-sec 服务区域:#{item.area}
+                                p #{sampleJson[item.transmitType]}(优惠￥#{item.favPrice/100})
+                                p.text-sec 服务区域:
+                                    each areaObj,j in JSON.parse(item.address)
+                                        if areaObj
+                                            if i==0 && j == 1
+                                                -cityId = areaObj.categoryId;
+                                            if i==0 && j < 2
+                                                -proCity += areaObj.name;
+                                            | #{areaObj.name}
                             td.text-stress ￥#{item.subTotal/100}
             .list-info 使用优惠券
             table#coupon-table.table
@@ -61,7 +71,7 @@ block content
                 .tfoot.back-sec.clearfix
                     .service-area
                         span.text-sec.desp 服务区域:
-                        span #{data.proCity}
+                        span #{proCity}
                     .submit-div
                         input#submit-btn.btn.back-stress.text-primary(type="button",value="去支付")
                     #actualTotal.price-text
@@ -69,8 +79,10 @@ block content
                         span.price.text-stress ￥#{data.totalPrice/100}
                         span.fav (已优惠￥0)
             input(type="hidden",id="goodsTotalPrice",value="#{data.totalPrice}")
-            input(type="hidden",id="cityId",value="#{data.cityId}")
+            input(type="hidden",id="cityId",value="#{cityId}")
 
+            form#submitForm(action = "/trade/order/create",method="POST")
+                input(type="hidden",name="orderPlaceDTO")
     include ../includes/footer
     script.
         seajs.use('/js/trade/orderConfirm.js')

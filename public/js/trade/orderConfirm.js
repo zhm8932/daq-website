@@ -7,9 +7,38 @@ define(function (require, exports, module) {
             addCoupon($(this));
         });
         $('#submit-btn').on('click',function(){
-
+            submitOrder();
         });
     });
+
+    function submitOrder(){
+        var trs = $('.goods-list tbody tr');
+        var items = [];
+        var id = trs.eq(0).attr('data-goodsid');
+        trs.each(function (index, ele) {
+            var $this = $(ele);
+            var item = {};
+            item.goodsId = $this.attr('data-goodsid');
+            item.transmitType = $this.attr('data-transmitType');
+            item.address = JSON.parse($this.attr('data-address'));
+            item.amount = 1;//默认数量为1
+            items.push(item);
+        });
+
+        var cityId = $('#cityId').val();
+        var couponCodeId = $('#coupon-table .radio.cheked').closest('tr').attr('data-id') || '';
+
+
+        var orderPlaceDTO = {
+            "cityId": cityId,
+            "couponCodeId": couponCodeId,
+            "goodsPropertyList": items
+        };
+
+        $('#submitForm input[name=orderPlaceDTO]').val(JSON.stringify(orderPlaceDTO));
+        $('#submitForm').submit();
+    }
+
 
     function addCoupon($this) {
         $this.addClass('disabled').off('click');

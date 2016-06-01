@@ -39,8 +39,7 @@ block content
                         -var imgUrl = item.goodsImageDTOs[0].imageUrl;
                         -var discountPrice = parseInt(item.discountPrice);
                         -var favPrice = 0;
-                        -var proCity = '';
-                        -var area = '';
+                        -var address = '';
                         -var city = '';
                         -var transmitType = '';
                         .check
@@ -50,15 +49,16 @@ block content
                             span #{item.goodsName}
                         .price ￥#{discountPrice/100}
                         .info.text-sec
-                            -var json = {"sampling_home":"上门取样","sampling_delivery":"快递取样","sampling_clinic":"门诊取样"}
+                            -var addressJson = JSON.parse(locals_address);
                             each cartItemAttr,index in item.cartItemAttrs
                                 -var value = JSON.parse(cartItemAttr.value);
                                 if 'transmit_type' == cartItemAttr.attributeName
                                     -for(var type in value)
                                         -favPrice = parseInt(value[type]);
-                                        -transmitType = json[type];
-                                        p 服务方式:#{json[type]}(优惠￥#{favPrice/100})
+                                        -transmitType = type;
+                                        p 服务方式:#{addressJson[type]}(优惠￥#{favPrice/100})
                                 if 'address' == cartItemAttr.attributeName
+                                    -address = cartItemAttr.value;
                                     p 服务区域:
                                         each areaObj,i in value
                                             if areaObj
@@ -71,7 +71,7 @@ block content
                                                 | #{areaObj.name}
                         -var subTotal = discountPrice-favPrice;
                         .tot-price.text-stress ￥#{subTotal/100}
-                        .operation(data-id="#{item.id}",data-goodsId="#{item.goodsId}",data-goodsName="#{item.goodsName}",data-imgUrl="#{imgUrl}",data-discountPrice="#{discountPrice}",data-transmitType="#{transmitType}",data-subTotal="#{subTotal}",data-favPrice="#{favPrice}",data-proCity="#{proCity}",data-area="#{area}",data-city="#{city}",data-cityId="#{cityId}")
+                        .operation(data-id="#{item.id}",data-goodsId="#{item.goodsId}",data-goodsName="#{item.goodsName}",data-imgUrl="#{imgUrl}",data-discountPrice="#{discountPrice}",data-transmitType="#{transmitType}",data-subTotal="#{subTotal}",data-favPrice="#{favPrice}",data-address="#{address}",data-city="#{city}")
                             a.del-cart-item 删除
                         .mask.back-mask.none
                             span #{city}
@@ -88,8 +88,6 @@ block content
             form#submitForm(action = "/trade/order/comfirmView",method="POST")
                 input(type="hidden",name="items")
                 input(type="hidden",name="totalPrice")
-                input(type="hidden",name="cityId")
-                input(type="hidden",name="proCity")
     include ../includes/footer
     script.
         seajs.use('/js/trade/cart.js')

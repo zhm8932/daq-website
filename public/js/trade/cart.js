@@ -31,8 +31,6 @@ define(function (require, exports, module) {
 
         //选中的只有一个,即第一次选中,给其他城市加上mask
         if (isChecked && checkedNums == 1) {
-            $('#submitForm input[name=cityId]').val(operation.attr('data-cityId'));
-            $('#submitForm input[name=proCity]').val(operation.attr('data-proCity'));
             checkboxs = $('.table-tr .checkbox').not('.deleted');//所有未被删除的checkbox
             checkboxs.each(function (index, ele) {
                 var tr = $(ele).closest('.table-tr');
@@ -140,7 +138,7 @@ define(function (require, exports, module) {
             item.goodsName = operation.attr('data-goodsName');
             item.discountPrice = operation.attr('data-discountPrice');
             item.transmitType = operation.attr('data-transmitType');
-            item.area = operation.attr('data-area');
+            item.address = operation.attr('data-address');
             item.subTotal = operation.attr('data-subTotal');
             item.favPrice = operation.attr('data-favPrice');
             items.push(item);

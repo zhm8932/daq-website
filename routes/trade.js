@@ -41,6 +41,15 @@ router.post('/order/comfirmView',function(req,res,next) {
     });
 });
 
+router.post('/order/create',function(req,res,next) {
+    request.CreateOrder(req,function(data,success) {
+        res.render('trade/orderSuccess', {
+            title: '成功提交订单',
+            data: {}
+        });
+    });
+});
+
 router.get('/coupon/list',function(req,res,next) {
     request.GetCouponList(req,function(data,success) {
         data = JSON.stringify(data);

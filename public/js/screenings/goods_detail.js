@@ -86,11 +86,34 @@ define(function(require){
         });
 
 
-        $('.addCartBtn').on('click',function(){
+        $('#addCartBtn').on('click',function(){
             addToCart(oTypes,isSampleHome,address);
         });
 
+        $('#toOrder').on('click',function(){
+            toOrder();
+        });
     });
+
+    function toOrder() {
+        var items = [];
+        var operation = $(ele).closest('.table-tr').find('.operation');
+        var item = {};
+        item.id = operation.attr('data-id');
+        item.goodsId = operation.attr('data-goodsId');
+        item.imgUrl = operation.attr('data-imgUrl');
+        item.goodsName = operation.attr('data-goodsName');
+        item.discountPrice = operation.attr('data-discountPrice');
+        item.transmitType = operation.attr('data-transmitType');
+        item.address = operation.attr('data-address');
+        item.subTotal = operation.attr('data-subTotal');
+        item.favPrice = operation.attr('data-favPrice');
+        items.push(item);
+
+        $('#submitForm input[name=items]').val(JSON.stringify(items));
+        $('#submitForm input[name=totalPrice]').val(totalPrice);
+        $('#submitForm').submit();
+    }
 
     function getAddress(options){
         utils.SendAjax({

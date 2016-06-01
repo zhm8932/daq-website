@@ -118,6 +118,7 @@ module.exports = {
     DelCartItem: "trade.removeCartItemById",
     GetCouponList: "promotion.pageQueryUserCoupon",
     AddCouponByInvite: "promotion.addCouponCodeByInviteCode",
+    CreateOrder: "domain.order.create",
 
     //字典
     GetListByTypeAndLevel: "dictionary.queryDictionaryListByTypeAndLevel",

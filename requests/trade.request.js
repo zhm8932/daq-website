@@ -75,3 +75,15 @@ exports.AddCouponByInvite = function (req, callback) {
         callback && callback(data, success);
     });
 };
+
+exports.CreateOrder = function (req, callback) {
+    var orderPlaceDTO = JSON.parse(req.body.orderPlaceDTO);
+    orderPlaceDTO.accountId = '2110021051481592077';
+    var bizParam = {
+        orderPlaceDTO:orderPlaceDTO
+    };
+
+    util.ajax('POST', api.CreateOrder, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};

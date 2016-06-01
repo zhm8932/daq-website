@@ -104,8 +104,8 @@ html
                                     select#area.none
 
                                 .submitBox
-                                    button.submitBtn.buyBtn 立即购买
-                                    button.submitBtn.addCartBtn 加入购物车
+                                    buttont#oOrder.submitBtn 立即购买
+                                    button#addCartBtn.submitBtn 加入购物车
                                 form(action="/trade/cart/addItem",method="POST")
                                     input(type="hidden",id="address",value="#{addressJSON}")
 
@@ -185,7 +185,10 @@ html
 
 
             input#locals_address(type="hidden",value="#{locals_address}")
-            input#goodsId(type="hidden",value="#{goods_detail.id}")
+            input#goods(type="hidden",data-id="#{item.id}",data-goodsId="#{item.goodsId}",data-goodsName="#{item.goodsName}",data-imgUrl="#{imgUrl}",data-discountPrice="#{discountPrice}",data-transmitType="#{transmitType}",data-subTotal="#{subTotal}",data-favPrice="#{favPrice}",data-address="#{address}",data-city="#{city}")
+            form#submitForm(action = "/trade/order/comfirmView",method="POST")
+                input(type="hidden",name="items")
+                input(type="hidden",name="totalPrice")
             include ../includes/footer
             script.
                 seajs.use('/js/screenings/goods_detail.js')
