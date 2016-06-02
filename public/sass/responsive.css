@@ -1,0 +1,161 @@
+@charset "UTF-8";
+/*
+
+
+设备像素\宽度：17种
+
+320 ， 480 ， 540 ， 600 ， 640 ， 720 ， 768 ， 800 ， 1024 ， 1080 ， 1200 ， 1280 ， 1366 ， 1536 ， 1600 ， 1920 ， 2048  2560
+
+
+设备像素\高度：15种
+
+480 ， 600 ， 720 ， 768 ， 800 ， 854 ， 960 ， 1024 ， 1080 ， 1136 ， 1280 ， 1536 ， 1920 ， 2048 ， 2560
+
+*/
+@media only screen and (min-width: 1920px) {
+  .header ul, .container, .item {
+    width: 1600px;
+    margin: 0 auto; }
+
+  .container {
+    margin-top: 60px; }
+
+  .leftMenu nav {
+    left: 50%;
+    margin-left: -800px; } }
+@media only screen and (max-width: 1439px) {
+  .health aside, .info_list .lr_list figure img {
+    width: 30%; }
+
+  .health_detail, .health_list, .info_list .lr_list figure figcaption {
+    width: 68%; } }
+@media only screen and (min-width: 1366px) and (max-width: 1439px) {
+  .wrapper {
+    width: 980px; }
+
+  .item_list .pic_list li {
+    width: 315px; }
+    .item_list .pic_list li h4 {
+      line-height: 40px;
+      height: 40px; }
+
+  .rightNav {
+    margin-right: -660px; }
+
+  .health aside {
+    width: 30%; }
+
+  .health_detail, .health_list {
+    width: 68%; } }
+@media only screen and (min-width: 1280px) and (max-width: 1365px) {
+  .wrapper {
+    width: 900px; }
+
+  .item_list .pic_list li {
+    width: 288px; }
+    .item_list .pic_list li h4 {
+      line-height: 40px;
+      height: 40px; }
+
+  .rightNav {
+    margin-right: -610px; }
+
+  .health aside {
+    width: 30%; }
+
+  .health_detail {
+    width: 65%; } }
+@media only screen and (min-width: 1024px) and (max-width: 1279px) {
+  .wrapper {
+    width: 800px; }
+
+  .item_list .pic_list li {
+    width: 255px; }
+    .item_list .pic_list li h4 {
+      line-height: 40px;
+      height: 40px; }
+
+  .rightNav {
+    margin-right: -610px; }
+
+  .header .slogan {
+    margin-left: 20px;
+    width: 320px;
+    display: inline-block; }
+    .header .slogan img {
+      width: 100%; }
+
+  .health aside {
+    width: 30%; }
+
+  .health_detail {
+    width: 65%; } }
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .wrapper {
+    width: auto;
+    margin: 0 10px; }
+
+  .positon {
+    margin-bottom: 10px; }
+
+  .home {
+    width: auto;
+    left: 0px; }
+    .home .nav {
+      left: 10px;
+      top: 140px; }
+
+  .item_list .pic_list ul {
+    margin-left: -1.3%; }
+    .item_list .pic_list ul li {
+      width: 32%;
+      margin-left: 1.3%; }
+
+  .rightNav {
+    display: none; }
+
+  .health aside {
+    width: 30%; }
+
+  .health_detail {
+    width: 65%; } }
+@media only screen and (width: 768px) {
+  .wrapper {
+    width: auto;
+    margin: 0 10px; }
+
+  .home {
+    width: auto;
+    left: 0px; }
+    .home .nav {
+      left: 10px;
+      top: 140px; }
+
+  .item_list .pic_list ul {
+    margin-left: -1.3%; }
+    .item_list .pic_list ul li {
+      width: 32%;
+      margin-left: 1.3%; } }
+@media only screen and (max-width: 767px) {
+  .wrapper {
+    width: auto;
+    margin: 0 10px; }
+
+  .positon {
+    margin-bottom: 10px; }
+
+  .lr_list figure h4 {
+    font-size: 16px;
+    padding: 10px 0;
+    margin-bottom: 10px; }
+
+  .item_list .pic_list li {
+    width: 200px; }
+    .item_list .pic_list li h4 {
+      line-height: 40px;
+      height: 40px; }
+
+  .rightNav {
+    display: none; } }
+
+/*# sourceMappingURL=responsive.css.map */

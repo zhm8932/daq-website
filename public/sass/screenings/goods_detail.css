@@ -13,7 +13,7 @@
 
 */
 .goods_basic dl dt {
-  width: 470px;
+  width: 45%;
   float: left;
   overflow: hidden; }
   .goods_basic dl dt .tit {
@@ -58,7 +58,7 @@
   width: 100%;
   height: auto; }
 .goods_basic dl dd {
-  width: 500px;
+  width: 51%;
   float: right; }
   .goods_basic dl dd h1 {
     font-size: 24px; }
@@ -89,6 +89,7 @@
       display: inline-block;
       margin: 0 20px 0 0px;
       line-height: 20px;
+      text-align: center;
       vertical-align: middle; }
       .goods_basic dl dd .service_type span:hover, .goods_basic dl dd .service_type span.on {
         border-color: #ED9E9A;
