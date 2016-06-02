@@ -84,11 +84,23 @@ $conWidth:1600px;
   .health aside{width: 30%;}
   .health_detail{width: 65%;}
 }
+//最大为768px
+@media only screen and (max-width: $win_768){
+  *{font-family: 'PingHei', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial',sans-serif,"微软雅黑";}
+  .icon{vertical-align: inherit;}
+  .wrapper{width: auto;margin:0 10px;}
+  .item_list header{
+    h2{
+      font-size: 40px;line-height: 40px;height: 40px;
+      i{top: auto;}
 
+    }
+    p{font-size: 28px; line-height: 32px;color: $textc_333;}
+  }
+
+}
 
 @media only screen and (width: $win_768){
-  .wrapper{width: auto;margin:0 10px;}
-
   .home{width: auto;left: 0px;
     .nav{left: 10px;top:140px;}
   }
@@ -106,12 +118,13 @@ $conWidth:1600px;
 
 
 @media only screen and (max-width:$win_768 - 1px){
-  .wrapper{width: auto;margin: 0 10px;}
   .positon{margin-bottom: 10px;}
   .lr_list figure h4{font-size: 16px; padding: 10px 0; margin-bottom: 10px;}
   .item_list .pic_list{
-    li{width: 200px;
-      h4{line-height: 40px;height: 40px;}
+    ul{margin: 0px;}
+    li{width: 100%;float: none;
+      h4{line-height: 40px;height: 40px;position: static;margin-top: 10px; font-size: 36px;background: none;color: $textc_48B;padding: 10px 10px 0;}
+      p{color: $textc_333;font-size: 30px;line-height: 40px;padding: 0 10px;margin: 0px;}
     }
   }
 

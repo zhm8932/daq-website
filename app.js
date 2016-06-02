@@ -89,8 +89,9 @@ app.use(function(err, req, res, next) {
   console.log('err2:',err)
   res.status(err.status || 500);
   res.render('error', {
+    // message: err.message,
     message: err.message,
-    error: {}
+    error: ''
   });
 });
 

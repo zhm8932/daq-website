@@ -12,9 +12,9 @@ function get_article_list(req,res,next,obj) {
     }
 
     var category='';
-    console.log('currentPage::::',currentPage)
+    // console.log('currentPage::::',currentPage)
     var get_articles_category = req.get_articles_category
-    console.log('get_articles_category:',get_articles_category)
+    // console.log('get_articles_category:',get_articles_category)
     if(get_articles_category.success){
         get_articles_category = get_articles_category.data
         get_articles_category.forEach(function (item,index) {
@@ -39,6 +39,7 @@ function get_article_list(req,res,next,obj) {
 
     util.ajax('GET',api.ArticlPageQueryArticleByCategory,bizParam,function (json,success) {
         var json = json;
+        console.log('json::::',json)
         res.locals[obj.data_name+'_success'] = json.success;
         if(json.success){
             res.locals.currentPage = currentPage;

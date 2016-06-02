@@ -10,7 +10,7 @@ var config = {
     // hostname_test:"172.16.61.219",  //(内网测试)
     //hostname_test:"192.168.6.73",
     // port_test:'8080',
-    port_test:'80',
+    port_test:'8082',
     path:'/router',
     imgDomain:'http://jhd-daq-img.oss-cn-shanghai.aliyuncs.com/',
 

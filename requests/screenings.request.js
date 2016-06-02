@@ -9,7 +9,7 @@ exports.get_goods_list = function (req,res,next) {
     var categoryId = '';
     var get_goods_category = req.get_goods_category.data
     if(req.get_goods_category_success){
-        categoryId = get_goods_category[0].id
+        // categoryId = get_goods_category[0].id
     }
     var categoryId = req.params.id||categoryId||''
     res.locals.goodsState = goodsState;
@@ -25,6 +25,7 @@ exports.get_goods_list = function (req,res,next) {
     util.ajax('GET',api.GoodsQuery,bizParam,function (json,success) {
         // var json = JSON.parse(data);
         // console.log(JSON.stringify(data))
+        console.log('json:::',json)
         req.get_goods_list = json
         next()
     });
