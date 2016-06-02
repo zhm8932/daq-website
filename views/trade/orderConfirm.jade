@@ -41,9 +41,9 @@ block content
                             td
                                 img(src="#{item.imgUrl}")
                                 span #{item.goodsName}
-                            td ￥#{item.discountPrice/100}
+                            td ￥#{parseInt(item.discountPrice)/100}
                             td
-                                p #{sampleJson[item.transmitType]}(优惠￥#{item.favPrice/100})
+                                p #{sampleJson[item.transmitType]}(优惠￥#{parseInt(item.favPrice)/100})
                                 p.text-sec 服务区域:
                                     each areaObj,j in JSON.parse(item.address)
                                         if areaObj
@@ -52,7 +52,7 @@ block content
                                             if i==0 && j < 2
                                                 -proCity += areaObj.name;
                                             | #{areaObj.name}
-                            td.text-stress ￥#{item.subTotal/100}
+                            td.text-stress ￥#{parseInt(item.subTotal)/100}
             .list-info 使用优惠券
             table#coupon-table.table
                 thead
@@ -76,7 +76,7 @@ block content
                         input#submit-btn.btn.back-stress.text-primary(type="button",value="去支付")
                     #actualTotal.price-text
                         span.text-sec 应支付:
-                        span.price.text-stress ￥#{data.totalPrice/100}
+                        span.price.text-stress ￥#{parseInt(data.totalPrice)/100}
                         span.fav (已优惠￥0)
             input(type="hidden",id="goodsTotalPrice",value="#{data.totalPrice}")
             input(type="hidden",id="cityId",value="#{cityId}")

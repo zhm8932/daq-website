@@ -7,16 +7,14 @@ define(function(require){
     $(function(){
         var address = JSON.parse($('#locals_address').val());
         var oTypes = $('#transmit-type .type');
-        var isSampleHome = false;
         var isNeedArea = true;
         oTypes.each(function(index,ele){
             var $this = $(ele);
             $this.on('click',function(){
                 oTypes.removeClass('on');
                 $this.addClass('on');
-                $('#goods').data('transmitType',);
-                if($this.attr('data-transmitType') == 'sampling_home'){
-                    isSampleHome = true;
+                var transmitType = $this.attr('data-transmitType');
+                if(transmitType == 'sampling_home'){
                     $('#area').removeClass('none');
                     if(isNeedArea){
                         //获取区域
@@ -29,7 +27,6 @@ define(function(require){
                         isNeedArea = false;
                     }
                 }else{
-                    isSampleHome = false;
                     $('#area').addClass('none');
                 }
             });
@@ -88,7 +85,7 @@ define(function(require){
 
 
         $('#addCartBtn').on('click',function(){
-            addToCart(oTypes,isSampleHome,address);
+            addToCart();
         });
 
         $('#toOrder').on('click',function(){
@@ -98,21 +95,31 @@ define(function(require){
 
     function toOrder() {
         var items = [];
-        var operation = $(ele).closest('.table-tr').find('.operation');
+        var goods = $('#goods');
         var item = {};
-        item.id = operation.attr('data-id');
-        item.goodsId = operation.attr('data-goodsId');
-        item.imgUrl = operation.attr('data-imgUrl');
-        item.goodsName = operation.attr('data-goodsName');
-        item.discountPrice = operation.attr('data-discountPrice');
-        item.transmitType = operation.attr('data-transmitType');
-        item.address = operation.attr('data-address');
-        item.subTotal = operation.attr('data-subTotal');
-        item.favPrice = operation.attr('data-favPrice');
+
+        var OTransmitType =  $('#transmit-type .type.on');
+        item.transmitType = OTransmitType.attr('data-transmitType');
+        var favPrice = OTransmitType.attr('data-favPrice');
+        var subTotal = parseInt(goods.attr('data-discountPrice'))-parseInt(favPrice);
+        item.favPrice = favPrice;
+        item.subTotal = subTotal;
+
+        var address = JSON.parse($('#locals_address').val());
+        if(OTransmitType.data('transmitType') == 'sampling_home'){
+            var area = $('#area').val();
+            address.push(area);
+        }
+        item.address = JSON.stringify(address);
+
+        item.goodsId = goods.attr('data-id');
+        item.imgUrl = goods.attr('data-imgUrl');
+        item.goodsName = goods.attr('data-goodsName');
+        item.discountPrice = goods.attr('data-discountPrice');
         items.push(item);
 
         $('#submitForm input[name=items]').val(JSON.stringify(items));
-        $('#submitForm input[name=totalPrice]').val(totalPrice);
+        $('#submitForm input[name=totalPrice]').val(subTotal);
         $('#submitForm').submit();
     }
 
@@ -138,15 +145,16 @@ define(function(require){
         });
     }
 
-    function addToCart(oTypes,isSampleHome,address){
-        var transmitValue = oTypes.filter('.on').attr('data-value');
-        var goodsId = $('#goods').data('id');
-
-        if(isSampleHome){
+    function addToCart(){
+        var OTransmitType =  $('#transmit-type .type.on');
+        var transmitValue = OTransmitType.attr('data-value');
+        var address = JSON.parse($('#locals_address').val());
+        if(OTransmitType.data('transmitType') == 'sampling_home'){
             var area = $('#area').val();
             address.push(area);
         }
 
+        var goodsId = $('#goods').data('id');
         var param = {
             "address":JSON.stringify(address),
             "transmit_type":transmitValue,

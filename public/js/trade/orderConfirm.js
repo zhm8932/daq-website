@@ -70,14 +70,14 @@ define(function (require, exports, module) {
 
     function checkCouponRadio($this) {
         utils.CheckRadio($this, '.coupon-radio', function () {
-            var goodsTotalPrice = parseFloat($('#goodsTotalPrice').val());
+            var goodsTotalPrice = parseInt($('#goodsTotalPrice').val());
             if($this.hasClass('checked')){
                 var favValue, actualTotal, faceValue, discount, mostDeduction;
                 var tr = $this.closest('tr');
                 var ftype = tr.attr('data-ftype');
 
                 if (ftype == 'cash') {
-                    favValue = faceValue = parseFloat(tr.attr('data-faceValue'));
+                    favValue = faceValue = parseInt(tr.attr('data-faceValue'));
                     actualTotal = goodsTotalPrice - faceValue;
                 } else if (ftype == 'discount') {
                     discount = parseFloat(tr.attr('data-discount'));
@@ -124,7 +124,7 @@ define(function (require, exports, module) {
     }
 
     function buildCouponTableTr(tableArr, data) {
-        var goodsTotalPrice = parseFloat($('#goodsTotalPrice').val());
+        var goodsTotalPrice = parseInt($('#goodsTotalPrice').val());
         var cityId = $('#cityId').val();
         var faceValue, enoughMoney;
         var j;
@@ -137,14 +137,14 @@ define(function (require, exports, module) {
         }
 
         if (data.ftype == 'cash') {
-            faceValue = parseFloat(data.faceValue);
-            enoughMoney = parseFloat(data.enoughMoney);
+            faceValue = parseInt(data.faceValue);
+            enoughMoney = parseInt(data.enoughMoney);
             if (!(goodsTotalPrice >= enoughMoney && isInArea(cityId, areaIds))) {
                 tableArr.push('<tr data-id="' + data.couponCodeId + '" data-faceValue="' + faceValue + '" data-enoughMoney="' + enoughMoney + '" data-ftype="' + data.ftype + '"><td><span class="radio coupon-radio disabled"></span></td>');
             } else {
                 tableArr.push('<tr data-id="' + data.couponCodeId + '" data-faceValue="' + faceValue + '" data-enoughMoney="' + enoughMoney + '" data-ftype="' + data.ftype + '"><td><span class="radio coupon-radio"></span></td>');
             }
-            tableArr.push('<td>' + parseFloat(data.faceValue) / 100 + '元</td>');
+            tableArr.push('<td>' + parseInt(data.faceValue) / 100 + '元</td>');
 
             if (enoughMoney == 0) {
                 tableArr.push('<td>无门槛</td>');
@@ -159,7 +159,7 @@ define(function (require, exports, module) {
             }
 
             tableArr.push('<td>' + data.discount + '折</td>');
-            tableArr.push('<td>最多可抵' + parseFloat(data.mostDeduction) / 100 + '元</td>');
+            tableArr.push('<td>最多可抵' + parseInt(data.mostDeduction) / 100 + '元</td>');
         }
 
         tableArr.push('<td>限定地区:' + areaNames.join(',') + '</td>');

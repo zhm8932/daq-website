@@ -91,7 +91,7 @@ html
                                     -var json = JSON.parse(locals_sample);
                                     aside#transmit-type.service_type
                                         each value,key in transmitType
-                                            span.type(data-transmitType='#{key}',data-value='{"#{key}":"#{value}"}')
+                                            span.type(data-transmitType='#{key}',data-favPrice='#{value}',data-value='{"#{key}":"#{value}"}')
                                                 | #{json[key]}
                                                 mark 优惠￥#{parseInt(value)/100}
 
@@ -104,7 +104,7 @@ html
                                     select#area.none
 
                                 .submitBox
-                                    buttont#oOrder.submitBtn 立即购买
+                                    buttont#toOrder.submitBtn 立即购买
                                     button#addCartBtn.addCartBtn.submitBtn 加入购物车
                                 form(action="/trade/cart/addItem",method="POST")
                                     input(type="hidden",id="address",value="#{addressJSON}")
@@ -185,7 +185,7 @@ html
 
 
             input#locals_address(type="hidden",value="#{locals_address}")
-            //input#goods(type="hidden",data-id="#{goods_detail.id}",data-goodsName="#{goods_detail.goodsName}",data-imgUrl="#{goods_detail.goodsImages.imageUrl}",data-discountPrice="#{goods_detail.discountPrice}",data-transmitType="#{transmitType}",data-subTotal="#{subTotal}",data-favPrice="#{favPrice}",data-address="#{locals_address}",data-city="#{city}")
+            input#goods(type="hidden",data-id="#{goods_detail.id}",data-goodsName="#{goods_detail.goodsName}",data-imgUrl="#{goods_detail.goodsImages[0].imageUrl}",data-discountPrice="#{goods_detail.discountPrice}",data-address="#{locals_address}",data-city="#{JSON.parse(locals_address)[1].name}")
             form#submitForm(action = "/trade/order/comfirmView",method="POST")
                 input(type="hidden",name="items")
                 input(type="hidden",name="totalPrice")
