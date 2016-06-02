@@ -214,7 +214,142 @@ define(function(require,exports,module) {
         }
         return true;
     }
+    function SendAjax(options) {
+        $.ajax({
+            url: options.url,
+            type: options.method || 'GET',
+            data: options.param || {},
+            // contentType: options.contentType || 'application/x-www-form-urlencoded;charset=UTF-8;',
+            success: function (data) {
+                var result = JSON.parse(data);
+                if (result.success) {
+                    options.callback && options.callback(result);
+                } else {
+                    //弹框提示失败
+                    alertTip('fail', options.tipText + '失败,原因是:' + result.msg);
+                    options.errorFun && options.errorFun();
+                }
+            },
+            error: function (data) {
+                if (data.status == '404') {
+                    alertTip('fail', '页面丢失，稍后再试');
+                } else if (data.status == '500') {
+                    alertTip('fail', '系统忙，稍后再试');
+                } else {
+                    alertTip('fail', '出错了,响应码是' + data.status + ',请联系管理员');
+                }
+                options.errorFun && options.errorFun();
+            }
+        });
+    }
 
+    jQuery.fn.center = function () {
+        this.css('position', 'absolute');
+        this.css('top', ( $(window).height() - this.height() ) / 2 + $(window).scrollTop() + 'px');
+        this.css('left', ( $(window).width() - this.width() ) / 2 + $(window).scrollLeft() + 'px');
+        return this;
+    };
+
+    function alertTip(success, tipText, fun) {
+        if (success == 'success') {
+            var html = '<div id="alertTip" class="alert-tip alert-success ">' + tipText + '</div>';
+        } else {
+            var html = '<div id="alertTip" class="alert-tip alert-fail">' + tipText + '</div>';
+        }
+        $(html).appendTo($("body").eq(0));
+        $('#alertTip').center();
+        $('#alertTip').show(1000);
+        setTimeout(function () {
+            $('#alertTip').hide(1000);
+            $('#alertTip').remove();
+            fun && fun();
+        }, 2500);
+    }
+
+    function addCookie(name, value, path, expireHours) {
+        var cookieString = name + "=" + escape(value);
+        cookieString += '; path=' + path;
+        //判断是否设置过期时间
+        if (expireHours > 0) {
+            var date = new Date();
+            date.setTime(date.getTime + expireHours * 3600 * 1000);
+            cookieString = cookieString + "; expire=" + date.toGMTString();
+        }
+        document.cookie = cookieString;
+    }
+
+    function getCookie(name) {
+        var strCookie = document.cookie;
+        var arrCookie = strCookie.split("; ");
+        for (var i = 0; i < arrCookie.length; i++) {
+            var arr = arrCookie[i].split("=");
+            if (arr[0] == name)return arr[1];
+        }
+        return "";
+    }
+
+    function deleteCookie(name) {
+        var date = new Date();
+        date.setTime(date.getTime() - 10000);
+        document.cookie = name + "=v; expire=" + date.toGMTString();
+    }
+
+
+    function getLoacalTimeString(timestamp) {
+        if(timestamp){
+            var date = new Date(timestamp);
+        }else{
+            var date = new Date();
+        }
+        var hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+        var minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+        var seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+        var time = hours + ':' + minutes + ':' + seconds;
+        return time;
+    }
+
+    function getLoacalDateString(timestamp) {
+        if(timestamp){
+            var date = new Date(timestamp);
+        }else{
+            var date = new Date();
+        }
+        var year = date.getFullYear();
+        var month = date.getMonth() < 10 ? '0' + date.getMonth() : date.getMonth();
+        var d = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+        var time = year + '-' + month + '-' + d;
+        return time;
+    }
+
+    String.prototype.trim = function () {
+
+        return this.replace(/(^\s*)|(\s*$)/g, '');
+    }
+
+    function stringJSON(serialize) {
+        var serialize = serialize.replace(/\+/g, " ").split('&');
+        var serializeObj = {},
+            str = '';
+        for (var i = 0, len = serialize.length; i < len; i++) {
+            str = serialize[i].split('=');
+            serializeObj[str[0]] = decodeURIComponent(decodeURI(str[1])).trim()
+            //serializeObj[str[0]] = unescape(str[1])
+        }
+        return serializeObj
+    }
+
+    function checkRadio($this, selector,fun) {
+        if ($this.hasClass('disabled')) {
+            return;
+        }
+        if($this.hasClass('checked')){
+            $this.removeClass('checked');
+        }else{
+            $(selector).removeClass('checked');
+            $this.addClass('checked');
+        }
+        fun && fun();
+    }
     var $topBarAside = $('.topBar_info aside')
     var loginHtml = '<a href="javascript:;" class="loginBtn">登录</a>'
     var logoutHtml = '<a href="/users/orders" class="logout">个人中心</a><i class="icon devidel"></i><a href="javascript:;" class="logoutBtn">退出</a>';
@@ -301,9 +436,9 @@ define(function(require,exports,module) {
             url:'/login',
             data:data,
             success:function(json){
-                console.log(json)
-                //var json = JSON.parse(json)
-                console.log(typeof json)
+                // console.log(json)
+                var json = JSON.parse(json);
+                // console.log(typeof json)
                 if(json.success){
                     var myMsg = new MsgShow({
                         delayTime:2000,
@@ -334,7 +469,8 @@ define(function(require,exports,module) {
             url:'/logout',
             //data:data,
             success:function(json){
-                console.log(json)
+                // console.log(json)
+                var json = JSON.parse(json)
                 if(json.success){
                     $topBarAside.html(loginHtml)
                 }
@@ -346,6 +482,15 @@ define(function(require,exports,module) {
         MsgShow:MsgShow,
         CheckNull:CheckNull,
         browser:browser,
+        SendAjax: SendAjax,
+        stringJSON: stringJSON,
+        AlertTip: alertTip,
+        AddCookie: addCookie,
+        GetCookie: getCookie,
+        DeleteCookie: deleteCookie,
+        GetLoacalTimeString: getLoacalTimeString,
+        GetLoacalDateString:getLoacalDateString,
+        CheckRadio:checkRadio,
         showLogin:showLogin,
         login:login,
         logout:logout

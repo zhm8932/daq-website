@@ -55,7 +55,7 @@ function get_article_list(req,res,next,obj) {
 }
 exports.get_article_list = function (req,res,next) {
     get_article_list(req,res,next,{
-        category_name:'健康常识',
+        category_name:'科普知识',
         data_name:'get_article_list',
         getPage:true
     })

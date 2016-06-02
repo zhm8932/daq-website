@@ -5,6 +5,7 @@ var express = require('express');
 var router = express.Router();
 var request = require('../requests/trade.request');
 var middleware = require('../requests/middlewares.request.js');
+var authority = require('../handlers/authority.handler')
 
 // router.get('/cart/list',middleware.judge_client,function(req,res,next){
 //     if(req.mobile){
@@ -38,7 +39,7 @@ router.get('/cart/list',function(req,res,next){
     });
 });
 
-router.post('/cart/addItem',function(req,res,next) {
+router.post('/cart/addItem',authority.loginRequired,function(req,res,next) {
     request.AddCartItem(req,function(data,success) {
         res.json(data);
     });
@@ -52,6 +53,7 @@ router.post('/cart/delItem',function(req,res,next) {
 
 
 router.post('/order/comfirmView',function(req,res,next) {
+    console.log('核对订单信息')
     res.render('trade/orderConfirm',{
         title:'核对订单信息',
         data:req.body
