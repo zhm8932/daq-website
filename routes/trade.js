@@ -4,19 +4,25 @@
 var express = require('express');
 var router = express.Router();
 var request = require('../requests/trade.request');
+var middleware = require('../requests/middlewares.request.js');
 
-router.get('/cart/list',function(req,res,next) {
-    request.GetCartList(req,function(data,success) {
-        var json = JSON.parse(data);
-        if(success){
-            res.render('trade/cart',{
-                title:'购物车',
-                data:json.data
-            });
-        }else{
-            res.json(json);
-        }
-    });
+router.get('/cart/list',middleware.judge_client,function(req,res,next){
+    if(req.mobile){
+        res.json({"client":"是手机"});
+    }else{
+        request.GetCartList(req,function(data,success) {
+            var json = JSON.parse(data);
+            if(success){
+                res.render('trade/cart',{
+                    title:'购物车',
+                    data:json.data
+                });
+            }else{
+                res.json(json);
+            }
+        });
+    }
+
 });
 
 router.post('/cart/addItem',function(req,res,next) {

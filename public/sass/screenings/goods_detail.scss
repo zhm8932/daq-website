@@ -3,7 +3,7 @@
 .goods_basic{
   dl{
     dt{
-      width: 470px;float: left;overflow: hidden;
+      width: 45%;float: left;overflow: hidden;
       .tit{
         margin: 20px 20px 0;height: 90px;overflow:hidden;
         div{width: 1000px;}
@@ -46,7 +46,7 @@
       }
     }
     dd{
-      width: 500px;float: right;
+      width: 51%;float: right;
       h1{font-size: 24px;}
       .price{
         padding: 20px 0;margin-bottom:20px;border-bottom: 1px solid $bdrc_ddd;
@@ -58,7 +58,8 @@
       }
       label{padding-right: 5px;}
       .service_type{display: inline-block;padding:5px 0 15px; margin-left: -3px;
-        span{border: 1px solid $bdrc_ddd;padding:5px 10px; display: inline-block;margin: 0 20px 0 0px;line-height: 20px;vertical-align: middle;
+        span{border: 1px solid $bdrc_ddd;padding:5px 10px; display: inline-block;margin: 0 20px 0 0px;line-height: 20px;
+          text-align: center;vertical-align: middle;
           &:hover,&.on{border-color: $bdrc_ED9;cursor: pointer; }
         }
         mark{display: block;color:$red_ED9;line-height: 18px;}

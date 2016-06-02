@@ -14,6 +14,7 @@ define(function(require){
             $this.on('click',function(){
                 oTypes.removeClass('on');
                 $this.addClass('on');
+                $('#goods').data('transmitType',);
                 if($this.attr('data-transmitType') == 'sampling_home'){
                     isSampleHome = true;
                     $('#area').removeClass('none');
@@ -139,7 +140,7 @@ define(function(require){
 
     function addToCart(oTypes,isSampleHome,address){
         var transmitValue = oTypes.filter('.on').attr('data-value');
-        var goodsId = $('#goodsId').val();
+        var goodsId = $('#goods').data('id');
 
         if(isSampleHome){
             var area = $('#area').val();

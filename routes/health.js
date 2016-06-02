@@ -3,7 +3,7 @@ var router = express.Router();
 var Handlers = require('../handlers/health.handler')
 var Authoritys = require('../handlers/authority.handler')
 var Requests = require('../requests/healths.request')
-var Middlewares = require('../requests/mlddlewares.request')
+var Middlewares = require('../requests/middlewares.request.js')
 
 /* GET users listing. */
 router.get('/list',Middlewares.get_articles_category,Requests.get_article_list_diseases,Requests.get_article_list_ask,Requests.get_article_list,Handlers.get_article_list);

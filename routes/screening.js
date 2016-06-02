@@ -3,7 +3,7 @@ var router = express.Router();
 var Handlers = require('../handlers/screening.handler')
 var Authoritys = require('../handlers/authority.handler')
 var Requests = require('../requests/screenings.request')
-var Middlewares = require('../requests/mlddlewares.request')
+var Middlewares = require('../requests/middlewares.request.js')
 
 
 
