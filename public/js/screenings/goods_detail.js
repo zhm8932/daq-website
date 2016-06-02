@@ -1,6 +1,6 @@
 define(function(require){
     var config = require('../config');
-    var utils = require('../utils.js');
+    var utils = require('../libs/utils')
 
     require('touchslider');
 
@@ -118,6 +118,7 @@ define(function(require){
         item.discountPrice = goods.attr('data-discountPrice');
         items.push(item);
 
+        console.log('items:',items)
         $('#submitForm input[name=items]').val(JSON.stringify(items));
         $('#submitForm input[name=totalPrice]').val(subTotal);
         $('#submitForm').submit();
@@ -167,6 +168,9 @@ define(function(require){
             method: 'POST',
             tipText: '加入购物车',
             callback: function (result) {
+                if(!result.login){
+                    return utils.showLogin()
+                }
                 utils.AlertTip('success','加入购物车成功');
             }
         });
