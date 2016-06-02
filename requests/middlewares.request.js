@@ -46,7 +46,7 @@ exports.get_goods_category = function(req,res,next){
 exports.get_articles_category = function(req,res,next){
     var bizParam = {
         "type":"article_category", //栏目
-        "level":2,
+        "level":1,
         "activeState":1
     }
 

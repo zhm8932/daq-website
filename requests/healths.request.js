@@ -37,6 +37,7 @@ function get_article_list(req,res,next,obj) {
 
     util.ajax('GET',api.ArticleSearch,bizParam,function (data,success) {
         var json = JSON.parse(data);
+        console.log('json:',json)
         res.locals[obj.data_name+'_success'] = json.success;
         if(json.success){
             res.locals.currentPage = currentPage;

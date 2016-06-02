@@ -50,7 +50,7 @@ define(function(require){
                     },
                     success:function(data){
                         console.log(json)
-                        var json = JSON.parse(data),
+                        var json = data
                             $list = $('#list_ask ul')
                         if(json.success){
                             var data = json.data.data,
