@@ -6,7 +6,7 @@ block content
     include ../includes/nav
     .positon.wrapper
         |您的为位置：首页<em>#{sep}</em>健康常识
-        //-if get_goods_category_success
+        if get_goods_category_success
                 each item in get_goods_category
                     if item.id==categoryId
                         em #{sep}

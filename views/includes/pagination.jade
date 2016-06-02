@@ -15,9 +15,9 @@
     if pageCount
         if currentPage==1
             span.prev: i.icon.disable
-            //开始1
+            //-开始1
         else if pageCount!=1
-            //开始2
+            //-开始2
             a.prev(href='?page=#{parseInt(currentPage)-1}'): i.icon
             //-em= currentPage == lenPage
         //-产生起始点
