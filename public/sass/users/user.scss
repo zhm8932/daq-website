@@ -1,12 +1,66 @@
 @import "../settings.scss";
 
-.userBox{
-  aside{
-    width: 288px;background-color:$bgc_gray;float: left;padding: 20px 15px;box-sizing: border-box;
+.userBox {
+  aside {
+    width: 15%;
+    background-color: $bgc_gray;
+    float: left;
+    padding: 20px 15px;
+    box-sizing: border-box;
   }
 
 }
-.user_main{
-  margin-left: 300px;
+
+.user-main {
+  width: 80%;
+  margin-left: 4%;
+  .order {
+    margin-bottom:16px;
+    border: 1px solid #ddd;
+    dt {
+      border-bottom: 1px solid #ddd;
+      padding:12px;
+      .order-time{margin-left:20px;}
+    }
+    dd {
+      width: 100%;
+      .col {
+        display: inline-block;
+        box-sizing:border-box;
+        vertical-align: top;
+      }
+
+      //.col+.col{
+      //  border-left:1px solid #ddd;
+      //}
+
+      .goods {
+        width: 63%;
+        .goods-detail{
+          width:50%;
+          img{width:40%;height:auto;}
+          h5{width:55%;}
+          padding:15px 12px;
+        }
+        .goods-others{
+          width:24%;
+          padding:15px 12px;
+        }
+        .reservation{
+          width:24%;
+          padding:15px 12px;
+        }
+      }
+      .order-state {
+        width: 20%;
+        padding:15px 12px;
+      }
+      .operation {
+        width: 15%;
+        padding:15px 12px;
+      }
+    }
+  }
 }
+
 

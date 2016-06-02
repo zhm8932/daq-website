@@ -5,8 +5,8 @@ block content
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
-        |您的为位置：首页<em>#{sep}</em>我的订单
-    section.wrapper.userBox
+        |您的位置为：首页<em>#{sep}</em>我的订单
+    section.wrapper.userBox.clearfix
         aside
             dl
                 dt
@@ -18,50 +18,65 @@ block content
                     p: a(href='/users/registers') 我的挂号
                     p: a(href='/users/coupons') 我的优惠券
                     p: a(href='/users/patients') 就诊人
-        .user_main
-            dl
-                dt
-                    |订单编号：JB2435210
-                    time 2016-02-24 10:00
-                dd
-                    .col-l.col
-                        .row
-                            span
-                                img(src='/images/product_s1.png')
-                                h5: a(href='#') 生殖感染(CT/NG)核酸筛查套餐
-                            span
-                                p 未使用
-                                p 上门取样
-                                p.red 密码：123456
-                            span
-                                |电话预约
-                                |400-4557-452
-                        .row
-                            span
-                                img(src='/images/product_s1.png')
-                                h5: a(href='#') 生殖感染(CT/NG)核酸筛查套餐
-                            span
-                                p 未使用
-                                p 上门取样
-                                p.red 密码：123456
-                            span
-                                | 电话预约
-                                | 400-4557-452
-                    .col-c.col
-                        .row
-                            |已支付
-                        p 总额：￥1600
-                        p 商品合计：￥2000
-                        p 优惠券：-￥200
-                        p 服务优惠：-￥200
+        .user-main.fr
+            each item in data
+                dl.order(data-id="#{item.id}")
+                    dt
+                        |订单编号：#{item.id}
+                        time.order-time.text-sec #{item.updatedAt}
+                    dd
+                        .col.goods
+                            each goods,index in item.goodsItemDTOs
+                                if index != 0
+                                    .row.col.bdr-top
+                                        span.col.goods-detail
+                                            img.fl(src='#{goods.imageUrls[0]}')
+                                            h5.fr: a(href='#') #{goods.goodsName}
+                                        span.col.goods-others
+                                            p 未使用
+                                            p 上门取样
+                                            p.red 密码：123456
+                                        span.col.reservation
+                                            p 电话预约
+                                            p 400-4557-452
+                                else
+                                    .row.col
+                                        span.col.goods-detail
+                                            img.fl(src='#{goods.imageUrls[0]}')
+                                            h5.fr: a(href='#') #{goods.goodsName}
+                                        span.col.goods-others
+                                            p 未使用
+                                            p 上门取样
+                                            p.red 密码：123456
+                                        span.col.reservation
+                                            p 电话预约
+                                            p 400-4557-452
+                        .col.order-state.text-sec
+                            .row
+                                if item.orderState == 1
+                                    |未支付
+                                if item.orderState == 2
+                                    | 已支付
+                                if item.orderState == 3
+                                    | 已取消
+                                if item.orderState == 4
+                                    | 退款中
+                                if item.orderState == 5
+                                    | 已退款
+                            p 总额：￥1600
+                            p 商品合计：￥2000
+                            p 优惠券：-￥200
+                            p 服务优惠：-￥200
 
-                    .col-r.col
-                        p: a(href='javascript:;') 订单详情
+                        .col.operation
+                            p
+                            if item.orderState == 1
+                                a(href='/trade/order/orderSuccess?id=#{item.id}&totalCost=#{item.totalCost}') 去支付
 
 
 
 
 
     include ../includes/footer
-    //-script.
-        seajs.use('/js/search_report.js')
+    script.
+        seajs.use('/js/trade/order_list.js')

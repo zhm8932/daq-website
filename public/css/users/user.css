@@ -13,13 +13,50 @@
 
 */
 .userBox aside {
-  width: 288px;
+  width: 15%;
   background-color: #F2F6F7;
   float: left;
   padding: 20px 15px;
   box-sizing: border-box; }
 
-.user_main {
-  margin-left: 300px; }
+.user-main {
+  width: 80%;
+  margin-left: 4%; }
+  .user-main .order {
+    margin-bottom: 16px;
+    border: 1px solid #ddd; }
+    .user-main .order dt {
+      border-bottom: 1px solid #ddd;
+      padding: 12px; }
+      .user-main .order dt .order-time {
+        margin-left: 20px; }
+    .user-main .order dd {
+      width: 100%; }
+      .user-main .order dd .col {
+        display: inline-block;
+        box-sizing: border-box;
+        vertical-align: top; }
+      .user-main .order dd .goods {
+        width: 63%; }
+        .user-main .order dd .goods .goods-detail {
+          width: 50%;
+          padding: 15px 12px; }
+          .user-main .order dd .goods .goods-detail img {
+            width: 40%;
+            height: auto; }
+          .user-main .order dd .goods .goods-detail h5 {
+            width: 55%; }
+        .user-main .order dd .goods .goods-others {
+          width: 24%;
+          padding: 15px 12px; }
+        .user-main .order dd .goods .reservation {
+          width: 24%;
+          padding: 15px 12px; }
+      .user-main .order dd .order-state {
+        width: 20%;
+        padding: 15px 12px; }
+      .user-main .order dd .operation {
+        width: 15%;
+        padding: 15px 12px; }
 
 /*# sourceMappingURL=user.css.map */

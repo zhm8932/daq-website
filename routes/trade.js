@@ -70,6 +70,32 @@ router.post('/order/create',function(req,res,next) {
     });
 });
 
+router.get('/order/list',function(req,res,next){
+    request.GetOrderList(req,function(data,success) {
+        var json = JSON.parse(data);
+        if(success){
+            res.render('users/orders',{
+                title:'个人中心-我的订单',
+                data:json.data.data
+            });
+        }else{
+            res.json(json);
+        }
+    });
+});
+
+router.post('/pay/payid',function(req,res,next) {
+    request.GetPayId(req,function(data,success) {
+        res.json(data);
+    });
+});
+
+router.post('/pay/ali',function(req,res,next) {
+    request.AliPay(req,function(data,success) {
+        res.json(data);
+    });
+});
+
 router.get('/coupon/list',function(req,res,next) {
     request.GetCouponList(req,function(data,success) {
         res.json(data);
@@ -85,14 +111,17 @@ router.post('/coupon/addByInvite',function(req,res,next) {
 
 router.get('/order/orderSuccess',function(req,res,next) {
     res.render('trade/orderSuccess',{
-        title:'健康科普_文章列表',
-        data:{}
+        title:'下单成功',
+        data:{
+            id:req.query.id,
+            totalCost:req.query.totalCost
+        }
     });
 });
 
 router.get('/order/paySuccess',function(req,res,next) {
     res.render('trade/paySuccess',{
-        title:'健康科普_文章列表',
+        title:'支付成功',
         data:{}
     });
 });

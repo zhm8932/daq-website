@@ -119,7 +119,12 @@ module.exports = {
     DelCartItem: "trade.removeCartItemById",
     GetCouponList: "promotion.pageQueryUserCoupon",
     AddCouponByInvite: "promotion.addCouponCodeByInviteCode",
+
+    //订单
     CreateOrder: "domain.order.create",
+    GetOrderList: "domain.order.mypage",
+    GetPayId: "trade.createTransAndPrepay",
+    AliPay: "finance.pay.thirdparty",
 
     //字典
     GetListByTypeAndLevel: "dictionary.queryDictionaryListByTypeAndLevel",

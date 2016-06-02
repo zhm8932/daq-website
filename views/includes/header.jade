@@ -6,8 +6,8 @@
                 i.icon
             i.icon.devidel
             aside
-                if userInfo
-                    a.logout(href='/users/orders') 个人中心
+                if userAllInfo
+                    a.logout(href='/trade/order/list') 个人中心
                     i.icon.devidel
                     a.logoutBtn(href='javascript:;') 退出
                 else

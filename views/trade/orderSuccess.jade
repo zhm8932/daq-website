@@ -28,7 +28,7 @@ block content
                 i.icon.success
                 span.price-box
                     span.text-sec 订单支付:
-                    span.price.text-stress ￥1480
+                    span.price.text-stress ￥#{parseInt(data.totalCost)/100}
                 span.order-detail.text-main 订单详情>>
 
 
@@ -38,9 +38,9 @@ block content
             .pay-box.alipay.border-default 支付宝支付
 
 
-
+            #order-detail(data-id="#{data.id}")
 
 
     include ../includes/footer
     script.
-        seajs.use('/js/search_report.js')
+        seajs.use('/js/trade/order_success.js')

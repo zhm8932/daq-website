@@ -144,6 +144,12 @@ select {
 .bdr {
   border: 1px solid #c9c9c9; }
 
+.bdr-bt {
+  border-bottom: 1px solid #ddd; }
+
+.bdr-top {
+  border-top: 1px solid #ddd; }
+
 .btn {
   border: 1px solid #48BED8;
   padding: 0 20px;
