@@ -48,3 +48,8 @@ results
 npm-debug.log
 node_modules
 *.scssc
+
+# other ignore
+.sass-cache/
+.public - 副本/
+client/fonts/
