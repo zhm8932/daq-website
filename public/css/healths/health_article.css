@@ -28,8 +28,7 @@
   .health_detail article {
     text-align: left; }
     .health_detail article p, .health_detail article pre {
-      word-break: break-word;
-      text-indent: 2em; }
+      word-break: break-word; }
     .health_detail article img {
       display: block;
       margin: 10px auto; }

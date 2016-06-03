@@ -1,0 +1,8 @@
+@import "settings.scss";
+h2{font-size: 24px;text-align: center;padding: 20px 0}
+.abouts{
+  p{text-indent: 2em;margin-top: 10px;}
+  a{color: $textc_48B;
+    &:hover{color:$textColor;}
+  }
+}
