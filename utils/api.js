@@ -125,6 +125,7 @@ module.exports = {
     GetOrderList: "domain.order.mypage",
     GetPayId: "trade.createTransAndPrepay",
     AliPay: "finance.pay.thirdparty",
+    GetOrderDetail: "domain.order.get",
 
     //字典
     GetListByTypeAndLevel: "dictionary.queryDictionaryListByTypeAndLevel",

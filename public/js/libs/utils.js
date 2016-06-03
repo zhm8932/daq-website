@@ -352,11 +352,11 @@ define(function(require,exports,module) {
     }
     var $topBarAside = $('.topBar_info aside')
     var loginHtml = '<a href="javascript:;" class="loginBtn">登录</a>'
-    var logoutHtml = '<a href="/users/orders" class="logout">个人中心</a><i class="icon devidel"></i><a href="javascript:;" class="logoutBtn">退出</a>';
+    var logoutHtml = '<a href="/trade/order/list" class="logout">个人中心</a><i class="icon devidel"></i><a href="javascript:;" class="logoutBtn">退出</a>';
 
     var index = '';
     var $prompt = ''
-    function showLogin() {
+    function showLogin(options) {
         var popup = new Popup({
             msg:'<div id="slideLogin"><div class="tit"><span class="on">密码登录</span><span>验证码登录</span></div>' +
             '<div class="touchslider-viewport"><div class="bd"> ' +
@@ -422,13 +422,13 @@ define(function(require,exports,module) {
 
 
                 console.log('data::',data)
-                login(data,popup,index)
+                login(data,popup,index,options)
             }
         })
 
     }
 
-    function login(data,popup,index) {
+    function login(data,popup,index,options) {
         var index = $('.popupBox article .tit span.on').index();
         $prompt = $('.popupBox article').find('ul').eq(index).find('.prompt');
         $.ajax({
@@ -444,11 +444,12 @@ define(function(require,exports,module) {
                         delayTime:2000,
                         title:'<i class="icon"></i>登录成功!',
                         otherBox:'successBox'
-                    })
+                    });
+                    $('#userInfo').val(json.data.userAllInfo);
 
                     popup.hideBox(function () {
-                        $('.msgBox').hide()
-                        $topBarAside.html(logoutHtml)
+                        $('.msgBox').hide();
+                        $topBarAside.html(logoutHtml);
                     });
                 }else{
                     // var myMsg = new utils.MsgShow({
@@ -473,6 +474,7 @@ define(function(require,exports,module) {
                 var json = JSON.parse(json)
                 if(json.success){
                     $topBarAside.html(loginHtml)
+                    $('#userInfo').val('');
                 }
             }
         })

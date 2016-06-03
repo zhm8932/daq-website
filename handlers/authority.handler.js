@@ -17,6 +17,8 @@ exports.loginRequired = function(req,res,next){
         // return res.redirect('/login')
         return showLogin(req,res,next)
 
+    }else{
+        req.login = true;
     }
     next()
 

@@ -8,7 +8,7 @@ var config = require('../config');
 
 exports.GetCartList = function (req, callback) {
     var bizParam = {
-        "accountId": '2110021051481592077'
+        "accountId": req.cookies.userInfo.accountCommon.id
     };
 
     util.ajax('GET', api.GetCartList, bizParam, function (data, success) {
@@ -40,7 +40,7 @@ exports.AddCartItem = function (req, res, dataType, callback) {
             ],
             "count": 1,
             "goodsId": body.goodsId,
-            "accountId": "2110021051481592077"
+            "accountId": req.cookies.userInfo.accountCommon.id
         }
     };
 
@@ -52,7 +52,7 @@ exports.AddCartItem = function (req, res, dataType, callback) {
 
 exports.GetCouponList = function (req, callback) {
     var query = req.query;
-    var accountId = '2110021051481592077';
+    var accountId = req.cookies.userInfo.accountCommon.id;
     var bizParam = {
         pageSize: query.pageSize || 10,
         useState: query.useState,
@@ -66,7 +66,7 @@ exports.GetCouponList = function (req, callback) {
 };
 
 exports.AddCouponByInvite = function (req, callback) {
-    req.body.accountId = '2110021051481592077';
+    req.body.accountId = req.cookies.userInfo.accountCommon.id;
     var bizParam = req.body;
 
     util.ajax('POST', api.AddCouponByInvite, bizParam, function (data, success) {
@@ -76,7 +76,7 @@ exports.AddCouponByInvite = function (req, callback) {
 
 exports.CreateOrder = function (req, callback) {
     var orderPlaceDTO = JSON.parse(req.body.orderPlaceDTO);
-    orderPlaceDTO.accountId = '2110021051481592077';
+    orderPlaceDTO.accountId = req.cookies.userInfo.accountCommon.id;
     var bizParam = {
         orderPlaceDTO: orderPlaceDTO
     };
@@ -91,10 +91,18 @@ exports.GetOrderList = function (req, callback) {
     var bizParam = {
         pageSize: query.pageSize || 5,
         pageIndex: query.pageIndex || 1,
-        "accountId": '2110021051481592077'
+        "accountId": req.cookies.userInfo.accountCommon.id
     };
 
     util.ajax('GET', api.GetOrderList, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
+exports.GetOrderDetail = function (req, callback) {
+    var bizParam = req.query;
+
+    util.ajax('GET', api.GetOrderDetail, bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };
@@ -112,7 +120,7 @@ exports.AliPay = function (req, callback) {
         "command": {
             "rawRequest": {
                 "id": req.body.id,
-                "accountId": '2110021051481592077',
+                "accountId": req.cookies.userInfo.accountCommon.id,
                 "payWay": req.body.payWay
             }
         }

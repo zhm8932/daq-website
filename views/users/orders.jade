@@ -69,6 +69,7 @@ block content
                             p 服务优惠：-￥200
 
                         .col.operation
+                            p: a(href='/trade/order/detail?id=#{item.id}') 订单详情
                             p
                             if item.orderState == 1
                                 a(href='/trade/order/orderSuccess?id=#{item.id}&totalCost=#{item.totalCost}') 去支付

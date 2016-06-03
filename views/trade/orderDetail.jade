@@ -1,0 +1,63 @@
+extends ../layout
+
+block content
+    link(href='/css/trade/trade.css',rel='styleSheet')
+    include ../includes/responsive
+    include ../includes/nav
+    .positon.wrapper
+        |您的位置：首页<em>#{sep}</em>我的订单<em>#{sep}</em>订单详情<em>
+    section.wrapper
+            -var orderStateJSON = {'1':'未支付','2':'已支付','3':'已取消','4':'退款中','5':'已退款'};
+            div
+                span.info
+                    lable.text-sec 订单编号:
+                    span #{data.id}
+                span.info
+                    lable.text-sec 状态:
+                    span
+                span.info
+                    lable.text-sec 服务区域:
+                    span
+                span.info
+                    lable.text-sec 下单时间:
+                    span
+            .list-info 商品列表
+            table.table.goods-list
+                thead
+                    th(width="35%") 商品名称
+                    th 使用密码
+                    th(width="35%") 取样方式
+                    th 小计
+                    th 状态
+                    th 操作
+                tbody
+                    -var cityId='',proCity='';
+                    -var addressJson = JSON.parse(locals_address);
+                    -var sampleJson = JSON.parse(locals_sample);
+                    each item,i in JSON.parse(data.items)
+                        tr(data-address="#{item.address}",data-transmitType="#{item.transmitType}",data-goodsId="#{item.goodsId}")
+                            td
+                                img(src="#{item.imgUrl}")
+                                span #{item.goodsName}
+                            td ￥#{parseInt(item.discountPrice)/100}
+                            td
+                                p #{sampleJson[item.transmitType]}(优惠￥#{parseInt(item.favPrice)/100})
+                                p.text-sec 服务区域:
+                                    each areaObj,j in JSON.parse(item.address)
+                                        if areaObj
+                                            if i==0 && j == 1
+                                                -cityId = areaObj.categoryId;
+                                            if i==0 && j < 2
+                                                -proCity += areaObj.name;
+                                            | #{areaObj.name}
+                            td.text-stress ￥#{parseInt(item.subTotal)/100}
+
+            .table-div
+                .tfoot.back-sec.clearfix
+                    #actualTotal.price-text
+                        span.text-sec 支付:
+                        span.price.text-stress ￥#{parseInt(data.totalPrice)/100}
+                        span.fav (已优惠￥0)
+    include ../includes/footer
+    script.
+        seajs.use('/js/trade/orderConfirm.js')

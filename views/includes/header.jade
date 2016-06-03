@@ -6,16 +6,18 @@
                 i.icon
             i.icon.devidel
             aside
-                if userAllInfo
+                if userInfo
                     a.logout(href='/trade/order/list') 个人中心
                     i.icon.devidel
                     a.logoutBtn(href='javascript:;') 退出
+
                 else
                     a.loginBtn(href='javascript:;') 登录
             i.icon.devidel
             a.cartBtn(href='/trade/cart/list')
                 i.icon
                 span.cartNum (0)
+            input(type="hidden",id="userInfo",value="#{userInfo}")
 .header
     .wrapper
         a.logo(href='javascript:;', title='都安全') 都安全

@@ -94,6 +94,13 @@ define(function(require){
     });
 
     function toOrder() {
+        var userInfo = $('#userInfo').val();
+        if(!userInfo){
+            utils.showLogin({
+                fun:toOrder()
+            });
+            return false;
+        }
         var items = [];
         var goods = $('#goods');
         var item = {};
@@ -147,6 +154,11 @@ define(function(require){
     }
 
     function addToCart(){
+        var userInfo = $('#userInfo').val();
+        if(!userInfo){
+            utils.showLogin();
+            return false;
+        }
         var OTransmitType =  $('#transmit-type .type.on');
         var transmitValue = OTransmitType.attr('data-value');
         var address = JSON.parse($('#locals_address').val());
@@ -168,9 +180,6 @@ define(function(require){
             method: 'POST',
             tipText: '加入购物车',
             callback: function (result) {
-                if(!result.login){
-                    return utils.showLogin()
-                }
                 utils.AlertTip('success','加入购物车成功');
             }
         });

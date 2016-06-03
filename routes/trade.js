@@ -39,8 +39,10 @@ router.get('/cart/list',function(req,res,next){
     });
 });
 
-router.post('/cart/addItem',authority.loginRequired,function(req,res,next) {
+router.post('/cart/addItem',function(req,res,next) {
     request.AddCartItem(req,function(data,success) {
+        // var json = JSON.parse(data);
+        // json.login = req.login;
         res.json(data);
     });
 });
@@ -62,10 +64,13 @@ router.post('/order/comfirmView',function(req,res,next) {
 
 router.post('/order/create',function(req,res,next) {
     request.CreateOrder(req,function(data,success) {
-        var json = JSON.parse(data);
+        var json = JSON.parse(data).data;
         res.render('trade/orderSuccess', {
             title: '成功提交订单',
-            data: json
+            data: {
+                id:json.id,
+                totalCost:json.totalCost
+            }
         });
     });
 });
@@ -77,6 +82,20 @@ router.get('/order/list',function(req,res,next){
             res.render('users/orders',{
                 title:'个人中心-我的订单',
                 data:json.data.data
+            });
+        }else{
+            res.json(json);
+        }
+    });
+});
+
+router.get('/order/detail',function(req,res,next){
+    request.GetOrderDetail(req,function(data,success) {
+        var json = JSON.parse(data);
+        if(success){
+            res.render('users/orders',{
+                title:'订单详情',
+                data:json.data
             });
         }else{
             res.json(json);
