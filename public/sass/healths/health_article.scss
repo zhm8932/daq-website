@@ -13,7 +13,8 @@
   article{
     text-align:left;
     p,pre{
-      word-break:break-word;text-indent: 2em;
+      word-break:break-word;
+      //text-indent: 2em;
     }
     img{display: block;margin: 10px auto;}
   }
