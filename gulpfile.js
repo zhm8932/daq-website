@@ -124,5 +124,5 @@ gulp.task('watch', function () {
 
 
 // develop 任务， 同时开启 livereload 任务
-gulp.task('develop', ['watch','livereload']);
+gulp.task('default', ['watch','livereload']);
 gulp.task('prod', ['cssmin','jsmin']);
