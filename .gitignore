@@ -51,5 +51,4 @@ node_modules
 
 # other ignore
 .sass-cache/
-.public - 副本/
 client/fonts/
