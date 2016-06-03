@@ -7,57 +7,72 @@ block content
     .positon.wrapper
         |您的位置：首页<em>#{sep}</em>我的订单<em>#{sep}</em>订单详情<em>
     section.wrapper
+        .order-detail
             -var orderStateJSON = {'1':'未支付','2':'已支付','3':'已取消','4':'退款中','5':'已退款'};
-            div
+            div.overview
                 span.info
-                    lable.text-sec 订单编号:
+                    span.text-sec 订单编号:
                     span #{data.id}
                 span.info
-                    lable.text-sec 状态:
-                    span
+                    span.text-sec 状态:
+                    span #{orderStateJSON[data.orderState]}
                 span.info
-                    lable.text-sec 服务区域:
+                    span.text-sec 服务区域:
                     span
+                        each area,index in JSON.parse(locals_address)
+                            | #{area.name}
                 span.info
-                    lable.text-sec 下单时间:
-                    span
+                    span.text-sec 下单时间:
+                    span.date-time #{data.updatedAt}
             .list-info 商品列表
             table.table.goods-list
                 thead
-                    th(width="35%") 商品名称
-                    th 使用密码
-                    th(width="35%") 取样方式
+                    th(width="25%") 商品名称
+                    th(width="15%") 使用密码
+                    th(width="23%") 取样方式
                     th 小计
                     th 状态
                     th 操作
                 tbody
-                    -var cityId='',proCity='';
+                    -var transmitType='',favPrice='';
                     -var addressJson = JSON.parse(locals_address);
                     -var sampleJson = JSON.parse(locals_sample);
-                    each item,i in JSON.parse(data.items)
+                    each item,i in data.goodsItemDTOs
                         tr(data-address="#{item.address}",data-transmitType="#{item.transmitType}",data-goodsId="#{item.goodsId}")
                             td
-                                img(src="#{item.imgUrl}")
+                                img(src="#{item.imageUrls[0]}")
                                 span #{item.goodsName}
-                            td ￥#{parseInt(item.discountPrice)/100}
+                            td.text-stress #{item.reservationPwd}
+
                             td
-                                p #{sampleJson[item.transmitType]}(优惠￥#{parseInt(item.favPrice)/100})
+                                each value,key in JSON.parse(item.transmitType)
+                                    -transmitType = key;
+                                    -favPrice = parseInt(value);
+                                p #{sampleJson[transmitType]}(优惠￥#{favPrice/100})
                                 p.text-sec 服务区域:
                                     each areaObj,j in JSON.parse(item.address)
                                         if areaObj
-                                            if i==0 && j == 1
-                                                -cityId = areaObj.categoryId;
-                                            if i==0 && j < 2
-                                                -proCity += areaObj.name;
                                             | #{areaObj.name}
-                            td.text-stress ￥#{parseInt(item.subTotal)/100}
+                            td.text-sec ￥#{(parseInt(item.dealPrice)- favPrice)/100}
+                            if item.reservationState == 1
+                                td.text-sec 已使用
+                                td: a(href="?reservationId=#{data.reservationId}") 预约详情
+                            if item.reservationState == 0
+                                td.text-stress 未使用
+                                td.text-main
+                                    p 电话预约
+                                    p 400-4557-452
 
             .table-div
-                .tfoot.back-sec.clearfix
+                .tfoot.clearfix
                     #actualTotal.price-text
                         span.text-sec 支付:
-                        span.price.text-stress ￥#{parseInt(data.totalPrice)/100}
-                        span.fav (已优惠￥0)
+                        span.price.text-stress ￥#{parseInt(data.totalCost)/100}
+                        span.fav
+                            if data.feeMap.coupon_fee
+                                |(已优惠￥#{parseInt(data.feeMap.coupon_fee)})
+                            else
+                                |(已优惠￥0)
     include ../includes/footer
-    script.
-        seajs.use('/js/trade/orderConfirm.js')
+    //script.
+    //    seajs.use('/js/trade/order_detail.js')

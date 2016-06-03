@@ -93,7 +93,7 @@ router.get('/order/detail',function(req,res,next){
     request.GetOrderDetail(req,function(data,success) {
         var json = JSON.parse(data);
         if(success){
-            res.render('users/orders',{
+            res.render('trade/orderDetail',{
                 title:'订单详情',
                 data:json.data
             });

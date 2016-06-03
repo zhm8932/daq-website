@@ -1,8 +1,8 @@
 //define(['jquery'],function(require,exports,module) {
 define(function(require,exports,module) {
     //弹出框
-    require('jquery')
-    require('touchslider')
+    require('jquery');
+    require('touchslider');
 
     function Popup(options){
         var defaults = {
@@ -19,10 +19,10 @@ define(function(require,exports,module) {
             okText:'确定',
             okCallback:null,
             callback:null,
-        }
-        this.opts = $.extend({},defaults,options)
+        };
+        this.opts = $.extend({},defaults,options);
         this.popupBox = this.opts.popupBox
-        this.$body = $('body')
+        this.$body = $('body');
         this.init()
     }
     Popup.prototype = {
@@ -31,13 +31,13 @@ define(function(require,exports,module) {
             self.render();
             $('.'+self.popupBox).show();
             //事件解绑
-            self.$body.off('click','.'+self.opts.ok)
+            self.$body.off('click','.'+self.opts.ok);
             self.$body.on('click','.'+self.opts.ok,function(){
-                self.opts.okCallback()
+                self.opts.okCallback();
                 if(self.opts.isHide){
                     self.hideBox()
                 }
-            })
+            });
 
             //点击取消
             this.$body.on('click','.'+this.opts.cancel,function(){
@@ -48,7 +48,7 @@ define(function(require,exports,module) {
 
         },
         hideBox:function(cb){
-            var self = this
+            var self = this;
             setTimeout(function(){
                 $('.'+self.popupBox).hide();
                 //console.log(self.opts)
@@ -68,14 +68,14 @@ define(function(require,exports,module) {
             var self = this;
             self.globalBgFn();
             if($('.'+self.popupBox).length){
-                $('.'+self.popupBox).remove()
+                $('.'+self.popupBox).remove();
                 self.$body.append(this.popupHtml())
 
             }else{
                 this.$body.append(this.popupHtml())
             }
 
-            self.opts.callback()
+            self.opts.callback();
             
             var height = $('.'+this.opts.popupBox).height();
             $('.'+self.popupBox).css({'height':height,'margin-top':-height/2})
@@ -90,7 +90,7 @@ define(function(require,exports,module) {
             if(opts.bOhterMsg){
                 ConfimHtml+='<div class="otherMsg">'+opts.otherMsg+'</div>'
             }
-            ConfimHtml+='</div></div>'
+            ConfimHtml+='</div></div>';
             return ConfimHtml
         },
         cancelCallback:function(){   //关闭弹窗
@@ -112,7 +112,7 @@ define(function(require,exports,module) {
             width:300,
             height:50,
             effect:'fade',
-        }
+        };
 
 
         this.options = $.extend({},defaults,options);
@@ -130,7 +130,7 @@ define(function(require,exports,module) {
             switch (effect){
                 case 'fade':
                     this.render();
-                    $('.'+self.mainCell).fadeIn()
+                    $('.'+self.mainCell).fadeIn();
                     break;
 
             }
@@ -155,14 +155,14 @@ define(function(require,exports,module) {
                 width=opts.width,
                 height=opts.height;
 
-            console.log('99999999')
+            console.log('99999999');
 
             if(!$('.'+opts.mainCell).length){
                 $('body').append(this.setHtml());
             }else{
                 $('.'+opts.mainCell).show();
             }
-            $('.'+opts.mainCell).html(this.options.title)
+            $('.'+opts.mainCell).html(this.options.title);
             if(!opts.otherBox){
                 $('.'+opts.mainCell).css({width:width+'px',height:height+'px','line-height':height+'px','margin-left':-width/2,'margin-top':-height/2}).show()
             }
@@ -172,26 +172,26 @@ define(function(require,exports,module) {
         }
     }
     function tab(hd,con){
-        var $hdeles = $(hd).children()
-        var $coneles = $(con).children()
+        var $hdeles = $(hd).children();
+        var $coneles = $(con).children();
         if(!$hdeles.hasClass('on')){
             $hdeles.first().addClass('on')
         }
-        $coneles.first().show()
-        var index = $('.tabBox .hd .on').index()
-        $coneles.eq(index).show().siblings().hide()
+        $coneles.first().show();
+        var index = $('.tabBox .hd .on').index();
+        $coneles.eq(index).show().siblings().hide();
         $hdeles.click(function(){
-            index = $(this).index()
-            $(this).addClass('on').siblings().removeClass()
-            $coneles.eq(index).show().siblings().hide()
+            index = $(this).index();
+            $(this).addClass('on').siblings().removeClass();
+            $coneles.eq(index).show().siblings().hide();
         })
     }
 
-    tab('.tabBox .hd','.tabBox .con')
+    tab('.tabBox .hd','.tabBox .con');
 
     var u = navigator.userAgent,
         app = navigator.appVersion;
-    console.log('userAgent:',u)
+    console.log('userAgent:',u);
     var browser = {
             trident: u.indexOf('Trident') > -1, //IE内核
             presto: u.indexOf('Presto') > -1, //opera内核
@@ -321,6 +321,22 @@ define(function(require,exports,module) {
         return time;
     }
 
+    function getLoacalDateAndTime(timestamp) {
+        if(timestamp){
+            var date = new Date(timestamp);
+        }else{
+            var date = new Date();
+        }
+        var year = date.getFullYear();
+        var month = date.getMonth() < 10 ? '0' + date.getMonth() : date.getMonth();
+        var d = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+        var hours = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+        var minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+        var seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+        var time = year + '-' + month + '-' + d + '&nbsp;' +hours + ':' + minutes + ':' + seconds;
+        return time;
+    }
+
     String.prototype.trim = function () {
 
         return this.replace(/(^\s*)|(\s*$)/g, '');
@@ -352,11 +368,11 @@ define(function(require,exports,module) {
     }
     var $topBarAside = $('.topBar_info aside')
     var loginHtml = '<a href="javascript:;" class="loginBtn">登录</a>'
-    var logoutHtml = '<a href="/users/orders" class="logout">个人中心</a><i class="icon devidel"></i><a href="javascript:;" class="logoutBtn">退出</a>';
+    var logoutHtml = '<a href="/trade/order/list" class="logout">个人中心</a><i class="icon devidel"></i><a href="javascript:;" class="logoutBtn">退出</a>';
 
     var index = '';
     var $prompt = ''
-    function showLogin() {
+    function showLogin(options) {
         var popup = new Popup({
             msg:'<div id="slideLogin"><div class="tit"><span class="on">密码登录</span><span>验证码登录</span></div>' +
             '<div class="touchslider-viewport"><div class="bd"> ' +
@@ -422,13 +438,13 @@ define(function(require,exports,module) {
 
 
                 console.log('data::',data)
-                login(data,popup,index)
+                login(data,popup,index,options)
             }
         })
 
     }
 
-    function login(data,popup,index) {
+    function login(data,popup,index,options) {
         var index = $('.popupBox article .tit span.on').index();
         $prompt = $('.popupBox article').find('ul').eq(index).find('.prompt');
         $.ajax({
@@ -444,11 +460,12 @@ define(function(require,exports,module) {
                         delayTime:2000,
                         title:'<i class="icon"></i>登录成功!',
                         otherBox:'successBox'
-                    })
+                    });
+                    $('#userInfo').val(json.data.userAllInfo);
 
                     popup.hideBox(function () {
-                        $('.msgBox').hide()
-                        $topBarAside.html(logoutHtml)
+                        $('.msgBox').hide();
+                        $topBarAside.html(logoutHtml);
                     });
                 }else{
                     // var myMsg = new utils.MsgShow({
@@ -473,6 +490,7 @@ define(function(require,exports,module) {
                 var json = JSON.parse(json)
                 if(json.success){
                     $topBarAside.html(loginHtml)
+                    $('#userInfo').val('');
                 }
             }
         })
@@ -493,7 +511,8 @@ define(function(require,exports,module) {
         CheckRadio:checkRadio,
         showLogin:showLogin,
         login:login,
-        logout:logout
+        logout:logout,
+        getLoacalDateAndTime:getLoacalDateAndTime
     }
 
 })

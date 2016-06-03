@@ -1,1 +1,107 @@
-@charset "UTF-8";.userBox aside{width:15%;background-color:#F2F6F7;float:left;padding:20px 15px;box-sizing:border-box}.user-main{width:80%;margin-left:4%}.user-main .order{margin-bottom:16px;border:1px solid #ddd}.user-main .order dt{border-bottom:1px solid #ddd;padding:12px}.user-main .order dt .order-time{margin-left:20px}.user-main .order dd{width:100%}.user-main .order dd .col{display:inline-block;box-sizing:border-box;vertical-align:top}.user-main .order dd .goods{width:63%}.user-main .order dd .goods .goods-detail{width:50%;padding:15px 12px}.user-main .order dd .goods .goods-detail img{width:40%;height:auto}.user-main .order dd .goods .goods-detail h5{width:55%}.user-main .order dd .goods .goods-others,.user-main .order dd .goods .reservation{width:24%;padding:15px 12px}.user-main .order dd .order-state{width:20%;padding:15px 12px}.user-main .order dd .operation{width:15%;padding:15px 12px}
+@charset "UTF-8";
+/*
+
+
+设备像素\宽度：17种
+
+320 ， 480 ， 540 ， 600 ， 640 ， 720 ， 768 ， 800 ， 1024 ， 1080 ， 1200 ， 1280 ， 1366 ， 1536 ， 1600 ， 1920 ， 2048  2560
+
+
+设备像素\高度：15种
+
+480 ， 600 ， 720 ， 768 ， 800 ， 854 ， 960 ， 1024 ， 1080 ， 1136 ， 1280 ， 1536 ， 1920 ， 2048 ， 2560
+
+*/
+.userBox {
+  overflow: hidden; }
+  .userBox aside {
+    width: 18%;
+    background-color: #F2F6F7;
+    padding: 20px 12px;
+    padding-bottom: 9999px;
+    margin-bottom: -9999px;
+    box-sizing: border-box; }
+    .userBox aside .user-main {
+      padding-bottom: 20px;
+      border-bottom: 2px solid #dddddd; }
+      .userBox aside .user-main img {
+        vertical-align: middle;
+        width: 22px;
+        height: 32px; }
+      .userBox aside .user-main .tel {
+        margin-left: 7px;
+        display: inline-block;
+        vertical-align: middle; }
+    .userBox aside .left-nav {
+      padding: 8px 10px; }
+      .userBox aside .left-nav li {
+        padding: 8px 0; }
+
+.box-right {
+  width: 80%;
+  margin-left: 2%;
+  word-break: break-all; }
+  .box-right .order {
+    margin-bottom: 16px;
+    border: 1px solid #ddd; }
+    .box-right .order dt {
+      border-bottom: 1px solid #ddd;
+      padding: 12px;
+      background: #F2F6F7; }
+      .box-right .order dt .date-time {
+        margin-left: 20px; }
+    .box-right .order dd {
+      width: 100%;
+      overflow: hidden; }
+      .box-right .order dd .col {
+        display: inline-block;
+        float: left;
+        box-sizing: border-box;
+        vertical-align: top;
+        padding: 15px;
+        padding-bottom: 999px;
+        margin-bottom: -999px; }
+      .box-right .order dd .col *:last-child:not(.row) {
+        margin-bottom: 15px; }
+      .box-right .order dd .col + .col {
+        border-left: 1px solid #ddd; }
+      .box-right .order dd .row-col {
+        display: inline-block;
+        box-sizing: border-box;
+        vertical-align: top;
+        padding: 15px 15px 15px 0; }
+        .box-right .order dd .row-col:first-child {
+          padding-left: 15px; }
+      .box-right .order dd .goods {
+        width: 63%;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0; }
+        .box-right .order dd .goods .row + .row {
+          border-top: 1px solid #ddd; }
+        .box-right .order dd .goods .goods-detail {
+          width: 50%; }
+          .box-right .order dd .goods .goods-detail img {
+            width: 40%;
+            height: auto; }
+          .box-right .order dd .goods .goods-detail h5 {
+            width: 55%; }
+        .box-right .order dd .goods .goods-others {
+          width: 25%; }
+        .box-right .order dd .goods .reservation {
+          width: 25%; }
+      .box-right .order dd .order-state {
+        width: 20%; }
+        .box-right .order dd .order-state .state-info {
+          padding-bottom: 15px;
+          margin-bottom: 15px; }
+      .box-right .order dd .operation {
+        width: 15%; }
+  .box-right .users-table tr td {
+    padding: 10px; }
+  .box-right .users-table .plus {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 32px;
+    font-weight: bold;
+    margin-right: 10px; }

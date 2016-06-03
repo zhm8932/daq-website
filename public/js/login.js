@@ -1,1 +1,17 @@
-define(function(require,exports,module){var o=require("./libs/utils");$("body").on("click",".loginBtn",function(){o.showLogin()}),$("body").on("click",".logoutBtn",function(){o.logout()}),$("body").on("click keyup keydown change",".username,.password",function(){var o=$(".popupBox article .tit span.on").index();$(".popupBox article").find("ul").eq(o).find(".prompt").hide()})});
+define(function(require,exports,module) {
+    var utils = require('./libs/utils')
+    // var TouchSlide = require('./libs/TouchSlide.1.1.source')
+
+    $('body').on('click','.loginBtn',function () {
+        utils.showLogin()
+    })
+    $('body').on('click','.logoutBtn',function () {
+        utils.logout()
+    })
+
+    $('body').on('click keyup keydown change','.username,.password',function () {
+        var index = $('.popupBox article .tit span.on').index();
+        $('.popupBox article').find('ul').eq(index).find('.prompt').hide()
+    })
+
+})

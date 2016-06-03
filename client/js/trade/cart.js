@@ -1,5 +1,5 @@
 define(function (require, exports, module) {
-    var utils = require('../utils.js');
+    var utils = require('../libs/utils.js');
 
     $(function () {
         $(".del-cart-item").on('click', function () {

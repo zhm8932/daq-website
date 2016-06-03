@@ -7,7 +7,7 @@
 .trade-step {
   position: relative;
   height: 85px;
-  margin-top:30px;
+  margin-top: 30px;
   .step-wrapper {
     position: absolute;
     top: 0;
@@ -19,7 +19,9 @@
       width: 100%;
       text-align: center;
     }
-    span+span{margin-top:10px;}
+    span + span {
+      margin-top: 10px;
+    }
   }
   .cart {
     left: 0;
@@ -91,7 +93,7 @@ header {
       border: 1px solid;
     }
   }
-  .check{
+  .check {
     width: 5%;
     text-align: center;
   }
@@ -99,13 +101,13 @@ header {
     width: 30%;
     img {
       width: 40%;
-      height: 85px;
+      //height: 85px;
       float: left;
     }
     span {
       width: 60%;
       float: right;
-      padding-left:13px;
+      padding-left: 13px;
       line-height: 17px;
       box-sizing: border-box;
     }
@@ -152,8 +154,10 @@ header {
     .check-text {
       width: 15%;
     }
-    .service-area{
-      span.desp{margin:0 10px;}
+    .service-area {
+      span.desp {
+        margin: 0 10px;
+      }
     }
     .price-text {
       float: right;
@@ -164,7 +168,7 @@ header {
       }
       .price {
         font-size: 20px;
-        margin:0 10px;
+        margin: 0 10px;
       }
     }
     .submit-div {
@@ -180,50 +184,49 @@ header {
   }
 }
 
-
-.cart{
-  .trade-step{
-    .cart{
-      i{
+.cart {
+  .trade-step {
+    .cart {
+      i {
         background-position: 0 -271px;
       }
     }
-    .check{
-      i{
+    .check {
+      i {
         background-position: -75px -334px;
       }
     }
-    .commit{
-      i{
+    .commit {
+      i {
         background-position: -163px -334px;
       }
     }
   }
 }
 
-.confirm-buy{
-  .trade-step{
-    .cart{
-      i{
+.confirm-buy {
+  .trade-step {
+    .cart {
+      i {
         background-position: 0 -397px;
       }
     }
-    .check{
-      i{
+    .check {
+      i {
         background-position: -75px -271px;
       }
     }
-    .commit{
-      i{
+    .commit {
+      i {
         background-position: -163px -334px;
       }
     }
   }
 
-  .goods-list{
+  .goods-list {
     img {
       width: 40%;
-      height: 85px;
+      //height: 85px;
       float: left;
     }
     span {
@@ -235,123 +238,162 @@ header {
     }
   }
 
-  .code-box{
-    line-height:38px;
-    input{height:38px;width:250px;padding:0 10px;}
-    button{height:40px;border:1px solid #DDDDDD;border-left:none;}
+  .code-box {
+    line-height: 38px;
+    input {
+      height: 38px;
+      width: 250px;
+      padding: 0 10px;
+    }
+    button {
+      height: 40px;
+      border: 1px solid #DDDDDD;
+      border-left: none;
+    }
   }
 }
 
-.order-success{
-  .trade-step{
-    .cart{
-      i{
+.order-success {
+  .trade-step {
+    .cart {
+      i {
         background-position: 0 -397px;
       }
     }
-    .check{
-      i{
+    .check {
+      i {
         background-position: -75px -397px;
       }
     }
-    .commit{
-      i{
+    .commit {
+      i {
         background-position: -163px -271px;
       }
     }
   }
 
-
-  .pay-box{
+  .pay-box {
     display: inline-block;
-    width:150px;
-    height:60px;
-    margin-right:20px;
-    margin-top:18px;
-    box-sizing:border-box;
-    border-radius:5px;
-    padding:18px 0 0 69px;
+    width: 150px;
+    height: 60px;
+    margin-right: 20px;
+    margin-top: 18px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 18px 0 0 69px;
   }
-  .wechat{
-    color:#7CBA37;
-    background:url(../../images/icon.png) 13px -542px;
+  .wechat {
+    color: #7CBA37;
+    background: url(../../images/icon.png) 13px -542px;
   }
-  .alipay{
-    color:#606974;
-    background:url(../../images/icon.png) 13px -590px;
+  .alipay {
+    color: #606974;
+    background: url(../../images/icon.png) 13px -590px;
   }
 }
 
-.order-success,.pay-success{
-  .order-box{
-    width:100%;
-    height:176px;
-    position:relative;
-    margin:30px 0 50px 0;
-    i.success{
-      position:absolute;
-      top:42px;
-      left:57px;
-      width:70px;
-      height:70px;
-      background-position:0 -463px;
+.order-success, .pay-success {
+  .order-box {
+    width: 100%;
+    height: 176px;
+    position: relative;
+    margin: 30px 0 50px 0;
+    i.success {
+      position: absolute;
+      top: 42px;
+      left: 57px;
+      width: 70px;
+      height: 70px;
+      background-position: 0 -463px;
     }
-    .price-box{
-      position:absolute;
-      top:57px;
-      left:151px;
-      .price{
+    .price-box {
+      position: absolute;
+      top: 57px;
+      left: 151px;
+      .price {
         font-size: 20px;
-        margin:0 10px;
+        margin: 0 10px;
       }
     }
-    .order-detail{
-      position:absolute;
-      top:115px;
-      left:152px;
+    .order-detail {
+      position: absolute;
+      top: 115px;
+      left: 152px;
     }
   }
 }
 
-.pay-success{
-  .trade-step{
-    .cart{
-      i{
+.pay-success {
+  .trade-step {
+    .cart {
+      i {
         background-position: 0 -397px;
       }
     }
-    .check{
-      i{
+    .check {
+      i {
         background-position: -75px -397px;
       }
     }
-    .commit{
-      i{
+    .commit {
+      i {
         background-position: -163px -397px;
       }
     }
   }
-  .order-box{
-    height:243px;
-    .pay-tip{
-      position:absolute;
-      top:50px;
-      left:153px;
+  .order-box {
+    height: 243px;
+    .pay-tip {
+      position: absolute;
+      top: 50px;
+      left: 153px;
       font-size: 20px;
     }
-    .order-num-price{
-      position:absolute;
-      top:85px;
-      left:153px;
-      span{
-        margin-right:30px;
+    .order-num-price {
+      position: absolute;
+      top: 85px;
+      left: 153px;
+      span {
+        margin-right: 30px;
       }
     }
-    .order-tel{
-      position:absolute;
-      top:175px;
-      left:153px;
-      span{margin:0 10px;font-size:16px;}
+    .order-tel {
+      position: absolute;
+      top: 175px;
+      left: 153px;
+      span {
+        margin: 0 10px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+.order-detail {
+  .overview {
+    margin-bottom:27px;
+    padding:22px;
+    background-color: #E5FAFF;
+    border: 1px solid #7ECEDF;
+    .info{
+      margin-right:5%;
+      .text-sec{
+        margin-right:10px;
+      }
+    }
+  }
+  .goods-list {
+    img {
+      width: 40%;
+      //height: 85px;
+      float: left;
+    }
+    span {
+      width: 60%;
+      float: right;
+      padding-left: 13px;
+      line-height: 17px;
+      box-sizing: border-box;
     }
   }
 }

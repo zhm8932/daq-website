@@ -109,6 +109,17 @@ a.disabled{color:#DDDDDD;}
   }
 }
 
+.table-striped{
+  tr:nth-child(even){background:#F2F6F7;}
+}
+
+.table-bordered{
+  border:1px solid #DDDDDD;
+  thead{
+    border-bottom:1px solid #DDDDDD;
+  }
+}
+
 table, th, td {
   border-collapse: collapse;
   border: none;
@@ -123,6 +134,9 @@ table, th, td {
 a {
   color: $textColor;
   &:hover {
+    color: $textOnColor;
+  }
+  &.on{
     color: $textOnColor;
   }
 }
@@ -994,9 +1008,6 @@ select {
   color: $f2;
   text-align: center;
   color: $gray9B;
-  a{color: $gray9B;
-    &:hover{color:$textc_48B;}
-  }
 }
 
 .formBox {

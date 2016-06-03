@@ -1,6 +1,6 @@
 define(function(require){
     var config = require('../config');
-    var utils = require('../utils.js');
+    var utils = require('../libs/utils.js');
 
     require('touchslider');
 

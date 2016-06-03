@@ -1,1 +1,6 @@
-define(function(require){console.log("111111111"),require("lazyload");var o=require("./config");console.log(o)});
+define(function(require){
+    console.log('111111111');
+    require('lazyload');
+    var config = require('./config');
+    console.log(config);
+})

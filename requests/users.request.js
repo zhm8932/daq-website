@@ -16,3 +16,12 @@ exports.get_goods_list = function (req,res,next) {
         next()
     });
 };
+
+
+exports.GetPatientsList = function (req, callback) {
+    var bizParam = req.query;
+
+    util.ajax('GET', api.GetPatientsList, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};

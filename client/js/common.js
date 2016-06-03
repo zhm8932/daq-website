@@ -1,11 +1,7 @@
 define(function(require, exports, module){
-    console.log('222222222');
-    //require('jquery')
-    //var utils = require('./libs/utils')
-
-    //console.log(utils)
     require('lazyload');
     require('./login');
+    var utils = require('./libs/utils.js');
     $(function () {
         var $body = $('body');
 
@@ -31,10 +27,10 @@ define(function(require, exports, module){
             $('body,html').animate({scrollTop:0},600)
         });
 
-        var winHeight = $(window).height();
-        $gotoTop = $('.gotoTop');
+        var winHeight = $(window).height()
+        $gotoTop = $('.gotoTop')
         $(window).scroll(function () {
-            var scrollTop = $(window).scrollTop();
+            var scrollTop = $(window).scrollTop()
             if(scrollTop>winHeight/2){
                 $gotoTop.show()
             }else{
@@ -45,7 +41,13 @@ define(function(require, exports, module){
         //tab切换
         require('./libs/tab')('.tab li')
 
+        $('.date-time').each(function(index,ele){
+            var $this = $(ele);
+            var timestamp = parseInt($this.html());
+            var time = utils.getLoacalDateAndTime(timestamp);
+            $this.html(time);
+        });
     })
 
     
-})
+});

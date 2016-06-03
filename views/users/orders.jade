@@ -7,73 +7,80 @@ block content
     .positon.wrapper
         |您的位置为：首页<em>#{sep}</em>我的订单
     section.wrapper.userBox.clearfix
-        aside
-            dl
-                dt
-                    img(src='/images/doctor.png')
-                    span.tel 15919740039
-                dd
-                    p: a(href='/users/orders') 我的订单
-                    p: a(href='/users/bookings') 我的预约
-                    p: a(href='/users/registers') 我的挂号
-                    p: a(href='/users/coupons') 我的优惠券
-                    p: a(href='/users/patients') 就诊人
-        .user-main.fr
+        aside.fl
+            -var orderStateJSON = {'1':'未支付','2':'已支付','3':'已取消','4':'退款中','5':'已退款'};
+            -var sampleJson = JSON.parse(locals_sample);
+            div.user-main.text-center
+                img(src='/images/doctor.png')
+                span.tel.text-sec 15919740039
+            ul.left-nav
+                li: a.on(href='/users/orders') 我的订单
+                li: a(href='/users/bookings') 我的预约
+                li: a(href='/users/registers') 我的挂号
+                li: a(href='/users/coupons') 我的优惠券
+                li: a(href='/users/patients') 就诊人
+        .box-right.fr
             each item in data
+                -var orderState = item.orderState;
                 dl.order(data-id="#{item.id}")
                     dt
                         |订单编号：#{item.id}
-                        time.order-time.text-sec #{item.updatedAt}
+                        time.date-time.text-sec #{item.updatedAt}
                     dd
                         .col.goods
+                            -var transmitType = '';
                             each goods,index in item.goodsItemDTOs
-                                if index != 0
-                                    .row.col.bdr-top
-                                        span.col.goods-detail
-                                            img.fl(src='#{goods.imageUrls[0]}')
-                                            h5.fr: a(href='#') #{goods.goodsName}
-                                        span.col.goods-others
+                                each value,key in JSON.parse(goods.transmitType)
+                                    -transmitType = sampleJson[key];
+                                .row
+                                    span.row-col.goods-detail
+                                        img.fl(src='#{goods.imageUrls[0]}')
+                                        h5.fr: a(href='#') #{goods.goodsName}
+                                    if goods.reservationState == 0
+                                        span.row-col.goods-others.text-sec
                                             p 未使用
-                                            p 上门取样
-                                            p.red 密码：123456
-                                        span.col.reservation
+                                            p #{transmitType}
+                                            p.text-stress 密码：#{goods.reservationPwd}
+                                        span.row-col.reservation.text-main
                                             p 电话预约
                                             p 400-4557-452
-                                else
-                                    .row.col
-                                        span.col.goods-detail
-                                            img.fl(src='#{goods.imageUrls[0]}')
-                                            h5.fr: a(href='#') #{goods.goodsName}
-                                        span.col.goods-others
-                                            p 未使用
-                                            p 上门取样
-                                            p.red 密码：123456
-                                        span.col.reservation
-                                            p 电话预约
-                                            p 400-4557-452
+                                    else if goods.reservationState == 1
+                                        span.row-col.goods-others.text-sec
+                                            p 已使用
+                                            p #{transmitType}
+                                        span.row-col.reservation.text-sec
+                                            p 预约详情
+                                    else
+                                        span.row-col.goods-others.text-sec
+                                            p #{transmitType}
                         .col.order-state.text-sec
-                            .row
-                                if item.orderState == 1
-                                    |未支付
-                                if item.orderState == 2
-                                    | 已支付
-                                if item.orderState == 3
-                                    | 已取消
-                                if item.orderState == 4
-                                    | 退款中
-                                if item.orderState == 5
-                                    | 已退款
-                            p 总额：￥1600
-                            p 商品合计：￥2000
-                            p 优惠券：-￥200
-                            p 服务优惠：-￥200
+
+                            if orderState == 1
+                                p.state-info.bdr-bt.text-stress
+                                    |#{orderStateJSON[orderState]}
+                            else
+                                p.state-info.bdr-bt
+                                    |#{orderStateJSON[orderState]}
+                            p 总额：￥#{parseInt(item.totalCost)/100}
+                            p 商品合计：￥#{parseInt(item.feeMap.goods_price)/100}
+                            p 优惠券：-￥
+                                if item.feeMap.coupon_fee
+                                    |#{parseInt(item.feeMap.coupon_fee)/100}
+                                else
+                                    |0
+                            p 服务优惠：-￥
+                                if item.feeMap.service_fee
+                                    |#{parseInt(item.feeMap.service_fee)/100}
+                                else
+                                    | 0
 
                         .col.operation
                             p: a(href='/trade/order/detail?id=#{item.id}') 订单详情
-                            p
-                            if item.orderState == 1
-                                a(href='/trade/order/orderSuccess?id=#{item.id}&totalCost=#{item.totalCost}') 去支付
-
+                            if orderState == 1
+                                p: a(href='/trade/order/orderSuccess?id=#{item.id}&totalCost=#{item.totalCost}') 继续支付
+                                p: a(href='/trade/order/orderSuccess?id=#{item.id}&totalCost=#{item.totalCost}') 取消订单
+                            if orderState == 3 || item.orderState == 4 ||item.orderState == 5
+                                p: a(href='/trade/order/orderSuccess?id=#{item.id}&totalCost=#{item.totalCost}') 删除订单
 
 
 

@@ -1,1 +1,176 @@
-define(function(require){function a(){var a=[],t=$("#goods"),e={},r=$("#transmit-type .type.on");e.transmitType=r.attr("data-transmitType");var i=r.attr("data-favPrice"),n=parseInt(t.attr("data-discountPrice"))-parseInt(i);e.favPrice=i,e.subTotal=n;var s=JSON.parse($("#locals_address").val());if("sampling_home"==r.data("transmitType")){var o=$("#area").val();s.push(o)}e.address=JSON.stringify(s),e.goodsId=t.attr("data-id"),e.imgUrl=t.attr("data-imgUrl"),e.goodsName=t.attr("data-goodsName"),e.discountPrice=t.attr("data-discountPrice"),a.push(e),$("#submitForm input[name=items]").val(JSON.stringify(a)),$("#submitForm input[name=totalPrice]").val(n),$("#submitForm").submit()}function t(a){r.SendAjax({url:a.url,param:a.param,method:"GET",tipText:"获取地址",callback:function(t){for(var e=t.data,r=[],i=0;i<e.length;i++){var n={};n.id=e[i].id,n.name=e[i].name,n.level=e[i].level,r.push("<option value="+JSON.stringify(n)+">"+n.name+"</option>")}$("#"+a.id).html(r.join("")),a.fun&&a.fun()}})}function e(){var a=$("#transmit-type .type.on"),t=a.attr("data-value"),e=JSON.parse($("#locals_address").val());if("sampling_home"==a.data("transmitType")){var i=$("#area").val();e.push(i)}var n=$("#goods").data("id"),s={address:JSON.stringify(e),transmit_type:t,goodsId:n};r.SendAjax({url:"/trade/cart/addItem",param:s,method:"POST",tipText:"加入购物车",callback:function(a){r.AlertTip("success","加入购物车成功")}})}var r=(require("../config"),require("../utils.js"));require("touchslider"),$(function(){var r=JSON.parse($("#locals_address").val()),i=$("#transmit-type .type"),n=!0;i.each(function(a,e){var s=$(e);s.on("click",function(){i.removeClass("on"),s.addClass("on");var a=s.attr("data-transmitType");if("sampling_home"==a){if($("#area").removeClass("none"),n){var e=r[1].categoryId;t({id:"area",url:"/dic/list/parentId",param:{activeState:1,parentId:e}}),n=!1}}else $("#area").addClass("none")})}),$(".slideBox").touchSlider({container:this,duration:350,delay:3e3,margin:5,mouseTouch:!0,namespace:"touchslider",next:".next",pagination:".tit span",currentClass:"on",prev:".prev",autoplay:!1,viewport:".touchslider-viewport"}),$("#addCartBtn").on("click",function(){e()}),$("#toOrder").on("click",function(){a()})})});
+define(function(require){
+    var config = require('../config');
+    var utils = require('../libs/utils.js');
+
+    require('touchslider');
+
+    $(function(){
+        var address = JSON.parse($('#locals_address').val());
+        var oTypes = $('#transmit-type .type');
+        var isNeedArea = true;
+        oTypes.each(function(index,ele){
+            var $this = $(ele);
+            $this.on('click',function(){
+                oTypes.removeClass('on');
+                $this.addClass('on');
+                var transmitType = $this.attr('data-transmitType');
+                if(transmitType == 'sampling_home'){
+                    $('#area').removeClass('none');
+                    if(isNeedArea){
+                        //获取区域
+                        var parentId = address[1].categoryId;
+                        getAddress({
+                            id:'area',
+                            url:'/dic/list/parentId',
+                            param:{activeState:1,parentId:parentId}
+                        });
+                        isNeedArea = false;
+                    }
+                }else{
+                    $('#area').addClass('none');
+                }
+            });
+        });
+
+
+
+        // getAddress({
+        //     id:'province',
+        //     url:'/dic/list/typeAndLevel',
+        //     param:{activeState:1,type:'district',level:'1'},
+        //     fun:function(){
+        //         $('#province').trigger('change');
+        //     }
+        // });
+        //
+        //
+        // $('#province').on('change',function(){
+        //     var proId = JSON.parse($('#province').val()).id;
+        //     getAddress({
+        //         id:'city',
+        //         url:'/dic/list/parentId',
+        //         param:{activeState:1,parentId:proId},
+        //         fun:function(){
+        //             $('#city').trigger('change');
+        //         }
+        //     });
+        // });
+        //
+        // $('#city').on('change',function(){
+        //     var parentId = JSON.parse($('#city').val()).id;
+        //     getAddress({
+        //         id:'area',
+        //         url:'/dic/list/parentId',
+        //         param:{activeState:1,parentId:parentId}
+        //     });
+        // });
+
+
+
+        $(".slideBox").touchSlider({
+            container: this,
+            duration: 350, // 动画速度
+            delay: 3000, // 动画时间间隔
+            margin: 5,
+            mouseTouch: true,
+            namespace: "touchslider",
+            next: ".next", // next 样式指定
+            pagination: ".tit span",
+            currentClass: "on", // current 样式指定
+            prev: ".prev", // prev 样式指定
+            // scroller: viewport.children(),
+            autoplay: false, // 自动播放
+            viewport: ".touchslider-viewport"  //内容区域
+        });
+
+
+        $('#addCartBtn').on('click',function(){
+            addToCart();
+        });
+
+        $('#toOrder').on('click',function(){
+            toOrder();
+        });
+    });
+
+    function toOrder() {
+        var items = [];
+        var goods = $('#goods');
+        var item = {};
+
+        var OTransmitType =  $('#transmit-type .type.on');
+        item.transmitType = OTransmitType.attr('data-transmitType');
+        var favPrice = OTransmitType.attr('data-favPrice');
+        var subTotal = parseInt(goods.attr('data-discountPrice'))-parseInt(favPrice);
+        item.favPrice = favPrice;
+        item.subTotal = subTotal;
+
+        var address = JSON.parse($('#locals_address').val());
+        if(OTransmitType.data('transmitType') == 'sampling_home'){
+            var area = $('#area').val();
+            address.push(area);
+        }
+        item.address = JSON.stringify(address);
+
+        item.goodsId = goods.attr('data-id');
+        item.imgUrl = goods.attr('data-imgUrl');
+        item.goodsName = goods.attr('data-goodsName');
+        item.discountPrice = goods.attr('data-discountPrice');
+        items.push(item);
+
+        $('#submitForm input[name=items]').val(JSON.stringify(items));
+        $('#submitForm input[name=totalPrice]').val(subTotal);
+        $('#submitForm').submit();
+    }
+
+    function getAddress(options){
+        utils.SendAjax({
+            url: options.url,
+            param: options.param,
+            method: 'GET',
+            tipText: '获取地址',
+            callback: function (result) {
+                var data = result.data;
+                var optionArr = [];
+                for(var i = 0; i < data.length; i++){
+                    var category = {};
+                    category.id = data[i].id;
+                    category.name = data[i].name;
+                    category.level = data[i].level;
+                    optionArr.push('<option value='+JSON.stringify(category)+'>'+category.name+'</option>');
+                }
+                $('#'+options.id).html(optionArr.join(''));
+                options.fun && options.fun();
+            }
+        });
+    }
+
+    function addToCart(){
+        var OTransmitType =  $('#transmit-type .type.on');
+        var transmitValue = OTransmitType.attr('data-value');
+        var address = JSON.parse($('#locals_address').val());
+        if(OTransmitType.data('transmitType') == 'sampling_home'){
+            var area = $('#area').val();
+            address.push(area);
+        }
+
+        var goodsId = $('#goods').data('id');
+        var param = {
+            "address":JSON.stringify(address),
+            "transmit_type":transmitValue,
+            "goodsId": goodsId
+        };
+
+        utils.SendAjax({
+            url: '/trade/cart/addItem',
+            param: param,
+            method: 'POST',
+            tipText: '加入购物车',
+            callback: function (result) {
+                utils.AlertTip('success','加入购物车成功');
+            }
+        });
+
+    }
+
+});
