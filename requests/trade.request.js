@@ -50,30 +50,6 @@ exports.AddCartItem = function (req, res, dataType, callback) {
 };
 
 
-exports.GetCouponList = function (req, callback) {
-    var query = req.query;
-    var accountId = req.cookies.userInfo.accountCommon.id;
-    var bizParam = {
-        pageSize: query.pageSize || 10,
-        useState: query.useState,
-        pageIndex: query.pageIndex || 1,
-        accountId: accountId
-    };
-
-    util.ajax('GET', api.GetCouponList, bizParam, function (data, success) {
-        callback && callback(data, success);
-    });
-};
-
-exports.AddCouponByInvite = function (req, callback) {
-    req.body.accountId = req.cookies.userInfo.accountCommon.id;
-    var bizParam = req.body;
-
-    util.ajax('POST', api.AddCouponByInvite, bizParam, function (data, success) {
-        callback && callback(data, success);
-    });
-};
-
 exports.CreateOrder = function (req, callback) {
     var orderPlaceDTO = JSON.parse(req.body.orderPlaceDTO);
     orderPlaceDTO.accountId = req.cookies.userInfo.accountCommon.id;
@@ -82,6 +58,22 @@ exports.CreateOrder = function (req, callback) {
     };
 
     util.ajax('POST', api.CreateOrder, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
+exports.CancelOrder = function (req, callback) {
+    var bizParam = req.body;
+
+    util.ajax('PUT', api.CancelOrder, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
+exports.DeleteOrder = function (req, callback) {
+    var bizParam = req.body;
+
+    util.ajax('DELETE', api.DeleteOrder, bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };
@@ -106,6 +98,10 @@ exports.GetOrderDetail = function (req, callback) {
         callback && callback(data, success);
     });
 };
+
+
+
+
 
 exports.GetPayId = function (req, callback) {
     var bizParam = req.body;

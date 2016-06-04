@@ -19,7 +19,10 @@
             a.cartBtn(href='/trade/cart/list')
                 i.icon
                 span.cartNum (0)
-            input(type="hidden",id="userInfo",value="#{userInfo}")
+            if userInfo
+                input(type="hidden",id="userInfo",value="#{userInfo}")
+            else
+                input(type="hidden",id="userInfo",value="")
 .header
     .wrapper
         a.logo(href='/', title='都安全') 都安全

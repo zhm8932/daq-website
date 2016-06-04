@@ -105,3 +105,25 @@
     font-size: 32px;
     font-weight: bold;
     margin-right: 10px; }
+
+.coupons .code-box {
+  line-height: 38px;
+  margin: 10px 0; }
+  .coupons .code-box input {
+    height: 38px;
+    width: 250px;
+    padding: 0 10px; }
+  .coupons .code-box .add-coupon {
+    height: 40px;
+    padding: 0 47px;
+    color: #FFF;
+    margin-left: 10px;
+    border: 1px solid #48BED8;
+    background: #48BED8; }
+.coupons .coupon-state li {
+  float: left;
+  padding: 16px 25px; }
+  .coupons .coupon-state li.on {
+    color: #48BED8; }
+.coupons .table {
+  border-top: 2px solid #48BED8; }

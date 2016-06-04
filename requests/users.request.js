@@ -25,3 +25,46 @@ exports.GetPatientsList = function (req, callback) {
         callback && callback(data, success);
     });
 };
+
+
+exports.GetReservationList = function (req, callback) {
+    var bizParam = {
+        accountId:req.cookies.userInfo.accountCommon.id
+    };
+
+    util.ajax('GET', api.GetReservationList, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
+exports.GetReserveDetail = function (req, callback) {
+    var bizParam = req.query;
+
+    util.ajax('GET', api.GetReserveDetail, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
+exports.GetCouponList = function (req, callback) {
+    var query = req.query;
+    var accountId = req.cookies.userInfo.accountCommon.id;
+    var bizParam = {
+        pageSize: query.pageSize || 10,
+        useState: query.useState,
+        pageIndex: query.pageIndex || 1,
+        accountId: accountId
+    };
+
+    util.ajax('GET', api.GetCouponList, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
+exports.AddCouponByInvite = function (req, callback) {
+    req.body.accountId = req.cookies.userInfo.accountCommon.id;
+    var bizParam = req.body;
+
+    util.ajax('POST', api.AddCouponByInvite, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};

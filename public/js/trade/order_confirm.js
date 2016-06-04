@@ -44,7 +44,7 @@ define(function (require, exports, module) {
         $this.addClass('disabled').off('click');
         var inviteCode = $('#coupon-code').val();
         utils.SendAjax({
-            url: '/trade/coupon/addByInvite',
+            url: '/users/coupon/addByInvite',
             param: {inviteCode: inviteCode},
             method: 'POST',
             tipText: '添加优惠券',
@@ -102,7 +102,7 @@ define(function (require, exports, module) {
             pageIndex: 1
         };
         utils.SendAjax({
-            url: '/trade/coupon/list',
+            url: '/users/coupon/list',
             param: param,
             method: 'GET',
             tipText: '获取优惠券',

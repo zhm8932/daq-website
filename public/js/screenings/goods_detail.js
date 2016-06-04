@@ -94,11 +94,24 @@ define(function(require){
     });
 
     function toOrder() {
+        if(!checkArea()){
+            utils.AlertTip('fail','所选城市不在该商品销售区域,请重新选择');
+            return false;
+        }
+        var accountId = utils.GetCookie('accountId');
+        if(!accountId){
+            utils.showLogin();
+            return false;
+        }
         var items = [];
         var goods = $('#goods');
         var item = {};
 
         var OTransmitType =  $('#transmit-type .type.on');
+        if(OTransmitType.length == 0){
+            utils.AlertTip('fail','请选择服务方式');
+            return false;
+        }
         item.transmitType = OTransmitType.attr('data-transmitType');
         var favPrice = OTransmitType.attr('data-favPrice');
         var subTotal = parseInt(goods.attr('data-discountPrice'))-parseInt(favPrice);
@@ -146,7 +159,20 @@ define(function(require){
     }
 
     function addToCart(){
+        if(!checkArea()){
+            utils.AlertTip('fail','所选城市不在该商品销售区域,请重新选择');
+            return false;
+        }
+        var accountId = utils.GetCookie('accountId');
+        if(!accountId){
+            utils.showLogin();
+            return false;
+        }
         var OTransmitType =  $('#transmit-type .type.on');
+        if(OTransmitType.length == 0){
+            utils.AlertTip('fail','请选择服务方式');
+            return false;
+        }
         var transmitValue = OTransmitType.attr('data-value');
         var address = JSON.parse($('#locals_address').val());
         if(OTransmitType.data('transmitType') == 'sampling_home'){
@@ -167,9 +193,28 @@ define(function(require){
             method: 'POST',
             tipText: '加入购物车',
             callback: function (result) {
-                utils.AlertTip('success','加入购物车成功');
+                if(result.needLogin){
+                    utils.showLogin();
+                }else{
+                    utils.AlertTip('success','加入购物车成功');
+                }
             }
         });
+
+    }
+
+
+    function checkArea(){
+        var locals_address = JSON.parse($('#locals_address').val());
+        var fit_area = JSON.parse($('#fit_area').val());
+        var currentCityId = locals_address[1].categoryId;
+        for(var i = 0; i < fit_area.length; i++){
+            var a = fit_area[i].categoryId;
+            if(fit_area[i].categoryId == currentCityId){
+                return true;
+            }
+        }
+        return false;
 
     }
 

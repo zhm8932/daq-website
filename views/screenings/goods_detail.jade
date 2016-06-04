@@ -43,7 +43,7 @@ html
             include ../includes/responsive
             include ../includes/nav
             .positon.wrapper.
-                您的为位置：首页 <em>#{sep}</em> 筛查服务 <em>#{sep}</em> 生殖感染(CT/NG)核酸筛查套餐
+                您的位置为：首页 <em>#{sep}</em> 筛查服务 <em>#{sep}</em> 生殖感染(CT/NG)核酸筛查套餐
 
 
 
@@ -104,7 +104,7 @@ html
                                     select#area.none
 
                                 .submitBox
-                                    buttont#toOrder.submitBtn 立即购买
+                                    button#toOrder.submitBtn 立即购买
                                     button#addCartBtn.addCartBtn.submitBtn 加入购物车
                                 form(action="/trade/cart/addItem",method="POST")
                                     input(type="hidden",id="address",value="#{addressJSON}")
@@ -183,7 +183,9 @@ html
                             答：每五位有性生活的女性中有一位是衣原体（CT）感染者，淋球菌（NG）通过男性感染者传给女性的几率为80%，无论是衣原体还是淋球菌女性传给新生儿的几率均为50%！
 
 
-
+            each item in goods_detail.saleAttributes
+                if item.attributeName == "fit_area"
+                    input#fit_area(type="hidden",value="#{item.value}")
             input#locals_address(type="hidden",value="#{locals_address}")
             input#goods(type="hidden",data-id="#{goods_detail.id}",data-goodsName="#{goods_detail.goodsName}",data-imgUrl="#{goods_detail.goodsImages[0].imageUrl}",data-discountPrice="#{goods_detail.discountPrice}",data-address="#{locals_address}",data-city="#{JSON.parse(locals_address)[1].name}")
             form#submitForm(action = "/trade/order/comfirmView",method="POST")

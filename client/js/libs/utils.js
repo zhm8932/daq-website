@@ -267,14 +267,14 @@ define(function(require,exports,module) {
     }
 
     function addCookie(name, value, path, expireHours) {
-        var cookieString = name + "=" + escape(value);
-        cookieString += '; path=' + path;
+        var cookieString = name + "=" + encodeURIComponent(value);
         //判断是否设置过期时间
         if (expireHours > 0) {
             var date = new Date();
             date.setTime(date.getTime + expireHours * 3600 * 1000);
-            cookieString = cookieString + "; expire=" + date.toGMTString();
+            cookieString = cookieString + ";expires=" + date.toGMTString();
         }
+        cookieString += ';path=' + path;
         document.cookie = cookieString;
     }
 
@@ -283,15 +283,19 @@ define(function(require,exports,module) {
         var arrCookie = strCookie.split("; ");
         for (var i = 0; i < arrCookie.length; i++) {
             var arr = arrCookie[i].split("=");
-            if (arr[0] == name)return arr[1];
+            if (arr[0] == name)return decodeURIComponent(arr[1]);
         }
         return "";
     }
 
     function deleteCookie(name) {
         var date = new Date();
+        console.log(date);
+        console.log(date-10000);
         date.setTime(date.getTime() - 10000);
-        document.cookie = name + "=v; expire=" + date.toGMTString();
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:01 GMT";
+        console.log(date.toGMTString());
+        console.log('delete:'+getCookie('accountId'));
     }
 
 
@@ -367,11 +371,11 @@ define(function(require,exports,module) {
         fun && fun();
     }
     var $topBarAside = $('.topBar_info aside')
-    var loginHtml = '<a href="javascript:;" class="loginBtn">登录</a>'
+    var loginHtml = '<a href="javascript:;" class="loginBtn">登录</a>';
     var logoutHtml = '<a href="/trade/order/list" class="logout">个人中心</a><i class="icon devidel"></i><a href="javascript:;" class="logoutBtn">退出</a>';
 
     var index = '';
-    var $prompt = ''
+    var $prompt = '';
     function showLogin(options) {
         var popup = new Popup({
             msg:'<div id="slideLogin"><div class="tit"><span class="on">密码登录</span><span>验证码登录</span></div>' +
@@ -461,7 +465,9 @@ define(function(require,exports,module) {
                         title:'<i class="icon"></i>登录成功!',
                         otherBox:'successBox'
                     });
-                    $('#userInfo').val(json.data.userAllInfo);
+                    // $('#userInfo').val(json.data.userAllInfo);
+                    var id = json.data.userAllInfo.accountCommon.id;
+                    addCookie('accountId',id,'/',12);
 
                     popup.hideBox(function () {
                         $('.msgBox').hide();
@@ -487,10 +493,11 @@ define(function(require,exports,module) {
             //data:data,
             success:function(json){
                 // console.log(json)
-                var json = JSON.parse(json)
+                var json = JSON.parse(json);
                 if(json.success){
-                    $topBarAside.html(loginHtml)
-                    $('#userInfo').val('');
+                    $topBarAside.html(loginHtml);
+                    // $('#userInfo').val('');
+                    deleteCookie('accountId');
                 }
             }
         })

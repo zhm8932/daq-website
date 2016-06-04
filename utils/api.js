@@ -126,6 +126,15 @@ module.exports = {
     GetPayId: "trade.createTransAndPrepay",
     AliPay: "finance.pay.thirdparty",
     GetOrderDetail: "domain.order.get",
+    CancelOrder: "domain.order.cancel",
+    DeleteOrder: "domain.order.delete",
+
+    //预约
+    GetReservationList: "service.reservation.byuser",
+    GetReserveDetail: "service.reservation.byid",
+
+
+
 
     //字典
     GetListByTypeAndLevel: "dictionary.queryDictionaryListByTypeAndLevel",

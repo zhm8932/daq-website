@@ -7,7 +7,7 @@ var request = require('../requests/users.request');
 
 /* GET users listing. */
 
-router.get('/patients',function(req,res,next) {
+router.get('/patient/list',function(req,res,next) {
     request.GetPatientsList(req,function(data,success) {
         var json = JSON.parse(data);
         res.render('users/patients', {
@@ -16,4 +16,61 @@ router.get('/patients',function(req,res,next) {
         });
     });
 });
+
+router.get('/reservation/list',function(req,res,next){
+    request.GetReservationList(req,function(data,success) {
+        var json = JSON.parse(data);
+        if(success){
+            res.render('users/reservations',{
+                title:'我的预约',
+                data:json.data
+            });
+        }else{
+            res.json(json);
+        }
+    });
+});
+
+router.get('/reservation/detail',function(req,res,next){
+    request.GetReserveDetail(req,function(data,success) {
+        var json = JSON.parse(data);
+        if(success){
+            res.render('users/reserveDetail',{
+                title:'预约详情',
+                data:json.data
+            });
+        }else{
+            res.json(json);
+        }
+    });
+});
+
+router.get('/coupon/list',function(req,res,next) {
+    request.GetCouponList(req,function(data,success) {
+        res.json(data);
+    });
+});
+
+router.get('/coupon/listView',function(req,res,next) {
+    request.GetCouponList(req,function(data,success) {
+        var json = JSON.parse(data);
+        if(success){
+            res.render('users/coupons',{
+                title:'我的优惠券',
+                data:json.data
+            });
+        }else{
+            res.json(data);
+        }
+    });
+});
+
+router.post('/coupon/addByInvite',function(req,res,next) {
+    request.AddCouponByInvite(req,function(data,success) {
+        res.json(data);
+    });
+});
+
+
+
 module.exports = router;      

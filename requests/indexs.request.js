@@ -23,16 +23,16 @@ exports.get_goods_list = function (req,res,next) {
 };
 
 exports.login = function (req,res,next) {
-    console.log('crypto:',crypto)
-    var body = req.body
-    var password = body.password
-    var content = 'password'
+    console.log('crypto:',crypto);
+    var body = req.body;
+    var password = body.password;
+    var content = 'password';
     var md5 = crypto.createHash('md5');
     md5.update(password);
     var d = md5.digest('hex');  //MD5值是5f4dcc3b5aa765d61d8327deb882cf99
 
 
-    console.log('d:',d)
+    console.log('d:',d);
     var bizParam = {
         "req": {
             "rawRequest": {

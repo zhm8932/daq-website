@@ -39,10 +39,8 @@ router.get('/cart/list',function(req,res,next){
     });
 });
 
-router.post('/cart/addItem',function(req,res,next) {
+router.post('/cart/addItem',authority.loginRequired,function(req,res,next) {
     request.AddCartItem(req,function(data,success) {
-        // var json = JSON.parse(data);
-        // json.login = req.login;
         res.json(data);
     });
 });
@@ -80,7 +78,7 @@ router.get('/order/list',function(req,res,next){
         var json = JSON.parse(data);
         if(success){
             res.render('users/orders',{
-                title:'个人中心-我的订单',
+                title:'我的订单',
                 data:json.data.data
             });
         }else{
@@ -89,11 +87,24 @@ router.get('/order/list',function(req,res,next){
     });
 });
 
+router.post('/order/cancel',function(req,res,next) {
+    request.CancelOrder(req,function(data,success) {
+        res.json(data);
+    });
+});
+
+router.post('/order/delete',function(req,res,next) {
+    request.DeleteOrder(req,function(data,success) {
+        res.json(data);
+    });
+});
+
+
 router.get('/order/detail',function(req,res,next){
     request.GetOrderDetail(req,function(data,success) {
         var json = JSON.parse(data);
         if(success){
-            res.render('trade/orderDetail',{
+            res.render('users/orderDetail',{
                 title:'订单详情',
                 data:json.data
             });
@@ -115,17 +126,7 @@ router.post('/pay/ali',function(req,res,next) {
     });
 });
 
-router.get('/coupon/list',function(req,res,next) {
-    request.GetCouponList(req,function(data,success) {
-        res.json(data);
-    });
-});
 
-router.post('/coupon/addByInvite',function(req,res,next) {
-    request.AddCouponByInvite(req,function(data,success) {
-        res.json(data);
-    });
-});
 
 
 router.get('/order/orderSuccess',function(req,res,next) {
@@ -144,6 +145,10 @@ router.get('/order/paySuccess',function(req,res,next) {
         data:{}
     });
 });
+
+
+
+
 
 module.exports = router;
 

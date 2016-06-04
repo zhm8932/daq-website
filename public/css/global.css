@@ -142,6 +142,29 @@ a {
 body {
   color: #4A4A4A; }
 
+.alert-tip {
+  position: absolute;
+  z-index: 999;
+  width: 20%;
+  color: #fff;
+  font-size: 1.3em;
+  text-align: center;
+  line-height: 1.8em;
+  padding: 0.3em 0.5em;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 2px rgba(0, 0, 0, 0.05); }
+
+.alert-success {
+  background: rgba(69, 186, 213, 0.8); }
+
+.alert-fail {
+  background: rgba(239, 114, 15, 0.8); }
+
+.alert-tip .icon {
+  margin-right: 0.7em;
+  font-size: 1.2em; }
+
 .container {
   width: 100%;
   margin-top: 60px; }

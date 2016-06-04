@@ -1,0 +1,66 @@
+extends ../layout
+
+block content
+    link(href='/css/users/user.css',rel='styleSheet')
+    include ../includes/responsive
+    include ../includes/nav
+    .positon.wrapper
+        |您的位置为：首页<em>#{sep}</em>我的订单
+    section.wrapper.userBox.clearfix
+        aside.fl
+            div.user-main.text-center
+                img(src='/images/doctor.png')
+                span.tel.text-sec 15919740039
+            ul.left-nav
+                li: a(href='/trade/order/list') 我的订单
+                li: a(href='/users/reservation/list') 我的预约
+                li: a(href='/users/register/list') 我的挂号
+                li: a.on(href='/users/coupon/listView?useState=1') 我的优惠券
+                li: a(href='/users/patient/list') 就诊人
+        .box-right.fr.coupons
+            div.get-coupon
+                div 领取优惠券
+                .code-box.clearfix
+                    input#coupon-code.border-default.fl(type='text',placeholder="请输入优惠券号码")
+                    button.add-coupon 领取
+            ul.coupon-state
+                li.unuse.on 未使用
+                li.used 已使用
+                li.overdue 已过期
+            table#coupon-table.users-table.table.table-striped.table-bordered
+                thead
+                    th 面额\明细
+                    th 限用条件
+                    th(width="40%") 使用范围
+                    th 有效期
+                tbody
+                    if data.length <= 0
+                        td(colspan='4') 暂无优惠券
+                    else
+                        each item in data.data
+                            -var faceValue, enoughMoney;
+                            -var fitAreaArr = data.fitArea;
+                            -var j;
+                            -var areaNames = [];
+                            -var areaIds = [];
+                            for city in JSON.parse(item.fitArea)
+                                -areaNames.push(city.name);
+                            tr
+                                if item.ftype == 'cash'
+                                    td #{parseInt(item.faceValue) / 100}元
+                                    -enoughMoney = parseInt(item.enoughMoney);
+                                    if(enoughMoney == 0)
+                                        td 无门槛
+                                    else
+                                        td 满#{enoughMoney/100}元使用
+                                else if item.ftype == 'discount'
+                                    td #{item.discount}折
+                                    td 最多可抵#{parseInt(item.mostDeduction)/100}元
+                                td 限定地区:#{areaNames.join(',')}
+                                td 有效期至
+                                    span.date #{item.endTime}
+
+
+    include ../includes/footer
+    script.
+        seajs.use('/js/users/coupons.js')

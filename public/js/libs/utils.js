@@ -1,8 +1,8 @@
 //define(['jquery'],function(require,exports,module) {
 define(function(require,exports,module) {
     //弹出框
-    require('jquery')
-    require('touchslider')
+    require('jquery');
+    require('touchslider');
 
     function Popup(options){
         var defaults = {
@@ -19,10 +19,10 @@ define(function(require,exports,module) {
             okText:'确定',
             okCallback:null,
             callback:null,
-        }
-        this.opts = $.extend({},defaults,options)
+        };
+        this.opts = $.extend({},defaults,options);
         this.popupBox = this.opts.popupBox
-        this.$body = $('body')
+        this.$body = $('body');
         this.init()
     }
     Popup.prototype = {
@@ -31,13 +31,13 @@ define(function(require,exports,module) {
             self.render();
             $('.'+self.popupBox).show();
             //事件解绑
-            self.$body.off('click','.'+self.opts.ok)
+            self.$body.off('click','.'+self.opts.ok);
             self.$body.on('click','.'+self.opts.ok,function(){
-                self.opts.okCallback()
+                self.opts.okCallback();
                 if(self.opts.isHide){
                     self.hideBox()
                 }
-            })
+            });
 
             //点击取消
             this.$body.on('click','.'+this.opts.cancel,function(){
@@ -48,7 +48,7 @@ define(function(require,exports,module) {
 
         },
         hideBox:function(cb){
-            var self = this
+            var self = this;
             setTimeout(function(){
                 $('.'+self.popupBox).hide();
                 //console.log(self.opts)
@@ -68,14 +68,14 @@ define(function(require,exports,module) {
             var self = this;
             self.globalBgFn();
             if($('.'+self.popupBox).length){
-                $('.'+self.popupBox).remove()
+                $('.'+self.popupBox).remove();
                 self.$body.append(this.popupHtml())
 
             }else{
                 this.$body.append(this.popupHtml())
             }
 
-            self.opts.callback()
+            self.opts.callback();
             
             var height = $('.'+this.opts.popupBox).height();
             $('.'+self.popupBox).css({'height':height,'margin-top':-height/2})
@@ -90,7 +90,7 @@ define(function(require,exports,module) {
             if(opts.bOhterMsg){
                 ConfimHtml+='<div class="otherMsg">'+opts.otherMsg+'</div>'
             }
-            ConfimHtml+='</div></div>'
+            ConfimHtml+='</div></div>';
             return ConfimHtml
         },
         cancelCallback:function(){   //关闭弹窗
@@ -112,7 +112,7 @@ define(function(require,exports,module) {
             width:300,
             height:50,
             effect:'fade',
-        }
+        };
 
 
         this.options = $.extend({},defaults,options);
@@ -130,7 +130,7 @@ define(function(require,exports,module) {
             switch (effect){
                 case 'fade':
                     this.render();
-                    $('.'+self.mainCell).fadeIn()
+                    $('.'+self.mainCell).fadeIn();
                     break;
 
             }
@@ -155,14 +155,14 @@ define(function(require,exports,module) {
                 width=opts.width,
                 height=opts.height;
 
-            console.log('99999999')
+            console.log('99999999');
 
             if(!$('.'+opts.mainCell).length){
                 $('body').append(this.setHtml());
             }else{
                 $('.'+opts.mainCell).show();
             }
-            $('.'+opts.mainCell).html(this.options.title)
+            $('.'+opts.mainCell).html(this.options.title);
             if(!opts.otherBox){
                 $('.'+opts.mainCell).css({width:width+'px',height:height+'px','line-height':height+'px','margin-left':-width/2,'margin-top':-height/2}).show()
             }
@@ -172,26 +172,26 @@ define(function(require,exports,module) {
         }
     }
     function tab(hd,con){
-        var $hdeles = $(hd).children()
-        var $coneles = $(con).children()
+        var $hdeles = $(hd).children();
+        var $coneles = $(con).children();
         if(!$hdeles.hasClass('on')){
             $hdeles.first().addClass('on')
         }
-        $coneles.first().show()
-        var index = $('.tabBox .hd .on').index()
-        $coneles.eq(index).show().siblings().hide()
+        $coneles.first().show();
+        var index = $('.tabBox .hd .on').index();
+        $coneles.eq(index).show().siblings().hide();
         $hdeles.click(function(){
-            index = $(this).index()
-            $(this).addClass('on').siblings().removeClass()
-            $coneles.eq(index).show().siblings().hide()
+            index = $(this).index();
+            $(this).addClass('on').siblings().removeClass();
+            $coneles.eq(index).show().siblings().hide();
         })
     }
 
-    tab('.tabBox .hd','.tabBox .con')
+    tab('.tabBox .hd','.tabBox .con');
 
     var u = navigator.userAgent,
         app = navigator.appVersion;
-    console.log('userAgent:',u)
+    console.log('userAgent:',u);
     var browser = {
             trident: u.indexOf('Trident') > -1, //IE内核
             presto: u.indexOf('Presto') > -1, //opera内核
@@ -267,14 +267,14 @@ define(function(require,exports,module) {
     }
 
     function addCookie(name, value, path, expireHours) {
-        var cookieString = name + "=" + escape(value);
-        cookieString += '; path=' + path;
+        var cookieString = name + "=" + encodeURIComponent(value);
         //判断是否设置过期时间
         if (expireHours > 0) {
             var date = new Date();
             date.setTime(date.getTime + expireHours * 3600 * 1000);
-            cookieString = cookieString + "; expire=" + date.toGMTString();
+            cookieString = cookieString + ";expires=" + date.toGMTString();
         }
+        cookieString += ';path=' + path;
         document.cookie = cookieString;
     }
 
@@ -283,15 +283,19 @@ define(function(require,exports,module) {
         var arrCookie = strCookie.split("; ");
         for (var i = 0; i < arrCookie.length; i++) {
             var arr = arrCookie[i].split("=");
-            if (arr[0] == name)return arr[1];
+            if (arr[0] == name)return decodeURIComponent(arr[1]);
         }
         return "";
     }
 
     function deleteCookie(name) {
         var date = new Date();
+        console.log(date);
+        console.log(date-10000);
         date.setTime(date.getTime() - 10000);
-        document.cookie = name + "=v; expire=" + date.toGMTString();
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:01 GMT";
+        console.log(date.toGMTString());
+        console.log('delete:'+getCookie('accountId'));
     }
 
 
@@ -367,11 +371,11 @@ define(function(require,exports,module) {
         fun && fun();
     }
     var $topBarAside = $('.topBar_info aside')
-    var loginHtml = '<a href="javascript:;" class="loginBtn">登录</a>'
+    var loginHtml = '<a href="javascript:;" class="loginBtn">登录</a>';
     var logoutHtml = '<a href="/trade/order/list" class="logout">个人中心</a><i class="icon devidel"></i><a href="javascript:;" class="logoutBtn">退出</a>';
 
     var index = '';
-    var $prompt = ''
+    var $prompt = '';
     function showLogin(options) {
         var popup = new Popup({
             msg:'<div id="slideLogin"><div class="tit"><span class="on">密码登录</span><span>验证码登录</span></div>' +
@@ -461,7 +465,9 @@ define(function(require,exports,module) {
                         title:'<i class="icon"></i>登录成功!',
                         otherBox:'successBox'
                     });
-                    $('#userInfo').val(json.data.userAllInfo);
+                    // $('#userInfo').val(json.data.userAllInfo);
+                    var id = json.data.userAllInfo.accountCommon.id;
+                    addCookie('accountId',id,'/',12);
 
                     popup.hideBox(function () {
                         $('.msgBox').hide();
@@ -487,10 +493,11 @@ define(function(require,exports,module) {
             //data:data,
             success:function(json){
                 // console.log(json)
-                var json = JSON.parse(json)
+                var json = JSON.parse(json);
                 if(json.success){
-                    $topBarAside.html(loginHtml)
-                    $('#userInfo').val('');
+                    $topBarAside.html(loginHtml);
+                    // $('#userInfo').val('');
+                    deleteCookie('accountId');
                 }
             }
         })
