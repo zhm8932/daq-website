@@ -1,6 +1,6 @@
 /*
-* 科普模块  kepu
-* */
+ * 科普模块  kepu
+ * */
 var express = require('express');
 var router = express.Router();
 var request = require('../requests/trade.request');
@@ -25,129 +25,132 @@ var authority = require('../handlers/authority.handler')
 //     }
 // });
 
-router.get('/cart/list',function(req,res,next){
-    request.GetCartList(req,function(data,success) {
+router.get('/cart/list', function (req, res, next) {
+    request.GetCartList(req, function (data, success) {
         var json = JSON.parse(data);
-        if(success){
-            res.render('trade/cart',{
-                title:'购物车',
-                data:json.data
+        if (success) {
+            res.render('trade/cart', {
+                title: '购物车',
+                data: json.data
             });
-        }else{
+        } else {
             res.json(json);
         }
     });
 });
 
-router.post('/cart/addItem',authority.loginRequired,function(req,res,next) {
-    request.AddCartItem(req,function(data,success) {
+router.post('/cart/addItem', authority.loginRequired, function (req, res, next) {
+    request.AddCartItem(req, function (data, success) {
         res.json(data);
     });
 });
 
-router.post('/cart/delItem',function(req,res,next) {
-    request.DelCartItem(req,function(data,success) {
+router.post('/cart/delItem', function (req, res, next) {
+    request.DelCartItem(req, function (data, success) {
         res.json(data);
     });
 });
 
 
-router.post('/order/comfirmView',function(req,res,next) {
+router.post('/order/comfirmView', function (req, res, next) {
     console.log('核对订单信息')
-    res.render('trade/orderConfirm',{
-        title:'核对订单信息',
-        data:req.body
+    res.render('trade/orderConfirm', {
+        title: '核对订单信息',
+        data: req.body
     });
 });
 
-router.post('/order/create',function(req,res,next) {
-    request.CreateOrder(req,function(data,success) {
+router.post('/order/create', function (req, res, next) {
+    request.CreateOrder(req, function (data, success) {
         var json = JSON.parse(data).data;
         res.render('trade/orderSuccess', {
             title: '成功提交订单',
             data: {
-                id:json.id,
-                totalCost:json.totalCost
+                id: json.id,
+                totalCost: json.totalCost
             }
         });
     });
 });
 
-router.get('/order/list',function(req,res,next){
-    request.GetOrderList(req,function(data,success) {
+router.get('/order/list', function (req, res, next) {
+    request.GetOrderList(req, function (data, success) {
         var json = JSON.parse(data);
-        if(success){
-            res.render('users/orders',{
-                title:'我的订单',
-                data:json.data.data
+        if (success) {
+            res.render('users/orders', {
+                title: '我的订单',
+                data: json.data.data
             });
-        }else{
+        } else {
             res.json(json);
         }
     });
 });
 
-router.post('/order/cancel',function(req,res,next) {
-    request.CancelOrder(req,function(data,success) {
+router.post('/order/cancel', function (req, res, next) {
+    request.CancelOrder(req, function (data, success) {
         res.json(data);
     });
 });
 
-router.post('/order/delete',function(req,res,next) {
-    request.DeleteOrder(req,function(data,success) {
+router.post('/order/delete', function (req, res, next) {
+    request.DeleteOrder(req, function (data, success) {
         res.json(data);
     });
 });
 
 
-router.get('/order/detail',function(req,res,next){
-    request.GetOrderDetail(req,function(data,success) {
+router.get('/order/detail', function (req, res, next) {
+    request.GetOrderDetail(req, function (data, success) {
         var json = JSON.parse(data);
-        if(success){
-            res.render('users/orderDetail',{
-                title:'订单详情',
-                data:json.data
+        if (success) {
+            res.render('users/orderDetail', {
+                title: '订单详情',
+                data: json.data
             });
-        }else{
+        } else {
             res.json(json);
         }
     });
 });
 
-router.post('/pay/payid',function(req,res,next) {
-    request.GetPayId(req,function(data,success) {
+router.post('/pay/payid', function (req, res, next) {
+    request.GetPayId(req, function (data, success) {
         res.json(data);
     });
 });
 
-router.post('/pay/ali',function(req,res,next) {
-    request.AliPay(req,function(data,success) {
+router.post('/pay/ali', function (req, res, next) {
+    request.AliPay(req, function (data, success) {
         res.json(data);
     });
 });
 
 
-
-
-router.get('/order/orderSuccess',function(req,res,next) {
-    res.render('trade/orderSuccess',{
-        title:'下单成功',
-        data:{
-            id:req.query.id,
-            totalCost:req.query.totalCost
+router.get('/order/orderSuccess', function (req, res, next) {
+    res.render('trade/orderSuccess', {
+        title: '下单成功',
+        data: {
+            id: req.query.id,
+            totalCost: req.query.totalCost
         }
     });
 });
 
-router.get('/order/paySuccess',function(req,res,next) {
-    res.render('trade/paySuccess',{
-        title:'支付成功',
-        data:{}
+router.get('/order/paySuccess', function (req, res, next) {
+    var query = req.query;
+    req.id = query.order_no;
+    request.GetOrderDetail(req, function (data, success) {
+        var json = JSON.parse(data);
+        res.render('trade/paySuccess', {
+            title: '支付结果',
+            data: {
+                success: success,
+                data: json
+            }
+        });
     });
 });
-
-
-
 
 
 module.exports = router;

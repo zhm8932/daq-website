@@ -54,15 +54,14 @@ block content
                                         if areaObj
                                             | #{areaObj.name}
                             td.text-sec ￥#{(parseInt(item.dealPrice)- favPrice)/100}
-                            if item.reservationState == 1
-                                td.text-sec 已使用
-                                td: a(href="?reservationId=#{data.reservationId}") 预约详情
                             if item.reservationState == 0
                                 td.text-stress 未使用
                                 td.text-main
                                     p 电话预约
                                     p 400-4557-452
-
+                            else
+                                td.text-sec 已使用
+                                td: a(href="?reservationId=#{item.reservationId}") 预约详情
             .table-div
                 .tfoot.clearfix
                     #actualTotal.price-text
