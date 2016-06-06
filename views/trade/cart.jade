@@ -7,6 +7,8 @@ block content
     .positon.wrapper
         | 您的位置：首页<em>#{sep}</em>购物车
     section.wrapper
+        -var addressJson = JSON.parse(locals_address);
+        -var transmitTypeJson = JSON.parse(locals_sample);
         .cart
             .trade-step
                 p.cart.step-wrapper
@@ -49,14 +51,13 @@ block content
                             span #{item.goodsName}
                         .price ￥#{discountPrice/100}
                         .info.text-sec
-                            -var addressJson = JSON.parse(locals_address);
                             each cartItemAttr,index in item.cartItemAttrs
                                 -var value = JSON.parse(cartItemAttr.value);
                                 if 'transmit_type' == cartItemAttr.attributeName
                                     -for(var type in value)
                                         -favPrice = parseInt(value[type]);
                                         -transmitType = type;
-                                        p 服务方式:#{addressJson[type]}(优惠￥#{favPrice/100})
+                                        p 服务方式:#{transmitTypeJson[type]}(优惠￥#{favPrice/100})
                                 if 'address' == cartItemAttr.attributeName
                                     -address = cartItemAttr.value;
                                     p 服务区域:

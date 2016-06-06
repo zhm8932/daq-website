@@ -11,8 +11,8 @@ block content
             -var orderStateJSON = {'1':'未支付','2':'已支付','3':'已取消','4':'退款中','5':'已退款'};
             -var sampleJson = JSON.parse(locals_sample);
             div.user-main.text-center
-                img(src='/images/doctor.png')
-                span.tel.text-sec 15919740039
+                img(src='/images/user.png')
+                span.tel.text-sec #{userInfo.accountCommon.account}
             ul.left-nav
                 li: a.on(href='/trade/order/list') 我的订单
                 li: a(href='/users/reservation/list') 我的预约
@@ -35,7 +35,7 @@ block content
                                 .row
                                     span.row-col.goods-detail
                                         img.fl(src='#{goods.imageUrls[0]}')
-                                        h5.fr: a(href='#') #{goods.goodsName}
+                                        h5.fr: a(href='/screenings/goods/detail/#{goods.goodsId}') #{goods.goodsName}
                                     if goods.reservationState == 0
                                         span.row-col.goods-others.text-sec
                                             p 未使用

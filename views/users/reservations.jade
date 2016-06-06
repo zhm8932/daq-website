@@ -11,8 +11,8 @@ block content
             -var orderStateJSON = {'1':'未支付','2':'已支付','3':'已取消','4':'退款中','5':'已退款'};
             -var sampleJson = JSON.parse(locals_sample);
             div.user-main.text-center
-                img(src='/images/doctor.png')
-                span.tel.text-sec 15919740039
+                img(src='/images/user.png')
+                span.tel.text-sec #{userInfo.accountCommon.account}
             ul.left-nav
                 li: a(href='/trade/order/list') 我的订单
                 li: a.on(href='/users/reservation/list') 我的预约

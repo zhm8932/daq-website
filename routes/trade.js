@@ -120,8 +120,8 @@ router.post('/pay/payid', function (req, res, next) {
     });
 });
 
-router.post('/pay/ali', function (req, res, next) {
-    request.AliPay(req, function (data, success) {
+router.post('/order/pay', function (req, res, next) {
+    request.OrderPay(req, function (data, success) {
         res.json(data);
     });
 });
@@ -137,16 +137,27 @@ router.get('/order/orderSuccess', function (req, res, next) {
     });
 });
 
-router.get('/order/paySuccess', function (req, res, next) {
+router.get('/order/wechatPay', function (req, res, next) {
     var query = req.query;
-    req.id = query.order_no;
+    res.render('trade/wechatPay', {
+        title: '微信支付',
+        data: {
+            id: query.id,
+            payId:query.payId,
+            totalCost: query.totalCost
+        }
+    });
+});
+
+router.get('/order/paySuccess', function (req, res, next) {
+    req.query.id = req.query.order_no;
     request.GetOrderDetail(req, function (data, success) {
         var json = JSON.parse(data);
         res.render('trade/paySuccess', {
             title: '支付结果',
             data: {
                 success: success,
-                data: json
+                data: json.data
             }
         });
     });

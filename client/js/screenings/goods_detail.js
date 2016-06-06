@@ -119,7 +119,7 @@ define(function(require){
         item.subTotal = subTotal;
 
         var address = JSON.parse($('#locals_address').val());
-        if(OTransmitType.data('transmitType') == 'sampling_home'){
+        if(OTransmitType.attr('data-transmitType') == 'sampling_home'){
             var area = $('#area').val();
             address.push(area);
         }
@@ -175,12 +175,12 @@ define(function(require){
         }
         var transmitValue = OTransmitType.attr('data-value');
         var address = JSON.parse($('#locals_address').val());
-        if(OTransmitType.data('transmitType') == 'sampling_home'){
+        if(OTransmitType.attr('data-transmitType') == 'sampling_home'){
             var area = $('#area').val();
-            address.push(area);
+            address.push(JSON.parse(area));
         }
 
-        var goodsId = $('#goods').data('id');
+        var goodsId = $('#goods').attr('data-id');
         var param = {
             "address":JSON.stringify(address),
             "transmit_type":transmitValue,

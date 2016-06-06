@@ -124,7 +124,7 @@ module.exports = {
     CreateOrder: "domain.order.create",
     GetOrderList: "domain.order.mypage",
     GetPayId: "trade.createTransAndPrepay",
-    AliPay: "finance.pay.thirdparty",
+    OrderPay: "finance.pay.thirdparty",
     GetOrderDetail: "domain.order.get",
     CancelOrder: "domain.order.cancel",
     DeleteOrder: "domain.order.delete",

@@ -81,7 +81,7 @@ exports.DeleteOrder = function (req, callback) {
 exports.GetOrderList = function (req, callback) {
     var query = req.query;
     var bizParam = {
-        pageSize: query.pageSize || 5,
+        pageSize: query.pageSize || 10,
         pageIndex: query.pageIndex || 1,
         "accountId": req.cookies.userInfo.accountCommon.id
     };
@@ -92,7 +92,9 @@ exports.GetOrderList = function (req, callback) {
 };
 
 exports.GetOrderDetail = function (req, callback) {
-    var bizParam = req.query;
+    var bizParam = {
+        id:req.query.id
+    };
 
     util.ajax('GET', api.GetOrderDetail, bizParam, function (data, success) {
         callback && callback(data, success);
@@ -111,7 +113,7 @@ exports.GetPayId = function (req, callback) {
     });
 };
 
-exports.AliPay = function (req, callback) {
+exports.OrderPay = function (req, callback) {
     var bizParam = {
         "command": {
             "rawRequest": {
@@ -122,7 +124,7 @@ exports.AliPay = function (req, callback) {
         }
     };
 
-    util.ajax('POST', api.AliPay, bizParam, function (data, success) {
+    util.ajax('POST', api.OrderPay, bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };
