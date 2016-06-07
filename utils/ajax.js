@@ -84,7 +84,7 @@ module.exports.ajax = function (method,apiName,bizParam,callback) {
         path += '?' + param;
     }
 
-    var url = 'http://' + config.hostname_test + ":" + config.port_test + path;
+    var url = 'http://' + config.hostname_test + ":" + config.port_test ;
     console.log(url);
     var options = {
         hostname : config.hostname_test,

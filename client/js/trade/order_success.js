@@ -5,6 +5,10 @@ define(function (require, exports, module) {
         getPayId(alipay,4);
     });
 
+    $('.wechat-pay').on('click',function(){
+        getPayId(wechatPay,6);
+    });
+
     function getPayId(fun,payWay){
         var id = $('#order-detail').data('id');
         utils.SendAjax({
@@ -37,6 +41,65 @@ define(function (require, exports, module) {
     }
 
     function wechatPay(id,payWay){
-        window.location.href = '/trade/trade/wechatPay';
+        utils.SendAjax({
+            url: '/trade/order/pay',
+            param: {id: id,payWay:payWay},
+            method: 'POST',
+            tipText: '前往支付页面',
+            callback: function (result) {
+                showDialog(result);
+            },
+            errorFun: function (result) {
+
+            }
+        });
+    }
+
+
+    var index = '';
+    var $prompt = '';
+    function showDialog(result) {
+        var stateTimer = null;
+        var popup = new utils.Popup({
+            msg: '<div class="wechat-pay-dialog"><div class="left-box"><img src="data:image/png;base64,'+result.data.credentia.orderInfo+'"/><div class="wechat-tip"><i class="icon scan"></i>'+
+            '<span class="scan-tip">请使用微信"扫一扫"扫描二维码支付</span></div><div class="price text-stress">￥323</div></div>'+
+            '<div class="right-box"><img src="/images/wxsm_img.png"/></div><div>',
+            otherMsg:'',
+            bOhterMsg:true,
+            callback:function () {
+                stateTimer = setInterval(function(){
+                    queryOrderState();
+                },3000);
+            },
+            okText:'登录',
+            width:'730',
+            otherBox:'loginBox',
+            isHide:false,
+            okCallback:function(){
+
+            },
+            cancelFun:function(){
+                clearInterval(stateTimer);
+            }
+        })
+
+    }
+
+    function queryOrderState(){
+        var id = $('#order-detail').data('id');
+        utils.SendAjax({
+            url: '/trade/order/state',
+            param: {id: id},
+            method: 'GET',
+            tipText: '前往支付页面',
+            callback: function (result) {
+                if(result.data.orderState == 2){
+                    window.location.href = '/trade/order/paySuccess?order_no='+id;
+                }
+            },
+            errorFun: function (result) {
+
+            }
+        });
     }
 });

@@ -18,7 +18,8 @@ define(function(require,exports,module) {
             delayTime:2000,
             okText:'确定',
             okCallback:null,
-            callback:null,
+            cancelFun:null,
+            callback:null
         };
         this.opts = $.extend({},defaults,options);
         this.popupBox = this.opts.popupBox
@@ -42,8 +43,6 @@ define(function(require,exports,module) {
             //点击取消
             this.$body.on('click','.'+this.opts.cancel,function(){
                 self.cancelCallback();
-
-
             })
 
         },
@@ -74,11 +73,11 @@ define(function(require,exports,module) {
             }else{
                 this.$body.append(this.popupHtml())
             }
-
-            self.opts.callback();
             
             var height = $('.'+this.opts.popupBox).height();
-            $('.'+self.popupBox).css({'height':height,'margin-top':-height/2})
+            $('.'+self.popupBox).css({'height':height,'margin-top':-height/2});
+
+            self.opts.callback && self.opts.callback();
 
 
         },
@@ -86,7 +85,7 @@ define(function(require,exports,module) {
             var opts = this.opts;
             var ConfimHtml = '<div class="'+this.popupBox+' '+this.opts.otherBox+'" style="width: '+opts.width+'px;margin-left:-'+opts.width/2+'px">' +
                                 '<div class="innerBg"><span class="'+this.opts.cancel+'"><i class="icon"></i></span><article>'+this.opts.msg+'</article>' +
-                                '<div class="submitBox"><span class="'+this.opts.ok+'">'+this.opts.okText+'</span></div>'
+                                '<div class="submitBox"><span class="'+this.opts.ok+'">'+this.opts.okText+'</span></div>';
             if(opts.bOhterMsg){
                 ConfimHtml+='<div class="otherMsg">'+opts.otherMsg+'</div>'
             }
@@ -96,9 +95,9 @@ define(function(require,exports,module) {
         cancelCallback:function(){   //关闭弹窗
             $('.globalBg').hide();
             $('.'+this.popupBox).remove();
-
+            this.opts.cancelFun && this.opts.cancelFun();
         }
-    }
+    };
 
     //信息提示框
     function MsgShow(options){
@@ -155,7 +154,6 @@ define(function(require,exports,module) {
                 width=opts.width,
                 height=opts.height;
 
-            console.log('99999999');
 
             if(!$('.'+opts.mainCell).length){
                 $('body').append(this.setHtml());
@@ -166,11 +164,8 @@ define(function(require,exports,module) {
             if(!opts.otherBox){
                 $('.'+opts.mainCell).css({width:width+'px',height:height+'px','line-height':height+'px','margin-left':-width/2,'margin-top':-height/2}).show()
             }
-
-
-
         }
-    }
+    };
     function tab(hd,con){
         var $hdeles = $(hd).children();
         var $coneles = $(con).children();
@@ -205,7 +200,7 @@ define(function(require,exports,module) {
             webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
             ie: u.indexOf('MSIE') > -1 //
 
-    }
+    };
     function CheckNull(id){
         var value = $('#'+id).val();
         if(value.trim() == ''){

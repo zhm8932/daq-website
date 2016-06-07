@@ -149,6 +149,16 @@ router.get('/order/wechatPay', function (req, res, next) {
     });
 });
 
+router.get('/order/state', function (req, res, next) {
+    request.GetOrderDetail(req, function (data, success) {
+        var resJson = {"code":"200",msg:"",data:{},"success":"true"};
+        var json = JSON.parse(data);
+        resJson.data.orderState = json.data.orderState;
+        resJson.data.id = json.data.id;
+        res.json(JSON.stringify(resJson));
+    });
+});
+
 router.get('/order/paySuccess', function (req, res, next) {
     req.query.id = req.query.order_no;
     request.GetOrderDetail(req, function (data, success) {

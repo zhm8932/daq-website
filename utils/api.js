@@ -121,19 +121,21 @@ module.exports = {
     AddCouponByInvite: "promotion.addCouponCodeByInviteCode",
 
     //订单
-    CreateOrder: "domain.order.create",
-    GetOrderList: "domain.order.mypage",
+    CreateOrder: "trade.order.create",
+    GetOrderList: "trade.order.mypage",
     GetPayId: "trade.createTransAndPrepay",
     OrderPay: "finance.pay.thirdparty",
-    GetOrderDetail: "domain.order.get",
-    CancelOrder: "domain.order.cancel",
-    DeleteOrder: "domain.order.delete",
+    GetOrderDetail: "trade.order.get",
+    CancelOrder: "trade.order.cancel",
+    DeleteOrder: "trade.order.delete",
+
+
+    //挂号
+    GetRegsourceList: "his.regsource.status.page.plus",
 
     //预约
     GetReservationList: "service.reservation.byuser",
     GetReserveDetail: "service.reservation.byid",
-
-
 
 
     //字典

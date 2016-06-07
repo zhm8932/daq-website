@@ -1,0 +1,212 @@
+@import "../settings.scss";
+
+.treat-name {
+  font-size: 24px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.outpatient {
+  padding: 16px 0;
+  img {
+    width: 30%;
+    vertical-align: middle;
+  }
+  .outpatient-info {
+    display: inline-block;
+    width: 65%;
+    margin-left: 3%;
+    vertical-align: middle;
+    hgroup {
+      margin-bottom: 19px;
+      h4 {
+        font-size: 16px;
+      }
+    }
+
+    .address {
+      background-position: -32px -99px;
+    }
+    .traffic {
+      background-position: -82px -100px;
+    }
+  }
+}
+
+.vertical {
+  background-position: -209px -26px;
+}
+
+.title {
+  margin-top: 42px;
+  margin-bottom: 12px;
+  font-size: 20px;
+  .info {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+}
+
+.reg-list {
+  text-align: center;
+  thead {
+    background: #F2F6F7;
+    border-bottom:1px solid #ddd;
+  }
+  tr {
+    td {
+      padding: 13px;
+      vertical-align: middle;
+      border-right:1px solid #ddd;
+    }
+    .doctor-info{
+      margin-left:5%;
+    }
+
+    td:nth-child(1),td:nth-child(2){
+      text-align: left;
+    }
+
+    td:nth-child(3), td:nth-child(4), td:nth-child(5), td:nth-child(6), td:nth-child(7), td:nth-child(8), td:nth-child(9) {
+      border-right:1px solid #fff;
+
+      background: #E5FAFF;
+      p{
+        color:#48BED8;
+      }
+    }
+  }
+}
+
+//.info_tel{
+//  padding: 30px 0;margin-top: -10px;
+//  h2{font-size: 24px;padding-bottom: 10px;}
+//  p{padding:5px 0;}
+//}
+//.info_detail{
+//  padding-bottom:30px;
+//  h3{
+//    display: inline-block; font-size: 18px;color: $white; padding: 0 30px 0 20px;margin: 20px 0; border-radius: 0 100px 100px 0;height:46px;line-height:46px;width: auto;background-color: $bgc_48B;
+//  }
+//  hgroup{padding-left: 30px;
+//    h4{color: $textc_48B;margin:5px 0;font-size:20px; //16px;
+//      i{margin-right: 5px;}
+//      .jieshao{background-position:0px -99px;}
+//      .address{background-position:-28px -99px;}
+//    }
+//    p{padding-left: 20px;}
+//  }
+//  address{font-size:18px; line-height:40px; padding:20px 0;font-family:"PingHei 200","PingHei","Helvetica Neue","Helvetica","STHeitiSC-Light","Arial",sans-serif}
+//
+//}
+//.info_list{padding-top:40px;}
+//.lr_list{
+//  figure{
+//    clear: both;
+//    img{float: left;width: 310px;height: auto;margin:0 0 20px 0;}
+//    figcaption{
+//      width: 680px;float: right;
+//
+//    }
+//    h4{font-size: 24px;border-bottom: 1px solid $bdrc_ddd;padding:15px 0; margin-bottom: 15px;}
+//  }
+//
+//
+//}
+
+.reg {
+  header {
+    position: relative;
+    padding-bottom: 20px;
+    h2 {
+      background-color: $white;
+      padding: 20px 10px 0;
+      font-size: 20px;
+    }
+    p {
+      color: $textc_9d;
+      font-size: 16px;
+    }
+  }
+
+  h4 {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  mark {
+    font-size: 14px;
+    color: $textc_9d;
+    padding-left: 10px;
+  }
+  label {
+    display: inline-block;
+    width: 140px;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: right;
+    padding-right: 30px;
+  }
+  form {
+    border: 1px solid $bdrc_ddd;
+    padding: 30px 50px;
+  }
+  ul {
+    li {
+      position: relative;
+      padding-bottom: 15px;
+      input {
+        width: 220px;
+        padding: 0 5px;
+        line-height: 32px;
+        height: 32px;
+      }
+      .add-patient {
+        margin-left: 175px;
+      }
+    }
+
+  }
+
+}
+
+.submitBtn {
+  color: $white;
+  line-height: 40px;
+  height: 40px;
+  width: 120px;;
+  border: 1px solid $bdrc_48B;
+  background-color: $bgc_48B;
+  font-size: 16px;
+  margin-left: 175px;
+}
+
+.popupBox{
+  article{
+    padding:0;
+  }
+
+}
+
+.add-patient-dialog{
+  width:475px;
+  height:325px;
+  .dialog-header{
+    height:30px;
+    line-height:30px;
+    padding-left:12px;
+    background-color:#F2F2F2;
+  }
+  .dialog-body{
+    padding:16px 22px;
+    ul{
+      li{
+        margin-top:10px;
+        label{display:inline-block;width:80px;}
+        input{width:340px;height:40px;}
+        .submitBox{margin-left:80px;}
+      }
+    }
+  }
+
+}

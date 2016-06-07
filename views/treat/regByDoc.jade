@@ -1,0 +1,44 @@
+extends ../layout
+
+block content
+    link(href='/css/treat/treat.css',rel='styleSheet')
+    include ../includes/responsive
+    include ../includes/nav
+    .positon.wrapper
+        |您的位置为：首页<em>#{sep}</em>诊疗服务<em>#{sep}</em>挂号预约<em>#{sep}</em>医生预约
+    section.wrapper
+        .reg
+            header
+                h2 按医生预约
+            form.formBox
+                ul.clearfix
+                    li
+                        label 就诊医生
+                        h4 南山门诊部
+                            mark 陈医生
+                        input(type='text',required,autofocus='true',hidden)
+                    li
+                        label 就诊时间
+                        span 2016-05-20
+                    li
+                        label 请选择就诊时间段
+                        input(type='text',required='true')
+                    li
+                        label 选择就诊人
+                        input(type='text',required='true')
+                    li
+                        span.add-patient.text-main 添加就诊人?
+
+
+                    button(class='submitBtn') 确认提交
+
+            //div.
+                <div id="slideLogin">
+                    <div class="touchslider-viewport"><div class="bd">
+                    <ul><li><lable></lable><input type="text" class="username" placeholder="请输入手机号码" value="13689557622"></li><li><input type="password" class="password" placeholder="请输入密码" value="zhm123456"><span class="prompt"><i class="icon"></i><em>手机输入格式有误/验证码有误</em></span></li></ul>
+                    <ul><li><input type="text" class="username" placeholder="请输入手机号码"></li><li><input type="text" class="password" placeholder="请输入短信验证码"><span class="getCode">获取短信验证码</span><span class="prompt"><i class="icon"></i><em>手机输入格式有误/验证码有误</em></span></li></ul>
+                    </div></div></div>
+
+    include ../includes/footer
+    script.
+        seajs.use('/js/treat/reg_doc.js')

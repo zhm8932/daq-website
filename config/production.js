@@ -4,13 +4,13 @@
 
 var config = {
     debug:true,  // debug 为 true 时，用于本地调试
-    hostname_test:"120.76.100.177",  //(正式环境)
+    hostname_test:"api.douanquan.com",  //(正式环境)
     //hostname_test:"api.douanquan.com",  //(正式环境)
     // hostname_test:"120.76.24.129",  //(线上测试)
     // hostname_test:"172.16.61.219",  //(内网测试)
     //hostname_test:"192.168.6.73",
     // port_test:'8080',
-    port_test:'8082',
+    port_test:'80',
     path:'/router',
     imgDomain:'http://jhd-daq-img.oss-cn-shanghai.aliyuncs.com/',
 

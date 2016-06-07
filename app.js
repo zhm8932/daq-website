@@ -18,6 +18,7 @@ var treats = require('./routes/treat');
 var users = require('./routes/users');
 var trades = require('./routes/trade');
 var dictionarys = require('./routes/dictionary');
+var treats = require('./routes/treat');
 
 var app = express();
 
@@ -58,6 +59,7 @@ app.use('/treats', treats);
 app.use('/users', users);
 app.use('/trade', trades);
 app.use('/dic', dictionarys);
+app.use('/treat',treats);
 
 //捕获404错误并转发到错误处理中间件
 app.use(function(req, res, next) {

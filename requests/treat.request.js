@@ -6,12 +6,15 @@ var api = require('../utils/api');
 var config = require('../config');
 
 
-exports.GetCartList = function (req, callback) {
+exports.GetRegsourceList = function (req, callback) {
+    var query = req.query;
     var bizParam = {
-        "accountId": req.cookies.userInfo.accountCommon.id
+        "pageSize": query.pageSize || 20,
+        "pageIndex": query.pageIndex || 1,
+        "hospitalId":query.hospitalId
     };
 
-    util.ajax('GET', api.GetCartList, bizParam, function (data, success) {
+    util.ajax('GET', api.GetRegsourceList, bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };

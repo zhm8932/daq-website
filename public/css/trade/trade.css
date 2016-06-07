@@ -197,7 +197,7 @@ header {
   box-sizing: border-box;
   border-radius: 5px;
   padding: 18px 0 0 69px; }
-.order-success .wechat {
+.order-success .wechat-pay {
   color: #7CBA37;
   background: url(../../images/icon.png) 13px -542px; }
 .order-success .alipay {
@@ -273,3 +273,56 @@ header {
   padding-left: 13px;
   line-height: 17px;
   box-sizing: border-box; }
+
+.wechat-pay-dialog {
+  width: 730px;
+  height: 445px;
+  box-sizing: border-box;
+  text-align: center; }
+  .wechat-pay-dialog div {
+    box-sizing: border-box; }
+  .wechat-pay-dialog .left-box {
+    display: inline-block;
+    width: 350px;
+    height: 445px;
+    vertical-align: top; }
+    .wechat-pay-dialog .left-box .wechat-tip {
+      display: inline-block;
+      width: 214px;
+      height: 67px;
+      padding: 13px;
+      background-color: #2C7B8C;
+      color: #fff;
+      font-size: 14px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px; }
+      .wechat-pay-dialog .left-box .wechat-tip span.scan-tip {
+        width: 128px;
+        display: inline-block;
+        margin-left: 15px;
+        text-align: left;
+        vertical-align: middle; }
+      .wechat-pay-dialog .left-box .wechat-tip .icon.scan {
+        width: 37px;
+        height: 37px;
+        background-position: -164px -482px;
+        vertical-align: middle; }
+    .wechat-pay-dialog .left-box .price {
+      margin: 25px auto;
+      font-size: 36px; }
+  .wechat-pay-dialog .right-box {
+    display: inline-block;
+    height: 445px;
+    width: 345px;
+    padding: 30px;
+    background-color: #F7F7F7; }
+
+.popupBox article {
+  padding: 0; }
+.popupBox .submitBox {
+  display: none; }
+.popupBox .otherMsg {
+  display: none; }
+.popupBox .innerBg {
+  padding-bottom: 0; }

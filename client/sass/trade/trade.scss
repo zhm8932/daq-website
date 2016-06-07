@@ -282,7 +282,7 @@ header {
     border-radius: 5px;
     padding: 18px 0 0 69px;
   }
-  .wechat {
+  .wechat-pay {
     color: #7CBA37;
     background: url(../../images/icon.png) 13px -542px;
   }
@@ -395,5 +395,68 @@ header {
       line-height: 17px;
       box-sizing: border-box;
     }
+  }
+}
+
+
+.wechat-pay-dialog{
+  width:730px;
+  height:445px;
+  box-sizing: border-box;
+  text-align: center;
+  div{box-sizing: border-box;}
+  .left-box{
+    display:inline-block;
+    width:350px;
+    height:445px;
+    vertical-align:top;
+    .wechat-tip{
+      display: inline-block;
+      width:214px;
+      height:67px;
+      padding:13px;
+      background-color:#2C7B8C;
+      color:#fff;
+      font-size:14px;
+      -webkit-border-radius:5px;
+      -moz-border-radius:5px;
+      border-radius:5px;
+      span.scan-tip{
+        width:128px;
+        display:inline-block;
+        margin-left:15px;
+        text-align: left;
+        vertical-align: middle;
+      }
+      .icon.scan{
+        width:37px;
+        height:37px;
+        background-position: -164px -482px;
+        vertical-align: middle;
+      }
+    }
+
+    .price{
+      margin:25px auto;
+      font-size:36px;
+    }
+  }
+  .right-box{
+    display:inline-block;
+    height:445px;
+    width:345px;
+    padding:30px;
+    background-color:#F7F7F7;
+  }
+}
+
+.popupBox{
+  article{
+    padding:0;
+  }
+  .submitBox{display:none;}
+  .otherMsg{display:none;}
+  .innerBg{
+    padding-bottom:0;
   }
 }
