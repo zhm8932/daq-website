@@ -8,16 +8,17 @@ block content
         |您的位置为：首页<em>#{sep}</em>机构网络
     .wrapper
         h2.treat-name 深圳南山区都安全门诊部
+    -var week = ['周一','周二','周三','周四','周五','周六','周日'];
     section.boxBg
         .wrapper.outpatient.clearfix
             img(src="/images/outpatient.png")
             .outpatient-info
-                hgroup
+                .hgroup
                     h4.text-main
                         i.icon.address
                         | 门诊地址
                     p 广东省深圳市南山区深南大道9988号
-                hgroup
+                .hgroup
                     h4.text-main
                         i.icon.traffic
                         | 交通指南
@@ -31,144 +32,46 @@ block content
             i.icon.vertical
             span 门诊医生
         table.table.reg-list
+            -var regData = data.data;
             thead
-                th
                 th(width="20%")
-                th
-                    p 04/16
-                    p 周六
-                th
-                    p 04/16
-                    p 周六
-                th
-                    p 04/16
-                    p 周六
-                th
-                    p 04/16
-                    p 周六
-                th
-                    p 04/16
-                    p 周六
-                th
-                    p 04/16
-                    p 周六
-                th
-                    p 04/16
-                    p 周六
+                th(width="20%")
+                each item in regData[0].scheduleList
+                    th
+                        p.month-date #{item.scheduleDate}
+                        p #{week[parseInt(item.dayOfWeek)-1]}
             tbody
-                tr
-                    td.doctor
-                        img.fl(src="/images/doctor.png")
-                        .doctor-info.fl
-                            p.text-main 吴冬梅
-                            p 主任医生
-                            p 南山区门诊部
-                    td 擅长:韩国客人后几个客人钢结构死人呢过热
-                    td
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                tr
-                    td.doctor
-                        img.fl(src="/images/doctor.png")
-                        .doctor-info.fl
-                            p.text-main 吴冬梅
-                            p 主任医生
-                            p 南山区门诊部
-                    td 擅长:韩国客人后几个客人钢结构死人呢过热
-                    td
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                tr
-                    td
-                        img.fl(src="/images/doctor.png")
-                        .doctor-info.fl
-                            p.text-main 吴冬梅
-                            p 主任医生
-                            p 南山区门诊部
-                    td 擅长:韩国客人后几个客人钢结构死人呢过热
-                    td.active
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td.active
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td.active
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td.active
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td.active
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td.active
-                        a(href="")
-                            p 预约
-                            p (6/10)
-                    td.active
-                        a(href="")
-                            p 预约
-                            p (6/10)
-
+                each item in regData
+                    -var hos = item.doctor.hospitalReDepartments
+                    -var hosname = '';
+                    each h in hos
+                        -var name = h.hospitalName;
+                        -hosname += name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
+                    tr(data-accountid="#{item.doctor.id}")
+                        td.doctor
+                            img.fl(src="#{item.doctor.doctorPhoto}")
+                            .doctor-info.fl
+                                p.text-main #{item.doctor.doctorName}
+                                //p #{item.doctor.titleId}
+                                p #{hosname}
+                        td #{item.doctor.introduction}
+                        each schedule in item.scheduleList
+                            if schedule.hasSetSchedule
+                                if schedule.consumeCount < schedule.capacityCount
+                                    td.register(data-date="#{schedule.scheduleDate}")
+                                        p 预约
+                                        p (#{schedule.consumeCount}/#{schedule.capacityCount})
+                                else if schedule.consumeCount == schedule.capacityCount
+                                    td.disabled
+                                        p 约满
+                                        p (#{schedule.consumeCount}/#{schedule.capacityCount})
+                            else
+                                td.disabled
+                                    p 未排班
 
 
     section.info_list.clearfix
 
     include ../includes/footer
-    //script.
-//        seajs.use('/js/agencys/infos.js')
+    script.
+        seajs.use('/js/treat/reg_source_list.js')

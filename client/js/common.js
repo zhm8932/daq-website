@@ -47,6 +47,13 @@ define(function(require, exports, module){
             var time = utils.getLoacalDateAndTime(timestamp);
             $this.html(time);
         });
+
+        $('.date').each(function(index,ele){
+            var $this = $(ele);
+            var timestamp = parseInt($this.html());
+            var time = utils.GetLoacalDateString(timestamp);
+            $this.html(time);
+        });
     })
 
     

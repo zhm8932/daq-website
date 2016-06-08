@@ -10,22 +10,29 @@ block content
         .reg
             header
                 h2 按医生预约
-            form.formBox
+            form#regByDocForm
+                -var doctorDTO = data.doctorDTO;
+                -hosname = '';
+                each h in doctorDTO.hospitalReDepartments
+                    -var name = h.hospitalName;
+                    -hosname += name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
                 ul.clearfix
                     li
                         label 就诊医生
-                        h4 南山门诊部
-                            mark 陈医生
+                        h4 #{hosname}
+                            mark #{doctorDTO.doctorName}
                         input(type='text',required,autofocus='true',hidden)
                     li
                         label 就诊时间
-                        span 2016-05-20
+                        span #{data.date}
                     li
                         label 请选择就诊时间段
-                        input(type='text',required='true')
+                        select(name="scheduleId")
+                            each value,key in data.timeWithIdMap
+                                option(value="#{value.scheduleId}") #{key}(#{value.capacity-value.unConsume}/#{value.capacity})
                     li
                         label 选择就诊人
-                        input(type='text',required='true')
+                        input(type='text',name="patient",value="1606072108113881022",required='true')
                     li
                         span.add-patient.text-main 添加就诊人?
 

@@ -7,22 +7,37 @@ var config = require('../config');
 
 
 exports.GetRegsourceList = function (req, callback) {
-    var query = req.query;
-    var bizParam = {
-        "pageSize": query.pageSize || 20,
-        "pageIndex": query.pageIndex || 1,
-        "hospitalId":query.hospitalId
-    };
+    var bizParam = req.query;
+    bizParam.pageSize = req.query.pageSize || 20;
+    bizParam.pageIndex = req.query.pageIndex || 1;
 
     util.ajax('GET', api.GetRegsourceList, bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };
 
-exports.DelCartItem = function (req, callback) {
-    var bizParam = req.body;
+exports.GetRegTimeSlot = function (req, callback) {
+    var bizParam = req.query;
 
-    util.ajax('DELETE', api.DelCartItem, bizParam, function (data, success) {
+    util.ajax('GET', api.GetRegTimeSlot, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
+exports.AddRegByDoc = function (req, callback) {
+    var body = req.body;
+    var bizParam = {
+        "command": {
+            "accountId": req.cookies.userInfo.accountCommon.id,
+            "anonymous": 1,
+            "customerId": "1605211925590557003",
+            "patient": body.patient,
+            "scheduleId": body.scheduleId,
+            "telNum": "18904785568"
+        }
+    };
+
+    util.ajax('POST', api.AddRegByDoc, bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };

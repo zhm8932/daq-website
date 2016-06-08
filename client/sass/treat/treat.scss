@@ -17,7 +17,7 @@
     width: 65%;
     margin-left: 3%;
     vertical-align: middle;
-    hgroup {
+    .hgroup {
       margin-bottom: 19px;
       h4 {
         font-size: 16px;
@@ -59,9 +59,14 @@
       vertical-align: middle;
       border-right:1px solid #ddd;
     }
-    .doctor-info{
-      margin-left:5%;
+    .doctor{
+      img{width:30%;}
+      .doctor-info{
+        width:63%;
+        margin-left:5%;
+      }
     }
+
 
     td:nth-child(1),td:nth-child(2){
       text-align: left;
@@ -69,11 +74,20 @@
 
     td:nth-child(3), td:nth-child(4), td:nth-child(5), td:nth-child(6), td:nth-child(7), td:nth-child(8), td:nth-child(9) {
       border-right:1px solid #fff;
-
       background: #E5FAFF;
       p{
         color:#48BED8;
       }
+      &.register:hover{
+        cursor: pointer;
+      }
+      &.disabled{
+        background-color:#F2F6F7;
+        p{
+          color:#9B9B9B;
+        }
+      }
+
     }
   }
 }
@@ -190,7 +204,7 @@
 
 .add-patient-dialog{
   width:475px;
-  height:325px;
+  height:200px;
   .dialog-header{
     height:30px;
     line-height:30px;
@@ -203,10 +217,22 @@
       li{
         margin-top:10px;
         label{display:inline-block;width:80px;}
-        input{width:340px;height:40px;}
+        input{width:340px;height:35px;}
         .submitBox{margin-left:80px;}
       }
     }
+
+
   }
 
+}
+
+.popupBox{
+  .submitBox{
+    span.ok{
+      display:inline-block;
+      padding:5px 19px;
+      margin-left:90px;
+    }
+  }
 }

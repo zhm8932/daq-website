@@ -4,6 +4,8 @@ var favicon = require('serve-favicon'); //处理收藏夹图标的
 var logger = require('morgan');       //写日志
 var cookieParser = require('cookie-parser');  //解析cookie req.cookies属性存放着客户端提交过来的cookie // req.cookie(key,value) 向客户端写入cookie
 var bodyParser = require('body-parser');  //处理请求体的 req.body 属性存放着请求体对象
+var session = require('express-session');
+var redisStore = require('connect-redis')(session);
 
 //路由
 var indexs = require('./routes/index');
@@ -18,7 +20,6 @@ var treats = require('./routes/treat');
 var users = require('./routes/users');
 var trades = require('./routes/trade');
 var dictionarys = require('./routes/dictionary');
-var treats = require('./routes/treat');
 
 var app = express();
 
@@ -29,6 +30,10 @@ app.set('view engine', 'jade');
 //把favicon图标放置在public目录之后取消注释
 app.use(favicon(path.join(__dirname, 'public','images', 'favicon.ico')));
 //app.use(logger('dev'));
+app.use(session({
+  store: new redisStore(),
+  secret: config.sessionSecret
+}));
 app.use(bodyParser.json());  //处理content-type=json的请求体
 app.use(bodyParser.urlencoded({ extended: false }));  //处理content-type=urlencoded的请求体 extended为true表示使用querystring来将请求体的字符串转成对象
 app.use(cookieParser());

@@ -37,6 +37,16 @@ exports.GetReservationList = function (req, callback) {
     });
 };
 
+exports.GetRegisterList = function (req, callback) {
+    var bizParam = {
+        accountId:req.cookies.userInfo.accountCommon.id
+    };
+
+    util.ajax('GET', api.GetRegisterList, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
 exports.GetReserveDetail = function (req, callback) {
     var bizParam = req.query;
 

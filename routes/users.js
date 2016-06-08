@@ -25,8 +25,19 @@ router.get('/reservation/list',function(req,res,next){
                 title:'我的预约',
                 data:json.data
             });
-        }else{
-            res.json(json);
+        }
+    });
+});
+
+//挂号列表
+router.get('/register/list',function(req,res,next){
+    request.GetRegisterList(req,function(data,success) {
+        var json = JSON.parse(data);
+        if(success){
+            res.render('users/registerings',{
+                title:'我的挂号',
+                data:json.data
+            });
         }
     });
 });

@@ -27,9 +27,9 @@
     width: 65%;
     margin-left: 3%;
     vertical-align: middle; }
-    .outpatient .outpatient-info hgroup {
+    .outpatient .outpatient-info .hgroup {
       margin-bottom: 19px; }
-      .outpatient .outpatient-info hgroup h4 {
+      .outpatient .outpatient-info .hgroup h4 {
         font-size: 16px; }
     .outpatient .outpatient-info .address {
       background-position: -32px -99px; }
@@ -56,7 +56,10 @@
     padding: 13px;
     vertical-align: middle;
     border-right: 1px solid #ddd; }
-  .reg-list tr .doctor-info {
+  .reg-list tr .doctor img {
+    width: 30%; }
+  .reg-list tr .doctor .doctor-info {
+    width: 63%;
     margin-left: 5%; }
   .reg-list tr td:nth-child(1), .reg-list tr td:nth-child(2) {
     text-align: left; }
@@ -65,6 +68,12 @@
     background: #E5FAFF; }
     .reg-list tr td:nth-child(3) p, .reg-list tr td:nth-child(4) p, .reg-list tr td:nth-child(5) p, .reg-list tr td:nth-child(6) p, .reg-list tr td:nth-child(7) p, .reg-list tr td:nth-child(8) p, .reg-list tr td:nth-child(9) p {
       color: #48BED8; }
+    .reg-list tr td:nth-child(3).register:hover, .reg-list tr td:nth-child(4).register:hover, .reg-list tr td:nth-child(5).register:hover, .reg-list tr td:nth-child(6).register:hover, .reg-list tr td:nth-child(7).register:hover, .reg-list tr td:nth-child(8).register:hover, .reg-list tr td:nth-child(9).register:hover {
+      cursor: pointer; }
+    .reg-list tr td:nth-child(3).disabled, .reg-list tr td:nth-child(4).disabled, .reg-list tr td:nth-child(5).disabled, .reg-list tr td:nth-child(6).disabled, .reg-list tr td:nth-child(7).disabled, .reg-list tr td:nth-child(8).disabled, .reg-list tr td:nth-child(9).disabled {
+      background-color: #F2F6F7; }
+      .reg-list tr td:nth-child(3).disabled p, .reg-list tr td:nth-child(4).disabled p, .reg-list tr td:nth-child(5).disabled p, .reg-list tr td:nth-child(6).disabled p, .reg-list tr td:nth-child(7).disabled p, .reg-list tr td:nth-child(8).disabled p, .reg-list tr td:nth-child(9).disabled p {
+        color: #9B9B9B; }
 
 .reg header {
   position: relative;
@@ -120,7 +129,7 @@
 
 .add-patient-dialog {
   width: 475px;
-  height: 325px; }
+  height: 200px; }
   .add-patient-dialog .dialog-header {
     height: 30px;
     line-height: 30px;
@@ -135,6 +144,11 @@
         width: 80px; }
       .add-patient-dialog .dialog-body ul li input {
         width: 340px;
-        height: 40px; }
+        height: 35px; }
       .add-patient-dialog .dialog-body ul li .submitBox {
         margin-left: 80px; }
+
+.popupBox .submitBox span.ok {
+  display: inline-block;
+  padding: 5px 19px;
+  margin-left: 90px; }

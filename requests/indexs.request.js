@@ -45,6 +45,7 @@ exports.login = function (req,res,next) {
     util.ajax('GET',api.Login,bizParam,function (data,success) {
         if(success){
             res.cookie('userInfo',JSON.parse(data).data.userAllInfo, { maxAge: 1000*60*60*12 });
+            // req.session.user = JSON.parse(data).data.userAllInfo;
         }
         res.send(data)
     });
@@ -54,4 +55,4 @@ exports.logout = function (req,res,next) {
     res.cookie('userInfo','null',{maxAge:0});
     res.send('{"code":"200","success":"true"}');
 
-}
+};
