@@ -29,7 +29,7 @@ exports.GetPatientsList = function (req, callback) {
 
 exports.GetReservationList = function (req, callback) {
     var bizParam = {
-        accountId:req.cookies.userInfo.accountCommon.id
+        accountId:req.session.userInfo.accountCommon.id
     };
 
     util.ajax('GET', api.GetReservationList, bizParam, function (data, success) {
@@ -39,7 +39,7 @@ exports.GetReservationList = function (req, callback) {
 
 exports.GetRegisterList = function (req, callback) {
     var bizParam = {
-        accountId:req.cookies.userInfo.accountCommon.id
+        accountId:req.session.userInfo.accountCommon.id
     };
 
     util.ajax('GET', api.GetRegisterList, bizParam, function (data, success) {
@@ -57,7 +57,7 @@ exports.GetReserveDetail = function (req, callback) {
 
 exports.GetCouponList = function (req, callback) {
     var query = req.query;
-    var accountId = req.cookies.userInfo.accountCommon.id;
+    var accountId = req.session.userInfo.accountCommon.id;
     var bizParam = {
         pageSize: query.pageSize || 10,
         useState: query.useState,
@@ -71,7 +71,7 @@ exports.GetCouponList = function (req, callback) {
 };
 
 exports.AddCouponByInvite = function (req, callback) {
-    req.body.accountId = req.cookies.userInfo.accountCommon.id;
+    req.body.accountId = req.session.userInfo.accountCommon.id;
     var bizParam = req.body;
 
     util.ajax('POST', api.AddCouponByInvite, bizParam, function (data, success) {

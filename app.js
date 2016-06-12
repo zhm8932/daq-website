@@ -5,7 +5,7 @@ var logger = require('morgan');       //写日志
 var cookieParser = require('cookie-parser');  //解析cookie req.cookies属性存放着客户端提交过来的cookie // req.cookie(key,value) 向客户端写入cookie
 var bodyParser = require('body-parser');  //处理请求体的 req.body 属性存放着请求体对象
 var session = require('express-session');
-var redisStore = require('connect-redis')(session);
+var RedisStore = require('connect-redis')(session);
 
 //路由
 var indexs = require('./routes/index');
@@ -29,15 +29,18 @@ app.set('view engine', 'jade');
 
 //把favicon图标放置在public目录之后取消注释
 app.use(favicon(path.join(__dirname, 'public','images', 'favicon.ico')));
-//app.use(logger('dev'));
-app.use(session({
-  store: new redisStore(),
-  secret: config.sessionSecret
-}));
+app.use(logger('dev'));
+
+
 app.use(bodyParser.json());  //处理content-type=json的请求体
 app.use(bodyParser.urlencoded({ extended: false }));  //处理content-type=urlencoded的请求体 extended为true表示使用querystring来将请求体的字符串转成对象
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));  //静态文件服务中间件 指定一个绝对目录 的路径作为静态文件的根目录
+
+app.use(session({
+  secret: config.sessionSecret,
+  cookie:{maxAge:12*60*60*1000}
+}));
 
 app.locals.moment = require('moment') //本地模板中引入moment方法
 app.locals.markdown = require( "markdown" ).markdown; //markdown编辑语法
@@ -70,7 +73,7 @@ app.use('/treat',treats);
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
-  console.log('404')
+  console.log('404');
   next(err);
 });
 

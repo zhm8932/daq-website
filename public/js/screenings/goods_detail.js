@@ -159,48 +159,44 @@ define(function(require){
     }
 
     function addToCart(){
-        if(!checkArea()){
-            utils.AlertTip('fail','所选城市不在该商品销售区域,请重新选择');
-            return false;
-        }
-        var accountId = utils.GetCookie('accountId');
-        if(!accountId){
-            utils.showLogin();
-            return false;
-        }
-        var OTransmitType =  $('#transmit-type .type.on');
-        if(OTransmitType.length == 0){
-            utils.AlertTip('fail','请选择服务方式');
-            return false;
-        }
-        var transmitValue = OTransmitType.attr('data-value');
-        var address = JSON.parse($('#locals_address').val());
-        if(OTransmitType.attr('data-transmitType') == 'sampling_home'){
-            var area = $('#area').val();
-            address.push(JSON.parse(area));
-        }
-
-        var goodsId = $('#goods').attr('data-id');
-        var param = {
-            "address":JSON.stringify(address),
-            "transmit_type":transmitValue,
-            "goodsId": goodsId
-        };
-
-        utils.SendAjax({
-            url: '/trade/cart/addItem',
-            param: param,
-            method: 'POST',
-            tipText: '加入购物车',
-            callback: function (result) {
-                if(result.needLogin){
-                    utils.showLogin();
-                }else{
-                    utils.AlertTip('success','加入购物车成功');
-                }
+        utils.CheckLogin(function(){
+            if(!checkArea()){
+                utils.AlertTip('fail','所选城市不在该商品销售区域,请重新选择');
+                return false;
             }
-        });
+            var OTransmitType =  $('#transmit-type .type.on');
+            if(OTransmitType.length == 0){
+                utils.AlertTip('fail','请选择服务方式');
+                return false;
+            }
+            var transmitValue = OTransmitType.attr('data-value');
+            var address = JSON.parse($('#locals_address').val());
+            if(OTransmitType.attr('data-transmitType') == 'sampling_home'){
+                var area = $('#area').val();
+                address.push(JSON.parse(area));
+            }
 
+            var goodsId = $('#goods').attr('data-id');
+            var param = {
+                "address":JSON.stringify(address),
+                "transmit_type":transmitValue,
+                "goodsId": goodsId
+            };
+
+            utils.SendAjax({
+                url: '/trade/cart/addItem',
+                param: param,
+                method: 'POST',
+                tipText: '加入购物车',
+                callback: function (result) {
+                    if(result.needLogin){
+                        utils.showLogin();
+                    }else{
+                        utils.AlertTip('success','加入购物车成功');
+                    }
+                }
+            });
+        });
     }
 
 

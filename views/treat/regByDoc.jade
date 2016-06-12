@@ -10,7 +10,7 @@ block content
         .reg
             header
                 h2 按医生预约
-            form#regByDocForm
+            form#regByDocForm(name="regByDocForm")
                 -var doctorDTO = data.doctorDTO;
                 -hosname = '';
                 each h in doctorDTO.hospitalReDepartments

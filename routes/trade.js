@@ -39,7 +39,7 @@ router.get('/cart/list', function (req, res, next) {
     });
 });
 
-router.post('/cart/addItem', authority.loginRequired, function (req, res, next) {
+router.post('/cart/addItem',function (req, res, next) {
     request.AddCartItem(req, function (data, success) {
         res.json(data);
     });

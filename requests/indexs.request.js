@@ -44,15 +44,34 @@ exports.login = function (req,res,next) {
     };
     util.ajax('GET',api.Login,bizParam,function (data,success) {
         if(success){
+            req.session.userInfo = JSON.parse(data).data.userAllInfo;
             res.cookie('userInfo',JSON.parse(data).data.userAllInfo, { maxAge: 1000*60*60*12 });
-            // req.session.user = JSON.parse(data).data.userAllInfo;
         }
         res.send(data)
     });
 
 };
 exports.logout = function (req,res,next) {
-    res.cookie('userInfo','null',{maxAge:0});
+    // res.cookie('userInfo','null',{maxAge:0});
+    req.session.destroy(function(){
+        console.log('退出登录');
+    });
     res.send('{"code":"200","success":"true"}');
+};
 
+
+exports.checkLogin = function (req,res,next) {
+    var _user = req.session.userInfo;
+    var json = {"code":"200",login:false,"success":"true"};
+
+    if(_user) {
+        json.login = true;
+    }
+    res.send(JSON.stringify(json));
+};
+
+exports.loginView = function (req,res,next) {
+    res.render('login',{
+
+    });
 };

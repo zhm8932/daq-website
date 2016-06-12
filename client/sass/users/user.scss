@@ -127,8 +127,24 @@
     }
   }
 
+}
 
-
+.reservation.box-right dl.order{
+  .goods {
+    width: 34%;
+    .goods-detail {
+      width: 100%;
+    }
+  }
+  .detail {
+    width: 28%;
+  }
+  .order-state {
+    width: 20%;
+  }
+  .operation {
+    width: 15%;
+  }
 }
 
 .coupons{
@@ -163,3 +179,45 @@
   }
 }
 
+.reservation-detail{
+  .overview {
+    margin-bottom:27px;
+    padding:22px;
+    background-color: #E5FAFF;
+    border: 1px solid #7ECEDF;
+    .info{
+      margin-right:5%;
+      span:first-child{
+        margin-right:10px;
+      }
+      .check-report{
+        padding:9px 18px;
+        color:#48BED8;
+        border:1px solid;
+        border-radius:18px;
+        background: #fff;
+      }
+    }
+  }
+  table{
+    .goods{
+      img {
+        width: 40%;
+        float: left;
+      }
+      span {
+        width: 60%;
+        float: right;
+        padding-left: 13px;
+        line-height: 17px;
+        box-sizing: border-box;
+      }
+    }
+    tr{
+      border-bottom:1px solid #ddd;
+    }
+    td.bd-l{
+      border-left:1px solid #ddd;
+    }
+  }
+}

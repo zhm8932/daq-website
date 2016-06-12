@@ -1,0 +1,13 @@
+extends ./layout
+
+block content
+  link(href='/css/index.css',rel='styleSheet')
+  include ./includes/responsive
+  include ./includes/nav
+  .login-view.bg
+    section.wrapper
+      #slideLogin
+        .title
+          span.on 密码登录
+
+  include ./includes/footer

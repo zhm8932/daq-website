@@ -8,7 +8,7 @@ var config = require('../config');
 
 exports.GetCartList = function (req, callback) {
     var bizParam = {
-        "accountId": req.cookies.userInfo.accountCommon.id
+        "accountId": req.session.userInfo.accountCommon.id
     };
 
     util.ajax('GET', api.GetCartList, bizParam, function (data, success) {
@@ -40,7 +40,7 @@ exports.AddCartItem = function (req, res, dataType, callback) {
             ],
             "count": 1,
             "goodsId": body.goodsId,
-            "accountId": req.cookies.userInfo.accountCommon.id
+            "accountId": req.session.userInfo.accountCommon.id
         }
     };
 
@@ -52,7 +52,7 @@ exports.AddCartItem = function (req, res, dataType, callback) {
 
 exports.CreateOrder = function (req, callback) {
     var orderPlaceDTO = JSON.parse(req.body.orderPlaceDTO);
-    orderPlaceDTO.accountId = req.cookies.userInfo.accountCommon.id;
+    orderPlaceDTO.accountId = req.session.userInfo.accountCommon.id;
     var bizParam = {
         orderPlaceDTO: orderPlaceDTO
     };
@@ -83,7 +83,7 @@ exports.GetOrderList = function (req, callback) {
     var bizParam = {
         pageSize: query.pageSize || 10,
         pageIndex: query.pageIndex || 1,
-        "accountId": req.cookies.userInfo.accountCommon.id
+        "accountId": req.session.userInfo.accountCommon.id
     };
 
     util.ajax('GET', api.GetOrderList, bizParam, function (data, success) {
@@ -118,7 +118,7 @@ exports.OrderPay = function (req, callback) {
         "command": {
             "rawRequest": {
                 "id": req.body.id,
-                "accountId": req.cookies.userInfo.accountCommon.id,
+                "accountId": req.session.userInfo.accountCommon.id,
                 "payWay": req.body.payWay
             }
         }

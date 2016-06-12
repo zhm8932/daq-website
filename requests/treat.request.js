@@ -28,7 +28,7 @@ exports.AddRegByDoc = function (req, callback) {
     var body = req.body;
     var bizParam = {
         "command": {
-            "accountId": req.cookies.userInfo.accountCommon.id,
+            "accountId": req.session.userInfo.accountCommon.id,
             "anonymous": 1,
             "customerId": "1605211925590557003",
             "patient": body.patient,

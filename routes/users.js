@@ -29,19 +29,6 @@ router.get('/reservation/list',function(req,res,next){
     });
 });
 
-//挂号列表
-router.get('/register/list',function(req,res,next){
-    request.GetRegisterList(req,function(data,success) {
-        var json = JSON.parse(data);
-        if(success){
-            res.render('users/registerings',{
-                title:'我的挂号',
-                data:json.data
-            });
-        }
-    });
-});
-
 router.get('/reservation/detail',function(req,res,next){
     request.GetReserveDetail(req,function(data,success) {
         var json = JSON.parse(data);
@@ -55,6 +42,21 @@ router.get('/reservation/detail',function(req,res,next){
         }
     });
 });
+
+//挂号列表
+router.get('/register/list',function(req,res,next){
+    request.GetRegisterList(req,function(data,success) {
+        var json = JSON.parse(data);
+        if(success){
+            res.render('users/registerings',{
+                title:'我的挂号',
+                data:json.data
+            });
+        }
+    });
+});
+
+
 
 router.get('/coupon/list',function(req,res,next) {
     request.GetCouponList(req,function(data,success) {

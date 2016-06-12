@@ -184,23 +184,7 @@
 
 }
 
-.submitBtn {
-  color: $white;
-  line-height: 40px;
-  height: 40px;
-  width: 120px;;
-  border: 1px solid $bdrc_48B;
-  background-color: $bgc_48B;
-  font-size: 16px;
-  margin-left: 175px;
-}
 
-.popupBox{
-  article{
-    padding:0;
-  }
-
-}
 
 .add-patient-dialog{
   width:475px;
@@ -225,14 +209,31 @@
 
   }
 
+
+
+  .popupBox{
+    .submitBox{
+      span.ok{
+        display:inline-block;
+        padding:5px 19px;
+        margin-left:90px;
+      }
+    }
+    article{
+      padding:0;
+    }
+
+  }
+
 }
 
-.popupBox{
-  .submitBox{
-    span.ok{
-      display:inline-block;
-      padding:5px 19px;
-      margin-left:90px;
-    }
-  }
+.submitBtn {
+  color: $white;
+  line-height: 40px;
+  height: 40px;
+  width: 120px;;
+  border: 1px solid $bdrc_48B;
+  background-color: $bgc_48B;
+  font-size: 16px;
+  margin-left: 175px;
 }

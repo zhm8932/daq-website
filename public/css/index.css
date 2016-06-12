@@ -14,3 +14,9 @@
 */
 .box {
   content: 'what'; }
+
+.login-view .bg {
+  background: #F2F6F7; }
+.login-view .wrapper {
+  height: 494px;
+  background: url(../images/lg_img.png) 0 bottom no-repeat; }

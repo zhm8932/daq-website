@@ -5,27 +5,8 @@ define(function (require, exports, module) {
         $('.add-patient').on('click',function(){
             showDialog();
         });
-
-        $('.submitBtn').on('click',function(){
-            addReg();
-        });
     });
 
-    function addReg(){
-        var param = $('#regByDocForm').serialize();
-        utils.SendAjax({
-            url: '/treat/reg/byDoc',
-            param: param,
-            method: 'POST',
-            tipText: '挂号',
-            callback: function (result) {
-                window.location.href = '/users/register/list';
-            },
-            errorFun: function (result) {
-
-            }
-        });
-    }
 
     var index = '';
     var $prompt = '';

@@ -209,7 +209,7 @@ define(function(require,exports,module) {
         }
         return true;
     }
-    function SendAjax(options) {
+    function sendAjax(options) {
         $.ajax({
             url: options.url,
             type: options.method || 'GET',
@@ -285,12 +285,8 @@ define(function(require,exports,module) {
 
     function deleteCookie(name) {
         var date = new Date();
-        console.log(date);
-        console.log(date-10000);
         date.setTime(date.getTime() - 10000);
         document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:01 GMT";
-        console.log(date.toGMTString());
-        console.log('delete:'+getCookie('accountId'));
     }
 
 
@@ -462,9 +458,6 @@ define(function(require,exports,module) {
                         title:'<i class="icon"></i>登录成功!',
                         otherBox:'successBox'
                     });
-                    // $('#userInfo').val(json.data.userAllInfo);
-                    var id = json.data.userAllInfo.accountCommon.id;
-                    addCookie('accountId',id,'/',12);
 
                     popup.hideBox(function () {
                         $('.msgBox').hide();
@@ -493,18 +486,36 @@ define(function(require,exports,module) {
                 var json = JSON.parse(json);
                 if(json.success){
                     $topBarAside.html(loginHtml);
-                    // $('#userInfo').val('');
-                    deleteCookie('accountId');
                 }
             }
         })
     }
+
+
+    function checkLogin(callBack){
+        sendAjax({
+            url: '/checkLogin',
+            param: {},
+            method: 'GET',
+            tipText: '检查是否登录',
+            callback: function (result) {
+                if(!result.login){
+                    showLogin();
+                    return false;
+                }else{
+                    callBack && callBack();
+                }
+            }
+        });
+    }
+
+
     module.exports={
         Popup:Popup,
         MsgShow:MsgShow,
         CheckNull:CheckNull,
         browser:browser,
-        SendAjax: SendAjax,
+        SendAjax: sendAjax,
         stringJSON: stringJSON,
         AlertTip: alertTip,
         AddCookie: addCookie,
@@ -516,7 +527,8 @@ define(function(require,exports,module) {
         showLogin:showLogin,
         login:login,
         logout:logout,
-        getLoacalDateAndTime:getLoacalDateAndTime
+        getLoacalDateAndTime:getLoacalDateAndTime,
+        CheckLogin:checkLogin
     }
 
 })

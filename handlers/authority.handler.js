@@ -8,14 +8,40 @@ function showLogin(req,res,next,msg){
     res.send(JSON.stringify(data));
 }
 
-exports.loginRequired = function(req,res,next){
-    var _user = req.cookies.userInfo;
+exports.loginRequiredAsyn = function(req,res,next){
+    console.log(req.session);
+    var _user = req.session.userInfo;
 
-    console.log('登录控制器');
-    console.log('_user:',_user);
     if(!_user){
         return showLogin(req,res,next);
     }else{
         next();
     }
 };
+
+exports.loginRequired = function(req,res,next){
+    console.log('-----'+req.session);
+    var _user = req.session.userInfo;
+
+    if(!_user){
+        res.render('login',{
+            url:''
+        });
+    }else{
+        next();
+    }
+};
+
+// exports.loginRequired = function(req,res,next){
+//     var _user = req.cookies.userInfo;
+//
+//     console.log('登录控制器');
+//     console.log('_user:',_user);
+//     if(!_user){
+//         return showLogin(req,res,next);
+//     }else{
+//         next();
+//     }
+// };
+
+
