@@ -44,7 +44,7 @@ block content
           ul
             each item in get_goods_list
               li
-                  a(href='/screenings/goods/#{item.id}',target='_blank')
+                  a(href='/screenings/goods/detail/#{item.id}',target='_blank')
                     //img(data-original='images/product1.png')
                     if item.goodsImages
                       img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}',title='#{item.goodsName}')
@@ -85,8 +85,8 @@ block content
               h4 #{item.deptName}
               p
                 if item.description
-                  if item.description.length>60
-                    |#{item.description.substring(0,60)}……
+                  if item.description.length>30
+                    |#{item.description.substring(0,30)}……
                   else
                     |#{item.description}
 

@@ -194,7 +194,44 @@ font-weight:100;
   font-family:'PingHei';
   font-style:normal;
   font-weight:200;
+  //src:local('☺︎'),url("../fonts/PingFang Regular.ttf") format("truetype");
   src:local('☺︎'), url("../fonts/PingHei-light.woff") format("woff"), url("../fonts/PingHei-light.ttf") format("truetype");
   /* Copyright (c) 2000-2008, Changzhou SinoType Technology Co., Ltd.  All rights reserved. */
 }
 
+@font-face {
+  font-family:'HanHei SC';
+  font-style:normal;
+  font-weight:300;
+  src:local('☺︎'), url("../fonts/HanHei-SC-thin.woff") format("woff"), url("../fonts/HanHei-SC-thin.ttf") format("truetype");
+  /* Copyright © 2015 Apple Inc. All rights reserved. */
+}
+
+@font-face {
+  font-family:'HanHei SC 300';
+  src:url("../fonts/HanHei-SC-thin.eot");
+  /* Copyright © 2015 Apple Inc. All rights reserved. */
+}
+
+@font-face {
+  font-family:'HanHei SC';
+  font-style:normal;
+  font-weight:600;
+  src:local('☺︎'), url("../fonts/HanHei-SC-semibold.woff") format("woff"), url("../fonts/HanHei-SC-semibold.ttf") format("truetype");
+  /* Copyright © 2015 Apple Inc. All rights reserved. */
+}
+
+@font-face {
+  font-family:'HanHei SC 600';
+  src:url("../fonts/HanHei-SC-semibold.eot");
+  /* Copyright © 2015 Apple Inc. All rights reserved. */
+}
+
+@font-face {
+  font-family:'HanHei SC';
+  font-style:normal;
+  font-weight:400;
+  src:url("../fonts/HanHei-SC-text.eot");
+  src:local('☺︎'), url("../fonts/HanHei-SC-text.woff") format("woff"), url("../fonts/HanHei-SC-text.ttf") format("truetype");
+  /* Copyright © 2015 Apple Inc. All rights reserved. */
+}
