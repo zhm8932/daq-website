@@ -165,6 +165,7 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.15); }
     .select-box ul.options .option {
       line-height: 28px;
+      white-space: nowrap;
       padding: 0 10px; }
       .select-box ul.options .option:hover {
         background: #48BED8; }

@@ -97,14 +97,22 @@
           margin-bottom: 15px; }
       .box-right .order dd .operation {
         width: 15%; }
-  .box-right .users-table tr td {
+  .box-right .patients-table tr td {
     padding: 10px; }
-  .box-right .users-table .plus {
+  .box-right .patients-table .plus {
     display: inline-block;
     vertical-align: middle;
     font-size: 32px;
     font-weight: bold;
     margin-right: 10px; }
+  .box-right .patients-table .new-tr td {
+    padding: 5px 10px;
+    vertical-align: middle; }
+    .box-right .patients-table .new-tr td input {
+      line-height: 30px;
+      height: 30px; }
+      .box-right .patients-table .new-tr td input:focus {
+        border: 1px solid #48BED8; }
 
 .reservation.box-right dl.order .goods {
   width: 34%; }

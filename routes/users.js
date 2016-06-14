@@ -7,15 +7,6 @@ var request = require('../requests/users.request');
 
 /* GET users listing. */
 
-router.get('/patient/list',function(req,res,next) {
-    request.GetPatientsList(req,function(data,success) {
-        var json = JSON.parse(data);
-        res.render('users/patients', {
-            title: '就诊人',
-            data: json.data
-        });
-    });
-});
 
 router.get('/reservation/list',function(req,res,next){
     request.GetReservationList(req,function(data,success) {
@@ -84,6 +75,30 @@ router.post('/coupon/addByInvite',function(req,res,next) {
     });
 });
 
+router.get('/patient/list',function(req,res,next) {
+    request.GetPatientList(req,function(data,success) {
+        var json = JSON.parse(data);
+        if(success){
+            res.render('users/patients',{
+                title:'我的就诊人',
+                data:json.data
+            });
+        }else{
+            res.json(data);
+        }
+    });
+});
 
+router.post('/patient/add',function(req,res,next) {
+    request.AddPatient(req,function(data,success) {
+        res.json(data);
+    });
+});
+
+router.post('/patient/del',function(req,res,next) {
+    request.DelPatient(req,function(data,success) {
+        res.json(data);
+    });
+});
 
 module.exports = router;      

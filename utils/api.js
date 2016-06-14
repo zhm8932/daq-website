@@ -140,6 +140,10 @@ module.exports = {
     GetReservationList: "service.reservation.byuser",
     GetReserveDetail: "service.reservation.byid",
 
+    //就诊人
+    GetPatientList: "daq.contactPerson.list",
+    AddPatient: "daq.contactPerson.add",
+    DelPatient: "daq.contactPerson.delete",
 
     //字典
     GetListByTypeAndLevel: "dictionary.queryDictionaryListByTypeAndLevel",
