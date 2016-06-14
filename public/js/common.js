@@ -14,7 +14,7 @@ define(function(require, exports, module){
         $.each($nav_A,function (index,arr) {
             href = $(arr).attr('href');
             if(curPathname.search(href)!=-1){
-                $(arr).parent().addClass('on').siblings().removeClass('on')
+                $(arr).parent().addClass('on').siblings().removeClass()
             }
 
         });
@@ -39,6 +39,29 @@ define(function(require, exports, module){
             }
         });
 
+        $('.city-name').on('click',function(e){
+            e.stopPropagation();
+            var $this = $(this);
+            var OChooseCity = $this.find('.choose-city');
+            if(OChooseCity.css('display') == 'none'){
+                OChooseCity.fadeIn();
+                console.log(OChooseCity.data('load'));
+                var data = OChooseCity.data('load')
+                if(data === 'first'){
+                    getCityList();
+                    OChooseCity.data('load','non-first');
+                }
+            }
+        });
+
+        $(window).on('click',function(){
+            var OChooseCity = $('.city-name .choose-city');
+            if(OChooseCity.css('display') != 'none') {
+                OChooseCity.fadeOut();
+            }
+        });
+
+
         //tab切换
         require('./libs/tab')('.tab li')
 
@@ -55,6 +78,57 @@ define(function(require, exports, module){
             var time = utils.GetLoacalDateString(timestamp);
             $this.html(time);
         });
+    });
+
+    function getCityList(){
+        utils.SendAjax({
+            url: '/dic/list/typeAndLevel',
+            param: {type:"district",level:"2",activeState:'1'},
+            method: 'GET',
+            tipText: '获取城市',
+            callback: function (result) {
+                var data = result.data;
+                var cityHtml = '';
+                var choosedCityId = $('#choosed-city-id').val();
+                for(var i = 0; i < data.length; i++){
+                    var city = data[i];
+                    if(data[i].id == choosedCityId){
+                        cityHtml += '<span class="city on">'+city.name+'</span>';
+                    }else{
+                        cityHtml += '<span class="city">'+city.name+'</span>';
+                    }
+                }
+
+                $('.city-list').html(cityHtml);
+                var citys = $('.city-list .city');
+
+                for(var i = 0; i < data.length; i++){
+                    citys.eq(i).data('city',data[i]).on('click',function(){
+                        changeCity($(this));
+                    });
+                }
+            },
+            errorFun: function (result) {
+
+            }
+        });
+    }
+
+    function changeCity($this){
+        var city = $this.data('city');
+        utils.SendAjax({
+            url: '/changeCity',
+            param: {city:city},
+            method: 'GET',
+            tipText: '切换城市',
+            callback: function (result) {
+                window.location.reload();
+            },
+            errorFun: function (result) {
+
+            }
+        });
+    }
 
 
         var winWidth = $(window).width();

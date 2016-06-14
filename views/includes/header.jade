@@ -2,15 +2,32 @@
     .wrapper
         //-.topLeft(style='float:left')
             a(target='_blank',href='http://file.douanquan.com/P16047%E5%8C%97%E4%BA%AC%E5%A4%A7%E6%97%8F%E9%83%BD%E5%AE%89%E8%AF%8A%E6%89%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E5%BD%B1%E5%93%8D%E6%8A%A5%E5%91%8A%E8%A1%A8-%E5%85%A8%E6%9C%AC%E5%85%AC%E5%BC%80.pdf') 北京大族都安诊所有限公司项目环境影响报告表-全本公开
-        .topBar_info
-            span.city_name
-                | 深圳
+        .topBar-info
+            -var address = JSON.parse(locals_address)[1];
+            input#choosed-city-id(type="hidden",value="#{address.categoryId}")
+            .city-name
+                | #{address.name}
                 i.icon
+                .choose-city.text-sec(data-load='first')
+                    .arrow-bottom
+                    .city-list
+                        span.city 长沙
+                        span.city 长沙
+                        span.city.on 长沙
+                        span.city 长沙
+                        span.city 长沙
+                        span.city 长沙
+                        span.city 长沙
+                        span.city 长沙
+                        span.city 长沙
+                        span.city 长沙
+
             i.icon.devidel
             aside
                 .wapUser
                     img(src='/images/user.png')
                 if userInfo
+                if account
                     a.logout(href='/trade/order/list') 个人中心
                     i.icon.devidel
                     a.logoutBtn(href='javascript:;') 退出

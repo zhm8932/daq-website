@@ -142,29 +142,6 @@ a {
 body {
   color: #4A4A4A; }
 
-.select-box {
-  position: relative;
-  float: left;
-  vertical-align: middle; }
-  .select-box .selected {
-    display: inline-block;
-    line-height: 28px;
-    padding: 0 10px;
-    border: 1px solid #ddd; }
-    .select-box .selected i.icon {
-      background-position: 12px 12px; }
-  .select-box ul.options {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    display: block;
-    list-style: none;
-    border: 1px solid rgba(0, 0, 0, 0.15);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); }
-    .select-box ul.options .option {
-      line-height: 28px;
-      padding: 0 10px; }
-
 .alert-tip {
   position: absolute;
   z-index: 999;
@@ -257,61 +234,15 @@ select {
     top: 10px; }
   .topBar_info .devidel {
     background-position: -19px 3px; }
-  .topBar_info .wapUser {
-    display: none; }
   .topBar_info aside {
     display: inline-block; }
   .topBar_info a {
     color: #9B9B9B; }
     .topBar_info a:hover {
       color: #48BED8; }
-  .topBar_info .city_name {
-    position: relative;
-    display: inline-block; }
-    .topBar_info .city_name i {
-      background-position: 0px 6px;
-      margin-left: 5px; }
-    .topBar_info .city_name .choose-city {
-      position: absolute;
-      top: 48px;
-      left: -48px;
-      display: none;
-      width: 160px;
-      padding: 10px 10px;
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 5px; }
-      .topBar_info .city_name .choose-city .arrow-bottom {
-        position: absolute;
-        top: -26px;
-        left: 48px;
-        width: 0;
-        height: 0;
-        border-width: 13px 10px;
-        border-color: #ddd;
-        border-style: solid;
-        border-right-color: transparent;
-        border-left-color: transparent;
-        border-top-color: transparent; }
-      .topBar_info .city_name .choose-city .arrow-bottom:after {
-        content: '\00a0';
-        position: absolute;
-        width: 0;
-        height: 0;
-        right: -9px;
-        top: -12px;
-        border-width: 13px 9px;
-        border-color: #fff;
-        border-style: solid;
-        border-right-color: transparent;
-        border-left-color: transparent;
-        border-top-color: transparent; }
-      .topBar_info .city_name .choose-city span.city {
-        display: inline-block;
-        width: 80px;
-        text-align: center; }
-        .topBar_info .city_name .choose-city span.city.on, .topBar_info .city_name .choose-city span.city.hover {
-          color: #48BED8; }
+  .topBar_info .city_name i {
+    background-position: 0px 6px;
+    margin-left: 5px; }
   .topBar_info .cartBtn i {
     background-position: -38px 2px;
     width: 24px; }
@@ -376,7 +307,12 @@ select {
       padding: 0 22px;
       position: relative; }
     .nav ul li.on, .nav ul li:hover {
-      background-color: #4A4A4A; }
+      background-color: #4A4A4A;
+      -webkit-transition: all 0.3s linear;
+      -moz-transition: all 0.3s linear;
+      -ms-transition: all 0.3s linear;
+      -o-transition: all 0.3s linear;
+      transition: all 0.3s linear; }
       .nav ul li.on i, .nav ul li:hover i {
         background: none;
         border-color: transparent; }
@@ -454,11 +390,8 @@ select {
       .item_list header h2 i {
         background-position: -0px -26px;
         position: relative;
-        margin-right: 10px;
-        width: 6px;
-        height: 24px;
-        background-color: #48BED8;
-        border-radius: 100px; }
+        top: 3px;
+        margin-right: 10px; }
     .item_list header p {
       color: #9B9B9B;
       font-size: 16px; }
@@ -561,6 +494,13 @@ select {
         color: #9B9B9B;
         display: block;
         padding: 10px 0; }
+      .item_list .feature ul li figure img:hover {
+        -webkit-transition: all 0.3s linear;
+        -moz-transition: all 0.3s linear;
+        -ms-transition: all 0.3s linear;
+        -o-transition: all 0.3s linear;
+        transition: all 0.3s linear;
+        transform: scale(1.2); }
 
 .health aside {
   width: 308px;
@@ -639,8 +579,7 @@ select {
     -o-transition: all 0.3s;
     transition: all 0.3s; }
 .tab img {
-  margin: 20px 0 0;
-  width: 100%; }
+  margin: 20px 0 0; }
 
 .globalBg {
   width: 100%;
@@ -749,7 +688,7 @@ select {
   left: 0px;
   top: 0px;
   margin: 0px;
-  background-color: #48B363;
+  background-color: #48BED8;
   line-height: 40px;
   color: #FFF;
   border-radius: 0px; }
@@ -990,78 +929,3 @@ select {
   .rightNav ul .lineBg {
     height: 15px;
     background: url("../images/shadow.png") no-repeat; }
-
-.swiper-container {
-  /* Arrows */ }
-  .swiper-container .swiper-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-transition-property: -webkit-transform;
-    -moz-transition-property: -moz-transform;
-    -o-transition-property: -o-transform;
-    -ms-transition-property: -ms-transform;
-    transition-property: transform;
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box; }
-  .swiper-container .swiper-container {
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    /* Fix of Webkit flickering */
-    z-index: 1; }
-  .swiper-container .swiper-slide {
-    -webkit-flex-shrink: 0;
-    -ms-flex: 0 0 auto;
-    flex-shrink: 0;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    text-align: center; }
-  .swiper-container .swiper-button-prev,
-  .swiper-container .swiper-button-next {
-    position: absolute;
-    top: 50%;
-    width: 24px;
-    height: 20px;
-    margin-top: -11px;
-    z-index: 10;
-    cursor: pointer;
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: none; }
-  .swiper-container .swiper-button-prev.swiper-button-disabled,
-  .swiper-container .swiper-button-next.swiper-button-disabled {
-    opacity: 0.35;
-    cursor: auto;
-    pointer-events: none; }
-  .swiper-container .swiper-button-prev,
-  .swiper-container .swiper-container-rtl .swiper-button-next {
-    background-image: url("../images/menu_l.png");
-    left: 0px;
-    right: auto; }
-  .swiper-container .swiper-button-prev.swiper-button-black,
-  .swiper-container .swiper-container-rtl .swiper-button-next.swiper-button-black {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E"); }
-  .swiper-container .swiper-button-prev.swiper-button-white,
-  .swiper-container .swiper-container-rtl .swiper-button-next.swiper-button-white {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E"); }
-  .swiper-container .swiper-button-next,
-  .swiper-container .swiper-container-rtl .swiper-button-prev {
-    background-image: url("../images/menu_r.png");
-    right: 0px;
-    left: auto; }
-  .swiper-container .swiper-button-next.swiper-button-black,
-  .swiper-container .swiper-container-rtl .swiper-button-prev.swiper-button-black {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E"); }
-  .swiper-container .swiper-button-next.swiper-button-white,
-  .swiper-container .swiper-container-rtl .swiper-button-prev.swiper-button-white {
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E"); }

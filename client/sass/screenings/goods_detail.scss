@@ -1,6 +1,11 @@
 @import "../settings.scss";
 
-.goods_basic{
+.wrapper{
+  position:static;
+}
+
+.goods-basic{
+  margin-top:30px;
   dl{
     dt{
       width: 45%;float: left;overflow: hidden;
@@ -50,10 +55,11 @@
       h1{font-size: 24px;}
       .price{
         padding: 20px 0;margin-bottom:20px;border-bottom: 1px solid $bdrc_ddd;
-        .new{ font-size: 24px;color:$red_ED9; padding-right: 15px;}
+        .new{ font-size: 24px;color:$red_ED9; padding-right: 15px;
+          vertical-align: middle;}
         .old{ color: $gray9B; text-decoration: line-through;}
       }
-      p,div{line-height: 30px;
+      p{line-height: 30px;
         select{margin-right: 10px;}
       }
       label{padding-right: 5px;}
@@ -63,6 +69,37 @@
           &:hover,&.on{border-color: $bdrc_ED9;cursor: pointer; }
         }
         mark{display: block;color:$red_ED9;line-height: 18px;}
+      }
+
+      .type-box{
+        position: relative;
+        border:none;
+        width:418px;
+        margin-left:-9px;
+        padding:5px 0 10px 9px;
+        .box-header{
+          display:none;
+          position:absolute;
+          top:-32px;
+          left:-2px;
+          width:409px;
+          height:26px;
+          color:#fff;
+          padding:0 9px;
+          border:2px solid #ED9E9A;
+          background:#ED9E9A;
+          i.icon{
+            width:9px;
+            cursor:pointer;
+            background-position:-190px 9px;
+            float:right;}
+        }
+        &.unchoose{
+          border:2px solid #ED9E9A;
+          .box-header{
+            display:block;
+          }
+        }
       }
     }
     .submitBox{
@@ -79,14 +116,15 @@
 .goods_detail{
   .tab{
     background-color:$bgc_F2; line-height: 50px;border-bottom:2px solid $bdrc_48B ;margin:20px 0;
-    a,span{padding: 0 30px;display: inline-block;font-size: 16px;}
+    span{padding: 0 30px;display: inline-block;font-size: 16px;}
+
   }
   article{
     h3{color: $textc_48B;font-size: 16px;font-weight: bold;
-      i{background-position:-175px 7px;margin-right: 5px;}
+      i{background-position:-213px 6px;margin-right: 5px;}
     }
     p,pre{
-      word-break:break-word;
+      word-break:break-all;
     }
   }
 }
