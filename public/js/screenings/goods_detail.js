@@ -5,6 +5,29 @@ define(function(require){
     require('touchslider');
 
     $(function(){
+        $('.goods_detail .tab span').on('click',function(){
+            var topBarHeight = $('.topBar').height();
+            var tabHeight = $('.goods_detail .tab').height();
+            var top = topBarHeight + tabHeight;
+            var $this = $(this);
+            var id = $this.data('href-id');
+            var height = $('#'+id).offset().top - top;
+            $('html,body').animate({scrollTop:height}, 1000);
+        });
+
+        $(document).scroll(function(){
+            var topBarHeight = $('.topBar').height();
+            var tab = $('.goods_detail .tab');
+            var top = tab.offset().top - $(document).scrollTop();
+            console.log(top);
+            if(top <= topBarHeight){
+                tab.css('position','fixed').css('top',topBarHeight+'px').css('margin','0');
+            }else{
+                tab.css('position','static').css('margin','20px 0');
+            }
+        });
+
+
         var address = JSON.parse($('#locals_address').val());
         var oTypes = $('#transmit-type .type');
         var isNeedArea = true;

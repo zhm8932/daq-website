@@ -12,6 +12,9 @@
 480 ， 600 ， 720 ， 768 ， 800 ， 854 ， 960 ， 1024 ， 1080 ， 1136 ， 1280 ， 1536 ， 1920 ， 2048 ， 2560
 
 */
+.wrapper {
+  position: static; }
+
 .goods_basic dl dt {
   width: 45%;
   float: left;
@@ -115,7 +118,7 @@
   line-height: 50px;
   border-bottom: 2px solid #48BED8;
   margin: 20px 0; }
-  .goods_detail .tab a, .goods_detail .tab span {
+  .goods_detail .tab span {
     padding: 0 30px;
     display: inline-block;
     font-size: 16px; }
@@ -124,7 +127,7 @@
   font-size: 16px;
   font-weight: bold; }
   .goods_detail article h3 i {
-    background-position: -175px 7px;
+    background-position: -164px 6px;
     margin-right: 5px; }
 .goods_detail article p, .goods_detail article pre {
-  word-break: break-word; }
+  word-break: break-all; }

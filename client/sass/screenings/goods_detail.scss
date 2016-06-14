@@ -1,5 +1,9 @@
 @import "../settings.scss";
 
+.wrapper{
+  position:static;
+}
+
 .goods_basic{
   dl{
     dt{
@@ -79,14 +83,15 @@
 .goods_detail{
   .tab{
     background-color:$bgc_F2; line-height: 50px;border-bottom:2px solid $bdrc_48B ;margin:20px 0;
-    a,span{padding: 0 30px;display: inline-block;font-size: 16px;}
+    span{padding: 0 30px;display: inline-block;font-size: 16px;}
+
   }
   article{
     h3{color: $textc_48B;font-size: 16px;font-weight: bold;
-      i{background-position:-175px 7px;margin-right: 5px;}
+      i{background-position:-164px 6px;margin-right: 5px;}
     }
     p,pre{
-      word-break:break-word;
+      word-break:break-all;
     }
   }
 }

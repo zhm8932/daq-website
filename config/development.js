@@ -28,6 +28,7 @@ var config = {
     //用来对应各种取样方式
     sample:{"sampling_home":"上门取样","sampling_delivery":"快递取样","sampling_clinic":"门诊取样"},
     sessionSecret:"DAQ-Web-Session",
+    addressJSON:[{"categoryId":"2140010947025762019","name":"广东省","level":1},{"categoryId":"2140010947444103020","name":"深圳市","level":2}],
 
     //=========测试环境
     // //用于访问静态文件

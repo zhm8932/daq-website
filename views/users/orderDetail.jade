@@ -35,7 +35,6 @@ block content
                     th 操作
                 tbody
                     -var transmitType='',favPrice='';
-                    -var addressJson = JSON.parse(locals_address);
                     -var sampleJson = JSON.parse(locals_sample);
                     each item,i in data.goodsItemDTOs
                         tr(data-address="#{item.address}",data-transmitType="#{item.transmitType}",data-goodsId="#{item.goodsId}")

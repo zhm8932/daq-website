@@ -17,6 +17,12 @@ router.get('/list/parentId',function(req,res,next) {
     });
 });
 
+router.get('/detail/ids',function(req,res,next) {
+    request.GetDetailByIds(req,function(data,success) {
+        res.json(data);
+    });
+});
+
 module.exports = router;
 
 

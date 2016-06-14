@@ -1,8 +1,9 @@
 //套餐
-var config = require('../config')
-var api = require('../utils/api')
-var util = require('../utils/ajax')
-var crypto = require('crypto')
+var config = require('../config');
+var api = require('../utils/api');
+var util = require('../utils/ajax');
+var crypto = require('crypto');
+var dictionnary = require('../requests/dictionary.request');
 
 exports.get_goods_list = function (req,res,next) {
     var goodsState = req.params.goodsState||2,
@@ -45,7 +46,7 @@ exports.login = function (req,res,next) {
     util.ajax('GET',api.Login,bizParam,function (data,success) {
         if(success){
             req.session.userInfo = JSON.parse(data).data.userAllInfo;
-            res.cookie('userInfo',JSON.parse(data).data.userAllInfo, { maxAge: 1000*60*60*12 });
+
         }
         res.send(data)
     });
@@ -74,4 +75,19 @@ exports.loginView = function (req,res,next) {
     res.render('login',{
 
     });
+};
+
+exports.changeCity = function (req,res,next) {
+    var city = req.query.city;
+    var ids = [];
+    ids.push(city.parentId);
+    req.ids = ids;
+    dictionnary.GetDetailByIds(req,function(data,success) {
+        var parentJson = JSON.parse(data).data[0];
+        var locals_address = [{"categoryId":parentJson.id,"name":parentJson.name,"level":parentJson.level},{"categoryId":city.id,"name":city.name,"level":city.level}];
+        req.session.locals_address = JSON.stringify(locals_address);
+        var resJson = {"code":"200","data":null,"msg":"","success":true};
+        res.json(JSON.stringify(resJson));
+    });
+
 };

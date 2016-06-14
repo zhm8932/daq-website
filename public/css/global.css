@@ -224,26 +224,70 @@ select {
   z-index: 999;
   box-shadow: 0 1px 3px #D2D2D2; }
 
-.topBar_info {
+.topBar-info {
   float: right;
   color: #9B9B9B; }
-  .topBar_info .icon {
+  .topBar-info .icon {
     width: 12px;
     margin: 0 5px;
     position: relative;
     top: 10px; }
-  .topBar_info .devidel {
+  .topBar-info .devidel {
     background-position: -19px 3px; }
-  .topBar_info aside {
+  .topBar-info aside {
     display: inline-block; }
-  .topBar_info a {
+  .topBar-info a {
     color: #9B9B9B; }
-    .topBar_info a:hover {
+    .topBar-info a:hover {
       color: #48BED8; }
-  .topBar_info .city_name i {
-    background-position: 0px 6px;
-    margin-left: 5px; }
-  .topBar_info .cartBtn i {
+  .topBar-info .city-name {
+    position: relative;
+    display: inline-block; }
+    .topBar-info .city-name i {
+      background-position: 0px 6px;
+      margin-left: 5px; }
+    .topBar-info .city-name .choose-city {
+      position: absolute;
+      top: 48px;
+      left: -48px;
+      display: none;
+      width: 160px;
+      padding: 10px 10px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px; }
+      .topBar-info .city-name .choose-city .arrow-bottom {
+        position: absolute;
+        top: -26px;
+        left: 48px;
+        width: 0;
+        height: 0;
+        border-width: 13px 10px;
+        border-color: #ddd;
+        border-style: solid;
+        border-right-color: transparent;
+        border-left-color: transparent;
+        border-top-color: transparent; }
+      .topBar-info .city-name .choose-city .arrow-bottom:after {
+        content: '\00a0';
+        position: absolute;
+        width: 0;
+        height: 0;
+        right: -9px;
+        top: -12px;
+        border-width: 13px 9px;
+        border-color: #fff;
+        border-style: solid;
+        border-right-color: transparent;
+        border-left-color: transparent;
+        border-top-color: transparent; }
+      .topBar-info .city-name .choose-city span.city {
+        display: inline-block;
+        width: 80px;
+        text-align: center; }
+        .topBar-info .city-name .choose-city span.city.on, .topBar-info .city-name .choose-city span.city.hover {
+          color: #48BED8; }
+  .topBar-info .cartBtn i {
     background-position: -38px 2px;
     width: 24px; }
 

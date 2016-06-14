@@ -203,7 +203,7 @@ select {
   box-shadow: 0 1px 3px #D2D2D2;
 }
 
-.topBar_info {
+.topBar-info {
   float: right;
   color: $gray9B;
   .icon {
@@ -219,10 +219,58 @@ select {
       color: $textc_48B;
     }
   }
-  .city_name {
+  .city-name {
+    position:relative;
+    display:inline-block;
     i {
       background-position: 0px 6px;
       margin-left: 5px;
+    }
+    .choose-city{
+      position:absolute;
+      top:48px;
+      left:-48px;
+      display:none;
+      width:160px;
+      padding:10px 10px;
+      background:#fff;
+      border:1px solid #ddd;
+      border-radius:5px;
+      .arrow-bottom {
+        position: absolute;
+        top:-26px;
+        left:48px;
+        width: 0;
+        height: 0;
+        border-width:13px 10px;
+        border-color:#ddd;
+        border-style: solid;
+        border-right-color:transparent;
+        border-left-color: transparent;
+        border-top-color: transparent;
+      }
+      .arrow-bottom:after {
+        content:'\00a0';
+        position:absolute;
+        width: 0;
+        height: 0;
+        right: -9px;
+        top: -12px;
+        border-width:13px 9px;
+        border-color:#fff;
+        border-style: solid;
+        border-right-color:transparent;
+        border-left-color: transparent;
+        border-top-color: transparent;
+      }
+
+      span.city{
+        display:inline-block;
+        width:80px;text-align:center;
+        &.on,&.hover{
+          color:#48BED8;
+        }
+      }
     }
   }
   .cartBtn i {
