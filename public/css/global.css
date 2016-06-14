@@ -142,6 +142,29 @@ a {
 body {
   color: #4A4A4A; }
 
+.select-box {
+  position: relative;
+  float: left;
+  vertical-align: middle; }
+  .select-box .selected {
+    display: inline-block;
+    line-height: 28px;
+    padding: 0 10px;
+    border: 1px solid #ddd; }
+    .select-box .selected i.icon {
+      background-position: 12px 12px; }
+  .select-box ul.options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: block;
+    list-style: none;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); }
+    .select-box ul.options .option {
+      line-height: 28px;
+      padding: 0 10px; }
+
 .alert-tip {
   position: absolute;
   z-index: 999;
@@ -732,7 +755,7 @@ select {
   left: 0px;
   top: 0px;
   margin: 0px;
-  background-color: #48BED8;
+  background-color: #48B363;
   line-height: 40px;
   color: #FFF;
   border-radius: 0px; }

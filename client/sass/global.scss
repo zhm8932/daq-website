@@ -145,6 +145,35 @@ body {
   color: $textColor
 }
 
+.select-box{
+  position:relative;
+  float:left;
+  vertical-align: middle;
+  .selected{
+    display:inline-block;
+    line-height:28px;
+    padding:0 10px;
+    border:1px solid #ddd;
+    i.icon{
+      background-position: 12px 12px;
+    }
+  }
+  ul.options{
+    position:absolute;
+    top:100%;
+    left:0;
+    display:block;
+    list-style:none;
+    border:1px solid rgba(0,0,0,.15);
+    box-shadow:0 6px 12px rgba(0,0,0,.175);
+    .option{
+      line-height:28px;
+      padding:0 10px;
+    }
+  }
+}
+
+
 .alert-tip{position:absolute;z-index:999;width:20%;color:#fff;font-size:1.3em;text-align:center;line-height:1.8em;padding:0.3em 0.5em;text-shadow: 0 1px 0 rgba(255, 255, 255, .2);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 2px rgba(0, 0, 0, .05);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 2px rgba(0, 0, 0, .05);}
@@ -828,7 +857,7 @@ select {
   position: fixed; left: 50%; top: 50%; line-height: 30px; display: none;z-index: 99999;
   font-size: 18px; background-color:rgba(134, 134, 134, 0.54);border-radius: 30px; text-align: center;//border-left: none;border-right: none;
 }
-.successBox{width: 100%;left: 0px;top:0px;margin: 0px;background-color:$bgc_48B;line-height: 40px;color: $white;border-radius: 0px;
+.successBox{width: 100%;left: 0px;top:0px;margin: 0px;background-color:#48B363;line-height: 40px;color: $white;border-radius: 0px;
   i{background-position: -51px -94px;margin: 4px 10px 0 0;}
 }
 .loginBox {

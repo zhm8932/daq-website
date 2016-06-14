@@ -5,6 +5,7 @@ define(function(require){
     require('touchslider');
 
     $(function(){
+        //锚点作用
         $('.goods_detail .tab span').on('click',function(){
             var topBarHeight = $('.topBar').height();
             var tabHeight = $('.goods_detail .tab').height();
@@ -15,19 +16,22 @@ define(function(require){
             $('html,body').animate({scrollTop:height}, 1000);
         });
 
+        //滚动时导航锁定在顶部
+        var tab = $('.goods_detail .tab');
+        tab.attr('data-orign-top',tab.offset().top);//得到初始高度
         $(document).scroll(function(){
             var topBarHeight = $('.topBar').height();
             var tab = $('.goods_detail .tab');
-            var top = tab.offset().top - $(document).scrollTop();
-            console.log(top);
-            if(top <= topBarHeight){
+            var width = tab.closest('.wrapper').width();
+
+            if($(document).scrollTop() + topBarHeight > tab.attr('data-orign-top') ){
                 tab.css('position','fixed').css('top',topBarHeight+'px').css('margin','0');
             }else{
-                tab.css('position','static').css('margin','20px 0');
+                tab.css('position','static').css('margin','20px 0').css('width',width+'px');
             }
         });
 
-
+        //选择服务方式
         var address = JSON.parse($('#locals_address').val());
         var oTypes = $('#transmit-type .type');
         var isNeedArea = true;
@@ -36,6 +40,7 @@ define(function(require){
             $this.on('click',function(){
                 oTypes.removeClass('on');
                 $this.addClass('on');
+                $('.type-box').removeClass('unchoose');
                 var transmitType = $this.attr('data-transmitType');
                 if(transmitType == 'sampling_home'){
                     $('#area').removeClass('none');
@@ -54,7 +59,11 @@ define(function(require){
                 }
             });
         });
-
+        //叉掉提示
+        $('.type-box .box-header .close').on('click',function(){
+            $('.type-box').removeClass('unchoose');
+        });
+        
 
 
         // getAddress({
@@ -182,16 +191,9 @@ define(function(require){
     }
 
     function addToCart(){
-        utils.CheckLogin(function(){
-            if(!checkArea()){
-                utils.AlertTip('fail','所选城市不在该商品销售区域,请重新选择');
-                return false;
-            }
+        checkCondition(function(){
             var OTransmitType =  $('#transmit-type .type.on');
-            if(OTransmitType.length == 0){
-                utils.AlertTip('fail','请选择服务方式');
-                return false;
-            }
+
             var transmitValue = OTransmitType.attr('data-value');
             var address = JSON.parse($('#locals_address').val());
             if(OTransmitType.attr('data-transmitType') == 'sampling_home'){
@@ -220,8 +222,23 @@ define(function(require){
                 }
             });
         });
+
     }
 
+    function checkCondition(callBack){
+        utils.CheckLogin(function() {
+            if (!checkArea()) {
+                utils.AlertTip('fail', '所选城市不在该商品销售区域,请重新选择');
+                return false;
+            }
+            var OTransmitType = $('#transmit-type .type.on');
+            if (OTransmitType.length == 0) {
+                $('.type-box').addClass('unchoose');
+                return false;
+            }
+            callBack && callBack();
+        });
+    }
 
     function checkArea(){
         var locals_address = JSON.parse($('#locals_address').val());
