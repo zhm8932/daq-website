@@ -2,8 +2,6 @@ define(function(require, exports, module){
     require('lazyload');
     require('./login');
     var utils = require('./libs/utils.js');
-    var Swiper = require('./libs/swiper.jquery.umd');
-    console.log("Swiper:",Swiper)
     $(function () {
         var $body = $('body');
 
@@ -15,7 +13,7 @@ define(function(require, exports, module){
         $.each($nav_A,function (index,arr) {
             href = $(arr).attr('href');
             if(curPathname.search(href)!=-1){
-                $(arr).parent().addClass('on').siblings().removeClass('on')
+                $(arr).parent().addClass('on').siblings().removeClass()
             }
 
         });
@@ -56,38 +54,6 @@ define(function(require, exports, module){
             var time = utils.GetLoacalDateString(timestamp);
             $this.html(time);
         });
-        //
-
-
-        var winWidth = $(window).width();
-        var $nav = $('.nav').find('.wrapper')
-        if(winWidth<768){
-            //导航滑动
-            $nav.addClass('swiper-container');
-            var swiper = new Swiper('.swiper-container', {
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev',
-                slidesPerView: 4
-                // spaceBetween: 30
-            });
-        }else{
-            $nav.removeClass('swiper-container');
-        }
-        $(window).resize(function () {
-            winWidth = $(window).width();
-            if(winWidth<768){
-                //导航滑动
-                $nav.addClass('swiper-container');
-                var swiper = new Swiper('.swiper-container', {
-                    nextButton: '.swiper-button-next',
-                    prevButton: '.swiper-button-prev',
-                    slidesPerView: 4
-                    // spaceBetween: 30
-                });
-            }else{
-                $nav.removeClass('swiper-container');
-            }
-        })
     })
 
     

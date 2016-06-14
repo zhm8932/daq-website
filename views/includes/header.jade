@@ -8,8 +8,6 @@
                 i.icon
             i.icon.devidel
             aside
-                .wapUser
-                    img(src='/images/user.png')
                 if userInfo
                     a.logout(href='/trade/order/list') 个人中心
                     i.icon.devidel
@@ -21,7 +19,6 @@
             a.cartBtn(href='/trade/cart/list')
                 i.icon
                 //span.cartNum (0)
-
             if userInfo
                 input(type="hidden",id="userInfo",value="#{userInfo}")
             else
@@ -34,4 +31,3 @@
         span.tel
             i.icon
             img(src='/images/num.png',alt='400-666-4000')
-.clear

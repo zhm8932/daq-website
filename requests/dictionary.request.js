@@ -22,4 +22,12 @@ exports.GetListByParentId = function (req, callback) {
     });
 };
 
+exports.GetDetailByIds = function (req, callback) {
+    var bizParam = {ids:req.ids};
+
+    util.ajax('GET', api.GetDetailByIds, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
 

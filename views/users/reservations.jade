@@ -12,7 +12,7 @@ block content
             -var statusJSON = {'0':'未处理','1':'处理中','2':'处理完成','4':'取消'};
             div.user-main.text-center
                 img(src='/images/user.png')
-                span.tel.text-sec #{userInfo.accountCommon.account}
+                span.tel.text-sec #{account}
             ul.left-nav
                 li: a(href='/trade/order/list') 我的订单
                 li: a.on(href='/users/reservation/list') 我的预约

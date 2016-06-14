@@ -48,7 +48,7 @@ html
 
 
             if get_goods_detail_success
-                section.goods_basic.clearfix
+                section.goods-basic.clearfix
                     .wrapper
                         dl
 
@@ -85,23 +85,36 @@ html
                                     each item,index in transmitItems
                                         | #{item.name}
                                         if(index != transmitItems.length-1)
-                                            |,
-                                div
-                                    label.text-sec 服务方式：
-                                    -var json = JSON.parse(locals_sample);
-                                    aside#transmit-type.service_type
-                                        each value,key in transmitType
-                                            span.type(data-transmitType='#{key}',data-favPrice='#{value}',data-value='{"#{key}":"#{value}"}')
-                                                | #{json[key]}
-                                                mark 优惠￥#{parseInt(value)/100}
+                                            |、
+                                .type-box
+                                    .box-header
+                                        span.tip 请选择所需服务方式
+                                        i.icon.close
+                                    div
+                                        label.text-sec 服务方式：
+                                        -var json = JSON.parse(locals_sample);
+                                        aside#transmit-type.service_type
+                                            each value,key in transmitType
+                                                span.type(data-transmitType='#{key}',data-favPrice='#{value}',data-value='{"#{key}":"#{value}"}')
+                                                    | #{json[key]}
+                                                    mark 优惠￥#{parseInt(value)/100}
 
 
-                                p#district
-                                    label.text-sec 取样地址：
-                                    -var address = JSON.parse(locals_address)
-                                    span#province #{address[0].name}
-                                    span#city #{address[1].name}
-                                    select#area.none
+                                    p#district
+                                        label.text-sec 取样地址：
+                                        -var address = JSON.parse(locals_address)
+                                        span#province #{address[0].name}
+                                        span#city #{address[1].name}
+                                        select#area.none
+
+                                    .select-box
+                                        .selected
+                                            span 南山区
+                                            i.icon.pull-down
+                                        ul.options
+                                            li.option 南山南山啊啊啊区
+                                            li.option 福田区
+                                            li.option 开发区
 
                                 .submitBox
                                     button#toOrder.submitBtn 立即购买
@@ -114,10 +127,10 @@ html
 
                 section.goods_detail.wrapper
                     .tab
-                        a(href='javascript:;') 套餐详情
-                        a(href='javascript:;') 检测须知
-                        a(href='javascript:;') 相关问题
-                    article
+                        span(data-href-id='content-detail') 套餐详情
+                        span(data-href-id='content-detection') 检测须知
+                        span(data-href-id='content-faq') 相关问题
+                    article#content-detail
                         h3
                          i.icon
                          |套餐详情
@@ -135,7 +148,7 @@ html
                             提供自取样邮寄、上门取样、门诊取样，匿名登记、账号查询报告、就诊环境区隔等隐私保护
                             权威+精准
                             全国三甲医院教授、博士、主治医生领衔，并与罗氏诊断、默沙东、碧迪等世界500强深度合作
-                    article
+                    article#content-detection
                         h3
                             i.icon
                             | 检测须知
@@ -165,22 +178,11 @@ html
                             2、	检测报告结果为阳性，应及时到都安全门诊就诊
                             3、	有尿道或生殖道不舒适者，应尽早进行检查
                             4、	爱护自己和性伴，正确使用安全套
-                    article
+                    article#content-faq
                         h3
                             i.icon
-                            | 检测须知
+                            | 相关问题
                         pre.
-                            1、平常身体没有异常也要检查CT/NG感染吗？
-                            答：感染衣原体（CT）后约50%的男性和70%的女性无不适和症状，感染淋球菌（NG）后约10%的男性和50%的女性无不适和症状表现，一旦有症状，说明CT/NG感染已经严重到可致疾病发生，所以最好的办法就是最早期筛查，早排除，早干预，可完全治愈。
-
-                            2、你们如何保证我的隐私？
-                            答：都安全门诊提供匿名预约检查， 对一些项目提供客户自己在家取样邮寄服务，不用到门诊排队挂号检查，并提供唯一的账号密码给客户查询检查报告。此外，都安全设置的取样室高度分隔，私密性强，方便客户到都安全门诊做检查，全程保护您的个人隐私。
-
-                            3、CT/NG感染是怎么传染的？
-                            答：性行为是CT/NG感染传播的主要途径，另外，感染的女性也会通过产道传染给新生儿，且传染概率达到50%，通过被污染过的毛巾、浴盆、被褥、马桶等途径也可传播，对经常更换新性伴侣或有多个性伴侣、有性病感染史、不戴安全套的性行为，以及性工作者及吸毒者等高危人群更应该及时定期筛查。
-
-                            4、CT/NG感染传染性强吗？
-                            答：每五位有性生活的女性中有一位是衣原体（CT）感染者，淋球菌（NG）通过男性感染者传给女性的几率为80%，无论是衣原体还是淋球菌女性传给新生儿的几率均为50%！
 
 
             each item in goods_detail.saleAttributes

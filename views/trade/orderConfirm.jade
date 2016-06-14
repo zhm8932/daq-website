@@ -34,7 +34,6 @@ block content
                     th 小计
                 tbody
                     -var cityId='',proCity='';
-                    -var addressJson = JSON.parse(locals_address);
                     -var sampleJson = JSON.parse(locals_sample);
                     each item,i in JSON.parse(data.items)
                         tr(data-address="#{item.address}",data-transmitType="#{item.transmitType}",data-goodsId="#{item.goodsId}")

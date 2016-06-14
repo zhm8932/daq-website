@@ -143,6 +143,7 @@ module.exports = {
 
     //字典
     GetListByTypeAndLevel: "dictionary.queryDictionaryListByTypeAndLevel",
-    GetListByParentId: "dictionary.queryDictionaryListByParentId"
+    GetListByParentId: "dictionary.queryDictionaryListByParentId",
+    GetDetailByIds: "dictionary.selectDictByIdBatch"
 
 };

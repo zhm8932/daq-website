@@ -12,7 +12,7 @@ block content
             -var sampleJson = JSON.parse(locals_sample);
             div.user-main.text-center
                 img(src='/images/user.png')
-                span.tel.text-sec #{userInfo.accountCommon.account}
+                span.tel.text-sec #{account}
             ul.left-nav
                 li: a.on(href='/trade/order/list') 我的订单
                 li: a(href='/users/reservation/list') 我的预约
