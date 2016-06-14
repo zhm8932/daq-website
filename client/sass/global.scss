@@ -232,7 +232,7 @@ select {
   box-shadow: 0 1px 3px #D2D2D2;
 }
 
-.topBar-info {
+.topBar_info {
   float: right;
   color: $gray9B;
   .icon {
@@ -249,7 +249,7 @@ select {
       color: $textc_48B;
     }
   }
-  .city-name {
+  .city_name {
     position:relative;
     display:inline-block;
     i {
