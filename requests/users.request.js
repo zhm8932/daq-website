@@ -81,17 +81,17 @@ exports.GetPatientList = function (req, callback) {
 };
 
 exports.AddPatient = function (req, callback) {
-    var bizParam = req.query;
+    var bizParam = req.body;
 
-    util.ajax('GET', api.AddPatient, bizParam, function (data, success) {
+    util.ajax('POST', api.AddPatient, bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };
 
 exports.DelPatient = function (req, callback) {
-    var bizParam = req.query;
+    var bizParam = req.body;
 
-    util.ajax('GET', api.DelPatient, bizParam, function (data, success) {
+    util.ajax('DELETE', api.DelPatient, bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };

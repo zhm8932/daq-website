@@ -147,7 +147,7 @@ body {
 
 .select-box{
   position:relative;
-  position:relative;
+  display:inline-block;
   vertical-align: middle;
   .selected{
     display:inline-block;
@@ -162,9 +162,9 @@ body {
     position:absolute;
     top:100%;
     left:0;
-    width:150px;
+    min-width:100%;
     overflow:hidden;
-    display:block;
+    display:none;
     list-style:none;
     background:#fff;
     border:1px solid rgba(0,0,0,.15);
@@ -172,11 +172,16 @@ body {
       line-height:28px;
       white-space:nowrap;
       padding:0 10px;
-      &:hover{
+      &.active,&:hover{
         background:$textOnColor;
       }
     }
 
+  }
+  &.open{
+    ul.options{
+      display:block;
+    }
   }
 }
 

@@ -5,6 +5,7 @@ define(function(require){
     require('touchslider');
 
     $(function(){
+
         //锚点作用
         $('.goods_detail .tab span').on('click',function(){
             var topBarHeight = $('.topBar').height();
