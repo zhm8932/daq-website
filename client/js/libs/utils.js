@@ -513,6 +513,7 @@ define(function(require,exports,module) {
         objs.each(function(index,ele){
             var $this = $(ele);
             $this.on('click',function(){
+                $('.select-box').not($(this)).removeClass('open');
                 if($this.hasClass('open')){
                     $this.removeClass('open');
                 }else{

@@ -78,7 +78,7 @@ html
                                     span.old
                                         | 原价#{parseInt(goods_detail.price)/100}
                                 p
-                                    label.text-sec 检测人群：
+                                    label.text-sec 检查目的：
                                     | #{fitPeople}
                                 p
                                     label.text-sec 样品种类：
@@ -97,23 +97,21 @@ html
                                             each value,key in transmitType
                                                 span.type(data-transmitType='#{key}',data-favPrice='#{value}',data-value='{"#{key}":"#{value}"}')
                                                     | #{json[key]}
-                                                    mark 优惠￥#{parseInt(value)/100}
+                                                    mark 服务费￥#{parseInt(value)/100}
 
 
-                                    p#district
+                                    div#district
                                         label.text-sec 取样地址：
                                         -var address = JSON.parse(locals_address)
                                         span#province #{address[0].name}
                                         span#city #{address[1].name}
-                                        //select#area.none
-                                        .select-box
+                                        #area.select-box.none
                                             .selected
-                                                span.text 南山区
+                                                span.text
                                                 i.icon.pull-down
                                             ul.options
-                                                li.option 南山南山啊啊啊区
-                                                li.option.active 福田区
-                                                li.option 开发区
+                                        span.area-tip.text-sec.small-text.none （该城市不提供服务）
+
 
                                 .submitBox
                                     button#toOrder.submitBtn 立即购买
@@ -125,7 +123,11 @@ html
 
 
                 section.goods_detail.wrapper
-                    .tab
+                    #tab.tab
+                        span(data-href-id='content-detail') 套餐详情
+                        span(data-href-id='content-detection') 检测须知
+                        span(data-href-id='content-faq') 相关问题
+                    #tab-copy.tab.none
                         span(data-href-id='content-detail') 套餐详情
                         span(data-href-id='content-detection') 检测须知
                         span(data-href-id='content-faq') 相关问题
@@ -133,7 +135,7 @@ html
                         h3
                          i.icon
                          |套餐详情
-                        pre.
+                        div.
                             CT（衣原体）和NG（淋球菌）是引起生殖健康的两大罪魁祸首
                             据WHO统计，2008年全球生殖道CT感染者达1亿人，NG感染者达3640万人[1]
 
@@ -151,7 +153,7 @@ html
                         h3
                             i.icon
                             | 检测须知
-                        pre.
+                        div.
                             服务区域：（关联区域）
                             上门服务区域：天河区、越秀区、海珠区、黄浦区、番禺区
                             广州市其他区域可选择自取样邮寄或门诊检测服务。
@@ -181,7 +183,32 @@ html
                         h3
                             i.icon
                             | 相关问题
-                        pre.
+                        div.
+                            服务区域：（关联区域）
+                            上门服务区域：天河区、越秀区、海珠区、黄浦区、番禺区
+                            广州市其他区域可选择自取样邮寄或门诊检测服务。
+
+                            报告时限： 4小时（样本到达实验室后）
+
+                            采样须知：
+                            1、	晨起第一次尿液最佳，截留首段尿液2ml
+                            2、	非晨起第一次尿液，建议距上次排尿至少2小时再取
+                            尿液邮寄须知：
+                            1、收到采样包，打开后应24小时内使用
+                            2、请遵从说明书采取尿液，并于4小时内寄出
+                            3、请仔细检查采样包，如有渗漏，请及时联系更换
+                            4、如采样包内液体不慎接触皮肤或眼睛，应立即用清水冲洗
+
+                            服务流程：
+                            自取样邮寄：下单—邮寄采样工具—自取样—邮寄样本至实验室—出报告
+                            上门取样：下单—预约上门时间—护士上门取样—送检—出报告
+                            门诊取样：预约—到诊登记—护士取样—送检—出报告
+
+                            专家建议：
+                            1、	建议正常人群每年筛查一次，高危人群及时筛查
+                            2、	检测报告结果为阳性，应及时到都安全门诊就诊
+                            3、	有尿道或生殖道不舒适者，应尽早进行检查
+                            4、	爱护自己和性伴，正确使用安全套
 
 
             each item in goods_detail.saleAttributes

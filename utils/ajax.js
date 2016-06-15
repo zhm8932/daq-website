@@ -99,7 +99,12 @@ module.exports.ajax = function (method,apiName,bizParam,callback) {
 
     if(method == 'DELETE') {
         request({
-            uri: url,
+            uri: {
+                protocol:'http:',
+                hostname : config.hostname_test,
+                port : config.port_test,
+                path : path
+            },
             method: "DELETE",
             form: {
                 bizParam: JSON.stringify(bizParam),
@@ -111,7 +116,7 @@ module.exports.ajax = function (method,apiName,bizParam,callback) {
             }
         }, function(error, response, body) {
 
-            console.log(body);
+            console.log("body:",body);
 
             var success = true;
 

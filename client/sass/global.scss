@@ -145,6 +145,17 @@ body {
   color: $textColor
 }
 
+button.disabled,.btn.disabled{
+  background:#C4C4C4;
+  border:1px solid #C4C4C4;
+  color:#fff;
+  &:hover{
+    background:#C4C4C4;
+    border:1px solid #C4C4C4;
+    color:#fff;
+  }
+}
+
 .select-box{
   position:relative;
   display:inline-block;
@@ -225,8 +236,10 @@ select {
 }
 
 .submitBtn {
-  @include btn($bgc_48B, $red_ED9, $white, $white);
+  @include btn($bgc_48B, $red_ED9, $white, $white,$bgc_48B);
 }
+
+.small-text{font-size:12px;}
 
 .boxBg {
   background-color: #F2F6F7;

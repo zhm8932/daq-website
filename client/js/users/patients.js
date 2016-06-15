@@ -10,11 +10,11 @@ define(function (require, exports, module) {
     });
 
     function addTr(){
-        var trHtml = '<tr class="new-tr"><td><input placeholder="就诊人姓名"/></td>'+
-            '<td><div class="select-box"><div class="selected"><span class="text">请选择</span><i class="icon pull-down"></i></div><ul class="options"><li class="option">男</li><li class="option">女</li></ul></div></td>'+
-            '<td><input placeholder="就诊人姓名"/></td>'+
-            '<td><input placeholder="年龄"/></td>'+
-            '<td class="text-main new-patient"><a href="javascript:void(0)">添加</a></td></tr>';
+        var trHtml = '<tr class="new-tr"><td class="name"><input placeholder="就诊人姓名"/></td>'+
+            '<td class="gender"><div class="select-box"><div class="selected"><span class="text">请选择</span><i class="icon pull-down"></i></div><ul class="options"><li class="option">男</li><li class="option">女</li></ul></div></td>'+
+            '<td class="birthday"><input placeholder="出生年月"/></td>'+
+            '<td class="telephone"><input placeholder="联系电话"/></td>'+
+            '<td class="new-patient"><a class="text-main" href="javascript:void(0)">添加</a></td></tr>';
         var tr = $(trHtml);
         utils.BuildSelect(tr.find('.select-box'));
         tr.find('.new-patient').on('click',function(){
@@ -25,15 +25,25 @@ define(function (require, exports, module) {
     }
 
     function addPatient($this){
+        var name = '',gender='',birthday='',telephone='',age='';
+        var genderJson = {"1":"男","2":"女"};
+
         var tr = $this.closest('tr');
-        tr.find();
+        var oName = tr.find('.name input');
+        var oGender = tr.find('.gender .options .option.active');
+        var oBirthday = tr.find('.birthday input');
+        var oTel = tr.find('.telephone input');
         utils.SendAjax({
-            url: '/users/patient/del',
-            param: {contactPersonId:id},
+            url: '/users/patient/add',
+            param: {name:name,gender:gender,birthday:birthday,telephone:telephone},
             method: 'POST',
-            tipText: '删除就诊人',
+            tipText: '添加就诊人',
             callback: function (result) {
-                tr.hide(1000);
+                tr.html('<td>'+name+'</td><td>'+genderJson[gender]+'</td><td>'+age+'</td><td>'+telephone+'</td><td><a href="javascript:void(0)" class="del-patient">删除</a></td>');
+                tr.data('id',result.data.id);
+                tr.find('.del-patient').on('click',function(){
+                    delPatient($(this));
+                })
             },
             errorFun: function (result) {
 

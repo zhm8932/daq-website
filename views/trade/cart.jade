@@ -57,7 +57,7 @@ block content
                                     -for(var type in value)
                                         -favPrice = parseInt(value[type]);
                                         -transmitType = type;
-                                        p 服务方式:#{transmitTypeJson[type]}(优惠￥#{favPrice/100})
+                                        p 服务方式:#{transmitTypeJson[type]}(服务费￥#{favPrice/100})
                                 if 'address' == cartItemAttr.attributeName
                                     -address = cartItemAttr.value;
                                     p 服务区域:
@@ -70,7 +70,7 @@ block content
                                                 if i<2
                                                    -proCity += areaObj.name;
                                                 | #{areaObj.name}
-                        -var subTotal = discountPrice-favPrice;
+                        -var subTotal = discountPrice+favPrice;
                         .tot-price.text-stress ￥#{subTotal/100}
                         .operation(data-id="#{item.id}",data-goodsId="#{item.goodsId}",data-goodsName="#{item.goodsName}",data-imgUrl="#{imgUrl}",data-discountPrice="#{discountPrice}",data-transmitType="#{transmitType}",data-subTotal="#{subTotal}",data-favPrice="#{favPrice}",data-address="#{address}",data-city="#{city}")
                             a.del-cart-item 删除
@@ -79,9 +79,9 @@ block content
 
 
                 .tfoot.back-sec.border-default.clearfix
-                    .check
-                        span.checkbox.check-all
-                    .check-text 全选
+                    //.check
+                    //    span.checkbox.check-all
+                    //.check-text 全选
                     .submit-div
                         input.btn.text-primary.submit-btn(type="button",value="提交订单")
                     .price-text 共<em class="text-stress num">0</em>件商品,商品总价:
