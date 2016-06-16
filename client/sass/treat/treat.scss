@@ -186,45 +186,39 @@
 
 
 
-.add-patient-dialog{
-  width:475px;
-  height:200px;
-  .dialog-header{
-    height:30px;
-    line-height:30px;
-    padding-left:12px;
-    background-color:#F2F2F2;
-  }
-  .dialog-body{
-    padding:16px 22px;
-    ul{
-      li{
-        margin-top:10px;
-        label{display:inline-block;width:80px;}
-        input{width:340px;height:35px;}
-        .submitBox{margin-left:80px;}
-      }
+//.add-patient-dialog{
+//  width:475px;
+//  height:200px;
+//  .dialog-header{
+//    height:30px;
+//    line-height:30px;
+//    padding-left:12px;
+//    background-color:#F2F2F2;
+//  }
+//  .dialog-body{
+//    padding:16px 22px;
+//    ul{
+//      li{
+//        margin-top:10px;
+//        label{display:inline-block;width:80px;}
+//        input{width:340px;height:35px;}
+//        .submitBox{margin-left:80px;}
+//      }
+//    }
+//  }
+//}
+
+.popupBox.add-patient-box{
+  .submitBox{
+    span.ok{
+      display:inline-block;
+      padding:5px 19px;
+      margin-left:90px;
     }
-
-
   }
-
-
-
-  .popupBox{
-    .submitBox{
-      span.ok{
-        display:inline-block;
-        padding:5px 19px;
-        margin-left:90px;
-      }
-    }
-    article{
-      padding:0;
-    }
-
+  article{
+    padding:0;
   }
-
 }
 
 .submitBtn {

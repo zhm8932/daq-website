@@ -16,7 +16,7 @@ define(function (require, exports, module) {
             '<form><ul><li><label>就诊人姓名</label><input/></li><li><label>就诊人姓名</label><input/></li><li><label>就诊人姓名</label><select/></li>'+
             '<li><span class="prompt"><i class="icon"></i><em>手机输入格式有误/验证码有误</em></span></li></ul></form></div></div>',
             otherMsg:'',
-            // popupBox:'add-box',
+            popupBox:'add-patient-box',
             okText:'保存并新增',
             bOhterMsg:true,
             callback:function () {

@@ -239,6 +239,10 @@ select {
   @include btn($bgc_48B, $red_ED9, $white, $white,$bgc_48B);
 }
 
+.cancelBtn {
+  @include btn(#fff, #ddd, #4A4A4A, #4A4A4A,#ddd);
+}
+
 .small-text{font-size:12px;}
 
 .boxBg {
@@ -257,16 +261,42 @@ select {
   box-shadow: 0 1px 3px #D2D2D2;
 }
 
-.popupBox.comfirm-box{
+.popupBox.confirm-box{
   article{
     padding:0;
   }
-  //.submitBox{display:none;}
-  //.otherMsg{display:none;}
+  .submitBox{display:none;}
+  .otherMsg{display:none;}
   .innerBg{
     padding-bottom:0;
   }
+
 }
+
+.confirm-box{
+  width:324px;
+  .cancel{
+    display:none;
+  }
+  .box-header{
+    i.cancel{
+      background-position:-240px 19px;
+    }
+    height:40px;
+    line-height:40px;
+    padding-left:12px;
+    background-color:#F2F6F7;
+  }
+  .box-body{
+    padding:16px 22px;
+    text-align:center;
+    p.confim-tip{font-size:18px;padding:15px;}
+    .btn-box{padding-bottom:10px;
+      .submitBtn{margin-right:10px;}
+    }
+  }
+}
+
 
 .topBar_info {
   float: right;

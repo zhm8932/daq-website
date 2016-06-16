@@ -32,8 +32,6 @@ router.get('/cart/list', authority.loginRequired,function (req, res, next) {
                 title: '购物车',
                 data: json.data
             });
-        } else {
-            res.json(json);
         }
     });
 });
@@ -107,7 +105,7 @@ router.get('/order/detail', authority.loginRequired,function (req, res, next) {
                 title: '订单详情',
                 data: json.data
             });
-        } 
+        }
     });
 });
 

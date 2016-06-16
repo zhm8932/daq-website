@@ -114,32 +114,12 @@
   .reg ul li .add-patient {
     margin-left: 175px; }
 
-.add-patient-dialog {
-  width: 475px;
-  height: 200px; }
-  .add-patient-dialog .dialog-header {
-    height: 30px;
-    line-height: 30px;
-    padding-left: 12px;
-    background-color: #F2F2F2; }
-  .add-patient-dialog .dialog-body {
-    padding: 16px 22px; }
-    .add-patient-dialog .dialog-body ul li {
-      margin-top: 10px; }
-      .add-patient-dialog .dialog-body ul li label {
-        display: inline-block;
-        width: 80px; }
-      .add-patient-dialog .dialog-body ul li input {
-        width: 340px;
-        height: 35px; }
-      .add-patient-dialog .dialog-body ul li .submitBox {
-        margin-left: 80px; }
-  .add-patient-dialog .popupBox .submitBox span.ok {
-    display: inline-block;
-    padding: 5px 19px;
-    margin-left: 90px; }
-  .add-patient-dialog .popupBox article {
-    padding: 0; }
+.popupBox.add-patient-box .submitBox span.ok {
+  display: inline-block;
+  padding: 5px 19px;
+  margin-left: 90px; }
+.popupBox.add-patient-box article {
+  padding: 0; }
 
 .submitBtn {
   color: #FFF;

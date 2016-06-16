@@ -251,6 +251,27 @@ select {
     color: #FFF;
     border-color: #ED9E9A; }
 
+.cancelBtn {
+  background-color: #fff;
+  border: none;
+  color: #4A4A4A;
+  line-height: 30px;
+  cursor: pointer;
+  padding: 0 20px;
+  margin: 10px 0;
+  display: inline-block;
+  font-family: "微软雅黑","Microsoft Himalaya";
+  border: 1px solid #ddd; }
+  .cancelBtn:hover {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    background-color: #ddd;
+    color: #4A4A4A;
+    border-color: #ddd; }
+
 .small-text {
   font-size: 12px; }
 
@@ -268,10 +289,36 @@ select {
   z-index: 999;
   box-shadow: 0 1px 3px #D2D2D2; }
 
-.popupBox.comfirm-box article {
+.popupBox.confirm-box article {
   padding: 0; }
-.popupBox.comfirm-box .innerBg {
+.popupBox.confirm-box .submitBox {
+  display: none; }
+.popupBox.confirm-box .otherMsg {
+  display: none; }
+.popupBox.confirm-box .innerBg {
   padding-bottom: 0; }
+
+.confirm-box {
+  width: 324px; }
+  .confirm-box .cancel {
+    display: none; }
+  .confirm-box .box-header {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 12px;
+    background-color: #F2F6F7; }
+    .confirm-box .box-header i.cancel {
+      background-position: -240px 19px; }
+  .confirm-box .box-body {
+    padding: 16px 22px;
+    text-align: center; }
+    .confirm-box .box-body p.confim-tip {
+      font-size: 18px;
+      padding: 15px; }
+    .confirm-box .box-body .btn-box {
+      padding-bottom: 10px; }
+      .confirm-box .box-body .btn-box .submitBtn {
+        margin-right: 10px; }
 
 .topBar_info {
   float: right;
