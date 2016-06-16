@@ -371,7 +371,7 @@ define(function(require,exports,module) {
     var $prompt = '';
     function showLogin(options) {
         var popup = new Popup({
-            msg:'<div class="slideLogin"><div class="tit"><span class="on">密码登录</span><span>验证码登录</span></div>' +
+            msg:'<div id="slideLogin"><div class="tit"><span class="on">密码登录</span><span>验证码登录</span></div>' +
             '<div class="touchslider-viewport"><div class="bd"> ' +
             '<ul><li><input type="text" class="username" placeholder="请输入手机号码" value="13689557622"></li><li><input type="password" class="password" placeholder="请输入密码" value="zhm123456"><span class="prompt"><i class="icon"></i><em>手机输入格式有误/验证码有误</em></span></li></ul>' +
             '<ul><li><input type="text" class="username" placeholder="请输入手机号码"></li><li><input type="text" class="password" placeholder="请输入短信验证码"><span class="getCode">获取短信验证码</span><span class="prompt"><i class="icon"></i><em>手机输入格式有误/验证码有误</em></span></li></ul>' +
@@ -380,8 +380,8 @@ define(function(require,exports,module) {
             bOhterMsg:true,
             callback:function () {
                 //TouchSlide({ slideCell:"#slideLogin",titCell:".tit span", mainCell:".bd"});
-                console.log('2222222222222')
-                $(".slideLogin").touchSlider({
+
+                $("#slideLogin").touchSlider({
                     container: this,
                     duration: 350, // 动画速度
                     delay: 3000, // 动画时间间隔
@@ -402,87 +402,48 @@ define(function(require,exports,module) {
             otherBox:'loginBox',
             isHide:false,
             okCallback:function(){
-                // index = $('.popupBox article .tit span.on').index()
-                // $prompt = $('.popupBox article').find('ul').eq(index).find('.prompt')
-                // console.log('index::',index)
-                // var data = {
-                //     "password":$('.popupBox article .bd ul').eq(index).find(".password").val(),
-                //     "account":$('.popupBox article .bd ul').eq(index).find(".username").val(),
-                //     "loginType":1
-                // }
-                //
-                // if(index==0){
-                //     if(!data.account){
-                //         $prompt.show().find('em').html('手机号码不能为空')
-                //         return
-                //     }
-                //     if(!data.password){
-                //         $prompt.show().find('em').html('密码不能为空')
-                //         return
-                //     }
-                // }
-                // if(index==1){
-                //     data.loginType=2
-                //     if(!data.account){
-                //         $prompt.show().find('em').html('手机号码不能为空')
-                //         return
-                //     }
-                //     if(!data.password){
-                //         $prompt.show().find('em').html('验证码不能为空')
-                //         return
-                //     }
-                // }
-                var data = validateLogin()
+                index = $('.popupBox article .tit span.on').index()
+                $prompt = $('.popupBox article').find('ul').eq(index).find('.prompt')
+                console.log('index::',index)
+                var data = {
+                    "password":$('.popupBox article .bd ul').eq(index).find(".password").val(),
+                    "account":$('.popupBox article .bd ul').eq(index).find(".username").val(),
+                    "loginType":1
+                }
+
+                if(index==0){
+                    if(!data.account){
+                        $prompt.show().find('em').html('手机号码不能为空')
+                        return
+                    }
+                    if(!data.password){
+                        $prompt.show().find('em').html('密码不能为空')
+                        return
+                    }
+                }
+                if(index==1){
+                    data.loginType=2
+                    if(!data.account){
+                        $prompt.show().find('em').html('手机号码不能为空')
+                        return
+                    }
+                    if(!data.password){
+                        $prompt.show().find('em').html('验证码不能为空')
+                        return
+                    }
+                }
+
 
                 console.log('data::',data)
-                if(data){
-                    login(data,popup)
-                }
+                login(data,popup,index,options)
             }
         })
 
     }
 
-    function validateLogin() {
-        var $loginWrap = $('.loginBox,.loginBox2')
-        index = $loginWrap.find('.tit span.on').index();
-        $prompt = $loginWrap.find('ul').eq(index).find('.prompt')
-        console.log('index::',index)
-        console.log('$loginWrap::',$loginWrap)
-        var data = {
-            "password":$loginWrap.find('ul').eq(index).find(".password").val(),
-            "account":$loginWrap.find('ul').eq(index).find(".username").val(),
-            "loginType":1
-        }
-        console.log('data::',data)
-        if(index==0){
-            if(!data.account){
-                $prompt.show().find('em').html('手机号码不能为空')
-                return
-            }
-            if(!data.password){
-                $prompt.show().find('em').html('密码不能为空')
-                return
-            }
-        }
-        if(index==1){
-            data.loginType=2
-            if(!data.account){
-                $prompt.show().find('em').html('手机号码不能为空')
-                return
-            }
-            if(!data.password){
-                $prompt.show().find('em').html('验证码不能为空')
-                return
-            }
-        }
-        return data;
-    }
-    function login(data,popup,index) {
-        var $loginWrap = $('.loginBox,.loginBox2');
-        var index = $loginWrap.find('.tit span.on').index();
-        $prompt = $loginWrap.find('ul').eq(index).find('.prompt');
-        console.log('data2',data)
+    function login(data,popup,index,options) {
+        var index = $('.popupBox article .tit span.on').index();
+        $prompt = $('.popupBox article').find('ul').eq(index).find('.prompt');
         $.ajax({
             type:'post',
             url:'/login',
@@ -497,21 +458,16 @@ define(function(require,exports,module) {
                         title:'<i class="icon"></i>登录成功!',
                         otherBox:'successBox'
                     });
-                    if(popup){
-                        popup.hideBox(function () {
-                            $('.msgBox').hide();
-                            $topBarAside.html(logoutHtml);
-                        });
-                    }
 
+                    popup.hideBox(function () {
+                        $('.msgBox').hide();
+                        $topBarAside.html(logoutHtml);
+                    });
                 }else{
                     // var myMsg = new utils.MsgShow({
                     //     delayTime:2000,
                     //     title:json.msg
                     // }).hideMsg()
-                    console.log('登录失败')
-                    console.log($prompt.html())
-                    // $('.loginBox2 .prompt').show()
                     $prompt.show().find('em').html(json.msg)
                 }
 
@@ -600,7 +556,6 @@ define(function(require,exports,module) {
         CheckRadio:checkRadio,
         showLogin:showLogin,
         login:login,
-        validateLogin:validateLogin,
         logout:logout,
         getLoacalDateAndTime:getLoacalDateAndTime,
         CheckLogin:checkLogin,
