@@ -4,11 +4,12 @@
 var express = require('express');
 var router = express.Router();
 var request = require('../requests/users.request');
+var authority = require('../handlers/authority.handler');
 
 /* GET users listing. */
 
 
-router.get('/reservation/list',function(req,res,next){
+router.get('/reservation/list',authority.loginRequired,function(req,res,next){
     request.GetReservationList(req,function(data,success) {
         var json = JSON.parse(data);
         if(success){
@@ -20,7 +21,7 @@ router.get('/reservation/list',function(req,res,next){
     });
 });
 
-router.get('/reservation/detail',function(req,res,next){
+router.get('/reservation/detail',authority.loginRequired,function(req,res,next){
     request.GetReserveDetail(req,function(data,success) {
         var json = JSON.parse(data);
         if(success){
@@ -35,7 +36,7 @@ router.get('/reservation/detail',function(req,res,next){
 });
 
 //挂号列表
-router.get('/register/list',function(req,res,next){
+router.get('/register/list',authority.loginRequired,function(req,res,next){
     request.GetRegisterList(req,function(data,success) {
         var json = JSON.parse(data);
         if(success){
@@ -49,13 +50,13 @@ router.get('/register/list',function(req,res,next){
 
 
 
-router.get('/coupon/list',function(req,res,next) {
+router.get('/coupon/list',authority.loginRequired,function(req,res,next) {
     request.GetCouponList(req,function(data,success) {
         res.json(data);
     });
 });
 
-router.get('/coupon/listView',function(req,res,next) {
+router.get('/coupon/listView',authority.loginRequired,function(req,res,next) {
     request.GetCouponList(req,function(data,success) {
         var json = JSON.parse(data);
         if(success){
@@ -69,13 +70,13 @@ router.get('/coupon/listView',function(req,res,next) {
     });
 });
 
-router.post('/coupon/addByInvite',function(req,res,next) {
+router.post('/coupon/addByInvite',authority.loginRequired,function(req,res,next) {
     request.AddCouponByInvite(req,function(data,success) {
         res.json(data);
     });
 });
 
-router.get('/patient/list',function(req,res,next) {
+router.get('/patient/list',authority.loginRequired,function(req,res,next) {
     request.GetPatientList(req,function(data,success) {
         var json = JSON.parse(data);
         if(success){
@@ -89,13 +90,13 @@ router.get('/patient/list',function(req,res,next) {
     });
 });
 
-router.post('/patient/add',function(req,res,next) {
+router.post('/patient/add',authority.loginRequired,function(req,res,next) {
     request.AddPatient(req,function(data,success) {
         res.json(data);
     });
 });
 
-router.post('/patient/del',function(req,res,next) {
+router.post('/patient/del',authority.loginRequired,function(req,res,next) {
     request.DelPatient(req,function(data,success) {
         res.json(data);
     });

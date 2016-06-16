@@ -405,7 +405,10 @@ define(function(require,exports,module) {
                 var data = validateLogin()
                 console.log('data::',data)
                 if(data){
-                    login(data,popup,'',options.afterLoginFun)
+                    if(!options.afterLoginFun){
+                        options.afterLoginFun = null;
+                    }
+                    login(data,popup,'',options.afterLoginFun);
                 }
             }
         })
@@ -446,6 +449,8 @@ define(function(require,exports,module) {
         }
         return data;
     }
+
+    //redirectUrl用于同步登录后继续跳转,afterLoginFun用于异步登录后继续执行
     function login(data,popup,redirectUrl,afterLoginFun) {
         var $loginWrap = $('.loginBox,.loginBox2');
         var index = $loginWrap.find('.tit span.on').index();

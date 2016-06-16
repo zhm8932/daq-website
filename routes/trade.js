@@ -38,7 +38,7 @@ router.get('/cart/list', authority.loginRequired,function (req, res, next) {
     });
 });
 
-router.post('/cart/addItem',function (req, res, next) {
+router.post('/cart/addItem',authority.loginRequired,function (req, res, next) {
     request.AddCartItem(req, function (data, success) {
         if(success){
             req.session.cart_num ++;
@@ -57,15 +57,15 @@ router.post('/cart/delItem', function (req, res, next) {
 });
 
 
-router.post('/order/comfirmView', function (req, res, next) {
-    console.log('核对订单信息')
+router.post('/order/comfirmView', authority.loginRequired,function (req, res, next) {
+    console.log('核对订单信息');
     res.render('trade/orderConfirm', {
         title: '核对订单信息',
         data: req.body
     });
 });
 
-router.post('/order/create', function (req, res, next) {
+router.post('/order/create',authority.loginRequired, function (req, res, next) {
     request.CreateOrder(req, function (data, success) {
         var json = JSON.parse(data).data;
         res.render('trade/orderSuccess', {
@@ -78,7 +78,7 @@ router.post('/order/create', function (req, res, next) {
     });
 });
 
-router.get('/order/list', function (req, res, next) {
+router.get('/order/list',authority.loginRequired, function (req, res, next) {
     request.GetOrderList(req, function (data, success) {
         var json = JSON.parse(data);
         if (success) {
@@ -92,20 +92,20 @@ router.get('/order/list', function (req, res, next) {
     });
 });
 
-router.post('/order/cancel', function (req, res, next) {
+router.post('/order/cancel',authority.loginRequired, function (req, res, next) {
     request.CancelOrder(req, function (data, success) {
         res.json(data);
     });
 });
 
-router.post('/order/delete', function (req, res, next) {
+router.post('/order/delete',authority.loginRequired, function (req, res, next) {
     request.DeleteOrder(req, function (data, success) {
         res.json(data);
     });
 });
 
 
-router.get('/order/detail', function (req, res, next) {
+router.get('/order/detail', authority.loginRequired,function (req, res, next) {
     request.GetOrderDetail(req, function (data, success) {
         var json = JSON.parse(data);
         if (success) {
@@ -119,20 +119,20 @@ router.get('/order/detail', function (req, res, next) {
     });
 });
 
-router.post('/pay/payid', function (req, res, next) {
+router.post('/pay/payid',authority.loginRequired, function (req, res, next) {
     request.GetPayId(req, function (data, success) {
         res.json(data);
     });
 });
 
-router.post('/order/pay', function (req, res, next) {
+router.post('/order/pay',authority.loginRequired, function (req, res, next) {
     request.OrderPay(req, function (data, success) {
         res.json(data);
     });
 });
 
 
-router.get('/order/orderSuccess', function (req, res, next) {
+router.get('/order/orderSuccess',authority.loginRequired, function (req, res, next) {
     res.render('trade/orderSuccess', {
         title: '下单成功',
         data: {
@@ -142,7 +142,7 @@ router.get('/order/orderSuccess', function (req, res, next) {
     });
 });
 
-router.get('/order/wechatPay', function (req, res, next) {
+router.get('/order/wechatPay',authority.loginRequired, function (req, res, next) {
     var query = req.query;
     res.render('trade/wechatPay', {
         title: '微信支付',
@@ -154,7 +154,7 @@ router.get('/order/wechatPay', function (req, res, next) {
     });
 });
 
-router.get('/order/state', function (req, res, next) {
+router.get('/order/state',authority.loginRequired, function (req, res, next) {
     request.GetOrderDetail(req, function (data, success) {
         var resJson = {"code":"200",msg:"",data:{},"success":"true"};
         var json = JSON.parse(data);
@@ -164,7 +164,7 @@ router.get('/order/state', function (req, res, next) {
     });
 });
 
-router.get('/order/paySuccess', function (req, res, next) {
+router.get('/order/paySuccess',authority.loginRequired, function (req, res, next) {
     req.query.id = req.query.order_no;
     request.GetOrderDetail(req, function (data, success) {
         var json = JSON.parse(data);

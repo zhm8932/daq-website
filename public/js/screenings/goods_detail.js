@@ -141,46 +141,35 @@ define(function(require){
 
 
     function toOrder() {
-        if(!checkArea()){
-            utils.AlertTip('fail','所选城市不在该商品销售区域,请重新选择');
-            return false;
-        }
-        var accountId = utils.GetCookie('accountId');
-        if(!accountId){
-            utils.showLogin();
-            return false;
-        }
-        var items = [];
-        var goods = $('#goods');
-        var item = {};
+        checkCondition(function() {
+            var items = [];
+            var goods = $('#goods');
+            var item = {};
 
-        var OTransmitType =  $('#transmit-type .type.on');
-        if(OTransmitType.length == 0){
-            utils.AlertTip('fail','请选择服务方式');
-            return false;
-        }
-        item.transmitType = OTransmitType.attr('data-transmitType');
-        var favPrice = OTransmitType.attr('data-favPrice');
-        var subTotal = parseInt(goods.attr('data-discountPrice'))-parseInt(favPrice);
-        item.favPrice = favPrice;
-        item.subTotal = subTotal;
+            var OTransmitType = $('#transmit-type .type.on');
+            item.transmitType = OTransmitType.attr('data-transmitType');
+            var favPrice = OTransmitType.attr('data-favPrice');
+            var subTotal = parseInt(goods.attr('data-discountPrice')) - parseInt(favPrice);
+            item.favPrice = favPrice;
+            item.subTotal = subTotal;
 
-        var address = JSON.parse($('#locals_address').val());
-        if(OTransmitType.attr('data-transmitType') == 'sampling_home'){
-            var area = $('#area').val();
-            address.push(area);
-        }
-        item.address = JSON.stringify(address);
+            var address = JSON.parse($('#locals_address').val());
+            if (OTransmitType.attr('data-transmitType') == 'sampling_home') {
+                var area = $('#area').val();
+                address.push(area);
+            }
+            item.address = JSON.stringify(address);
 
-        item.goodsId = goods.attr('data-id');
-        item.imgUrl = goods.attr('data-imgUrl');
-        item.goodsName = goods.attr('data-goodsName');
-        item.discountPrice = goods.attr('data-discountPrice');
-        items.push(item);
+            item.goodsId = goods.attr('data-id');
+            item.imgUrl = goods.attr('data-imgUrl');
+            item.goodsName = goods.attr('data-goodsName');
+            item.discountPrice = goods.attr('data-discountPrice');
+            items.push(item);
 
-        $('#submitForm input[name=items]').val(JSON.stringify(items));
-        $('#submitForm input[name=totalPrice]').val(subTotal);
-        $('#submitForm').submit();
+            $('#submitForm input[name=items]').val(JSON.stringify(items));
+            $('#submitForm input[name=totalPrice]').val(subTotal);
+            $('#submitForm').submit();
+        });
     }
 
     function getAddress(options){

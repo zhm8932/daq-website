@@ -32,7 +32,7 @@ router.get('/reg/doctorView', function (req, res, next) {
 });
 
 
-router.post('/reg/byDoc',function (req, res, next) {
+router.post('/reg/byDoc',authority.loginRequired,function (req, res, next) {
     request.AddRegByDoc(req, function (data, success) {
         res.json(data);
     });
