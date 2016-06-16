@@ -868,7 +868,7 @@ select {
 .successBox{width: 100%;left: 0px;top:0px;margin: 0px;background-color:#48B363;line-height: 40px;color: $white;border-radius: 0px;
   i{background-position: -51px -94px;margin: 4px 10px 0 0;}
 }
-.loginBox {
+.loginBox{
   .getCode {
     position: absolute;
     right: 0px;
@@ -890,7 +890,77 @@ select {
     }
   }
 }
+.loginBox2{
+  width: 300px;float: right;position: relative;z-index: 2;margin-top:80px;background-color: #FFFFFF;padding:30px;border: 1px solid $bdrc_ddd;
+  .getCode{display: none;}
+  .tit {
+    font-size: 18px;
+    text-align: center;
+    position: relative;
+    z-index: 999;
+    overflow: hidden;
+    //height:60px;
+    //background-color: #222;
+    span {
+      border-bottom: 1px solid $bdrc_ddd;
+      line-height: 30px;
+      float: left;
+      padding-bottom: 10px;
+      width: 50%;
+      cursor: pointer;
+      &.on {
+        color: $textc_48B;
+        border-bottom-color: $bdrc_48B;
+      }
+    }
+  }
+  .touchslider-viewport {
+    overflow: hidden
+  }
+  .bd {
+    ul {
+      //padding: 10px;background: #000;height: 100px; width: 100%;
+      width: 300px;
+      overflow: hidden;
+      //background-color: #FF0000;
+      li {
+        margin: 20px 0 30px;
+        position: relative;
+        input {
+          width: 100%;
+          height: 36px;
+          line-height: 36px;
+          padding: 0 5px;
+          box-sizing: border-box;
+        }
+      }
+    }
+    .prompt {
+      color: $red_ED9;margin-top: -28px;display: none;
+      i {
+        background-position: -178px -22px;
+      }
+    }
+  }
+  .submitBox {
+    height: 36px;
+    line-height: 36px;
+    font-size: 16px;
+    text-align: center;
+    .ok {
+        display: block;
+        text-align: center;
+        cursor: pointer;
+        background-color: $navBgColor;
+        color: #ffffff;
+        margin: 0 auto;
+    }
+  }
 
+  .otherMsg{text-align: center;padding-top: 10px;}
+  .lgbg{width: 42px;height: 42px;display: inline-block;position: absolute;left:-6px;bottom:-6px;background: url("../images/lg_l.png") no-repeat}
+  .lgrt{left:auto;right: -6px;background: url("../images/lg_r.png") no-repeat}
+}
 .ads {
   margin-bottom: 10px;
   img {

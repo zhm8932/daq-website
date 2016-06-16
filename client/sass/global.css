@@ -779,6 +779,81 @@ select {
   .loginBox .prompt i {
     background-position: -178px -22px; }
 
+.loginBox2 {
+  width: 300px;
+  float: right;
+  position: relative;
+  z-index: 2;
+  margin-top: 80px;
+  background-color: #FFFFFF;
+  padding: 30px;
+  border: 1px solid #dddddd; }
+  .loginBox2 .getCode {
+    display: none; }
+  .loginBox2 .tit {
+    font-size: 18px;
+    text-align: center;
+    position: relative;
+    z-index: 999;
+    overflow: hidden; }
+    .loginBox2 .tit span {
+      border-bottom: 1px solid #dddddd;
+      line-height: 30px;
+      float: left;
+      padding-bottom: 10px;
+      width: 50%;
+      cursor: pointer; }
+      .loginBox2 .tit span.on {
+        color: #48BED8;
+        border-bottom-color: #48BED8; }
+  .loginBox2 .touchslider-viewport {
+    overflow: hidden; }
+  .loginBox2 .bd ul {
+    width: 300px;
+    overflow: hidden; }
+    .loginBox2 .bd ul li {
+      margin: 20px 0 30px;
+      position: relative; }
+      .loginBox2 .bd ul li input {
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        padding: 0 5px;
+        box-sizing: border-box; }
+  .loginBox2 .bd .prompt {
+    color: #ED9E9A;
+    margin-top: -28px;
+    display: none; }
+    .loginBox2 .bd .prompt i {
+      background-position: -178px -22px; }
+  .loginBox2 .submitBox {
+    height: 36px;
+    line-height: 36px;
+    font-size: 16px;
+    text-align: center; }
+    .loginBox2 .submitBox .ok {
+      display: block;
+      text-align: center;
+      cursor: pointer;
+      background-color: #48BED8;
+      color: #ffffff;
+      margin: 0 auto; }
+  .loginBox2 .otherMsg {
+    text-align: center;
+    padding-top: 10px; }
+  .loginBox2 .lgbg {
+    width: 42px;
+    height: 42px;
+    display: inline-block;
+    position: absolute;
+    left: -6px;
+    bottom: -6px;
+    background: url("../images/lg_l.png") no-repeat; }
+  .loginBox2 .lgrt {
+    left: auto;
+    right: -6px;
+    background: url("../images/lg_r.png") no-repeat; }
+
 .ads {
   margin-bottom: 10px; }
   .ads img {

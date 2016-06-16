@@ -36,11 +36,7 @@ exports.login = function (req,res,next) {
     console.log('d:',d);
     var bizParam = {
         "req": {
-            "rawRequest": {
-                "account": body.account,
-                "password":password
-
-            }
+            "rawRequest":body
         }
     };
     util.ajax('GET',api.Login,bizParam,function (data,success) {
@@ -73,7 +69,7 @@ exports.checkLogin = function (req,res,next) {
 
 exports.loginView = function (req,res,next) {
     res.render('login',{
-
+          title:'都安全登录'
     });
 };
 

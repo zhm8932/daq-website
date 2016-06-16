@@ -6,8 +6,35 @@ block content
   include ./includes/nav
   .login-view.bg
     section.wrapper
-      #slideLogin
-        .title
+      .loginBox2
+        .tit
           span.on 密码登录
+          span 验证码登录
+        .touchslider-viewport
+          .bd
+            ul
+              li
+                input(type="text" class="username" placeholder="请输入手机号码" value="13689557622")
+              li
+                input(type="password" class="password" placeholder="请输入密码" value="zhm123456")
+              .prompt
+                i.icon
+                em 手机输入格式有误/验证码有误
+            ul
+              li
+                input(type="text" class="username" placeholder="请输入手机号码" value="")
+              li
+                input(type="text" class="password" placeholder="请输入短信验证码")
+                span.getCode 获取短信验证码
+              .prompt
+                i.icon
+                em 手机输入格式有误/验证码有误
+        .submitBox
+          span.ok 登录
+        .otherMsg 手机号码用来获取预约码和报告服务码
+        i.lgbg
+        i.lgbg.lgrt
 
   include ./includes/footer
+  script.
+    seajs.use('/js/login.js')

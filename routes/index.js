@@ -47,7 +47,7 @@ router.post('/logout',Requests.logout);
 
 router.get('/checkLogin',Requests.checkLogin);
 
-router.get('/loginView',Requests.loginView);
+router.get('/login',Requests.loginView);
 
 router.get('/changeCity',Requests.changeCity);
 
