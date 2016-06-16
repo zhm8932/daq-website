@@ -337,11 +337,11 @@ header {
     padding: 30px;
     background-color: #F7F7F7; }
 
-.popupBox article {
+.popupBox.wechat-box article {
   padding: 0; }
-.popupBox .submitBox {
+.popupBox.wechat-box .submitBox {
   display: none; }
-.popupBox .otherMsg {
+.popupBox.wechat-box .otherMsg {
   display: none; }
-.popupBox .innerBg {
+.popupBox.wechat-box .innerBg {
   padding-bottom: 0; }

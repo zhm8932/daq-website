@@ -24,59 +24,63 @@ define(function (require, exports, module) {
     });
 
     function getCouponList($this,useState){
-        var param = {
-            pageSize: 100,
-            useState: useState,
-            pageIndex: 1
-        };
-        utils.SendAjax({
-            url: '/users/coupon/list',
-            param: param,
-            method: 'GET',
-            tipText: '获取优惠券',
-            callback: function (result) {
-                var data = result.data.data;
-                var tableArr = [];
-                if(data.length <= 0){
-                    $('#coupon-table tbody').html('<tr class="text-center"><td colspan="5">暂无优惠券记录</td></tr>');
-                }else{
-                    for (var i = 0; i < data.length; i++) {
-                        buildCouponTableTr(tableArr, data[i]);
+        utils.CheckLogin(function() {
+            var param = {
+                pageSize: 100,
+                useState: useState,
+                pageIndex: 1
+            };
+            utils.SendAjax({
+                url: '/users/coupon/list',
+                param: param,
+                method: 'GET',
+                tipText: '获取优惠券',
+                callback: function (result) {
+                    var data = result.data.data;
+                    var tableArr = [];
+                    if (data.length <= 0) {
+                        $('#coupon-table tbody').html('<tr class="text-center"><td colspan="5">暂无优惠券记录</td></tr>');
+                    } else {
+                        for (var i = 0; i < data.length; i++) {
+                            buildCouponTableTr(tableArr, data[i]);
+                        }
+                        $('#coupon-table tbody').html(tableArr.join(''));
                     }
-                    $('#coupon-table tbody').html(tableArr.join(''));
-                }
-                $('.coupon-state li').removeClass('on');
-                $this.addClass('on');
-            },
-            errorFun: function (result) {
+                    $('.coupon-state li').removeClass('on');
+                    $this.addClass('on');
+                },
+                errorFun: function (result) {
 
-            }
+                }
+            });
         });
     }
 
     function addCoupon($this) {
-        $this.addClass('disabled').off('click');
-        var inviteCode = $('#coupon-code').val();
-        utils.SendAjax({
-            url: '/users/coupon/addByInvite',
-            param: {inviteCode: inviteCode},
-            method: 'POST',
-            tipText: '添加优惠券',
-            callback: function (result) {
-                var tableArr = [];
-                buildCouponTableTr(tableArr, result.data);
-                var tr = $(tableArr.join(''));
-                $('#coupon-table tbody').append(tr);
+        utils.CheckLogin(function() {
+            $this.addClass('disabled').off('click');
+            var inviteCode = $('#coupon-code').val();
+            utils.SendAjax({
+                url: '/users/coupon/addByInvite',
+                param: {inviteCode: inviteCode},
+                method: 'POST',
+                tipText: '添加优惠券',
+                callback: function (result) {
+                    var tableArr = [];
+                    buildCouponTableTr(tableArr, result.data);
+                    var tr = $(tableArr.join(''));
+                    $('#coupon-table tbody').append(tr);
 
-                $this.removeClass('disabled').on('click', function () {
-                    addCoupon($(this));
-                });
-            },
-            errorFun: function () {
-                $this.removeClass('disabled').on('click', function () {
-                    addCoupon($(this));
-                });
-            }
+                    $this.removeClass('disabled').on('click', function () {
+                        addCoupon($(this));
+                    });
+                },
+                errorFun: function () {
+                    $this.removeClass('disabled').on('click', function () {
+                        addCoupon($(this));
+                    });
+                }
+            });
         });
     }
 

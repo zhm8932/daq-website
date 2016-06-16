@@ -40,18 +40,12 @@ router.get('/cart/list', authority.loginRequired,function (req, res, next) {
 
 router.post('/cart/addItem',authority.loginRequired,function (req, res, next) {
     request.AddCartItem(req, function (data, success) {
-        if(success){
-            req.session.cart_num ++;
-        }
         res.json(data);
     });
 });
 
-router.post('/cart/delItem', function (req, res, next) {
+router.post('/cart/delItem', authority.loginRequired,function (req, res, next) {
     request.DelCartItem(req, function (data, success) {
-        if(success){
-            req.session.cart_num --;
-        }
         res.json(data);
     });
 });
@@ -113,9 +107,7 @@ router.get('/order/detail', authority.loginRequired,function (req, res, next) {
                 title: '订单详情',
                 data: json.data
             });
-        } else {
-            res.json(json);
-        }
+        } 
     });
 });
 

@@ -10,48 +10,54 @@ define(function (require, exports, module) {
     });
 
     function getPayId(fun,payWay){
-        var id = $('#order-detail').data('id');
-        utils.SendAjax({
-            url: '/trade/pay/payid',
-            param: {orderId: id},
-            method: 'POST',
-            tipText: '获取支付ID',
-            callback: function (result) {
-                fun && fun(result.data.id,payWay);
-            },
-            errorFun: function (result) {
+        utils.CheckLogin(function() {
+            var id = $('#order-detail').data('id');
+            utils.SendAjax({
+                url: '/trade/pay/payid',
+                param: {orderId: id},
+                method: 'POST',
+                tipText: '获取支付ID',
+                callback: function (result) {
+                    fun && fun(result.data.id, payWay);
+                },
+                errorFun: function (result) {
 
-            }
+                }
+            });
         });
     }
 
     function alipay(id,payWay){
-        utils.SendAjax({
-            url: '/trade/order/pay',
-            param: {id: id,payWay:payWay},
-            method: 'POST',
-            tipText: '前往支付页面',
-            callback: function (result) {
-                window.location.href = result.data.credentia.order_info;
-            },
-            errorFun: function (result) {
+        utils.CheckLogin(function() {
+            utils.SendAjax({
+                url: '/trade/order/pay',
+                param: {id: id, payWay: payWay},
+                method: 'POST',
+                tipText: '前往支付页面',
+                callback: function (result) {
+                    window.location.href = result.data.credentia.order_info;
+                },
+                errorFun: function (result) {
 
-            }
+                }
+            });
         });
     }
 
     function wechatPay(id,payWay){
-        utils.SendAjax({
-            url: '/trade/order/pay',
-            param: {id: id,payWay:payWay},
-            method: 'POST',
-            tipText: '前往支付页面',
-            callback: function (result) {
-                showDialog(result);
-            },
-            errorFun: function (result) {
+        utils.CheckLogin(function() {
+            utils.SendAjax({
+                url: '/trade/order/pay',
+                param: {id: id, payWay: payWay},
+                method: 'POST',
+                tipText: '前往支付页面',
+                callback: function (result) {
+                    showDialog(result);
+                },
+                errorFun: function (result) {
 
-            }
+                }
+            });
         });
     }
 
@@ -73,7 +79,7 @@ define(function (require, exports, module) {
             },
             okText:'登录',
             width:'730',
-            otherBox:'loginBox',
+            otherBox:'wechat-box',
             isHide:false,
             okCallback:function(){
 
@@ -86,20 +92,22 @@ define(function (require, exports, module) {
     }
 
     function queryOrderState(){
-        var id = $('#order-detail').data('id');
-        utils.SendAjax({
-            url: '/trade/order/state',
-            param: {id: id},
-            method: 'GET',
-            tipText: '前往支付页面',
-            callback: function (result) {
-                if(result.data.orderState == 2){
-                    window.location.href = '/trade/order/paySuccess?order_no='+id;
-                }
-            },
-            errorFun: function (result) {
+        utils.CheckLogin(function() {
+            var id = $('#order-detail').data('id');
+            utils.SendAjax({
+                url: '/trade/order/state',
+                param: {id: id},
+                method: 'GET',
+                tipText: '前往支付页面',
+                callback: function (result) {
+                    if (result.data.orderState == 2) {
+                        window.location.href = '/trade/order/paySuccess?order_no=' + id;
+                    }
+                },
+                errorFun: function (result) {
 
-            }
+                }
+            });
         });
     }
 });

@@ -5,7 +5,7 @@ var logger = require('morgan');       //写日志
 var cookieParser = require('cookie-parser');  //解析cookie req.cookies属性存放着客户端提交过来的cookie // req.cookie(key,value) 向客户端写入cookie
 var bodyParser = require('body-parser');  //处理请求体的 req.body 属性存放着请求体对象
 var session = require('express-session');
-var RedisStore = require('connect-redis')(session);
+var redisStore = require('connect-redis')(session);
 
 //路由
 var indexs = require('./routes/index');
@@ -38,6 +38,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));  //静态文件服务中间件 指定一个绝对目录 的路径作为静态文件的根目录
 
 app.use(session({
+  // store: new redisStore({}),
   secret: config.sessionSecret,
   cookie:{maxAge:12*60*60*1000}
 }));

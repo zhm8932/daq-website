@@ -66,23 +66,25 @@ define(function (require, exports, module) {
     }
 
     function delCartItem($this) {
-        $this.addClass('disabled').off('click');
-        var id = $($this).closest('.operation').attr('data-id');
-        utils.SendAjax({
-            url: '/trade/cart/delItem',
-            param: {id: id},
-            method: 'POST',
-            tipText: '删除',
-            callback: function (result) {
-                $this.closest('.table-tr').hide(500);
-                $this.closest('.table-tr').find('.checkbox').addClass('deleted').removeClass('checked');
-                updateTotalView();
-            },
-            errorFun: function (result) {
-                $this.removeClass('disabled').on('click', function () {
-                    delCartItem($this);
-                });
-            }
+        utils.CheckLogin(function() {
+            $this.addClass('disabled').off('click');
+            var id = $($this).closest('.operation').attr('data-id');
+            utils.SendAjax({
+                url: '/trade/cart/delItem',
+                param: {id: id},
+                method: 'POST',
+                tipText: '删除',
+                callback: function (result) {
+                    $this.closest('.table-tr').hide(500);
+                    $this.closest('.table-tr').find('.checkbox').addClass('deleted').removeClass('checked');
+                    updateTotalView();
+                },
+                errorFun: function (result) {
+                    $this.removeClass('disabled').on('click', function () {
+                        delCartItem($this);
+                    });
+                }
+            });
         });
     }
 

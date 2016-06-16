@@ -52,20 +52,21 @@ define(function (require, exports, module) {
     }
 
     function delPatient($this){
-        var tr = $this.closest('tr');
-        var id = tr.data('id');
-        utils.SendAjax({
-            url: '/users/patient/del',
-            param: {contactPersonId:id},
-            method: 'POST',
-            tipText: '删除就诊人',
-            callback: function (result) {
-                tr.hide(1000);
-            },
-            errorFun: function (result) {
+        utils.CheckLogin(function() {
+            var tr = $this.closest('tr');
+            var id = tr.data('id');
+            utils.SendAjax({
+                url: '/users/patient/del',
+                param: {contactPersonId: id},
+                method: 'POST',
+                tipText: '删除就诊人',
+                callback: function (result) {
+                    tr.hide(1000);
+                },
+                errorFun: function (result) {
 
-            }
+                }
+            });
         });
-        
     }
 });
