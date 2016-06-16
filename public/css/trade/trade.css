@@ -155,6 +155,25 @@ header {
   background-position: -75px -334px; }
 .cart .trade-step .commit i {
   background-position: -163px -334px; }
+.cart .empty-cart {
+  text-align: center; }
+  .cart .empty-cart .empty-cart-box {
+    display: inline-block;
+    width: 280px;
+    height: 80px; }
+    .cart .empty-cart .empty-cart-box img {
+      width: 85.3px;
+      height: 80px; }
+    .cart .empty-cart .empty-cart-box .text {
+      float: right; }
+      .cart .empty-cart .empty-cart-box .text .cart-tip {
+        font-size: 20px;
+        padding: 10px; }
+      .cart .empty-cart .empty-cart-box .text .to-buy {
+        padding: 6px 30px;
+        font-size: 18px;
+        border: 1px solid;
+        border-radius: 5px; }
 
 .confirm-buy .trade-step .cart i {
   background-position: 0 -397px; }

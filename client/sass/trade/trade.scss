@@ -202,7 +202,35 @@ header {
       }
     }
   }
+
+  .empty-cart{
+    text-align:center;
+    .empty-cart-box{
+      display:inline-block;
+      width:280px;
+      height:80px;
+      img{
+        width:85.3px;
+        height:80px;
+      }
+      .text{
+        float:right;
+        .cart-tip{
+          font-size:20px;
+          padding:10px;
+        }
+        .to-buy{
+          padding:6px 30px;
+          font-size:18px;
+          border:1px solid;
+          border-radius:5px;
+        }
+      }
+    }
+  }
 }
+
+
 
 .confirm-buy {
   .trade-step {

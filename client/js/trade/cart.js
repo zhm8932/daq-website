@@ -2,6 +2,15 @@ define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
 
     $(function () {
+        var minHeight = utils.SetMinHeight();
+
+        //购物车为空时居中
+        var emptyCart = $('.empty-cart-box');
+        if(emptyCart){
+            emptyCart.css('margin-top',(minHeight - emptyCart.height()) / 2+'px');
+        }
+        
+        
         $(".del-cart-item").on('click', function () {
             delCartItem($(this));
         });
@@ -17,6 +26,10 @@ define(function (require, exports, module) {
         $('.submit-btn').on('click', function () {
 
         });
+
+        $('.empty-cart .to-buy').on('click',function(){
+            window.location.href = '/screenings/goods';
+        })
     });
 
 
@@ -127,7 +140,7 @@ define(function (require, exports, module) {
         }
     }
 
-    function submitToOrder(checkboxs, totalPrice,cityId) {
+    function submitToOrder(checkboxs, totalPrice) {
         var items = [];
         checkboxs.each(function (index, ele) {
             var operation = $(ele).closest('.table-tr').find('.operation');

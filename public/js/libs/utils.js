@@ -539,6 +539,17 @@ define(function(require,exports,module) {
         })
     }
 
+    function setMinHeight(){
+        var windowHeight = $(window).height();
+        var domHeight = $('body>.topBar').outerHeight(true) + $('body>.header').outerHeight(true) + $('body>.nav').outerHeight(true) + $('body>.positon').outerHeight(true) + $('body>.footer').outerHeight(true) + $('body>.copyright').outerHeight(true);
+
+        console.log($('body>.topBar').outerHeight(true)+'----'+$('body>.header').outerHeight(true)+'----'+$('body>.nav').outerHeight(true)+'----'+$('body>.positon').outerHeight(true)+'----'+$('body>.footer').outerHeight(true)+'----'+$('body>.copyright').outerHeight(true));
+        var minHeight = windowHeight - domHeight + $('body>.topBar').outerHeight(true);
+        $('.main-box').css('min-Height',minHeight + 'px');
+        console.log(windowHeight+'----'+domHeight+'----'+minHeight);
+        return minHeight;
+    }
+
 
     module.exports={
         Popup:Popup,
@@ -559,7 +570,8 @@ define(function(require,exports,module) {
         logout:logout,
         getLoacalDateAndTime:getLoacalDateAndTime,
         CheckLogin:checkLogin,
-        BuildSelect:buildSelect
+        BuildSelect:buildSelect,
+        SetMinHeight:setMinHeight
     }
 
 })
