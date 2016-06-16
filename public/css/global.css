@@ -142,9 +142,18 @@ a {
 body {
   color: #4A4A4A; }
 
+button.disabled, .btn.disabled {
+  background: #C4C4C4;
+  border: 1px solid #C4C4C4;
+  color: #fff; }
+  button.disabled:hover, .btn.disabled:hover {
+    background: #C4C4C4;
+    border: 1px solid #C4C4C4;
+    color: #fff; }
+
 .select-box {
   position: relative;
-  position: relative;
+  display: inline-block;
   vertical-align: middle; }
   .select-box .selected {
     display: inline-block;
@@ -157,17 +166,20 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
-    width: 150px;
+    min-width: 100%;
     overflow: hidden;
-    display: block;
+    display: none;
     list-style: none;
     background: #fff;
     border: 1px solid rgba(0, 0, 0, 0.15); }
     .select-box ul.options .option {
       line-height: 28px;
+      white-space: nowrap;
       padding: 0 10px; }
-      .select-box ul.options .option:hover {
+      .select-box ul.options .option.active, .select-box ul.options .option:hover {
         background: #48BED8; }
+  .select-box.open ul.options {
+    display: block; }
 
 .alert-tip {
   position: absolute;
@@ -227,7 +239,8 @@ select {
   padding: 0 20px;
   margin: 10px 0;
   display: inline-block;
-  font-family: "微软雅黑","Microsoft Himalaya"; }
+  font-family: "微软雅黑","Microsoft Himalaya";
+  border: 1px solid #48BED8; }
   .submitBtn:hover {
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
@@ -235,7 +248,11 @@ select {
     -o-transition: all 0.3s;
     transition: all 0.3s;
     background-color: #ED9E9A;
-    color: #FFF; }
+    color: #FFF;
+    border-color: #ED9E9A; }
+
+.small-text {
+  font-size: 12px; }
 
 .boxBg {
   background-color: #F2F6F7; }

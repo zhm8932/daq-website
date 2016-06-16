@@ -114,7 +114,8 @@
     }
   }
 
-  .users-table {
+  .patients-table {
+
     tr td {
       padding: 10px;
     }
@@ -124,6 +125,19 @@
       font-size: 32px;
       font-weight: bold;
       margin-right: 10px;
+    }
+    .new-tr{
+      td{
+        padding:5px 10px;
+        vertical-align: middle;
+        input{
+          line-height:30px;
+          height:30px;
+          &:focus{
+            border:1px solid #48BED8;
+          }
+        }
+      }
     }
   }
 

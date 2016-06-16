@@ -5,31 +5,34 @@ define(function(require){
     require('touchslider');
 
     $(function(){
+        if(checkArea()){
+            $('#addCartBtn').on('click',function(){
+                addToCart();
+            });
+
+            $('#toOrder').on('click',function(){
+                toOrder();
+            });
+        }
+
         //锚点作用
         $('.goods_detail .tab span').on('click',function(){
+            var anchorTop = 0;
             var topBarHeight = $('.topBar').height();
-            var tabHeight = $('.goods_detail .tab').height();
+            var tab = $('.goods_detail .tab');
+            var tabHeight = tab.height();
             var top = topBarHeight + tabHeight;
             var $this = $(this);
             var id = $this.data('href-id');
-            var height = $('#'+id).offset().top - top;
-            $('html,body').animate({scrollTop:height}, 1000);
-        });
-
-        //滚动时导航锁定在顶部
-        var tab = $('.goods_detail .tab');
-        tab.attr('data-orign-top',tab.offset().top);//得到初始高度
-        $(document).scroll(function(){
-            var topBarHeight = $('.topBar').height();
-            var tab = $('.goods_detail .tab');
-            var width = tab.closest('.wrapper').width();
-
-            if($(document).scrollTop() + topBarHeight > tab.attr('data-orign-top') ){
-                tab.css('position','fixed').css('top',topBarHeight+'px').css('margin','0');
-            }else{
-                tab.css('position','static').css('margin','20px 0').css('width',width+'px');
+            anchorTop = $('#'+id).offset().top - top;
+            if(id == 'content-detail'){
+                anchorTop = $('#'+id).offset().top - top ;
             }
+            console.log('top:'+top+'----offsetTop:'+$('#'+id).offset().top+'---height:'+anchorTop);
+            $('html,body').animate({scrollTop:anchorTop}, 1000);
         });
+
+
 
         //选择服务方式
         var address = JSON.parse($('#locals_address').val());
@@ -115,15 +118,27 @@ define(function(require){
             viewport: ".touchslider-viewport"  //内容区域
         });
 
-
-        $('#addCartBtn').on('click',function(){
-            addToCart();
-        });
-
-        $('#toOrder').on('click',function(){
-            toOrder();
-        });
     });
+
+    window.onload = function(){
+        //滚动时导航锁定在顶部
+        var tab = $('.goods_detail #tab');
+        tab.attr('data-orign-top',tab.offset().top);//得到初始高度
+        $(document).scroll(function(){
+            var topBarHeight = $('.topBar').height();
+            var tab = $('.goods_detail #tab');
+            var width = tab.closest('.wrapper').width();
+
+            if($(document).scrollTop() + topBarHeight > tab.attr('data-orign-top') ){
+                tab.css('position','fixed').css('top',topBarHeight+'px');
+                $('#tab-copy').removeClass('none');
+            }else{
+                tab.css('position','static').css('width',width+'px');
+                $('#tab-copy').addClass('none');
+            }
+        });
+    };
+
 
     function toOrder() {
         if(!checkArea()){
@@ -182,9 +197,18 @@ define(function(require){
                     category.id = data[i].id;
                     category.name = data[i].name;
                     category.level = data[i].level;
-                    optionArr.push('<option value='+JSON.stringify(category)+'>'+category.name+'</option>');
+                    if(i == 0){
+                        optionArr.push('<li class="option active" data-area='+JSON.stringify(category)+'>'+category.name+'</li>');
+                    }else{
+                        optionArr.push('<li class="option" data-area='+JSON.stringify(category)+'>'+category.name+'</li>');
+                    }
                 }
-                $('#'+options.id).html(optionArr.join(''));
+                $('#'+options.id+' .options').html(optionArr.join(''));
+                if(data.length <= 0){
+                    $('#'+options.id+' .selected .text').html('暂无区域');
+                }else{
+                    $('#'+options.id+' .selected .text').html(data[0].name);
+                }
                 options.fun && options.fun();
             }
         });
@@ -214,11 +238,14 @@ define(function(require){
                 method: 'POST',
                 tipText: '加入购物车',
                 callback: function (result) {
-                    if(result.needLogin){
-                        utils.showLogin();
-                    }else{
-                        utils.AlertTip('success','加入购物车成功');
-                    }
+                    var myMsg = new utils.MsgShow({
+                        delayTime:2000,
+                        title:'<i class="icon"></i>加入购物车成功!',
+                        otherBox:'successBox'
+                    });
+                    setTimeout(function(){
+                        $('.msgBox').hide();
+                    },2000);
                 }
             });
         });
@@ -228,7 +255,6 @@ define(function(require){
     function checkCondition(callBack){
         utils.CheckLogin(function() {
             if (!checkArea()) {
-                utils.AlertTip('fail', '所选城市不在该商品销售区域,请重新选择');
                 return false;
             }
             var OTransmitType = $('#transmit-type .type.on');
@@ -245,13 +271,13 @@ define(function(require){
         var fit_area = JSON.parse($('#fit_area').val());
         var currentCityId = locals_address[1].categoryId;
         for(var i = 0; i < fit_area.length; i++){
-            var a = fit_area[i].categoryId;
             if(fit_area[i].categoryId == currentCityId){
                 return true;
             }
         }
+        $('.submitBox button').addClass('disabled');
+        $('#district .area-tip').removeClass('none');
         return false;
-
     }
 
 });

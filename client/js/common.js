@@ -11,6 +11,9 @@ define(function(require, exports, module){
         var $nav_A = $('.nav li a');
         var href = '';
 
+        //下拉框的构造
+        utils.BuildSelect($('.select-box'));
+
         $.each($nav_A,function (index,arr) {
             href = $(arr).attr('href');
             if(curPathname.search(href)!=-1){

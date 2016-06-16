@@ -553,6 +553,36 @@ define(function(require,exports,module) {
         });
     }
 
+    function buildSelect(objs){
+        objs.each(function(index,ele){
+            var $this = $(ele);
+            $this.on('click',function(){
+                $('.select-box').not($(this)).removeClass('open');
+                if($this.hasClass('open')){
+                    $this.removeClass('open');
+                }else{
+                    $this.addClass('open');
+                }
+                return false;
+            });
+            $this.find('.options').on('click',function(e){
+                var $this = $(this);
+                var t = $(e.target);
+                t.siblings().removeClass('active');
+                t.addClass('active');
+                var selectBox = $this.closest('.select-box');
+                var selectedText = selectBox.find('.selected .text');
+                selectedText.html(t.html());
+                selectBox.removeClass('open');
+                return false;
+            });
+        });
+
+        $(document).on('click',function(){
+          objs.removeClass('open');
+        })
+    }
+
 
     module.exports={
         Popup:Popup,
@@ -573,7 +603,8 @@ define(function(require,exports,module) {
         validateLogin:validateLogin,
         logout:logout,
         getLoacalDateAndTime:getLoacalDateAndTime,
-        CheckLogin:checkLogin
+        CheckLogin:checkLogin,
+        BuildSelect:buildSelect
     }
 
 })

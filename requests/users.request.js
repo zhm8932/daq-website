@@ -1,6 +1,6 @@
-exports.get_goods_list = function (req,res,next) {
-    var goodsState = req.params.goodsState||2,
-        currentPage = req.query.page||1;
+exports.get_goods_list = function (req, res, next) {
+    var goodsState = req.params.goodsState || 2,
+        currentPage = req.query.page || 1;
     res.locals.goodsState = goodsState;
     var bizParam = {
         "pageIndex": currentPage,
@@ -9,7 +9,7 @@ exports.get_goods_list = function (req,res,next) {
         "goodsState": goodsState
     };
 
-    util.ajax('GET',api.GoodsQuery,bizParam,function (data,success) {
+    util.ajax('GET', api.GoodsQuery, bizParam, function (data, success) {
         var json = JSON.parse(data);
         console.log(data)
         req.get_goods_list = json;
@@ -18,18 +18,9 @@ exports.get_goods_list = function (req,res,next) {
 };
 
 
-exports.GetPatientsList = function (req, callback) {
-    var bizParam = req.query;
-
-    util.ajax('GET', api.GetPatientsList, bizParam, function (data, success) {
-        callback && callback(data, success);
-    });
-};
-
-
 exports.GetReservationList = function (req, callback) {
     var bizParam = {
-        accountId:req.session.userInfo.accountCommon.id
+        accountId: req.session.userInfo.accountCommon.id
     };
 
     util.ajax('GET', api.GetReservationList, bizParam, function (data, success) {
@@ -39,7 +30,7 @@ exports.GetReservationList = function (req, callback) {
 
 exports.GetRegisterList = function (req, callback) {
     var bizParam = {
-        accountId:req.session.userInfo.accountCommon.id
+        accountId: req.session.userInfo.accountCommon.id
     };
 
     util.ajax('GET', api.GetRegisterList, bizParam, function (data, success) {
@@ -75,6 +66,32 @@ exports.AddCouponByInvite = function (req, callback) {
     var bizParam = req.body;
 
     util.ajax('POST', api.AddCouponByInvite, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
+exports.GetPatientList = function (req, callback) {
+    var bizParam = {
+        accountId: req.session.userInfo.accountCommon.id
+    };
+
+    util.ajax('GET', api.GetPatientList, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
+exports.AddPatient = function (req, callback) {
+    var bizParam = req.body;
+
+    util.ajax('POST', api.AddPatient, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
+exports.DelPatient = function (req, callback) {
+    var bizParam = req.body;
+
+    util.ajax('DELETE', api.DelPatient, bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };
