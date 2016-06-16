@@ -182,8 +182,10 @@
     position: relative;
     margin-left: 140px;
     width: auto; }
+    .topBar .wrapper {
+      overflow: inherit; }
 
-  .topBar_info .city_name {
+  .topBar_info .city-name {
     position: absolute;
     left: 0px;
     top: 15px; }
@@ -373,8 +375,20 @@
   .swiper-container .swiper-button-prev, .swiper-container .swiper-button-next {
     display: block; }
 
+  .login-view .wrapper {
+    background-size: 100%; }
+
+  .loginBox2 {
+    float: none;
+    margin: 60px auto 0; }
+
   .copyright {
     height: auto; }
 
   .rightNav {
     display: none; } }
+@media only screen and (max-width: 600px) {
+  .loginBox2 {
+    border: none;
+    box-sizing: border-box;
+    width: 100%; } }

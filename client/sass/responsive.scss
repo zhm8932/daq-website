@@ -116,9 +116,10 @@ $conWidth:1600px;
 
   .topBar{
     height: 0px;position: relative;margin-left:$loginW+20px;width: auto;
+    .wrapper{overflow: inherit;}
   }
   .topBar_info{
-    .city_name{position: absolute;left:0px;top: 15px;}
+    .city-name{position: absolute;left:0px;top: 15px;}
     .devidel,.loginBtn{display: none;}
     .cartBtn{
       margin-right: 10px;position: relative;top: 5px;
@@ -256,12 +257,13 @@ $conWidth:1600px;
   .swiper-container{
     .swiper-button-prev, .swiper-button-next{display: block}
   }
-
+  .login-view .wrapper{background-size: 100%;}
+  .loginBox2{float: none;margin:60px auto 0;}
   .copyright{height: auto;}
   .rightNav{display: none;}
 }
 @media only screen and (max-width: 600px){
-
+  .loginBox2{border: none;box-sizing: border-box;width: 100%;}
 }
 @media only screen and (min-width: 320px) and (max-width: 360px){
 
