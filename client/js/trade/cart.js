@@ -67,6 +67,7 @@ define(function (require, exports, module) {
 
     function delCartItem($this) {
         utils.CheckLogin(function() {
+            
             $this.addClass('disabled').off('click');
             var id = $($this).closest('.operation').attr('data-id');
             utils.SendAjax({
