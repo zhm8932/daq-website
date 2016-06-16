@@ -164,4 +164,5 @@ define(function (require, exports, module) {
         $('#submitForm input[name=totalPrice]').val(totalPrice);
         $('#submitForm').submit();
     }
+    
 });

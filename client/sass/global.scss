@@ -257,6 +257,17 @@ select {
   box-shadow: 0 1px 3px #D2D2D2;
 }
 
+.popupBox.comfirm-box{
+  article{
+    padding:0;
+  }
+  //.submitBox{display:none;}
+  //.otherMsg{display:none;}
+  .innerBg{
+    padding-bottom:0;
+  }
+}
+
 .topBar_info {
   float: right;
   color: $gray9B;
