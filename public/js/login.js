@@ -13,7 +13,6 @@ define(function(require,exports,module) {
         var index = $('.popupBox article .tit span.on').index();
         $('.popupBox article').find('ul').eq(index).find('.prompt').hide()
     })
-
     $(".loginBox2").touchSlider({
         container: this,
         duration: 350, // 动画速度
@@ -36,4 +35,5 @@ define(function(require,exports,module) {
         console.log('data::',data)
         if(data) utils.login(data)
     })
+
 })

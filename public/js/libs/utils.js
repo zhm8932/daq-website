@@ -73,7 +73,7 @@ define(function(require,exports,module) {
             }else{
                 this.$body.append(this.popupHtml())
             }
-            
+
             var height = $('.'+this.opts.popupBox).height();
             $('.'+self.popupBox).css({'height':height,'margin-top':-height/2});
 
@@ -84,8 +84,8 @@ define(function(require,exports,module) {
         popupHtml:function(){
             var opts = this.opts;
             var ConfimHtml = '<div class="'+this.popupBox+' '+this.opts.otherBox+'" style="width: '+opts.width+'px;margin-left:-'+opts.width/2+'px">' +
-                                '<div class="innerBg"><span class="'+this.opts.cancel+'"><i class="icon"></i></span><article>'+this.opts.msg+'</article>' +
-                                '<div class="submitBox"><span class="'+this.opts.ok+'">'+this.opts.okText+'</span></div>';
+                '<div class="innerBg"><span class="'+this.opts.cancel+'"><i class="icon"></i></span><article>'+this.opts.msg+'</article>' +
+                '<div class="submitBox"><span class="'+this.opts.ok+'">'+this.opts.okText+'</span></div>';
             if(opts.bOhterMsg){
                 ConfimHtml+='<div class="otherMsg">'+opts.otherMsg+'</div>'
             }
@@ -188,17 +188,17 @@ define(function(require,exports,module) {
         app = navigator.appVersion;
     console.log('userAgent:',u);
     var browser = {
-            trident: u.indexOf('Trident') > -1, //IE内核
-            presto: u.indexOf('Presto') > -1, //opera内核
-            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-            mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-            android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
-            iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
-            iPad: u.indexOf('iPad') > -1, //是否iPad
-            webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
-            ie: u.indexOf('MSIE') > -1 //
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+        iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+        iPad: u.indexOf('iPad') > -1, //是否iPad
+        webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+        ie: u.indexOf('MSIE') > -1 //
 
     };
     function CheckNull(id){
@@ -380,7 +380,7 @@ define(function(require,exports,module) {
             bOhterMsg:true,
             callback:function () {
                 //TouchSlide({ slideCell:"#slideLogin",titCell:".tit span", mainCell:".bd"});
-
+                console.log('2222222222222')
                 $(".slideLogin").touchSlider({
                     container: this,
                     duration: 350, // 动画速度
@@ -402,38 +402,7 @@ define(function(require,exports,module) {
             otherBox:'loginBox',
             isHide:false,
             okCallback:function(){
-                // index = $('.popupBox article .tit span.on').index()
-                // $prompt = $('.popupBox article').find('ul').eq(index).find('.prompt')
-                // console.log('index::',index)
-                // var data = {
-                //     "password":$('.popupBox article .bd ul').eq(index).find(".password").val(),
-                //     "account":$('.popupBox article .bd ul').eq(index).find(".username").val(),
-                //     "loginType":1
-                // }
-                //
-                // if(index==0){
-                //     if(!data.account){
-                //         $prompt.show().find('em').html('手机号码不能为空')
-                //         return
-                //     }
-                //     if(!data.password){
-                //         $prompt.show().find('em').html('密码不能为空')
-                //         return
-                //     }
-                // }
-                // if(index==1){
-                //     data.loginType=2
-                //     if(!data.account){
-                //         $prompt.show().find('em').html('手机号码不能为空')
-                //         return
-                //     }
-                //     if(!data.password){
-                //         $prompt.show().find('em').html('验证码不能为空')
-                //         return
-                //     }
-                // }
-                var data = validateLogin();
-
+                var data = validateLogin()
                 console.log('data::',data)
                 if(data){
                     login(data,popup)
@@ -444,11 +413,10 @@ define(function(require,exports,module) {
     }
 
     function validateLogin() {
-        var $loginWrap = $('.loginBox,.loginBox2');
+        var $loginWrap = $('.loginBox,.loginBox2')
         index = $loginWrap.find('.tit span.on').index();
         $prompt = $loginWrap.find('ul').eq(index).find('.prompt')
         console.log('index::',index)
-        console.log('$loginWrap::',$loginWrap)
         var data = {
             "password":$loginWrap.find('ul').eq(index).find(".password").val(),
             "account":$loginWrap.find('ul').eq(index).find(".username").val(),
@@ -482,15 +450,12 @@ define(function(require,exports,module) {
         var $loginWrap = $('.loginBox,.loginBox2');
         var index = $loginWrap.find('.tit span.on').index();
         $prompt = $loginWrap.find('ul').eq(index).find('.prompt');
-        console.log('data2',data)
         $.ajax({
             type:'post',
             url:'/login',
             data:data,
             success:function(json){
-                // console.log(json)
                 var json = JSON.parse(json);
-                // console.log(typeof json)
                 if(json.success){
                     var myMsg = new MsgShow({
                         delayTime:2000,
@@ -579,7 +544,7 @@ define(function(require,exports,module) {
         });
 
         $(document).on('click',function(){
-          objs.removeClass('open');
+            objs.removeClass('open');
         })
     }
 
