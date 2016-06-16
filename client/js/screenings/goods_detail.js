@@ -253,6 +253,7 @@ define(function(require){
     }
 
     function checkCondition(callBack){
+        //CheckLogin传入两个函数,第一个函数为检查登录为true时执行的方法
         utils.CheckLogin(function() {
             if (!checkArea()) {
                 return false;

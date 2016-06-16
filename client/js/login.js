@@ -1,5 +1,5 @@
 define(function(require,exports,module) {
-    var utils = require('./libs/utils')
+    var utils = require('./libs/utils');
     // var TouchSlide = require('./libs/TouchSlide.1.1.source')
 
     $('body').on('click','.loginBtn',function () {
@@ -30,10 +30,9 @@ define(function(require,exports,module) {
     });
 
     $('body').on('click','.loginBox2 .ok',function () {
-        console.log('2222222')
-        var data = utils.validateLogin()
-        console.log('data::',data)
-        if(data) utils.login(data)
+        var data = utils.validateLogin();
+        var redirectUrl = $('#redirectUrl').val()
+        if(data) utils.login(data,null,redirectUrl);
     })
 
-})
+});

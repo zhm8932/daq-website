@@ -405,7 +405,7 @@ define(function(require,exports,module) {
                 var data = validateLogin()
                 console.log('data::',data)
                 if(data){
-                    login(data,popup)
+                    login(data,popup,'',options.afterLoginFun)
                 }
             }
         })
@@ -446,7 +446,7 @@ define(function(require,exports,module) {
         }
         return data;
     }
-    function login(data,popup,index) {
+    function login(data,popup,redirectUrl,afterLoginFun) {
         var $loginWrap = $('.loginBox,.loginBox2');
         var index = $loginWrap.find('.tit span.on').index();
         $prompt = $loginWrap.find('ul').eq(index).find('.prompt');
@@ -464,10 +464,13 @@ define(function(require,exports,module) {
                     });
                     if(popup){
                         popup.hideBox(function () {
-                            $('.msgBox').hide();
                             $topBarAside.html(logoutHtml);
+                            afterLoginFun && afterLoginFun();
                         });
+                    }else if(redirectUrl){
+                        window.location.href = redirectUrl;
                     }
+                    myMsg.hideMsg(1000);
 
                 }else{
                     // var myMsg = new utils.MsgShow({
@@ -501,6 +504,7 @@ define(function(require,exports,module) {
     }
 
 
+    //检查登录:已经登录则继续执行callback,没有登录则把callback传到登录函数中去,登录后继续执行
     function checkLogin(callBack){
         sendAjax({
             url: '/checkLogin',
@@ -509,7 +513,9 @@ define(function(require,exports,module) {
             tipText: '检查是否登录',
             callback: function (result) {
                 if(!result.login){
-                    showLogin();
+                    showLogin({
+                        afterLoginFun:callBack
+                    });
                     return false;
                 }else{
                     callBack && callBack();

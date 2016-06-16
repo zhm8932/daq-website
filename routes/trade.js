@@ -4,8 +4,7 @@
 var express = require('express');
 var router = express.Router();
 var request = require('../requests/trade.request');
-var middleware = require('../requests/middlewares.request.js');
-var authority = require('../handlers/authority.handler')
+var authority = require('../handlers/authority.handler');
 
 // router.get('/cart/list',middleware.judge_client,function(req,res,next){
 //     if(req.mobile){
@@ -25,7 +24,7 @@ var authority = require('../handlers/authority.handler')
 //     }
 // });
 
-router.get('/cart/list', function (req, res, next) {
+router.get('/cart/list', authority.loginRequired,function (req, res, next) {
     request.GetCartList(req, function (data, success) {
         var json = JSON.parse(data);
         if (success) {

@@ -16,7 +16,8 @@
   position: static; }
 
 .goods_basic {
-  margin-top: 30px; }
+  margin-top: 30px;
+  margin-bottom: 20px; }
   .goods_basic dl dt {
     width: 45%;
     float: left;
@@ -65,6 +66,8 @@
   .goods_basic dl dd {
     width: 51%;
     float: right; }
+    .goods_basic dl dd #area.none {
+      display: none; }
     .goods_basic dl dd h1 {
       font-size: 24px; }
     .goods_basic dl dd .price {
@@ -93,7 +96,7 @@
         border: 1px solid #dddddd;
         padding: 5px 10px;
         display: inline-block;
-        margin: 0 20px 0 0px;
+        margin: 0 8px 0 0px;
         line-height: 20px;
         text-align: center;
         vertical-align: middle; }
@@ -131,32 +134,39 @@
         .goods_basic dl dd .type-box.unchoose .box-header {
           display: block; }
   .goods_basic dl .submitBox {
-    padding-top: 30px; }
+    padding-top: 20px; }
     .goods_basic dl .submitBox .submitBtn {
       padding: 0 40px;
       line-height: 50px;
       font-size: 18px;
-      margin-right: 30px;
-      border: 1px solid #48BED8; }
+      margin-right: 30px; }
     .goods_basic dl .submitBox .addCartBtn {
       background-color: #e5faff;
       color: #48BED8; }
+      .goods_basic dl .submitBox .addCartBtn:hover {
+        color: #ED9E9A;
+        border-color: #ED9E9A; }
+      .goods_basic dl .submitBox .addCartBtn.disabled {
+        background-color: #F5F5F5;
+        color: #C4C4C4;
+        border-color: #C4C4C4; }
 
 .goods_detail .tab {
   background-color: #F2F2F2;
   line-height: 50px;
-  border-bottom: 2px solid #48BED8;
-  margin: 20px 0; }
+  border-bottom: 2px solid #48BED8; }
   .goods_detail .tab span {
     padding: 0 30px;
     display: inline-block;
     font-size: 16px; }
-.goods_detail article h3 {
-  color: #48BED8;
-  font-size: 16px;
-  font-weight: bold; }
-  .goods_detail article h3 i {
-    background-position: -213px 6px;
-    margin-right: 5px; }
-.goods_detail article p, .goods_detail article pre {
-  word-break: break-all; }
+.goods_detail article {
+  padding-top: 20px; }
+  .goods_detail article h3 {
+    color: #48BED8;
+    font-size: 16px;
+    font-weight: bold; }
+    .goods_detail article h3 i {
+      background-position: -213px 6px;
+      margin-right: 5px; }
+  .goods_detail article p, .goods_detail article pre {
+    word-break: break-all; }
