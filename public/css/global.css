@@ -302,12 +302,14 @@ select {
   width: 324px; }
   .confirm-box .cancel {
     display: none; }
+  .confirm-box span.closePopup {
+    display: none; }
   .confirm-box .box-header {
     height: 40px;
     line-height: 40px;
     padding-left: 12px;
     background-color: #F2F6F7; }
-    .confirm-box .box-header i.cancel {
+    .confirm-box .box-header i.close {
       background-position: -240px 19px; }
   .confirm-box .box-body {
     padding: 16px 22px;
@@ -379,11 +381,11 @@ select {
         border-right-color: transparent;
         border-left-color: transparent;
         border-top-color: transparent; }
-      .topBar_info .city-name .choose-city span.city {
+      .topBar_info .city-name .choose-city .city {
         display: inline-block;
         width: 80px;
         text-align: center; }
-        .topBar_info .city-name .choose-city span.city.on, .topBar_info .city-name .choose-city span.city.hover {
+        .topBar_info .city-name .choose-city .city.on, .topBar_info .city-name .choose-city .city.hover {
           color: #48BED8; }
   .topBar_info .cartBtn i {
     background-position: -38px 2px;

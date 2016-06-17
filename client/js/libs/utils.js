@@ -40,8 +40,9 @@ define(function(require,exports,module) {
                 }
             });
 
+            var cancel = '.'+this.opts.cancel;
             //点击取消
-            this.$body.on('click','.'+this.opts.cancel,function(){
+            this.$body.on('click',cancel,function(){
                 self.cancelCallback();
             })
 
@@ -417,10 +418,12 @@ define(function(require,exports,module) {
 
     function showComfirmDialog(options){
         var popup = new Popup({
-            msg:'<div class="box-header">提示<i class="icon cancel"></i></div><div class="box-body">'+
-            '<p class="confim-tip">'+options.tipText+'</p><div class="btn-box"><button class="submitBtn">确定</button><button class="cancelBtn cancel">取消</button></div></div>',
-            otherMsg:'',
+            msg:'<div class="box-header">提示<i class="icon close closePopup"></i></div><div class="box-body">'+
+            '<p class="confim-tip">'+options.tipText+'</p><div class="btn-box"><button class="submitBtn confirm-btn">确定</button><button class="cancelBtn closePopup">取消</button></div></div>',
+            otherMsg:'confirm-btn',
             popupBox:'popupBox',
+            ok:'confirm-btn',
+            cancel:'closePopup',
             // okText:'保存并新增',
             // bOhterMsg:true,
             callback:function () {
@@ -444,9 +447,10 @@ define(function(require,exports,module) {
             // okText:'登录',
             width:'324',
             otherBox:'confirm-box',
-            isHide:false,
             okCallback:function(){
-
+                if(options){
+                    options.okCallback && options.okCallback();
+                }
             }
         })
     }

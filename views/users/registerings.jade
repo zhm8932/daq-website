@@ -34,29 +34,30 @@ block content
                                 p.text-sec 下单时间:
                                     span.date
                             td
-                                p #{item.doctorDTO.doctorName}
-                                p.text-sec #{item.titleId}
+                                if item.doctorDTO
+                                    p #{item.doctorDTO.doctorName}
+                                    p.text-sec #{item.doctorDTO.titleId}
                             td
-                                p.date
+                                p #{moment(item.start).format('YYYY-MM-DD')}
                                 p
-                                    span.start #{item.start}
+                                    span.start #{moment(item.start).format('HH:mm:ss')}
                                     |-
-                                    span.end #{item.end}
+                                    span.end #{moment(item.end).format('HH:mm:ss')}
                             td #{item.patient}
                             if item.reservationStatus == 1
                                 td.text-stress 待就诊
-                                td.cancel-reg 取消
+                                td: a(href="javascript:void(0)").cancel-reg 取消
                             else if item.reservationStatus == 2
                                 td 已完成
                                 td
                             else if item.reservationStatus == 3
                                 td.text-sec 已过期
-                                td.del-reg 删除
+                                td: a(href="javascript:void(0)").del-reg 删除
                             else if item.reservationStatus == 4
                                 td.text-sec 已取消
-                                td.del-reg 删除
+                                td: a(href="javascript:void(0)").del-reg 删除
 
 
     include ../includes/footer
     script.
-        seajs.use('/js/trade/patients.js')
+        seajs.use('/js/trade/registerings.js')

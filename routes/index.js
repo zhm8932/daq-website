@@ -23,8 +23,9 @@ router.use(function(req, res, next) {
 
     //城市
     if(req.session.locals_address){
-        res.locals.locals_address = req.session.locals_address;
+        res.locals.locals_address = JSON.stringify(req.session.locals_address);
     }else{
+        req.session.locals_address = config.addressJSON;
         res.locals.locals_address = JSON.stringify(config.addressJSON);
     }
 

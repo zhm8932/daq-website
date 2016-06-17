@@ -7,9 +7,13 @@ var config = require('../config');
 
 
 exports.GetRegsourceList = function (req, callback) {
-    var bizParam = req.query;
-    bizParam.pageSize = req.query.pageSize || 20;
-    bizParam.pageIndex = req.query.pageIndex || 1;
+    var a = req.session.locals_address;
+    var query = req.query;
+    var bizParam = {
+        city:req.session.locals_address[1].categoryId,
+        pageSize:query.pageSize || 999,
+        pageIndex:query.pageIndex || 1
+    };
 
     util.ajax('GET', api.GetRegsourceList, bizParam, function (data, success) {
         callback && callback(data, success);

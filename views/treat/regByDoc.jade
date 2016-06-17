@@ -10,7 +10,7 @@ block content
         .reg
             header
                 h2 按医生预约
-            form#regByDocForm(name="regByDocForm")
+            form#regByDocForm
                 -var doctorDTO = data.doctorDTO;
                 -hosname = '';
                 each h in doctorDTO.hospitalReDepartments
@@ -21,7 +21,6 @@ block content
                         label 就诊医生
                         h4 #{hosname}
                             mark #{doctorDTO.doctorName}
-                        input(type='text',required,autofocus='true',hidden)
                     li
                         label 就诊时间
                         span #{data.date}
@@ -32,19 +31,12 @@ block content
                                 option(value="#{value.scheduleId}") #{key}(#{value.capacity-value.unConsume}/#{value.capacity})
                     li
                         label 选择就诊人
-                        input(type='text',name="patient",value="1606072108113881022",required='true')
+                        input(type='text',name="patient",required='true')
                     //li
                         span.add-patient.text-main 添加就诊人?
 
 
-                    button(class='submitBtn') 确认提交
-
-            //div.
-                <div id="slideLogin">
-                    <div class="touchslider-viewport"><div class="bd">
-                    <ul><li><lable></lable><input type="text" class="username" placeholder="请输入手机号码" value="13689557622"></li><li><input type="password" class="password" placeholder="请输入密码" value="zhm123456"><span class="prompt"><i class="icon"></i><em>手机输入格式有误/验证码有误</em></span></li></ul>
-                    <ul><li><input type="text" class="username" placeholder="请输入手机号码"></li><li><input type="text" class="password" placeholder="请输入短信验证码"><span class="getCode">获取短信验证码</span><span class="prompt"><i class="icon"></i><em>手机输入格式有误/验证码有误</em></span></li></ul>
-                    </div></div></div>
+                    button#commit-reg(class='submitBtn') 确认提交
 
     include ../includes/footer
     script.

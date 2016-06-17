@@ -81,7 +81,7 @@ exports.changeCity = function (req,res,next) {
     dictionnary.GetDetailByIds(req,function(data,success) {
         var parentJson = JSON.parse(data).data[0];
         var locals_address = [{"categoryId":parentJson.id,"name":parentJson.name,"level":parentJson.level},{"categoryId":city.id,"name":city.name,"level":city.level}];
-        req.session.locals_address = JSON.stringify(locals_address);
+        req.session.locals_address = locals_address;
         var resJson = {"code":"200","data":null,"msg":"","success":true};
         res.json(JSON.stringify(resJson));
     });

@@ -33,42 +33,44 @@ block content
             span 门诊医生
         table.table.reg-list
             -var regData = data.data;
-            thead
-                th(width="20%")
-                th(width="20%")
-                each item in regData[0].scheduleList
-                    th
-                        p.month-date #{item.scheduleDate}
-                        p #{week[parseInt(item.dayOfWeek)-1]}
-            tbody
-                each item in regData
-                    -var hos = item.doctor.hospitalReDepartments
-                    -var hosname = '';
-                    each h in hos
-                        -var name = h.hospitalName;
-                        -hosname += name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
-                    tr(data-accountid="#{item.doctor.id}")
-                        td.doctor
-                            img.fl(src="#{item.doctor.doctorPhoto}")
-                            .doctor-info.fl
-                                p.text-main #{item.doctor.doctorName}
-                                //p #{item.doctor.titleId}
-                                p #{hosname}
-                        td #{item.doctor.introduction}
-                        each schedule in item.scheduleList
-                            if schedule.hasSetSchedule
-                                if schedule.consumeCount < schedule.capacityCount
-                                    td.register(data-date="#{schedule.scheduleDate}")
-                                        p 预约
-                                        p (#{schedule.consumeCount}/#{schedule.capacityCount})
-                                else if schedule.consumeCount == schedule.capacityCount
+            if regData.length > 0
+                thead
+                    th(width="20%")
+                    th(width="20%")
+                    each item in regData[0].scheduleList
+                        th
+                            p.month-date #{item.scheduleDate}
+                            p #{week[parseInt(item.dayOfWeek)-1]}
+                tbody
+                    each item in regData
+                        -var hos = item.doctor.hospitalReDepartments
+                        -var hosname = '';
+                        each h in hos
+                            -var name = h.hospitalName;
+                            -hosname += name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
+                        tr(data-accountid="#{item.doctor.id}")
+                            td.doctor
+                                img.fl(src="#{item.doctor.doctorPhoto}")
+                                .doctor-info.fl
+                                    p.text-main #{item.doctor.doctorName}
+                                    //p #{item.doctor.titleId}
+                                    p #{hosname}
+                            td #{item.doctor.introduction}
+                            each schedule in item.scheduleList
+                                if schedule.hasSetSchedule
+                                    if schedule.consumeCount < schedule.capacityCount
+                                        td.register(data-date="#{schedule.scheduleDate}")
+                                            p 预约
+                                            p (#{schedule.consumeCount}/#{schedule.capacityCount})
+                                    else if schedule.consumeCount == schedule.capacityCount
+                                        td.disabled
+                                            p 约满
+                                            p (#{schedule.consumeCount}/#{schedule.capacityCount})
+                                else
                                     td.disabled
-                                        p 约满
-                                        p (#{schedule.consumeCount}/#{schedule.capacityCount})
-                            else
-                                td.disabled
-                                    p 未排班
-
+                                        p 未排班
+            else
+                th 该城市暂无医生排班信息
 
     section.info_list.clearfix
 

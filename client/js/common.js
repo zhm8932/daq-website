@@ -127,9 +127,9 @@ define(function(require, exports, module){
                 for(var i = 0; i < data.length; i++){
                     var city = data[i];
                     if(data[i].id == choosedCityId){
-                        cityHtml += '<span class="city on">'+city.name+'</span>';
+                        cityHtml += '<a href="#" class="city on">'+city.name+'</a>';
                     }else{
-                        cityHtml += '<span class="city">'+city.name+'</span>';
+                        cityHtml += '<a href="#" class="city">'+city.name+'</a>';
                     }
                 }
 

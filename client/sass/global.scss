@@ -278,8 +278,11 @@ select {
   .cancel{
     display:none;
   }
+  span.closePopup{
+    display:none;
+  }
   .box-header{
-    i.cancel{
+    i.close{
       background-position:-240px 19px;
     }
     height:40px;
@@ -360,7 +363,7 @@ select {
         border-top-color: transparent;
       }
 
-      span.city{
+      .city{
         display:inline-block;
         width:80px;text-align:center;
         &.on,&.hover{
