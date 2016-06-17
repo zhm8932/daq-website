@@ -135,6 +135,8 @@ module.exports = {
     GetRegisterList: "his.reservation.get.byaccount",//我的挂号列表
     GetRegTimeSlot: "his.schedule.regsource.withid",
     AddRegByDoc: "his.reservation.add",
+    DelRegister: "his.reservation.delete",
+    CancelRegister: "his.reservation.cancel",
 
     //预约
     GetReservationList: "service.reservation.byuser",

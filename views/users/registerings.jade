@@ -28,7 +28,7 @@ block content
                     th 操作
                 tbody
                     each item in data
-                        tr
+                        tr(data-id="#{item.id}")
                             td
                                 p #{item.id}
                                 p.text-sec 下单时间:
@@ -60,4 +60,4 @@ block content
 
     include ../includes/footer
     script.
-        seajs.use('/js/trade/registerings.js')
+        seajs.use('/js/users/registerings.js')

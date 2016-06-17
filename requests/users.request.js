@@ -38,6 +38,25 @@ exports.GetRegisterList = function (req, callback) {
     });
 };
 
+exports.DelRegister = function (req, callback) {
+    var bizParam = req.body;
+
+    util.ajax('DELETE', api.DelRegister, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
+exports.CancelRegister = function (req, callback) {
+    var bizParam = req.body;
+
+    util.ajax('DELETE', api.CancelRegister, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
+
+
+
 exports.GetReserveDetail = function (req, callback) {
     var bizParam = req.query;
 

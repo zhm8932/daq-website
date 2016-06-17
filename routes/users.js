@@ -48,6 +48,17 @@ router.get('/register/list',authority.loginRequired,function(req,res,next){
     });
 });
 
+router.post('/register/del',authority.loginRequired,function(req,res,next) {
+    request.DelRegister(req,function(data,success) {
+        res.json(data);
+    });
+});
+
+router.post('/register/cancel',authority.loginRequired,function(req,res,next) {
+    request.CancelRegister(req,function(data,success) {
+        res.json(data);
+    });
+});
 
 
 router.get('/coupon/list',authority.loginRequired,function(req,res,next) {
