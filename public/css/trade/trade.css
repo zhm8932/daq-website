@@ -60,7 +60,7 @@
 
 header {
   position: relative;
-  padding-bottom: 20px; }
+  padding: 20px 0 30px 0; }
   header h2 {
     background-color: #FFF;
     padding: 20px 0;
@@ -181,6 +181,18 @@ header {
   background-position: -75px -271px; }
 .confirm-buy .trade-step .commit i {
   background-position: -163px -334px; }
+.confirm-buy .coupon-trigger {
+  cursor: pointer; }
+  .confirm-buy .coupon-trigger .icon {
+    margin-right: 9px;
+    background-position: -265px 4px; }
+  .confirm-buy .coupon-trigger.opend .icon {
+    margin-right: 9px;
+    background-position: -293px 4px; }
+.confirm-buy .tfoot {
+  margin-top: 52px; }
+.confirm-buy .coupon-box {
+  display: none; }
 .confirm-buy .goods-list img {
   width: 40%;
   float: left; }
@@ -200,6 +212,8 @@ header {
     height: 40px;
     border: 1px solid #DDDDDD;
     border-left: none; }
+.confirm-buy .coupon-table {
+  margin-bottom: 22px; }
 
 .order-success .trade-step .cart i {
   background-position: 0 -397px; }

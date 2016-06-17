@@ -63,7 +63,7 @@
 
 header {
   position: relative;
-  padding-bottom: 20px;
+  padding: 20px 0 30px 0;
   h2 {
     background-color: $white;
     padding: 20px 0;
@@ -251,6 +251,28 @@ header {
     }
   }
 
+  .coupon-trigger{
+    cursor:pointer;
+    .icon{
+      margin-right:9px;
+      background-position: -265px 4px;
+    }
+    &.opend{
+      .icon{
+        margin-right:9px;
+        background-position: -293px 4px;
+      }
+    }
+  }
+  .tfoot{
+    margin-top:52px;
+  }
+
+
+  .coupon-box{
+    display:none;
+  }
+  
   .goods-list {
     img {
       width: 40%;
@@ -278,6 +300,9 @@ header {
       border: 1px solid #DDDDDD;
       border-left: none;
     }
+  }
+  .coupon-table{
+    margin-bottom:22px;
   }
 }
 

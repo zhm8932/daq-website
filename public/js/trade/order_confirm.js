@@ -2,12 +2,28 @@ define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
 
     $(function () {
-        getAllCoupon();
         $('.add-coupon').on('click', function () {
             addCoupon($(this));
         });
         $('#submit-btn').on('click',function(){
             submitOrder();
+        });
+
+        $('.coupon-trigger').on('click',function(){
+            var $this = $(this);
+            if($this.hasClass('opend')){
+                $this.removeClass('opend');
+                $('.coupon-box').hide();
+            }else{
+                $this.addClass('opend');
+                $('.coupon-box').show();
+
+                var load = $('.coupon-box').data('load');
+                if(load == 'first'){
+                    $('.coupon-box').data('load','non-first');
+                    getAllCoupon();
+                }
+            }
         });
     });
 

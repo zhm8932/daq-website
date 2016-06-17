@@ -42,7 +42,7 @@ block content
                                 span #{item.goodsName}
                             td ￥#{parseInt(item.discountPrice)/100}
                             td
-                                p #{sampleJson[item.transmitType]}(优惠￥#{parseInt(item.favPrice)/100})
+                                p #{sampleJson[item.transmitType]}(服务费￥#{parseInt(item.favPrice)/100})
                                 p.text-sec 服务区域:
                                     each areaObj,j in JSON.parse(item.address)
                                         if areaObj
@@ -52,20 +52,24 @@ block content
                                                 -proCity += areaObj.name;
                                             | #{areaObj.name}
                             td.text-stress ￥#{parseInt(item.subTotal)/100}
-            .list-info 使用优惠券
-            table#coupon-table.table
-                thead
-                    th
-                    th 优惠券
-                    th 运用条件
-                    th(width="40%") 使用范围
-                    th 有效期
-                tbody
 
-            .list-info.text-stress 有兑换码?
-            .code-box.clearfix
-                input#coupon-code.border-default.fl(type='text',placeholder="请输入优惠券号码")
-                button.add-coupon.border-default.btn.back-sec.fl 添加
+            .list-info.coupon-trigger
+                i.icon
+                span 使用优惠券
+            .coupon-box(data-load="first")
+                table#coupon-table.table.coupon-table
+                    thead
+                        th
+                        th 优惠券
+                        th 运用条件
+                        th(width="40%") 使用范围
+                        th 有效期
+                    tbody
+
+                .code-box.clearfix
+                    input#coupon-code.border-default.fl(type='text',placeholder="请输入优惠券号码")
+                    button.add-coupon.border-default.btn.back-sec.fl 添加
+
             .table-div
                 .tfoot.back-sec.clearfix
                     .service-area
