@@ -7,18 +7,20 @@ define(function (require, exports, module) {
         // });
         
         $('#commit-reg').on('click',function(){
-            var param = $('#regByDocForm').serialize();
-            utils.SendAjax({
-                url: '/treats/reg/byDoc',
-                param: param,
-                method: 'POST',
-                tipText: '挂号',
-                callback: function (result) {
-                    window.location.href="/users/register/list";
-                },
-                errorFun: function (result) {
+            utils.CheckLogin(function() {
+                var param = $('#regByDocForm').serialize();
+                utils.SendAjax({
+                    url: '/treats/reg/byDoc',
+                    param: param,
+                    method: 'POST',
+                    tipText: '挂号',
+                    callback: function (result) {
+                        window.location.href = "/users/register/list";
+                    },
+                    errorFun: function (result) {
 
-                }
+                    }
+                });
             });
         });
     });
