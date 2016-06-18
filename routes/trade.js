@@ -50,23 +50,25 @@ router.post('/cart/delItem', authority.loginRequired,function (req, res, next) {
 
 
 router.post('/order/comfirmView', authority.loginRequired,function (req, res, next) {
-    console.log('核对订单信息');
     res.render('trade/orderConfirm', {
         title: '核对订单信息',
         data: req.body
     });
 });
 
+
 router.post('/order/create',authority.loginRequired, function (req, res, next) {
     request.CreateOrder(req, function (data, success) {
-        var json = JSON.parse(data).data;
-        res.render('trade/orderSuccess', {
-            title: '成功提交订单',
-            data: {
-                id: json.id,
-                totalCost: json.totalCost
-            }
-        });
+        if(success){
+            var json = JSON.parse(data).data;
+            res.render('trade/orderSuccess', {
+                title: '成功提交订单',
+                data: {
+                    id: json.id,
+                    totalCost: json.totalCost
+                }
+            });
+        }
     });
 });
 
@@ -78,8 +80,6 @@ router.get('/order/list',authority.loginRequired, function (req, res, next) {
                 title: '我的订单',
                 data: json.data.data
             });
-        } else {
-            res.json(json);
         }
     });
 });
@@ -146,10 +146,15 @@ router.get('/order/wechatPay',authority.loginRequired, function (req, res, next)
 
 router.get('/order/state',authority.loginRequired, function (req, res, next) {
     request.GetOrderDetail(req, function (data, success) {
-        var resJson = {"code":"200",msg:"",data:{},"success":"true"};
-        var json = JSON.parse(data);
-        resJson.data.orderState = json.data.orderState;
-        resJson.data.id = json.data.id;
+        var resJson = {};
+        if (success) {
+            resJson = {"code": "200", msg: "", data: {}, "success": true};
+            var json = JSON.parse(data);
+            resJson.data.orderState = json.data.orderState;
+            resJson.data.id = json.data.id;
+        }else{
+            resJson = {"code": "200", msg: "", data: {}, "success": false};
+        }
         res.json(JSON.stringify(resJson));
     });
 });
@@ -157,14 +162,16 @@ router.get('/order/state',authority.loginRequired, function (req, res, next) {
 router.get('/order/paySuccess',authority.loginRequired, function (req, res, next) {
     req.query.id = req.query.order_no;
     request.GetOrderDetail(req, function (data, success) {
-        var json = JSON.parse(data);
-        res.render('trade/paySuccess', {
-            title: '支付结果',
-            data: {
-                success: success,
-                data: json.data
-            }
-        });
+        if (success) {
+            var json = JSON.parse(data);
+            res.render('trade/paySuccess', {
+                title: '支付结果',
+                data: {
+                    success: success,
+                    data: json.data
+                }
+            });
+        }
     });
 });
 

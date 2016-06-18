@@ -222,17 +222,21 @@ define(function(require,exports,module) {
                     options.callback && options.callback(result);
                 } else {
                     //弹框提示失败
-                    alertTip('fail', options.tipText + '失败,原因是:' + result.msg);
+                    // alertTip('fail', options.tipText + '失败,原因是:' + result.msg);
+                    showComfirmDialog({tipText:options.tipText + '失败,原因是:' + result.msg,noConfirmBtn:true});
                     options.errorFun && options.errorFun();
                 }
             },
             error: function (data) {
                 if (data.status == '404') {
-                    alertTip('fail', '页面丢失，稍后再试');
+                    // alertTip('fail', '页面丢失，稍后再试');
+                    showComfirmDialog({tipText:'页面丢失，请稍后再试',noConfirmBtn:true});
                 } else if (data.status == '500') {
-                    alertTip('fail', '系统忙，稍后再试');
+                    // alertTip('fail', '系统忙，稍后再试');
+                    showComfirmDialog({tipText:'系统忙，请稍后再试',noConfirmBtn:true});
                 } else {
-                    alertTip('fail', '出错了,响应码是' + data.status + ',请联系管理员');
+                    // alertTip('fail', '出错了,响应码是' + data.status + ',请联系管理员');
+                    showComfirmDialog({tipText:'出错了,响应码是' + data.status + ',请联系管理员',noConfirmBtn:true});
                 }
                 options.errorFun && options.errorFun();
             }
@@ -416,10 +420,18 @@ define(function(require,exports,module) {
         })
     }
 
+    //确认弹框:showComfirmDialog({tipText:"确定删除吗?",noConfirmBtn:true)
     function showComfirmDialog(options){
+        var msg = '';
+        if(options.noConfirmBtn){
+            msg = '<div class="box-header">提示<i class="icon close closePopup"></i></div><div class="box-body">'+
+                '<p class="confim-tip">'+options.tipText+'</p><div class="btn-box"><button class="cancelBtn closePopup">确定</button></div></div>';
+        }else{
+            msg = '<div class="box-header">提示<i class="icon close closePopup"></i></div><div class="box-body">'+
+            '<p class="confim-tip">'+options.tipText+'</p><div class="btn-box"><button class="submitBtn confirm-btn">确定</button><button class="cancelBtn closePopup">取消</button></div></div>';
+        }
         var popup = new Popup({
-            msg:'<div class="box-header">提示<i class="icon close closePopup"></i></div><div class="box-body">'+
-            '<p class="confim-tip">'+options.tipText+'</p><div class="btn-box"><button class="submitBtn confirm-btn">确定</button><button class="cancelBtn closePopup">取消</button></div></div>',
+            msg:msg,
             otherMsg:'confirm-btn',
             popupBox:'popupBox',
             ok:'confirm-btn',
@@ -448,9 +460,7 @@ define(function(require,exports,module) {
             width:'324',
             otherBox:'confirm-box',
             okCallback:function(){
-                if(options){
-                    options.okCallback && options.okCallback();
-                }
+                options.okCallback && options.okCallback();
             }
         })
     }

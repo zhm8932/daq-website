@@ -125,6 +125,8 @@
 .reservation.box-right dl.order .operation {
   width: 15%; }
 
+.coupons .table td {
+  padding: 10px; }
 .coupons .code-box {
   line-height: 38px;
   margin: 10px 0; }

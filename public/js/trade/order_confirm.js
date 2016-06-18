@@ -1,33 +1,36 @@
 define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
 
+    var unfitCouponNum = 0;
+    var fitCouponNum = 0;
+
     $(function () {
         $('.add-coupon').on('click', function () {
             addCoupon($(this));
         });
-        $('#submit-btn').on('click',function(){
+        $('#submit-btn').on('click', function () {
             submitOrder();
         });
 
-        $('.coupon-trigger').on('click',function(){
+        $('.coupon-trigger').on('click', function () {
             var $this = $(this);
-            if($this.hasClass('opend')){
+            if ($this.hasClass('opend')) {
                 $this.removeClass('opend');
                 $('.coupon-box').hide();
-            }else{
+            } else {
                 $this.addClass('opend');
                 $('.coupon-box').show();
 
                 var load = $('.coupon-box').data('load');
-                if(load == 'first'){
-                    $('.coupon-box').data('load','non-first');
+                if (load == 'first') {
+                    $('.coupon-box').data('load', 'non-first');
                     getAllCoupon();
                 }
             }
         });
     });
 
-    function submitOrder(){
+    function submitOrder() {
         var trs = $('.goods-list tbody tr');
         var items = [];
         var id = trs.eq(0).attr('data-goodsid');
@@ -57,22 +60,33 @@ define(function (require, exports, module) {
 
 
     function addCoupon($this) {
-        utils.CheckLogin(function() {
+        utils.CheckLogin(function () {
+            var inviteCode = $('#coupon-code').val().trim();
+            if(!inviteCode){
+                utils.ShowComfirmDialog({tipText:'请输入优惠码',noConfirmBtn:true});
+                return false;
+            }
             $this.addClass('disabled').off('click');
-            var inviteCode = $('#coupon-code').val();
             utils.SendAjax({
                 url: '/users/coupon/addByInvite',
                 param: {inviteCode: inviteCode},
                 method: 'POST',
                 tipText: '添加优惠券',
                 callback: function (result) {
-                    var tableArr = [];
-                    buildCouponTableTr(tableArr, result.data);
-                    var tr = $(tableArr.join(''));
-                    $('#coupon-table tbody').append(tr);
-                    tr.find('.coupon-radio').on('click', function () {
-                        checkCouponRadio($(this));
-                    });
+                    utils.ShowComfirmDialog({tipText:'领取成功!',noConfirmBtn:true});
+                    var trs = $('#coupon-table tbody tr');
+                    var json = buildCouponTableTr(result.data);
+                    var tr = $(json.trArr.join(''));
+                    //给优惠券排序.如果可用就排在第一位,不可用就排在不可用的第一位
+                    if(json.isfit){
+                        trs.eq(0).before(tr);
+                        tr.find('.coupon-radio').on('click', function () {
+                            checkCouponRadio($(this));
+                        });
+                    }else{
+                        trs.eq(fitCouponNum).before(tr);
+                    }
+
                     $this.removeClass('disabled').on('click', function () {
                         addCoupon($(this));
                     });
@@ -89,7 +103,7 @@ define(function (require, exports, module) {
     function checkCouponRadio($this) {
         utils.CheckRadio($this, '.coupon-radio', function () {
             var goodsTotalPrice = parseInt($('#goodsTotalPrice').val());
-            if($this.hasClass('checked')){
+            if ($this.hasClass('checked')) {
                 var favValue, actualTotal, faceValue, discount, mostDeduction;
                 var tr = $this.closest('tr');
                 var ftype = tr.attr('data-ftype');
@@ -100,21 +114,21 @@ define(function (require, exports, module) {
                 } else if (ftype == 'discount') {
                     discount = parseFloat(tr.attr('data-discount'));
                     mostDeduction = parseFloat(tr.attr('data-mostDeduction'));
-                    favValue = (goodsTotalPrice * (1-discount * 0.1)).toFixed(0);
+                    favValue = (goodsTotalPrice * (1 - discount * 0.1)).toFixed(0);
                     favValue = favValue >= mostDeduction ? mostDeduction : favValue;
                     actualTotal = goodsTotalPrice - favValue;
                 }
-                $('#actualTotal .price').html('￥'+actualTotal/100);
-                $('#actualTotal .fav').html('(已优惠￥'+favValue/100+')');
-            }else{
-                $('#actualTotal .price').html('￥'+goodsTotalPrice/100);
+                $('#actualTotal .price').html('￥' + actualTotal / 100);
+                $('#actualTotal .fav').html('(已优惠￥' + favValue / 100 + ')');
+            } else {
+                $('#actualTotal .price').html('￥' + goodsTotalPrice / 100);
                 $('#actualTotal .fav').html('(已优惠￥0)');
             }
         });
     }
 
     function getAllCoupon() {
-        utils.CheckLogin(function() {
+        utils.CheckLogin(function () {
             var param = {
                 pageSize: 100,
                 useState: 1,
@@ -127,11 +141,17 @@ define(function (require, exports, module) {
                 tipText: '获取优惠券',
                 callback: function (result) {
                     var data = result.data.data;
-                    var tableArr = [];
+                    var fitTableArr = [];
+                    var unfitTableArr = [];
                     for (var i = 0; i < data.length; i++) {
-                        buildCouponTableTr(tableArr, data[i]);
+                        var json = buildCouponTableTr(data[i]);
+                        if(json.isfit){
+                            fitTableArr.push(json.trArr);
+                        }else{
+                            unfitTableArr.push(json.trArr);
+                        }
                     }
-                    $('#coupon-table tbody').html(tableArr.join(''));
+                    $('#coupon-table tbody').html(fitTableArr.join('')+unfitTableArr.join(''));
                     $('.coupon-radio').off('click').on('click', function () {
                         checkCouponRadio($(this));
                     });
@@ -143,7 +163,8 @@ define(function (require, exports, module) {
         });
     }
 
-    function buildCouponTableTr(tableArr, data) {
+    function buildCouponTableTr(data) {
+        var trArr = [];
         var goodsTotalPrice = parseInt($('#goodsTotalPrice').val());
         var cityId = $('#cityId').val();
         var faceValue, enoughMoney;
@@ -151,6 +172,7 @@ define(function (require, exports, module) {
         var fitAreaArr = JSON.parse(data.fitArea);
         var areaNames = [];
         var areaIds = [];
+        var isfit = false;//是否可使用
         for (j = 0; j < fitAreaArr.length; j++) {
             areaNames.push(fitAreaArr[j].name);
             areaIds.push(fitAreaArr[j].categoryId);
@@ -160,31 +182,42 @@ define(function (require, exports, module) {
             faceValue = parseInt(data.faceValue);
             enoughMoney = parseInt(data.enoughMoney);
             if (!(goodsTotalPrice >= enoughMoney && isInArea(cityId, areaIds))) {
-                tableArr.push('<tr data-id="' + data.couponCodeId + '" data-faceValue="' + faceValue + '" data-enoughMoney="' + enoughMoney + '" data-ftype="' + data.ftype + '"><td><span class="radio coupon-radio disabled"></span></td>');
+                trArr.push('<tr data-id="' + data.couponCodeId + '" data-faceValue="' + faceValue + '" data-enoughMoney="' + enoughMoney + '" data-ftype="' + data.ftype + '"><td><span class="radio coupon-radio disabled"></span></td>');
+                isfit = false;
             } else {
-                tableArr.push('<tr data-id="' + data.couponCodeId + '" data-faceValue="' + faceValue + '" data-enoughMoney="' + enoughMoney + '" data-ftype="' + data.ftype + '"><td><span class="radio coupon-radio"></span></td>');
+                trArr.push('<tr data-id="' + data.couponCodeId + '" data-faceValue="' + faceValue + '" data-enoughMoney="' + enoughMoney + '" data-ftype="' + data.ftype + '"><td><span class="radio coupon-radio"></span></td>');
+                isfit = true;
             }
-            tableArr.push('<td>' + parseInt(data.faceValue) / 100 + '元</td>');
+            trArr.push('<td>' + parseInt(data.faceValue) / 100 + '元</td>');
 
             if (enoughMoney == 0) {
-                tableArr.push('<td>无门槛</td>');
+                trArr.push('<td>无门槛</td>');
             } else {
-                tableArr.push('<td>满' + enoughMoney / 100 + '元使用</td>');
+                trArr.push('<td>满' + enoughMoney / 100 + '元使用</td>');
             }
         } else if (data.ftype == 'discount') {
             if (!isInArea(cityId, areaIds)) {
-                tableArr.push('<tr data-id="' + data.couponCodeId + '" data-discount="' + data.discount + '" data-mostDeduction="' + data.mostDeduction + '" data-ftype="' + data.ftype + '"><td><span class="radio coupon-radio disabled"></span></td>');
+                trArr.push('<tr data-id="' + data.couponCodeId + '" data-discount="' + data.discount + '" data-mostDeduction="' + data.mostDeduction + '" data-ftype="' + data.ftype + '"><td><span class="radio coupon-radio disabled"></span></td>');
+                isfit = false;
             } else {
-                tableArr.push('<tr data-id="' + data.couponCodeId + '" data-discount="' + data.discount + '" data-mostDeduction="' + data.mostDeduction + '" data-ftype="' + data.ftype + '"><td><span class="radio coupon-radio"></span></td>');
+                trArr.push('<tr data-id="' + data.couponCodeId + '" data-discount="' + data.discount + '" data-mostDeduction="' + data.mostDeduction + '" data-ftype="' + data.ftype + '"><td><span class="radio coupon-radio"></span></td>');
+                isfit = true;
             }
 
-            tableArr.push('<td>' + data.discount + '折</td>');
-            tableArr.push('<td>最多可抵' + parseInt(data.mostDeduction) / 100 + '元</td>');
+            trArr.push('<td>' + data.discount + '折</td>');
+            trArr.push('<td>最多可抵' + parseInt(data.mostDeduction) / 100 + '元</td>');
         }
 
-        tableArr.push('<td>限定地区:' + areaNames.join(',') + '</td>');
+        trArr.push('<td>限定地区:' + areaNames.join(',') + '</td>');
 
-        tableArr.push('<td >有效期至' + utils.GetLoacalDateString(data.endTime) + '</td></tr>');
+        trArr.push('<td >有效期至' + utils.GetLoacalDateString(data.endTime) + '</td></tr>');
+
+        isfit ? fitCouponNum++ : unfitCouponNum++;//计算可用优惠券和不可用的数量
+
+        return {
+            trArr:trArr,
+            isfit:isfit
+        };
 
     }
 

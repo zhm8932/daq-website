@@ -23,14 +23,12 @@ router.get('/reservation/list',authority.loginRequired,function(req,res,next){
 
 router.get('/reservation/detail',authority.loginRequired,function(req,res,next){
     request.GetReserveDetail(req,function(data,success) {
-        var json = JSON.parse(data);
         if(success){
+            var json = JSON.parse(data);
             res.render('users/reserveDetail',{
                 title:'预约详情',
                 data:json.data
             });
-        }else{
-            res.json(json);
         }
     });
 });
@@ -38,8 +36,8 @@ router.get('/reservation/detail',authority.loginRequired,function(req,res,next){
 //挂号列表
 router.get('/register/list',authority.loginRequired,function(req,res,next){
     request.GetRegisterList(req,function(data,success) {
-        var json = JSON.parse(data);
         if(success){
+            var json = JSON.parse(data);
             res.render('users/registerings',{
                 title:'我的挂号',
                 data:json.data
@@ -69,14 +67,12 @@ router.get('/coupon/list',authority.loginRequired,function(req,res,next) {
 
 router.get('/coupon/listView',authority.loginRequired,function(req,res,next) {
     request.GetCouponList(req,function(data,success) {
-        var json = JSON.parse(data);
         if(success){
+            var json = JSON.parse(data);
             res.render('users/coupons',{
                 title:'我的优惠券',
                 data:json.data
             });
-        }else{
-            res.json(data);
         }
     });
 });
@@ -89,14 +85,12 @@ router.post('/coupon/addByInvite',authority.loginRequired,function(req,res,next)
 
 router.get('/patient/list',authority.loginRequired,function(req,res,next) {
     request.GetPatientList(req,function(data,success) {
-        var json = JSON.parse(data);
         if(success){
+            var json = JSON.parse(data);
             res.render('users/patients',{
                 title:'我的就诊人',
                 data:json.data
             });
-        }else{
-            res.json(data);
         }
     });
 });
