@@ -33,8 +33,22 @@ exports.get_goods_detail = function (req,res) {
             if(item.attributeName=='page_description'){
                 description = item.value
             }
+            if(item.attributeName=='transmit_type'){
+                res.locals.transmitType = JSON.parse(item.value)
+            }
+            if(item.attributeName=='transmit_items'){
+                res.locals.transmitItems = JSON.parse(item.value)
+            }
+            if(item.attributeName=='fit_people'){
+                res.locals.fitPeople = item.value;
+            }
+            if(item.attributeName=='slogan'){
+                res.locals.slogan = item.value
+            }
+
         })
     }
+
     res.render('screenings/goods_detail', {
         title: '筛查服务_'+get_goods_detail.goodsName,
         keywords: '筛查服务_'+keywords,

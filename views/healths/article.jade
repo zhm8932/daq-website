@@ -5,12 +5,7 @@ block content
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
-        |您的位置为：首页<em>#{sep}</em>健康常识<em>#{sep}</em>男性体检项目有哪些？
-        //-if get_goods_category_success
-                each item in get_goods_category
-                    if item.id==categoryId
-                        em #{sep}
-                        |#{item.name}
+        |您的位置为：首页<em>#{sep}</em>健康常识<em>#{sep}</em>#{get_article_detail.title}
     section.wrapper.health.clearfix
         .health_detail
           if get_article_detail_success  
@@ -20,10 +15,6 @@ block content
             //-article!= get_article_detail_content
             //-article!= markdown.toHTML(get_article_detail.content)
             article!= get_article_detail.content
-
-                //#{markdown.toHTML(get_article_detail.content)}
-                //-pre.
-                //-#{get_article_detail.content}
         aside
             .ads
                 img(src='/images/img1.png')
@@ -35,40 +26,8 @@ block content
             include  list_ask
     section.boxBg
         .wrapper.recommend.clearfix
-            h2 相关推荐  
-            ul
-                 li: a(href='javascript:;')
-                    i
-                    |女性经期要注意些什么？ 
-                 li: a(href='javascript:;')
-                    i
-                    |女性经期要注意些什么？
-                 li: a(href='javascript:;')
-                    i
-                    |女性经期要注意些什么？
-                 li: a(href='javascript:;')
-                    i
-                    |女性经期要注意些什么？
-                 li: a(href='javascript:;')
-                    i
-                    |女性经期要注意些什么？
-                 li: a(href='javascript:;')
-                    i
-                    |女性经期要注意些什么？ 
-                 li: a(href='javascript:;')
-                    i
-                    |女性经期要注意些什么？
-                 li: a(href='javascript:;')
-                    i
-                    |女性经期要注意些什么？
-                 li: a(href='javascript:;')
-                    i
-                    |女性经期要注意些什么？
-                 li: a(href='javascript:;')
-                    i
-                    |女性经期要注意些什么？                              
-
-
+            //-科普推荐
+            include  list_recommend
     include ../includes/footer
     script.
         seajs.use('/js/screenings/goods.js')

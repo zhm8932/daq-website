@@ -12,7 +12,7 @@ function get_article_list(req,res,next,obj) {
     }
 
     var category='';
-    console.log('currentPage::::',currentPage)
+    // console.log('currentPage::::',currentPage)
     var get_articles_category = req.get_articles_category
     if(get_articles_category.success){
         get_articles_category = get_articles_category.data
@@ -24,13 +24,13 @@ function get_article_list(req,res,next,obj) {
         })
     }
 
-    console.log("category:",category)
+    // console.log("category:",category)
 
     var bizParam={
         "pageIndex": currentPage,
         "pageSize": obj.pageSize||6,
         "category":category||query.category||1,
-        "status":0,
+        "status":obj.status||0,
         "tc":query.tc || ''
     };
 
@@ -44,7 +44,6 @@ function get_article_list(req,res,next,obj) {
             res.locals.currentPage = currentPage;
             res.locals.pageCount = json.data.pageCount;
         }
-
 
         req[obj.data_name] = json;
         if(obj.send){
@@ -87,6 +86,15 @@ exports.get_article_list_diseases = function (req,res,next) {
     get_article_list(req,res,next,{
         category_name:'病原体',
         data_name:'get_article_list_diseases',
+        pageSize:20
+    })
+}
+//相关推荐
+exports.get_article_list_recommend = function (req,res,next) {
+    get_article_list(req,res,next,{
+        category_name:'科普知识',
+        data_name:'get_article_list_recommend',
+        status:1,
         pageSize:20
     })
 }

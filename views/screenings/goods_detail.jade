@@ -1,52 +1,10 @@
-doctype html
-html
-    head
-        -var transmitType,transmitItems,fitPeople,slogan,keyword,description,storage;
-        each prouctAttr in goods_detail.productKeyAttributeList
-            if(prouctAttr.attributeName == 'transmit_type')
-                -transmitType = JSON.parse(prouctAttr.value);
-            if(prouctAttr.attributeName == 'transmit_items')
-                -transmitItems = JSON.parse(prouctAttr.value);
-            if(prouctAttr.attributeName == 'fit_people')
-                -fitPeople = prouctAttr.value;
-            if(prouctAttr.attributeName == 'slogan')
-                -slogan = prouctAttr.value;
-            if(prouctAttr.attributeName == 'title')
-                -title = prouctAttr.value;
-            if(prouctAttr.attributeName == 'keyword')
-                -keyword = prouctAttr.value;
-            if(prouctAttr.attributeName == 'page_description')
-                -description = prouctAttr.value;
-            if(prouctAttr.attributeName == 'storage_condition')
-                -storage = prouctAttr.value;
-        title= title
-        meta(name='keywords',content= keywords,value="#{keyword}")
-        meta(name='description',content= description,value="#{description}")
-        meta(name='viewport',content='width=device-width,initial-scale=1')
-        meta(http-equiv="X-UA-Compatible",content="IE=edge")
-        meta(name='renderer',content='webkit')
-        include ../includes/head
-        <!--[if lt IE 9]>
-        script(src="/js/libs/html5shiv.min.js")
-        script(src="/js/libs/respond.min.js")
-        <![endif]-->
-        <!--[if IE 6]>
-        <script src="/js/libs/DD_belatedPNG-min.js"></script>
-        <script type="text/javascript">
-        DD_belatedPNG.fix('img,.icon')
-        </script>
-        <![endif]-->
-
-        body
-            include ../includes/header
+extends ../layout
+block content
             link(href='/css/screenings/goods_detail.css',rel='styleSheet')
             include ../includes/responsive
             include ../includes/nav
-            .positon.wrapper.
-                您的位置为：首页 <em>#{sep}</em> 筛查服务 <em>#{sep}</em> 生殖感染(CT/NG)核酸筛查套餐
-
-
-
+            .positon.wrapper
+                |您的位置为：首页 <em>#{sep}</em> 筛查服务 <em>#{sep}</em> #{title}
             if get_goods_detail_success
                 section.goods_basic.clearfix
                     .wrapper
@@ -135,81 +93,17 @@ html
                         h3
                          i.icon
                          |套餐详情
-                        div.
-                            CT（衣原体）和NG（淋球菌）是引起生殖健康的两大罪魁祸首
-                            据WHO统计，2008年全球生殖道CT感染者达1亿人，NG感染者达3640万人[1]
-
-                            隐藏在身体中的定时炸弹
-                            CT/NG感染最大危害在于感染后毫无症状，极易被忽略，进而引发女性盆腔炎、不孕、宫外孕及男性前列腺炎及不育，且可增加艾滋病感染风险6-10倍。
-
-                            选择都安全  私享好生活
-                            快速+轻松
-                            APP、PC官网、移动网站、微信等多种工具轻松预约
-                            便捷+隐私
-                            提供自取样邮寄、上门取样、门诊取样，匿名登记、账号查询报告、就诊环境区隔等隐私保护
-                            权威+精准
-                            全国三甲医院教授、博士、主治医生领衔，并与罗氏诊断、默沙东、碧迪等世界500强深度合作
+                        div!= goods_detail.detail
                     article#content-detection
                         h3
                             i.icon
                             | 检测须知
-                        div.
-                            服务区域：（关联区域）
-                            上门服务区域：天河区、越秀区、海珠区、黄浦区、番禺区
-                            广州市其他区域可选择自取样邮寄或门诊检测服务。
-
-                            报告时限： 4小时（样本到达实验室后）
-
-                            采样须知：
-                            1、	晨起第一次尿液最佳，截留首段尿液2ml
-                            2、	非晨起第一次尿液，建议距上次排尿至少2小时再取
-                            尿液邮寄须知：
-                            1、收到采样包，打开后应24小时内使用
-                            2、请遵从说明书采取尿液，并于4小时内寄出
-                            3、请仔细检查采样包，如有渗漏，请及时联系更换
-                            4、如采样包内液体不慎接触皮肤或眼睛，应立即用清水冲洗
-
-                            服务流程：
-                            自取样邮寄：下单—邮寄采样工具—自取样—邮寄样本至实验室—出报告
-                            上门取样：下单—预约上门时间—护士上门取样—送检—出报告
-                            门诊取样：预约—到诊登记—护士取样—送检—出报告
-
-                            专家建议：
-                            1、	建议正常人群每年筛查一次，高危人群及时筛查
-                            2、	检测报告结果为阳性，应及时到都安全门诊就诊
-                            3、	有尿道或生殖道不舒适者，应尽早进行检查
-                            4、	爱护自己和性伴，正确使用安全套
+                        div!= goods_detail.summary
                     article#content-faq
                         h3
                             i.icon
                             | 相关问题
-                        div.
-                            服务区域：（关联区域）
-                            上门服务区域：天河区、越秀区、海珠区、黄浦区、番禺区
-                            广州市其他区域可选择自取样邮寄或门诊检测服务。
-
-                            报告时限： 4小时（样本到达实验室后）
-
-                            采样须知：
-                            1、	晨起第一次尿液最佳，截留首段尿液2ml
-                            2、	非晨起第一次尿液，建议距上次排尿至少2小时再取
-                            尿液邮寄须知：
-                            1、收到采样包，打开后应24小时内使用
-                            2、请遵从说明书采取尿液，并于4小时内寄出
-                            3、请仔细检查采样包，如有渗漏，请及时联系更换
-                            4、如采样包内液体不慎接触皮肤或眼睛，应立即用清水冲洗
-
-                            服务流程：
-                            自取样邮寄：下单—邮寄采样工具—自取样—邮寄样本至实验室—出报告
-                            上门取样：下单—预约上门时间—护士上门取样—送检—出报告
-                            门诊取样：预约—到诊登记—护士取样—送检—出报告
-
-                            专家建议：
-                            1、	建议正常人群每年筛查一次，高危人群及时筛查
-                            2、	检测报告结果为阳性，应及时到都安全门诊就诊
-                            3、	有尿道或生殖道不舒适者，应尽早进行检查
-                            4、	爱护自己和性伴，正确使用安全套
-
+                        div!= goods_detail.commonQa
 
             each item in goods_detail.saleAttributes
                 if item.attributeName == "fit_area"
