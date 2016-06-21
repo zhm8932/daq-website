@@ -74,6 +74,7 @@ define(function (require, exports, module) {
                 tipText: '添加优惠券',
                 callback: function (result) {
                     utils.ShowComfirmDialog({tipText:'领取成功!',noConfirmBtn:true});
+                    $('#coupon-code').val('');
                     var trs = $('#coupon-table tbody tr');
                     var json = buildCouponTableTr(result.data);
                     var tr = $(json.trArr.join(''));
@@ -102,6 +103,8 @@ define(function (require, exports, module) {
 
     function checkCouponRadio($this) {
         utils.CheckRadio($this, '.coupon-radio', function () {
+            var discountPriceTotal = parseInt($('#discountPriceTotal').val());
+            var servicePriceTotal = parseInt($('#servicePriceTotal').val());
             var goodsTotalPrice = parseInt($('#goodsTotalPrice').val());
             if ($this.hasClass('checked')) {
                 var favValue, actualTotal, faceValue, discount, mostDeduction;
@@ -110,13 +113,13 @@ define(function (require, exports, module) {
 
                 if (ftype == 'cash') {
                     favValue = faceValue = parseInt(tr.attr('data-faceValue'));
-                    actualTotal = goodsTotalPrice - faceValue;
+                    actualTotal = discountPriceTotal - faceValue > 0 ? discountPriceTotal - faceValue + servicePriceTotal: 0 + servicePriceTotal;
                 } else if (ftype == 'discount') {
                     discount = parseFloat(tr.attr('data-discount'));
                     mostDeduction = parseFloat(tr.attr('data-mostDeduction'));
-                    favValue = (goodsTotalPrice * (1 - discount * 0.1)).toFixed(0);
+                    favValue = (discountPriceTotal * (1 - discount * 0.1)).toFixed(0);
                     favValue = favValue >= mostDeduction ? mostDeduction : favValue;
-                    actualTotal = goodsTotalPrice - favValue;
+                    actualTotal = discountPriceTotal - favValue + servicePriceTotal;
                 }
                 $('#actualTotal .price').html('￥' + actualTotal / 100);
                 $('#actualTotal .fav').html('(已优惠￥' + favValue / 100 + ')');
@@ -165,7 +168,7 @@ define(function (require, exports, module) {
 
     function buildCouponTableTr(data) {
         var trArr = [];
-        var goodsTotalPrice = parseInt($('#goodsTotalPrice').val());
+        var discountPriceTotal = parseInt($('#discountPriceTotal').val());
         var cityId = $('#cityId').val();
         var faceValue, enoughMoney;
         var j;
@@ -173,15 +176,19 @@ define(function (require, exports, module) {
         var areaNames = [];
         var areaIds = [];
         var isfit = false;//是否可使用
+        var nowTime = new Date().getTime();
+        console.log('===nowTime:'+nowTime+'---beginTime:'+data.beginTime+'----endTime:'+data.endTime);
+        console.log(data.beginTime<=nowTime);
         for (j = 0; j < fitAreaArr.length; j++) {
             areaNames.push(fitAreaArr[j].name);
             areaIds.push(fitAreaArr[j].categoryId);
         }
 
+
         if (data.ftype == 'cash') {
             faceValue = parseInt(data.faceValue);
             enoughMoney = parseInt(data.enoughMoney);
-            if (!(goodsTotalPrice >= enoughMoney && isInArea(cityId, areaIds))) {
+            if (!(discountPriceTotal >= enoughMoney && isInArea(cityId, areaIds) && nowTime >= data.beginTime && nowTime<=data.endTime)) {
                 trArr.push('<tr data-id="' + data.couponCodeId + '" data-faceValue="' + faceValue + '" data-enoughMoney="' + enoughMoney + '" data-ftype="' + data.ftype + '"><td><span class="radio coupon-radio disabled"></span></td>');
                 isfit = false;
             } else {
@@ -196,7 +203,7 @@ define(function (require, exports, module) {
                 trArr.push('<td>满' + enoughMoney / 100 + '元使用</td>');
             }
         } else if (data.ftype == 'discount') {
-            if (!isInArea(cityId, areaIds)) {
+            if (!(isInArea(cityId, areaIds) && nowTime >= data.beginTime && nowTime<=data.endTime)) {
                 trArr.push('<tr data-id="' + data.couponCodeId + '" data-discount="' + data.discount + '" data-mostDeduction="' + data.mostDeduction + '" data-ftype="' + data.ftype + '"><td><span class="radio coupon-radio disabled"></span></td>');
                 isfit = false;
             } else {
@@ -210,7 +217,7 @@ define(function (require, exports, module) {
 
         trArr.push('<td>限定地区:' + areaNames.join(',') + '</td>');
 
-        trArr.push('<td >有效期至' + utils.GetLoacalDateString(data.endTime) + '</td></tr>');
+        trArr.push('<td >'+utils.GetLoacalDateString(data.beginTime)+' 至 ' + utils.GetLoacalDateString(data.endTime) + '</td></tr>');
 
         isfit ? fitCouponNum++ : unfitCouponNum++;//计算可用优惠券和不可用的数量
 

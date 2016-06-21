@@ -24,68 +24,70 @@ define(function (require, exports, module) {
     });
 
     function getCouponList($this,useState){
-        utils.CheckLogin(function() {
-            var param = {
-                pageSize: 100,
-                useState: useState,
-                pageIndex: 1
-            };
-            utils.SendAjax({
-                url: '/users/coupon/list',
-                param: param,
-                method: 'GET',
-                tipText: '获取优惠券',
-                callback: function (result) {
-                    var data = result.data.data;
-                    var tableArr = [];
-                    if (data.length <= 0) {
-                        $('#coupon-table tbody').html('<tr class="text-center"><td colspan="5">暂无优惠券记录</td></tr>');
-                    } else {
-                        for (var i = 0; i < data.length; i++) {
-                            buildCouponTableTr(tableArr, data[i]);
-                        }
-                        $('#coupon-table tbody').html(tableArr.join(''));
+        var param = {
+            pageSize: 100,
+            useState: useState,
+            pageIndex: 1
+        };
+        utils.SendAjax({
+            url: '/users/coupon/list',
+            param: param,
+            method: 'GET',
+            tipText: '获取优惠券',
+            callback: function (result) {
+                var data = result.data.data;
+                var tableArr = [];
+                if (data.length <= 0) {
+                    $('#coupon-table tbody').html('<tr class="text-center"><td colspan="5">暂无优惠券记录</td></tr>');
+                } else {
+                    for (var i = 0; i < data.length; i++) {
+                        tableArr = tableArr.concat(buildCouponTableTr(data[i]));
                     }
-                    $('.coupon-state li').removeClass('on');
-                    $this.addClass('on');
-                },
-                errorFun: function (result) {
-
+                    $('#coupon-table tbody').html(tableArr.join(''));
                 }
-            });
+                $('.coupon-state li').removeClass('on');
+                $this.addClass('on');
+            },
+            errorFun: function (result) {
+
+            }
         });
+
     }
 
     function addCoupon($this) {
-        utils.CheckLogin(function() {
-            $this.addClass('disabled').off('click');
-            var inviteCode = $('#coupon-code').val();
-            utils.SendAjax({
-                url: '/users/coupon/addByInvite',
-                param: {inviteCode: inviteCode},
-                method: 'POST',
-                tipText: '添加优惠券',
-                callback: function (result) {
-                    var tableArr = [];
-                    buildCouponTableTr(tableArr, result.data);
-                    var tr = $(tableArr.join(''));
-                    $('#coupon-table tbody').append(tr);
+        var inviteCode = $('#coupon-code').val().trim();
+        if(!inviteCode){
+            utils.ShowComfirmDialog({tipText:'请输入优惠码',noConfirmBtn:true});
+            return false;
+        }
+        $this.addClass('disabled').off('click');
+        utils.SendAjax({
+            url: '/users/coupon/addByInvite',
+            param: {inviteCode: inviteCode},
+            method: 'POST',
+            tipText: '添加优惠券',
+            callback: function (result) {
+                utils.ShowComfirmDialog({tipText:'领取成功!',noConfirmBtn:true});
+                $('#coupon-code').val('');
+                var tr = $(buildCouponTableTr(result.data).join(''));
+                $('#coupon-table tbody').append(tr);
 
-                    $this.removeClass('disabled').on('click', function () {
-                        addCoupon($(this));
-                    });
-                },
-                errorFun: function () {
-                    $this.removeClass('disabled').on('click', function () {
-                        addCoupon($(this));
-                    });
-                }
-            });
+                $this.removeClass('disabled').on('click', function () {
+                    addCoupon($(this));
+                });
+            },
+            errorFun: function () {
+                $this.removeClass('disabled').on('click', function () {
+                    addCoupon($(this));
+                });
+            }
         });
     }
 
 
-    function buildCouponTableTr(tableArr, data) {
+    function buildCouponTableTr(data) {
+        var trArr = [];
         var enoughMoney;
         var fitAreaArr = JSON.parse(data.fitArea);
         var j;
@@ -98,23 +100,25 @@ define(function (require, exports, module) {
 
         if (data.ftype == 'cash') {
             enoughMoney = parseInt(data.enoughMoney);
-            tableArr.push('<tr>');
-            tableArr.push('<td>' + parseInt(data.faceValue) / 100 + '元</td>');
+            trArr.push('<tr>');
+            trArr.push('<td>' + parseInt(data.faceValue) / 100 + '元</td>');
 
             if (enoughMoney == 0) {
-                tableArr.push('<td>无门槛</td>');
+                trArr.push('<td>无门槛</td>');
             } else {
-                tableArr.push('<td>满' + enoughMoney / 100 + '元使用</td>');
+                trArr.push('<td>满' + enoughMoney / 100 + '元使用</td>');
             }
         } else if (data.ftype == 'discount') {
-            tableArr.push('<tr>');
-            tableArr.push('<td>' + data.discount + '折</td>');
-            tableArr.push('<td>最多可抵' + parseInt(data.mostDeduction) / 100 + '元</td>');
+            trArr.push('<tr>');
+            trArr.push('<td>' + data.discount + '折</td>');
+            trArr.push('<td>最多可抵' + parseInt(data.mostDeduction) / 100 + '元</td>');
         }
 
-        tableArr.push('<td>限定地区:' + areaNames.join(',') + '</td>');
+        trArr.push('<td>限定地区:' + areaNames.join(',') + '</td>');
 
-        tableArr.push('<td >有效期至' + utils.GetLoacalDateString(data.endTime) + '</td></tr>');
+        trArr.push('<td >' + utils.GetLoacalDateString(data.beginTime) + ' 至 ' + utils.GetLoacalDateString(data.endTime) + '</td></tr>');
+
+        return trArr;
 
     }
 });
