@@ -119,7 +119,6 @@
   }
 
 }
-
 .goods_detail{
   .tab{
     background-color:$bgc_F2; line-height: 50px;border-bottom:2px solid $bdrc_48B ;
@@ -134,5 +133,6 @@
     p,pre{
       word-break:break-all;
     }
+    img{display:block;margin: 10px auto;}
   }
 }

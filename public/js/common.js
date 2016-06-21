@@ -22,21 +22,36 @@ define(function(require, exports, module){
 
         });
 
-        $('.city-name').on('click',function(e){
+        // $('.city-name').on('click',function(e){
+        //     e.stopPropagation();
+        //     var $this = $(this);
+        //     var OChooseCity = $this.find('.choose-city');
+        //     if(OChooseCity.css('display') == 'none'){
+        //         OChooseCity.fadeIn();
+        //         console.log(OChooseCity.data('load'));
+        //         var data = OChooseCity.data('load')
+        //         if(data === 'first'){
+        //             getCityList();
+        //             OChooseCity.data('load','non-first');
+        //         }
+        //     }
+        // });
+        $('.city-name').hover(function (e) {
             e.stopPropagation();
             var $this = $(this);
             var OChooseCity = $this.find('.choose-city');
-            if(OChooseCity.css('display') == 'none'){
-                OChooseCity.fadeIn();
-                console.log(OChooseCity.data('load'));
-                var data = OChooseCity.data('load')
-                if(data === 'first'){
-                    getCityList();
-                    OChooseCity.data('load','non-first');
-                }
+            OChooseCity.stop().fadeIn();
+            var data = OChooseCity.data('load')
+            if(data === 'first'){
+                getCityList();
+                OChooseCity.data('load','non-first');
             }
-        });
 
+        },function () {
+            var $this = $(this);
+            var OChooseCity = $this.find('.choose-city');
+            OChooseCity.stop().fadeOut();
+        })
         $(window).on('click',function(){
             var OChooseCity = $('.city-name .choose-city');
             if(OChooseCity.css('display') != 'none') {
