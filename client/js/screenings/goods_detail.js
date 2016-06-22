@@ -1,9 +1,11 @@
 define(function(require){
     var config = require('../config');
+    var login = require('../login');
     var utils = require('../libs/utils.js');
 
     require('touchslider');
 
+    console.log("login:",login)
     $(function(){
         if(checkArea()){
             $('#addCartBtn').on('click',function(){
@@ -124,13 +126,14 @@ define(function(require){
         //滚动时导航锁定在顶部
         var tab = $('.goods_detail #tab');
         tab.attr('data-orign-top',tab.offset().top);//得到初始高度
+        var wrapperWidth = $('.wrapper').width();
         $(document).scroll(function(){
             var topBarHeight = $('.topBar').height();
             var tab = $('.goods_detail #tab');
             var width = tab.closest('.wrapper').width();
 
             if($(document).scrollTop() + topBarHeight > tab.attr('data-orign-top') ){
-                tab.css('position','fixed').css('top',topBarHeight+'px');
+                tab.css('position','fixed').css({'top':topBarHeight+'px','width':wrapperWidth});
                 $('#tab-copy').removeClass('none');
             }else{
                 tab.css('position','static').css('width',width+'px');
@@ -243,7 +246,7 @@ define(function(require){
 
     function checkCondition(callBack){
         //CheckLogin传入两个函数,第一个函数为检查登录为true时执行的方法
-        utils.CheckLogin(function() {
+        login.CheckLogin(function() {
             if (!checkArea()) {
                 return false;
             }

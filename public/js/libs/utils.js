@@ -422,26 +422,6 @@ define(function(require,exports,module) {
         })
     }
 
-    //检查登录:已经登录则继续执行callback,没有登录则把callback传到登录函数中去,登录后继续执行
-    function checkLogin(callBack){
-        sendAjax({
-            url: '/checkLogin',
-            param: {},
-            method: 'GET',
-            tipText: '检查是否登录',
-            callback: function (result) {
-                if(!result.login){
-                    showLogin({
-                        afterLoginFun:callBack
-                    });
-                    return false;
-                }else{
-                    callBack && callBack();
-                }
-            }
-        });
-    }
-
     function buildSelect(objs){
         objs.each(function(index,ele){
             var $this = $(ele);
@@ -501,7 +481,7 @@ define(function(require,exports,module) {
         // validateLogin:validateLogin,
         // logout:logout,
         getLoacalDateAndTime:getLoacalDateAndTime,
-        CheckLogin:checkLogin,
+        // CheckLogin:checkLogin,
         BuildSelect:buildSelect,
         SetMinHeight:setMinHeight,
         ShowComfirmDialog:showComfirmDialog,

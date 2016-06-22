@@ -1,5 +1,6 @@
 define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
+    var login = require('../login');
 
     $('.alipay').on('click',function(){
         getPayId(alipay,4);
@@ -10,7 +11,7 @@ define(function (require, exports, module) {
     });
 
     function getPayId(fun,payWay){
-        utils.CheckLogin(function() {
+        login.CheckLogin(function() {
             var id = $('#order-detail').data('id');
             utils.SendAjax({
                 url: '/trade/pay/payid',
@@ -28,7 +29,7 @@ define(function (require, exports, module) {
     }
 
     function alipay(id,payWay){
-        utils.CheckLogin(function() {
+        login.CheckLogin(function() {
             utils.SendAjax({
                 url: '/trade/order/pay',
                 param: {id: id, payWay: payWay},
@@ -45,7 +46,7 @@ define(function (require, exports, module) {
     }
 
     function wechatPay(id,payWay){
-        utils.CheckLogin(function() {
+        login.CheckLogin(function() {
             utils.SendAjax({
                 url: '/trade/order/pay',
                 param: {id: id, payWay: payWay},
@@ -92,7 +93,7 @@ define(function (require, exports, module) {
     }
 
     function queryOrderState(){
-        utils.CheckLogin(function() {
+        login.CheckLogin(function() {
             var id = $('#order-detail').data('id');
             utils.SendAjax({
                 url: '/trade/order/state',
