@@ -44,8 +44,9 @@ block content
                             - discountPriceTotal += discountPrice;
                             - servicePriceTotal += servicePrice;
                             td
-                                img(src="#{item.imgUrl}")
-                                span #{item.goodsName}
+                                a(href="/screenings/goods/detail/#{item.goodsId}")
+                                    img(src="#{item.imgUrl}")
+                                    span #{item.goodsName}
                             td ￥#{discountPrice/100}
                             td
                                 p #{sampleJson[item.transmitType]}(服务费￥#{servicePrice/100})

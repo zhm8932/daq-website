@@ -171,6 +171,7 @@ button.disabled,.btn.disabled{
   }
   ul.options{
     position:absolute;
+    z-index:999;
     top:100%;
     left:0;
     min-width:100%;

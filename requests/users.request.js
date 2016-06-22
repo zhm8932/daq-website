@@ -114,3 +114,40 @@ exports.DelPatient = function (req, callback) {
         callback && callback(data, success);
     });
 };
+
+
+exports.GetAccountInfo = function (req, callback) {
+    var bizParam = {
+        accountId: req.session.userInfo.accountCommon.id
+    };
+
+    util.ajax('GET', api.GetAccountInfo, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
+exports.HasBindHis = function (req, callback) {
+    var bizParam = {
+        accountId: req.session.userInfo.accountCommon.id
+    };
+
+    util.ajax('GET', api.HasBindHis, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
+exports.CompleteAccount = function (req, callback) {
+    var body = req.body;
+    var bizParam = {
+        "bindHISCustomer":{
+            accountId:req.session.userInfo.accountCommon.id,
+            name:body.name,
+            gender:body.gender,
+            birthday:body.birthday
+        }
+    };
+
+    util.ajax('PUT', api.CompleteAccount, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};

@@ -134,7 +134,7 @@ module.exports = {
     GetRegsourceList: "daq.medical.doctor.schedule.detail.page",
     GetRegisterList: "his.reservation.get.byaccount",//我的挂号列表
     GetRegTimeSlot: "his.schedule.regsource.withid",
-    AddRegByDoc: "his.reservation.add",
+    AddRegByDoc: "his.reservation.submit",
     DelRegister: "his.reservation.delete",
     CancelRegister: "his.reservation.cancel",
 
@@ -146,6 +146,11 @@ module.exports = {
     GetPatientList: "daq.contactPerson.list",
     AddPatient: "daq.contactPerson.add",
     DelPatient: "daq.contactPerson.delete",
+
+    //账号
+    GetAccountInfo: "daq.my.account.info",
+    HasBindHis: "daq.user.hasBindHIS",
+    CompleteAccount: "daq.user.bindHIS",
 
     //字典
     GetListByTypeAndLevel: "dictionary.queryDictionaryListByTypeAndLevel",

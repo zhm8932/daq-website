@@ -83,21 +83,6 @@ define(function(require, exports, module){
         //tab切换
         require('./libs/tab')('.tab li')
 
-        $('.date-time').each(function(index,ele){
-            var $this = $(ele);
-            var timestamp = parseInt($this.html());
-            var time = utils.getLoacalDateAndTime(timestamp);
-            $this.html(time);
-        });
-
-        $('.date').each(function(index,ele){
-            var $this = $(ele);
-            var timestamp = parseInt($this.html());
-            var time = utils.GetLoacalDateString(timestamp);
-            $this.html(time);
-        });
-
-
         var winWidth = $(window).width();
         var $nav = $('.nav').find('.wrapper')
         if(winWidth<768){
