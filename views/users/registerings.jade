@@ -32,11 +32,11 @@ block content
                             td
                                 p #{item.id}
                                 p.text-sec 下单时间:
-                                    span.date
+                                    span #{moment(item.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
                             td
                                 if item.doctorDTO
                                     p #{item.doctorDTO.doctorName}
-                                    p.text-sec #{item.doctorDTO.titleId}
+                                    p.text-sec #{item.doctorDTO.title}
                             td
                                 p #{moment(item.start).format('YYYY-MM-DD')}
                                 p

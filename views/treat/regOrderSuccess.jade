@@ -1,21 +1,19 @@
 extends ../layout
 
 block content
-    link(href='/css/treat/treat.css',rel='styleSheet')
+    link(href='/css/trade/trade.css',rel='styleSheet')
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
         |您的位置为：首页<em>#{sep}</em>诊疗服务<em>#{sep}</em>挂号预约<em>#{sep}</em>医生预约
     section.wrapper
-        .reg
-            header
-                h2 按医生预约
+        .order-success
             .order-box.border-default
                 i.icon.success
                 span.price-box
                     span.text-sec 订单支付:
                     span.price.text-stress ￥#{parseInt(data.totalCost) / 100}
-                span.order-detail.text-main
+                //span.order-detail.text-main
                     a.text-main(href='/trade/order/detail?id=#{data.id}') 订单详情>>
 
 
@@ -25,8 +23,9 @@ block content
             .pay-box.alipay.border-default 支付宝支付
 
 
-            #order-detail(data-id="#{data.id}")
+            input#payId(type="hidden",value="#{data.id}")
+            input#orderId(type="hidden",value="#{data.orderId}")
 
     include ../includes/footer
     script.
-        seajs.use('/js/trade/order_success.js')
+        seajs.use('/js/treat/pay.js')

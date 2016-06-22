@@ -153,7 +153,7 @@ router.get('/order/state',authority.loginRequired, function (req, res, next) {
             resJson.data.orderState = json.data.orderState;
             resJson.data.id = json.data.id;
         }else{
-            resJson = {"code": "200", msg: "", data: {}, "success": false};
+            resJson = {"code": "200", msg: "查询状态失败", data: {}, "success": false};
         }
         res.json(JSON.stringify(resJson));
     });

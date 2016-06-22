@@ -33,15 +33,21 @@ exports.AddRegByDoc = function (req, callback) {
     var bizParam = {
         "command": {
             "accountId": req.session.userInfo.accountCommon.id,
-            "anonymous": 1,
-            "customerId": "1605211925590557003",
-            "patient": body.patient,
-            "scheduleId": body.scheduleId,
-            "telNum": "18904785568"
+            "scheduleId": body.scheduleId
         }
     };
 
     util.ajax('POST', api.AddRegByDoc, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
+exports.GetOrderDetail = function (req, callback) {
+    var bizParam = {
+        reservationId:req.query.reservationId
+    };
+
+    util.ajax('GET', api.GetRegDetail, bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };

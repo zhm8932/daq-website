@@ -11,7 +11,7 @@ block content
             header
                 h2 按医生预约
             .regbox
-                form#regByDocForm
+                #regByDocForm
                     -var doctorDTO = timeSlot.doctorDTO;
                     //-hosname = '';
                     //each h in doctorDTO.hospitalReDepartments
@@ -47,6 +47,7 @@ block content
 
                         button#commit-reg(class='submitBtn') 确认提交
                         input#hasBind(type="hidden",value="#{hasBind}")
+                        input#needPay(type="hidden",value="#{doctorDTO.needPay}")
 
     include ../includes/footer
     script.

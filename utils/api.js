@@ -139,6 +139,8 @@ module.exports = {
     AddRegByDoc: "his.reservation.submit",
     DelRegister: "his.reservation.delete",
     CancelRegister: "his.reservation.cancel",
+    GetRegDetail: "his.reservation.get.byid",
+
 
     //预约
     GetReservationList: "service.reservation.byuser",

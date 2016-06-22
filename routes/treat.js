@@ -54,6 +54,33 @@ router.post('/reg/byDoc', authority.loginRequired, function (req, res, next) {
     });
 });
 
+router.get('/reg/topay', function (req, res, next) {
+    var query = req.query;
+    res.render('treat/regOrderSuccess', {
+        title: '支付页面',
+        data: {
+            id: query.id,
+            totalCost: query.cost,
+            orderId:query.orderId
+        }
+    });
+});
+
+router.get('/order/state',authority.loginRequired, function (req, res, next) {
+    request.GetOrderDetail(req, function (data, success) {
+        var resJson = {};
+        if (success) {
+            resJson = {"code": "200", msg: "", data: {}, "success": true};
+            var json = JSON.parse(data);
+            resJson.data.reservationStatus = json.data.reservationStatus;
+            resJson.data.id = json.data.id;
+        }else{
+            resJson = {"code": "200", msg: "查询状态失败", data: {}, "success": false};
+        }
+        res.json(JSON.stringify(resJson));
+    });
+});
+
 module.exports = router;
 
 

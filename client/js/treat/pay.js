@@ -1,31 +1,15 @@
 define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
 
+    var payId = $('#payId').val();
+
     $('.alipay').on('click',function(){
-        getPayId(alipay,4);
+        alipay(payId,4);
     });
 
     $('.wechat-pay').on('click',function(){
-        getPayId(wechatPay,6);
+        wechatPay(payId,6);
     });
-
-    function getPayId(fun,payWay){
-        utils.CheckLogin(function() {
-            var id = $('#order-detail').data('id');
-            utils.SendAjax({
-                url: '/trade/pay/payid',
-                param: {orderId: id},
-                method: 'POST',
-                tipText: '获取支付ID',
-                callback: function (result) {
-                    fun && fun(result.data.id, payWay);
-                },
-                errorFun: function (result) {
-
-                }
-            });
-        });
-    }
 
     function alipay(id,payWay){
         utils.CheckLogin(function() {
@@ -90,15 +74,15 @@ define(function (require, exports, module) {
 
     function queryOrderState(){
         utils.CheckLogin(function() {
-            var id = $('#order-detail').data('id');
+            var orderId = $('#orderId').val();
             utils.SendAjax({
-                url: '/trade/order/state',
-                param: {id: id},
+                url: '/treats/order/state',
+                param: {reservationId: orderId},
                 method: 'GET',
-                tipText: '前往支付页面',
+                tipText: '查询订单状态',
                 callback: function (result) {
-                    if (result.data.orderState == 2) {
-                        window.location.href = '/trade/order/paySuccess?order_no=' + id;
+                    if (result.data.reservationStatus == 1) {
+                        window.location.href = '/users/register/list';
                     }
                 },
                 errorFun: function (result) {
