@@ -249,7 +249,7 @@ define(function(require,exports,module) {
     })
     $('body').on('click','.logoutBtn',function () {
         logout()
-    })
+    });
 
     $('body').on('click keyup keydown change','.username,.password',function () {
         var $loginWrap = getLoginWrap();
