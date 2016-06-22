@@ -349,7 +349,7 @@ select {
       margin-left: 5px; }
     .topBar_info .city-name .choose-city {
       position: absolute;
-      top: 48px;
+      top: 40px;
       left: -48px;
       display: none;
       width: 160px;
@@ -839,9 +839,15 @@ select {
   top: 0px;
   line-height: 34px;
   cursor: pointer;
-  padding: 0 20px;
+  padding: 0 15px;
+  width: 150px;
   border: 1px solid #48BED8;
   background-color: #e5faff; }
+.loginBox .disable {
+  background-color: #F2F6F7;
+  border-color: #c9c9c9;
+  outline: none;
+  cursor: default; }
 .loginBox .prompt {
   color: #ED9E9A;
   position: absolute;
@@ -861,7 +867,20 @@ select {
   padding: 30px;
   border: 1px solid #dddddd; }
   .loginBox2 .getCode {
-    display: none; }
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    line-height: 34px;
+    cursor: pointer;
+    padding: 0 15px;
+    width: 150px;
+    border: 1px solid #48BED8;
+    background-color: #e5faff; }
+  .loginBox2 .disable {
+    background-color: #F2F6F7;
+    border-color: #c9c9c9;
+    outline: none;
+    cursor: default; }
   .loginBox2 .tit {
     font-size: 18px;
     text-align: center;

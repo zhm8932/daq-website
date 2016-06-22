@@ -230,6 +230,8 @@ header {
   box-sizing: border-box;
   border-radius: 5px;
   padding: 18px 0 0 69px; }
+  .order-success .pay-box .cancel i.icon {
+    background-position: -240px 19px; }
 .order-success .wechat-pay {
   color: #7CBA37;
   background: url(../../images/icon.png) 13px -542px; }

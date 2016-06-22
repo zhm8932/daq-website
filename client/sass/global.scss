@@ -323,12 +323,11 @@ select {
     position:relative;
     display:inline-block;
     i {
-      background-position: 0px 6px;
-      margin-left: 5px;
+      background-position: 0px 6px; margin-left: 5px;
     }
     .choose-city{
       position:absolute;
-      top:48px;
+      top:40px;
       left:-48px;
       display:none;
       width:160px;
@@ -939,10 +938,11 @@ select {
     top: 0px;
     line-height: 34px;
     cursor: pointer;
-    padding: 0 20px;
+    padding: 0 15px;width: 150px;
     border: 1px solid $bdrc_48B;
     background-color: $bgc_E5F;
   }
+  .disable{background-color: $bgc_gray;border-color:$bdrc1;outline: none;cursor: default;}
   .prompt {
     color: $red_ED9;
     position: absolute;
@@ -956,7 +956,17 @@ select {
 }
 .loginBox2{
   width: 300px;float: right;position: relative;z-index: 2;margin-top:80px;background-color: #FFFFFF;padding:30px;border: 1px solid $bdrc_ddd;
-  .getCode{display: none;}
+  .getCode {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    line-height: 34px;
+    cursor: pointer;
+    padding: 0 15px;width: 150px;
+    border: 1px solid $bdrc_48B;
+    background-color: $bgc_E5F;
+  }
+  .disable{background-color: $bgc_gray;border-color:$bdrc1;outline: none;cursor: default;}
   .tit {
     font-size: 18px;
     text-align: center;

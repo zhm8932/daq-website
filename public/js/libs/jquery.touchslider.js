@@ -16,7 +16,7 @@ http://touchslider.com
 		// 如果define已被定义，模块化代码
 		define(['jquery'], function(){
 			// 返回构造函数 CommonJS
-			console.log('CommonJS')
+			// console.log('CommonJS')
 			return factory(jQuery, undefined);
 		});
 	}  else{ // Global
@@ -71,8 +71,8 @@ http://touchslider.com
 			// var viewportHeight = viewport.height();
 			var viewportHeight = viewport.children().children().height();
 
-			console.log(viewport)
-			console.log(viewportHeight)
+			// console.log(viewport)
+			// console.log(viewportHeight)
 			viewport.css({
 				height: viewportHeight,
 				position: "relative"

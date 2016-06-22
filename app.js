@@ -29,7 +29,7 @@ app.set('view engine', 'jade');
 
 //把favicon图标放置在public目录之后取消注释
 app.use(favicon(path.join(__dirname, 'public','images', 'favicon.ico')));
-app.use(logger('dev'));
+// app.use(logger('dev'));
 
 
 app.use(bodyParser.json());  //处理content-type=json的请求体

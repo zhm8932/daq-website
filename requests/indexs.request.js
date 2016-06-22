@@ -24,22 +24,21 @@ exports.get_goods_list = function (req,res,next) {
 };
 
 exports.login = function (req,res,next) {
-    console.log('crypto:',crypto);
+    // console.log('crypto:',crypto);
     var body = req.body;
-    var password = body.password;
-    var content = 'password';
-    var md5 = crypto.createHash('md5');
-    md5.update(password);
-    var d = md5.digest('hex');  //MD5值是5f4dcc3b5aa765d61d8327deb882cf99
 
-
-    console.log('d:',d);
+    console.log('body:',body)
+    // var password = body.password;
+    // var content = 'password';
+    // var md5 = crypto.createHash('md5');
+    // md5.update(password);
+    // var d = md5.digest('hex');  //MD5值是5f4dcc3b5aa765d61d8327deb882cf99
+    // console.log('d:',d);
     var bizParam = {
-        "req": {
-            "rawRequest":body
-        }
+        "loginParam": body
     };
-    util.ajax('GET',api.Login,bizParam,function (data,success) {
+    console.log("bizParam:",bizParam)
+    util.ajax('GET',api.UserWebLogin,bizParam,function (data,success) {
         if(success){
             req.session.userInfo = JSON.parse(data).data.userAllInfo;
 
@@ -84,6 +83,25 @@ exports.changeCity = function (req,res,next) {
         req.session.locals_address = locals_address;
         var resJson = {"code":"200","data":null,"msg":"","success":true};
         res.json(JSON.stringify(resJson));
+    });
+
+};
+
+exports.getVerCode = function (req,res,next) {
+    var body = req.body;
+    var password = body.password;
+    var content = 'password';
+    var bizParam = {
+        "request": {
+            "rawRequest":body
+        }
+    };
+    util.ajax('post',api.SmsSendVerCode,bizParam,function (data,success) {
+        if(success){
+            req.session.userInfo = JSON.parse(data).data.userAllInfo;
+
+        }
+        res.send(data)
     });
 
 };

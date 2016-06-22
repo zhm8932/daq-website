@@ -40,18 +40,21 @@ define(function(require, exports, module){
             e.stopPropagation();
             var $this = $(this);
             var OChooseCity = $this.find('.choose-city');
-            OChooseCity.stop().fadeIn();
-            var data = OChooseCity.data('load')
+            OChooseCity.stop(false,true).slideDown();
+            // OChooseCity.stop(false,true).fadeIn();
+            var data = OChooseCity.data('load');
             if(data === 'first'){
                 getCityList();
                 OChooseCity.data('load','non-first');
             }
 
-        },function () {
+        },function (e) {
+            e.stopPropagation();
             var $this = $(this);
             var OChooseCity = $this.find('.choose-city');
-            OChooseCity.stop().fadeOut();
-        })
+            OChooseCity.stop(false,true).slideUp();
+            // OChooseCity.stop(false,true).fadeOut();
+        });
         $(window).on('click',function(){
             var OChooseCity = $('.city-name .choose-city');
             if(OChooseCity.css('display') != 'none') {
@@ -69,10 +72,10 @@ define(function(require, exports, module){
             $('body,html').animate({scrollTop:0},600)
         });
 
-        var winHeight = $(window).height()
+        var winHeight = $(window).height();
         $gotoTop = $('.gotoTop')
         $(window).scroll(function () {
-            var scrollTop = $(window).scrollTop()
+            var scrollTop = $(window).scrollTop();
             if(scrollTop>winHeight/2){
                 $gotoTop.show()
             }else{
@@ -81,10 +84,10 @@ define(function(require, exports, module){
         });
 
         //tab切换
-        require('./libs/tab')('.tab li')
+        require('./libs/tab')('.tab li');
 
         var winWidth = $(window).width();
-        var $nav = $('.nav').find('.wrapper')
+        var $nav = $('.nav').find('.wrapper');
         if(winWidth<768){
             //导航滑动
             $nav.addClass('swiper-container');
@@ -114,6 +117,7 @@ define(function(require, exports, module){
         })
     })
 
+    
     function getCityList(){
         utils.SendAjax({
             url: '/dic/list/typeAndLevel',
