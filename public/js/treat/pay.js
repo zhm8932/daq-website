@@ -74,15 +74,15 @@ define(function (require, exports, module) {
 
     function queryOrderState(){
         utils.CheckLogin(function() {
-            var id = $('#order-detail').data('id');
+            var orderId = $('#orderId').val();
             utils.SendAjax({
-                url: '/trade/order/state',
-                param: {id: id},
+                url: '/treats/order/state',
+                param: {reservationId: orderId},
                 method: 'GET',
                 tipText: '查询订单状态',
                 callback: function (result) {
-                    if (result.data.orderState == 2) {
-                        window.location.href = '/trade/order/paySuccess?order_no=' + id;
+                    if (result.data.reservationStatus == 1) {
+                        window.location.href = '/users/register/list';
                     }
                 },
                 errorFun: function (result) {
