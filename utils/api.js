@@ -5,6 +5,8 @@
 module.exports = {
 
     Login: "daq.user.admin.login",
+    UserWebLogin: "daq.user.web.login",
+    SmsSendVerCode:'daq.sms.sendVerCode',
 
     UserDetailPage: "daq.user.detail.page",
     UserDetailGet: "daq.user.detail.get",

@@ -23,7 +23,7 @@
         // 如果define已被定义，模块化代码
         define(['jquery'], function(){
             // 返回构造函数 CommonJS
-            console.log('CommonJS')
+            // console.log('CommonJS')
             return factory(jQuery,window, document, undefined);
         });
     }  else{ // Global

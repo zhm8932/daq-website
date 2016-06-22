@@ -44,6 +44,7 @@ router.get('/',Requests.get_goods_list,Middlewares.get_department,Handlers.index
 
 router.post('/login',Requests.login);
 
+
 router.post('/logout',Requests.logout);
 
 router.get('/checkLogin',Requests.checkLogin);
@@ -51,5 +52,7 @@ router.get('/checkLogin',Requests.checkLogin);
 router.get('/login',Requests.loginView);
 
 router.get('/changeCity',Requests.changeCity);
+
+router.post('/getVerCode',Requests.getVerCode);
 
 module.exports = router;

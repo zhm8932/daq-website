@@ -22,7 +22,7 @@ define(function(require,exports,module) {
             callback:null
         };
         this.opts = $.extend({},defaults,options);
-        this.popupBox = this.opts.popupBox
+        this.popupBox = this.opts.popupBox;
         this.$body = $('body');
         this.init()
     }
@@ -75,10 +75,11 @@ define(function(require,exports,module) {
                 this.$body.append(this.popupHtml())
             }
 
+            self.opts.callback && self.opts.callback();
             var height = $('.'+this.opts.popupBox).height();
             $('.'+self.popupBox).css({'height':height,'margin-top':-height/2});
 
-            self.opts.callback && self.opts.callback();
+
 
 
         },
@@ -187,7 +188,7 @@ define(function(require,exports,module) {
 
     var u = navigator.userAgent,
         app = navigator.appVersion;
-    console.log('userAgent:',u);
+    // console.log('userAgent:',u);
     var browser = {
         trident: u.indexOf('Trident') > -1, //IE内核
         presto: u.indexOf('Presto') > -1, //opera内核
@@ -210,6 +211,12 @@ define(function(require,exports,module) {
         }
         return true;
     }
+
+    function check_tel(tel){
+        var reg = /^(13[0-9]|15[012356789]|18[0-9]|14[57]|17[678])[0-9]{8}$/;
+        return  reg.test(tel)
+    }
+
     function sendAjax(options) {
         $.ajax({
             url: options.url,
@@ -368,57 +375,7 @@ define(function(require,exports,module) {
         }
         fun && fun();
     }
-    var $topBarAside = $('.topBar_info aside')
-    var loginHtml = '<a href="javascript:;" class="loginBtn">登录</a>';
-    var logoutHtml = '<a href="/trade/order/list" class="logout">个人中心</a><i class="icon devidel"></i><a href="javascript:;" class="logoutBtn">退出</a>';
 
-    var index = '';
-    var $prompt = '';
-    function showLogin(options) {
-        var popup = new Popup({
-            msg:'<div class="slideLogin"><div class="tit"><span class="on">密码登录</span><span>验证码登录</span></div>' +
-            '<div class="touchslider-viewport"><div class="bd"> ' +
-            '<ul><li><input type="text" class="username" placeholder="请输入手机号码" value="13689557622"></li><li><input type="password" class="password" placeholder="请输入密码" value="zhm123456"><span class="prompt"><i class="icon"></i><em>手机输入格式有误/验证码有误</em></span></li></ul>' +
-            '<ul><li><input type="text" class="username" placeholder="请输入手机号码"></li><li><input type="text" class="password" placeholder="请输入短信验证码"><span class="getCode">获取短信验证码</span><span class="prompt"><i class="icon"></i><em>手机输入格式有误/验证码有误</em></span></li></ul>' +
-            '</div></div></div>',
-            otherMsg:'手机号码用来获取预约码和报告服务码',
-            bOhterMsg:true,
-            callback:function () {
-                //TouchSlide({ slideCell:"#slideLogin",titCell:".tit span", mainCell:".bd"});
-                console.log('2222222222222')
-                $(".slideLogin").touchSlider({
-                    container: this,
-                    duration: 350, // 动画速度
-                    delay: 3000, // 动画时间间隔
-                    margin: 5,
-                    mouseTouch: true,
-                    namespace: "touchslider",
-                    next: ".touchslider-next", // next 样式指定
-                    pagination: ".tit span",
-                    currentClass: "on", // current 样式指定
-                    prev: ".touchslider-prev", // prev 样式指定
-                    // scroller: viewport.children(),
-                    autoplay: false, // 自动播放
-                    viewport: ".touchslider-viewport"  //内容区域
-                });
-            },
-            okText:'登录',
-            width:'360',
-            otherBox:'loginBox',
-            isHide:false,
-            okCallback:function(){
-                var data = validateLogin();
-                console.log('data::',data);
-                if(data){
-                    if(options && options.afterLoginFun){
-                        login(data,popup,'',options.afterLoginFun);
-                    }else{
-                        login(data,popup,'',null);
-                    }
-                }
-            }
-        })
-    }
 
     //确认弹框:showComfirmDialog({tipText:"确定删除吗?",noConfirmBtn:true)
     function showComfirmDialog(options){
@@ -464,100 +421,6 @@ define(function(require,exports,module) {
             }
         })
     }
-
-    function validateLogin() {
-        var $loginWrap = $('.loginBox,.loginBox2')
-        index = $loginWrap.find('.tit span.on').index();
-        $prompt = $loginWrap.find('ul').eq(index).find('.prompt')
-        console.log('index::',index)
-        var data = {
-            "password":$loginWrap.find('ul').eq(index).find(".password").val(),
-            "account":$loginWrap.find('ul').eq(index).find(".username").val(),
-            "loginType":1
-        }
-        console.log('data::',data)
-        if(index==0){
-            if(!data.account){
-                $prompt.show().find('em').html('手机号码不能为空')
-                return
-            }
-            if(!data.password){
-                $prompt.show().find('em').html('密码不能为空')
-                return
-            }
-        }
-        if(index==1){
-            data.loginType=2
-            if(!data.account){
-                $prompt.show().find('em').html('手机号码不能为空')
-                return
-            }
-            if(!data.password){
-                $prompt.show().find('em').html('验证码不能为空')
-                return
-            }
-        }
-        return data;
-    }
-
-    //redirectUrl用于同步登录后继续跳转,afterLoginFun用于异步登录后继续执行
-    function login(data,popup,redirectUrl,afterLoginFun) {
-        var $loginWrap = $('.loginBox,.loginBox2');
-        var index = $loginWrap.find('.tit span.on').index();
-        $prompt = $loginWrap.find('ul').eq(index).find('.prompt');
-        $.ajax({
-            type:'post',
-            url:'/login',
-            data:data,
-            success:function(json){
-                var json = JSON.parse(json);
-                if(json.success){
-                    var myMsg = new MsgShow({
-                        delayTime:2000,
-                        title:'<i class="icon"></i>登录成功!',
-                        otherBox:'successBox'
-                    });
-                    if(popup){
-                        popup.hideBox(function () {
-                            $topBarAside.html(logoutHtml);
-                            afterLoginFun && afterLoginFun();
-                        });
-                    }else if(redirectUrl){
-                        window.location.href = redirectUrl;
-                    }
-                    myMsg.hideMsg(1000);
-
-                }else{
-                    // var myMsg = new utils.MsgShow({
-                    //     delayTime:2000,
-                    //     title:json.msg
-                    // }).hideMsg()
-                    console.log('登录失败')
-                    console.log($prompt.html())
-                    // $('.loginBox2 .prompt').show()
-                    $prompt.show().find('em').html(json.msg)
-                }
-
-
-            }
-        })
-    }
-
-    function logout() {
-        $.ajax({
-            type:'post',
-            url:'/logout',
-            //data:data,
-            success:function(json){
-                // console.log(json)
-                var json = JSON.parse(json);
-                if(json.success){
-                    $topBarAside.html(loginHtml);
-                }
-            }
-        })
-    }
-
 
     //检查登录:已经登录则继续执行callback,没有登录则把callback传到登录函数中去,登录后继续执行
     function checkLogin(callBack){
@@ -619,8 +482,6 @@ define(function(require,exports,module) {
         console.log(windowHeight+'----'+domHeight+'----'+minHeight);
         return minHeight;
     }
-
-
     module.exports={
         Popup:Popup,
         MsgShow:MsgShow,
@@ -635,15 +496,16 @@ define(function(require,exports,module) {
         GetLoacalTimeString: getLoacalTimeString,
         GetLoacalDateString:getLoacalDateString,
         CheckRadio:checkRadio,
-        showLogin:showLogin,
-        login:login,
-        validateLogin:validateLogin,
-        logout:logout,
+        // showLogin:showLogin,
+        // login:login,
+        // validateLogin:validateLogin,
+        // logout:logout,
         getLoacalDateAndTime:getLoacalDateAndTime,
         CheckLogin:checkLogin,
         BuildSelect:buildSelect,
         SetMinHeight:setMinHeight,
-        ShowComfirmDialog:showComfirmDialog
+        ShowComfirmDialog:showComfirmDialog,
+        check_tel:check_tel
     }
 
 })
