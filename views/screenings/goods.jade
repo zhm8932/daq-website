@@ -27,7 +27,10 @@ block content
                                 a(href='/screenings/goods/detail/#{item.id}')
                                     //-img(data-original='images/product1.png')
                                     if item.goodsImages
-                                        img(data-original='#{item.goodsImages[0].imageUrl}', width='330',height='225',alt='#{item.goodsName}')
+                                        if browser.ie
+                                            img(src='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
+                                        else
+                                            img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
                                     h4 #{item.goodsName}
                                 if item.productKeyAttributeList
                                     each arr in item.productKeyAttributeList
