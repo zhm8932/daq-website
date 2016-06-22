@@ -29,10 +29,11 @@ define(function (require, exports, module) {
     }
 
     function alipay(id,payWay){
+        var order_no = $('#order-detail').data('id');
         login.CheckLogin(function() {
             utils.SendAjax({
                 url: '/trade/order/pay',
-                param: {id: id, payWay: payWay},
+                param: {id: id, payWay: payWay,ext:'http://beta.douanquan.com/trade/order/paySuccess?order_no='+order_no},
                 method: 'POST',
                 tipText: '前往支付页面',
                 callback: function (result) {

@@ -1,5 +1,6 @@
 define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
+    var login = require('../login.js');
 
     var payId = $('#payId').val();
 
@@ -12,10 +13,10 @@ define(function (require, exports, module) {
     });
 
     function alipay(id,payWay){
-        utils.CheckLogin(function() {
+        login.CheckLogin(function() {
             utils.SendAjax({
                 url: '/trade/order/pay',
-                param: {id: id, payWay: payWay},
+                param: {id: id, payWay: payWay,ext:'http://beta.douanquan.com:2000/users/register/list'},
                 method: 'POST',
                 tipText: '前往支付页面',
                 callback: function (result) {
@@ -29,7 +30,7 @@ define(function (require, exports, module) {
     }
 
     function wechatPay(id,payWay){
-        utils.CheckLogin(function() {
+        login.CheckLogin(function() {
             utils.SendAjax({
                 url: '/trade/order/pay',
                 param: {id: id, payWay: payWay},
@@ -73,7 +74,7 @@ define(function (require, exports, module) {
     }
 
     function queryOrderState(){
-        utils.CheckLogin(function() {
+        login.CheckLogin(function() {
             var orderId = $('#orderId').val();
             utils.SendAjax({
                 url: '/treats/order/state',

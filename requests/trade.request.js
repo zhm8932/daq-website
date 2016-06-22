@@ -114,12 +114,14 @@ exports.GetPayId = function (req, callback) {
 };
 
 exports.OrderPay = function (req, callback) {
+    var body = req.body;
     var bizParam = {
         "command": {
             "rawRequest": {
-                "id": req.body.id,
+                "id": body.id,
                 "accountId": req.session.userInfo.accountCommon.id,
-                "payWay": req.body.payWay
+                "payWay": body.payWay,
+                "ext":body.ext
             }
         }
     };
