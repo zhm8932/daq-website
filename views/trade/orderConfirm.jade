@@ -8,6 +8,8 @@ block content
         |您的位置：首页<em>#{sep}</em>筛查服务<em>#{sep}</em>核对订单信息<em>#{sep}</em>成功提交订单
     section.wrapper
         .confirm-buy
+            -var discountPriceTotal = 0;
+            -var servicePriceTotal = 0;
             .trade-step
                 p.cart.step-wrapper
                     span
@@ -37,13 +39,17 @@ block content
                     -var sampleJson = JSON.parse(locals_sample);
                     each item,i in JSON.parse(data.items)
                         tr(data-address="#{item.address}",data-transmitType="#{item.transmitType}",data-goodsId="#{item.goodsId}")
+                            -var discountPrice = parseInt(item.discountPrice);
+                            -var servicePrice = parseInt(item.favPrice);
+                            - discountPriceTotal += discountPrice;
+                            - servicePriceTotal += servicePrice;
                             td
                                 img(src="#{item.imgUrl}")
                                 span #{item.goodsName}
-                            td ￥#{parseInt(item.discountPrice)/100}
+                            td ￥#{discountPrice/100}
                             td
-                                p #{sampleJson[item.transmitType]}(服务费￥#{parseInt(item.favPrice)/100})
-                                p.text-sec 服务区域:
+                                p #{sampleJson[item.transmitType]}(服务费￥#{servicePrice/100})
+                                p.text-sec 取样地址:
                                     each areaObj,j in JSON.parse(item.address)
                                         if areaObj
                                             if i==0 && j == 1
@@ -82,6 +88,8 @@ block content
                         span.price.text-stress ￥#{parseInt(data.totalPrice)/100}
                         span.fav (已优惠￥0)
             input(type="hidden",id="goodsTotalPrice",value="#{data.totalPrice}")
+            input(type="hidden",id="discountPriceTotal",value="#{discountPriceTotal}")
+            input(type="hidden",id="servicePriceTotal",value="#{servicePriceTotal}")
             input(type="hidden",id="cityId",value="#{cityId}")
 
             form#submitForm(action = "/trade/order/create",method="POST")
