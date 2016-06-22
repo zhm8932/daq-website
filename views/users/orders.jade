@@ -25,7 +25,7 @@ block content
                 dl.order(data-id="#{item.id}")
                     dt
                         |订单编号：#{item.id}
-                        time.date-time.text-sec #{item.updatedAt}
+                        time.date-time.text-sec #{moment(item.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
                     dd
                         .col.goods
                             -var transmitType = '';
@@ -63,17 +63,16 @@ block content
                                     |#{orderStateJSON[orderState]}
                             p 总额：￥#{parseInt(item.totalCost)/100}
                             p 商品合计：￥#{parseInt(item.feeMap.goods_price)/100}
-                            p 优惠券：-￥
-                                if item.feeMap.coupon_fee
-                                    |#{parseInt(item.feeMap.coupon_fee)/100}
-                                else
-                                    |0
-                            p 服务优惠：-￥
+                            p 服务费：￥
                                 if item.feeMap.service_fee
                                     |#{parseInt(item.feeMap.service_fee)/100}
                                 else
                                     | 0
-
+                            p 优惠券：-￥
+                                if item.feeMap.coupon_fee
+                                    | #{parseInt(item.feeMap.coupon_fee) / 100}
+                                else
+                                    | 0
                         .col.operation
                             p: a(href='/trade/order/detail?id=#{item.id}') 订单详情
                             if orderState == 1

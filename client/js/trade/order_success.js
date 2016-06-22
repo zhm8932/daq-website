@@ -62,9 +62,6 @@ define(function (require, exports, module) {
         });
     }
 
-
-    var index = '';
-    var $prompt = '';
     function showDialog(result) {
         var stateTimer = null;
         var popup = new utils.Popup({

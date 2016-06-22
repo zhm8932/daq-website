@@ -10,33 +10,43 @@ block content
         .reg
             header
                 h2 按医生预约
-            form#regByDocForm
-                -var doctorDTO = data.doctorDTO;
-                -hosname = '';
-                each h in doctorDTO.hospitalReDepartments
-                    -var name = h.hospitalName;
-                    -hosname += name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
-                ul.clearfix
-                    li
-                        label 就诊医生
-                        h4 #{hosname}
-                            mark #{doctorDTO.doctorName}
-                    li
-                        label 就诊时间
-                        span #{data.date}
-                    li
-                        label 请选择就诊时间段
-                        select(name="scheduleId")
-                            each value,key in data.timeWithIdMap
-                                option(value="#{value.scheduleId}") #{key}(#{value.capacity-value.unConsume}/#{value.capacity})
-                    li
-                        label 选择就诊人
-                        input(type='text',name="patient",required='true')
-                    //li
-                        span.add-patient.text-main 添加就诊人?
+            .regbox
+                form#regByDocForm
+                    -var doctorDTO = timeSlot.doctorDTO;
+                    //-hosname = '';
+                    //each h in doctorDTO.hospitalReDepartments
+                    //    -var name = h.hospitalName;
+                    //    -hosname += name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
+                    ul.clearfix
+                        li
+                            label 就诊医生
+                            h4 #{doctorDTO.doctorName}
+                                mark #{doctorDTO.title}
+                        li
+                            label 就诊时间
+                            span #{timeSlot.date}
+                        li
+                            label 就诊时段
+                            input#scheduleId(name="scheduleId",type="hidden",value="")
+                            #scheduleId-select.select-box.none
+                                .selected
+                                    span.text
+                                        span.text-sec 请选择就诊时段
+                                    i.icon.pull-down
+                                ul.options
+                                    each value,key in timeSlot.timeWithIdMap
+                                        .option(data-value="#{value.scheduleId}",data-cost="#{value.cost}") #{key}(#{value.capacity - value.unConsume}/#{value.capacity})
+                        if doctorDTO.needPay
+                            li
+                                label 挂号费
+                                span#cost.text-stress 0元
+                            li
+                                label 支付说明
+                                span #{doctorDTO.payInstruction}
 
 
-                    button#commit-reg(class='submitBtn') 确认提交
+                        button#commit-reg(class='submitBtn') 确认提交
+                        input#hasBind(type="hidden",value="#{hasBind}")
 
     include ../includes/footer
     script.

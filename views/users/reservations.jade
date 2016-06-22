@@ -25,15 +25,16 @@ block content
                 dl.order(data-id="#{item.id}")
                     dt
                         |订单编号：#{item.id}
-                        time.date-time.text-sec #{item.updatedAt}
+                        time.date-time.text-sec #{moment(item.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
                     dd
                         .col.goods
                             -var transmitType = '';
                             each goods,index in item.reservations
                                 .row
                                     span.row-col.goods-detail
-                                        img.fl(src='#{goods.goodsInfo.imageUrls[0]}')
-                                        h5.fr: a(href='#') #{goods.goodsInfo.goodsName}
+                                        a(href="/screenings/goods/detail/#{goods.goodsInfo.goodsId}")
+                                            img.fl(src='#{goods.goodsInfo.imageUrls[0]}')
+                                            h5.fr #{goods.goodsInfo.goodsName}
                         .col.detail.text-sec
                             p 受检人:#{item.checkedName}
                             p 取样方式:#{serviceTypeJSON[item.serviceType]}

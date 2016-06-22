@@ -1,0 +1,51 @@
+extends ../layout
+
+block content
+    link(href='/css/users/user.css',rel='styleSheet')
+    include ../includes/responsive
+    include ../includes/nav
+    .positon.wrapper
+        |您的位置为：首页<em>#{sep}</em>我的订单
+    section.wrapper.userBox.clearfix
+        aside.fl
+            div.user-main.text-center
+                img(src='/images/user.png')
+                span.tel.text-sec #{account}
+            ul.left-nav
+                li: a(href='/trade/order/list') 我的订单
+                li: a(href='/users/reservation/list') 我的预约
+                li: a(href='/users/register/list') 我的挂号
+                li: a(href='/users/coupon/listView?useState=1') 我的优惠券
+                li: a.on(href='/users/patient/list') 就诊人
+        .box-right.fr
+            table.patients-table.table.table-striped.table-bordered
+                -var genderJson = {"1":"男","2":"女"};
+                thead
+                    th(width="20%") 姓名
+                    th(width="15%") 性别
+                    th(width="25%") 年龄
+                    th(width="25%") 联系电话
+                    th(width="15%") 操作
+                tbody
+
+                        if data.length <= 0
+                            tr
+                                td(colspan='5') 暂无优惠券
+                        else
+                            each item in data
+                                tr(data-id="#{item.id}")
+                                    td #{item.name}
+                                    td #{genderJson[item.gender]}
+                                    td #{item.age}
+                                    td #{item.telephone}
+                                    td: a.del-patient(href="javascript:void(0)") 删除
+                    tr.text-center
+                        td(colspan='5')
+                            a#add-tr.text-main(href="javascript:void(0)")
+                                span.plus +
+                                span 新增联系人
+
+
+    include ../includes/footer
+    script.
+        seajs.use('/js/users/patients.js')

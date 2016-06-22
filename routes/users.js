@@ -95,6 +95,7 @@ router.get('/patient/list',authority.loginRequired,function(req,res,next) {
     });
 });
 
+
 router.post('/patient/add',authority.loginRequired,function(req,res,next) {
     request.AddPatient(req,function(data,success) {
         res.json(data);
@@ -103,6 +104,31 @@ router.post('/patient/add',authority.loginRequired,function(req,res,next) {
 
 router.post('/patient/del',authority.loginRequired,function(req,res,next) {
     request.DelPatient(req,function(data,success) {
+        res.json(data);
+    });
+});
+
+//账号信息
+router.get('/account/info',authority.loginRequired,function(req,res,next) {
+    request.GetAccountInfo(req,function(data,success) {
+        if(success){
+            var json = JSON.parse(data);
+            res.render('users/account',{
+                title:'账号信息',
+                data:json.data
+            });
+        }
+    });
+});
+
+router.get('/account/hasBindHis',authority.loginRequired,function(req,res,next) {
+    request.HasBindHis(req,function(data,success) {
+        res.json(data);
+    });
+});
+
+router.post('/account/complete',authority.loginRequired,function(req,res,next) {
+    request.CompleteAccount(req,function(data,success) {
         res.json(data);
     });
 });

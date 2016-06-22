@@ -145,8 +145,7 @@
 
   h4 {
     display: inline-block;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 18px;
   }
   mark {
     font-size: 14px;
@@ -161,7 +160,7 @@
     text-align: right;
     padding-right: 30px;
   }
-  form {
+  .regbox {
     border: 1px solid $bdrc_ddd;
     padding: 30px 50px;
   }
@@ -184,29 +183,51 @@
 
 }
 
+.complete-dialog{
+  width:324px;
+  article{padding:0;}
 
+  .cancel{
+    display:none;
+  }
+  span.closePopup{
+    display:none;
+  }
+  .box-header{
+    i.close{
+      background-position:-240px 19px;
+    }
+    height:40px;
+    line-height:40px;
+    padding-left:12px;
+    background-color:#F2F2F2;
+  }
+  .box-body{
+    padding:17px 29px;
+    .tip-box{
+      padding:12px 30px;
+      border:1px solid #ddd;
+      background:#F5F5F5;
+      li{
+        line-height:20px;
+        list-style:disc;
+      }
+    }
+    form[name=accInfoForm]{
+      padding:15px 15px 0 15px;
+      li{
+        padding-bottom: 13px;
+        label{display:inline-block;width:67px;line-height:17px;vertical-align:middle;margin-right:17px;text-align:right;}
+        input{width:280px;height:30px;line-height:30px;}
+      }
 
-//.add-patient-dialog{
-//  width:475px;
-//  height:200px;
-//  .dialog-header{
-//    height:30px;
-//    line-height:30px;
-//    padding-left:12px;
-//    background-color:#F2F2F2;
-//  }
-//  .dialog-body{
-//    padding:16px 22px;
-//    ul{
-//      li{
-//        margin-top:10px;
-//        label{display:inline-block;width:80px;}
-//        input{width:340px;height:35px;}
-//        .submitBox{margin-left:80px;}
-//      }
-//    }
-//  }
-//}
+    }
+  }
+  .submitBox{margin-left:98px;}
+  span.ok{
+    width:280px;
+  }
+}
 
 .popupBox.add-patient-box{
   .submitBox{

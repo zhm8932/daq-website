@@ -42,35 +42,35 @@ block content
                             -var imgUrl = item.goodsImageDTOs[0].imageUrl;
                             -var discountPrice = parseInt(item.discountPrice);
                             -var favPrice = 0;
-                            -var address = '';
+                            -var address = '',area = '';
                             -var city = '';
                             -var transmitType = '';
                             .check
                                 span.checkbox
                             .name
-                                img(src="#{imgUrl}")
-                                span #{item.goodsName}
+                                a(href="/screenings/goods/detail/#{item.goodsId}")
+                                    img(src="#{imgUrl}")
+                                    span #{item.goodsName}
                             .price ￥#{discountPrice/100}
-                            .info.text-sec
+                            .info
                                 each cartItemAttr,index in item.cartItemAttrs
                                     -var value = JSON.parse(cartItemAttr.value);
                                     if 'transmit_type' == cartItemAttr.attributeName
                                         -for(var type in value)
                                             -favPrice = parseInt(value[type]);
                                             -transmitType = type;
-                                            p 服务方式:#{transmitTypeJson[type]}(服务费￥#{favPrice/100})
+                                            p #{transmitTypeJson[type]}(服务费￥#{favPrice/100})
                                     if 'address' == cartItemAttr.attributeName
                                         -address = cartItemAttr.value;
-                                        p 服务区域:
-                                            each areaObj,i in value
-                                                if areaObj
-                                                    -area += areaObj.name;
-                                                    if i==1
-                                                        -city = areaObj.name;
-                                                        -cityId = areaObj.categoryId;
-                                                    if i<2
-                                                       -proCity += areaObj.name;
-                                                    | #{areaObj.name}
+                                        each areaObj,i in value
+                                            if areaObj
+                                                -area += areaObj.name;
+                                                if i==1
+                                                    -city = areaObj.name;
+                                                    -cityId = areaObj.categoryId;
+                                                if i<2
+                                                   -proCity += areaObj.name;
+                                p.text-sec 取样地址:#{area}
                             -var subTotal = discountPrice+favPrice;
                             .tot-price.text-stress ￥#{subTotal/100}
                             .operation(data-id="#{item.id}",data-goodsId="#{item.goodsId}",data-goodsName="#{item.goodsName}",data-imgUrl="#{imgUrl}",data-discountPrice="#{discountPrice}",data-transmitType="#{transmitType}",data-subTotal="#{subTotal}",data-favPrice="#{favPrice}",data-address="#{address}",data-city="#{city}")

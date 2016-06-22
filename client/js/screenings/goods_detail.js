@@ -213,8 +213,8 @@ define(function(require){
             var transmitValue = OTransmitType.attr('data-value');
             var address = JSON.parse($('#locals_address').val());
             if(OTransmitType.attr('data-transmitType') == 'sampling_home'){
-                var area = $('#area').val();
-                address.push(JSON.parse(area));
+                var area = $('#area .option.active').data('area');
+                address.push(area);
             }
 
             var goodsId = $('#goods').attr('data-id');
