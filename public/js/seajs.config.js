@@ -15,6 +15,8 @@ seajs.config({
         'lazyload':'./libs/jquery.lazyload.js',
         // 'touchslider':'./libs/jquery.touchslider.js',
         'touchslider':'/js/libs/jquery.touchslider.js',
+        'moment':'/js/libs/moment.js',
+        'daterangepicker':'/js/libs/daterangepicker.js',
         'utils': 'libs/utils.js'
         //"bootstrap":"../libs/bootstrap/dist/js/bootstrap.js",
         //"moment":'./libs/moment',

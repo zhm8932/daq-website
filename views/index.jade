@@ -47,7 +47,10 @@ block content
                   a(href='/screenings/goods/detail/#{item.id}',target='_blank')
                     //img(data-original='images/product1.png')
                     if item.goodsImages
-                      img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}',title='#{item.goodsName}')
+                      if browser.ie
+                        img(src='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}',title='#{item.goodsName}')
+                      else
+                        img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}',title='#{item.goodsName}')
                     h4 #{item.goodsName}
                   if item.productKeyAttributeList
                     each arr in item.productKeyAttributeList
@@ -81,7 +84,10 @@ block content
           each item in get_department
             li
               a(href='/agencys')
-                img(data-original='images/product1.png')
+                if browser.ie
+                  img(src='images/product1.png')
+                else
+                  img(data-original='images/product1.png')
               h4 #{item.deptName}
               p
                 if item.description
@@ -103,31 +109,46 @@ block content
           ul
             li
               figure
-                img(data-original='images/convenent.png')
+                if browser.ie
+                  img(src='images/convenent.png')
+                else
+                  img(data-original='images/convenent.png')
                 figcaption 便捷
                 em CONVENIENT
               p 客户足不出户，即可享受随需定制的健康资讯、在线咨询、在线预约、上门检测、上门问诊服务；也可以选择门诊检测与诊疗服务。
             li
               figure
-                img(data-original='images/accurate.png')
+                if browser.ie
+                  img(src='images/accurate.png')
+                else
+                  img(data-original='images/accurate.png')
                 figcaption 精准
                 em CONVENIENT
               p 采用国际最先进的核酸检测技术，整合国内外最先进的设备、试剂和检验方法，大大提升检测的精准度。
             li
               figure
-                img(data-original='images/respecet.png')
+                if browser.ie
+                  img(src='images/respecet.png')
+                else
+                  img(data-original='images/respecet.png')
                 figcaption 尊重
                 em RESPECET
               p 采用国际诊疗指南与以客户为中心的服务流程，在尊重医学本质的基础上，提升客户的就医体验。
             li
               figure
-                img(data-original='images/early.png')
+                if browser.ie
+                  img(src='images/early.png')
+                else
+                  img(data-original='images/early.png')
                 figcaption 及早
                 em EARLY
               p 通过引入最先进的技术手段缩短窗口期。早发现，早治疗；早排除，早安心。
             li
               figure
-                img(data-original='images/secret.png')
+                if browser.ie
+                  img(src='images/secret.png')
+                else
+                  img(data-original='images/secret.png')
                 figcaption 隐私
                 em SECRET
               p 分时预约、身份条码、装修分割设计、一对一服务等，保证客户的就医隐私性。

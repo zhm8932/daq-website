@@ -1,14 +1,15 @@
 var express = require('express');
 var router = express.Router();
-var Handlers = require('../handlers/index.handler')
-var Requests = require('../requests/indexs.request')
-var Middlewares = require('../requests/middlewares.request.js')
-
+var Handlers = require('../handlers/index.handler');
+var Requests = require('../requests/indexs.request');
+var Middlewares = require('../requests/middlewares.request.js');
+var Tools = require('../utils/tools'); //判断浏览器
 // console.log(global)
 
-global.config=config = require('../config')
+global.config=config = require('../config');
 global.api = require('../utils/api')
-global.util= util = require('../utils/ajax')
+global.util= util = require('../utils/ajax');
+
 
 // console.log(global)
 //index.js首先会被加载
@@ -29,6 +30,10 @@ router.use(function(req, res, next) {
         res.locals.locals_address = JSON.stringify(config.addressJSON);
     }
 
+    var browser = Tools.browser(req);
+    res.locals.browser = browser;  //判断浏览器版本，模板调用
+
+
     // //购物车数量:暂时不做
     // if(req.session.cart_num){
     //     res.locals.cart_num = req.session.cart_num;
@@ -36,6 +41,7 @@ router.use(function(req, res, next) {
     //     res.locals.cart_num = 0;
     // }
 
+    console.log('看你执行了几次');
     next();
 });
 

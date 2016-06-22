@@ -278,5 +278,29 @@ define(function(require,exports,module) {
         var redirectUrl = $('#redirectUrl').val();
         if(data) login(data,null,redirectUrl);
     })
+    //检查登录:已经登录则继续执行callback,没有登录则把callback传到登录函数中去,登录后继续执行
+    function checkLogin(callBack){
+        utils.SendAjax({
+            url: '/checkLogin',
+            param: {},
+            method: 'GET',
+            tipText: '检查是否登录',
+            callback: function (result) {
+                if(!result.login){
+                    showLogin({
+                        afterLoginFun:callBack
+                    });
+                    return false;
+                }else{
+                    callBack && callBack();
+                }
+            }
+        });
+    }
+
+    module.exports={
+        showLogin:showLogin,
+        CheckLogin:checkLogin
+    }
 
 });

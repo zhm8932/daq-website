@@ -45,8 +45,11 @@ app.use(session({
 
 app.locals.moment = require('moment') //本地模板中引入moment方法
 app.locals.markdown = require( "markdown" ).markdown; //markdown编辑语法
+
 app.locals.query = '';
 app.locals.sep = '>';
+
+
 
 
 app.locals.locals_sample = JSON.stringify(config.sample);//取样方式及其对应的中文,存入配置文件
