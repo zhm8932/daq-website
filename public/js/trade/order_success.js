@@ -62,19 +62,20 @@ define(function (require, exports, module) {
     }
 
 
+    var index = '';
+    var $prompt = '';
     function showDialog(result) {
         var stateTimer = null;
-        var payPrice = $('.price-box .price').html();
         var popup = new utils.Popup({
             msg: '<div class="wechat-pay-dialog"><div class="left-box"><img src="data:image/png;base64,'+result.data.credentia.orderInfo+'"/><div class="wechat-tip"><i class="icon scan"></i>'+
-            '<span class="scan-tip">请使用微信"扫一扫"扫描二维码支付</span></div><div class="price text-stress">'+payPrice+'</div></div>'+
+            '<span class="scan-tip">请使用微信"扫一扫"扫描二维码支付</span></div><div class="price text-stress">￥323</div></div>'+
             '<div class="right-box"><img src="/images/wxsm_img.png"/></div><div>',
             otherMsg:'',
             bOhterMsg:true,
             callback:function () {
-                // stateTimer = setInterval(function(){
-                //     queryOrderState();
-                // },3000);
+                stateTimer = setInterval(function(){
+                    queryOrderState();
+                },3000);
             },
             okText:'登录',
             width:'730',
