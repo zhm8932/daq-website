@@ -20,6 +20,11 @@ block content
                 li: a(href='/users/coupon/listView?useState=1') 我的优惠券
                 li: a(href='/users/patient/list') 就诊人
         .box-right.fr
+          if !data.length
+            .noData
+              p 还没有订单哦
+              a.btn(href='/screenings/goods') 去看看
+          else
             each item in data
                 -var orderState = item.orderState;
                 dl.order(data-id="#{item.id}")
@@ -85,6 +90,7 @@ block content
                             //if orderState == 4
                             //    p: a(href='/trade/order/orderSuccess?id=#{item.id}&totalCost=#{item.totalCost}') 取消退款
 
+            include ../includes/pagination
 
 
 

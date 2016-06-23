@@ -35,22 +35,27 @@
 
         //- 产生内部的些链接
         -for(var i=start+1; i<end; i++) {
+            //-if i == currentPage
             if i == currentPage
                 span.current #{currentPage}
             else if pageCount!=1
                 a(href='?page=#{i}') #{i}
-            // 产生内部的些链接
+            //- 产生内部的些链接
         -}
-        //- 产生结束点
+        //产生结束点
         if end <= pageCount&&pageCount!=1
             if (pageCount - edge_num )> end
                 span …
             - var begin = Math.max(pageCount-edge_num, end);
             -for(var i=begin;i<=pageCount;i++){
-                a(href='?page=#{i}') #{i}
+                if currentPage<pageCount
+                    a(href='?page=#{i}') #{i}
+                else
+                    span.current #{i}
+
             -}
 
-            //-div= '产生结束点'
+            //div= '产生结束点'
 
         if currentPage<pageCount
             a.next(href='?page=#{parseInt(currentPage)+1}'): i.icon

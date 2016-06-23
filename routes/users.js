@@ -15,6 +15,8 @@ router.get('/reservation/list',authority.loginRequired,function(req,res,next){
         if(success){
             res.render('users/reservations',{
                 title:'我的预约',
+                keywords:'我的预约,'+CONST.GLOBAL_TITLE,
+                description:'我的预约,'+CONST.GLOBAL_TITLE,
                 data:json.data
             });
         }

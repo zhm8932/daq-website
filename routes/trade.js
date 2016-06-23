@@ -76,6 +76,8 @@ router.get('/order/list',authority.loginRequired, function (req, res, next) {
     request.GetOrderList(req, function (data, success) {
         var json = JSON.parse(data);
         if (success) {
+            res.locals.pageCount = json.data.pageCount;
+            res.locals.currentPage = json.data.currentPage||1;
             res.render('users/orders', {
                 title: '我的订单',
                 data: json.data.data
