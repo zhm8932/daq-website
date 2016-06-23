@@ -152,7 +152,7 @@ define(function(require){
             var OTransmitType = $('#transmit-type .type.on');
             item.transmitType = OTransmitType.attr('data-transmitType');
             var favPrice = OTransmitType.attr('data-favPrice');
-            var subTotal = parseInt(goods.attr('data-discountPrice')) - parseInt(favPrice);
+            var subTotal = parseInt(goods.attr('data-discountPrice')) + parseInt(favPrice);
             item.favPrice = favPrice;
             item.subTotal = subTotal;
 

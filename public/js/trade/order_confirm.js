@@ -46,9 +46,8 @@ define(function (require, exports, module) {
         });
 
         var cityId = $('#cityId').val();
-        var couponCodeId = $('#coupon-table .radio.cheked').closest('tr').attr('data-id') || '';
-
-
+        var couponCodeId = $('#coupon-table .radio.checked').closest('tr').attr('data-id') || '';
+        
         var orderPlaceDTO = {
             "cityId": cityId,
             "couponCodeId": couponCodeId,

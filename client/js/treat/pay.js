@@ -16,7 +16,7 @@ define(function (require, exports, module) {
         login.CheckLogin(function() {
             utils.SendAjax({
                 url: '/trade/order/pay',
-                param: {id: id, payWay: payWay,ext:'http://beta.douanquan.com:2000/users/register/list'},
+                param: {id: id, payWay: payWay,ext:'http://beta.douanquan.com/users/register/list'},
                 method: 'POST',
                 tipText: '前往支付页面',
                 callback: function (result) {
@@ -50,7 +50,7 @@ define(function (require, exports, module) {
         var stateTimer = null;
         var popup = new utils.Popup({
             msg: '<div class="wechat-pay-dialog"><div class="left-box"><img src="data:image/png;base64,'+result.data.credentia.orderInfo+'"/><div class="wechat-tip"><i class="icon scan"></i>'+
-            '<span class="scan-tip">请使用微信"扫一扫"扫描二维码支付</span></div><div class="price text-stress">￥'+result.data.totalCost+'</div></div>'+
+            '<span class="scan-tip">请使用微信"扫一扫"扫描二维码支付</span></div><div class="price text-stress">￥'+result.data.tradeDTO.amount/100+'</div></div>'+
             '<div class="right-box"><img src="/images/wxsm_img.png"/></div><div>',
             otherMsg:'',
             bOhterMsg:true,
@@ -74,22 +74,20 @@ define(function (require, exports, module) {
     }
 
     function queryOrderState(){
-        login.CheckLogin(function() {
-            var orderId = $('#orderId').val();
-            utils.SendAjax({
-                url: '/treats/order/state',
-                param: {reservationId: orderId},
-                method: 'GET',
-                tipText: '查询订单状态',
-                callback: function (result) {
-                    if (result.data.reservationStatus == 1) {
-                        window.location.href = '/users/register/list';
-                    }
-                },
-                errorFun: function (result) {
-
+        var orderId = $('#orderId').val();
+        utils.SendAjax({
+            url: '/treats/order/state',
+            param: {reservationId: orderId},
+            method: 'GET',
+            tipText: '查询订单状态',
+            callback: function (result) {
+                if (result.data.reservationStatus == 1) {
+                    window.location.href = '/users/register/list';
                 }
-            });
+            },
+            errorFun: function (result) {
+
+            }
         });
     }
 });

@@ -356,6 +356,10 @@ header {
     padding: 30px;
     background-color: #F7F7F7; }
 
+.popupBox.wechat-box .cancel i {
+  background-position: -240px 18px;
+  width: 30px;
+  height: 30px; }
 .popupBox.wechat-box article {
   padding: 0; }
 .popupBox.wechat-box .submitBox {
