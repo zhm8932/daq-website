@@ -116,13 +116,26 @@ router.post('/patient/del',authority.loginRequired,function(req,res,next) {
 
 //账号信息
 router.get('/account/info',authority.loginRequired,function(req,res,next) {
-    request.GetAccountInfo(req,function(data,success) {
+    request.HasBindHis(req,function(data,success) {
+        var bindHisJson = JSON.parse(data);
         if(success){
-            var json = JSON.parse(data);
-            res.render('users/account',{
-                title:'账号信息',
-                data:json.data
-            });
+            if(bindHisJson.data){
+                request.GetAccountInfo(req,function(data,success) {
+                    if(success){
+                        var accountJson = JSON.parse(data);
+                        res.render('users/account',{
+                            title:'账号信息',
+                            accountData:accountJson.data,
+                            hasBindHis:bindHisJson.data
+                        });
+                    }
+                });
+            }else{
+                res.render('users/account',{
+                    title:'账号信息',
+                    hasBindHis:bindHisJson.data
+                });
+            }
         }
     });
 });
