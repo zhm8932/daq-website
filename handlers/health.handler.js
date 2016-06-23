@@ -21,9 +21,9 @@ exports.get_article_list = function(req,res) {
         get_article_list_diseases = get_article_list_diseases.data.data;
     }
     res.render('healths/list', {
-        title: '筛查服务',
-        keywords: '筛查服务',
-        description: '筛查服务',
+        title: '筛查服务_CONST.GLOBAL_TITLE',
+        keywords: '筛查服务,'+CONST.GLOBAL_TITLE,
+        description: '筛查服务,'+CONST.GLOBAL_TITLE,
         get_article_list:get_article_list,
         get_article_list_ask:get_article_list_ask,
         get_article_list_diseases:get_article_list_diseases
@@ -70,9 +70,9 @@ exports.get_article = function (req,res) {
     var keywords = get_article_detail.keyword;
     var description = get_article_detail.wapDesc;
     res.render('healths/article', {
-        title: title+'_健康常识_都安全',
-        keywords: keywords+',都安全健康常识',
-        description: description+',都安全健康常识',
+        title: title+'_健康常识_'+CONST.GLOBAL_TITLE,
+        keywords: keywords+CONST.GLOBAL_TITLE+',健康常识',
+        description: description+CONST.GLOBAL_TITLE+',健康常识',
         get_article_detail:get_article_detail,
         get_article_list:get_article_list,
         get_article_detail_content:get_article_detail_content,

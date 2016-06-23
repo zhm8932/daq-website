@@ -34,8 +34,8 @@ block content
                     th(width="40%") 使用范围
                     th 有效期
                 tbody
-                    if data.length <= 0
-                        td(colspan='4') 暂无优惠券
+                    if !data.length
+                        td(colspan='4').tc 暂无优惠券
                     else
                         each item in data.data
                             -var faceValue, enoughMoney;

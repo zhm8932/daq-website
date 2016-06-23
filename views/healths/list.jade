@@ -24,7 +24,10 @@ block content
                     figure
                         if item.imgs.length
                             a(href='/healths/list/article/#{item.id}',target='_blank')
-                                img(src='#{item.imgs[0].imageUrl}')
+                                if browser.ie
+                                    img(src='#{item.imgs[0].imageUrl}',alt='#{item.title}')
+                                else
+                                    img(data-original='#{item.imgs[0].imageUrl}',alt='#{item.title}')
                         figcaption
                             h4: a(href='/healths/list/article/#{item.id}',target='_blank') #{item.title}
                             time 发表于：#{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')}

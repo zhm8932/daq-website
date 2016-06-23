@@ -81,8 +81,8 @@ exports.DeleteOrder = function (req, callback) {
 exports.GetOrderList = function (req, callback) {
     var query = req.query;
     var bizParam = {
-        pageSize: query.pageSize || 10,
-        pageIndex: query.pageIndex || 1,
+        pageSize: 3,
+        pageIndex: query.page || 1,
         "accountId": req.session.userInfo.accountCommon.id
     };
 

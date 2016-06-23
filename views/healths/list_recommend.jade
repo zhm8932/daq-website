@@ -2,7 +2,7 @@ if get_article_list_recommend_success
     h2 相关推荐
     ul
         each item in get_article_list_recommend
-            li: a(href='/healths/list/article/#{item.id}')
+            li: a(href='/healths/list/article/#{item.id}',title='#{item.title}')
                 i
                 |#{item.title}
         //-li: a(href='javascript:;')

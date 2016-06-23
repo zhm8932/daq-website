@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');  //解析cookie req.cookies属性�
 var bodyParser = require('body-parser');  //处理请求体的 req.body 属性存放着请求体对象
 var session = require('express-session');
 // var redisStore = require('connect-redis')(session);
+var CONST = require('./utils/const');
 
 //路由
 var indexs = require('./routes/index');
@@ -48,7 +49,8 @@ app.locals.markdown = require( "markdown" ).markdown; //markdown编辑语法
 
 app.locals.query = '';
 app.locals.sep = '>';
-
+app.locals.CONST = CONST;
+global.CONST = CONST;
 
 
 

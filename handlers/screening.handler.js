@@ -7,8 +7,8 @@ exports.get_goods_list = function(req,res) {
     var get_goods_category = req.get_goods_category
     res.render('screenings/goods', {
         title: '筛查服务',
-        keywords: '筛查服务',
-        description: '筛查服务',
+        keywords: '筛查服务,'+CONST.GLOBAL_TITLE,
+        description: '筛查服务,'+CONST.GLOBAL_TITLE,
         get_goods_list:get_goods_list,
         get_goods_category:get_goods_category.data
     });
@@ -51,8 +51,8 @@ exports.get_goods_detail = function (req,res) {
 
     res.render('screenings/goods_detail', {
         title: '筛查服务_'+get_goods_detail.goodsName,
-        keywords: '筛查服务_'+keywords,
-        description: '筛查服务_'+description,
+        keywords: '筛查服务_'+keywords+','+CONST.GLOBAL_TITLE,
+        description: '筛查服务_'+description+','+CONST.GLOBAL_TITLE,
         goods_detail:get_goods_detail
     });
 }

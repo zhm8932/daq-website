@@ -27,6 +27,11 @@ block content
                     th 状态
                     th 操作
                 tbody
+                  if !data.length
+                      tr
+                        td(colspan='6').tc 暂无挂号
+
+                  else
                     each item in data
                         tr(data-id="#{item.id}")
                             td

@@ -4,7 +4,7 @@ if get_article_list_ask_success
             | 有问有答
         ul
             each item in get_article_list_ask
-                li: a(href='/healths/list/article/#{item.id}')
+                li: a(href='/healths/list/article/#{item.id}',title='#{item.title}')
                     i.icon
                     |#{item.title}
             //-li: a(href='javascript:;')

@@ -185,8 +185,8 @@
   .coupon-state {
     li {
       float: left;
-      padding:16px 25px;
-      &.on{
+      padding:16px 25px;cursor: pointer;
+      &.on,&:hover{
         color: $textOnColor;
       }
     }
@@ -237,4 +237,14 @@
       border-left:1px solid #ddd;
     }
   }
+}
+.noData{
+  text-align: center;padding-top:100px;
+  p{font-size: 18px;padding-bottom: 20px;}
+  a{color: $textc_48B;border-radius: 5px;
+    &:hover{
+      background-color: $bgc_48B;color: $white;
+    }
+  }
+
 }
