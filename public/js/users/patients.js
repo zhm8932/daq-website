@@ -1,5 +1,6 @@
 define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
+    var login = require('../login.js');
     
     $('.del-patient').on('click',function(){
         delPatient($(this));

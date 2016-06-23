@@ -1,5 +1,6 @@
 define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
+    var login = require('../login.js');
 
     $(function(){
         $('.del-reg').on('click',function(){
@@ -12,7 +13,7 @@ define(function (require, exports, module) {
     });
 
     function delItem($this){
-        utils.CheckLogin(function() {
+        login.CheckLogin(function() {
             utils.ShowComfirmDialog({
                 tipText:'确定删除吗?',
                 okCallback:function(){
@@ -39,7 +40,7 @@ define(function (require, exports, module) {
     }
 
     function cancelItem($this){
-        utils.CheckLogin(function() {
+        login.CheckLogin(function() {
             utils.ShowComfirmDialog({
                 tipText:'确定取消吗?',
                 okCallback:function(){

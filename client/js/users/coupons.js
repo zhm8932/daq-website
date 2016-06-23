@@ -1,5 +1,6 @@
 define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
+    var login = require('../login.js');
 
     $('.date').each(function(index,ele){
         var $this = $(ele);

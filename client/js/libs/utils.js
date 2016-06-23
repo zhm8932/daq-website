@@ -79,9 +79,7 @@ define(function(require,exports,module) {
             var height = $('.'+this.opts.popupBox).height();
             $('.'+self.popupBox).css({'height':height,'margin-top':-height/2});
 
-
-
-
+            
         },
         popupHtml:function(){
             var opts = this.opts;

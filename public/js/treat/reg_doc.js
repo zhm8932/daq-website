@@ -1,10 +1,27 @@
 define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
+    var login = require('../login.js');
+    require("moment");
+    require("daterangepicker");
 
     $(function () {
         var hasBind = $('#hasBind').val();
         if (hasBind != 'true') {
             showAccountDialog({});
+
+            $('#birthday').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                autoUpdateInput: false,   //默认为空
+                locale : {
+                    format : 'YYYY-MM-DD',
+                    daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
+                    monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月',
+                        '七月', '八月', '九月', '十月', '十一月', '十二月' ]
+                }
+            }, function(start, end, label) {
+                $('#birthday').val(start.format('YYYY-MM-DD'));
+            });
         }
         $('#scheduleId-select .option').on('click', function () {
             var $this = $(this);
@@ -20,7 +37,7 @@ define(function (require, exports, module) {
 
     function commitReg($this) {
         $this.addClass('disabled').off('click');
-        // utils.CheckLogin(function () {
+        login.CheckLogin(function () {
             var scheduleId = $('#scheduleId').val();
             var param = {scheduleId:scheduleId};
             utils.SendAjax({
@@ -43,14 +60,14 @@ define(function (require, exports, module) {
                     });
                 }
             });
-        // });
+        });
     }
 
     function showAccountDialog() {
         var popup = new utils.Popup({
             msg: '<div class="box-header">完善信息<i class="icon close closePopup"></i></div><div class="box-body">' +
             '<ul class="tip-box"><li>为了能正常使用预约挂号服务,请及时补充以下材料。</li><li>以下信息为预约时所需项,一经填写不可更改,提交前请检查核对。</li><li>绑定已有客户编号,您可在病例中心中查看历史报告。</li></ul>' +
-            '<form name="accInfoForm"><ul><li><label><i class="text-stress">* </i>姓名</label><input name="name"/></li><li><label><i class="text-stress">* </i>性别</label><input name="gender"/></li><li><label><i class="text-stress">* </i>出生年月</label><input name="birthday"/></li><li><label>绑定已有客户编码</label><input placeholder="请输入已有客户编码"/></li>' +
+            '<form name="accInfoForm"><ul><li><label><i class="text-stress">* </i>姓名</label><input name="name"/></li><li><label><i class="text-stress">* </i>性别</label><input name="gender"/></li><li><label><i class="text-stress">* </i>出生年月</label><input id="birthday" name="birthday"/></li><li><label>绑定已有客户编码</label><input placeholder="请输入已有客户编码"/></li>' +
             '</ul></form></div>',
             otherMsg: 'confirm-btn',
             popupBox: 'popupBox',

@@ -1,5 +1,6 @@
 define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
+    var login = require('../login.js');
 
     var unfitCouponNum = 0;
     var fitCouponNum = 0;
@@ -60,7 +61,7 @@ define(function (require, exports, module) {
 
 
     function addCoupon($this) {
-        utils.CheckLogin(function () {
+        login.CheckLogin(function () {
             var inviteCode = $('#coupon-code').val().trim();
             if(!inviteCode){
                 utils.ShowComfirmDialog({tipText:'请输入优惠码',noConfirmBtn:true});
@@ -131,7 +132,7 @@ define(function (require, exports, module) {
     }
 
     function getAllCoupon() {
-        utils.CheckLogin(function () {
+        login.CheckLogin(function () {
             var param = {
                 pageSize: 100,
                 useState: 1,
