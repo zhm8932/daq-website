@@ -139,21 +139,38 @@
         list-style: disc; }
     .complete-dialog .box-body form[name=accInfoForm] {
       padding: 15px 15px 0 15px; }
-      .complete-dialog .box-body form[name=accInfoForm] li {
-        padding-bottom: 13px; }
-        .complete-dialog .box-body form[name=accInfoForm] li label {
-          display: inline-block;
-          width: 67px;
-          line-height: 17px;
-          vertical-align: middle;
-          margin-right: 17px;
-          text-align: right; }
-        .complete-dialog .box-body form[name=accInfoForm] li input {
-          width: 280px;
-          height: 30px;
-          line-height: 30px; }
+      .complete-dialog .box-body form[name=accInfoForm] .info-box {
+        position: relative; }
+        .complete-dialog .box-body form[name=accInfoForm] .info-box > li {
+          padding-bottom: 13px; }
+          .complete-dialog .box-body form[name=accInfoForm] .info-box > li label {
+            display: inline-block;
+            width: 67px;
+            line-height: 17px;
+            vertical-align: middle;
+            margin-right: 17px;
+            text-align: right; }
+          .complete-dialog .box-body form[name=accInfoForm] .info-box > li input {
+            width: 260px;
+            height: 30px;
+            border: 1px solid #ddd;
+            line-height: 30px; }
+      .complete-dialog .box-body form[name=accInfoForm] .select-box .selected {
+        width: 262px; }
+    .complete-dialog .box-body .prompt {
+      color: #ED9E9A;
+      position: absolute;
+      left: 84px;
+      bottom: -20px;
+      display: none; }
+      .complete-dialog .box-body .prompt i {
+        background-position: -178px -22px; }
   .complete-dialog .submitBox {
     margin-left: 98px; }
+    .complete-dialog .submitBox span.ok.disabled {
+      background: #C4C4C4;
+      border: 1px solid #C4C4C4;
+      color: #fff; }
   .complete-dialog span.ok {
     width: 280px; }
 

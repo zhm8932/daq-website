@@ -37,6 +37,8 @@ block content
                                 ul.options
                                     each value,key in timeSlot.timeWithIdMap
                                         .option(data-value="#{value.scheduleId}",data-cost="#{value.cost}") #{key}(#{value.capacity - value.unConsume}/#{value.capacity})
+
+
                         if doctorDTO.needPay
                             li
                                 label 挂号费
@@ -46,7 +48,7 @@ block content
                                 span #{doctorDTO.payInstruction}
 
 
-                        button#commit-reg(class='submitBtn') 确认提交
+                        button#commit-reg.submitBtn.disabled 确认提交
                         input#hasBind(type="hidden",value="#{hasBind}")
                         input#needPay(type="hidden",value="#{doctorDTO.needPay}")
 

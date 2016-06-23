@@ -4,10 +4,13 @@ define(function (require, exports, module) {
     require("moment");
     require("daterangepicker");
 
+    var firstChooseTime = true;
+
     $(function () {
         var hasBind = $('#hasBind').val();
         if (hasBind != 'true') {
             showAccountDialog({});
+            utils.BuildSelect($('#gender'));
 
             $('#birthday').daterangepicker({
                 singleDatePicker: true,
@@ -22,18 +25,39 @@ define(function (require, exports, module) {
             }, function(start, end, label) {
                 $('#birthday').val(start.format('YYYY-MM-DD'));
             });
+
+            // completeDialog.find('input').on('blur',function(){
+            //     validateInput(completeDialog);
+            // });
+            // completeDialog.find('#gender .option').on('click',function(){
+            //     validateInput(completeDialog);
+            // })
+
+
         }
         $('#scheduleId-select .option').on('click', function () {
             var $this = $(this);
             $('#scheduleId').val($this.data('value'));
             var cost = parseInt($this.data('cost'));
             $('#cost').html(cost / 100 + '元');
-        });
-
-        $('#commit-reg').on('click', function () {
-            commitReg($(this));
+            if(firstChooseTime){
+                $('#commit-reg').removeClass('disabled').off('click').on('click', function () {
+                    commitReg($(this));
+                });
+                firstChooseTime = false;
+            }
         });
     });
+
+
+    // function validateInput(completeDialog){
+    //     var name = completeDialog.find('[name=name]').val().trim();
+    //     var birthday = completeDialog.find('[name=birthday]').val().trim();
+    //     var gender = completeDialog.find('#gender .option.active').attr('data-value');
+    //     if(name && birthday && gender){
+    //         completeDialog.find('span.ok').removeClass('disabled');
+    //     }
+    // }
 
     function commitReg($this) {
         $this.addClass('disabled').off('click');
@@ -67,7 +91,10 @@ define(function (require, exports, module) {
         var popup = new utils.Popup({
             msg: '<div class="box-header">完善信息<i class="icon close closePopup"></i></div><div class="box-body">' +
             '<ul class="tip-box"><li>为了能正常使用预约挂号服务,请及时补充以下材料。</li><li>以下信息为预约时所需项,一经填写不可更改,提交前请检查核对。</li><li>绑定已有客户编号,您可在病例中心中查看历史报告。</li></ul>' +
-            '<form name="accInfoForm"><ul><li><label><i class="text-stress">* </i>姓名</label><input name="name"/></li><li><label><i class="text-stress">* </i>性别</label><input name="gender"/></li><li><label><i class="text-stress">* </i>出生年月</label><input id="birthday" name="birthday"/></li><li><label>绑定已有客户编码</label><input placeholder="请输入已有客户编码"/></li>' +
+            '<form name="accInfoForm"><ul class="info-box"><li><label><i class="text-stress">* </i>姓名</label><input name="name"/></li>'+
+            '<li><label><i class="text-stress">* </i>性别</label><div id="gender" class="select-box none"><div class="selected"><span class="text"><span class="text-sec">请选择</span></span><i class="icon pull-down"></i></div>'+
+            '<ul class="options"><li class="option" data-value="0">男</li><li class="option" data-value="1">女</li></ul></div></li>'+
+            '<li><label><i class="text-stress">* </i>出生年月</label><input id="birthday" name="birthday" readonly/></li><li><label>绑定已有客户编码</label><input name="patientCode" placeholder="请输入已有客户编码"/></li><span class="prompt"><i class="icon"></i><em>客户编码有误</em></span>' +
             '</ul></form></div>',
             otherMsg: 'confirm-btn',
             popupBox: 'popupBox',
@@ -75,6 +102,7 @@ define(function (require, exports, module) {
             cancel: 'closePopup',
             otherBox: 'complete-dialog',
             width: '475',
+            isHide:false,
             callback: function () {
                 //TouchSlide({ slideCell:"#slideLogin",titCell:".tit span", mainCell:".bd"});
                 $("#slideLogin").touchSlider({
@@ -97,31 +125,50 @@ define(function (require, exports, module) {
                 window.location.href = "/treat/regsource/list";
             },
             okCallback: function () {
-                var $this = $('.complete-dialog span.ok');
-                $this.addClass('disabled').off('click');
-                var param = $('form[name=accInfoForm]').serialize();
-                utils.SendAjax({
-                    url: '/users/account/complete',
-                    param: param,
-                    method: 'POST',
-                    tipText: '完善信息',
-                    callback: function (result) {
-                        var myMsg = new utils.MsgShow({
-                            delayTime: 2000,
-                            title: '<i class="icon"></i>完善成功!',
-                            otherBox: 'successBox'
-                        });
-                        popup.hideBox();
-                        myMsg.hideMsg(1000);
-                    },
-                    errorFun: function (result) {
-                        $this.removeClass('disabled').on('click', function () {
-
-                        });
-                    }
-                });
+                completeInfo(popup);
             }
         })
+    }
+
+
+    function completeInfo(popup){
+        var completeDialog = $('.complete-dialog');
+        var name = completeDialog.find('[name=name]').val().trim();
+        var birthday = completeDialog.find('[name=birthday]').val().trim();
+        var gender = completeDialog.find('#gender .option.active').attr('data-value');
+        if(!(name && birthday && gender)){
+            completeDialog.find('.prompt em').html('必输项不能为空');
+            completeDialog.find('.prompt').show();
+            return false;
+        }
+
+        var $this = $('.complete-dialog span.ok');
+        $this.addClass('disabled').off('click');
+        var param = $('form[name=accInfoForm]').serialize()+'&gender='+gender;
+        utils.SendAjax({
+            url: '/users/account/complete',
+            param: param,
+            method: 'POST',
+            tipText: '完善信息',
+            callback: function (result) {
+                var myMsg = new utils.MsgShow({
+                    delayTime: 2000,
+                    title: '<i class="icon"></i>完善成功!',
+                    otherBox: 'successBox'
+                });
+                popup.hideBox();
+                myMsg.hideMsg(1000);
+            },
+            errorFun: function (result) {
+                if(result.data){
+                    completeDialog.find('.prompt em').html('客户编码有误');
+                    completeDialog.find('.prompt').show();
+                }
+                $this.removeClass('disabled').on('click', function () {
+                    completeInfo(popup);
+                });
+            }
+        });
     }
 
 });

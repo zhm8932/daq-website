@@ -143,9 +143,13 @@ exports.CompleteAccount = function (req, callback) {
             accountId:req.session.userInfo.accountCommon.id,
             name:body.name,
             gender:body.gender,
-            birthday:body.birthday
+            birthday:new Date(body.birthday).getTime()
         }
     };
+    
+    if(body.patientCode){
+        bizParam.bindHISCustomer.patientCode = body.patientCode;
+    }
 
     util.ajax('PUT', api.CompleteAccount, bizParam, function (data, success) {
         callback && callback(data, success);
