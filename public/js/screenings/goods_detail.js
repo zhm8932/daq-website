@@ -158,7 +158,7 @@ define(function(require){
 
             var address = JSON.parse($('#locals_address').val());
             if (OTransmitType.attr('data-transmitType') == 'sampling_home') {
-                var area = $('#area').val();
+                var area = $('#area .option.active').data('area');
                 address.push(area);
             }
             item.address = JSON.stringify(address);

@@ -26,16 +26,16 @@ block content
             .list-info 商品列表
             table.table.goods-list
                 thead
-                    th(width="35%") 商品名称
-                    th(width="20%") 使用密码
-                    th(width="23%") 取样方式
-                    th 受检人信息
+                    th(width="45%") 商品名称
+                    th(width="25%") 使用密码
+                    th(width="30%") 取样方式
                 tbody
                     tr
                         each item,i in data.reservations
                             td.goods
-                                img(src="#{item.goodsInfo.imageUrls[0]}")
-                                span #{item.goodsInfo.goodsName}
+                                a(href="/screenings/goods/detail/#{item.goodsInfo.goodsId}")
+                                    img(src="#{item.goodsInfo.imageUrls[0]}")
+                                    span #{item.goodsInfo.goodsName}
                             td.text-stress #{item.password}
                         td.bd-l(rowspan="#{goodsLength}")
                             p #{serviceTypeJSON[data.serviceType]}
@@ -43,9 +43,6 @@ block content
                             each area in JSON.parse(data.reservations[0].goodsInfo.address)
                                 -address += area.name;
                             p.text-sec 取样地址:#{address}
-                        td.bd-l.text-sec
-                            p #{data.checkedName}
-                            p #{data.telNum}
 
 
     include ../includes/footer

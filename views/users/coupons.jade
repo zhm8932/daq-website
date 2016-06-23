@@ -7,16 +7,7 @@ block content
     .positon.wrapper
         |您的位置为：首页<em>#{sep}</em>我的订单
     section.wrapper.userBox.clearfix
-        aside.fl
-            div.user-main.text-center
-                img(src='/images/user.png')
-                span.tel.text-sec #{account}
-            ul.left-nav
-                li: a(href='/trade/order/list') 我的订单
-                li: a(href='/users/reservation/list') 我的预约
-                li: a(href='/users/register/list') 我的挂号
-                li: a.on(href='/users/coupon/listView?useState=1') 我的优惠券
-                li: a(href='/users/patient/list') 就诊人
+        include ../includes/usersNav
         .box-right.fr.coupons
             div.get-coupon
                 div 领取优惠券
@@ -34,7 +25,7 @@ block content
                     th(width="40%") 使用范围
                     th 有效期
                 tbody
-                    if !data.length
+                    if data.length <= 0
                         td(colspan='4').tc 暂无优惠券
                     else
                         each item in data.data

@@ -17,7 +17,8 @@ router.get('/reservation/list',authority.loginRequired,function(req,res,next){
                 title:'我的预约',
                 keywords:'我的预约,'+CONST.GLOBAL_TITLE,
                 description:'我的预约,'+CONST.GLOBAL_TITLE,
-                data:json.data
+                data:json.data,
+                nav:"reservations"
             });
         }
     });
@@ -42,7 +43,8 @@ router.get('/register/list',authority.loginRequired,function(req,res,next){
             var json = JSON.parse(data);
             res.render('users/registerings',{
                 title:'我的挂号',
-                data:json.data
+                data:json.data,
+                nav:"registerings"
             });
         }
     });
@@ -73,7 +75,8 @@ router.get('/coupon/listView',authority.loginRequired,function(req,res,next) {
             var json = JSON.parse(data);
             res.render('users/coupons',{
                 title:'我的优惠券',
-                data:json.data
+                data:json.data,
+                nav:"coupons"
             });
         }
     });
@@ -91,7 +94,8 @@ router.get('/patient/list',authority.loginRequired,function(req,res,next) {
             var json = JSON.parse(data);
             res.render('users/patients',{
                 title:'我的就诊人',
-                data:json.data
+                data:json.data,
+                nav:"patients"
             });
         }
     });
