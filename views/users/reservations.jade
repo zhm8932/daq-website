@@ -8,7 +8,6 @@ block content
         |您的位置为：首页<em>#{sep}</em>#{title}
     section.wrapper.userBox.clearfix
         -var serviceTypeJSON = {'0':'未选择','1':'门诊取样','2':'上门取样','3':'快递取样'};
-        -var statusJSON = {'0':'未处理','1':'处理中','2':'处理完成','4':'取消'};
         include ../includes/usersNav
         .box-right.reservation.fr
            if !data.length
@@ -39,15 +38,15 @@ block content
                             p 取样地址:#{address}
                         -var resStatus = item.status;
                         .col.order-state.text-sec
-                            if resStatus == 1 || resStatus == 2
-                                p.text-stress
-                                    |#{statusJSON[resStatus]}
-                            else
-                                p
-                                    |#{statusJSON[resStatus]}
+                            if resStatus == 0 || resStatus == 1
+                                p.text-stress 待检测
+                            else if resStatus == 2
+                                p 已完成
+                            else if resStatus == 4
+                                p 已取消
 
                         .col.operation
-                            p: a(href='/users/reservation/detail?id=#{item.id}') 订单详情
+                            p: a(href='/users/reservation/detail?id=#{item.id}') 预约详情
                             if resStatus == 2
                                 p: a(href='') 查看报告
 

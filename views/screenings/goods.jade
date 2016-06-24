@@ -34,7 +34,7 @@ block content
                                     h4 #{item.goodsName}
                                 if item.productKeyAttributeList
                                     each arr in item.productKeyAttributeList
-                                        if arr.attributeName == 'fit_people'
+                                        if arr.attributeName == 'slogan'
                                             p
                                                 if arr.value.length > 50
                                                     | #{arr.value.substring(0, 50)}……

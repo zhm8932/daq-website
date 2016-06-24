@@ -36,6 +36,7 @@ router.get('/regsource/list', function (req, res, next) {
 router.get('/reg/doctorView',authority.loginRequired, function (req, res, next) {
     request.GetRegTimeSlot(req, function (data, success) {
         var timeSlotJson = JSON.parse(data);
+
         users.HasBindHis(req, function (data, success) {
             var hasBindHISJson = JSON.parse(data);
             res.render('treat/regByDoc', {
@@ -80,6 +81,10 @@ router.get('/order/state',authority.loginRequired, function (req, res, next) {
         res.json(JSON.stringify(resJson));
     });
 });
+
+function tidyTimeMap(){
+
+}
 
 module.exports = router;
 
