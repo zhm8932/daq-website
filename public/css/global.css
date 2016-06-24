@@ -157,6 +157,9 @@ button.disabled, .btn.disabled {
   vertical-align: middle; }
   .select-box .selected {
     display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    height: 34px;
     line-height: 34px;
     padding: 0 10px;
     border: 1px solid #ddd; }
@@ -184,7 +187,11 @@ button.disabled, .btn.disabled {
     display: block; }
 
 input {
-  padding: 0 10px; }
+  box-sizing: border-box;
+  height: 35px;
+  line-height: 35px;
+  padding: 0 10px;
+  border: 1px solid #ddd; }
 
 input:focus, textarea:focus {
   outline: none;

@@ -1,0 +1,29 @@
+aside.fl
+    -var orderStateJSON = {'1':'未支付','2':'已支付','3':'已取消','4':'退款中','5':'已退款'};
+    -var sampleJson = JSON.parse(locals_sample);
+    div.user-main.text-center
+        .user-portrait
+            img(src='/images/user.png')
+        p.tel #{account}
+        p: a.text-main(href="/users/account/info") 账号信息
+    ul.left-nav
+        if nav == 'orders'
+            li: a.on(href='/trade/order/list') 我的订单
+        else
+            li: a(href='/trade/order/list') 我的订单
+        if nav == 'reservations'
+            li: a.on(href='/users/reservation/list') 我的报告
+        else
+            li: a(href='/users/reservation/list') 我的报告
+        if nav == 'registerings'
+            li: a.on(href='/users/register/list') 我的挂号
+        else
+            li: a(href='/users/register/list') 我的挂号
+        if nav == 'coupons'
+            li: a.on(href='/users/coupon/listView?useState=1') 优惠券
+        else
+            li: a(href='/users/coupon/listView?useState=1') 优惠券
+        //li: a(href='/users/reservation/list') 我的报告
+        //li: a(href='/users/register/list') 我的挂号
+        //li: a(href='/users/coupon/listView?useState=1') 我的优惠券
+        //li: a(href='/users/patient/list') 就诊人

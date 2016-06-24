@@ -152,13 +152,13 @@ define(function(require){
             var OTransmitType = $('#transmit-type .type.on');
             item.transmitType = OTransmitType.attr('data-transmitType');
             var favPrice = OTransmitType.attr('data-favPrice');
-            var subTotal = parseInt(goods.attr('data-discountPrice')) - parseInt(favPrice);
+            var subTotal = parseInt(goods.attr('data-discountPrice')) + parseInt(favPrice);
             item.favPrice = favPrice;
             item.subTotal = subTotal;
 
             var address = JSON.parse($('#locals_address').val());
             if (OTransmitType.attr('data-transmitType') == 'sampling_home') {
-                var area = $('#area').val();
+                var area = $('#area .option.active').data('area');
                 address.push(area);
             }
             item.address = JSON.stringify(address);

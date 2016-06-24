@@ -2,50 +2,81 @@ extends ../layout
 
 block content
     link(href='/css/users/user.css',rel='styleSheet')
+    link(href="/css/daterangepicker.css",rel="stylesheet")
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
         |您的位置为：首页<em>#{sep}</em>我的订单
     section.wrapper.userBox.clearfix
-        aside.fl
-            div.user-main.text-center
-                img(src='/images/user.png')
-                span.tel.text-sec #{account}
-            ul.left-nav
-                li: a(href='/trade/order/list') 我的订单
-                li: a(href='/users/reservation/list') 我的预约
-                li: a(href='/users/register/list') 我的挂号
-                li: a(href='/users/coupon/listView?useState=1') 我的优惠券
-                li: a.on(href='/users/patient/list') 就诊人
-        .box-right.fr
-            table.patients-table.table.table-striped.table-bordered
-                -var genderJson = {"1":"男","2":"女"};
-                thead
-                    th(width="20%") 姓名
-                    th(width="15%") 性别
-                    th(width="25%") 年龄
-                    th(width="25%") 联系电话
-                    th(width="15%") 操作
-                tbody
+        include ../includes/usersNav
+        .box-right.account.fr
+            -var genderJson = {'0':'男','1':'女'};
+            ul.tip-box
+                li 以下信息为预约时所需项,一经填写不可更改,提交前请检查核对。
+                li 绑定已有客户编号,您可在病例中心中查看历史报告。
+            if hasBindHis
+                form(name="accInfoForm")
+                    ul.info-box
+                        li
+                            label
+                                i.text-stress *&nbsp;
+                                | 姓名
+                            span #{accountData.name}
+                        li
+                            label
+                                i.text-stress *&nbsp;
+                                | 性别
+                            span #{genderJson[accountData.gender]}
+                        li
+                            label
+                                i.text-stress *&nbsp;
+                                | 出生年月
+                            span #{accountData.birthday}
+                        li
+                            label
+                                p 客户编码
+                            span #{accountData.patientCode}
 
-                        if data.length <= 0
-                            tr
-                                td(colspan='5') 暂无优惠券
-                        else
-                            each item in data
-                                tr(data-id="#{item.id}")
-                                    td #{item.name}
-                                    td #{genderJson[item.gender]}
-                                    td #{item.age}
-                                    td #{item.telephone}
-                                    td: a.del-patient(href="javascript:void(0)") 删除
-                    tr.text-center
-                        td(colspan='5')
-                            a#add-tr.text-main(href="javascript:void(0)")
-                                span.plus +
-                                span 新增联系人
+            else
+                form(name="accInfoForm")
+                    ul.info-box
+                        li
+                            label
+                                i.text-stress *&nbsp;
+                                | 姓名
+                            input(name="name")
+                        li
+                            label
+                                i.text-stress *&nbsp;
+                                | 性别
+                            #gender.select-box.none
+                                .selected
+                                    span.text
+                                        span.text-sec 请选择
+                                    i.icon.pull-down
+                                ul.options
+                                    .option(data-value="0") 女
+                                    .option(data-value="1") 男
+                        li
+                            label
+                                i.text-stress *&nbsp;
+                                | 出生年月
+                            input#birthday(name="birthday",placeholder="请选择",readonly)
+                        li
+                            label
+                                p 绑定已有
+                                p 客户编码
+                            input(name="patientCode",placeholder="请输入已有客户编码")
+                        li
+                            .btn-box
+                                p.prompt
+                                    i.icon
+                                    em 客户编码有误
+                                button#complete-acc.submitBtn 提交
 
+
+    input#hasBind(type="hidden",value="#{hasBindHis}")
 
     include ../includes/footer
     script.
-        seajs.use('/js/users/patients.js')
+        seajs.use('/js/users/account.js')

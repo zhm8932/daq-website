@@ -80,7 +80,8 @@ router.get('/order/list',authority.loginRequired, function (req, res, next) {
             res.locals.currentPage = json.data.currentPage||1;
             res.render('users/orders', {
                 title: '我的订单',
-                data: json.data.data
+                data: json.data.data,
+                nav:"orders"
             });
         }
     });

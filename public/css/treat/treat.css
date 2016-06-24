@@ -151,11 +151,8 @@
             margin-right: 17px;
             text-align: right; }
           .complete-dialog .box-body form[name=accInfoForm] .info-box > li input {
-            width: 260px;
-            height: 30px;
-            border: 1px solid #ddd;
-            line-height: 30px; }
-      .complete-dialog .box-body form[name=accInfoForm] .select-box .selected {
+            width: 260px; }
+      .complete-dialog .box-body form[name=accInfoForm] .select-box {
         width: 262px; }
     .complete-dialog .box-body .prompt {
       color: #ED9E9A;

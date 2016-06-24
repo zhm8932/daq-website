@@ -39,8 +39,9 @@ block content
                     each item,i in data.goodsItemDTOs
                         tr(data-address="#{item.address}",data-transmitType="#{item.transmitType}",data-goodsId="#{item.goodsId}")
                             td
-                                img(src="#{item.imageUrls[0]}")
-                                span #{item.goodsName}
+                                a(href='/screenings/goods/detail/#{item.goodsId}')
+                                    img(src="#{item.imageUrls[0]}")
+                                    span #{item.goodsName}
                             td.text-stress #{item.reservationPwd}
 
                             td
@@ -48,19 +49,24 @@ block content
                                     -transmitType = key;
                                     -favPrice = parseInt(value);
                                 p #{sampleJson[transmitType]}(服务费￥#{favPrice/100})
-                                p.text-sec 服务区域:
-                                    each areaObj,j in JSON.parse(item.address)
-                                        if areaObj
-                                            | #{areaObj.name}
+                                if transmitType == 'sampling_home'
+                                    p.text-sec 取样地址:
+                                        each areaObj,j in JSON.parse(item.address)
+                                            if areaObj
+                                                | #{areaObj.name}
                             td.text-sec ￥#{(parseInt(item.dealPrice) + favPrice)/100}
-                            if item.reservationState == 0
-                                td.text-stress 未使用
-                                td.text-main
-                                    p 电话预约
-                                    p 400-4557-452
+                            if data.orderState == 2
+                                if item.reservationState == 0
+                                    td.text-stress 未使用
+                                    td.text-main
+                                        p 电话预约
+                                        p 400-4557-452
+                                else
+                                    td.text-sec 已使用
+                                    td: a(href="/users/reservation/detail?id=#{item.reservationId}") 预约详情
                             else
-                                td.text-sec 已使用
-                                td: a(href="?reservationId=#{item.reservationId}") 预约详情
+                                td
+                                td
             .table-div
                 .tfoot.clearfix
                     #actualTotal.price-text

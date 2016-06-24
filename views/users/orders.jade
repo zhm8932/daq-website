@@ -7,18 +7,7 @@ block content
     .positon.wrapper
         |您的位置为：首页<em>#{sep}</em>我的订单
     section.wrapper.userBox.clearfix
-        aside.fl
-            -var orderStateJSON = {'1':'未支付','2':'已支付','3':'已取消','4':'退款中','5':'已退款'};
-            -var sampleJson = JSON.parse(locals_sample);
-            div.user-main.text-center
-                img(src='/images/user.png')
-                span.tel.text-sec #{account}
-            ul.left-nav
-                li: a.on(href='/trade/order/list') 我的订单
-                li: a(href='/users/reservation/list') 我的预约
-                li: a(href='/users/register/list') 我的挂号
-                li: a(href='/users/coupon/listView?useState=1') 我的优惠券
-                li: a(href='/users/patient/list') 就诊人
+        include ../includes/usersNav
         .box-right.fr
           if !data.length
             .noData
@@ -81,12 +70,12 @@ block content
                         .col.operation
                             p: a(href='/trade/order/detail?id=#{item.id}') 订单详情
                             if orderState == 1
-                                p: a(href='/trade/order/orderSuccess?id=#{item.id}&totalCost=#{item.totalCost}') 继续支付
-                                p: a(href='/trade/order/cancel?id=#{item.id}') 取消订单
+                                p.topay: a(href='/trade/order/orderSuccess?id=#{item.id}&totalCost=#{item.totalCost}') 继续支付
+                                p: a.cancel-order(href='javascript:void(0);') 取消订单
                             //if orderState ==2
                             //    p: a(href='/trade/order/orderSuccess?id=#{item.id}&totalCost=#{item.totalCost}') 申请退款
                             if orderState == 3
-                                p: a(href='/trade/order/delete?id=#{item.id}') 删除订单
+                                p: a.del-order(href='javascript:void(0);') 删除订单
                             //if orderState == 4
                             //    p: a(href='/trade/order/orderSuccess?id=#{item.id}&totalCost=#{item.totalCost}') 取消退款
 
@@ -96,4 +85,4 @@ block content
 
     include ../includes/footer
     script.
-        seajs.use('/js/trade/order_list.js')
+        seajs.use('/js/users/orders.js')

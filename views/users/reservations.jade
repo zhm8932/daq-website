@@ -7,18 +7,9 @@ block content
     .positon.wrapper
         |您的位置为：首页<em>#{sep}</em>#{title}
     section.wrapper.userBox.clearfix
-        aside.fl
-            -var serviceTypeJSON = {'0':'未选择','1':'门诊取样','2':'上门取样','3':'快递取样'};
-            -var statusJSON = {'0':'未处理','1':'处理中','2':'处理完成','4':'取消'};
-            div.user-main.text-center
-                img(src='/images/user.png')
-                span.tel.text-sec #{account}
-            ul.left-nav
-                li: a(href='/trade/order/list') 我的订单
-                li: a.on(href='/users/reservation/list') 我的预约
-                li: a(href='/users/register/list') 我的挂号
-                li: a(href='/users/coupon/listView?useState=1') 我的优惠券
-                li: a(href='/users/patient/list') 就诊人
+        -var serviceTypeJSON = {'0':'未选择','1':'门诊取样','2':'上门取样','3':'快递取样'};
+        -var statusJSON = {'0':'未处理','1':'处理中','2':'处理完成','4':'取消'};
+        include ../includes/usersNav
         .box-right.reservation.fr
            if !data.length
                .noData
@@ -40,7 +31,7 @@ block content
                                             img.fl(src='#{goods.goodsInfo.imageUrls[0]}')
                                             h5.fr #{goods.goodsInfo.goodsName}
                         .col.detail.text-sec
-                            p 受检人:#{item.checkedName}
+                            //p 受检人:#{item.checkedName}
                             p 取样方式:#{serviceTypeJSON[item.serviceType]}
                             -var address = '';
                             each area in JSON.parse(item.reservations[0].goodsInfo.address)

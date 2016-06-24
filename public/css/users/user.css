@@ -23,15 +23,7 @@
     box-sizing: border-box; }
     .userBox aside .user-main {
       padding-bottom: 20px;
-      border-bottom: 2px solid #dddddd; }
-      .userBox aside .user-main img {
-        vertical-align: middle;
-        width: 22px;
-        height: 32px; }
-      .userBox aside .user-main .tel {
-        margin-left: 7px;
-        display: inline-block;
-        vertical-align: middle; }
+      border-bottom: 1px solid #dddddd; }
     .userBox aside .left-nav {
       padding: 8px 10px; }
       .userBox aside .left-nav li {
@@ -191,3 +183,40 @@
     .noData a:hover {
       background-color: #48BED8;
       color: #FFF; }
+
+.account .tip-box {
+  padding: 12px 30px;
+  border: 1px solid #ddd;
+  background: #F5F5F5; }
+  .account .tip-box li {
+    line-height: 20px;
+    list-style: disc; }
+.account .info-box {
+  margin-top: 35px; }
+  .account .info-box > li {
+    padding-bottom: 13px; }
+    .account .info-box > li label {
+      display: inline-block;
+      width: 15%;
+      line-height: 17px;
+      vertical-align: middle;
+      margin-right: 3%;
+      text-align: right; }
+    .account .info-box > li input {
+      width: 40%; }
+.account .select-box {
+  width: 40%; }
+.account .btn-box {
+  position: relative;
+  width: 40%;
+  margin-left: 19%; }
+  .account .btn-box .submitBtn {
+    width: 100%;
+    margin-top: 30px; }
+.account .prompt {
+  position: absolute;
+  top: -5px;
+  color: #ED9E9A;
+  display: none; }
+  .account .prompt i {
+    background-position: -178px -22px; }
