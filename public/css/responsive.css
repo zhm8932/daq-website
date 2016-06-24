@@ -264,10 +264,12 @@
   .nav ul i {
     display: none; }
 
-  .lr_list figure h4 {
-    font-size: 16px;
-    padding: 10px 0;
-    margin-bottom: 10px; }
+  .lr_list figure {
+    font-size: 16px; }
+    .lr_list figure h4 {
+      font-size: 18px;
+      padding: 10px 0;
+      margin-bottom: 10px; }
 
   .item_list {
     padding-bottom: 20px; }

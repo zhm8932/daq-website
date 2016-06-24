@@ -218,8 +218,6 @@ define(function(require,exports,module) {
 
                 }else{
                     // console.log('登录失败')
-                    // console.log($prompt.html())
-                    // $('.loginBox2 .prompt').show()
                     $prompt.show().find('em').html(json.msg)
                 }
 
@@ -227,6 +225,7 @@ define(function(require,exports,module) {
             }
         })
     }
+    var loginRequiredArr = ['/trade/order','/trade/cart/list','/treats/reg/','/users/'];
 
     //退出登陆
     function logout() {
@@ -238,7 +237,15 @@ define(function(require,exports,module) {
                 // console.log(json)
                 var json = JSON.parse(json);
                 if(json.success){
-                    $topBarAside.html(loginHtml);
+                    loginRequiredArr.forEach(function (item) {
+                        if(pathname.search(item)!=-1){
+                            console.log('页面跳转');
+                            window.location.href='/';
+                        }else{
+                            $topBarAside.html(loginHtml);
+                        }
+                    })
+
                 }
             }
         })
