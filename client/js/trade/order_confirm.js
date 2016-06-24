@@ -143,7 +143,7 @@ define(function (require, exports, module) {
                 method: 'GET',
                 tipText: '获取优惠券',
                 callback: function (result) {
-                    var data = result.data.data;
+                    var data = result.data;
                     var fitTableArr = [];
                     var unfitTableArr = [];
                     for (var i = 0; i < data.length; i++) {
