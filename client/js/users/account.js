@@ -7,9 +7,7 @@ define(function (require, exports, module) {
 
     $(function () {
         var hasBind = $('#hasBind').val();
-        if (hasBind != 'true') {
-            utils.BuildSelect($('#gender'));
-
+        // if (hasBind != 'true') {
             $('#birthday').daterangepicker({
                 singleDatePicker: true,
                 showDropdowns: true,
@@ -23,25 +21,34 @@ define(function (require, exports, module) {
             }, function(start, end, label) {
                 $('#birthday').val(start.format('YYYY-MM-DD'));
             });
-        }
+
+            $('#complete-acc').on('click',function(){
+                completeInfo($(this));
+                return false;
+            });
+        // }
 
     });
 
 
-    function completeInfo(popup){
-        var completeDialog = $('.complete-dialog');
-        var name = completeDialog.find('[name=name]').val().trim();
-        var birthday = completeDialog.find('[name=birthday]').val().trim();
-        var gender = completeDialog.find('#gender .option.active').attr('data-value');
+    function completeInfo($this){
+        var form = $('form[name=accInfoForm]');
+        var name = form.find('[name=name]').val().trim();
+        var birthday = form.find('[name=birthday]').val().trim();
+        var patientCode = form.find('[name=patientCode]').val().trim();
+        var gender = form.find('#gender .option.active').attr('data-value');
         if(!(name && birthday && gender)){
-            completeDialog.find('.prompt em').html('必输项不能为空');
-            completeDialog.find('.prompt').show();
+            form.find('.prompt em').html('必输项不能为空');
+            form.find('.prompt').show();
             return false;
         }
-
-        var $this = $('.complete-dialog span.ok');
         $this.addClass('disabled').off('click');
-        var param = $('form[name=accInfoForm]').serialize()+'&gender='+gender;
+        var param = {
+            name:name,
+            birthday:birthday,
+            gender:gender,
+            patientCode:patientCode
+        };
         utils.SendAjax({
             url: '/users/account/complete',
             param: param,
@@ -53,16 +60,16 @@ define(function (require, exports, module) {
                     title: '<i class="icon"></i>完善成功!',
                     otherBox: 'successBox'
                 });
-                popup.hideBox();
                 myMsg.hideMsg(1000);
             },
             errorFun: function (result) {
-                if(result.data){
-                    completeDialog.find('.prompt em').html('客户编码有误');
-                    completeDialog.find('.prompt').show();
+                if(result && result.msg){
+                    form.find('.prompt em').html(result.msg);
+                    form.find('.prompt').show();
                 }
                 $this.removeClass('disabled').on('click', function () {
-                    completeInfo(popup);
+                    completeInfo($this);
+                    return false;
                 });
             }
         });

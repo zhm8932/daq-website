@@ -119,7 +119,7 @@ module.exports = {
     GetCartList: "trade.getAllCartItemDTO",
     AddCartItem: "trade.addCartItem",
     DelCartItem: "trade.removeCartItemById",
-    GetCouponList: "promotion.pageQueryUserCoupon",
+    GetCouponList: "promotion.getAllUserCoupon",
     AddCouponByInvite: "promotion.addCouponCodeByInviteCode",
 
     //订单

@@ -69,9 +69,7 @@ exports.GetCouponList = function (req, callback) {
     var query = req.query;
     var accountId = req.session.userInfo.accountCommon.id;
     var bizParam = {
-        pageSize: query.pageSize || 10,
         useState: query.useState,
-        pageIndex: query.pageIndex || 1,
         accountId: accountId
     };
 

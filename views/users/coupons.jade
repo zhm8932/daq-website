@@ -28,7 +28,7 @@ block content
                     if data.length <= 0
                         td(colspan='4').tc 暂无优惠券
                     else
-                        each item in data.data
+                        each item in data
                             -var faceValue, enoughMoney;
                             -var fitAreaArr = data.fitArea;
                             -var j;

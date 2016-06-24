@@ -36,7 +36,7 @@ define(function (require, exports, module) {
             method: 'GET',
             tipText: '获取优惠券',
             callback: function (result) {
-                var data = result.data.data;
+                var data = result.data;
                 var tableArr = [];
                 if (data.length <= 0) {
                     $('#coupon-table tbody').html('<tr class="text-center"><td colspan="5">暂无优惠券记录</td></tr>');
@@ -72,15 +72,15 @@ define(function (require, exports, module) {
                 utils.ShowComfirmDialog({tipText:'领取成功!',noConfirmBtn:true});
                 $('#coupon-code').val('');
                 var tr = $(buildCouponTableTr(result.data).join(''));
-                $('#coupon-table tbody').append(tr);
+                $('#coupon-table tbody tr:nth-child(0)').before(tr);
 
                 $this.removeClass('disabled').on('click', function () {
-                    addCoupon($(this));
+                    addCoupon($this);
                 });
             },
             errorFun: function () {
                 $this.removeClass('disabled').on('click', function () {
-                    addCoupon($(this));
+                    addCoupon($this);
                 });
             }
         });

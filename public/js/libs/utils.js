@@ -229,7 +229,7 @@ define(function(require,exports,module) {
                     //弹框提示失败
                     // alertTip('fail', options.tipText + '失败,原因是:' + result.msg);
                     showComfirmDialog({tipText:options.tipText + '失败,原因是:' + result.msg,noConfirmBtn:true});
-                    options.errorFun && options.errorFun();
+                    options.errorFun && options.errorFun(result);
                 }
             },
             error: function (data) {
