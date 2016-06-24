@@ -154,13 +154,15 @@
 .goods_detail .tab {
   background-color: #F2F2F2;
   line-height: 50px;
-  border-bottom: 2px solid #48BED8; }
+  border-bottom: 2px solid #48BED8;
+  z-index: 2; }
   .goods_detail .tab span {
     padding: 0 30px;
     display: inline-block;
     font-size: 16px; }
 .goods_detail article {
-  padding-top: 20px; }
+  padding-top: 20px;
+  position: relative; }
   .goods_detail article h3 {
     color: #48BED8;
     font-size: 16px;
