@@ -79,22 +79,22 @@ block content
           |个性化诊疗
         p 基于国际、国内权威机构的诊疗指南，整合医疗行业优势资源，用标准化的流程，为客户提供个性化的、隐私的、便捷的、精准的、及时的、温馨的诊疗服务。。
       .pic_list.department_list
-        if get_department
-        ul
-          each item in get_department
-            li
-              a(href='/agencys')
-                if browser.ie
-                  img(src='images/product1.png')
-                else
-                  img(data-original='images/product1.png')
-              h4 #{item.deptName}
-              p
-                if item.description
-                  if item.description.length>30
-                    |#{item.description.substring(0,30)}……
+        if get_department_success
+          ul
+            each item in get_department
+              li
+                a(href='/agencys')
+                  if browser.ie
+                    img(src='images/product1.png')
                   else
-                    |#{item.description}
+                    img(data-original='images/product1.png')
+                h4 #{item.deptName}
+                p
+                  if item.description
+                    if item.description.length>30
+                      |#{item.description.substring(0,30)}……
+                    else
+                      |#{item.description}
 
         div.clear
           a.more(href='/agencys',target='_blank')
@@ -103,8 +103,9 @@ block content
   section.item_list.clearfix
     .wrapper
         header.tc
-          h2 “尽力治愈、总是安慰、始终关怀”
-          p 基于“互联网+健康”的理念和精准医学前沿技术，打造精准医学领域020闭合循环的连续性医疗服务生态系统
+          .standard
+            h2 “尽力治愈、总是安慰、始终关怀”
+            p 基于“互联网+健康”的理念和精准医学前沿技术，打造精准医学领域020闭合循环的连续性医疗服务生态系统
         .feature
           ul
             li

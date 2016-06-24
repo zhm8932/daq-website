@@ -15,22 +15,23 @@ block content
         if get_goods_category_success
             ul
               each item in get_goods_category
-                li: a(href='/screenings/goods/#{item.id}') #{item.name}
+                li(data-id=item.id): a(href='/screenings/goods/#{item.id}') #{item.name}
               img(src='/images/goods_ban01.png')
     section.item_list.clearfix
         .wrapper
             .pic_list.goods_list
                 if get_goods_list_success
-                    ul
+                    ul#waterfal
                         each item in get_goods_list
-                            li
+                            li.box
                                 a(href='/screenings/goods/detail/#{item.id}')
                                     //-img(data-original='images/product1.png')
                                     if item.goodsImages
                                         if browser.ie
                                             img(src='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
                                         else
-                                            img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
+                                            img(src='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
+                                            //-img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
                                     h4 #{item.goodsName}
                                 if item.productKeyAttributeList
                                     each arr in item.productKeyAttributeList

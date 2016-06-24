@@ -554,7 +554,8 @@ select {
     float: left;
     display: inline;
     margin-left: 17px;
-    position: relative; }
+    position: relative;
+    box-sizing: border-box; }
     .item_list .pic_list li img {
       width: 100%;
       height: auto;
@@ -625,11 +626,21 @@ select {
       width: auto;
       top: auto;
       margin-top: -56px; }
-  .item_list .goods_list ul li h4 {
-    position: relative;
-    background: none;
-    color: #4A4A4A;
-    margin-bottom: -10px; }
+  .item_list .goods_list ul {
+    position: relative; }
+    .item_list .goods_list ul li {
+      padding-bottom: 20px;
+      padding: 2px;
+      display: block; }
+      .item_list .goods_list ul li a h4 {
+        position: relative;
+        background: none;
+        color: #4A4A4A;
+        margin-bottom: -15px; }
+      .item_list .goods_list ul li a:hover h4 {
+        color: #48BED8; }
+      .item_list .goods_list ul li:hover {
+        box-shadow: 0px 0px 3px 0px #D2D2D2; }
   .item_list .feature ul {
     margin-left: -4%;
     padding-top: 40px; }
@@ -645,6 +656,8 @@ select {
         color: #9B9B9B;
         display: block;
         padding: 10px 0; }
+      .item_list .feature ul li p {
+        text-align: left; }
 
 .health aside {
   width: 308px;

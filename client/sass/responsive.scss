@@ -48,9 +48,14 @@ $conWidth:1600px;
 
 @media only screen and (min-width: $win_1024) and (max-width: $winW_1280 - 1px){
   .wrapper{width:800px;}
-  .item_list .pic_list{
-    li{width: 255px;
-      h4{line-height: 40px;height: 40px;}
+  .item_list{
+    .pic_list{
+      li{width: 255px;
+        h4{line-height: 40px;height: 40px;}
+      }
+    }
+    .standard{
+      p{bottom: -25px;margin:0 50px -15px;}
     }
   }
   .rightNav{margin-right: -610px;}
@@ -73,10 +78,15 @@ $conWidth:1600px;
     .nav{left: 10px;top:140px;}
   }
 
-  .item_list .pic_list{
-    ul{
-      margin-left: -1.3%;
-      li{width: 32%;margin-left: 1.3%}
+  .item_list{
+    .pic_list{
+      ul{
+        margin-left: -1.3%;
+        li{width: 31.3%;margin-left: 1.3%}
+      }
+    }
+    .standard{
+      p{bottom: -25px;margin:0 50px -15px;}
     }
   }
   .rightNav{display: none;}
@@ -157,11 +167,14 @@ $conWidth:1600px;
     .nav{left: 10px;top:140px;}
   }
 
-  .item_list .pic_list{
-    ul{
-      margin-left: -1.3%;
-      li{width: 32%;margin-left: 1.3%}
+  .item_list {
+    .pic_list{
+      ul{
+        margin-left: -1.3%;
+        li{width: 32%;margin-left: 1.3%}
+      }
     }
+
   }
 }
 @media only screen and (min-width: $win_768) and (max-width: $win_1024 - 1px){
@@ -185,15 +198,20 @@ $conWidth:1600px;
   .item_list {
     padding-bottom: 20px;
     .pic_list{
-      ul{margin-left: -10px;}
-      li{width: 45%;margin:20px 0 0 3%;height: auto;
+      ul{margin-left: -3%;}
+      li{width: 47%;margin:20px 0 0 3%;height: auto;
         h4{line-height:30px;height:30px;position: static;margin-top: 10px;font-size: 20px;background: none;color: $textc_48B;}
-        p{color: $textc_333;padding: 0 10px;margin: 0px; font-size: 16px;}
+        p{color: $textc_333;padding: 0 10px;margin: 0px; font-size: 16px;height: 48px;overflow: hidden;}
         .price{padding-top: 0px;
           .new{font-size: 18px;}
         }
       }
       .more{margin-top: 20px;}
+    }
+    .standard{
+      border: none;
+      h2{margin: 0 auto}
+      p{position: static;}
     }
     .feature ul {
 
