@@ -36,6 +36,7 @@ router.get('/regsource/list', function (req, res, next) {
 router.get('/reg/doctorView',authority.loginRequired, function (req, res, next) {
     request.GetRegTimeSlot(req, function (data, success) {
         var timeSlotJson = JSON.parse(data);
+        timeSlotJson.data.timeWithIdMap = tidyTimeMap(timeSlotJson.data.timeWithIdMap);
 
         users.HasBindHis(req, function (data, success) {
             var hasBindHISJson = JSON.parse(data);
@@ -82,8 +83,24 @@ router.get('/order/state',authority.loginRequired, function (req, res, next) {
     });
 });
 
-function tidyTimeMap(){
+function tidyTimeMap(timeObjJson){
+    var timeArr = [];
+    var timeObjArr = [];
+    for(var time in timeObjJson){
+        var timeObj = timeObjJson[time];
+        if(timeObj.unConsume > 0){
+            timeArr.push(time);
+        }
+    }
 
+    timeArr.sort();
+
+    for(var i = 0; i < timeArr.length; i++){
+        var time = timeArr[i];
+        timeObjArr.push({time:time,timeDetail:timeObjJson[time]});
+    }
+
+    return timeObjArr;
 }
 
 module.exports = router;

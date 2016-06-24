@@ -67,7 +67,7 @@ define(function (require, exports, module) {
     }
 
     function delCartItem($this) {
-        utils.CheckLogin(function() {
+        login.CheckLogin(function() {
             utils.ShowComfirmDialog({
                 tipText:'确定删除吗?',
                 okCallback:function(){
