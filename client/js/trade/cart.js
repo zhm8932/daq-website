@@ -102,10 +102,10 @@ define(function (require, exports, module) {
             if (checkAllBox.hasClass('checked')) {
                 checkAllBox.removeClass('checked');
             }
-            excludeOtherArea(ele, false);
+            // excludeOtherArea(ele, false);
         } else {
             ele.addClass('checked');
-            excludeOtherArea(ele, true);
+            // excludeOtherArea(ele, true);
         }
         updateTotalView();
     }

@@ -72,7 +72,7 @@ define(function (require, exports, module) {
                 utils.ShowComfirmDialog({tipText:'领取成功!',noConfirmBtn:true});
                 $('#coupon-code').val('');
                 var tr = $(buildCouponTableTr(result.data).join(''));
-                $('#coupon-table tbody tr:nth-child(0)').before(tr);
+                $('#coupon-table tbody tr').eq(0).before(tr);
 
                 $this.removeClass('disabled').on('click', function () {
                     addCoupon($this);

@@ -75,8 +75,12 @@ block content
                             .tot-price.text-stress ￥#{subTotal/100}
                             .operation(data-id="#{item.id}",data-goodsId="#{item.goodsId}",data-goodsName="#{item.goodsName}",data-imgUrl="#{imgUrl}",data-discountPrice="#{discountPrice}",data-transmitType="#{transmitType}",data-subTotal="#{subTotal}",data-favPrice="#{favPrice}",data-address="#{address}",data-city="#{city}")
                                 a.del-cart-item 删除
-                            .mask.back-mask.none
-                                span #{city}
+                            if item.isfit
+                                .mask.back-mask.none
+                                    span #{city}
+                            else
+                                .mask.back-mask
+                                    span #{city}
 
 
                     .tfoot.back-sec.border-default.clearfix

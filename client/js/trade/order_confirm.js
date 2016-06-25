@@ -35,10 +35,12 @@ define(function (require, exports, module) {
         var trs = $('.goods-list tbody tr');
         var items = [];
         var id = trs.eq(0).attr('data-goodsid');
+        var ids = [];
         trs.each(function (index, ele) {
             var $this = $(ele);
             var item = {};
             item.goodsId = $this.attr('data-goodsid');
+            ids.push($this.attr('data-id'));
             item.transmitType = $this.attr('data-transmitType');
             item.address = JSON.parse($this.attr('data-address'));
             item.amount = 1;//默认数量为1
@@ -55,6 +57,7 @@ define(function (require, exports, module) {
         };
 
         $('#submitForm input[name=orderPlaceDTO]').val(JSON.stringify(orderPlaceDTO));
+        $('#submitForm input[name=ids]').val(JSON.stringify(ids));
         $('#submitForm').submit();
     }
 
@@ -143,7 +146,7 @@ define(function (require, exports, module) {
                 method: 'GET',
                 tipText: '获取优惠券',
                 callback: function (result) {
-                    var data = result.data.data;
+                    var data = result.data;
                     var fitTableArr = [];
                     var unfitTableArr = [];
                     for (var i = 0; i < data.length; i++) {

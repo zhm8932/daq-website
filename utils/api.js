@@ -120,6 +120,7 @@ module.exports = {
     GetCartList: "trade.getAllCartItemDTO",
     AddCartItem: "trade.addCartItem",
     DelCartItem: "trade.removeCartItemById",
+    DelCartItemBatch: "trade.removeCartItemByIdBatch",
     GetCouponList: "promotion.getAllUserCoupon",
     AddCouponByInvite: "promotion.addCouponCodeByInviteCode",
 

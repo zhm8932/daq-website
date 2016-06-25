@@ -71,10 +71,10 @@ define(function (require, exports, module) {
                 tipText: '挂号',
                 callback: function (result) {
                     var needPay = $('#needPay').val();
-                    if (needPay != 'true') {
+                    var json = result.data.tradeDTO;
+                    if (needPay != 'true' || json.amount <= 0) {
                         window.location.href = "/users/register/list";
                     }else{
-                        var json = result.data.tradeDTO;
                         window.location.href = "/treats/reg/topay?id="+json.id+'&cost='+json.amount+'&orderId='+result.data.id;
                     }
                 },

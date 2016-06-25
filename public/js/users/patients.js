@@ -53,7 +53,7 @@ define(function (require, exports, module) {
     }
 
     function delPatient($this){
-        utils.CheckLogin(function() {
+        login.CheckLogin(function() {
             var tr = $this.closest('tr');
             var id = tr.data('id');
             utils.SendAjax({
