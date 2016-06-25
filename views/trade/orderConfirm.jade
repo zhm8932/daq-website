@@ -38,7 +38,7 @@ block content
                     -var cityId='',proCity='';
                     -var sampleJson = JSON.parse(locals_sample);
                     each item,i in JSON.parse(data.items)
-                        tr(data-address="#{item.address}",data-transmitType="#{item.transmitType}",data-goodsId="#{item.goodsId}")
+                        tr(data-address="#{item.address}",data-transmitType="#{item.transmitType}",data-goodsId="#{item.goodsId}",data-id="#{item.id}")
                             -var discountPrice = parseInt(item.discountPrice);
                             -var servicePrice = parseInt(item.favPrice);
                             - discountPriceTotal += discountPrice;
@@ -95,6 +95,7 @@ block content
 
             form#submitForm(action = "/trade/order/create",method="POST")
                 input(type="hidden",name="orderPlaceDTO")
+                input(type="hidden",name="ids")
     include ../includes/footer
     script.
         seajs.use('/js/trade/order_confirm.js')

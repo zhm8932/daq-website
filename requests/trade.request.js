@@ -24,6 +24,14 @@ exports.DelCartItem = function (req, callback) {
     });
 };
 
+exports.DelCartItemBatch = function (req, callback) {
+    var bizParam = {ids:JSON.parse(req.body.ids)};
+
+    util.ajax('DELETE', api.DelCartItemBatch, bizParam, function (data, success) {
+        callback && callback(data, success);
+    });
+};
+
 exports.AddCartItem = function (req, res, dataType, callback) {
     var body = req.body;
     var bizParam = {

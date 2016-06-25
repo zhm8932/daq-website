@@ -26,11 +26,12 @@ var authority = require('../handlers/authority.handler');
 
 router.get('/cart/list', authority.loginRequired,function (req, res, next) {
     request.GetCartList(req, function (data, success) {
-        var json = JSON.parse(data);
+        var currentCityId = req.session.locals_address[1].categoryId;
+        var json = tidyCartList(JSON.parse(data).data,currentCityId);
         if (success) {
             res.render('trade/cart', {
                 title: '购物车',
-                data: json.data
+                data: json
             });
         }
     });
@@ -61,11 +62,15 @@ router.post('/order/create',authority.loginRequired, function (req, res, next) {
     request.CreateOrder(req, function (data, success) {
         if(success){
             var json = JSON.parse(data).data;
-            res.render('trade/orderSuccess', {
-                title: '成功提交订单',
-                data: {
-                    id: json.id,
-                    totalCost: json.totalCost
+            request.DelCartItemBatch(req, function (data, success) {
+                if(success){
+                    res.render('trade/orderSuccess', {
+                        title: '成功提交订单',
+                        data: {
+                            id: json.id,
+                            totalCost: json.totalCost
+                        }
+                    });
                 }
             });
         }
@@ -178,6 +183,29 @@ router.get('/order/paySuccess',authority.loginRequired, function (req, res, next
     });
 });
 
+//把购物车子项按
+function tidyCartList(cartList,currentCityId){
+    var fitCartArr = [];
+    var unfitCartArr = [];
+    for(var i = 0; i < cartList.length; i++){
+        var cityId = '';
+        var cartItemAttrs = cartList[i].cartItemAttrs;
+        for(var j= 0; j < cartItemAttrs.length; j++){
+            if(cartItemAttrs[j].attributeName == 'address'){
+                cityId = JSON.parse(cartItemAttrs[j].value)[1].categoryId;
+            }
+        }
+        if(cityId == currentCityId){
+            cartList[i].isfit = true;
+            fitCartArr.push(cartList[i]);
+        }else{
+            cartList[i].isfit = false;
+            unfitCartArr.push(cartList[i]);
+        }
+
+    }
+    return fitCartArr.concat(unfitCartArr);
+}
 
 module.exports = router;
 
