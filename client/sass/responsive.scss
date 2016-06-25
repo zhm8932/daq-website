@@ -194,7 +194,10 @@ $conWidth:1600px;
     }
     i{display: none;}
   }
-  .lr_list figure h4{font-size: 16px; padding: 10px 0; margin-bottom: 10px;}
+  .lr_list figure {
+    h4{font-size: 18px; padding: 10px 0; margin-bottom: 10px;}
+    font-size: 16px;
+  }
   .item_list {
     padding-bottom: 20px;
     .pic_list{

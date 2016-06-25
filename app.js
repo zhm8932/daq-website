@@ -44,7 +44,7 @@ app.use(session({
   cookie:{maxAge:12*60*60*1000}
 }));
 
-app.locals.moment = require('moment') //本地模板中引入moment方法
+app.locals.moment = require('moment'); //本地模板中引入moment方法
 app.locals.markdown = require( "markdown" ).markdown; //markdown编辑语法
 
 app.locals.query = '';
