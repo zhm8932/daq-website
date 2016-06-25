@@ -7,7 +7,7 @@ exports.get_article_list = function(req,res) {
         ask_pageCount = '',
         ask_currentPage=''
 
-    console.log('res.locals:',res.locals)
+    // console.log('res.locals:',res.locals)
     if(get_article_list.success){
 
         get_article_list=get_article_list.data.data;
@@ -63,9 +63,9 @@ exports.get_article = function (req,res) {
     var get_article_detail_content=markdown.toHTML(get_article_detail.content);
 
 
-    console.log('get_article_list_ask:',get_article_list_ask)
-    console.log('get_article_list_diseases:',get_article_list_diseases)
-    console.log('get_article_list:',get_article_list)
+    // console.log('get_article_list_ask:',get_article_list_ask)
+    // console.log('get_article_list_diseases:',get_article_list_diseases)
+    // console.log('get_article_list:',get_article_list)
     var title = get_article_detail.title;
     var keywords = get_article_detail.keyword;
     var description = get_article_detail.wapDesc;

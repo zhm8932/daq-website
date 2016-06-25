@@ -38,7 +38,7 @@ function get_article_list(req,res,next,obj) {
 
     util.ajax('GET',api.ArticlPageQueryArticleByCategory,bizParam,function (data,success) {
         var json = JSON.parse(data);
-        console.log('json:',json)
+        // console.log('json:',json)
         res.locals[obj.data_name+'_success'] = json.success;
         if(json.success){
             res.locals.currentPage = currentPage;
@@ -71,7 +71,7 @@ exports.get_article_list_ask = function (req,res,next) {
     })
 }
 exports.get_list_ask_web = function (req,res,next) {
-    console.log('问答get_list_ask_web')
+    // console.log('问答get_list_ask_web')
     get_article_list(req,res,next,{
         category_name:'问答',
         data_name:'get_article_list_ask',
@@ -109,6 +109,19 @@ exports.get_article_detail = function(req,res,next){
     });
 }
 
+exports.get_banner = function (req,res,next) {
+    var bizParam = {
+        "category": req.id || 1000
+    };
+    console.log('bizParam:::',bizParam)
+    util.ajax('GET',api.BannerSelectBannerClientByCategory,bizParam,function (data,success) {
+        var json = JSON.parse(data);
+        res.locals.get_banner = json.data;
+        res.locals.get_banner_success = json.success;
+        req.get_banner = json.data;
+        next()
+    });
+};
 // exports.get_article_list_ask = function (req,res,next) {
 //     get_article_list(req,res,next,{
 //         category_name:'问答',

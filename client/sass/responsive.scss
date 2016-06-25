@@ -58,7 +58,19 @@ $conWidth:1600px;
       p{bottom: -25px;margin:0 50px -15px;}
     }
   }
-  .rightNav{margin-right: -610px;}
+  //.rightNav{margin-right: -610px;}
+
+  .rightNav{
+    width:120px;margin-right: -530px;
+    ul{
+      .lineBg{
+        height: 11px;
+      }
+      li{
+        img{width: 100%;}
+      }
+    }
+  }
   .header .slogan{
     margin-left: 20px;width: 320px; display: inline-block;
     img{width: 100%;}
@@ -90,6 +102,7 @@ $conWidth:1600px;
     }
   }
   .rightNav{display: none;}
+
 
   .health aside{width: 30%;}
   .health_detail{width: 65%;}
@@ -177,10 +190,6 @@ $conWidth:1600px;
 
   }
 }
-@media only screen and (min-width: $win_768) and (max-width: $win_1024 - 1px){
-
-}
-
 
 @media only screen and (max-width:$win_768 - 1px){
   .positon{margin-bottom: 10px;}
