@@ -1,10 +1,49 @@
 define(function(require, exports, module){
+    // require('jquery');
     require('lazyload');
     require('./login');
     var utils = require('./libs/utils.js');
     var Swiper = require('./libs/swiper.jquery.umd');
+    var BMap = require('./libs/BMap.js');
+    require('cookie');
+    // console.log(BMap)
+
     $(function () {
         var $body = $('body');
+        // 百度地图API功能
+        function getLocalCity() {
+            
+        }
+        var map = new BMap.Map('choosed-city-id');
+        var point = new BMap.Point(116.331398,39.897445);
+        map.centerAndZoom(point,12);
+
+        function myFun(result){
+            // console.log("result:",result)
+            cityName = result.name;
+            map.setCenter(cityName);
+            console.log("当前定位城市:"+cityName);
+            getCityList(cityName,function (newArr) {
+                // console.log("newArr:",newArr)
+                var is_locals_city= $.cookie('locals_city');
+                // console.log("is_locals_city:",is_locals_city)
+                if(!is_locals_city&&newArr.length){
+                    console.log("初始化定位城市:",newArr[0]);
+                    changeCity(newArr[0])
+                }
+                if(newArr.length){
+                    $.cookie('locals_city', newArr[0].parentId,{path:"/"}); // 存储 cookie
+                }
+
+
+
+
+            })
+            // changeCity(cityName)
+            return cityName
+        }
+        var myCity = new BMap.LocalCity();
+        var cityName = myCity.get(myFun);
 
         var location = window.location;
         var curPathname = location.pathname;
@@ -73,7 +112,7 @@ define(function(require, exports, module){
         });
 
         var winHeight = $(window).height();
-        $gotoTop = $('.gotoTop')
+        $gotoTop = $('.gotoTop');
         $(window).scroll(function () {
             var scrollTop = $(window).scrollTop();
             if(scrollTop>winHeight/2){
@@ -117,8 +156,9 @@ define(function(require, exports, module){
         })
     })
 
-    
-    function getCityList(){
+    var curCityArr = '';
+    function getCityList(cityName,callback){
+        var cityName = cityName;
         utils.SendAjax({
             url: '/dic/list/typeAndLevel',
             param: {type:"district",level:"2",activeState:'1'},
@@ -139,12 +179,18 @@ define(function(require, exports, module){
 
                 $('.city-list').html(cityHtml);
                 var citys = $('.city-list .city');
-
                 for(var i = 0; i < data.length; i++){
                     citys.eq(i).data('city',data[i]).on('click',function(){
                         changeCity($(this));
                     });
                 }
+
+                newArr= data.filter(function (item) {
+                    // return item.name == '南京'
+                    return item.name == cityName
+                })
+                // console.log("过滤后的data：",newArr)
+                callback&&callback(newArr)
             },
             errorFun: function (result) {
 
@@ -153,19 +199,24 @@ define(function(require, exports, module){
     }
 
     function changeCity($this){
-        var city = $this.data('city');
+        // var city = $this=='string'? $this: $this.data&&$this.data('city');
+        var city =$this.hasClass&&$this.hasClass('city')&&$this.data('city')||$this;
+        console.log('city:',city)
         utils.SendAjax({
             url: '/changeCity',
             param: {city:city},
             method: 'GET',
             tipText: '切换城市',
             callback: function (result) {
-                window.location.reload();
+                // console.log("$(this).text():",city.name)
+                $('.city-name em').html(city.name)
             },
             errorFun: function (result) {
 
             }
         });
     }
+
+
 
 });

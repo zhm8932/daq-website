@@ -74,10 +74,12 @@ exports.loginView = function (req,res,next) {
 
 exports.changeCity = function (req,res,next) {
     var city = req.query.city;
+    console.log("city:::",city)
     var ids = [];
     ids.push(city.parentId);
     req.ids = ids;
     dictionnary.GetDetailByIds(req,function(data,success) {
+        console.log("获取当前城市：",data)
         var parentJson = JSON.parse(data).data[0];
         var locals_address = [{"categoryId":parentJson.id,"name":parentJson.name,"level":parentJson.level},{"categoryId":city.id,"name":city.name,"level":city.level}];
         req.session.locals_address = locals_address;

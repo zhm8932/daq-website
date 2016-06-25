@@ -24,7 +24,7 @@
         define(['jquery'], function(){
             // 返回构造函数 CommonJS
             // console.log('CommonJS')
-            return factory(jQuery,window, document, undefined);
+            return factory(window.jQuery,window, document, undefined);
         });
     }  else{ // Global
         factory(window.jQuery || window.Zepto)

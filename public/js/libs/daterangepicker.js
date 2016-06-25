@@ -31,7 +31,7 @@
 
         // Finally, as a browser global.
     } else {
-        console.log('cmd___amd')
+        // console.log('cmd___amd')
         define(['./moment','jquery'], function(){
             root.daterangepicker = factory(root, {}, root.moment || moment, (root.jQuery || root.Zepto || root.ender || root.$));
         });

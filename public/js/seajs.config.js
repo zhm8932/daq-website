@@ -17,6 +17,7 @@ seajs.config({
         'touchslider':'/js/libs/jquery.touchslider.js',
         'moment':'/js/libs/moment.js',
         'daterangepicker':'/js/libs/daterangepicker.js',
+        'cookie':'/js/libs/jquery.cookie',
         'utils': 'libs/utils.js'
         //"bootstrap":"../libs/bootstrap/dist/js/bootstrap.js",
         //"moment":'./libs/moment',

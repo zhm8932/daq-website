@@ -16,8 +16,8 @@ block content
             //-article!= markdown.toHTML(get_article_detail.content)
             article!= get_article_detail.content
         aside
-            .ads
-                img(src='/images/img1.png')
+            //-广告
+            include ad
             //-病原体
             include list_diseases
             //-科普知识

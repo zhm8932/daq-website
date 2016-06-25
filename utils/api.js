@@ -24,6 +24,7 @@ module.exports = {
     BannerUpdate: "cms.banner.update",
     BannerDetail: "cms.banner.selectBannerById",
     BannerDelete: "cms.banner.delBanner",
+    BannerSelectBannerClientByCategory:'cms.banner.selectBannerClientByCategory',
 
     ArticleDetail: "cms.article.queryArticleById",
     ArticleQuery: "pageQueryArticleByTitleOrContentAndCat",

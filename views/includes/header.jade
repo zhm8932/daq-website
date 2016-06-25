@@ -4,7 +4,7 @@
             -var address = JSON.parse(locals_address)[1];
             input#choosed-city-id(type="hidden",value="#{address.categoryId}")
             a.city-name(href='javascript:;')
-                | #{address.name}
+                em #{address.name}
                 i.icon
                 .choose-city.text-sec(data-load='first')
                     .arrow-bottom

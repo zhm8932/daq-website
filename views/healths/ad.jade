@@ -1,0 +1,8 @@
+//-.ads
+    img(src='/images/img1.png')
+if get_banner_success&&get_banner.length
+    .ads
+        each item,index in get_banner
+          if index==0
+            a(href=item.link,title=item.descText,target='_blank')
+                img(src=item.imgUrl,alt=item.descText)
