@@ -19,7 +19,7 @@ block content
                 dl.order(data-id="#{item.id}")
                     dt
                         |订单编号：#{item.id}
-                        time.date-time.text-sec #{moment(item.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
+                        time.date-time.text-sec #{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')}
                     dd
                         .col.goods
                             -var transmitType = '';
