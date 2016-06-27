@@ -1,9 +1,10 @@
 define(function(require,exports,module) {
     var utils = require('./libs/utils');
+    require("moment");
+    require("daterangepicker");
     // var TouchSlide = require('./libs/TouchSlide.1.1.source')
     var pathname = window.location.pathname;
-    console.log(pathname);
-    console.log(utils);
+    var $body = $('body');
 
     if(!utils.mobile&&pathname=='/login'||$('.loginBox2').length){
         $('.topBar').css({'height':0,'overflow':'hidden'});
@@ -53,6 +54,7 @@ define(function(require,exports,module) {
                 // console.log('data::',data);
                 if(data){
                     if(options && options.afterLoginFun){
+                        // login(data,popup,'',options.afterLoginFun);
                         login(data,popup,'',options.afterLoginFun);
                     }else{
                         login(data,popup,'',null);
@@ -209,7 +211,9 @@ define(function(require,exports,module) {
                     if(popup){
                         popup.hideBox(function () {
                             $topBarAside.html(logoutHtml);
-                            afterLoginFun && afterLoginFun();
+                            var userAllInfo = json.data.userAllInfo
+                            afterLoginFun && afterLoginFun(userAllInfo);
+
                         });
                     }else if(redirectUrl){
                         window.location.href = redirectUrl;
@@ -250,9 +254,59 @@ define(function(require,exports,module) {
             }
         })
     }
+    //检查信息完善 hasBindHis
+    function hasBindHis(obj) {
+        $.ajax({
+            type:'POST',
+            url:'/hasBindHis',
+            data:{
+                accountId:obj.accountId,
+                send:true
+            },
+            success:function(json){
+                console.log(json)
+                obj.callback&&obj.callback(json)
+            }
+
+        })
+    }
 
     $('body').on('click','.loginBtn',function () {
-        showLogin()
+        showLogin({
+            afterLoginFun:function (userAllInfo) {
+                hasBindHis({
+                    accountId:userAllInfo.accountCommon.id,
+                    callback:function (json) {
+                        var json=JSON.parse(json);
+                        if(json.success){
+                            if(!json.data){
+                                showAccountDialog();
+                                utils.BuildSelect($('#gender'));
+                                $('#birthday').daterangepicker({
+                                    singleDatePicker: true,
+                                    showDropdowns: true,
+                                    autoUpdateInput: false,   //默认为空
+                                    locale : {
+                                        format : 'YYYY-MM-DD',
+                                        daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
+                                        monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月',
+                                            '七月', '八月', '九月', '十月', '十一月', '十二月' ]
+                                    }
+                                }, function(start, end, label) {
+                                    $('#birthday').val(start.format('YYYY-MM-DD'));
+                                });
+                            }else{
+                                // console.log("用户信息已完善")
+                            }
+
+                        }
+
+                    }
+
+                })
+
+            }
+        })
     })
     $('body').on('click','.logoutBtn',function () {
         logout()
@@ -304,6 +358,76 @@ define(function(require,exports,module) {
             }
         });
     }
+
+
+    function showAccountDialog() {
+        var popup = new utils.Popup({
+            msg: '<div class="box-header">完善信息<i class="icon close closePopup"></i></div><div class="box-body">' +
+            '<ul class="tip-box"><li>为了能正常使用预约挂号服务,请及时补充以下材料。</li><li>以下信息为预约时所需项,一经填写不可更改,提交前请检查核对。</li><li>绑定已有客户编号,您可在病例中心中查看历史报告。</li></ul>' +
+            '<form name="accInfoForm"><ul class="info-box"><li><label><i class="text-stress">* </i>姓名</label><input name="name"/></li>'+
+            '<li><label><i class="text-stress">* </i>性别</label><div id="gender" class="select-box none"><div class="selected"><span class="text"><span class="text-sec">请选择</span></span><i class="icon pull-down"></i></div>'+
+            '<ul class="options"><li class="option" data-value="0">男</li><li class="option" data-value="1">女</li></ul></div></li>'+
+            '<li><label><i class="text-stress">* </i>出生年月</label><input id="birthday" name="birthday" readonly/></li><li><label></label><input name="patientCode" placeholder="请输入已有客户编码"/></li><span class="prompt"><i class="icon"></i><em>客户编码有误</em></span>' +
+            '</ul></form></div>',
+            otherMsg: 'confirm-btn',
+            popupBox: 'popupBox',
+            okText: '提交',
+            cancel: 'closePopup',
+            otherBox: 'complete-dialog',
+            width: '475',
+            isHide:false,
+            cancelFun: function () {
+                //window.location.href = "/treat/regsource/list";
+            },
+            okCallback: function () {
+                console.log("提交用户完善信息")
+                completeInfo(popup);
+            }
+        })
+    }
+
+
+    function completeInfo(popup){
+        var completeDialog = $('.complete-dialog');
+        var name = completeDialog.find('[name=name]').val().trim();
+        var birthday = completeDialog.find('[name=birthday]').val().trim();
+        var gender = completeDialog.find('#gender .option.active').attr('data-value');
+        if(!(name && birthday && gender)){
+            completeDialog.find('.prompt em').html('必输项不能为空');
+            completeDialog.find('.prompt').show();
+            return false;
+        }
+
+        var $this = $('.complete-dialog span.ok');
+        $this.addClass('disabled').off('click');
+        var param = $('form[name=accInfoForm]').serialize()+'&gender='+gender;
+        utils.SendAjax({
+            url: '/users/account/complete',
+            param: param,
+            method: 'POST',
+            tipText: '完善信息',
+            callback: function (result) {
+                console.log("result:",result);
+                var myMsg = new utils.MsgShow({
+                    delayTime: 2000,
+                    title: '<i class="icon"></i>完善成功!',
+                    otherBox: 'successBox'
+                });
+                popup.hideBox();
+                myMsg.hideMsg(1000);
+            },
+            errorFun: function (result) {
+                if(result.data){
+                    completeDialog.find('.prompt em').html('客户编码有误');
+                    completeDialog.find('.prompt').show();
+                }
+                $this.removeClass('disabled').on('click', function () {
+                    completeInfo(popup);
+                });
+            }
+        });
+    }
+
 
     module.exports={
         showLogin:showLogin,

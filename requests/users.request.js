@@ -124,17 +124,26 @@ exports.GetAccountInfo = function (req, callback) {
     });
 };
 
-exports.HasBindHis = function (req, callback) {
+exports.HasBindHis = function (req,res,callback) {
+    var body = req.body;
+    console.log("body:",body)
     var bizParam = {
-        accountId: req.session.userInfo.accountCommon.id
+        accountId: req.session.userInfo.accountCommon.id||body.accountId
     };
 
     util.ajax('GET', api.HasBindHis, bizParam, function (data, success) {
-        callback && callback(data, success);
+        if(!body.send){
+            console.log("后端的请求")
+            callback && callback(data, success);
+        }else{
+            console.log("前端的请求")
+            res.send(data)
+        }
+
     });
 };
 
-exports.CompleteAccount = function (req, callback) {
+exports.CompleteAccount = function (req,res,callback) {
     var body = req.body;
     var bizParam = {
         "bindHISCustomer":{

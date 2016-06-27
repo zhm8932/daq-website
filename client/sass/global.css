@@ -1268,4 +1268,62 @@ select {
   .swiper-container .swiper-container-rtl .swiper-button-prev.swiper-button-white {
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E"); }
 
+.complete-dialog {
+  width: 324px; }
+  .complete-dialog article {
+    padding: 0; }
+  .complete-dialog .cancel {
+    display: none; }
+  .complete-dialog span.closePopup {
+    display: none; }
+  .complete-dialog .box-header {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 12px;
+    background-color: #F2F2F2; }
+    .complete-dialog .box-header i.close {
+      background-position: -240px 19px; }
+  .complete-dialog .box-body {
+    padding: 17px 29px; }
+    .complete-dialog .box-body .tip-box {
+      padding: 12px 30px;
+      border: 1px solid #ddd;
+      background: #F5F5F5; }
+      .complete-dialog .box-body .tip-box li {
+        line-height: 20px;
+        list-style: disc; }
+    .complete-dialog .box-body form[name=accInfoForm] {
+      padding: 15px 15px 0 15px; }
+      .complete-dialog .box-body form[name=accInfoForm] .info-box {
+        position: relative; }
+        .complete-dialog .box-body form[name=accInfoForm] .info-box > li {
+          padding-bottom: 13px; }
+          .complete-dialog .box-body form[name=accInfoForm] .info-box > li label {
+            display: inline-block;
+            width: 67px;
+            line-height: 17px;
+            vertical-align: middle;
+            margin-right: 17px;
+            text-align: right; }
+          .complete-dialog .box-body form[name=accInfoForm] .info-box > li input {
+            width: 260px; }
+      .complete-dialog .box-body form[name=accInfoForm] .select-box {
+        width: 262px; }
+    .complete-dialog .box-body .prompt {
+      color: #ED9E9A;
+      position: absolute;
+      left: 84px;
+      bottom: -20px;
+      display: none; }
+      .complete-dialog .box-body .prompt i {
+        background-position: -178px -22px; }
+  .complete-dialog .submitBox {
+    margin-left: 98px; }
+    .complete-dialog .submitBox span.ok.disabled {
+      background: #C4C4C4;
+      border: 1px solid #C4C4C4;
+      color: #fff; }
+  .complete-dialog span.ok {
+    width: 280px; }
+
 /*# sourceMappingURL=global.css.map */

@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Handlers = require('../handlers/index.handler');
 var Requests = require('../requests/indexs.request');
+var UsersRequests = require('../requests/users.request');
 var Middlewares = require('../requests/middlewares.request.js');
 var Tools = require('../utils/tools'); //判断浏览器
 // console.log(global)
@@ -54,6 +55,7 @@ router.post('/login',Requests.login);
 router.post('/logout',Requests.logout);
 
 router.get('/checkLogin',Requests.checkLogin);
+router.post('/hasBindHis',UsersRequests.HasBindHis);
 
 router.get('/login',Requests.loginView);
 

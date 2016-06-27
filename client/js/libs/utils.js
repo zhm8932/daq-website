@@ -222,6 +222,7 @@ define(function(require,exports,module) {
             data: options.param || {},
             // contentType: options.contentType || 'application/x-www-form-urlencoded;charset=UTF-8;',
             success: function (data) {
+                console.log("data:",data)
                 try{
                     var result = JSON.parse(data);
                     if (result.success) {
