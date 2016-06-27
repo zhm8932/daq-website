@@ -125,16 +125,19 @@ module.exports.ajax = function (method,apiName,bizParam,callback) {
             if (error) {
                 console.log('problem with request: ' + error);
                 success = false;
+                errorJson.msg = e.message;
+                callback && callback(JSON.stringify(errorJson),success);
             }else {
                 try {
                     resObj = JSON.parse(body);
                     success = resObj.success;
+                    callback && callback(body,success);
                 }catch (err) {
                     success = false;
+                    callback && callback(JSON.stringify(errorJson),success);
                 }
             }
 
-            callback && callback(body,success);
         });
 
     }else {
@@ -167,7 +170,9 @@ module.exports.ajax = function (method,apiName,bizParam,callback) {
         }).on('error', function (e) {
             console.log('problem with request: ' + e.message);
             console.log('problem with request: ',e);
-            callback && callback(e);
+            var success = false;
+            errorJson.msg = e.message;
+            callback && callback(JSON.stringify(errorJson),success);
         });
 
         if(method != 'GET') {req.write(param);}

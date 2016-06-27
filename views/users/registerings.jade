@@ -48,7 +48,7 @@ block content
                                 td
                                     p #{item.payWay}
                                     if item.cost
-                                        p #{parseInt(item.cost) / 100}元
+                                        p #{(parseFloat(item.cost)/100).toFixed(2)}元
                             if item.reservationStatus == 0
                                 td.text-stress 未支付
                                 +payway
