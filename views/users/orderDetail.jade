@@ -74,7 +74,7 @@ block content
                         span.price.text-stress ￥#{parseInt(data.totalCost)/100}
                         span.fav
                             if data.feeMap.coupon_fee
-                                |(已优惠￥#{parseInt(data.feeMap.coupon_fee)})
+                                |(已优惠￥#{parseInt(data.feeMap.coupon_fee)/100})
                             else
                                 |(已优惠￥0)
     include ../includes/footer

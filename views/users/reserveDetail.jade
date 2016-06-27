@@ -19,7 +19,7 @@ block content
                     span.text-stress #{statusJSON[parseInt(data.serviceType)-1][data.reservationStatus]}
                 span.info
                     span.text-sec 下单时间:
-                    span.text-sec.date-time #{moment(data.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
+                    span.text-sec.date-time #{moment(data.createdAt).format('YYYY-MM-DD HH:mm:ss')}
                 if data.reservationStatus == 1900 || data.reservationStatus == 2900 || data.reservationStatus == 3900
                     sapn.info
                         span.check-report 查看报告
