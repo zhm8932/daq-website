@@ -124,11 +124,11 @@ define(function (require, exports, module) {
                     favValue = favValue >= mostDeduction ? mostDeduction : favValue;
                     actualTotal = discountPriceTotal - favValue + servicePriceTotal;
                 }
-                $('#actualTotal .price').html('￥' + actualTotal / 100);
-                $('#actualTotal .fav').html('(已优惠￥' + favValue / 100 + ')');
+                $('#actualTotal .price').html('￥' + (actualTotal / 100).toFixed(2));
+                $('#actualTotal .fav').html('(已优惠￥' + (favValue / 100).toFixed(2) + ')');
             } else {
-                $('#actualTotal .price').html('￥' + goodsTotalPrice / 100);
-                $('#actualTotal .fav').html('(已优惠￥0)');
+                $('#actualTotal .price').html('￥' + (goodsTotalPrice / 100).toFixed(2));
+                $('#actualTotal .fav').html('(已优惠￥0.00)');
             }
         });
     }
