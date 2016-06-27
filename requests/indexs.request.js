@@ -16,7 +16,7 @@ exports.get_goods_list = function (req,res,next) {
         "goodsState": goodsState
     };
 
-    util.ajax('GET',api.GoodsQuery,bizParam,function (data,success) {
+    util.ajax('GET',api.GoodsQuery,req, bizParam,function (data,success) {
         var json = JSON.parse(data);
         req.get_goods_list = json;
         next()
@@ -38,10 +38,9 @@ exports.login = function (req,res,next) {
         "loginParam": body
     };
     console.log("bizParam:",bizParam)
-    util.ajax('GET',api.UserWebLogin,bizParam,function (data,success) {
+    util.ajax('GET',api.UserWebLogin,req, bizParam,function (data,success) {
         if(success){
-            req.session.userInfo = JSON.parse(data).data.userAllInfo;
-
+            req.session.userInfo = JSON.parse(data).data;
         }
         res.send(data)
     });
@@ -98,10 +97,9 @@ exports.getVerCode = function (req,res,next) {
             "rawRequest":body
         }
     };
-    util.ajax('post',api.SmsSendVerCode,bizParam,function (data,success) {
+    util.ajax('post',api.SmsSendVerCode,req, bizParam,function (data,success) {
         if(success){
             req.session.userInfo = JSON.parse(data).data.userAllInfo;
-
         }
         res.send(data)
     });

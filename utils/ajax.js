@@ -43,7 +43,7 @@ function signParam(sysParam,bizParam) {
 
 };
 
-function sysParam(apiName,bizParam) {
+function sysParam(apiName,bizParam,accessToken) {
 
     var timestamp = Date.now();
 
@@ -59,7 +59,7 @@ function sysParam(apiName,bizParam) {
         "format" : format,
         "appKey" : appKey,
         "apiName" : apiName,
-        "session":"1"
+        "session":accessToken || '11'
     };
 
     sysParameters.sign = signParam(sysParameters,bizParam);
@@ -67,11 +67,13 @@ function sysParam(apiName,bizParam) {
     return JSON.stringify(sysParameters);
 }
 
-module.exports.ajax = function (method,apiName,bizParam,callback) {
+module.exports.ajax = function (method,apiName,req,bizParam,callback,accessToken) {
 
     var method = method.toUpperCase();
+
+    var accessToken = (req.session.userInfo && req.session.userInfo.accessToken) || '11';
     
-    var sysPara = sysParam(apiName,bizParam);
+    var sysPara = sysParam(apiName,bizParam,accessToken);
     var param = encodeURI('bizParam=' + encodeURIComponent(JSON.stringify(bizParam))+'&sysParam=' + sysPara);
 
     var path = config.path;

@@ -18,9 +18,11 @@ router.use(function(req, res, next) {
     console.log('now:' + Date.now());
     console.log('req.body',req.body);
     if(req.session.userInfo){
-        var account = req.session.userInfo.accountCommon.account;
+        var account = req.session.userInfo.userAllInfo.accountCommon.account;
         res.locals.account = account; //每次请求首页都会动态从session获取值，并保存在本地变量中
     }
+
+    // req.accessToken = (req.session.userInfo && req.session.userInfo.accessToken) || '11';
 
     //城市
     if(req.session.locals_address){

@@ -24,7 +24,7 @@ exports.get_goods_list = function (req,res,next) {
 
     };
 
-    util.ajax('GET',api.GoodsQuery,bizParam,function (data,success) {
+    util.ajax('GET',api.GoodsQuery,req, bizParam,function (data,success) {
         if(query.send){
             res.send(data)
         }else{
@@ -43,7 +43,7 @@ exports.get_goods_detail = function (req,res,next) {
 
     var bizParam = {"goodsId":goodsId};
 
-    util.ajax('GET',api.GoodsDetail,bizParam,function (data,success) {
+    util.ajax('GET',api.GoodsDetail,req, bizParam,function (data,success) {
         var json = JSON.parse(data);
         console.log("json.success::",json.success)
         res.locals.get_goods_detail_success = json.success

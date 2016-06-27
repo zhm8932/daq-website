@@ -40,7 +40,9 @@ define(function (require, exports, module) {
             var $this = $(ele);
             var item = {};
             item.goodsId = $this.attr('data-goodsid');
-            ids.push($this.attr('data-id'));
+            if($this.attr('data-id') && $this.attr('data-id') != 'undefined'){
+                ids.push($this.attr('data-id'));
+            }
             item.transmitType = $this.attr('data-transmitType');
             item.address = JSON.parse($this.attr('data-address'));
             item.amount = 1;//默认数量为1

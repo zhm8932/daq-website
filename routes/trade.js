@@ -60,21 +60,40 @@ router.post('/order/comfirmView', authority.loginRequired,function (req, res, ne
 
 router.post('/order/create',authority.loginRequired, function (req, res, next) {
     request.CreateOrder(req, function (data, success) {
+        var json = JSON.parse(data);
         if(success){
-            var json = JSON.parse(data).data;
-            request.DelCartItemBatch(req, function (data, success) {
-                if(success){
-                    res.render('trade/orderSuccess', {
-                        title: '成功提交订单',
-                        data: {
-                            id: json.id,
-                            totalCost: json.totalCost
-                        }
-                    });
-                }
-            });
+            if(JSON.parse(req.body.ids).length > 0){
+                request.DelCartItemBatch(req, function (data, success) {
+                    var delJson = JSON.parse(data);
+                    if(success){
+                        res.render('trade/orderSuccess', {
+                            title: '成功提交订单',
+                            data: {
+                                id: json.data.id,
+                                totalCost: json.data.totalCost
+                            }
+                        });
+                    }else{
+                        req.errorMsg = delJson.msg;
+                        next();
+                    }
+                });
+            }else{
+                res.render('trade/orderSuccess', {
+                    title: '成功提交订单',
+                    data: {
+                        id: json.data.id,
+                        totalCost: json.data.totalCost
+                    }
+                });
+            }
+
+        }else{
+            req.errorMsg = json.msg;
+            next();
         }
     });
+
 });
 
 router.get('/order/list',authority.loginRequired, function (req, res, next) {
