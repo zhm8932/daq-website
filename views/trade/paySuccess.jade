@@ -29,7 +29,7 @@ block content
                 span.pay-tip.text-success 订单支付成功
                 span.order-num-price
                     span 订单号 : #{data.data.id}
-                    span 支付金额 : ￥#{JSON.parse(data.data.totalCost)/100}
+                    span 支付金额 : ￥#{(parseFloat(data.data.totalCost)/100).toFixed(2)}
                 span.order-detail.text-main
                     a.text-main(href='/trade/order/detail?id=#{data.data.id}') 订单详情>>
                 span.order-tel.text-info 电话预约筛查:

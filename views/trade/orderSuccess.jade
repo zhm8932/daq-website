@@ -28,7 +28,7 @@ block content
                 i.icon.success
                 span.price-box
                     span.text-sec 订单支付:
-                    span.price.text-stress ￥#{parseInt(data.totalCost)/100}
+                    span.price.text-stress ￥#{(parseFloat(data.totalCost)/100).toFixed(2)}
                 span.order-detail.text-main
                     a.text-main(href='/trade/order/detail?id=#{data.id}') 订单详情>>
 

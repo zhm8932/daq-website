@@ -32,9 +32,9 @@ block content
                                 .price
                                     span.new
                                         em ￥
-                                        | #{parseInt(goods_detail.discountPrice)/100}
+                                        | #{(parseFloat(goods_detail.discountPrice)/100).toFixed(2)}
                                     span.old
-                                        | 原价#{parseInt(goods_detail.price)/100}
+                                        | 原价#{(parseFloat(goods_detail.price)/100).toFixed(2)}
                                 p
                                     label.text-sec 检查目的：
                                     | #{fitPeople}

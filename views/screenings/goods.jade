@@ -44,9 +44,9 @@ block content
                                 .price
                                     span.new
                                         em ￥
-                                        | #{parseInt(item.discountPrice)/100}
+                                        | #{(parseFloat(item.discountPrice)/100).toFixed(2)}
                                     span.old
-                                        | 原价￥#{parseInt(item.price)/100}
+                                        | 原价￥#{(parseFloat(item.price)/100).toFixed(2)}
 
                 //-div
                     a.more(href='javascript:;')

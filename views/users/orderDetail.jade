@@ -47,14 +47,14 @@ block content
                             td
                                 each value,key in JSON.parse(item.transmitType)
                                     -transmitType = key;
-                                    -favPrice = parseInt(value);
+                                    -favPrice = parseFloat(value);
                                 p #{sampleJson[transmitType]}(服务费￥#{favPrice/100})
                                 if transmitType == 'sampling_home'
                                     p.text-sec 取样地址:
                                         each areaObj,j in JSON.parse(item.address)
                                             if areaObj
                                                 | #{areaObj.name}
-                            td.text-sec ￥#{(parseInt(item.dealPrice) + favPrice)/100}
+                            td.text-sec ￥#{(parseFloat(item.dealPrice + favPrice)/100).toFixed(2)}
                             if data.orderState == 2
                                 if item.reservationState == 0
                                     td.text-stress 未使用
@@ -71,12 +71,12 @@ block content
                 .tfoot.clearfix
                     #actualTotal.price-text
                         span.text-sec 支付:
-                        span.price.text-stress ￥#{parseInt(data.totalCost)/100}
+                        span.price.text-stress ￥#{(parseFloat(data.totalCost)/100).toFixed(2)}
                         span.fav
                             if data.feeMap.coupon_fee
-                                |(已优惠￥#{parseInt(data.feeMap.coupon_fee)/100})
+                                |(已优惠￥#{(parseFloat(data.feeMap.coupon_fee)/100).toFixed(2)})
                             else
-                                |(已优惠￥0)
+                                |(已优惠￥0.00)
     include ../includes/footer
     //script.
     //    seajs.use('/js/trade/order_detail.js')

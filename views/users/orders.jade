@@ -56,18 +56,18 @@ block content
                             else
                                 p.state-info.bdr-bt
                                     |#{orderStateJSON[orderState]}
-                            p 总额：￥#{parseInt(item.totalCost)/100}
-                            p 商品合计：￥#{parseInt(item.feeMap.goods_price)/100}
+                            p 总额：￥#{(parseFloat(item.totalCost)/100).toFixed(2)}
+                            p 商品合计：￥#{(parseFloat(item.feeMap.goods_price)/100).toFixed(2)}
                             p 服务费：￥
                                 if item.feeMap.service_fee
-                                    |#{parseInt(item.feeMap.service_fee)/100}
+                                    |#{(parseFloat(item.feeMap.service_fee)/100).toFixed(2)}
                                 else
-                                    | 0
+                                    | 0.00
                             p 优惠券：-￥
                                 if item.feeMap.coupon_fee
-                                    | #{parseInt(item.feeMap.coupon_fee) / 100}
+                                    | #{(parseFloat(item.feeMap.coupon_fee)/100).toFixed(2)}
                                 else
-                                    | 0
+                                    | 0.00
                         .col.operation
                             p: a(href='/trade/order/detail?id=#{item.id}') 订单详情
                             if orderState == 1
