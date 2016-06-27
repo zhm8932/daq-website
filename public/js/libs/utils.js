@@ -222,14 +222,19 @@ define(function(require,exports,module) {
             data: options.param || {},
             // contentType: options.contentType || 'application/x-www-form-urlencoded;charset=UTF-8;',
             success: function (data) {
-                var result = JSON.parse(data);
-                if (result.success) {
-                    options.callback && options.callback(result);
-                } else {
-                    //弹框提示失败
-                    // alertTip('fail', options.tipText + '失败,原因是:' + result.msg);
-                    showComfirmDialog({tipText:options.tipText + '失败,原因是:' + result.msg,noConfirmBtn:true});
-                    options.errorFun && options.errorFun(result);
+                try{
+                    var result = JSON.parse(data);
+                    if (result.success) {
+                        options.callback && options.callback(result);
+                    } else {
+                        //弹框提示失败
+                        // alertTip('fail', options.tipText + '失败,原因是:' + result.msg);
+                        showComfirmDialog({tipText:options.tipText + '失败,原因是:' + result.msg,noConfirmBtn:true});
+                        options.errorFun && options.errorFun(result);
+                    }
+                }catch(e){
+                    showComfirmDialog({tipText:'JSON解析失败:'+data ,noConfirmBtn:true});
+                    options.errorFun && options.errorFun();
                 }
             },
             error: function (data) {

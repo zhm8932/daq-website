@@ -46,7 +46,7 @@ define(function (require, exports, module) {
                     }
                     $('#coupon-table tbody').html(tableArr.join(''));
                 }
-                $('.coupon-state li').removeClass('on');
+                $('.coupon-state li.on').removeClass('on');
                 $this.addClass('on');
             },
             errorFun: function (result) {
