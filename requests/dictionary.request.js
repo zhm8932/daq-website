@@ -9,7 +9,7 @@ var config = require('../config');
 exports.GetListByTypeAndLevel = function (req, callback) {
     var bizParam = req.query;
     
-    util.ajax('GET', api.GetListByTypeAndLevel, bizParam, function (data, success) {
+    util.ajax('GET', api.GetListByTypeAndLevel,req,  bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };
@@ -17,7 +17,7 @@ exports.GetListByTypeAndLevel = function (req, callback) {
 exports.GetListByParentId = function (req, callback) {
     var bizParam = req.query;
 
-    util.ajax('GET', api.GetListByParentId, bizParam, function (data, success) {
+    util.ajax('GET', api.GetListByParentId,req,  bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };
@@ -25,7 +25,7 @@ exports.GetListByParentId = function (req, callback) {
 exports.GetDetailByIds = function (req, callback) {
     var bizParam = {ids:req.ids};
 
-    util.ajax('GET', api.GetDetailByIds, bizParam, function (data, success) {
+    util.ajax('GET', api.GetDetailByIds,req,  bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };

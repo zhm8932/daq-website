@@ -75,7 +75,8 @@ app.use('/treat',treats);
 
 //捕获404错误并转发到错误处理中间件
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  var errorMsg = req.errorMsg || 'Not Found';
+  var err = new Error(errorMsg);
   err.status = 404;
   console.log('404');
   next(err);

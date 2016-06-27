@@ -15,7 +15,7 @@ exports.GetRegsourceList = function (req, callback) {
         pageIndex:query.pageIndex || 1
     };
 
-    util.ajax('GET', api.GetRegsourceList, bizParam, function (data, success) {
+    util.ajax('GET', api.GetRegsourceList,req,  bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };
@@ -23,7 +23,7 @@ exports.GetRegsourceList = function (req, callback) {
 exports.GetRegTimeSlot = function (req, callback) {
     var bizParam = req.query;
 
-    util.ajax('GET', api.GetRegTimeSlot, bizParam, function (data, success) {
+    util.ajax('GET', api.GetRegTimeSlot,req,  bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };
@@ -32,12 +32,12 @@ exports.AddRegByDoc = function (req, callback) {
     var body = req.body;
     var bizParam = {
         "command": {
-            "accountId": req.session.userInfo.accountCommon.id,
+            "accountId": req.session.userInfo.userAllInfo.accountCommon.id,
             "scheduleId": body.scheduleId
         }
     };
 
-    util.ajax('POST', api.AddRegByDoc, bizParam, function (data, success) {
+    util.ajax('POST', api.AddRegByDoc,req,  bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };
@@ -47,7 +47,7 @@ exports.GetOrderDetail = function (req, callback) {
         reservationId:req.query.reservationId
     };
 
-    util.ajax('GET', api.GetRegDetail, bizParam, function (data, success) {
+    util.ajax('GET', api.GetRegDetail,req,  bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };

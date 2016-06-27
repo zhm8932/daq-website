@@ -257,7 +257,7 @@ define(function(require,exports,module) {
     //检查信息完善 hasBindHis
     function hasBindHis(obj) {
         $.ajax({
-            type:'POST',
+            type:'post',
             url:'/hasBindHis',
             data:{
                 accountId:obj.accountId,

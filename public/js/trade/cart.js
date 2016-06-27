@@ -138,7 +138,7 @@ define(function (require, exports, module) {
             var subTotal = parseFloat($(ele).closest('.table-tr').find('.operation').attr('data-subTotal'));
             totalPrice += subTotal;
         });
-        $('.tfoot .price').html('￥' + totalPrice/100);
+        $('.tfoot .price').html('￥' + (totalPrice/100).toFixed(2));
         $('.tfoot .num').html(num);
         if (num > 0) {
             $('.submit-btn').addClass('back-stress').off('click').on('click', function () {

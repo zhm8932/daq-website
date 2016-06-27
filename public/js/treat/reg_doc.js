@@ -94,7 +94,7 @@ define(function (require, exports, module) {
             '<form name="accInfoForm"><ul class="info-box"><li><label><i class="text-stress">* </i>姓名</label><input name="name"/></li>'+
             '<li><label><i class="text-stress">* </i>性别</label><div id="gender" class="select-box none"><div class="selected"><span class="text"><span class="text-sec">请选择</span></span><i class="icon pull-down"></i></div>'+
             '<ul class="options"><li class="option" data-value="0">男</li><li class="option" data-value="1">女</li></ul></div></li>'+
-            '<li><label><i class="text-stress">* </i>出生年月</label><input id="birthday" name="birthday" readonly/></li><li><label></label><input name="patientCode" placeholder="请输入已有客户编码"/></li><span class="prompt"><i class="icon"></i><em>客户编码有误</em></span>' +
+            '<li><label><i class="text-stress">* </i>出生年月</label><input id="birthday" name="birthday" readonly/></li><li><label>绑定已有客户编码</label><input name="patientCode" placeholder="请输入已有客户编码"/></li><span class="prompt"><i class="icon"></i><em>客户编码有误</em></span>' +
             '</ul></form></div>',
             otherMsg: 'confirm-btn',
             popupBox: 'popupBox',
@@ -103,24 +103,6 @@ define(function (require, exports, module) {
             otherBox: 'complete-dialog',
             width: '475',
             isHide:false,
-            callback: function () {
-                //TouchSlide({ slideCell:"#slideLogin",titCell:".tit span", mainCell:".bd"});
-                $("#slideLogin").touchSlider({
-                    container: this,
-                    duration: 350, // 动画速度
-                    delay: 3000, // 动画时间间隔
-                    margin: 5,
-                    mouseTouch: true,
-                    namespace: "touchslider",
-                    next: ".touchslider-next", // next 样式指定
-                    pagination: ".tit span",
-                    currentClass: "on", // current 样式指定
-                    prev: ".touchslider-prev", // prev 样式指定
-                    // scroller: viewport.children(),
-                    autoplay: false, // 自动播放
-                    viewport: ".touchslider-viewport"  //内容区域
-                });
-            },
             cancelFun: function () {
                 window.location.href = "/treat/regsource/list";
             },

@@ -12,7 +12,7 @@ exports.get_city = function(req,res,next){
         "activeState":1
     }
 
-    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,bizParam,function (data,success) {
+    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,req,bizParam,function (data,success) {
         var json = JSON.parse(data);
         console.log("get_city:",json)
         if(json&&json.success) {
@@ -31,7 +31,7 @@ exports.get_goods_category = function(req,res,next){
         "activeState":1
     }
 
-    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,bizParam,function (data,success) {
+    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,req,bizParam,function (data,success) {
         var json = JSON.parse(data);
         if(json) {
             // console.log("goods_category:",json)
@@ -50,7 +50,7 @@ exports.get_articles_category = function(req,res,next){
         "activeState":1
     }
 
-    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,bizParam,function (data,success) {
+    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,req,bizParam,function (data,success) {
         var json = JSON.parse(data);
         if(json) {
             // console.log("goods_category:",json)
@@ -67,7 +67,7 @@ exports.get_doctor_title = function(req,res,next){
         "activeState":1
     }
 
-    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,bizParam,function (data,success) {
+    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,req,bizParam,function (data,success) {
         var json = JSON.parse(data);
         //console.log("get_doctor_title:",json)
         if(json&&json.success) {
@@ -109,7 +109,7 @@ exports.get_department =function(req,res,next){
         }
     }
 
-    util.ajax('GET',api.DepartmentAll,bizParam,function (data,success) {
+    util.ajax('GET',api.DepartmentAll,req,bizParam,function (data,success) {
         var json = JSON.parse(data);
         if(json) {
             req.get_department = json;

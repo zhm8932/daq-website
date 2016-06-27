@@ -40,7 +40,9 @@ define(function (require, exports, module) {
             var $this = $(ele);
             var item = {};
             item.goodsId = $this.attr('data-goodsid');
-            ids.push($this.attr('data-id'));
+            if($this.attr('data-id') && $this.attr('data-id') != 'undefined'){
+                ids.push($this.attr('data-id'));
+            }
             item.transmitType = $this.attr('data-transmitType');
             item.address = JSON.parse($this.attr('data-address'));
             item.amount = 1;//默认数量为1
@@ -124,11 +126,11 @@ define(function (require, exports, module) {
                     favValue = favValue >= mostDeduction ? mostDeduction : favValue;
                     actualTotal = discountPriceTotal - favValue + servicePriceTotal;
                 }
-                $('#actualTotal .price').html('￥' + actualTotal / 100);
-                $('#actualTotal .fav').html('(已优惠￥' + favValue / 100 + ')');
+                $('#actualTotal .price').html('￥' + (actualTotal / 100).toFixed(2));
+                $('#actualTotal .fav').html('(已优惠￥' + (favValue / 100).toFixed(2) + ')');
             } else {
-                $('#actualTotal .price').html('￥' + goodsTotalPrice / 100);
-                $('#actualTotal .fav').html('(已优惠￥0)');
+                $('#actualTotal .price').html('￥' + (goodsTotalPrice / 100).toFixed(2));
+                $('#actualTotal .fav').html('(已优惠￥0.00)');
             }
         });
     }
