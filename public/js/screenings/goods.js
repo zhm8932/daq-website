@@ -2,8 +2,6 @@ define(function(require){
     require('jquery');
     var config = require('../config');
     require('../libs/jquery.waterfall');
-    console.log(config);
-
     $(document).ready(function() {
         var $article = $('.health_detail article');
         var articleWidth = $article.width();
@@ -96,6 +94,15 @@ define(function(require){
 
         })
 
+        function transferUnit(arr) {
+            if(parseFloat(arr)/100%1!=0){
+                return parseFloat(arr)/100
+            }
+            else{
+                return (parseFloat(arr)/100)+'.00'
+            }
+
+        }
         //获取数据
         function getListData(data) {
             $.ajax({
@@ -113,6 +120,8 @@ define(function(require){
 
                         $.each(data,function (index,arr) {
                             var fit_people_html = '';
+                            var discountPrice=''
+                            var price=''
                             if(arr.productKeyAttributeList){
                                 arr.productKeyAttributeList.forEach(function (item,index) {
                                     // console.log('item:',item)
@@ -121,9 +130,11 @@ define(function(require){
                                     }
                                 })
                             }
+                            discountPrice=transferUnit(arr.discountPrice);
+                            price=transferUnit(arr.price);
 
                             html += '<li class="box" style="opacity:0;filter:alpha(opacity=0);"><a href="/screenings/goods/detail/'+arr.id+'"><img src="'+arr.goodsImages[0].imageUrl+'"/><h4>'+arr.goodsName+'</h4></a><p>'+fit_people_html+'</p>' +
-                                    '<div class="price"><span class="new"><em>￥</em>'+parseInt(arr.discountPrice)/100+'</span><span class="old">原价'+parseInt(arr.price)/100+'</span></div></div></li>'
+                                    '<div class="price"><span class="new"><em>￥</em>'+discountPrice+'</span><span class="old">原价'+price+'</span></div></div></li>'
                         })
                         if(pageIndex<=pageCount){
                             pageIndex +=1;
@@ -144,7 +155,7 @@ define(function(require){
         }
         var pageIndex = 2;
         var pageCount = '';
-        console.log("初始化的pageCount：",pageCount)
+        // console.log("初始化的pageCount：",pageCount)
 
         // initWaterfall();
         waterfall();
@@ -160,14 +171,14 @@ define(function(require){
                 resizeable: true,
                 ajaxCallback: function(success, end) {
                     success();
-                    console.log('初始化执行一次');
+                    // console.log('初始化执行一次');
                     end();
                 }
             })
         }
 
         function waterfall() {
-            console.log('再执行')
+            // console.log('再执行')
             $("#waterfal").waterfall({
                 itemClass: ".box",
                 minColCount: 2,
@@ -190,7 +201,7 @@ define(function(require){
                     }else if(pageIndex<=pageCount){
                         getListData(data)
                     }else{
-                        console.log('不再加载')
+                        // console.log('不再加载')
                     }
 
                     // console.log("pageIndex:",pageIndex)

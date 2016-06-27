@@ -208,8 +208,10 @@ define(function(require, exports, module){
             method: 'GET',
             tipText: '切换城市',
             callback: function (result) {
+
+                window.location.reload();
                 // console.log("$(this).text():",city.name)
-                $('.city-name em').html(city.name)
+                // $('.city-name em').html(city.name)
             },
             errorFun: function (result) {
 
