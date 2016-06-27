@@ -94,7 +94,7 @@
             this.leftOffset = this.options.itemAlign == "center" ? leftOffset : 0;
         },
         _positionAll: function () {
-            console.log("开始遍历图片")
+            // console.log("开始遍历图片")
             var $this = this,
                 $item = $(this.options.itemClass),
                 minHeight,

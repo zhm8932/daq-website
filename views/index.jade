@@ -40,6 +40,11 @@ block content
           #{parseInt(n*Math.random())+1}
         //-div(class='line line01')
           +randoms(5)
+        mixin transferUnit(arr)
+          if parseFloat(arr)/100%1!=0
+             |#{parseFloat(arr)/100}
+          else
+             |#{parseFloat(arr)/100}.00
         if get_goods_list_success
           ul
             each item in get_goods_list
@@ -63,9 +68,10 @@ block content
                   .price
                     span.new
                       em ￥
-                      | #{item.discountPrice}
+                      +transferUnit(item.discountPrice)
                     span.old
-                      | 原价￥#{item.price}
+                      | 原价￥
+                      +transferUnit(item.price)
           div
             a.more(href='/screenings/goods')
              |查看全部

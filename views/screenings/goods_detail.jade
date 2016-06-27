@@ -6,6 +6,7 @@ block content
             .positon.wrapper
                 |您的位置为：首页 <em>#{sep}</em> 筛查服务 <em>#{sep}</em> #{title}
             if get_goods_detail_success
+                include goods_mixin
                 section.goods_basic.clearfix
                     .wrapper
                         dl
@@ -32,9 +33,10 @@ block content
                                 .price
                                     span.new
                                         em ￥
-                                        | #{parseInt(goods_detail.discountPrice)/100}
+                                        +transferUnit(goods_detail.discountPrice)
                                     span.old
-                                        | 原价#{parseInt(goods_detail.price)/100}
+                                        | 原价
+                                        +transferUnit(goods_detail.price)
                                 p
                                     label.text-sec 检查目的：
                                     | #{fitPeople}
@@ -55,7 +57,8 @@ block content
                                             each value,key in transmitType
                                                 span.type(data-transmitType='#{key}',data-favPrice='#{value}',data-value='{"#{key}":"#{value}"}')
                                                     | #{json[key]}
-                                                    mark 服务费￥#{parseInt(value)/100}
+                                                    mark 服务费￥
+                                                        +transferUnit(value)
 
 
                                     div#district

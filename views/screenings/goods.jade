@@ -17,6 +17,7 @@ block content
               each item in get_goods_category
                 li(data-id=item.id): a(href='/screenings/goods/#{item.id}') #{item.name}
               img(src='/images/goods_ban01.png')
+    include goods_mixin
     section.item_list.clearfix
         .wrapper
             .pic_list.goods_list
@@ -44,9 +45,10 @@ block content
                                 .price
                                     span.new
                                         em ￥
-                                        | #{parseInt(item.discountPrice)/100}
+                                        +transferUnit(item.discountPrice)
                                     span.old
-                                        | 原价￥#{parseInt(item.price)/100}
+                                        | 原价￥
+                                        +transferUnit(item.price)
 
                 //-div
                     a.more(href='javascript:;')
