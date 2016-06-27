@@ -1,5 +1,6 @@
 mixin transferUnit(arr)
-    if parseFloat(arr)/100%1!=0
+    |#{(parseFloat(arr)/100).toFixed(2)}
+    //-if parseFloat(arr)/100%1!=0
         |#{parseFloat(arr)/100}
-    else
+    //-else
         |#{parseFloat(arr)/100}.00
