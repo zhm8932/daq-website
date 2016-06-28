@@ -44,6 +44,7 @@ define(function(require, exports, module){
             var cityName = myCity.get(myFun);
         }
 
+        getLocalCity();
 
         var location = window.location;
         var curPathname = location.pathname;

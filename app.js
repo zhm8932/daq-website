@@ -5,7 +5,8 @@ var logger = require('morgan');       //写日志
 var cookieParser = require('cookie-parser');  //解析cookie req.cookies属性存放着客户端提交过来的cookie // req.cookie(key,value) 向客户端写入cookie
 var bodyParser = require('body-parser');  //处理请求体的 req.body 属性存放着请求体对象
 var session = require('express-session');
-// var redisStore = require('connect-redis')(session);
+var redis = require('redis');
+var redisStore = require('connect-redis')(session);
 var CONST = require('./utils/const');
 var app = express();
 
@@ -39,10 +40,26 @@ app.use(bodyParser.urlencoded({ extended: false }));  //处理content-type=urlen
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));  //静态文件服务中间件 指定一个绝对目录 的路径作为静态文件的根目录
 
+// app.use(session({
+//   // store: new redisStore({
+//   //   host: "192.168.108.46",
+//   //   port: 6379,
+//   //   db: "test_session"
+//   // }),
+//   secret: config.sessionSecret,
+//   cookie:{maxAge:12*60*60*1000}
+// }));
+// var client = redis.createClient(6379, 'localhost',{});
+// console.log("client:",client)
+var options = {
+  "host": "127.0.0.1",
+  "port": "6379",
+  "ttl": 60 * 60 * 24 * 30   //Session的有效期为30天
+};
+// 此时req对象还没有session这个属性
 app.use(session({
-  // store: new redisStore({}),
-  secret: config.sessionSecret,
-  cookie:{maxAge:12*60*60*1000}
+  store: new redisStore(options),
+  secret: 'express is powerful'
 }));
 
 app.locals.moment = require('moment'); //本地模板中引入moment方法
@@ -56,8 +73,6 @@ global.CONST = CONST;
 app.locals.locals_sample = JSON.stringify(config.sample);//取样方式及其对应的中文,存入配置文件
 
 app.use(logger(':method :url :status'));  //打印请求状态等信息
-
-
 
 //指定路由
 app.use('/routes', routes);

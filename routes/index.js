@@ -18,6 +18,20 @@ global.util= util = require('../utils/ajax');
 router.use(function(req, res, next) {
     console.log('now:' + Date.now());
     console.log('req.body',req.body);
+    console.log('req.session',req.session);
+
+    //城市
+    if(req.session&&req.session.locals_address){
+        res.locals.locals_address = JSON.stringify(req.session.locals_address);
+    }else{
+        req.session.locals_address = config.addressJSON;
+        res.locals.locals_address = JSON.stringify(config.addressJSON);
+        console.log("1111111111111")
+    }
+    console.log("222222222222222222222222")
+    if(!req.session){
+        return next(new Error('no session')) // handle error
+    }
     if(req.session.userInfo){
         var account = req.session.userInfo.userAllInfo.accountCommon.account;
         res.locals.account = account; //每次请求首页都会动态从session获取值，并保存在本地变量中
@@ -25,13 +39,7 @@ router.use(function(req, res, next) {
 
     // req.accessToken = (req.session.userInfo && req.session.userInfo.accessToken) || '11';
 
-    //城市
-    if(req.session.locals_address){
-        res.locals.locals_address = JSON.stringify(req.session.locals_address);
-    }else{
-        req.session.locals_address = config.addressJSON;
-        res.locals.locals_address = JSON.stringify(config.addressJSON);
-    }
+
 
     var browser = Tools.browser(req);
     res.locals.browser = browser;  //判断浏览器版本，模板调用

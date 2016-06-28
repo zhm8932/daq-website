@@ -41,7 +41,8 @@ define(function(require){
                 }
             };
             var local = new BMap.LocalSearch(map, options);
-            local.search('大族激光科技中心');
+            // local.search('大族激光科技中心');
+            local.search('广州市越秀区环市东路422号2楼');
         }
 
         initBMap();

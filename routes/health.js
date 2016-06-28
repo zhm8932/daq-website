@@ -15,7 +15,7 @@ router.get('/list/article/:id',
     Requests.get_article_list_diseases,
     Requests.get_article_list_ask,
     Requests.get_article_list_recommend,
-    Requests.get_banner,
+    // Requests.get_banner,
     Requests.get_article_detail,
     Handlers.get_article);
 // router.get('/list/article/:id',Middlewares.get_articles_category,Requests.get_article_list,Requests.get_article_list_diseases,Requests.get_article_detail,Handlers.get_article);
