@@ -40,27 +40,27 @@ app.use(bodyParser.urlencoded({ extended: false }));  //处理content-type=urlen
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));  //静态文件服务中间件 指定一个绝对目录 的路径作为静态文件的根目录
 
-// app.use(session({
-//   // store: new redisStore({
-//   //   host: "192.168.108.46",
-//   //   port: 6379,
-//   //   db: "test_session"
-//   // }),
-//   secret: config.sessionSecret,
-//   cookie:{maxAge:12*60*60*1000}
-// }));
+app.use(session({
+  // store: new redisStore({
+  //   host: "192.168.108.46",
+  //   port: 6379,
+  //   db: "test_session"
+  // }),
+  secret: config.sessionSecret,
+  cookie:{maxAge:12*60*60*1000}
+}));
 // var client = redis.createClient(6379, 'localhost',{});
 // console.log("client:",client)
-var options = {
-  "host": "127.0.0.1",
-  "port": "6379",
-  "ttl": 60 * 60 * 24 * 30   //Session的有效期为30天
-};
-// 此时req对象还没有session这个属性
-app.use(session({
-  store: new redisStore(options),
-  secret: 'express is powerful'
-}));
+// var options = {
+//   "host": "127.0.0.1",
+//   "port": "6379",
+//   "ttl": 60 * 60 * 24 * 30   //Session的有效期为30天
+// };
+// // 此时req对象还没有session这个属性
+// app.use(session({
+//   store: new redisStore(options),
+//   secret: 'express is powerful'
+// }));
 
 app.locals.moment = require('moment'); //本地模板中引入moment方法
 app.locals.markdown = require( "markdown" ).markdown; //markdown编辑语法
