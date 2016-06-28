@@ -28,7 +28,7 @@ block content
                         li
                             label
                                 | 出生年月
-                            span #{accountData.birthday}
+                            span #{moment(accountData.birthday).format('YYYY-MM-DD')}
                         li
                             label
                                 p 客户编码
