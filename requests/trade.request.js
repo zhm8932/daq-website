@@ -34,7 +34,7 @@ exports.DelCartItemBatch = function (req, callback) {
     });
 };
 
-exports.AddCartItem = function (req, res, dataType, callback) {
+exports.AddCartItem = function (req, callback) {
     var body = req.body;
     var bizParam = {
         "cartItem": {
@@ -55,7 +55,7 @@ exports.AddCartItem = function (req, res, dataType, callback) {
     };
 
     util.ajax('POST', api.AddCartItem,req,  bizParam, function (data, success) {
-        callback && callback(data);
+        callback && callback(data,success);
     });
 };
 
