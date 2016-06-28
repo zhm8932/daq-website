@@ -7,7 +7,6 @@ var config = require('../config');
 
 
 exports.GetRegsourceList = function (req, callback) {
-    var a = req.session.locals_address;
     var query = req.query;
     var bizParam = {
         city:req.session.locals_address[1].categoryId,

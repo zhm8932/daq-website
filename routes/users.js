@@ -20,6 +20,8 @@ router.get('/reservation/list',authority.loginRequired,function(req,res,next){
                 data:json.data,
                 nav:"reservations"
             });
+        }else{
+            next();
         }
     });
 });
@@ -32,6 +34,8 @@ router.get('/reservation/detail',authority.loginRequired,function(req,res,next){
                 title:'预约详情',
                 data:json.data
             });
+        }else{
+            next();
         }
     });
 });
@@ -46,6 +50,8 @@ router.get('/register/list',authority.loginRequired,function(req,res,next){
                 data:json.data,
                 nav:"registerings"
             });
+        }else{
+            next();
         }
     });
 });
@@ -78,6 +84,8 @@ router.get('/coupon/listView',authority.loginRequired,function(req,res,next) {
                 data:json.data,
                 nav:"coupons"
             });
+        }else{
+            next();
         }
     });
 });
@@ -97,6 +105,8 @@ router.get('/patient/list',authority.loginRequired,function(req,res,next) {
                 data:json.data,
                 nav:"patients"
             });
+        }else{
+            next();
         }
     });
 });
