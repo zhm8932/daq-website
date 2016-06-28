@@ -195,13 +195,14 @@ define(function(require){
                         // "categoryId":2140010959154488028,
                         "categoryId":$('.tab ul li.on').attr('data-id')
                     }
-                    var listData = ''
+                    var listData = '';
+                    console.log("pageIndex:",pageIndex+'--pageCount:',pageCount)
                     if(!pageCount){
                         listData = getListData(data)
                     }else if(pageIndex<=pageCount){
                         getListData(data)
                     }else{
-                        // console.log('不再加载')
+                        console.log('不再加载')
                     }
 
                     // console.log("pageIndex:",pageIndex)

@@ -12,38 +12,38 @@ define(function(require, exports, module){
         var $body = $('body');
         // 百度地图API功能
         function getLocalCity() {
-            
+            var map = new BMap.Map('choosed-city-id');
+            var point = new BMap.Point(116.331398,39.897445);
+            map.centerAndZoom(point,12);
+
+            function myFun(result){
+                // console.log("result:",result)
+                cityName = result.name;
+                map.setCenter(cityName);
+                console.log("当前定位城市:"+cityName);
+                getCityList(cityName,function (newArr) {
+                    // console.log("newArr:",newArr)
+                    var is_locals_city= $.cookie('locals_city');
+                    // console.log("is_locals_city:",is_locals_city)
+                    if(!is_locals_city&&newArr.length){
+                        console.log("初始化定位城市:",newArr[0]);
+                        changeCity(newArr[0])
+                    }
+                    if(newArr.length){
+                        $.cookie('locals_city', newArr[0].parentId,{path:"/"}); // 存储 cookie
+                    }
+
+
+
+
+                })
+                // changeCity(cityName)
+                return cityName
+            }
+            var myCity = new BMap.LocalCity();
+            var cityName = myCity.get(myFun);
         }
-        var map = new BMap.Map('choosed-city-id');
-        var point = new BMap.Point(116.331398,39.897445);
-        map.centerAndZoom(point,12);
 
-        function myFun(result){
-            // console.log("result:",result)
-            cityName = result.name;
-            map.setCenter(cityName);
-            console.log("当前定位城市:"+cityName);
-            getCityList(cityName,function (newArr) {
-                // console.log("newArr:",newArr)
-                var is_locals_city= $.cookie('locals_city');
-                // console.log("is_locals_city:",is_locals_city)
-                if(!is_locals_city&&newArr.length){
-                    console.log("初始化定位城市:",newArr[0]);
-                    changeCity(newArr[0])
-                }
-                if(newArr.length){
-                    $.cookie('locals_city', newArr[0].parentId,{path:"/"}); // 存储 cookie
-                }
-
-
-
-
-            })
-            // changeCity(cityName)
-            return cityName
-        }
-        var myCity = new BMap.LocalCity();
-        var cityName = myCity.get(myFun);
 
         var location = window.location;
         var curPathname = location.pathname;

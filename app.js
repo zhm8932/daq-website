@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');  //处理请求体的 req.body 属性�
 var session = require('express-session');
 // var redisStore = require('connect-redis')(session);
 var CONST = require('./utils/const');
+var app = express();
 
 //路由
 var indexs = require('./routes/index');
@@ -22,7 +23,7 @@ var users = require('./routes/users');
 var trades = require('./routes/trade');
 var dictionarys = require('./routes/dictionary');
 
-var app = express();
+
 
 // 设置模板的存放路径
 app.set('views', path.join(__dirname, 'views'));
@@ -52,9 +53,10 @@ app.locals.sep = '>';
 app.locals.CONST = CONST;
 global.CONST = CONST;
 
-
-
 app.locals.locals_sample = JSON.stringify(config.sample);//取样方式及其对应的中文,存入配置文件
+
+app.use(logger(':method :url :status'));  //打印请求状态等信息
+
 
 
 //指定路由
@@ -85,12 +87,11 @@ app.use(function(req, res, next) {
 // error handlers
 
 //开发时的错误处理
-//将打印出错误的堆栈信息
 if (app.get('env') === 'development') {
 
-  app.set('showStackError',true)
-  app.use(logger(':method :url :status'))  //打印请求状态等信息
-  app.locals.pretty = true  //格式化页面内容
+  app.set('showStackError',true);
+
+  app.locals.pretty = true ; //格式化页面内容
 
   app.use(function(err, req, res, next) {
     console.log('development')

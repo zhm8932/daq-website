@@ -1444,4 +1444,72 @@ $rightNavLI: 50px;
     background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23ffffff'%2F%3E%3C%2Fsvg%3E");
   }
 }
+//完善信息
+.complete-dialog{
+  width:324px;
+  article{padding:0;}
+
+  .cancel{
+    display:none;
+  }
+  span.closePopup{
+    display:none;
+  }
+  .box-header{
+    i.close{
+      background-position:-240px 19px;
+    }
+    height:40px;
+    line-height:40px;
+    padding-left:12px;
+    background-color:#F2F2F2;
+  }
+  .box-body{
+    padding:17px 29px;
+    .tip-box{
+      padding:12px 30px;
+      border:1px solid #ddd;
+      background:#F5F5F5;
+      li{
+        line-height:20px;
+        list-style:disc;
+      }
+    }
+    form[name=accInfoForm]{
+      padding:15px 15px 0 15px;
+      .info-box{
+        position:relative;
+        &>li{
+          padding-bottom: 13px;
+          label{display:inline-block;width:67px;line-height:17px;vertical-align:middle;margin-right:17px;text-align:right;}
+          input{width:260px;}
+
+        }
+      }
+      .select-box{width:262px;}
+    }
+
+    .prompt {
+      color: $red_ED9;
+      position: absolute;
+      left: 84px;
+      bottom: -20px;
+      display: none;
+      i {
+        background-position: -178px -22px;
+      }
+    }
+  }
+  .submitBox{
+    margin-left:98px;
+    span.ok.disabled{
+      background: #C4C4C4;
+      border: 1px solid #C4C4C4;
+      color: #fff;
+    }
+  }
+  span.ok{
+    width:280px;
+  }
+}
 

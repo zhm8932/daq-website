@@ -10,7 +10,7 @@ define(function (require, exports, module) {
         var hasBind = $('#hasBind').val();
         if (hasBind != 'true') {
             showAccountDialog({});
-            utils.BuildSelect($('#gender'));
+            // utils.BuildSelect($('#gender'));
 
             $('#birthday').daterangepicker({
                 singleDatePicker: true,

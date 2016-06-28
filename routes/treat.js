@@ -38,7 +38,7 @@ router.get('/reg/doctorView',authority.loginRequired, function (req, res, next) 
         var timeSlotJson = JSON.parse(data);
         timeSlotJson.data.timeWithIdMap = tidyTimeMap(timeSlotJson.data.timeWithIdMap);
 
-        users.HasBindHis(req, function (data, success) {
+        users.HasBindHis(req,res,function (data, success) {
             var hasBindHISJson = JSON.parse(data);
             res.render('treat/regByDoc', {
                 title: '诊疗服务',

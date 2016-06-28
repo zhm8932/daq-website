@@ -124,17 +124,24 @@ exports.GetAccountInfo = function (req, callback) {
     });
 };
 
-exports.HasBindHis = function (req, callback) {
+exports.HasBindHis = function (req,res,callback) {
+    var body = req.body;
+    console.log("body:",body)
+    // console.log("req.session.userInfo:",req.session.userInfo.userAllInfo)
     var bizParam = {
-        accountId: req.session.userInfo.userAllInfo.accountCommon.id
+        accountId: body.accountId||req.session.userInfo.userAllInfo.accountCommon.id
     };
 
-    util.ajax('GET', api.HasBindHis,req,  bizParam,  function (data, success) {
-        callback && callback(data, success);
+    util.ajax('GET', api.HasBindHis,req,bizParam,function (data, success) {
+        if(!body.send){
+            callback && callback(data, success);
+        }else{
+            res.send(data)
+        }
     });
 };
 
-exports.CompleteAccount = function (req, callback) {
+exports.CompleteAccount = function (req,res,callback) {
     var body = req.body;
     var bizParam = {
         "bindHISCustomer":{

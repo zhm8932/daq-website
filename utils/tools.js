@@ -2,7 +2,7 @@
 exports.browser = function (req) {
     // var deviceAgent = req.headers['user-agent'].toLowerCase();
     var deviceAgent = req.headers['user-agent'];
-    console.log("deviceAgent:",deviceAgent);
+    // console.log("deviceAgent:",deviceAgent);
     // var agent = deviceAgent.match(/(iphone|ipod|ipad|android)/);
     // if(agent){
     //     console.log('指到手机、pad的网页')

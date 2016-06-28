@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    link(href="/css/daterangepicker.css",rel="stylesheet")
+    //-link(href="/css/daterangepicker.css",rel="stylesheet")
     link(href='/css/search_report.css',rel='styleSheet')
     include ../includes/responsive
     include ../includes/nav
@@ -16,7 +16,7 @@ block content
                 ul.clearfix
                     li
                         label 服务条形码
-                        input.time#code(type='text',required,autofocus='true',readonly=true)
+                        input#code(type='text',required,autofocus='true')
                     li
                         label 预设密码
                         input(type='text',required='true')
