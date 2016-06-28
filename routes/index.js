@@ -44,7 +44,7 @@ router.use(function(req, res, next) {
     //     res.locals.cart_num = 0;
     // }
 
-    console.log('看你执行了几次');
+    // console.log('看你执行了几次');
     next();
 });
 

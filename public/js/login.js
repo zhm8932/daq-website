@@ -336,7 +336,7 @@ define(function(require,exports,module) {
 
     $('body').on('click','.loginBox2 .ok',function () {
         var data = validateLogin();
-        var redirectUrl = $('#redirectUrl').val();
+        var redirectUrl = $('#redirectUrl').val()||'/';
         if(data) login(data,null,redirectUrl);
     })
     //检查登录:已经登录则继续执行callback,没有登录则把callback传到登录函数中去,登录后继续执行

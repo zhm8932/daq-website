@@ -116,7 +116,9 @@ router.post('/patient/del',authority.loginRequired,function(req,res,next) {
 
 //账号信息
 router.get('/account/info',authority.loginRequired,function(req,res,next) {
+    console.log("请求开始")
     request.HasBindHis(req,res,function(data,success) {
+        console.log("hasBindHis:",data)
         var bindHisJson = JSON.parse(data);
         if(success){
             if(bindHisJson.data){

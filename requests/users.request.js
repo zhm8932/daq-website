@@ -127,8 +127,9 @@ exports.GetAccountInfo = function (req, callback) {
 exports.HasBindHis = function (req,res,callback) {
     var body = req.body;
     console.log("body:",body)
+    // console.log("req.session.userInfo:",req.session.userInfo.userAllInfo)
     var bizParam = {
-        accountId: body.accountId||req.session.userInfo.accountCommon.id
+        accountId: body.accountId||req.session.userInfo.userAllInfo.accountCommon.id
     };
 
     util.ajax('GET', api.HasBindHis,req,bizParam,function (data, success) {
