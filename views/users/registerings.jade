@@ -46,9 +46,12 @@ block content
                                     span.end #{moment(item.end).format('HH:mm:ss')}
                             mixin payway
                                 td
-                                    p #{item.payWay}
-                                    if item.cost
-                                        p #{(parseFloat(item.cost)/100).toFixed(2)}元
+                                    if item.payOrder
+                                        p #{item.payWay}
+                                        if item.cost
+                                            p #{(parseFloat(item.cost)/100).toFixed(2)}元
+                                    else
+                                        p 线下支付
                             if item.reservationStatus == 0
                                 td.text-stress 未支付
                                 +payway

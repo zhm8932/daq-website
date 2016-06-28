@@ -33,6 +33,8 @@ router.get('/cart/list', authority.loginRequired,function (req, res, next) {
                 title: '购物车',
                 data: json
             });
+        }else{
+            next();
         }
     });
 });
@@ -107,6 +109,8 @@ router.get('/order/list',authority.loginRequired, function (req, res, next) {
                 data: json.data.data,
                 nav:"orders"
             });
+        }else{
+            next();
         }
     });
 });
@@ -132,6 +136,8 @@ router.get('/order/detail', authority.loginRequired,function (req, res, next) {
                 title: '订单详情',
                 data: json.data
             });
+        }else{
+            next();
         }
     });
 });
@@ -198,6 +204,8 @@ router.get('/order/paySuccess',authority.loginRequired, function (req, res, next
                     data: json.data
                 }
             });
+        }else{
+            next();
         }
     });
 });

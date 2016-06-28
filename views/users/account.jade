@@ -10,7 +10,7 @@ block content
     section.wrapper.userBox.clearfix
         include ../includes/usersNav
         .box-right.account.fr
-            -var genderJson = {'0':'男','1':'女'};
+            -var genderJson = {'0':'其他','1':'男','2':'女'};
             ul.tip-box
                 li 以下信息为预约时所需项,一经填写不可更改,提交前请检查核对。
                 li 绑定已有客户编号,您可在病例中心中查看历史报告。
@@ -28,7 +28,7 @@ block content
                         li
                             label
                                 | 出生年月
-                            span #{accountData.birthday}
+                            span #{moment(accountData.birthday).format('YYYY-MM-DD')}
                         li
                             label
                                 p 客户编码

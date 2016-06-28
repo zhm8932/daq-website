@@ -15,6 +15,8 @@ router.get('/regsource/list', function (req, res, next) {
                 title: '诊疗服务',
                 data: json.data
             });
+        }else{
+            next();
         }
     });
 });
@@ -35,17 +37,27 @@ router.get('/regsource/list', function (req, res, next) {
 
 router.get('/reg/doctorView',authority.loginRequired, function (req, res, next) {
     request.GetRegTimeSlot(req, function (data, success) {
-        var timeSlotJson = JSON.parse(data);
-        timeSlotJson.data.timeWithIdMap = tidyTimeMap(timeSlotJson.data.timeWithIdMap);
+        if(success){
+            var timeSlotJson = JSON.parse(data);
+            timeSlotJson.data.timeWithIdMap = tidyTimeMap(timeSlotJson.data.timeWithIdMap);
 
-        users.HasBindHis(req,res,function (data, success) {
-            var hasBindHISJson = JSON.parse(data);
-            res.render('treat/regByDoc', {
-                title: '诊疗服务',
-                timeSlot: timeSlotJson.data,
-                hasBind: hasBindHISJson.data
+            users.HasBindHis(req,res,function (data, success) {
+                if(success){
+                    var hasBindHISJson = JSON.parse(data);
+                    res.render('treat/regByDoc', {
+                        title: '诊疗服务',
+                        timeSlot: timeSlotJson.data,
+                        hasBind: hasBindHISJson.data
+                    });
+                }else{
+                    next();
+                }
+
             });
-        });
+        }else{
+            next();
+        }
+
     });
 });
 

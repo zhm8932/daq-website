@@ -71,7 +71,7 @@ module.exports.ajax = function (method,apiName,req,bizParam,callback,accessToken
 
     var method = method.toUpperCase();
 
-    var accessToken = (req.session.userInfo && req.session.userInfo.accessToken) || '11';
+    var accessToken = (req && req.sesssion && req.session.userInfo && req.session.userInfo.accessToken) || '11';
     
     var sysPara = sysParam(apiName,bizParam,accessToken);
     var param = encodeURI('bizParam=' + encodeURIComponent(JSON.stringify(bizParam))+'&sysParam=' + sysPara);
