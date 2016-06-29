@@ -5,7 +5,7 @@ define(function (require, exports, module) {
     $(function(){
         $('.del-reg').on('click',function(){
             delItem($(this));
-        })
+        });
 
         $('.cancel-reg').on('click',function(){
             cancelItem($(this));
@@ -53,8 +53,12 @@ define(function (require, exports, module) {
                         method: 'POST',
                         tipText: '取消挂号',
                         callback: function (result) {
-                            $this.closest('td').prev().html('已取消').removeClass('text-stress').addClass('text-sec');
-                            $this.closest('td').html('');
+                            var td = $this.closest('td');
+                            td.prev().prev().html('已取消').removeClass('text-stress').addClass('text-sec');
+                            td.html('<a href="javascript:void(0)" class="del-reg">删除</a>');
+                            td.find('.del-reg').on('click',function(){
+                                delItem($(this));
+                            });
                         },
                         errorFun: function (result) {
                             $this.removeClass('disabled').on('click', function () {

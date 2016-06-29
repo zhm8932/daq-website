@@ -118,7 +118,7 @@ exports.GetOrderDetail = function (req, callback) {
 exports.GetPayId = function (req, callback) {
     var bizParam = req.body;
 
-    util.ajax('POST', api.GetPayId, bizParam, function (data, success) {
+    util.ajax('POST', api.GetPayId,req, bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };
@@ -136,7 +136,7 @@ exports.OrderPay = function (req, callback) {
         }
     };
 
-    util.ajax('POST', api.OrderPay, bizParam, function (data, success) {
+    util.ajax('POST', api.OrderPay,req, bizParam, function (data, success) {
         callback && callback(data, success);
     });
 };

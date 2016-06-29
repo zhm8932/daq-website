@@ -35,11 +35,11 @@ block content
             -var regData = data.data;
             if regData.length > 0
                 thead
-                    th(width="20%")
-                    th(width="20%")
+                    th(width="19%")
+                    th(width="18%")
                     each item in regData[0].scheduleList
-                        th
-                            p.month-date #{item.scheduleDate}
+                        th(width="9%")
+                            p.month-date #{moment(item.scheduleDate).format('MM/DD')}
                             p #{week[parseInt(item.dayOfWeek)-1]}
                 tbody
                     each item in regData
