@@ -98,7 +98,7 @@ exports.get_hospital_all = function(req,res,next){
 }
 
 exports.get_department =function(req,res,next){
-    var hospitalId = req.hospitalId
+    var hospitalId = req.hospitalId||'3190011408359331123';
     console.log("hospitalId:",hospitalId)
     var bizParam = {
         "request":{
