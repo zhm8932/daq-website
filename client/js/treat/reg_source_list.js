@@ -3,13 +3,6 @@ define(function (require, exports, module) {
     var login = require('../login.js');
 
     $(function(){
-        $('.month-date').each(function(index,ele){
-            var $this = $(ele);
-            var timestamp = parseInt($this.html());
-            var time = getMonthAndDate(timestamp);
-            $this.html(time);
-        });
-
         $('.register').on('click',function(){
             var $this = $(this);
             var date = utils.GetLoacalDateString(parseFloat($this.data('date')));
