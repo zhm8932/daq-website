@@ -67,11 +67,11 @@ function sysParam(apiName,bizParam,accessToken) {
     return JSON.stringify(sysParameters);
 }
 
-module.exports.ajax = function (method,apiName,req,bizParam,callback,accessToken) {
+module.exports.ajax = function (method,apiName,browserReq,bizParam,callback) {
 
     var method = method.toUpperCase();
 
-    var accessToken = (req && req.sesssion && req.session.userInfo && req.session.userInfo.accessToken) || '11';
+    var accessToken = (browserReq && browserReq.sesssion && browserReq.session.userInfo && browserReq.session.userInfo.accessToken) || '11';
     
     var sysPara = sysParam(apiName,bizParam,accessToken);
     var param = encodeURI('bizParam=' + encodeURIComponent(JSON.stringify(bizParam))+'&sysParam=' + sysPara);
