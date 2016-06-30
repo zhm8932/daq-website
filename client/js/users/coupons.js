@@ -102,17 +102,17 @@ define(function (require, exports, module) {
         if (data.ftype == 'cash') {
             enoughMoney = parseInt(data.enoughMoney);
             trArr.push('<tr>');
-            trArr.push('<td>' + parseInt(data.faceValue) / 100 + '元</td>');
+            trArr.push('<td>' + (parseFloat(data.faceValue) / 100).toFixed(2) + '元</td>');
 
             if (enoughMoney == 0) {
                 trArr.push('<td>无门槛</td>');
             } else {
-                trArr.push('<td>满' + enoughMoney / 100 + '元使用</td>');
+                trArr.push('<td>满' + (enoughMoney / 100).toFixed(2) + '元使用</td>');
             }
         } else if (data.ftype == 'discount') {
             trArr.push('<tr>');
             trArr.push('<td>' + data.discount + '折</td>');
-            trArr.push('<td>最多可抵' + parseInt(data.mostDeduction) / 100 + '元</td>');
+            trArr.push('<td>最多可抵' + (parseFloat(data.mostDeduction) / 100).toFixed(2) + '元</td>');
         }
 
         trArr.push('<td>限定地区:' + areaNames.join(',') + '</td>');

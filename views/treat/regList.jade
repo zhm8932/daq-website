@@ -55,7 +55,7 @@ block content
                                     p.text-main #{item.doctor.doctorName}
                                     p #{item.doctor.title}
                                     p #{hosname}
-                            td #{item.doctor.introduction}
+                            td #{item.doctor.skill}
                             each schedule in item.scheduleList
                                 if schedule.hasSetSchedule
                                     if schedule.consumeCount < schedule.capacityCount

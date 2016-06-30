@@ -51,7 +51,13 @@ define(function (require, exports, module) {
 
         var cityId = $('#cityId').val();
         var couponCodeId = $('#coupon-table .radio.checked').closest('tr').attr('data-id') || '';
-        
+
+        var actualTotal = $('#actualTotal .price').html().substr(1);
+        if(parseFloat(actualTotal) <= 0 ){
+            utils.ShowComfirmDialog({tipText:'订单金额必须大于0.00元',noConfirmBtn:true});
+            return false;
+        }
+
         var orderPlaceDTO = {
             "cityId": cityId,
             "couponCodeId": couponCodeId,
@@ -191,8 +197,8 @@ define(function (require, exports, module) {
 
 
         if (data.ftype == 'cash') {
-            faceValue = parseInt(data.faceValue);
-            enoughMoney = parseInt(data.enoughMoney);
+            faceValue = parseFloat(data.faceValue);
+            enoughMoney = parseFloat(data.enoughMoney);
             if (!(discountPriceTotal >= enoughMoney && isInArea(cityId, areaIds) && nowTime >= data.beginTime && nowTime<=data.endTime)) {
                 trArr.push('<tr data-id="' + data.couponCodeId + '" data-faceValue="' + faceValue + '" data-enoughMoney="' + enoughMoney + '" data-ftype="' + data.ftype + '"><td><span class="radio coupon-radio disabled"></span></td>');
                 isfit = false;
@@ -200,12 +206,12 @@ define(function (require, exports, module) {
                 trArr.push('<tr data-id="' + data.couponCodeId + '" data-faceValue="' + faceValue + '" data-enoughMoney="' + enoughMoney + '" data-ftype="' + data.ftype + '"><td><span class="radio coupon-radio"></span></td>');
                 isfit = true;
             }
-            trArr.push('<td>' + parseInt(data.faceValue) / 100 + '元</td>');
+            trArr.push('<td>' + (parseFloat(data.faceValue) / 100).toFixed(2) + '元</td>');
 
             if (enoughMoney == 0) {
                 trArr.push('<td>无门槛</td>');
             } else {
-                trArr.push('<td>满' + enoughMoney / 100 + '元使用</td>');
+                trArr.push('<td>满' + (enoughMoney / 100).toFixed(2) + '元使用</td>');
             }
         } else if (data.ftype == 'discount') {
             if (!(isInArea(cityId, areaIds) && nowTime >= data.beginTime && nowTime<=data.endTime)) {
@@ -217,7 +223,7 @@ define(function (require, exports, module) {
             }
 
             trArr.push('<td>' + data.discount + '折</td>');
-            trArr.push('<td>最多可抵' + parseInt(data.mostDeduction) / 100 + '元</td>');
+            trArr.push('<td>最多可抵' + (parseFloat(data.mostDeduction) / 100).toFixed(2) + '元</td>');
         }
 
         trArr.push('<td>限定地区:' + areaNames.join(',') + '</td>');

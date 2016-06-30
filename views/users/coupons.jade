@@ -38,15 +38,15 @@ block content
                                 -areaNames.push(city.name);
                             tr
                                 if item.ftype == 'cash'
-                                    td #{parseInt(item.faceValue) / 100}元
-                                    -enoughMoney = parseInt(item.enoughMoney);
+                                    td #{(parseFloat(item.faceValue) / 100).toFixed(2)}元
+                                    -enoughMoney = parseFloat(item.enoughMoney);
                                     if(enoughMoney == 0)
                                         td 无门槛
                                     else
-                                        td 满#{enoughMoney/100}元使用
+                                        td 满#{(enoughMoney/100).toFixed(2)}元使用
                                 else if item.ftype == 'discount'
                                     td #{item.discount}折
-                                    td 最多可抵#{parseInt(item.mostDeduction)/100}元
+                                    td 最多可抵#{(parseFloat(item.mostDeduction)/100).toFixed(2)}元
                                 td 限定地区:#{areaNames.join(',')}
                                 td #{moment(item.beginTime).format('YYYY-MM-DD')} 至 #{moment(item.endTime).format('YYYY-MM-DD')}
 
