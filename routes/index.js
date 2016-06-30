@@ -18,7 +18,7 @@ global.util= util = require('../utils/ajax');
 router.use(function(req, res, next) {
     console.log('now:' + Date.now());
     console.log('req.body',req.body);
-    console.log('req.session',req.session);
+    // console.log('req.session',req.session);
 
     //城市
     if(req.session&&req.session.locals_address){
@@ -26,9 +26,9 @@ router.use(function(req, res, next) {
     }else{
         req.session.locals_address = config.addressJSON;
         res.locals.locals_address = JSON.stringify(config.addressJSON);
-        console.log("1111111111111")
+        // console.log("1111111111111")
     }
-    console.log("222222222222222222222222")
+    // console.log("222222222222222222222222")
     if(!req.session){
         return next(new Error('no session')) // handle error
     }
