@@ -17,7 +17,7 @@ http://touchslider.com
 		define(['jquery'], function(){
 			// 返回构造函数 CommonJS
 			// console.log('CommonJS')
-			return factory(jQuery, undefined);
+			return factory(window.jQuery, undefined);
 		});
 	}  else{ // Global
 		factory(window.jQuery || window.Zepto)

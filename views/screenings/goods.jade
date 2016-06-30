@@ -25,7 +25,7 @@ block content
                     ul#waterfal
                         each item in get_goods_list
                             li.box
-                                a(href='/screenings/goods/detail/#{item.id}')
+                                a(href='/screenings/goods/detail/#{item.id}' target='_blank')
                                     //-img(data-original='images/product1.png')
                                     if item.goodsImages
                                         if browser.ie

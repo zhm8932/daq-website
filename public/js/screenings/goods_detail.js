@@ -7,6 +7,7 @@ define(function(require){
 
     console.log("login:",login)
     $(function(){
+        require('../imgAuto');
         if(checkArea()){
             $('#addCartBtn').on('click',function(){
                 addToCart();
