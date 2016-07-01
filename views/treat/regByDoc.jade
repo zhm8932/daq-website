@@ -29,7 +29,7 @@ block content
                         li
                             label 就诊时段
                             input#scheduleId(name="scheduleId",type="hidden",value="")
-                            #scheduleId-select.select-box.none
+                            #scheduleId-select.select-box(data-load="first")
                                 .selected
                                     span.text
                                         span.text-sec 请选择就诊时段
