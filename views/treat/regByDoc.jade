@@ -38,7 +38,7 @@ block content
                                     each value,index in timeSlot.timeWithIdMap
                                         -var time = value.time;
                                         -var timeDetail = value.timeDetail;
-                                        .option(data-value="#{timeDetail.scheduleId}",data-cost="#{timeDetail.cost}") #{time}(#{timeDetail.capacity - timeDetail.unConsume}/#{timeDetail.capacity})
+                                        li.option(data-value="#{timeDetail.scheduleId}",data-cost="#{timeDetail.cost}") #{time}(#{timeDetail.capacity - timeDetail.unConsume}/#{timeDetail.capacity})
 
 
                         if doctorDTO.needPay
