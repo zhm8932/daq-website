@@ -99,8 +99,11 @@
                 $item = $(this.options.itemClass),
                 minHeight,
                 minIndex;
-            var wrapperW = $('.wrapper').width()
+            var wrapperW = $('.item_list .wrapper').width();
             var winW = $(window).width();
+            console.log("wrapperW:",wrapperW);
+            console.log("winW:",winW)
+            console.log("winW:",$('.wrapper'))
             this._getColumnCount();
             this.colHeightArray = [];
 
@@ -117,13 +120,17 @@
                     // console.log("2222222222222222222222222")
                     // console.log("$(this).():",$(this))
                     // console.log("$(this).outerHeight():",$(this).outerHeight())
-                    // console.log("$(this).offsetHeightoffsetHeight:",$(this)[0].offsetHeight)
+                    console.log("left:",$item.eq(minIndex).offset()&&$item.eq(minIndex).offset().left);
+                    console.log("left:",$item.eq(minIndex).offset()&&$item.eq(minIndex).offset().left-(winW-wrapperW)/2);
+                    // console.log("left:",$item.eq(minIndex).offset());
 
 
                     minHeight = Math.min.apply(null, $this.colHeightArray);
                     minIndex = $.inArray(minHeight, $this.colHeightArray);
 
-                    // console.log("minHeight:",minHeight)
+                    console.log("minHeight:",minHeight)
+
+
                     $(this).css("top", minHeight + $this.options.spacingHeight);
                     // $(this).css("left", $item.eq(minIndex).offset().left);
                     $(this).css("left", $item.eq(minIndex).offset().left-(winW-wrapperW)/2);

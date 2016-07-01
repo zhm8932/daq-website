@@ -33,6 +33,7 @@ define(function(require, exports, module){
                         if(newArr.length){
                             $.cookie('locals_city', newArr[0].parentId,{path:"/"}); // 存储 cookie
                         }
+
                     })
                 }
 
@@ -64,6 +65,7 @@ define(function(require, exports, module){
             if(href=='/treat/regsource/list'&&curPathname=='/treat/reg/doctorView'){
                 $(arr).parent().addClass('on').siblings().removeClass('on')
             }
+
 
         });
 

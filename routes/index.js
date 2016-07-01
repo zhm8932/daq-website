@@ -18,17 +18,27 @@ global.util= util = require('../utils/ajax');
 router.use(function(req, res, next) {
     console.log('now:' + Date.now());
     console.log('req.body',req.body);
-    // console.log('req.session',req.session);
-
+    console.log('req.session',req.session);
+    console.log('req.url',req.url);
+    console.log('req.host',req.host);
+    // var host = req.host;
+    // if(host=='localhost'){
+    //     config.options.host=host
+    // }else{
+    //     config.options.host='1ac256e68d824785.m.cnsza.kvstore.aliyuncs.com'
+    // }
+    //
+    // global.config.options = config.options
+    // console.log("config.options:",config.options)
     //城市
     if(req.session&&req.session.locals_address){
         res.locals.locals_address = JSON.stringify(req.session.locals_address);
     }else{
         req.session.locals_address = config.addressJSON;
         res.locals.locals_address = JSON.stringify(config.addressJSON);
-        // console.log("1111111111111")
+        console.log("1111111111111")
     }
-    // console.log("222222222222222222222222")
+    console.log("222222222222222222222222")
     if(!req.session){
         return next(new Error('no session')) // handle error
     }

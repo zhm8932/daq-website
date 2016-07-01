@@ -21,6 +21,7 @@ exports.loginRequiredAsyn = function(req,res,next){
 
 exports.loginRequired = function(req,res,next){
     var _user = req.session.userInfo;
+    req.accountId = req.session.userInfo&&req.session.userInfo.userAllInfo.accountCommon.id;
     if(!_user){
         res.render('login',{
             redirectUrl:req.originalUrl

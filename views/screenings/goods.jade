@@ -22,33 +22,36 @@ block content
         .wrapper
             .pic_list.goods_list
                 if get_goods_list_success
-                    ul#waterfal
-                        each item in get_goods_list
-                            li.box
-                                a(href='/screenings/goods/detail/#{item.id}' target='_blank')
-                                    //-img(data-original='images/product1.png')
-                                    if item.goodsImages
-                                        if browser.ie
-                                            img(src='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
-                                        else
-                                            img(src='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
-                                            //-img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
-                                    h4 #{item.goodsName}
-                                if item.productKeyAttributeList
-                                    each arr in item.productKeyAttributeList
-                                        if arr.attributeName == 'slogan'
-                                            p
-                                                if arr.value.length > 50
-                                                    | #{arr.value.substring(0, 50)}……
-                                                else
-                                                    | #{arr.value}
-                                .price
-                                    span.new
-                                        em ￥
-                                        +transferUnit(item.discountPrice)
-                                    span.old
-                                        | 原价￥
-                                        +transferUnit(item.price)
+                    if !get_goods_list.length
+                        aside 暂无套餐
+                    else
+                        ul#waterfal
+                            each item in get_goods_list
+                                li.box
+                                    a(href='/screenings/goods/detail/#{item.id}' target='_blank')
+                                        //-img(data-original='images/product1.png')
+                                        if item.goodsImages
+                                            if browser.ie
+                                                img(src='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
+                                            else
+                                                img(src='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
+                                                //-img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
+                                        h4 #{item.goodsName}
+                                    if item.productKeyAttributeList
+                                        each arr in item.productKeyAttributeList
+                                            if arr.attributeName == 'slogan'
+                                                p
+                                                    if arr.value.length > 50
+                                                        | #{arr.value.substring(0, 50)}……
+                                                    else
+                                                        | #{arr.value}
+                                    .price
+                                        span.new
+                                            em ￥
+                                            +transferUnit(item.discountPrice)
+                                        span.old
+                                            | 原价￥
+                                            +transferUnit(item.price)
 
 
                 //-div

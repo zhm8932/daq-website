@@ -10,6 +10,7 @@ var redisStore = require('connect-redis')(session);
 var CONST = require('./utils/const');
 var app = express();
 
+var config = require('./config');
 //路由
 var indexs = require('./routes/index');
 var abouts = require('./routes/about');
@@ -40,27 +41,31 @@ app.use(bodyParser.urlencoded({ extended: false }));  //处理content-type=urlen
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));  //静态文件服务中间件 指定一个绝对目录 的路径作为静态文件的根目录
 
+var redisClient = redis.createClient(6379,config.options.host, {});
+// redisClient.auth(options.pass);
+// console.log("options:",options);
+
+redisClient.on("error", function (err) {
+  console.log("Error " + err);
+});
+
+redisClient.on('ready',function(err){
+  console.log('ready:Redis链接成功');
+  console.log("config.options:",config.options)
+});
+
+// console.log("redisClient:",redisClient);
+// 此时req对象还没有session这个属性
+
 app.use(session({
-  // store: new redisStore({
-  //   host: "192.168.108.46",
-  //   port: 6379,
-  //   db: "test_session"
-  // }),
+  store: new redisStore(config.options),
   secret: config.sessionSecret,
   cookie:{maxAge:12*60*60*1000}
+
+  // store: new redisStore(options),
+  // secret: config.sessionSecret,
+  //
 }));
-// var client = redis.createClient(6379, 'localhost',{});
-// console.log("client:",client)
-// var options = {
-//   "host": "127.0.0.1",
-//   "port": "6379",
-//   "ttl": 60 * 60 * 24 * 30   //Session的有效期为30天
-// };
-// // 此时req对象还没有session这个属性
-// app.use(session({
-//   store: new redisStore(options),
-//   secret: 'express is powerful'
-// }));
 
 app.locals.moment = require('moment'); //本地模板中引入moment方法
 app.locals.markdown = require( "markdown" ).markdown; //markdown编辑语法
