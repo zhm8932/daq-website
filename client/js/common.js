@@ -1,5 +1,5 @@
 define(function(require, exports, module){
-    // require('jquery');
+    require('jquery');
     require('lazyload');
     require('./login');
     var utils = require('./libs/utils.js');
