@@ -6,7 +6,7 @@ var path = require('path')
 // 通过NODE_ENV来设置环境变量，如果没有指定则默认为开发环境
 // var env = process.env.NODE_ENV || 'production';
 
-var env = process.env.NODE_ENV || 'development'
+var env = process.env.NODE_ENV || 'development';
 env = env.toLowerCase();
 
 console.log('__dirname::',__dirname)
@@ -19,7 +19,10 @@ try {
     if (env == 'production') {
         console.log('生产环境配置')
         var config = require('./config/production');
-    } else {
+    } else if(env == 'beta'){
+        console.log('beta环境配置')
+        var config = require('./config/beta');
+    }else {
         console.log('开发环境配置')
 
         var config = require('./config/development');
@@ -35,4 +38,4 @@ try {
 // 如果是开发环境，将输出 listen on port 3000
 // 如果是生产环境，将输出 listen on port 80
 
-module.exports = config
+module.exports = config;

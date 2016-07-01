@@ -21,22 +21,21 @@ define(function(require, exports, module){
                 cityName = result.name;
                 map.setCenter(cityName);
                 console.log("当前定位城市:"+cityName);
-                getCityList(cityName,function (newArr) {
-                    // console.log("newArr:",newArr)
-                    var is_locals_city= $.cookie('locals_city');
-                    // console.log("is_locals_city:",is_locals_city)
-                    if(!is_locals_city&&newArr.length){
-                        console.log("初始化定位城市:",newArr[0]);
-                        changeCity(newArr[0])
-                    }
-                    if(newArr.length){
-                        $.cookie('locals_city', newArr[0].parentId,{path:"/"}); // 存储 cookie
-                    }
+                if(!$.cookie('locals_city')){
+                    getCityList(cityName,function (newArr) {
+                        // console.log("newArr:",newArr)
+                        var is_locals_city= $.cookie('locals_city');
+                        // console.log("is_locals_city:",is_locals_city)
+                        if(!is_locals_city&&newArr.length){
+                            console.log("初始化定位城市:",newArr[0]);
+                            changeCity(newArr[0])
+                        }
+                        if(newArr.length){
+                            $.cookie('locals_city', newArr[0].parentId,{path:"/"}); // 存储 cookie
+                        }
+                    })
+                }
 
-
-
-
-                })
                 // changeCity(cityName)
                 return cityName
             }
@@ -44,7 +43,10 @@ define(function(require, exports, module){
             var cityName = myCity.get(myFun);
         }
 
-        getLocalCity();
+        if(!$.cookie('locals_city')){
+            getLocalCity();
+        }
+
 
         var location = window.location;
         var curPathname = location.pathname;
@@ -57,6 +59,9 @@ define(function(require, exports, module){
         $.each($nav_A,function (index,arr) {
             href = $(arr).attr('href');
             if(curPathname.search(href)!=-1){
+                $(arr).parent().addClass('on').siblings().removeClass('on')
+            }
+            if(href=='/treat/regsource/list'&&curPathname=='/treat/reg/doctorView'){
                 $(arr).parent().addClass('on').siblings().removeClass('on')
             }
 

@@ -210,14 +210,18 @@ $conWidth:1600px;
   .item_list {
     padding-bottom: 20px;
     .pic_list{
-      ul{margin-left: -3%;}
-      li{width: 47%;margin:20px 0 0 3%;height: auto;
-        h4{line-height:30px;height:30px;position: static;margin-top: 10px;font-size: 20px;background: none;color: $textc_48B;}
-        p{color: $textc_333;padding: 0 10px;margin: 0px; font-size: 16px;height: 48px;overflow: hidden;}
-        .price{padding-top: 0px;
-          .new{font-size: 18px;}
+      ul{margin-left: -3%;
+        li{width: 47%;margin:20px 0 0 3%;height: auto;
+          a{
+            h4{line-height:30px;height:30px;position: static;margin-top: 10px;font-size: 20px;background: none;color: $textc_48B;margin-bottom:0px;overflow: hidden}
+          }
+          p{color: $textc_333;padding: 0 10px;margin: 0px; font-size: 16px;height: 48px;overflow: hidden;}
+          .price{padding-top: 0px;
+            .new{font-size: 18px;}
+          }
         }
       }
+
       .more{margin-top: 20px;}
     }
     .standard{

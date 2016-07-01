@@ -8,10 +8,12 @@ var config = require('../config');
 
 exports.GetCartList = function (req, callback) {
     var bizParam = {
-        "accountId": req.session.userInfo.userAllInfo.accountCommon.id
+        // "accountId": req.session.userInfo.userAllInfo.accountCommon.id
+        "accountId": req.accountId
     };
 
     console.log('===='+req.accessToken);
+    console.log('===='+bizParam);
 
     util.ajax('GET', api.GetCartList, req, bizParam, function (data, success) {
         callback && callback(data, success);
