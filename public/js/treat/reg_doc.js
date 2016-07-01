@@ -5,7 +5,7 @@ define(function (require, exports, module) {
     require("daterangepicker");
 
     $(function () {
-        $('#scheduleId-select .option').on('click', function () {
+        $('#scheduleId-select .option').click(function () {
             var $this = $(this);
             $('#scheduleId').val($this.data('value'));
             var cost = parseFloat($this.data('cost'));
@@ -17,8 +17,7 @@ define(function (require, exports, module) {
                     commitReg($(this));
                 });
             }
-        });
-
+        })
 
         var hasBind = $('#hasBind').val();
         if (hasBind != 'true') {
