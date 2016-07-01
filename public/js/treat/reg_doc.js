@@ -8,8 +8,8 @@ define(function (require, exports, module) {
         $('#scheduleId-select .option').on('click', function () {
             var $this = $(this);
             $('#scheduleId').val($this.data('value'));
-            var cost = parseInt($this.data('cost'));
-            $('#cost').html(cost / 100 + '元');
+            var cost = parseFloat($this.data('cost'));
+            $('#cost').html((cost / 100).toFixed(2) + '元');
             var scheduleSelect = $("#scheduleId-select");
             if(scheduleSelect.attr('data-load') == 'first'){
                 scheduleSelect.attr('data-load','non-first');
