@@ -8,16 +8,15 @@
       }
       p{color:$textc_9d; font-size: 16px;}
     }
-
     label{display: block; font-size: 16px; line-height: 30px; padding-bottom:10px;}
     ul {
       li{
         width: 25%;float:left; display: inline; position: relative;
         input{ width:90%;padding: 0 5px;}
       }
-      .getCode{ position: absolute;right: 10px; width: 125px; line-height: 38px;height: 38px; border: 1px solid $bdrc_48B; background-color: $bgc_E5F; text-align: center;}
+      .getCode{ position: absolute;right: 10px; width: 125px; line-height: 36px;height: 36px; border: 1px solid $bdrc_48B; background-color: $bgc_E5F; text-align: center;}
       .submitBtn{
-        color: $white;position: absolute;right: 10%;bottom:0px;line-height: 40px;height: 40px; width:120px;margin: 0 ;
+        color: $white;position: absolute;right: 10%;bottom:0px;line-height: 38px;height:38px; width:120px;margin: 0 ;
         border:1px solid $bdrc_48B;background-color:$bgc_48B; font-size: 16px;
       }
     }
