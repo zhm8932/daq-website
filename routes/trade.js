@@ -64,35 +64,25 @@ router.post('/order/create',authority.loginRequired, function (req, res, next) {
     request.CreateOrder(req, function (data, success) {
         var json = JSON.parse(data);
         if(success){
+            var resJson = {
+                id: json.data.id,
+                totalCost: json.data.totalCost,
+                success:true
+            };
             if(JSON.parse(req.body.ids).length > 0){
                 request.DelCartItemBatch(req, function (data, success) {
                     var delJson = JSON.parse(data);
                     if(success){
-                        res.render('trade/orderSuccess', {
-                            title: '成功提交订单',
-                            data: {
-                                id: json.data.id,
-                                totalCost: json.data.totalCost
-                            }
-                        });
+                        res.json(JSON.stringify(resJson));
                     }else{
-                        req.errorMsg = delJson.msg;
-                        next();
+                        res.json(data);
                     }
                 });
             }else{
-                res.render('trade/orderSuccess', {
-                    title: '成功提交订单',
-                    data: {
-                        id: json.data.id,
-                        totalCost: json.data.totalCost
-                    }
-                });
+                res.json(JSON.stringify(resJson));
             }
-
         }else{
-            req.errorMsg = json.msg;
-            next();
+            res.json(data);
         }
     });
 

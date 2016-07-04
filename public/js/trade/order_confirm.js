@@ -10,7 +10,7 @@ define(function (require, exports, module) {
             addCoupon($(this));
         });
         $('#submit-btn').on('click', function () {
-            submitOrder();
+            submitOrder($(this));
         });
 
         $('.coupon-trigger').on('click', function () {
@@ -31,7 +31,7 @@ define(function (require, exports, module) {
         });
     });
 
-    function submitOrder() {
+    function submitOrder($this) {
         var trs = $('.goods-list tbody tr');
         var items = [];
         var id = trs.eq(0).attr('data-goodsid');
@@ -64,9 +64,26 @@ define(function (require, exports, module) {
             "goodsPropertyList": items
         };
 
-        $('#submitForm input[name=orderPlaceDTO]').val(JSON.stringify(orderPlaceDTO));
-        $('#submitForm input[name=ids]').val(JSON.stringify(ids));
-        $('#submitForm').submit();
+        // $('#submitForm input[name=orderPlaceDTO]').val(JSON.stringify(orderPlaceDTO));
+        // $('#submitForm input[name=ids]').val(JSON.stringify(ids));
+        // $('#submitForm').submit();
+
+        $this.addClass('disabled').off('click');
+
+        utils.SendAjax({
+            url: '/trade/order/create',
+            param: {orderPlaceDTO:JSON.stringify(orderPlaceDTO),ids:JSON.stringify(ids)},
+            method: 'POST',
+            tipText: '提交订单',
+            callback: function (result) {
+                window.location.href = '/trade/order/orderSuccess?id='+result.id+'&totalCost='+result.totalCost;
+            },
+            errorFun: function () {
+                $this.removeClass('disabled').on('click', function () {
+                    submitOrder($this);
+                });
+            }
+        });
     }
 
 
