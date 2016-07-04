@@ -17,7 +17,7 @@ define(function (require, exports, module) {
                     commitReg($(this));
                 });
             }
-        })
+        });
 
         var hasBind = $('#hasBind').val();
         if (hasBind != 'true') {

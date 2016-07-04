@@ -30,12 +30,17 @@ block content
                                             img.fl(src='#{goods.goodsInfo.imageUrls[0]}')
                                             h5.fr #{goods.goodsInfo.goodsName}
                         .col.detail.text-sec
-                            //p 受检人:#{item.checkedName}
-                            p 取样方式:#{serviceTypeJSON[item.serviceType]}
-                            -var address = '';
-                            each area in JSON.parse(item.reservations[0].goodsInfo.address)
-                                -address += area.name;
-                            p 取样地址:#{address}
+                            if item.serviceType == 1
+                                p 门诊取样
+                                p.text-sec 门诊地址: #{item.address}
+                                p.text-sec 预约时间: #{item.time}
+                            else if item.serviceType == 2
+                                p 上门取样
+                                p.text-sec 取样地址: #{item.address}
+                                p.text-sec 取样时间: #{item.time}
+                            else if item.serviceType == 3
+                                p 快递取样
+                                p.text-sec 收件地址: #{item.address}
                         -var resStatus = item.status;
                         .col.order-state.text-sec
                             if resStatus == 0 || resStatus == 1

@@ -210,7 +210,7 @@ router.get('/order/paySuccess',authority.loginRequired, function (req, res, next
     });
 });
 
-//把购物车子项按
+//把购物车子项按地区排序
 function tidyCartList(cartList,currentCityId){
     var fitCartArr = [];
     var unfitCartArr = [];

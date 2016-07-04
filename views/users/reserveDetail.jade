@@ -5,7 +5,7 @@ block content
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
-        |您的位置：首页<em>#{sep}</em>我的订单<em>#{sep}</em>订单详情<em>
+        |您的位置：首页<em>#{sep}</em>我的预约<em>#{sep}</em>预约详情<em>
     section.wrapper
         .reservation-detail
             -var serviceTypeJSON = {'0':'未选择','1':'门诊取样','2':'上门取样','3':'快递取样'};
@@ -38,11 +38,17 @@ block content
                                     span #{item.goodsInfo.goodsName}
                             td.text-stress #{item.password}
                         td.bd-l(rowspan="#{goodsLength}")
-                            p #{serviceTypeJSON[data.serviceType]}
-                            -var address = '';
-                            each area in JSON.parse(data.reservations[0].goodsInfo.address)
-                                -address += area.name;
-                            p.text-sec 取样地址:#{address}
+                            if data.serviceType == 1
+                                p 门诊取样
+                                p.text-sec 门诊地址: #{data.address}
+                                p.text-sec 预约时间: #{data.time}
+                            else if data.serviceType == 2
+                                p 上门取样
+                                p.text-sec 取样地址: #{data.address}
+                                p.text-sec 取样时间: #{data.time}
+                            else if data.serviceType == 3
+                                p 快递取样
+                                p.text-sec 收件地址: #{data.address}
 
 
     include ../includes/footer
