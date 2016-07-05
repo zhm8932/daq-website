@@ -58,11 +58,10 @@ exports.logout = function (req,res,next) {
 exports.checkLogin = function (req,res,next) {
     var _user = req.session.userInfo;
     var json = {"code":"200",login:false,"success":"true"};
-
-    req.accountId = req.session.userInfo.userAllInfo.accountCommon.id;
     
     if(_user) {
         json.login = true;
+        req.accountId = _user.userAllInfo.accountCommon.id;
     }
     res.send(JSON.stringify(json));
 };
