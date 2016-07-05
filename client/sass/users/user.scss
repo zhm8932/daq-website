@@ -1,5 +1,7 @@
 @import "../settings.scss";
-
+.left-nav-tit{
+  h2,.nav_toggle{display: none;}
+}
 .userBox {
   overflow: hidden;
   aside {

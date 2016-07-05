@@ -9,11 +9,11 @@ exports.get_goods_list = function (req,res,next) {
         currentPage = query.page||query.pageIndex||1;
 
     console.log("query:",query)
-    var get_goods_category = req.get_goods_category.data
+    var get_goods_category = req.get_goods_category.data;
     if(req.get_goods_category_success){
-        // categoryId = get_goods_category[0].id
+        fitst_categoryId = get_goods_category[0].id
     }
-    var categoryId = req.params.id||query.categoryId||'';
+    var categoryId = req.params.id||query.categoryId||fitst_categoryId||'';
     res.locals.goodsState = goodsState;
     res.locals.categoryId = categoryId;
     var bizParam = {

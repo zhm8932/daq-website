@@ -747,7 +747,8 @@ select {
     transition: all 0.3s; }
 .tab img {
   margin: 20px 0 0;
-  width: 100%; }
+  width: 100%;
+  display: none; }
 
 .globalBg {
   width: 100%;

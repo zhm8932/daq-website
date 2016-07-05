@@ -260,7 +260,8 @@
       margin-left: 1.3%; } }
 @media only screen and (max-width: 767px) {
   .positon {
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    display: none; }
 
   .nav ul li.on {
     background: none; }
@@ -409,7 +410,123 @@
     height: auto; }
 
   .rightNav {
-    display: none; } }
+    display: none; }
+
+  .userBox {
+    margin: 0 auto; }
+    .userBox aside {
+      width: 100%;
+      padding: 0 0 20px 0px;
+      margin: 0px;
+      position: relative; }
+    .userBox .box-right {
+      width: 100%; }
+    .userBox .user-main {
+      display: none; }
+
+  .users nav {
+    display: none; }
+
+  .left-nav-tit {
+    height: 50px;
+    line-height: 50px;
+    background-color: #48BED8;
+    position: relative; }
+    .left-nav-tit a, .left-nav-tit a.on {
+      color: #FFF;
+      font-size: 18px; }
+    .left-nav-tit h2 {
+      height: 50px;
+      display: block; }
+    .left-nav-tit .nav_toggle {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      float: right;
+      width: 35px;
+      height: 35px;
+      display: block; }
+      .left-nav-tit .nav_toggle span, .left-nav-tit .nav_toggle span:before, .left-nav-tit .nav_toggle span:after {
+        border-radius: 1px;
+        height: 4px;
+        width: 35px;
+        background: white;
+        position: absolute;
+        display: block;
+        content: ''; }
+      .left-nav-tit .nav_toggle span:before {
+        top: 10px; }
+      .left-nav-tit .nav_toggle span:after {
+        top: 20px; }
+      .left-nav-tit .nav_toggle.active span {
+        height: 0px; }
+        .left-nav-tit .nav_toggle.active span:before {
+          -webkit-transition: all 0.3s;
+          -moz-transition: all 0.3s;
+          -ms-transition: all 0.3s;
+          -o-transition: all 0.3s;
+          transition: all 0.3s;
+          top: 13px;
+          -webkit-transform: rotate(45deg);
+          -moz-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          -o-transform: rotate(45deg);
+          transform: rotate(45deg); }
+        .left-nav-tit .nav_toggle.active span:after {
+          -webkit-transition: all 0.3s;
+          -moz-transition: all 0.3s;
+          -ms-transition: all 0.3s;
+          -o-transition: all 0.3s;
+          transition: all 0.3s;
+          top: 13px;
+          -webkit-transform: rotate(-45deg);
+          -moz-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+          -o-transform: rotate(-45deg);
+          transform: rotate(-45deg); }
+
+  .left-nav {
+    background-color: #48BED8;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    display: none; }
+    .left-nav li {
+      padding: 0px; }
+      .left-nav li a {
+        color: #FFF;
+        display: block; }
+        .left-nav li a:hover {
+          color: #4A4A4A; }
+
+  .active .left-nav {
+    display: block; }
+  .active .nav_toggle span {
+    height: 0px; }
+    .active .nav_toggle span:before {
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+      top: 13px;
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg); }
+    .active .nav_toggle span:after {
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+      -o-transition: all 0.3s;
+      transition: all 0.3s;
+      top: 13px;
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg); } }
 @media only screen and (max-width: 600px) {
   .loginBox2 {
     border: none;

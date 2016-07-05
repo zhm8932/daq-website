@@ -1,6 +1,7 @@
 define(function (require,exports,module) {
-    function tab(ele) {
+    function tab(ele,fn) {
         var curPathname = location.pathname;
+        console.log("curPathname:",curPathname)
         // var $tab_Li = $('.tab li')
         var $tab_Li = $(ele)
         var nav_on_href =$('.nav ul li.on a').attr('href')
@@ -13,6 +14,8 @@ define(function (require,exports,module) {
             }
 
         }
+        fn&&fn();
+
     }
     // exports.tab = tab
     module.exports = tab

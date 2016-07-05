@@ -2,8 +2,23 @@ define(function(require){
     require('jquery');
     var config = require('../config');
     require('../libs/jquery.waterfall');
+    var tabFn = require('../libs/tab');
     $(document).ready(function() {
         require('../imgAuto');
+
+        //tab切换
+        tabFn('.tab li');
+        var $tab = $('.tab');
+        var selfId = $tab.find('.on').attr('data-id');
+        var imgs = $tab.find('img');
+
+        $.each(imgs,function (index,item) {
+            console.log(item)
+            if(selfId==$(item).attr('data-id')){
+                $(item).show()
+            }
+        });
+
 
         $('.pages').on('click','.prev,.next',function () {
             var page = $(this).attr('data-page'),
@@ -21,7 +36,7 @@ define(function(require){
                         console.log('数据请求中……')
                     },
                     success:function(data){
-                        console.log(json)
+                        // console.log(json);
                         var json = data
                             $list = $('#list_ask ul');
                         if(json.success){
@@ -31,7 +46,7 @@ define(function(require){
                                 //currentPage = json.data.currentPageDirectly,
                                 pageCount = json.data.pageCount;
 
-                            console.log(currentPage);
+                            // console.log(currentPage);
                             $.each(data,function (index,item) {
                                 html +='<li><a href="/healths/list/article/'+item.id+'" title="'+item.title+'"><i class="icon"></i>'+item.title+'</a></li>'
                             })
@@ -190,6 +205,9 @@ define(function(require){
                 }
             });
         }
+
+
+
 
 
 
