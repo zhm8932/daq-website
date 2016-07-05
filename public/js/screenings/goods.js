@@ -13,7 +13,7 @@ define(function(require){
         var imgs = $tab.find('img');
 
         $.each(imgs,function (index,item) {
-            console.log(item)
+            // console.log(item)
             if(selfId==$(item).attr('data-id')){
                 $(item).show()
             }

@@ -19,7 +19,7 @@ block content
         if get_goods_category_success
             each item in get_goods_category
                 if item.others
-                    img(data-id=item.id)(src='http://beta.image.douanquan.com/#{JSON.parse(item.others)[0].imageUrl}',alt=item.name,title=item.name)
+                    img(data-id=item.id)(src='#{JSON.parse(item.others)[0].imageUrl}',alt=item.name,title=item.name)
               //img(src='/images/goods_ban01.png')
     include goods_mixin
     section.item_list.clearfix
