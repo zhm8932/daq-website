@@ -30,6 +30,7 @@ exports.GetReservationList = function (req, callback) {
 
 exports.GetRegisterList = function (req, callback) {
     var bizParam = {
+        role:1,
         accountId: req.session.userInfo.userAllInfo.accountCommon.id
     };
 

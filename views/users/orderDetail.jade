@@ -19,8 +19,10 @@ block content
                 span.info
                     span.text-sec 服务区域:
                     span
-                        each area,index in JSON.parse(locals_address)
-                            | #{area.name}
+                        each areaObj,j in JSON.parse(data.goodsItemDTOs[0].address)
+                            if areaObj && j < 2
+                                | #{areaObj.name}
+
                 span.info
                     span.text-sec 下单时间:
                     span.date-time #{moment(data.updatedAt).format('YYYY-MM-DD HH:mm:ss')}

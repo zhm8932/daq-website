@@ -5,14 +5,14 @@ block content
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
-        |您的位置：首页<em>#{sep}</em>我的订单<em>#{sep}</em>订单详情<em>
+        |您的位置：首页<em>#{sep}</em>我的预约<em>#{sep}</em>预约详情<em>
     section.wrapper
         .reservation-detail
             -var serviceTypeJSON = {'0':'未选择','1':'门诊取样','2':'上门取样','3':'快递取样'};
             -var statusJSON = [{'1000':'选择产品','1100':'预约成功','1150':'门诊登记','1200':'收到样本','1900':'报告生成'},{'2000':'选择产品','2100':'预约成功','2150':'已安排护士取样','2200':'护士取样','2300':'收到样本','2900':'报告生成'},{'3000':'选择产品','3100':'预约成功','3200':'物料寄出','3300':'回寄样本','3400':'收到样本','3900':'报告生成'}];
             div.overview
                 span.info
-                    span.text-sec 订单编号:
+                    span.text-sec 预约编号:
                     span #{data.id}
                 span.info
                     span.text-sec 状态:
@@ -38,11 +38,17 @@ block content
                                     span #{item.goodsInfo.goodsName}
                             td.text-stress #{item.password}
                         td.bd-l(rowspan="#{goodsLength}")
-                            p #{serviceTypeJSON[data.serviceType]}
-                            -var address = '';
-                            each area in JSON.parse(data.reservations[0].goodsInfo.address)
-                                -address += area.name;
-                            p.text-sec 取样地址:#{address}
+                            if data.serviceType == 1
+                                p 门诊取样
+                                p.text-sec 门诊地址: #{data.address}
+                                p.text-sec 预约时间: #{data.time}
+                            else if data.serviceType == 2
+                                p 上门取样
+                                p.text-sec 取样地址: #{data.address}
+                                p.text-sec 取样时间: #{data.time}
+                            else if data.serviceType == 3
+                                p 快递取样
+                                p.text-sec 收件地址: #{data.address}
 
 
     include ../includes/footer
