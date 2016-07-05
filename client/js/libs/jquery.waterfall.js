@@ -101,9 +101,9 @@
                 minIndex;
             var wrapperW = $('.item_list .wrapper').width();
             var winW = $(window).width();
-            console.log("wrapperW:",wrapperW);
-            console.log("winW:",winW)
-            console.log("winW:",$('.wrapper'))
+            // console.log("wrapperW:",wrapperW);
+            // console.log("winW:",winW)
+            // console.log("winW:",$('.wrapper'))
             this._getColumnCount();
             this.colHeightArray = [];
 

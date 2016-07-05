@@ -112,6 +112,13 @@ $winW_2560:2560px;
   -o-transition:$varb ;
   transition: $varb;
 }
+@mixin transform($varb){
+  -webkit-transform:$varb ;
+  -moz-transform:$varb ;
+  -ms-transform:$varb ;
+  -o-transform:$varb ;
+  transform: $varb;
+}
 
 @mixin bdr($bdrc){
   border: 1px solid $bdrc;

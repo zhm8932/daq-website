@@ -3,7 +3,8 @@ extends ../layout
 block content
     link(href='/css/users/user.css',rel='styleSheet')
     include ../includes/responsive
-    include ../includes/nav
+    .users
+        include ../includes/nav
     .positon.wrapper
         |您的位置为：首页<em>#{sep}</em>我的订单
     section.wrapper.userBox.clearfix

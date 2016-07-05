@@ -192,7 +192,7 @@ $conWidth:1600px;
 }
 
 @media only screen and (max-width:$win_768 - 1px){
-  .positon{margin-bottom: 10px;}
+  .positon{margin-bottom: 10px;display: none;}
   .nav ul {
     li{
       &.on{background: none;
@@ -295,6 +295,86 @@ $conWidth:1600px;
   .loginBox2{float: none;margin:60px auto 0;}
   .copyright{height: auto;}
   .rightNav{display: none;}
+
+
+  .userBox{
+    margin: 0 auto;
+    aside{width: 100%;padding:0 0 20px 0px;margin: 0px;position: relative;}
+    .box-right{width: 100%}
+    .user-main{display: none;}
+  }
+  .users nav{display: none;}
+  .left-nav-tit{
+      height: 50px;line-height: 50px;background-color: $navBgColor;position: relative;
+      a,a.on{color: $white;font-size: 18px;}
+      h2{height: 50px;display: block;}
+      .nav_toggle{
+        position: absolute;right: 10px;top: 10px;float: right;width: 35px;height: 35px; display: block;
+        span,span:before,span:after{
+          border-radius: 1px;
+          height: 4px;
+          width: 35px;
+          background: white;
+          position: absolute;
+          display: block;
+          content: '';
+        }
+        span{
+          &:before{top: 10px;}
+          &:after{top: 20px;}
+
+        }
+        &.active{
+          span{
+            //transform: rotate(-45deg);
+            //display: none;
+            height: 0px;
+            &:before{
+              @include transition(all .3s);
+              top:13px;
+              @include transform(rotate(45deg));
+            }
+            &:after{
+              @include transition(all .3s);
+              top:13px;
+              @include transform(rotate(-45deg));
+            }
+          }
+
+        }
+      }
+  }
+  .left-nav{
+    background-color: $navBgColor;width: 100%;
+    position: absolute;left: 0px;display: none;
+    li{
+      padding: 0px;
+      a{color: $white;display: block;
+        &:hover{color: $textColor;}
+      }
+    }
+  }
+  .active{
+    .left-nav{display: block;}
+    .nav_toggle{
+      span{
+        //transform: rotate(-45deg);
+        //display: none;
+        height: 0px;
+        &:before{
+          @include transition(all .3s);
+          top:13px;
+          @include transform(rotate(45deg));
+        }
+        &:after{
+          @include transition(all .3s);
+          top:13px;
+          @include transform(rotate(-45deg));
+        }
+      }
+    }
+  }
+
 }
 @media only screen and (max-width: 600px){
   .loginBox2{border: none;box-sizing: border-box;width: 100%;}
