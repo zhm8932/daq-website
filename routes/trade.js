@@ -39,13 +39,13 @@ router.get('/cart/list', authority.loginRequired,function (req, res, next) {
     });
 });
 
-router.post('/cart/addItem',authority.loginRequired,function (req, res, next) {
+router.post('/cart/addItem',function (req, res, next) {
     request.AddCartItem(req, function (data, success) {
         res.json(data);
     });
 });
 
-router.post('/cart/delItem', authority.loginRequired,function (req, res, next) {
+router.post('/cart/delItem',function (req, res, next) {
     request.DelCartItem(req, function (data, success) {
         res.json(data);
     });
@@ -60,7 +60,7 @@ router.post('/order/comfirmView', authority.loginRequired,function (req, res, ne
 });
 
 
-router.post('/order/create',authority.loginRequired, function (req, res, next) {
+router.post('/order/create', function (req, res, next) {
     request.CreateOrder(req, function (data, success) {
         var json = JSON.parse(data);
         if(success){
@@ -105,13 +105,13 @@ router.get('/order/list',authority.loginRequired, function (req, res, next) {
     });
 });
 
-router.post('/order/cancel',authority.loginRequired, function (req, res, next) {
+router.post('/order/cancel', function (req, res, next) {
     request.CancelOrder(req, function (data, success) {
         res.json(data);
     });
 });
 
-router.post('/order/delete',authority.loginRequired, function (req, res, next) {
+router.post('/order/delete', function (req, res, next) {
     request.DeleteOrder(req, function (data, success) {
         res.json(data);
     });
@@ -132,13 +132,13 @@ router.get('/order/detail', authority.loginRequired,function (req, res, next) {
     });
 });
 
-router.post('/pay/payid',authority.loginRequired, function (req, res, next) {
+router.post('/pay/payid', function (req, res, next) {
     request.GetPayId(req, function (data, success) {
         res.json(data);
     });
 });
 
-router.post('/order/pay',authority.loginRequired, function (req, res, next) {
+router.post('/order/pay', function (req, res, next) {
     request.OrderPay(req, function (data, success) {
         res.json(data);
     });
@@ -167,7 +167,7 @@ router.get('/order/wechatPay',authority.loginRequired, function (req, res, next)
     });
 });
 
-router.get('/order/state',authority.loginRequired, function (req, res, next) {
+router.get('/order/state', function (req, res, next) {
     request.GetOrderDetail(req, function (data, success) {
         var resJson = {};
         if (success) {

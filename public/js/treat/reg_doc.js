@@ -1,54 +1,58 @@
 define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
     var login = require('../login.js');
+    console.log('引入1');
     require("moment");
+    console.log('引入2');
     require("daterangepicker");
 
-    $(function () {
-        $('#scheduleId-select .option').click(function () {
-            var $this = $(this);
-            $('#scheduleId').val($this.data('value'));
-            var cost = parseFloat($this.data('cost'));
-            $('#cost').html((cost / 100).toFixed(2) + '元');
-            var scheduleSelect = $("#scheduleId-select");
-            if(scheduleSelect.attr('data-load') == 'first'){
-                scheduleSelect.attr('data-load','non-first');
-                $('#commit-reg').removeClass('disabled').off('click').on('click', function () {
-                    commitReg($(this));
-                });
+
+
+    console.log('DOM加载完成执行了');
+    $('#scheduleId-select .option').click(function () {
+        var $this = $(this);
+        $('#scheduleId').val($this.data('value'));
+        var cost = parseFloat($this.data('cost'));
+        $('#cost').html((cost / 100).toFixed(2) + '元');
+        var scheduleSelect = $("#scheduleId-select");
+        if(scheduleSelect.attr('data-load') == 'first'){
+            scheduleSelect.attr('data-load','non-first');
+            $('#commit-reg').removeClass('disabled').off('click').on('click', function () {
+                commitReg($(this));
+            });
+        }
+    });
+
+    var hasBind = $('#hasBind').val();
+    if (hasBind != 'true') {
+        showAccountDialog({});
+        // utils.BuildSelect($('#gender'));
+
+        $('#birthday').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            autoUpdateInput: false,   //默认为空
+            locale : {
+                format : 'YYYY-MM-DD',
+                daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
+                monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月',
+                    '七月', '八月', '九月', '十月', '十一月', '十二月' ]
             }
+        }, function(start, end, label) {
+            $('#birthday').val(start.format('YYYY-MM-DD'));
         });
 
-        var hasBind = $('#hasBind').val();
-        if (hasBind != 'true') {
-            showAccountDialog({});
-            // utils.BuildSelect($('#gender'));
-
-            $('#birthday').daterangepicker({
-                singleDatePicker: true,
-                showDropdowns: true,
-                autoUpdateInput: false,   //默认为空
-                locale : {
-                    format : 'YYYY-MM-DD',
-                    daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
-                    monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月',
-                        '七月', '八月', '九月', '十月', '十一月', '十二月' ]
-                }
-            }, function(start, end, label) {
-                $('#birthday').val(start.format('YYYY-MM-DD'));
-            });
-
-            // completeDialog.find('input').on('blur',function(){
-            //     validateInput(completeDialog);
-            // });
-            // completeDialog.find('#gender .option').on('click',function(){
-            //     validateInput(completeDialog);
-            // })
+        // completeDialog.find('input').on('blur',function(){
+        //     validateInput(completeDialog);
+        // });
+        // completeDialog.find('#gender .option').on('click',function(){
+        //     validateInput(completeDialog);
+        // })
 
 
-        }
+    }
 
-    });
+
 
 
     // function validateInput(completeDialog){
