@@ -31,11 +31,11 @@ block content
                         figcaption
                             h4: a(href='/healths/list/article/#{item.id}',target='_blank') #{item.title}
                             time 发表于：#{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')}
-                            p
+                            p.ellips #{item.brief}
 
-                                if item.brief&&item.brief.length>60
+                                //-if item.brief&&item.brief.length>60
                                     |#{item.brief.substring(0,60)}……
-                                else
+                                //-else
                                     |#{item.brief}
 
                 //-figure

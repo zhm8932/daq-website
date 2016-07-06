@@ -2,6 +2,7 @@ define(function(require){
     require('jquery');
     var config = require('../config');
     require('../libs/jquery.waterfall');
+    require('../libs/jquery.ellipsis');
     var tabFn = require('../libs/tab');
     $(document).ready(function() {
         require('../imgAuto');
@@ -19,6 +20,20 @@ define(function(require){
             }
         });
 
+        $('.ellips').ellipsis({
+            row:3,
+            char:'……',
+            position: 'tail',
+            callback: function() {
+                console.log($(this).text());
+            }
+        })
+        // $.each($('.ellips'),function (index,item) {
+        //     console.log(item)
+        //     $(item).ellipsis({
+        //         row:3
+        //     })
+        // })
 
         $('.pages').on('click','.prev,.next',function () {
             var page = $(this).attr('data-page'),
