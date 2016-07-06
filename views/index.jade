@@ -26,57 +26,8 @@ block content
             |肿瘤精准医疗
   .home.wrapper
     include includes/nav
+
   section.item_list.clearfix
-    //div #{JSON.stringify(get_goods_list)}
-    .wrapper
-      header
-        h2
-          i.icon
-          |精准检测
-        p 整合国际国内最精准、最快速的检测技术、方法、设备、试剂等，为有需求的客户提供便捷、快速、精准、及时的检测服务。
-      .pic_list
-        //div #{parseInt(5*Math.random())+1}
-        mixin randoms(n)
-          #{parseInt(n*Math.random())+1}
-        //-div(class='line line01')
-          +randoms(5)
-        mixin transferUnit(arr)
-          if parseFloat(arr)/100%1!=0
-             |#{parseFloat(arr)/100}
-          else
-             |#{parseFloat(arr)/100}.00
-        if get_goods_list_success
-          ul
-            each item in get_goods_list
-              li
-                  a(href='/screenings/goods/detail/#{item.id}',target='_blank')
-                    //img(data-original='images/product1.png')
-                    if item.goodsImages
-                      if browser.ie
-                        img(src='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}',title='#{item.goodsName}')
-                      else
-                        img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}',title='#{item.goodsName}')
-                    h4 #{item.goodsName}
-                  if item.productKeyAttributeList
-                    each arr in item.productKeyAttributeList
-                      if arr.attributeName=='fit_people'
-                        p
-                          if arr.value.length > 50
-                            | #{arr.value.substring(0, 50)}……
-                          else
-                            | #{arr.value}
-                  .price
-                    span.new
-                      em ￥
-                      +transferUnit(item.discountPrice)
-                    span.old
-                      | 原价￥
-                      +transferUnit(item.price)
-          div
-            a.more(href='/screenings/goods')
-             |查看全部
-             i.icon
-  section.item_list.boxBg.clearfix
     .wrapper
       //-div #{JSON.stringify(get_department)}
       header
@@ -106,6 +57,56 @@ block content
           a.more(href='/agencys',target='_blank')
             |查看全部
             i.icon
+  section.item_list.boxBg.clearfix
+    //div #{JSON.stringify(get_goods_list)}
+    .wrapper
+      header
+        h2
+          i.icon
+          | 精准检测
+        p 整合国际国内最精准、最快速的检测技术、方法、设备、试剂等，为有需求的客户提供便捷、快速、精准、及时的检测服务。
+      .pic_list
+        //div #{parseInt(5*Math.random())+1}
+        mixin randoms(n)
+          #{parseInt(n * Math.random()) + 1}
+        //-div(class='line line01')
+          +randoms(5)
+        mixin transferUnit(arr)
+          if parseFloat(arr) / 100 % 1 != 0
+            | #{parseFloat(arr) / 100}
+          else
+            | #{parseFloat(arr) / 100}.00
+        if get_goods_list_success
+          ul
+            each item in get_goods_list
+              li
+                a(href='/screenings/goods/detail/#{item.id}',target='_blank')
+                  //img(data-original='images/product1.png')
+                  if item.goodsImages
+                    if browser.ie
+                      img(src='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}',title='#{item.goodsName}')
+                    else
+                      img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}',title='#{item.goodsName}')
+                  h4 #{item.goodsName}
+                if item.productKeyAttributeList
+                  each arr in item.productKeyAttributeList
+                    if arr.attributeName == 'fit_people'
+                      p
+                        if arr.value.length > 50
+                          | #{arr.value.substring(0, 50)}……
+                        else
+                          | #{arr.value}
+                .price
+                  span.new
+                    em ￥
+                    +transferUnit(item.discountPrice)
+                  span.old
+                    | 原价￥
+                    +transferUnit(item.price)
+          div
+            a.more(href='/screenings/goods')
+              | 查看全部
+              i.icon
   section.item_list.clearfix
     .wrapper
         header.tc

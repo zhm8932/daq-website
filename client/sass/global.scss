@@ -432,7 +432,7 @@ select {
   line-height: 50px;
   background-color: $navBgColor;
   position: relative;
-  z-index: 2;
+  z-index: 2;margin-bottom: 10px;
   ul {
     i {
       width: 1px;
@@ -471,7 +471,7 @@ select {
 }
 
 .positon {
-  padding: 10px 0;
+  padding:0 0 10px 0;
   margin-bottom: 10px;
   border-bottom: 1px solid $bdrc_f2;
   em {
@@ -663,7 +663,7 @@ select {
   }
   .department_list {
     li {
-      height: 344px;
+      height: 310px;
       h4 {
         display: inline-block;
         padding: 0 30px 0 20px;
