@@ -2,6 +2,7 @@ define(function(require,exports,module) {
     var utils = require('./libs/utils');
     require("moment");
     require("daterangepicker");
+    require('cookie');
     // var TouchSlide = require('./libs/TouchSlide.1.1.source')
     var pathname = window.location.pathname;
     var $body = $('body');
@@ -203,6 +204,7 @@ define(function(require,exports,module) {
             success:function(json){
                 var json = JSON.parse(json);
                 if(json.success){
+                    getCartCount();
                     var myMsg = new utils.MsgShow({
                         delayTime:2000,
                         title:'<i class="icon"></i>登录成功!',
@@ -241,6 +243,7 @@ define(function(require,exports,module) {
                 // console.log(json)
                 var json = JSON.parse(json);
                 if(json.success){
+                    $cartNum.html('0');
                     loginRequiredArr.forEach(function (item) {
                         if(pathname.search(item)!=-1){
                             console.log('页面跳转');
@@ -264,7 +267,7 @@ define(function(require,exports,module) {
                 send:true
             },
             success:function(json){
-                console.log(json)
+                console.log(json);
                 obj.callback&&obj.callback(json)
             }
 
@@ -427,11 +430,42 @@ define(function(require,exports,module) {
             }
         });
     }
+    var $cartNum = $('.cartNum');
+    //获取购物车数量
+    function getCartCount(accountId) {
+        $.ajax({
+            type:'get',
+            url:'/trade/cart/GetCartCount',
+            // data:data,
+            success:function(json){
+                var json = JSON.parse(json);
+                console.log(json);
+                if(json.success){
+                    var cartCout = json.data.length||'0';
+                    $cartNum.html(cartCout)
+                }
+
+            }
+        })
+    }
+    function cartCoutAddOne() {
+        var cartNum = parseInt($cartNum.text())+1;
+        $cartNum.text(cartNum);
+
+    }
+    function cartCoutDelOne() {
+        var cartNum = parseInt($cartNum.text())-1;
+        $cartNum.text(cartNum);
+
+    }
 
 
     module.exports={
         showLogin:showLogin,
-        CheckLogin:checkLogin
+        CheckLogin:checkLogin,
+        getCartCount:getCartCount,
+        cartCoutAddOne:cartCoutAddOne,
+        cartCoutDelOne:cartCoutDelOne
     }
 
 });

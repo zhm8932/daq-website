@@ -41,6 +41,8 @@ exports.login = function (req,res,next) {
     util.ajax('GET',api.UserWebLogin,req, bizParam,function (data,success) {
         if(success){
             req.session.userInfo = JSON.parse(data).data;
+            res.cookie('accountId',JSON.parse(data).data.userAllInfo.accountCommon.id);
+
         }
         res.send(data)
     });
@@ -51,6 +53,7 @@ exports.logout = function (req,res,next) {
     req.session.destroy(function(){
         console.log('退出登录');
     });
+    res.cookie('accountId','null',{maxAge:0});
     res.send('{"code":"200","success":"true"}');
 };
 
@@ -103,3 +106,10 @@ exports.getVerCode = function (req,res,next) {
     });
 
 };
+exports.userAgreement = function (req,res) {
+    res.render('userAgreement',{
+        title:'都安全用户协议',
+        keywords:'都安全用户协议',
+        description:'都安全用户协议'
+    });
+}

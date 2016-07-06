@@ -5,7 +5,7 @@ define(function(require){
 
     require('touchslider');
 
-    console.log("login:",login)
+    // console.log("login:",login)
     $(function(){
         require('../imgAuto');
         if(checkArea()){
@@ -236,10 +236,10 @@ define(function(require){
                         delayTime:2000,
                         title:'<i class="icon"></i>加入购物车成功!',
                         otherBox:'successBox'
-                    });
-                    setTimeout(function(){
-                        $('.msgBox').hide();
-                    },2000);
+                    }).hideMsg();
+                    //-login.getCartCount();
+                    login.cartCoutAddOne()
+                    
                 }
             });
         });

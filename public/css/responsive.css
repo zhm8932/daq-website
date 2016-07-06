@@ -137,6 +137,11 @@
   body {
     font-size: 18px; }
 
+  .userAgreement {
+    font-size: 16px; }
+    .userAgreement h3 {
+      font-size: 18px; }
+
   .icon {
     vertical-align: inherit; }
 

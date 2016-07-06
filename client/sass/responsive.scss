@@ -111,6 +111,9 @@ $conWidth:1600px;
 @media only screen and (max-width: $win_768){
   *{font-family: 'HanHei SC', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif,"微软雅黑";}
   body{font-size: 18px;}
+  .userAgreement{font-size: 16px;
+    h3{font-size: 18px;}
+  }
 
   .icon{vertical-align: inherit;}
   .home .wrapper{width: auto;}
