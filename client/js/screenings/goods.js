@@ -23,7 +23,6 @@ define(function(require){
         $('.ellips').ellipsis({
             row:3,
             char:'……',
-            position: 'tail',
             callback: function() {
                 console.log($(this).text());
             }
@@ -31,7 +30,12 @@ define(function(require){
         // $.each($('.ellips'),function (index,item) {
         //     console.log(item)
         //     $(item).ellipsis({
-        //         row:3
+        //         row:3,
+        //         char:'……',
+        //         position: 'tail',
+        //         callback: function() {
+        //             console.log($(this).text());
+        //         }
         //     })
         // })
 
