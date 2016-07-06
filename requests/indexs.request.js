@@ -103,3 +103,8 @@ exports.getVerCode = function (req,res,next) {
     });
 
 };
+exports.userAgreement = function (req,res) {
+    res.render('userAgreement',{
+        title:'都安全用户协议'
+    });
+}

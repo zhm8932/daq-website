@@ -82,5 +82,6 @@ router.get('/login',Requests.loginView);
 router.get('/changeCity',Requests.changeCity);
 
 router.post('/getVerCode',Requests.getVerCode);
+router.get('/userAgreement',Requests.userAgreement);
 
 module.exports = router;
