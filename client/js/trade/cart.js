@@ -81,6 +81,7 @@ define(function (require, exports, module) {
                         callback: function (result) {
                             $this.closest('.table-tr').hide(500);
                             $this.closest('.table-tr').find('.checkbox').addClass('deleted').removeClass('checked');
+                            login.getCartCount();
                             updateTotalView();
                         },
                         errorFun: function (result) {
