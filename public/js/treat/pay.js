@@ -13,10 +13,13 @@ define(function (require, exports, module) {
     });
 
     function alipay(id,payWay){
+        var href = window.location.href;
+        var domain = href.substr(0,href.indexOf('/',href.indexOf('/',href.indexOf('/')+1)+1));
+        console.log(domain);
         login.CheckLogin(function() {
             utils.SendAjax({
                 url: '/trade/order/pay',
-                param: {id: id, payWay: payWay,ext:'http://beta.douanquan.com/users/register/list'},
+                param: {id: id, payWay: payWay,ext:domain+'/users/register/list'},
                 method: 'POST',
                 tipText: '前往支付页面',
                 callback: function (result) {
