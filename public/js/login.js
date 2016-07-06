@@ -243,7 +243,7 @@ define(function(require,exports,module) {
                 // console.log(json)
                 var json = JSON.parse(json);
                 if(json.success){
-                    $cartNum.html('(0)');
+                    $cartNum.html('0');
                     loginRequiredArr.forEach(function (item) {
                         if(pathname.search(item)!=-1){
                             console.log('页面跳转');
@@ -442,18 +442,30 @@ define(function(require,exports,module) {
                 console.log(json);
                 if(json.success){
                     var cartCout = json.data.length||'0';
-                    $cartNum.html('('+cartCout+')')
+                    $cartNum.html(cartCout)
                 }
 
             }
         })
+    }
+    function cartCoutAddOne() {
+        var cartNum = parseInt($cartNum.text())+1;
+        $cartNum.text(cartNum);
+
+    }
+    function cartCoutDelOne() {
+        var cartNum = parseInt($cartNum.text())-1;
+        $cartNum.text(cartNum);
+
     }
 
 
     module.exports={
         showLogin:showLogin,
         CheckLogin:checkLogin,
-        getCartCount:getCartCount
+        getCartCount:getCartCount,
+        cartCoutAddOne:cartCoutAddOne,
+        cartCoutDelOne:cartCoutDelOne
     }
 
 });
