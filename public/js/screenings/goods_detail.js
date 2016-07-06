@@ -127,14 +127,15 @@ define(function(require){
         //滚动时导航锁定在顶部
         var tab = $('.goods_detail #tab');
         tab.attr('data-orign-top',tab.offset().top);//得到初始高度
-        var wrapperWidth = $('.wrapper').width();
+        // var wrapperWidth = $('.wrapper').width();
+        var width = tab.closest('.wrapper').width();
+        console.log('width:'+width);
         $(document).scroll(function(){
             var topBarHeight = $('.topBar').height();
             var tab = $('.goods_detail #tab');
-            var width = tab.closest('.wrapper').width();
 
             if($(document).scrollTop() + topBarHeight > tab.attr('data-orign-top') ){
-                tab.css('position','fixed').css({'top':topBarHeight+'px','width':wrapperWidth});
+                tab.css('position','fixed').css({'top':topBarHeight+'px','width':width});
                 $('#tab-copy').removeClass('none');
             }else{
                 tab.css('position','static').css('width',width+'px');

@@ -43,6 +43,7 @@ exports.AddRegByDoc = function (req, callback) {
 
 exports.GetOrderDetail = function (req, callback) {
     var bizParam = {
+        role:1,
         reservationId:req.query.reservationId
     };
 

@@ -2,6 +2,10 @@ define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
     var login = require('../login');
 
+    var href = window.location.href;
+    var domain = href.substr(0,href.indexOf('/',href.indexOf('/',href.indexOf('/')+1)+1));
+    console.log(domain);
+
     $('.alipay').on('click',function(){
         getPayId(alipay,4);
     });
@@ -30,10 +34,13 @@ define(function (require, exports, module) {
 
     function alipay(id,payWay){
         var order_no = $('#order-detail').data('id');
+        var href = window.location.href;
+        var domain = href.substr(0,href.indexOf('/',href.indexOf('/',href.indexOf('/')+1)+1));
+        console.log(domain);
         login.CheckLogin(function() {
             utils.SendAjax({
                 url: '/trade/order/pay',
-                param: {id: id, payWay: payWay,ext:'http://beta.douanquan.com/trade/order/paySuccess?order_no='+order_no},
+                param: {id: id, payWay: payWay,ext:domain+'/trade/order/paySuccess?order_no='+order_no},
                 method: 'POST',
                 tipText: '前往支付页面',
                 callback: function (result) {
