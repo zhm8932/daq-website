@@ -56,20 +56,20 @@ router.get('/register/list',authority.loginRequired,function(req,res,next){
     });
 });
 
-router.post('/register/del',authority.loginRequired,function(req,res,next) {
+router.post('/register/del',function(req,res,next) {
     request.DelRegister(req,function(data,success) {
         res.json(data);
     });
 });
 
-router.post('/register/cancel',authority.loginRequired,function(req,res,next) {
+router.post('/register/cancel',function(req,res,next) {
     request.CancelRegister(req,function(data,success) {
         res.json(data);
     });
 });
 
 
-router.get('/coupon/list',authority.loginRequired,function(req,res,next) {
+router.get('/coupon/list',function(req,res,next) {
     request.GetCouponList(req,function(data,success) {
         res.json(data);
     });
@@ -90,7 +90,7 @@ router.get('/coupon/listView',authority.loginRequired,function(req,res,next) {
     });
 });
 
-router.post('/coupon/addByInvite',authority.loginRequired,function(req,res,next) {
+router.post('/coupon/addByInvite',function(req,res,next) {
     request.AddCouponByInvite(req,function(data,success) {
         res.json(data);
     });
@@ -112,13 +112,13 @@ router.get('/patient/list',authority.loginRequired,function(req,res,next) {
 });
 
 
-router.post('/patient/add',authority.loginRequired,function(req,res,next) {
+router.post('/patient/add',function(req,res,next) {
     request.AddPatient(req,function(data,success) {
         res.json(data);
     });
 });
 
-router.post('/patient/del',authority.loginRequired,function(req,res,next) {
+router.post('/patient/del',function(req,res,next) {
     request.DelPatient(req,function(data,success) {
         res.json(data);
     });
@@ -152,15 +152,15 @@ router.get('/account/info',authority.loginRequired,function(req,res,next) {
     });
 });
 
-router.get('/account/hasBindHis',authority.loginRequired,function(req,res,next) {
+router.get('/account/hasBindHis',function(req,res,next) {
     request.HasBindHis(req,function(data,success) {
         res.json(data);
     });
 });
 
-router.post('/account/complete',authority.loginRequired,function(req,res,next) {
+router.post('/account/complete',function(req,res,next) {
     request.CompleteAccount(req,res,function(data,success) {
-        res.send(data);
+        res.json(data);
     });
 });
 

@@ -99,9 +99,6 @@ exports.getVerCode = function (req,res,next) {
         }
     };
     util.ajax('post',api.SmsSendVerCode,req, bizParam,function (data,success) {
-        if(success){
-            req.session.userInfo = JSON.parse(data).data.userAllInfo;
-        }
         res.send(data)
     });
 

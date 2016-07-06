@@ -58,9 +58,10 @@ redisClient.on('ready',function(err){
 // 此时req对象还没有session这个属性
 
 app.use(session({
+  name:"douanquan.sid",
   store: new redisStore(config.options),
   secret: config.sessionSecret,
-  cookie:{maxAge:12*60*60*1000}
+  cookie:{maxAge:12*60*60*1000,httpOnly:true}
 
   // store: new redisStore(options),
   // secret: config.sessionSecret,

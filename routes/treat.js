@@ -62,7 +62,7 @@ router.get('/reg/doctorView',authority.loginRequired, function (req, res, next) 
 });
 
 
-router.post('/reg/byDoc', authority.loginRequired, function (req, res, next) {
+router.post('/reg/byDoc', function (req, res, next) {
     request.AddRegByDoc(req, function (data, success) {
         res.json(data);
     });
@@ -80,7 +80,7 @@ router.get('/reg/topay', function (req, res, next) {
     });
 });
 
-router.get('/order/state',authority.loginRequired, function (req, res, next) {
+router.get('/order/state', function (req, res, next) {
     request.GetOrderDetail(req, function (data, success) {
         var resJson = {};
         if (success) {
