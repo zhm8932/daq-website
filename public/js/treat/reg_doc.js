@@ -1,12 +1,12 @@
 define(function (require, exports, module) {
+    console.log('进入了');
     var utils = require('../libs/utils.js');
-    var login = require('../login.js');
     console.log('引入1');
-    require("moment");
+    var login = require('../login.js');
     console.log('引入2');
+    require("moment");
+    console.log('引入3');
     require("daterangepicker");
-
-
 
     console.log('DOM加载完成执行了');
     $('#scheduleId-select .option').click(function () {

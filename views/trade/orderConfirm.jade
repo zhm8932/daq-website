@@ -92,10 +92,12 @@ block content
             input(type="hidden",id="discountPriceTotal",value="#{discountPriceTotal}")
             input(type="hidden",id="servicePriceTotal",value="#{servicePriceTotal}")
             input(type="hidden",id="cityId",value="#{cityId}")
+            input(type="hidden",id="orderToken",value="#{orderToken}")
 
             form#submitForm(action = "/trade/order/create",method="POST")
                 input(type="hidden",name="orderPlaceDTO")
                 input(type="hidden",name="ids")
     include ../includes/footer
+    script(src="/js/trade/order_confirm.js")
     script.
         seajs.use('/js/trade/order_confirm.js')

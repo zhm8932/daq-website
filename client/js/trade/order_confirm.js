@@ -4,12 +4,17 @@ define(function (require, exports, module) {
 
     var unfitCouponNum = 0;
     var fitCouponNum = 0;
+    var checkSubmitFlg = false;
 
     $(function () {
         $('.add-coupon').on('click', function () {
             addCoupon($(this));
         });
         $('#submit-btn').on('click', function () {
+            if(checkSubmitFlg){
+                utils.ShowComfirmDialog({tipText:'请勿重复提交订单',noConfirmBtn:true});
+                return false;
+            }
             submitOrder($(this));
         });
 
@@ -69,13 +74,15 @@ define(function (require, exports, module) {
         // $('#submitForm').submit();
 
         $this.addClass('disabled').off('click');
+        var orderToken = $('#orderToken').val();
 
         utils.SendAjax({
             url: '/trade/order/create',
-            param: {orderPlaceDTO:JSON.stringify(orderPlaceDTO),ids:JSON.stringify(ids)},
+            param: {orderPlaceDTO:JSON.stringify(orderPlaceDTO),ids:JSON.stringify(ids),orderToken:orderToken},
             method: 'POST',
             tipText: '提交订单',
             callback: function (result) {
+                checkSubmitFlg = true;
                 window.location.href = '/trade/order/orderSuccess?id='+result.id+'&totalCost='+result.totalCost;
             },
             errorFun: function () {

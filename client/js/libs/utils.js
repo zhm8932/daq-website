@@ -447,9 +447,9 @@ define(function(require,exports,module) {
             });
         });
 
-        $('body').on('click',function(){
-            objs.removeClass('open');
-        })
+        // $('body').on('click',function(){
+        //     objs.removeClass('open');
+        // })
     }
 
     function setMinHeight(){

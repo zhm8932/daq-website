@@ -53,17 +53,32 @@ router.post('/cart/delItem',function (req, res, next) {
 
 
 router.post('/order/comfirmView', authority.loginRequired,function (req, res, next) {
+    var orderToken = Math.random().toFixed(8);
+    console.log('1111111'+orderToken);
+    req.session.orderToken = orderToken;
     res.render('trade/orderConfirm', {
         title: '核对订单信息',
-        data: req.body
+        data: req.body,
+        orderToken:orderToken
     });
 });
 
 
 router.post('/order/create', function (req, res, next) {
+    console.log('======orderToken'+req.body.orderToken);
+    console.log('======orderTokenSession'+req.session.orderToken);
+    if(req.body.orderToken != req.session.orderToken){
+        var json = JSON.stringify({success:false,msg:'请勿重复提交订单'});
+        res.json(json);
+        res.end();
+        return false;
+    }
+
+
     request.CreateOrder(req, function (data, success) {
         var json = JSON.parse(data);
         if(success){
+            req.session.orderToken = '';
             var resJson = {
                 id: json.data.id,
                 totalCost: json.data.totalCost,
@@ -81,6 +96,7 @@ router.post('/order/create', function (req, res, next) {
             }else{
                 res.json(JSON.stringify(resJson));
             }
+
         }else{
             res.json(data);
         }
@@ -146,6 +162,7 @@ router.post('/order/pay', function (req, res, next) {
 
 
 router.get('/order/orderSuccess',authority.loginRequired, function (req, res, next) {
+
     res.render('trade/orderSuccess', {
         title: '下单成功',
         data: {
