@@ -1,7 +1,8 @@
 @import "../settings.scss";
 
+$health_detail_w:690px;
 .health_detail{
-  width: 690px;float: left;
+  width: $health_detail_w;float: left;
   text-align: center;
 
   header{
@@ -24,9 +25,9 @@
     padding:30px 0;margin-bottom:-50px;
     h2{padding:0 0 20px; font-size:24px;border_bottom:1px solid $gray9B}
     ul{
-      font-size: 16px;
+      font-size: 16px;width: $health_detail_w;
       i{width: 6px;height: 6px;border-radius: 100%;background-color:$gray9B;display: inline-block;margin-right: 10px;vertical-align:middle}
-      li{width: 50%;float: left;line-height:40px; ;
+      li{width: 50%;float: left;line-height:40px;height: 40px;overflow: hidden ;
         a{display: block;}
       }
     }

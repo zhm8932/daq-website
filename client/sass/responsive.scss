@@ -214,7 +214,8 @@ $conWidth:1600px;
     padding-bottom: 20px;
     .pic_list{
       ul{margin-left: -3%;
-        li{width: 47%;margin:20px 0 0 3%;height: auto;
+        //li{width: 47%;margin:20px 0 0 3%;height: auto;
+        li{width: 100%;margin:20px 0 0 3%;height: auto;
           a{
             h4{line-height:30px;height:30px;position: static;margin-top: 10px;font-size: 20px;background: none;color: $textc_48B;margin-bottom:0px;overflow: hidden}
           }
@@ -226,6 +227,11 @@ $conWidth:1600px;
       }
 
       .more{margin-top: 20px;}
+    }
+    .department_list{
+      li{
+        h4{margin: 0px;background: none;display: block;position: static;color: $textc_48B;font-size: 18px;font-weight: bold;text-align:left;padding-left: 10px;}
+      }
     }
     .standard{
       border: none;
@@ -308,9 +314,9 @@ $conWidth:1600px;
   }
   .users nav{display: none;}
   .left-nav-tit{
-      height: 50px;line-height: 50px;background-color: $navBgColor;position: relative;
+      height: 50px;line-height: 50px;background-color: $navBgColor;position: relative;z-index: 9;
       a,a.on{color: $white;font-size: 18px;}
-      h2{height: 50px;display: block;}
+      h2{height: 50px;display: block;padding-left: 10px;}
       .nav_toggle{
         position: absolute;right: 10px;top: 10px;float: right;width: 35px;height: 35px; display: block;
         span,span:before,span:after{
@@ -347,16 +353,20 @@ $conWidth:1600px;
         }
       }
   }
-  .left-nav{
-    background-color: $navBgColor;width: 100%;
-    position: absolute;left: 0px;display: none;
-    li{
-      padding: 0px;
-      a{color: $white;display: block;
-        &:hover{color: $textColor;}
+  .userBox aside{
+    float: none;
+    .left-nav{
+      background-color: $navBgColor;width: 100%;box-sizing: border-box;padding-top: 0px;padding-bottom: 20px;
+      position: absolute;left: 0px;display: none;
+      li{
+        padding: 0px;
+        a{color: $white;display: block;border-bottom: 1px solid $white;
+          &:hover{color: $textColor;}
+        }
       }
     }
   }
+
   .active{
     .left-nav{display: block;}
     .nav_toggle{
@@ -376,6 +386,96 @@ $conWidth:1600px;
         }
       }
     }
+  }
+  .box-right{
+    background-color: $bgc_F7;
+    .order{
+      dt{
+        background: $white;border-bottom: none;
+        .date-time{display: none;}
+      }
+      dd{
+        position: relative;overflow: visible;background-color: $white;margin-top: -5px;
+        .col{margin: 0px;padding: 0px;}
+        .goods{width: 100%;margin: 0px;padding: 0px;
+          .row + .row{border-top: none;}
+          .row{position: relative;background-color: $bgc_F7;padding: 10px;margin-top: 5px;}
+          .row-col{padding: 0px;}
+          .goods-detail{width: auto;
+            img{width: 30%;margin-right: 10px;}
+            h5{float: none;width: auto;font-size: 18px;}
+          }
+          .goods-others{position: absolute;left:33%;top:50px;}
+        }
+        .col + .order-state{border-left: none}
+        .order-state{
+          box-sizing: border-box;
+          width: 100%;border-left:none;border-bottom: 1px solid $bdrc_f2; margin:0 10px 10px 10px;padding:5px 10px;
+          p{display: none;}
+          .realCost{display: block;float: right;padding-right: 10px;
+            em{color: $text_red_F1;}
+          }
+          .state-info{position: absolute;right: 10px;top:-36px;display: block;border-bottom: none;}
+        }
+        .operation{width: 100%;margin-bottom: -10px;
+          p{ float: right;margin-right: 10px;
+          }
+          a{border: 1px solid $bdrc1;display: block;border-radius: 5px;padding: 3px 8px}
+          .topay a{color: $text_red_F1;}
+        }
+      }
+    }
+  }
+  //-我的订单
+  .order-detail-wap{
+    h3{font-size: 18px;padding:10px;
+      .orderState{float: right;}
+    }
+    dl{
+      margin-bottom: 5px;background-color: $bgc_F7;padding: 10px;
+      dt{
+        position: relative;
+        img{width: 20%;float: left;margin-right: 10px;}
+        span{padding: 3px 10px;}
+        .text-sec{background-color: $bgc_ccc;color: $text_gray_59}
+        .text-stress{background-color: $text_red_f2;color: $white;}
+        .dealPrice{position: absolute;right:0px;top:0px;padding: 0px;}
+        p{margin-right: 80px;}
+
+      }
+      dd{
+        clear: both;padding-top: 10px;
+        p{line-height: 30px;}
+      }
+    }
+    .price-text{
+      text-align: right;padding-right: 10px;
+      line-height: 30px;
+    }
+    .area{
+      margin: 10px 0;padding:10px;text-align: right;
+      border-top: 10px solid;border-bottom: 15px solid;
+      border-color: $bgc_F7;line-height: 30px;
+    }
+
+  }
+  //-我的报告
+  .registerings{
+    dl{
+      line-height: 30px;margin-bottom: 10px;border-bottom: 1px solid $bdrc_ddd;
+      h3{padding: 10px;background-color: $white;font-size: 18px;
+        .status{float: right;}
+      }
+      dt{
+        padding: 10px;
+      }
+      dd{background-color: $white;padding: 10px;
+        a{float: right;border:1px solid $bdrc1;padding: 0px 20px;border-radius: 5px;}
+      }
+
+
+    }
+
   }
 
 }

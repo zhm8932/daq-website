@@ -70,6 +70,7 @@ router.use(function(req, res, next) {
 
 router.get('*',function (req,res,next) {
     var accountId = req.accountId = req.session.userInfo?req.session.userInfo.userAllInfo.accountCommon.id:'';
+    console.log("accountId:",accountId);
     if(accountId){
         TradeRequest.GetCartList(req, function (data, success) {
             var query = req.query;

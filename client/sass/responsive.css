@@ -287,7 +287,7 @@
     .item_list .pic_list ul {
       margin-left: -3%; }
       .item_list .pic_list ul li {
-        width: 47%;
+        width: 100%;
         margin: 20px 0 0 3%;
         height: auto; }
         .item_list .pic_list ul li a h4 {
@@ -313,6 +313,16 @@
             font-size: 18px; }
     .item_list .pic_list .more {
       margin-top: 20px; }
+    .item_list .department_list li h4 {
+      margin: 0px;
+      background: none;
+      display: block;
+      position: static;
+      color: #48BED8;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: left;
+      padding-left: 10px; }
     .item_list .standard {
       border: none; }
       .item_list .standard h2 {
@@ -436,13 +446,15 @@
     height: 50px;
     line-height: 50px;
     background-color: #48BED8;
-    position: relative; }
+    position: relative;
+    z-index: 9; }
     .left-nav-tit a, .left-nav-tit a.on {
       color: #FFF;
       font-size: 18px; }
     .left-nav-tit h2 {
       height: 50px;
-      display: block; }
+      display: block;
+      padding-left: 10px; }
     .left-nav-tit .nav_toggle {
       position: absolute;
       right: 10px;
@@ -490,19 +502,25 @@
           -o-transform: rotate(-45deg);
           transform: rotate(-45deg); }
 
-  .left-nav {
-    background-color: #48BED8;
-    width: 100%;
-    position: absolute;
-    left: 0px;
-    display: none; }
-    .left-nav li {
-      padding: 0px; }
-      .left-nav li a {
-        color: #FFF;
-        display: block; }
-        .left-nav li a:hover {
-          color: #4A4A4A; }
+  .userBox aside {
+    float: none; }
+    .userBox aside .left-nav {
+      background-color: #48BED8;
+      width: 100%;
+      box-sizing: border-box;
+      padding-top: 0px;
+      padding-bottom: 20px;
+      position: absolute;
+      left: 0px;
+      display: none; }
+      .userBox aside .left-nav li {
+        padding: 0px; }
+        .userBox aside .left-nav li a {
+          color: #FFF;
+          display: block;
+          border-bottom: 1px solid #FFF; }
+          .userBox aside .left-nav li a:hover {
+            color: #4A4A4A; }
 
   .active .left-nav {
     display: block; }
@@ -531,7 +549,154 @@
       -moz-transform: rotate(-45deg);
       -ms-transform: rotate(-45deg);
       -o-transform: rotate(-45deg);
-      transform: rotate(-45deg); } }
+      transform: rotate(-45deg); }
+
+  .box-right {
+    background-color: #f7f7f7; }
+    .box-right .order dt {
+      background: #FFF;
+      border-bottom: none; }
+      .box-right .order dt .date-time {
+        display: none; }
+    .box-right .order dd {
+      position: relative;
+      overflow: visible;
+      background-color: #FFF;
+      margin-top: -5px; }
+      .box-right .order dd .col {
+        margin: 0px;
+        padding: 0px; }
+      .box-right .order dd .goods {
+        width: 100%;
+        margin: 0px;
+        padding: 0px; }
+        .box-right .order dd .goods .row + .row {
+          border-top: none; }
+        .box-right .order dd .goods .row {
+          position: relative;
+          background-color: #f7f7f7;
+          padding: 10px;
+          margin-top: 5px; }
+        .box-right .order dd .goods .row-col {
+          padding: 0px; }
+        .box-right .order dd .goods .goods-detail {
+          width: auto; }
+          .box-right .order dd .goods .goods-detail img {
+            width: 30%;
+            margin-right: 10px; }
+          .box-right .order dd .goods .goods-detail h5 {
+            float: none;
+            width: auto;
+            font-size: 18px; }
+        .box-right .order dd .goods .goods-others {
+          position: absolute;
+          left: 33%;
+          top: 50px; }
+      .box-right .order dd .col + .order-state {
+        border-left: none; }
+      .box-right .order dd .order-state {
+        box-sizing: border-box;
+        width: 100%;
+        border-left: none;
+        border-bottom: 1px solid #f2f2f2;
+        margin: 0 10px 10px 10px;
+        padding: 5px 10px; }
+        .box-right .order dd .order-state p {
+          display: none; }
+        .box-right .order dd .order-state .realCost {
+          display: block;
+          float: right;
+          padding-right: 10px; }
+          .box-right .order dd .order-state .realCost em {
+            color: #f1292b; }
+        .box-right .order dd .order-state .state-info {
+          position: absolute;
+          right: 10px;
+          top: -36px;
+          display: block;
+          border-bottom: none; }
+      .box-right .order dd .operation {
+        width: 100%;
+        margin-bottom: -10px; }
+        .box-right .order dd .operation p {
+          float: right;
+          margin-right: 10px; }
+        .box-right .order dd .operation a {
+          border: 1px solid #c9c9c9;
+          display: block;
+          border-radius: 5px;
+          padding: 3px 8px; }
+        .box-right .order dd .operation .topay a {
+          color: #f1292b; }
+
+  .order-detail-wap h3 {
+    font-size: 18px;
+    padding: 10px; }
+    .order-detail-wap h3 .orderState {
+      float: right; }
+  .order-detail-wap dl {
+    margin-bottom: 5px;
+    background-color: #f7f7f7;
+    padding: 10px; }
+    .order-detail-wap dl dt {
+      position: relative; }
+      .order-detail-wap dl dt img {
+        width: 20%;
+        float: left;
+        margin-right: 10px; }
+      .order-detail-wap dl dt span {
+        padding: 3px 10px; }
+      .order-detail-wap dl dt .text-sec {
+        background-color: #cccccc;
+        color: #595959; }
+      .order-detail-wap dl dt .text-stress {
+        background-color: #f23a30;
+        color: #FFF; }
+      .order-detail-wap dl dt .dealPrice {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        padding: 0px; }
+      .order-detail-wap dl dt p {
+        margin-right: 80px; }
+    .order-detail-wap dl dd {
+      clear: both;
+      padding-top: 10px; }
+      .order-detail-wap dl dd p {
+        line-height: 30px; }
+  .order-detail-wap .price-text {
+    text-align: right;
+    padding-right: 10px;
+    line-height: 30px; }
+  .order-detail-wap .area {
+    margin: 10px 0;
+    padding: 10px;
+    text-align: right;
+    border-top: 10px solid;
+    border-bottom: 15px solid;
+    border-color: #f7f7f7;
+    line-height: 30px; }
+
+  .registerings dl {
+    line-height: 30px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #dddddd; }
+    .registerings dl h3 {
+      padding: 10px;
+      background-color: #FFF;
+      font-size: 18px; }
+      .registerings dl h3 .status {
+        float: right; }
+    .registerings dl dt {
+      padding: 10px; }
+    .registerings dl dd {
+      background-color: #FFF;
+      padding: 10px; }
+      .registerings dl dd a {
+        float: right;
+        border: 1px solid #c9c9c9;
+        padding: 0px 20px;
+        border-radius: 5px; } }
 @media only screen and (max-width: 600px) {
   .loginBox2 {
     border: none;

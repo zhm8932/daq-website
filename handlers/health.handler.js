@@ -54,8 +54,8 @@ exports.get_article = function (req,res) {
     if(get_article_list_diseases.success){
         get_article_list_diseases = get_article_list_diseases.data.data;
     }
-    if(get_article_list_recommend.success){
-        get_article_list_recommend = get_article_list_recommend.data.data;
+    if(get_article_list_recommend&&get_article_list_recommend.success){
+        get_article_list_recommend = get_article_list_recommend.data;
     }
 
 

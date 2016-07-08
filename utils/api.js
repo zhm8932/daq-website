@@ -33,6 +33,7 @@ module.exports = {
     ArticleChange: "cms.article.update",
     ArticleSearch: "cms.article.pageQueryArticleByTitleOrContent",
     ArticlPageQueryArticleByCategory: "cms.article.pageQueryArticleByCategory",
+    ArticleQueryArticleByIdBatch:'cms.article.queryArticleByIdBatch',
 
     GoodsStateChange: "domain.goods.changeGoodsState",
     GoodsPriorityChange: "domain.goods.changeGoodsPriority",

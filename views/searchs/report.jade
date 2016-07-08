@@ -8,10 +8,13 @@ block content
     .positon.wrapper
         |您的位置为：首页<em>#{sep}</em>查询报告
     section.wrapper
+        input#hasBind(type="hidden",value="#{hasBind}")
         .report
+
             header
                 h2 检测结果查询
                 p 匿名检测，以服务条件码作为全程身份识别标志，打造全程隐私体验
+
             form.formBox
                 ul.clearfix
                     li

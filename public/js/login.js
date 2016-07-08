@@ -363,7 +363,7 @@ define(function(require,exports,module) {
     }
 
 
-    function showAccountDialog() {
+    function showAccountDialog(obj) {
         var popup = new utils.Popup({
             msg: '<div class="box-header">完善信息<i class="icon close closePopup"></i></div><div class="box-body">' +
             '<ul class="tip-box"><li>为了能正常使用预约挂号服务,请及时补充以下材料。</li><li>以下信息为预约时所需项,一经填写不可更改,提交前请检查核对。</li><li>绑定已有客户编号,您可在病例中心中查看历史报告。</li></ul>' +
@@ -381,9 +381,14 @@ define(function(require,exports,module) {
             isHide:false,
             cancelFun: function () {
                 //window.location.href = "/treat/regsource/list";
+                var referrer = document.referrer;
+                referrer = referrer?referrer:'/';
+                if(obj.back&&obj.back){
+                    window.location.href=referrer;
+                }
             },
             okCallback: function () {
-                console.log("提交用户完善信息")
+                console.log("提交用户完善信息");
                 completeInfo(popup);
             }
         })
@@ -465,7 +470,8 @@ define(function(require,exports,module) {
         CheckLogin:checkLogin,
         getCartCount:getCartCount,
         cartCoutAddOne:cartCoutAddOne,
-        cartCoutDelOne:cartCoutDelOne
+        cartCoutDelOne:cartCoutDelOne,
+        showAccountDialog:showAccountDialog
     }
 
 });
