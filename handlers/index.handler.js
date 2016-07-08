@@ -1,15 +1,16 @@
+var TradeRequest = require('../requests/trade.request');
 //首页回调处理
 
 exports.index = function(req,res) {
     var get_goods_list = req.get_goods_list
     var get_department = req.get_department
-    res.locals.get_goods_list_success = get_goods_list.success
-    res.locals.get_department_success = get_department.success
+    res.locals.get_goods_list_success = get_goods_list.success;
+    res.locals.get_department_success = get_department.success;
 
 
 
-    console.log('get_goods_list.success:',get_goods_list.success)
-    console.log('get_department.success:',get_department.success)
+    // console.log('get_goods_list.success:',get_goods_list.success)
+    // console.log('get_department.success:',get_department.success)
     if(get_goods_list.success){
         get_goods_list=get_goods_list.data.data
     }
@@ -33,5 +34,67 @@ exports.index = function(req,res) {
         });
     }
 
+};
+
+exports.get_cart_num = function (req,res,next) {
+    console.log("req::url:",req.url);
+    console.log("browser:",browser);
+
+    var accountId = req.accountId = req.session.userInfo?req.session.userInfo.userAllInfo.accountCommon.id:'';
+    console.log("accountId:",accountId);
+    if(accountId){
+        TradeRequest.GetCartList(req, function (data, success) {
+            var query = req.query;
+            var json = JSON.parse(data);
+            if(success){
+                console.log("json.data.length:",json.data.length);
+                // res.locals.cartNum=json.data.length||'0';
+                var cartNum = json.data.length;
+                res.locals.cartNum=cartNum;
+            }else{
+                res.locals.cartNum='0';
+            }
+            next()
+
+        })
+    }else{
+        res.locals.cartNum='0';
+        next()
+    }
+}
+
+exports.get_wap_tit = function (req,res,next) {
+    if(browser.mobile){
+        var url = req.url;
+        var curTit = '';
+        console.log("url:",url);
+        if(url=='/trade/order/list'||url.search('/trade/order')!=-1){
+            if(url.search('/detail')!=-1){
+                url = '/trade/order/list';
+                curTit = '<i class="icon t1"></i><a href='+url+'>我的订单</a> > <em>订单详情</em>'
+            }else{
+                curTit = '<i class="icon t1"></i><a href='+url+'>我的订单</a>'
+            }
+
+        }
+        else if(url=='/users/reservation/list'||url.search('/users/reservation')!=-1){
+            if(url.search('/detail')!=-1){
+                url = '/users/reservation/list';
+                curTit = '<i class="icon t2"></i><a href='+url+'>我的报告</a> > <em>预约详情</em>'
+            }else{
+                curTit = '<i class="icon t2"></i><a href='+url+'>我的报告</a>'
+            }
+
+        }
+        else if(url=='/users/register/list'){
+            curTit = '<i class="icon t3"></i><a href='+url+'>我的挂号</a>'
+        }
+        else if(url=='/users/coupon/listView'||url.search('/users/coupon')!=-1){
+            curTit = '<i class="icon t4"></i><a href='+url+'>优惠券</a>'
+        }
+        console.log("curTit:",curTit);
+        res.locals.curTit = curTit;
+    }
+    next();
 }
 

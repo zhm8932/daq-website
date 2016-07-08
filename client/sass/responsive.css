@@ -428,7 +428,8 @@
     display: none; }
 
   .userBox {
-    margin: 0 auto; }
+    margin: 0 auto;
+    overflow: visible; }
     .userBox aside {
       width: 100%;
       padding: 0 0 20px 0px;
@@ -450,11 +451,29 @@
     z-index: 9; }
     .left-nav-tit a, .left-nav-tit a.on {
       color: #FFF;
-      font-size: 18px; }
+      font-size: 22px; }
     .left-nav-tit h2 {
       height: 50px;
       display: block;
-      padding-left: 10px; }
+      padding-left: 10px;
+      color: #FFF;
+      font-size: 18px; }
+      .left-nav-tit h2 i {
+        background-color: #FFF;
+        border-radius: 100%;
+        height: 36px;
+        width: 36px;
+        margin: -8px 5px 0 0;
+        vertical-align: middle;
+        background-size: 800px; }
+        .left-nav-tit h2 i.t1 {
+          background-position: -28px -42px; }
+        .left-nav-tit h2 i.t2 {
+          background-position: -63px -41px; }
+        .left-nav-tit h2 i.t3 {
+          background-position: -95px -42px; }
+        .left-nav-tit h2 i.t4 {
+          background-position: -128px -38px; }
     .left-nav-tit .nav_toggle {
       position: absolute;
       right: 10px;
@@ -551,124 +570,170 @@
       -o-transform: rotate(-45deg);
       transform: rotate(-45deg); }
 
+  .reservation.box-right dl.order .goods {
+    width: auto;
+    margin-bottom: 10px; }
+    .reservation.box-right dl.order .goods .goods-detail {
+      margin: 0px; }
+  .reservation.box-right dl.order .detail {
+    width: 100%;
+    display: none; }
+  .reservation.box-right dl.order .operation {
+    width: auto;
+    background-color: #FFF;
+    padding: 10px 10px 10px 0;
+    margin: 0px;
+    float: none;
+    display: block;
+    text-align: right; }
+    .reservation.box-right dl.order .operation p {
+      margin: 0px 0 0 10px; }
+  .reservation.box-right dl.order .order-state {
+    position: absolute;
+    right: 0px;
+    top: 5px;
+    width: auto;
+    border: none; }
+    .reservation.box-right dl.order .order-state p {
+      display: block;
+      margin: 0px;
+      float: right; }
+
   .box-right {
     background-color: #f7f7f7; }
-    .box-right .order dt {
-      background: #FFF;
-      border-bottom: none; }
-      .box-right .order dt .date-time {
-        display: none; }
-    .box-right .order dd {
-      position: relative;
-      overflow: visible;
-      background-color: #FFF;
-      margin-top: -5px; }
-      .box-right .order dd .col {
-        margin: 0px;
-        padding: 0px; }
-      .box-right .order dd .goods {
-        width: 100%;
-        margin: 0px;
-        padding: 0px; }
-        .box-right .order dd .goods .row + .row {
-          border-top: none; }
-        .box-right .order dd .goods .row {
-          position: relative;
-          background-color: #f7f7f7;
-          padding: 10px;
-          margin-top: 5px; }
-        .box-right .order dd .goods .row-col {
-          padding: 0px; }
-        .box-right .order dd .goods .goods-detail {
-          width: auto; }
-          .box-right .order dd .goods .goods-detail img {
-            width: 30%;
-            margin-right: 10px; }
-          .box-right .order dd .goods .goods-detail h5 {
-            float: none;
-            width: auto;
-            font-size: 18px; }
-        .box-right .order dd .goods .goods-others {
-          position: absolute;
-          left: 33%;
-          top: 50px; }
-      .box-right .order dd .col + .order-state {
-        border-left: none; }
-      .box-right .order dd .order-state {
-        box-sizing: border-box;
-        width: 100%;
-        border-left: none;
-        border-bottom: 1px solid #f2f2f2;
-        margin: 0 10px 10px 10px;
-        padding: 5px 10px; }
-        .box-right .order dd .order-state p {
+    .box-right .order {
+      border-left: none;
+      border-right: none;
+      position: relative; }
+      .box-right .order dt {
+        background: #FFF;
+        border-bottom: none; }
+        .box-right .order dt .date-time {
           display: none; }
-        .box-right .order dd .order-state .realCost {
-          display: block;
-          float: right;
-          padding-right: 10px; }
-          .box-right .order dd .order-state .realCost em {
+      .box-right .order dd {
+        overflow: visible;
+        background-color: #FFF;
+        margin-top: -5px; }
+        .box-right .order dd .col {
+          margin: 0px;
+          padding: 0px; }
+          .box-right .order dd .col *:last-child:not(.row) {
+            margin-bottom: 0px; }
+        .box-right .order dd .goods {
+          width: 100%;
+          margin: 0px; }
+          .box-right .order dd .goods .row + .row {
+            border-top: none; }
+          .box-right .order dd .goods .row {
+            background-color: #f7f7f7;
+            margin-top: 5px;
+            padding: 10px; }
+          .box-right .order dd .goods .row-col {
+            padding: 0px; }
+          .box-right .order dd .goods .goods-detail {
+            width: 100%; }
+            .box-right .order dd .goods .goods-detail img {
+              width: 30%;
+              margin-right: 10px; }
+            .box-right .order dd .goods .goods-detail h5 {
+              float: none;
+              width: auto;
+              font-size: 18px; }
+          .box-right .order dd .goods .goods-others {
+            position: absolute;
+            left: 33%;
+            top: 60px;
+            width: auto;
+            display: none; }
+          .box-right .order dd .goods .reservation {
+            position: absolute;
+            left: 10px;
+            bottom: 15px;
+            width: auto; }
+            .box-right .order dd .goods .reservation a {
+              border: 1px solid #c9c9c9;
+              display: block;
+              border-radius: 5px;
+              padding: 3px 8px; }
+        .box-right .order dd .col + .order-state {
+          border-left: none; }
+        .box-right .order dd .order-state {
+          box-sizing: border-box;
+          width: 100%;
+          border-left: none;
+          border-bottom: 1px solid #f2f2f2;
+          margin: 0 10px 10px 10px;
+          padding: 5px 10px; }
+          .box-right .order dd .order-state p {
+            display: none; }
+          .box-right .order dd .order-state .realCost {
+            display: block;
+            float: right;
+            padding-right: 10px; }
+            .box-right .order dd .order-state .realCost em {
+              color: #f1292b; }
+          .box-right .order dd .order-state .state-info {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            display: block;
+            border-bottom: none; }
+        .box-right .order dd .operation {
+          width: 100%;
+          margin-bottom: 15px;
+          text-align: right; }
+          .box-right .order dd .operation p {
+            float: none;
+            margin-right: 10px;
+            display: inline-block; }
+          .box-right .order dd .operation a {
+            border: 1px solid #c9c9c9;
+            display: block;
+            border-radius: 5px;
+            padding: 3px 8px; }
+          .box-right .order dd .operation .topay a {
             color: #f1292b; }
-        .box-right .order dd .order-state .state-info {
-          position: absolute;
-          right: 10px;
-          top: -36px;
-          display: block;
-          border-bottom: none; }
-      .box-right .order dd .operation {
-        width: 100%;
-        margin-bottom: -10px; }
-        .box-right .order dd .operation p {
-          float: right;
-          margin-right: 10px; }
-        .box-right .order dd .operation a {
-          border: 1px solid #c9c9c9;
-          display: block;
-          border-radius: 5px;
-          padding: 3px 8px; }
-        .box-right .order dd .operation .topay a {
-          color: #f1292b; }
 
-  .order-detail-wap h3 {
+  .detail-wap h3 {
     font-size: 18px;
     padding: 10px; }
-    .order-detail-wap h3 .orderState {
+    .detail-wap h3 .orderState {
       float: right; }
-  .order-detail-wap dl {
+  .detail-wap dl {
     margin-bottom: 5px;
     background-color: #f7f7f7;
     padding: 10px; }
-    .order-detail-wap dl dt {
+    .detail-wap dl dt {
       position: relative; }
-      .order-detail-wap dl dt img {
+      .detail-wap dl dt img {
         width: 20%;
         float: left;
         margin-right: 10px; }
-      .order-detail-wap dl dt span {
+      .detail-wap dl dt span {
         padding: 3px 10px; }
-      .order-detail-wap dl dt .text-sec {
+      .detail-wap dl dt .text-sec {
         background-color: #cccccc;
         color: #595959; }
-      .order-detail-wap dl dt .text-stress {
+      .detail-wap dl dt .text-stress {
         background-color: #f23a30;
         color: #FFF; }
-      .order-detail-wap dl dt .dealPrice {
+      .detail-wap dl dt .dealPrice {
         position: absolute;
         right: 0px;
         top: 0px;
         padding: 0px; }
-      .order-detail-wap dl dt p {
+      .detail-wap dl dt p {
         margin-right: 80px; }
-    .order-detail-wap dl dd {
+    .detail-wap dl dd {
       clear: both;
       padding-top: 10px; }
-      .order-detail-wap dl dd p {
+      .detail-wap dl dd p {
         line-height: 30px; }
-  .order-detail-wap .price-text {
+  .detail-wap .price-text {
     text-align: right;
-    padding-right: 10px;
+    padding: 0 10px;
     line-height: 30px; }
-  .order-detail-wap .area {
+  .detail-wap .area {
     margin: 10px 0;
     padding: 10px;
     text-align: right;
@@ -676,6 +741,40 @@
     border-bottom: 15px solid;
     border-color: #f7f7f7;
     line-height: 30px; }
+    .detail-wap .area .check-report {
+      background-color: #fff;
+      border: none;
+      color: #4A4A4A;
+      line-height: 30px;
+      cursor: pointer;
+      padding: 0 20px;
+      margin: 10px 0;
+      display: inline-block;
+      font-family: "微软雅黑","Microsoft Himalaya";
+      border: 1px solid #ddd;
+      font-size: 14px;
+      border-radius: 5px;
+      float: right;
+      margin: 0px; }
+      .detail-wap .area .check-report:hover {
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -ms-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+        background-color: #ddd;
+        color: #4A4A4A;
+        border-color: #ddd; }
+
+  .reservation-detail .detail-wap .area {
+    text-align: left; }
+  .reservation-detail .detail-wap .price-text {
+    text-align: left; }
+  .reservation-detail .detail-wap dt p {
+    color: #f23a30;
+    margin: 0px; }
+  .reservation-detail .detail-wap dt span {
+    padding: 0px; }
 
   .registerings dl {
     line-height: 30px;
@@ -696,7 +795,68 @@
         float: right;
         border: 1px solid #c9c9c9;
         padding: 0px 20px;
-        border-radius: 5px; } }
+        border-radius: 5px; }
+
+  .coupons aside, .coupons .box-right {
+    background-color: #FFF; }
+  .coupons .get-coupon {
+    padding: 0 10px; }
+    .coupons .get-coupon .tit {
+      display: none; }
+    .coupons .get-coupon input {
+      font-size: 18px;
+      width: 80%;
+      box-sizing: border-box;
+      border-radius: 5px; }
+    .coupons .get-coupon .code-box {
+      margin: 0px; }
+      .coupons .get-coupon .code-box .add-coupon {
+        font-size: 20px;
+        width: 20%;
+        float: right;
+        padding: 0px;
+        margin-left: -10px;
+        height: 36px;
+        background: none;
+        color: #4A4A4A;
+        border: none; }
+  .coupons .coupon-state {
+    border-top: 1px solid #dddddd;
+    margin-top: 10px;
+    box-shadow: 0px 4px 9px 0px #DEDEDE; }
+  .coupons .coupon-state li {
+    border-bottom: 1px solid #dddddd;
+    padding: 0px;
+    width: 33.3%;
+    text-align: center;
+    line-height: 50px; }
+    .coupons .coupon-state li.on {
+      border-bottom: 2px solid #48BED8; }
+  .coupons .table-bordered {
+    border: none; }
+    .coupons .table-bordered thead {
+      display: none; }
+  .coupons .table {
+    margin: 0px; }
+    .coupons .table tbody tr {
+      border-bottom: 10px solid #f7f7f7;
+      box-shadow: inset 0px -1px 0 0 #dddddd;
+      display: block;
+      padding: 10px 0px; }
+      .coupons .table tbody tr:nth-child(even) {
+        background: none; }
+      .coupons .table tbody tr td {
+        display: flex;
+        padding: 5px 10px; }
+        .coupons .table tbody tr td:nth-child(1) {
+          font-size: 20px;
+          color: #f1292b; }
+        .coupons .table tbody tr td:nth-child(2):before {
+          content: "限用条件："; }
+        .coupons .table tbody tr td:nth-child(3):before {
+          content: "适用范围："; }
+        .coupons .table tbody tr td:nth-child(4):before {
+          content: "有效期："; } }
 @media only screen and (max-width: 600px) {
   .loginBox2 {
     border: none;

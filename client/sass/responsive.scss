@@ -195,6 +195,7 @@ $conWidth:1600px;
 }
 
 @media only screen and (max-width:$win_768 - 1px){
+
   .positon{margin-bottom: 10px;display: none;}
   .nav ul {
     li{
@@ -307,7 +308,7 @@ $conWidth:1600px;
 
 
   .userBox{
-    margin: 0 auto;
+    margin: 0 auto;overflow: visible;
     aside{width: 100%;padding:0 0 20px 0px;margin: 0px;position: relative;}
     .box-right{width: 100%}
     .user-main{display: none;}
@@ -315,8 +316,17 @@ $conWidth:1600px;
   .users nav{display: none;}
   .left-nav-tit{
       height: 50px;line-height: 50px;background-color: $navBgColor;position: relative;z-index: 9;
-      a,a.on{color: $white;font-size: 18px;}
-      h2{height: 50px;display: block;padding-left: 10px;}
+      a,a.on{color: $white;font-size:22px;}
+      h2{height: 50px;display: block;padding-left: 10px;color: $white; font-size: 18px;
+        i{
+          background-color: $white;border-radius: 100%;height: 36px;width: 36px;margin:-8px 5px 0 0;vertical-align: middle;background-size: 800px;
+          &.t1{background-position:-28px -42px;}
+          &.t2{background-position:-63px -41px;}
+          &.t3{background-position:-95px -42px;}
+          &.t4{background-position:-128px -38px;}
+        }
+
+      }
       .nav_toggle{
         position: absolute;right: 10px;top: 10px;float: right;width: 35px;height: 35px; display: block;
         span,span:before,span:after{
@@ -387,25 +397,47 @@ $conWidth:1600px;
       }
     }
   }
+  .reservation.box-right dl.order{
+    .goods{
+      width: auto;margin-bottom: 10px;
+      .goods-detail{margin:0px;}
+    }
+    .detail{width: 100%;display: none;}
+    .operation{width:auto;background-color: $white; padding: 10px 10px 10px 0;margin: 0px;float: none;display: block;text-align: right;
+      p{margin: 0px 0 0 10px;}
+    }
+    .order-state{position: absolute;right:0px;top: 5px;width: auto;border: none;
+      p{display: block;margin: 0px;float: right;}
+    }
+  }
   .box-right{
     background-color: $bgc_F7;
     .order{
+
+      border-left: none;border-right: none;position: relative;
       dt{
         background: $white;border-bottom: none;
         .date-time{display: none;}
       }
       dd{
-        position: relative;overflow: visible;background-color: $white;margin-top: -5px;
-        .col{margin: 0px;padding: 0px;}
-        .goods{width: 100%;margin: 0px;padding: 0px;
+        overflow: visible;background-color: $white;margin-top: -5px;
+        .col{margin: 0px;padding: 0px;
+          *:last-child:not(.row){margin-bottom: 0px;}
+        }
+        .goods{width: 100%;margin: 0px;
           .row + .row{border-top: none;}
-          .row{position: relative;background-color: $bgc_F7;padding: 10px;margin-top: 5px;}
+          .row{background-color: $bgc_F7;margin-top: 5px;padding: 10px;}
           .row-col{padding: 0px;}
-          .goods-detail{width: auto;
+          .goods-detail{width: 100%;
             img{width: 30%;margin-right: 10px;}
             h5{float: none;width: auto;font-size: 18px;}
           }
-          .goods-others{position: absolute;left:33%;top:50px;}
+          .goods-others{position: absolute;left:33%;top:60px;width: auto;display: none;}
+          .reservation{position: absolute;left: 10px;bottom: 15px;width: auto;
+            a{
+              border: 1px solid $bdrc1;display: block;border-radius: 5px;padding: 3px 8px
+            }
+          }
         }
         .col + .order-state{border-left: none}
         .order-state{
@@ -415,19 +447,20 @@ $conWidth:1600px;
           .realCost{display: block;float: right;padding-right: 10px;
             em{color: $text_red_F1;}
           }
-          .state-info{position: absolute;right: 10px;top:-36px;display: block;border-bottom: none;}
+          .state-info{position: absolute;right: 10px;top:10px;display: block;border-bottom: none;}
         }
-        .operation{width: 100%;margin-bottom: -10px;
-          p{ float: right;margin-right: 10px;
+        .operation{width: 100%;margin-bottom: 15px;text-align: right;
+          p{ float: none;margin-right: 10px;display: inline-block;
           }
           a{border: 1px solid $bdrc1;display: block;border-radius: 5px;padding: 3px 8px}
           .topay a{color: $text_red_F1;}
         }
+
       }
     }
   }
   //-我的订单
-  .order-detail-wap{
+  .detail-wap{
     h3{font-size: 18px;padding:10px;
       .orderState{float: right;}
     }
@@ -449,15 +482,31 @@ $conWidth:1600px;
       }
     }
     .price-text{
-      text-align: right;padding-right: 10px;
+      text-align: right;padding:0 10px;
       line-height: 30px;
     }
     .area{
       margin: 10px 0;padding:10px;text-align: right;
       border-top: 10px solid;border-bottom: 15px solid;
       border-color: $bgc_F7;line-height: 30px;
+      .check-report{
+        @include btn(#fff, #ddd, #4A4A4A, #4A4A4A,#ddd);
+        font-size: 14px;border-radius: 5px;float: right;margin: 0px;
+      }
     }
 
+  }
+  .reservation-detail{
+    .detail-wap{
+      .area{
+        text-align: left;
+      }
+      .price-text{text-align: left;}
+      dt{
+        p{color: $text_red_f2;margin: 0px;}
+        span{padding: 0px;}
+      }
+    }
   }
   //-我的报告
   .registerings{
@@ -476,6 +525,60 @@ $conWidth:1600px;
 
     }
 
+  }
+  //-优惠券
+  .coupons{
+    aside,.box-right{
+      background-color:$white;
+    }
+    .get-coupon{
+      padding:0 10px;
+      .tit{display: none;}
+      input{font-size: 18px;width: 80%;box-sizing: border-box;border-radius: 5px;}
+      .code-box{
+        margin: 0px;
+        .add-coupon{font-size: 20px;width:20%;float: right;padding: 0px; margin-left:-10px;height: 36px;background: none;color: $textColor;border: none;}
+      }
+    }
+    .coupon-state{border-top: 1px solid $bdrc_ddd;margin-top: 10px;box-shadow: 0px 4px 9px 0px #DEDEDE}
+    .coupon-state li{
+      border-bottom: 1px solid $bdrc_ddd;padding: 0px;width: 33.3%;text-align: center;line-height: 50px;
+      &.on{border-bottom:2px solid $bdrc_48B; }
+    }
+    .table-bordered{
+      border: none;
+      thead{display: none;}
+    }
+    .table {
+      margin: 0px;
+      tbody{
+        tr{
+          border-bottom: 10px solid $bgc_F7;box-shadow: inset 0px -1px 0 0 $bdrc_ddd;display: block;padding: 10px 0px;
+          &:nth-child(even){background: none;}
+          td{display: flex;
+            padding: 5px 10px;
+            &:nth-child(1){
+              font-size: 20px;color: $text_red_F1;
+            }
+            &:nth-child(2){
+              &:before{
+                content:'限用条件：'
+              }
+            }
+            &:nth-child(3){
+              &:before{
+                content:'适用范围：'
+              }
+            }
+            &:nth-child(4){
+              &:before{
+                content:'有效期：'
+              }
+            }
+          }
+        }
+      }
+    }
   }
 
 }

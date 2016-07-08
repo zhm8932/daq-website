@@ -3,14 +3,15 @@ extends ../layout
 block content
     link(href='/css/users/user.css',rel='styleSheet')
     include ../includes/responsive
-    include ../includes/nav
+    .users
+        include ../includes/nav
     .positon.wrapper
         |您的位置为：首页<em>#{sep}</em>我的订单
-    section.wrapper.userBox.clearfix
+    section.wrapper.userBox.coupons.clearfix
         include ../includes/usersNav
-        .box-right.fr.coupons
+        .box-right.fr
             div.get-coupon
-                div 领取优惠券
+                div.tit 领取优惠券
                 .code-box.clearfix
                     input#coupon-code.border-default.fl(type='text',placeholder="请输入优惠券号码")
                     button.add-coupon 领取

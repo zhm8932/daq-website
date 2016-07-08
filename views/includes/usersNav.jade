@@ -7,7 +7,9 @@ aside.fl
         p.tel #{account}
         p: a.text-main(href="/users/account/info") 账号信息
     .left-nav-tit
-        h2: a.on(href='/trade/order/list') 我的订单
+        h2!= curTit
+            //a.on(href='/trade/order/list') 我的订单
+
         a(href="javascript:;").nav_toggle
             span
         ul.left-nav

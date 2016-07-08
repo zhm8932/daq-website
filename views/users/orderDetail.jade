@@ -85,7 +85,7 @@ block content
                                 else
                                     |(已优惠￥0.00)
         else
-            .order-detail-wap
+            .detail-wap
                 h3
                     span.text-sec 订单编号:#{data.id}
                     span.orderState #{orderStateJSON[data.orderState]}
@@ -137,5 +137,5 @@ block content
 
 
     include ../includes/footer
-    //script.
-    //    seajs.use('/js/trade/order_detail.js')
+    //-script.
+        seajs.use('/js/trade/order_detail.js')

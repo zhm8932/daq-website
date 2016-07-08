@@ -3,7 +3,6 @@ var router = express.Router();
 var Handlers = require('../handlers/index.handler');
 var Requests = require('../requests/indexs.request');
 var UsersRequests = require('../requests/users.request');
-var TradeRequest = require('../requests/trade.request');
 var Middlewares = require('../requests/middlewares.request.js');
 var authority = require('../handlers/authority.handler');
 var Tools = require('../utils/tools'); //判断浏览器
@@ -54,7 +53,10 @@ router.use(function(req, res, next) {
 
 
     var browser = Tools.browser(req);
+    global.browser = browser;
     res.locals.browser = browser;  //判断浏览器版本，模板调用
+
+
 
 
     // //购物车数量:暂时不做
@@ -68,31 +70,7 @@ router.use(function(req, res, next) {
     next();
 });
 
-router.get('*',function (req,res,next) {
-    var accountId = req.accountId = req.session.userInfo?req.session.userInfo.userAllInfo.accountCommon.id:'';
-    console.log("accountId:",accountId);
-    if(accountId){
-        TradeRequest.GetCartList(req, function (data, success) {
-            var query = req.query;
-            var json = JSON.parse(data);
-            if(success){
-                console.log("json.data.length:",json.data.length);
-                // res.locals.cartNum=json.data.length||'0';
-                var cartNum = json.data.length;
-                res.locals.cartNum=cartNum;
-            }else{
-                res.locals.cartNum='0';
-            }
-            next()
-
-        })
-    }else{
-        res.locals.cartNum='0';
-        next()
-    }
-
-
-})
+router.get('*',Handlers.get_wap_tit,Handlers.get_cart_num);
 /* GET home page. */
 router.get('/',Requests.get_goods_list,Middlewares.get_department,Handlers.index);
 

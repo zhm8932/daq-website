@@ -3,7 +3,8 @@ define(function(require, exports, module){
     require('lazyload');
     require('./login');
     var utils = require('./libs/utils.js');
-    var Swiper = require('./libs/swiper.jquery.umd');
+    var Swiper = require('swiper');
+    // var Swiper = require('./libs/swiper.jquery.umd');
     var BMap = require('./libs/BMap.js');
     require('cookie');
     // console.log(BMap)
