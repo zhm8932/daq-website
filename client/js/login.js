@@ -382,7 +382,7 @@ define(function(require,exports,module) {
             cancelFun: function () {
                 //window.location.href = "/treat/regsource/list";
                 var referrer = document.referrer;
-                referrer = referrer?referrer:'/';
+                referrer = referrer?pathname=='/searchs/report'?'/':referrer:'/';
                 if(obj.back&&obj.back){
                     window.location.href=referrer;
                 }
