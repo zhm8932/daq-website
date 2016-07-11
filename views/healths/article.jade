@@ -11,7 +11,7 @@ block content
           if get_article_detail_success  
             header
                 h1 #{get_article_detail.title}
-                time 发表于：#{moment(get_article_detail).format('YYYY-MM-DD hh:mm:ss')}
+                time 发表于：#{moment(get_article_detail).format('YYYY-MM-DD HH:mm:ss')}
             //-article!= get_article_detail_content
             //-article!= markdown.toHTML(get_article_detail.content)
             article!= get_article_detail.content
