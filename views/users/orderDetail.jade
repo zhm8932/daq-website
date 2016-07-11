@@ -27,7 +27,6 @@ block content
                             each areaObj,j in JSON.parse(data.goodsItemDTOs[0].address)
                                 if areaObj && j < 2
                                     | #{areaObj.name}
-
                     span.info
                         span.text-sec 下单时间:
                         span.date-time #{moment(data.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
@@ -67,7 +66,7 @@ block content
                                         td.text-stress 未使用
                                         td.text-main
                                             p 电话预约
-                                            p 400-4557-452
+                                            p 400-686-9911
                                     else
                                         td.text-sec 已使用
                                         td: a(href="/users/reservation/detail?id=#{item.reservationGrouopId}") 预约详情
