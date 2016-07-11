@@ -3,52 +3,91 @@ extends ../layout
 block content
     link(href='/css/users/user.css',rel='styleSheet')
     include ../includes/responsive
-    include ../includes/nav
+    .users
+        include ../includes/nav
     .positon.wrapper
-        |您的位置：首页<em>#{sep}</em>我的预约<em>#{sep}</em>预约详情<em>
-    section.wrapper
+        |您的位置：首页<em>#{sep}</em>我的预约<em>#{sep}</em>预约详情
+    section.wrapper.userBox
         .reservation-detail
             -var serviceTypeJSON = {'0':'未选择','1':'门诊取样','2':'上门取样','3':'快递取样'};
             -var statusJSON = [{'1000':'选择产品','1100':'预约成功','1150':'门诊登记','1200':'收到样本','1900':'报告生成'},{'2000':'选择产品','2100':'预约成功','2150':'已安排护士取样','2200':'护士取样','2300':'收到样本','2900':'报告生成'},{'3000':'选择产品','3100':'预约成功','3200':'物料寄出','3300':'回寄样本','3400':'收到样本','3900':'报告生成'}];
-            div.overview
-                span.info
-                    span.text-sec 预约编号:
-                    span #{data.id}
-                span.info
-                    span.text-sec 状态:
-                    span.text-stress #{statusJSON[parseInt(data.serviceType)-1][data.reservationStatus]}
-                span.info
-                    span.text-sec 下单时间:
-                    span.text-sec.date-time #{moment(data.createdAt).format('YYYY-MM-DD HH:mm:ss')}
-                if data.reservationStatus == 1900 || data.reservationStatus == 2900 || data.reservationStatus == 3900
-                    sapn.info
-                        span.check-report 查看报告
-            .list-info 商品列表
-            table.table.goods-list
-                thead
-                    th(width="45%") 商品名称
-                    th(width="25%") 使用密码
-                    th(width="30%") 取样方式
-                tbody
-                    tr
-                        each item,i in data.reservations
-                            td.goods
+            if browser.mobile
+                include ../includes/usersNav
+            if !browser.mobile
+                div.overview
+                    span.info
+                        span.text-sec 预约编号:
+                        span #{data.id}
+                    span.info
+                        span.text-sec 状态:
+                        span.text-stress #{statusJSON[parseInt(data.serviceType)-1][data.reservationStatus]}
+                    span.info
+                        span.text-sec 下单时间:
+                        span.text-sec.date-time #{moment(data.createdAt).format('YYYY-MM-DD HH:mm:ss')}
+                    if data.reservationStatus == 1900 || data.reservationStatus == 2900 || data.reservationStatus == 3900
+                        sapn.info
+                            span.check-report 查看报告
+                .list-info 商品列表
+                table.table.goods-list
+                    thead
+                        th(width="45%") 商品名称
+                        th(width="25%") 使用密码
+                        th(width="30%") 取样方式
+                    tbody
+                        tr
+                            each item,i in data.reservations
+                                td.goods
+                                    a(href="/screenings/goods/detail/#{item.goodsInfo.goodsId}")
+                                        img(src="#{item.goodsInfo.imageUrls[0]}")
+                                        span #{item.goodsInfo.goodsName}
+                                td.text-stress #{item.password}
+                            td.bd-l(rowspan="#{goodsLength}")
+                                if data.serviceType == 1
+                                    p 门诊取样
+                                    p.text-sec 门诊地址: #{data.address}
+                                    p.text-sec 预约时间: #{data.time}
+                                else if data.serviceType == 2
+                                    p 上门取样
+                                    p.text-sec 取样地址: #{data.address}
+                                    p.text-sec 取样时间: #{data.time}
+                                else if data.serviceType == 3
+                                    p 快递取样
+                                    p.text-sec 收件地址: #{data.address}
+            else
+                .detail-wap
+                    h3
+                        span.text-sec 订单编号:#{data.id}
+                        span.orderState #{statusJSON[parseInt(data.serviceType)-1][data.reservationStatus]}
+                    each item,i in data.reservations
+                        dl.clearfix
+                            dt
                                 a(href="/screenings/goods/detail/#{item.goodsInfo.goodsId}")
                                     img(src="#{item.goodsInfo.imageUrls[0]}")
                                     span #{item.goodsInfo.goodsName}
-                            td.text-stress #{item.password}
-                        td.bd-l(rowspan="#{goodsLength}")
+                                    p 使用密码： #{item.password}
+                        .price-text
                             if data.serviceType == 1
-                                p 门诊取样
+                                p 取样方式：门诊取样
                                 p.text-sec 门诊地址: #{data.address}
                                 p.text-sec 预约时间: #{data.time}
                             else if data.serviceType == 2
-                                p 上门取样
+                                p 取样方式：上门取样
                                 p.text-sec 取样地址: #{data.address}
                                 p.text-sec 取样时间: #{data.time}
                             else if data.serviceType == 3
-                                p 快递取样
+                                p 取样方式：快递取样
                                 p.text-sec 收件地址: #{data.address}
+                        .area
+                            p 下单时间
+                                |#{moment(data.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
+                                if data.reservationStatus == 1900 || data.reservationStatus == 2900 || data.reservationStatus == 3900
+                                    sapn.info
+                                        span.check-report 查看报告
+
+
+
 
 
     include ../includes/footer
+    script.
+        seajs.use('/js/users/user_detail.js')

@@ -18,6 +18,7 @@ seajs.config({
         'moment':'/js/libs/moment.js',
         'daterangepicker':'/js/libs/daterangepicker.js',
         'cookie':'/js/libs/jquery.cookie',
+        'swiper':'/js/libs/swiper.jquery.umd',
         'utils': 'libs/utils.js'
         //"bootstrap":"../libs/bootstrap/dist/js/bootstrap.js",
         //"moment":'./libs/moment',

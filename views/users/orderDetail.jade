@@ -1,84 +1,140 @@
 extends ../layout
 
 block content
+    link(href='/css/users/user.css',rel='styleSheet')
     link(href='/css/trade/trade.css',rel='styleSheet')
     include ../includes/responsive
-    include ../includes/nav
+    .users
+        include ../includes/nav
     .positon.wrapper
-        |您的位置：首页<em>#{sep}</em>我的订单<em>#{sep}</em>订单详情<em>
-    section.wrapper
-        .order-detail
-            -var orderStateJSON = {'1':'未支付','2':'已支付','3':'已取消','4':'退款中','5':'已退款'};
-            div.overview
-                span.info
-                    span.text-sec 订单编号:
-                    span #{data.id}
-                span.info
-                    span.text-sec 状态:
-                    span #{orderStateJSON[data.orderState]}
-                span.info
-                    span.text-sec 服务区域:
-                    span
-                        each areaObj,j in JSON.parse(data.goodsItemDTOs[0].address)
-                            if areaObj && j < 2
-                                | #{areaObj.name}
+        |您的位置：首页<em>#{sep}</em>我的订单<em>#{sep}</em>订单详情
+    section.wrapper.userBox.clearfix
+        -var orderStateJSON = {'1':'未支付','2':'已支付','3':'已取消','4':'退款中','5':'已退款'};
+        if browser.mobile
+            include ../includes/usersNav
+        if !browser.mobile
+            .order-detail
+                div.overview
+                    span.info
+                        span.text-sec 订单编号:
+                        span #{data.id}
+                    span.info
+                        span.text-sec 状态:
+                        span #{orderStateJSON[data.orderState]}
+                    span.info
+                        span.text-sec 服务区域:
+                        span
+                            each areaObj,j in JSON.parse(data.goodsItemDTOs[0].address)
+                                if areaObj && j < 2
+                                    | #{areaObj.name}
+                    span.info
+                        span.text-sec 下单时间:
+                        span.date-time #{moment(data.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
+                .list-info 商品列表
+                table.table.goods-list
+                    thead
+                        th(width="25%") 商品名称
+                        th(width="15%") 使用密码
+                        th(width="23%") 取样方式
+                        th 小计
+                        th 状态
+                        th 操作
+                    tbody
+                        -var transmitType='',favPrice='';
+                        -var sampleJson = JSON.parse(locals_sample);
+                        each item,i in data.goodsItemDTOs
+                            tr(data-address="#{item.address}",data-transmitType="#{item.transmitType}",data-goodsId="#{item.goodsId}")
+                                td
+                                    a(href='/screenings/goods/detail/#{item.goodsId}')
+                                        img(src="#{item.imageUrls[0]}")
+                                        span #{item.goodsName}
+                                td.text-stress #{item.reservationPwd}
 
-                span.info
-                    span.text-sec 下单时间:
-                    span.date-time #{moment(data.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
-            .list-info 商品列表
-            table.table.goods-list
-                thead
-                    th(width="25%") 商品名称
-                    th(width="15%") 使用密码
-                    th(width="23%") 取样方式
-                    th 小计
-                    th 状态
-                    th 操作
-                tbody
-                    -var transmitType='',favPrice='';
-                    -var sampleJson = JSON.parse(locals_sample);
-                    each item,i in data.goodsItemDTOs
-                        tr(data-address="#{item.address}",data-transmitType="#{item.transmitType}",data-goodsId="#{item.goodsId}")
-                            td
-                                a(href='/screenings/goods/detail/#{item.goodsId}')
-                                    img(src="#{item.imageUrls[0]}")
-                                    span #{item.goodsName}
-                            td.text-stress #{item.reservationPwd}
-
-                            td
-                                each value,key in JSON.parse(item.transmitType)
-                                    -transmitType = key;
-                                    -favPrice = parseFloat(value);
-                                p #{sampleJson[transmitType]}(服务费￥#{favPrice/100})
-                                if transmitType == 'sampling_home'
-                                    p.text-sec 取样地址:
-                                        each areaObj,j in JSON.parse(item.address)
-                                            if areaObj
-                                                | #{areaObj.name}
-                            td.text-sec ￥#{(parseFloat(item.dealPrice + favPrice)/100).toFixed(2)}
-                            if data.orderState == 2
-                                if item.reservationState == 0
-                                    td.text-stress 未使用
-                                    td.text-main
-                                        p 电话预约
-                                        p 400-686-9911
+                                td
+                                    each value,key in JSON.parse(item.transmitType)
+                                        -transmitType = key;
+                                        -favPrice = parseFloat(value);
+                                    p #{sampleJson[transmitType]}(服务费￥#{favPrice/100})
+                                    if transmitType == 'sampling_home'
+                                        p.text-sec 取样地址:
+                                            each areaObj,j in JSON.parse(item.address)
+                                                if areaObj
+                                                    | #{areaObj.name}
+                                td.text-sec ￥#{(parseFloat(item.dealPrice + favPrice)/100).toFixed(2)}
+                                if data.orderState == 2
+                                    if item.reservationState == 0
+                                        td.text-stress 未使用
+                                        td.text-main
+                                            p 电话预约
+                                            p 400-686-9911
+                                    else
+                                        td.text-sec 已使用
+                                        td: a(href="/users/reservation/detail?id=#{item.reservationGrouopId}") 预约详情
                                 else
-                                    td.text-sec 已使用
-                                    td: a(href="/users/reservation/detail?id=#{item.reservationGrouopId}") 预约详情
-                            else
-                                td
-                                td
-            .table-div
-                .tfoot.clearfix
-                    #actualTotal.price-text
-                        span.text-sec 支付:
-                        span.price.text-stress ￥#{(parseFloat(data.totalCost)/100).toFixed(2)}
+                                    td
+                                    td
+                .table-div
+                    .tfoot.clearfix
+                        #actualTotal.price-text
+                            span.text-sec 支付:
+                            span.price.text-stress ￥#{(parseFloat(data.totalCost)/100).toFixed(2)}
+                            span.fav
+                                if data.feeMap.coupon_fee
+                                    |(已优惠￥#{(parseFloat(data.feeMap.coupon_fee)/100).toFixed(2)})
+                                else
+                                    |(已优惠￥0.00)
+        else
+            .detail-wap
+                h3
+                    span.text-sec 订单编号:#{data.id}
+                    span.orderState #{orderStateJSON[data.orderState]}
+                each item,i in data.goodsItemDTOs
+                    dl.clearfix
+                        dt
+                            a(href='/screenings/goods/detail/#{item.goodsId}')
+                                img(src="#{item.imageUrls[0]}")
+                                p #{item.goodsName}
+                                if data.orderState == 2
+                                    if item.reservationState == 0
+                                        span.text-stress 未使用
+                                    else
+                                        span.text-sec 已使用
+                                span.dealPrice ￥#{item.dealPrice.toFixed(2)}
+                        dd
+                            if item.reservationPwd
+                                p.text-stress 使用密码：#{item.reservationPwd}
+                            each value,key in JSON.parse(item.transmitType)
+                                -transmitType = key;
+                                -favPrice = parseFloat(value);
+                            p #{sampleJson[transmitType]}(服务费￥#{favPrice / 100})
+                            if transmitType == 'sampling_home'
+                                p.text-sec 取样地址:
+                                    each areaObj,j in JSON.parse(item.address)
+                                        if areaObj
+                                            | #{areaObj.name}
+                #actualTotal.price-text
+                    p
+                        span.text-sec 实付款:
+                        span.price.text-stress ￥#{(parseFloat(data.totalCost) / 100).toFixed(2)}
+                    p
                         span.fav
+                            |优惠券
                             if data.feeMap.coupon_fee
-                                |(已优惠￥#{(parseFloat(data.feeMap.coupon_fee)/100).toFixed(2)})
+                                | (￥#{(parseFloat(data.feeMap.coupon_fee) / 100).toFixed(2)})
                             else
-                                |(已优惠￥0.00)
+                                | (￥0.00)
+                .area
+                    p.info
+                        span 服务区域：
+                        span
+                            each areaObj,j in JSON.parse(data.goodsItemDTOs[0].address)
+                                if areaObj && j < 2
+                                    | #{areaObj.name}
+                    p.date-time
+                        span 下单时间：
+                        |#{moment(data.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
+
+
     include ../includes/footer
-    //script.
-    //    seajs.use('/js/trade/order_detail.js')
+    //-script.
+        seajs.use('/js/trade/order_detail.js')

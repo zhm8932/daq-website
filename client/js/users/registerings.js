@@ -18,7 +18,7 @@ define(function (require, exports, module) {
                 tipText:'确定删除吗?',
                 okCallback:function(){
                     $this.addClass('disabled').off('click');
-                    var tr = $this.closest('tr');
+                    var tr = $this.closest('tr,dl');
                     var reservationId = tr.attr('data-id');
                     utils.SendAjax({
                         url: '/users/register/del',
@@ -45,7 +45,7 @@ define(function (require, exports, module) {
                 tipText:'确定取消吗?',
                 okCallback:function(){
                     $this.addClass('disabled').off('click');
-                    var tr = $this.closest('tr');
+                    var tr = $this.closest('tr,dl');
                     var reservationId = tr.attr('data-id');
                     utils.SendAjax({
                         url: '/users/register/cancel',

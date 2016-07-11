@@ -3,7 +3,8 @@ extends ../layout
 block content
     link(href='/css/users/user.css',rel='styleSheet')
     include ../includes/responsive
-    include ../includes/nav
+    .users
+        include ../includes/nav
     .positon.wrapper
         |您的位置为：首页<em>#{sep}</em>#{title}
     section.wrapper.userBox.clearfix
@@ -50,7 +51,7 @@ block content
                             else if resStatus == 4
                                 p 已取消
 
-                        .col.operation
+                        .col.operation.clearfix
                             p: a(href='/users/reservation/detail?id=#{item.id}') 预约详情
                             if resStatus == 2
                                 p: a(href='') 查看报告

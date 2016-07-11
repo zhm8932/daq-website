@@ -39,6 +39,14 @@ define(function(require,exports,module) {
                     self.hideBox()
                 }
             });
+            $(window).on('keydown',function(e){
+                if(e.keyCode =='13'){
+                    self.opts.okCallback();
+                    if(self.opts.isHide){
+                        self.hideBox()
+                    }
+                }
+            });
 
             var cancel = '.'+this.opts.cancel;
             //点击取消

@@ -90,21 +90,46 @@ exports.get_article_list_diseases = function (req,res,next) {
     })
 }
 //相关推荐
+// exports.get_article_list_recommend = function (req,res,next) {
+//     get_article_list(req,res,next,{
+//         category_name:'科普知识',
+//         data_name:'get_article_list_recommend',
+//         status:1,
+//         pageSize:20
+//     })
+// }
+
 exports.get_article_list_recommend = function (req,res,next) {
-    get_article_list(req,res,next,{
-        category_name:'科普知识',
-        data_name:'get_article_list_recommend',
-        status:1,
-        pageSize:20
-    })
+
+    var ids = req.ids;
+    var bizParam = {"ids": ids};
+    if(ids){
+        util.ajax('GET', api.ArticleQueryArticleByIdBatch,req,bizParam, function (data, success) {
+            console.log("jsonjsonjson:",json)
+            var json = JSON.parse(data);
+            console.log("这里执行了几次")
+            res.locals.get_article_list_recommend_success = json.success;
+            req.get_article_list_recommend=json;
+            next();
+        });
+    }else{
+        next()
+    }
+
 }
 exports.get_article_detail = function(req,res,next){
-    var id = req.params.id
+    var id = req.params.id;
     var bizParam = {"id": id};
     util.ajax('GET', api.ArticleDetail,req,  bizParam, function (data, success) {
         var json = JSON.parse(data);
-        res.locals.get_article_detail_success = json.success
-        req.get_article_detail=json
+        console.log("这里执行了几次22222222")
+        res.locals.get_article_detail_success = json.success;
+        req.get_article_detail=json;
+        if(success){
+            req.ids = json.data.recommendIds;
+        }else{
+            req.ids = '';
+        }
         next();
     });
 }
@@ -122,33 +147,3 @@ exports.get_banner = function (req,res,next) {
         next()
     });
 };
-// exports.get_article_list_ask = function (req,res,next) {
-//     get_article_list(req,res,next,{
-//         category_name:'问答',
-//         data_name:'get_article_list_ask'
-//     })
-//
-//     // var currentPage = query.page||1;
-//     // var get_articles_category = req.get_articles_category
-//     // if(get_articles_category_success){
-//     //     get_articles_category = get_articles_category.data
-//     // }
-//     //
-//     // console.log("get_articles_category:",get_articles_category)
-//     // var bizParam={
-//     //     "pageIndex": currentPage,
-//     //     "pageSize": 6,
-//     //     "category":query.category||'2140011616386461075',
-//     // };
-//     //
-//     //
-//     // util.ajax('GET',api.ArticleSearch,bizParam,function (json,success) {
-//     //     var json = json;
-//     //     res.locals.get_article_list_success = json.success;
-//     //     res.locals.currentPage = currentPage;
-//     //     res.locals.pageCount = json.data.pageCount;
-//     //     req.get_article_list = json;
-//     //
-//     //     next()
-//     // });
-// }

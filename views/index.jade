@@ -38,20 +38,21 @@ block content
       .pic_list.department_list
         if get_department_success
           ul
-            each item in get_department
-              li
-                a(href='/agencys')
-                  if browser.ie
-                    img(src='images/product1.png')
-                  else
-                    img(data-original='images/product1.png')
-                h4 #{item.deptName}
-                p
-                  if item.description
-                    if item.description.length>30
-                      |#{item.description.substring(0,30)}……
+            each item,index in get_department
+              if index<=2
+                li
+                  a(href='/agencys')
+                    if browser.ie
+                      img(src='images/product1.png')
                     else
-                      |#{item.description}
+                      img(data-original='images/product1.png')
+                  h4 #{item.deptName}
+                  p
+                    if item.description
+                      if item.description.length>30
+                        |#{item.description.substring(0,30)}……
+                      else
+                        |#{item.description}
 
         div.clear
           a.more(href='/agencys',target='_blank')

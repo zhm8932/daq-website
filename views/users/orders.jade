@@ -21,7 +21,7 @@ block content
                     dt
                         |订单编号：#{item.id}
                         time.date-time.text-sec #{moment(item.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
-                    dd
+                    dd.clearfix
                         .col.goods
                             -var transmitType = '';
                             each goods,index in item.goodsItemDTOs
@@ -58,7 +58,8 @@ block content
                                 p.state-info.bdr-bt
                                     |#{orderStateJSON[orderState]}
                             p 总额：￥#{(parseFloat(item.totalCost)/100).toFixed(2)}
-                            p 商品合计：￥#{(parseFloat(item.feeMap.goods_price)/100).toFixed(2)}
+                            p.realCost 合计：
+                                em ￥#{(parseFloat(item.feeMap.goods_price)/100).toFixed(2)}
                             p 服务费：￥
                                 if item.feeMap.service_fee
                                     |#{(parseFloat(item.feeMap.service_fee)/100).toFixed(2)}

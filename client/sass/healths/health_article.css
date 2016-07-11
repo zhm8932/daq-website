@@ -41,7 +41,8 @@
     font-size: 24px;
     border_bottom: 1px solid #9B9B9B; }
   .recommend ul {
-    font-size: 16px; }
+    font-size: 16px;
+    width: 690px; }
     .recommend ul i {
       width: 6px;
       height: 6px;
@@ -53,7 +54,9 @@
     .recommend ul li {
       width: 50%;
       float: left;
-      line-height: 40px; }
+      line-height: 40px;
+      height: 40px;
+      overflow: hidden; }
       .recommend ul li a {
         display: block; }
 

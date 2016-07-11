@@ -3,7 +3,8 @@ define(function(require, exports, module){
     require('lazyload');
     require('./login');
     var utils = require('./libs/utils.js');
-    var Swiper = require('./libs/swiper.jquery.umd');
+    var Swiper = require('swiper');
+    // var Swiper = require('./libs/swiper.jquery.umd');
     var BMap = require('./libs/BMap.js');
     require('cookie');
     // console.log(BMap)
@@ -225,25 +226,23 @@ define(function(require, exports, module){
     }
 
     //移动端
+    
     var $nav_toggle = $('.nav_toggle');
     var $left_nav = $('.left-nav');
     $nav_toggle.click(function () {
         $left_nav.slideToggle();
         $(this).parents('aside').toggleClass('active');
     })
-    $nav_toggle.hover(
-        function () {
-            $left_nav.slideDown();
-            $(this).parents('aside').addClass('active');
-        },
-        function () {
-            // $left_nav.slideUp()
-        }
-    )
-    // $left_nav.mouseleave(function () {
-    //     $(this).parents('aside').removeClass('active');
-    //     $left_nav.slideUp();
-    // })
+    // $nav_toggle.hover(
+    //     function () {
+    //         $left_nav.slideDown();
+    //         $(this).parents('aside').addClass('active');
+    //     },
+    //     function () {
+    //         // $left_nav.slideUp()
+    //     }
+    // )
+
 
 
 });

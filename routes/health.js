@@ -14,10 +14,12 @@ router.get('/list/article/:id',
     Requests.get_article_list,
     Requests.get_article_list_diseases,
     Requests.get_article_list_ask,
-    Requests.get_article_list_recommend,
     // Requests.get_banner,
     Requests.get_article_detail,
-    Handlers.get_article);
+    Requests.get_article_list_recommend, //获取文章详情后才能获取相关推荐
+    Handlers.get_article
+);
+
 // router.get('/list/article/:id',Middlewares.get_articles_category,Requests.get_article_list,Requests.get_article_list_diseases,Requests.get_article_detail,Handlers.get_article);
 //前端分页获取问答数据
 router.post('/list/list_ask_web',Middlewares.get_articles_category,Requests.get_list_ask_web)
