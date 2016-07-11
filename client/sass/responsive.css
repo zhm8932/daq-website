@@ -221,6 +221,8 @@
       width: 30px;
       height: 28px;
       background-size: 100%; }
+  .topBar_info .accountInfo {
+    display: block; }
   .topBar_info .wapUser {
     width: 20px;
     position: relative;
