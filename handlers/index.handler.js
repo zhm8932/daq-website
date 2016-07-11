@@ -92,6 +92,9 @@ exports.get_wap_tit = function (req,res,next) {
         else if(url=='/users/coupon/listView'||url.search('/users/coupon')!=-1){
             curTit = '<i class="icon t4"></i><a href='+url+'>优惠券</a>'
         }
+        else if(url=='/users/account/info'||url.search('/users/account')!=-1){
+            curTit = '<a href='+url+'>账号信息</a>'
+        }
         console.log("curTit:",curTit);
         res.locals.curTit = curTit;
     }

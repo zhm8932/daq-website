@@ -12,12 +12,14 @@
 
 
             i.icon.devidel
+            .wapUser
+                img(src='/images/top_user.png')
             aside
-                .wapUser
-                    img(src='/images/user.png')
                 if userInfo
                 if account
+                    i.arrow
                     a.logout(href='/trade/order/list') 个人中心
+                    a.accountInfo(href='/users/account/info') 账号信息
                     i.icon.devidel
                     a.logoutBtn(href='javascript:;') 退出
 

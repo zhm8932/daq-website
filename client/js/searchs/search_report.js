@@ -1,6 +1,6 @@
 define(function(require){
-    var config = require('./config');
-    var login = require('./login')
+    var config = require('../config');
+    var login = require('../login');
     require("moment");
     require("daterangepicker");
 
@@ -21,16 +21,16 @@ define(function(require){
 
         console.log(config);
 
-        var code = document.querySelector('#code');
-        console.log("code:",code);
-        code.oninput=function(){
-
-            code.setCustomValidity("");
-        };
-        code.oninvalid=function(){
-            console.log(code);
-            code.setCustomValidity("请输入服务条形码？");
-        };
+        // var code = document.querySelector('#code');
+        // console.log("code:",code);
+        // code.oninput=function(){
+        //
+        //     code.setCustomValidity("");
+        // };
+        // code.oninvalid=function(){
+        //     console.log(code);
+        //     code.setCustomValidity("请输入服务条形码？");
+        // };
 
         var hasBind = $('#hasBind').val();
         if (hasBind != 'true') {

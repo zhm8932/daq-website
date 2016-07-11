@@ -63,23 +63,23 @@ block content
                                             span.end #{moment(item.end).format('HH:mm:ss')}
 
                                     if item.reservationStatus == 0
-                                        td.text-stress 未支付
+                                        td.status.text-stress 未支付
                                         +payway(item)
                                         td: a(href="javascript:void(0)").cancel-reg 取消
                                     else if item.reservationStatus == 1
-                                        td.text-stress 待就诊
+                                        td.status.text-stress 待就诊
                                         +payway(item)
                                         td: a(href="javascript:void(0)").cancel-reg 取消
                                     else if item.reservationStatus == 2
-                                        td 已完成
+                                        td.status 已完成
                                         +payway(item)
                                         td
                                     else if item.reservationStatus == 3
-                                        td.text-sec 已过期
+                                        td.status.text-sec 已过期
                                         +payway(item)
                                         td: a(href="javascript:void(0)").del-reg 删除
                                     else if item.reservationStatus == 4 || item.reservationStatus == 5 || item.reservationStatus == 6
-                                        td.text-sec 已取消
+                                        td.status.text-sec 已取消
                                         +payway(item)
                                         td: a(href="javascript:void(0)").del-reg 删除
                                     //else if item.reservationStatus == 5

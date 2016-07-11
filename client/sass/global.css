@@ -359,6 +359,8 @@ select {
     color: #9B9B9B; }
     .topBar_info a:hover {
       color: #48BED8; }
+  .topBar_info .accountInfo {
+    display: none; }
   .topBar_info .city-name {
     position: relative;
     display: inline-block; }

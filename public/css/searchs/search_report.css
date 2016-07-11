@@ -65,9 +65,33 @@
     background-color: #48BED8;
     font-size: 16px; }
 
+.report_list h2 {
+  font-size: 20px;
+  padding: 5px 0;
+  margin-bottom: 5px; }
+  .report_list h2 i {
+    width: 6px;
+    height: 20px;
+    display: inline-block;
+    background-color: #48BED8;
+    border-radius: 10px;
+    margin: 0px 10px 0 0;
+    position: relative;
+    top: 3px; }
+.report_list ul {
+  border: 1px solid #dddddd; }
+  .report_list ul li {
+    padding: 10px;
+    font-size: 16px; }
+    .report_list ul li:nth-child(odd) {
+      background-color: #F2F6F7; }
+    .report_list ul li i {
+      background-position: -226px -26px;
+      margin-right: 5px; }
+
 .noData {
   text-align: center;
-  padding-top: 100px; }
+  padding-top: 20px; }
   .noData p {
     font-size: 18px;
     padding-bottom: 20px; }

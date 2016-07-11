@@ -4,10 +4,11 @@ block content
     link(href='/css/users/user.css',rel='styleSheet')
     link(href="/css/daterangepicker.css",rel="stylesheet")
     include ../includes/responsive
-    include ../includes/nav
+    .users
+        include ../includes/nav
     .positon.wrapper
         |您的位置为：首页<em>#{sep}</em>我的订单
-    section.wrapper.userBox.clearfix
+    section.wrapper.userBox.accountBox.clearfix
         include ../includes/usersNav
         .box-right.account.fr
             -var genderJson = {'0':'其他','1':'男','2':'女'};

@@ -101,9 +101,9 @@
                 minIndex;
             var wrapperW = $('.item_list .wrapper').width();
             var winW = $(window).width();
-            // console.log("wrapperW:",wrapperW);
-            // console.log("winW:",winW)
-            // console.log("winW:",$('.wrapper'))
+            console.log("wrapperW:",wrapperW);
+            console.log("winW:",winW)
+            console.log("winW:",$('.wrapper'))
             this._getColumnCount();
             this.colHeightArray = [];
 
@@ -133,7 +133,8 @@
 
                     $(this).css("top", minHeight + $this.options.spacingHeight);
                     // $(this).css("left", $item.eq(minIndex).offset().left);
-                    $(this).css("left", $item.eq(minIndex).offset().left-(winW-wrapperW)/2);
+                    // $(this).css("left", $item.eq(minIndex).offset().left-(winW-wrapperW)/2);
+                    $(this).css("left", 0);
                     $this.colHeightArray[minIndex] += $(this).outerHeight() + $this.options.spacingHeight;
                 }
 

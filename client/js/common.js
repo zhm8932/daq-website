@@ -130,7 +130,7 @@ define(function(require, exports, module){
                 $gotoTop.fadeOut(700)
             }
         });
-
+        
         var winWidth = $(window).width();
         var $nav = $('.nav').find('.wrapper');
         if(winWidth<768){
@@ -232,6 +232,19 @@ define(function(require, exports, module){
     $nav_toggle.click(function () {
         $left_nav.slideToggle();
         $(this).parents('aside').toggleClass('active');
+    })
+
+    var $topBar_info_aside=$('.topBar_info aside');
+    $('.wapUser').click(function () {
+        var accountId = $.cookie('accountId');
+        console.log("accountId:",accountId)
+        if(accountId){
+            $topBar_info_aside.slideToggle();
+        }else{
+            window.location.href = '/login';
+        }
+
+
     })
     // $nav_toggle.hover(
     //     function () {

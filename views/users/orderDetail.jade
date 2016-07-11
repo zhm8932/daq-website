@@ -134,6 +134,11 @@ block content
                     p.date-time
                         span 下单时间：
                         |#{moment(data.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
+                //-p #{moment(data.currentTime).format('YYYY-MM-DD HH:mm:ss')}
+                if data.orderState == 1
+                    p.topay: a.btn(href='/trade/order/orderSuccess?id=#{data.id}&totalCost=#{data.totalCost}')
+                                |去支付
+                                time 29:30
 
 
     include ../includes/footer

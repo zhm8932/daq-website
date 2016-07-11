@@ -21,18 +21,17 @@ define(function(require){
         });
 
         $('.ellips').ellipsis({
-            row:3,
+            row:2,
             char:'……',
             callback: function() {
-                console.log($(this).text());
+                // console.log($(this).text());
             }
         })
         // $.each($('.ellips'),function (index,item) {
-        //     console.log(item)
+        //     // console.log(item)
         //     $(item).ellipsis({
-        //         row:3,
+        //         row:2,
         //         char:'……',
-        //         position: 'tail',
         //         callback: function() {
         //             console.log($(this).text());
         //         }
@@ -129,7 +128,7 @@ define(function(require){
 
                         $.each(data,function (index,arr) {
                             var fit_people_html = '';
-                            var discountPrice=''
+                            var discountPrice='';
                             var price=''
                             if(arr.productKeyAttributeList){
                                 arr.productKeyAttributeList.forEach(function (item,index) {
@@ -166,8 +165,7 @@ define(function(require){
         var pageCount = '';
         // console.log("初始化的pageCount：",pageCount)
 
-        // initWaterfall();
-        waterfall();
+        // waterfall();
 
         //瀑布流加载
         function initWaterfall() {
@@ -186,6 +184,37 @@ define(function(require){
             })
         }
 
+        function initData() {
+            var html = '';
+            var data = {
+                pageIndex:pageIndex,
+                send:true,
+                // "categoryId":2140010959154488028,
+                "categoryId":$('.tab ul li.on').attr('data-id')
+            }
+            var listData = '';
+            console.log("pageIndex:",pageIndex+'--pageCount:',pageCount)
+            if(!pageCount){
+                listData = getListData(data)
+            }else if(pageIndex<=pageCount){
+                getListData(data)
+            }else{
+                console.log('不再加载')
+            }
+        }
+
+        initData();
+
+        var winHeight = $(document).height();
+        var footerHeight = $('.footer').outerHeight()+$('.copyright').outerHeight();
+        console.log("winHeight:",winHeight)
+        console.log("footerHeight:",footerHeight);
+        $(window).scroll(function () {
+            var scrollTop = $(document).scrollTop();
+            if(scrollTop>=winHeight-footerHeight){
+                initData();
+            }
+        })
         function waterfall() {
             // console.log('再执行')
             $("#waterfal").waterfall({
