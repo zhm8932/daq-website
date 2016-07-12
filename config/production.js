@@ -39,7 +39,15 @@ var config = {
     port_node:'3000',
     //文件服务器
     server_file_path:'http://file.douanquan.com/',
-    server_img_path:'http://image.douanquan.com/'
+    server_img_path:'http://image.douanquan.com/',
+    options:{
+        host:"1ac256e68d824785.m.cnsza.kvstore.aliyuncs.com",
+        // "host":"127.0.0.1",
+        "pass":'1ac256e68d824785:JihuiduoRedis88',
+        // "password":'1ac256e68d824785:JihuiduoRedis88',
+        "port": "6379",
+        "ttl": 60 * 60 * 24 * 1   //Session的有效期为1天
+    }
 
 }
 

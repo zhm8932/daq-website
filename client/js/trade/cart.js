@@ -67,6 +67,7 @@ define(function (require, exports, module) {
     }
 
     function delCartItem($this) {
+        console.log($this)
         login.CheckLogin(function() {
             utils.ShowComfirmDialog({
                 tipText:'确定删除吗?',
@@ -172,5 +173,17 @@ define(function (require, exports, module) {
         $('#submitForm input[name=totalPrice]').val(totalPrice);
         $('#submitForm').submit();
     }
+
+    var timeout ;
+    $('body').on('mousedown','.table-tr',function () {
+        var $self = $(this).find('.del-cart-item')
+        timeout = setTimeout(function() {
+            console.log("mousedown")
+            delCartItem($self);
+        },2000);
+    });
+    $("body").bind("mouseup", function() {
+        clearTimeout(timeout);
+    });
     
 });

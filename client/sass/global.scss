@@ -509,7 +509,7 @@ select {
 
   img {
     width: 100%;
-    height: auto;
+    height: auto;margin-bottom: -7px;
   }
   dl {
     width: 100%;
@@ -624,7 +624,7 @@ select {
       }
       p {
         color: $gray9B;
-        margin-top: 10px;
+        margin-top: 10px;height: 48px;overflow: hidden;
       }
       //&:hover{
       //  h4{color:$textOnColor; cursor: pointer;}
@@ -645,18 +645,18 @@ select {
 
     .more {
       float: right;
-      margin-top: 50px;
+      margin-top: 50px;color: $textOnColor;
       i {
-        background-position: -91px 0px;
+        background-position: -114px 0px;
         vertical-align: top;
         position: relative;
         top: 4px;
         margin-left: 5px;
       }
       &:hover {
-        color: $textOnColor;
+        color: $textColor;
         i {
-          background-position: -114px 0px;
+          background-position: -91px 0px;
         }
       }
 
@@ -1184,28 +1184,26 @@ select {
   color: $f2;
   margin-top: 50px;
   dl {
-    width: 60%;
+    width: 80%;
     float: left;
     dt, dd {
       float: left;
     }
     dt {
-      width: 50%;
+      width: 60%;
       overflow: hidden;
-      border-right: 1px solid #2b2b2b;
-      box-shadow: 1px 0 0 0 #454545;
       margin-right: -2px;
       img {
-        margin-bottom: 20px;
+        float: left;margin: 0 40px 20px 0;
       }
       p {
-        padding-bottom: 10px;
+        padding: 10px 0 0 0;
       }
       a {
         color: $f2;
-        padding-right: 10px;
-        border-left: 1px solid $bdrc_f2;
-        padding: 0 20px;
+        //border-left: 1px solid $bdrc_f2;
+        //padding: 0 30px 0 0;
+        width: 30%;
         margin-bottom: 10px;
         display: inline-block;
         height: 14px;
@@ -1215,13 +1213,16 @@ select {
         }
       }
       .area {
-        margin-left: -20px;
+        h4{padding: 10px 0;font-size: 18px;}
+        margin-left:0px;clear: both;
       }
 
     }
     dd {
       width: 35%;
-      padding-left: 15%;
+      padding-left: 5%;
+      border-left: 1px solid #2b2b2b;
+      box-shadow: -1px 0 0 0 #454545;
       h4 {
         font-size: 18px;
       }
@@ -1244,7 +1245,7 @@ select {
     }
   }
   .qrcode {
-    width: 40%;
+    width: 20%;
     float: right;
     text-align: center;
     color: $textColor;
@@ -1513,4 +1514,5 @@ $rightNavLI: 50px;
     width:280px;
   }
 }
+.footerWap{display: none;}
 

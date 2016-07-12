@@ -509,7 +509,8 @@ select {
     position: relative; }
   .banner img {
     width: 100%;
-    height: auto; }
+    height: auto;
+    margin-bottom: -7px; }
   .banner dl {
     width: 100%;
     position: absolute;
@@ -605,7 +606,9 @@ select {
       overflow: hidden; }
     .item_list .pic_list li p {
       color: #9B9B9B;
-      margin-top: 10px; }
+      margin-top: 10px;
+      height: 48px;
+      overflow: hidden; }
     .item_list .pic_list li .price {
       padding-top: 20px; }
       .item_list .pic_list li .price .new {
@@ -617,17 +620,18 @@ select {
         text-decoration: line-through; }
   .item_list .pic_list .more {
     float: right;
-    margin-top: 50px; }
+    margin-top: 50px;
+    color: #48BED8; }
     .item_list .pic_list .more i {
-      background-position: -91px 0px;
+      background-position: -114px 0px;
       vertical-align: top;
       position: relative;
       top: 4px;
       margin-left: 5px; }
     .item_list .pic_list .more:hover {
-      color: #48BED8; }
+      color: #4A4A4A; }
       .item_list .pic_list .more:hover i {
-        background-position: -114px 0px; }
+        background-position: -91px 0px; }
   .item_list .department_list li {
     height: 310px; }
     .item_list .department_list li h4 {
@@ -1062,25 +1066,22 @@ select {
   color: #F2F2F2;
   margin-top: 50px; }
   .footer dl {
-    width: 60%;
+    width: 80%;
     float: left; }
     .footer dl dt, .footer dl dd {
       float: left; }
     .footer dl dt {
-      width: 50%;
+      width: 60%;
       overflow: hidden;
-      border-right: 1px solid #2b2b2b;
-      box-shadow: 1px 0 0 0 #454545;
       margin-right: -2px; }
       .footer dl dt img {
-        margin-bottom: 20px; }
+        float: left;
+        margin: 0 40px 20px 0; }
       .footer dl dt p {
-        padding-bottom: 10px; }
+        padding: 10px 0 0 0; }
       .footer dl dt a {
         color: #F2F2F2;
-        padding-right: 10px;
-        border-left: 1px solid #f2f2f2;
-        padding: 0 20px;
+        width: 30%;
         margin-bottom: 10px;
         display: inline-block;
         height: 14px;
@@ -1088,10 +1089,16 @@ select {
         .footer dl dt a:hover {
           color: #48BED8; }
       .footer dl dt .area {
-        margin-left: -20px; }
+        margin-left: 0px;
+        clear: both; }
+        .footer dl dt .area h4 {
+          padding: 10px 0;
+          font-size: 18px; }
     .footer dl dd {
       width: 35%;
-      padding-left: 15%; }
+      padding-left: 5%;
+      border-left: 1px solid #2b2b2b;
+      box-shadow: -1px 0 0 0 #454545; }
       .footer dl dd h4 {
         font-size: 18px; }
       .footer dl dd p {
@@ -1107,7 +1114,7 @@ select {
           .footer dl dd p a:hover {
             color: #9B9B9B; }
   .footer .qrcode {
-    width: 40%;
+    width: 20%;
     float: right;
     text-align: center;
     color: #4A4A4A; }
