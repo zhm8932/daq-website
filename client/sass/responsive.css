@@ -476,6 +476,9 @@
   .rightNav {
     display: none; }
 
+  .recommend ul {
+    width: 100%; }
+
   .userBox {
     margin: 0 auto;
     overflow: visible; }
@@ -931,6 +934,12 @@
         .coupons .table tbody tr td:nth-child(4):before {
           content: "有效期："; }
 
+  .confirm-buy header {
+    display: none; }
+  .confirm-buy .list-info {
+    margin: 10px 0 0;
+    border-bottom: 1px solid #dddddd;
+    padding-bottom: 5px; }
   .confirm-buy .coupon-table thead {
     display: none; }
   .confirm-buy .coupon-table tbody tr {
@@ -957,6 +966,64 @@
 
   .table-div {
     margin-bottom: 50px; }
+
+  .back-sec {
+    display: none; }
+
+  .cart header {
+    display: none; }
+  .cart .list-info {
+    margin: 10px 0 0;
+    border-bottom: 1px solid #dddddd;
+    padding-bottom: 5px; }
+  .cart .table-div {
+    margin-bottom: 0px; }
+
+  .table-div .table-tr {
+    border-bottom: 1px solid #dddddd;
+    padding-bottom: 5px; }
+    .table-div .table-tr .check {
+      width: 30px;
+      margin-right: 0px;
+      margin: 12% 0 0 0;
+      padding: 0px; }
+    .table-div .table-tr .name {
+      width: auto;
+      float: none; }
+      .table-div .table-tr .name span {
+        float: none; }
+      .table-div .table-tr .name img {
+        width: 25%; }
+    .table-div .table-tr .info {
+      clear: both;
+      width: 100%;
+      padding: 10px 0 0 30px;
+      line-height: 30px; }
+    .table-div .table-tr .price {
+      padding: 0 10px;
+      width: auto; }
+    .table-div .table-tr .tot-price {
+      display: none; }
+    .table-div .table-tr .operation {
+      width: auto;
+      display: none; }
+  .table-div .back-sec {
+    display: block;
+    margin-top: 60px;
+    position: relative; }
+    .table-div .back-sec .submit-div {
+      width: 100%; }
+    .table-div .back-sec .price-text {
+      position: absolute;
+      width: auto;
+      border-bottom: 1px solid #dddddd;
+      top: -60px;
+      right: 0px;
+      height: 45px;
+      line-height: 45px;
+      width: 100%; }
+  .table-div .thead {
+    display: none; }
 
   .order-success .order-box, .pay-success .order-box {
     box-sizing: border-box; }
@@ -1004,8 +1071,23 @@
   .loginBox2 {
     border: none;
     box-sizing: border-box;
-    width: 100%; } }
+    width: 100%; }
+
+  .order-success .order-box .price-box, .pay-success .order-box .price-box {
+    top: 45px; }
+
+  .order-success .order-box .order-detail, .pay-success .order-box .order-detail {
+    top: 90px; } }
 @media only screen and (min-width: 320px) and (max-width: 360px) {
+  .topBar {
+    margin-left: 110px; }
+
+  .header {
+    height: 50px;
+    line-height: 50px; }
+    .header .logo {
+      width: 100px; }
+
   .health_list .lr_list figure img {
     width: 130px; }
   .health_list .lr_list figure h4 {

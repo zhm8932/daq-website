@@ -103,12 +103,12 @@ define(function(require, exports, module){
             OChooseCity.stop(false,true).slideUp();
             // OChooseCity.stop(false,true).fadeOut();
         });
-        $(window).on('click',function(){
-            var OChooseCity = $('.city-name .choose-city');
-            if(OChooseCity.css('display') != 'none') {
-                OChooseCity.fadeOut();
-            }
-        });
+        // $(window).on('click',function(){
+        //     var OChooseCity = $('.city-name .choose-city');
+        //     if(OChooseCity.css('display') != 'none') {
+        //         OChooseCity.fadeOut();
+        //     }
+        // });
 
 
         $("section img").lazyload({
