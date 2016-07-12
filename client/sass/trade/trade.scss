@@ -354,9 +354,8 @@ header {
 .order-success, .pay-success {
   .order-box {
     width: 100%;
-    height: 176px;
     position: relative;
-    margin: 30px 0 50px 0;
+    margin: 30px 0;
     i.success {
       position: absolute;
       top: 42px;
@@ -365,19 +364,21 @@ header {
       height: 70px;
       background-position: 0 -463px;
     }
-    .price-box {
-      position: absolute;
-      top: 57px;
-      left: 151px;
-      .price {
-        font-size: 20px;
-        margin: 0 10px;
+    .box-right{
+      margin: 40px 30px 40px 151px;
+      p{margin-bottom:10px;}
+      .price-box {
+        .price {
+          font-size: 20px;
+          margin: 0 10px;
+        }
       }
-    }
-    .order-detail {
-      position: absolute;
-      top: 115px;
-      left: 152px;
+      .timer-box{
+        font-size:18px;
+        .timer{
+          margin:0 5px;
+        }
+      }
     }
   }
 }
@@ -402,24 +403,17 @@ header {
   }
   .order-box {
     height: 243px;
+    p{margin-bottom:25px;}
     .pay-tip {
-      position: absolute;
-      top: 50px;
-      left: 153px;
       font-size: 20px;
+      margin-bottom:15px;
     }
     .order-num-price {
-      position: absolute;
-      top: 85px;
-      left: 153px;
       span {
         margin-right: 30px;
       }
     }
     .order-tel {
-      position: absolute;
-      top: 175px;
-      left: 153px;
       span {
         margin: 0 10px;
         font-size: 16px;

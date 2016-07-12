@@ -75,7 +75,8 @@ router.get('/reg/topay', function (req, res, next) {
         data: {
             id: query.id,
             totalCost: query.cost,
-            orderId:query.orderId
+            orderId:query.orderId,
+            payTime:query.payTime
         }
     });
 });

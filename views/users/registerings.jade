@@ -64,8 +64,13 @@ block content
 
                                     if item.reservationStatus == 0
                                         td.status.text-stress 未支付
-                                        +payway(item)
-                                        td: a(href="javascript:void(0)").cancel-reg 取消
+                                        //+payway(item)
+                                        td
+                                            p 支付剩余时间
+                                            p.timer.text-stress(data-paytime="#{item.updatedAt}") 00分00秒
+                                        td
+                                            p: a(href="/treats/reg/topay?payTime=#{item.updatedAt}&id=#{item.payId}&cost=#{item.cost}&orderId=#{item.id}").to-pay 继续支付
+                                            p: a(href="javascript:void(0)").cancel-reg 取消
                                     else if item.reservationStatus == 1
                                         td.status.text-stress 待就诊
                                         +payway(item)
