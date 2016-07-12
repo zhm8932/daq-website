@@ -754,6 +754,16 @@ $conWidth:1600px;
     article{padding: 0px 10px;}
   }
 
+  .footerWap{position: fixed;display:block;background:rgba(0, 0, 0, 0.79);bottom: 0px;left: 0px;z-index: 99;width: 100%;height:60px;line-height:60px;color: $white;
+    a{font-size:30px;color: $white;padding-left: 15px;font-family: ArialMT;
+      i{background-position:-58px -602px;width: 48px;height: 40px;position: relative;top: 10px;margin-right: 5px;}
+    }
+    .gotoTop{width: 100px;float: right;background-color: $bgc_gray_4A;line-height: 30px;text-align: center;
+      i{background-position:-358px 0;width: 45px;margin:0 0 -14px 0;}
+      em{display: block;height: 30px;}
+    }
+  }
+
 }
 @media only screen and (max-width: 600px){
   .loginBox2{border: none;box-sizing: border-box;width: 100%;}
@@ -793,6 +803,10 @@ $conWidth:1600px;
   .order-success .order-box .order-detail, .pay-success .order-box .order-detail{left:140px;top: 90px;}
 
   .footer dl dd p{width: 100%;}
+  .footerWap{
+    a{font-size: 24px;}
+    .gotoTop{width: 80px;}
+  }
 
 }
 @media only screen and (width: 320px){

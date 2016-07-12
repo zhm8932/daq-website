@@ -1337,4 +1337,7 @@ select {
   .complete-dialog span.ok {
     width: 280px; }
 
+.footerWap {
+  display: none; }
+
 /*# sourceMappingURL=global.css.map */
