@@ -17,6 +17,7 @@ seajs.config({
         'touchslider':'/js/libs/jquery.touchslider.js',
         'moment':'/js/libs/moment.js',
         'daterangepicker':'/js/libs/daterangepicker.js',
+        'swipebox':'/js/libs/jquery.swipebox',
         'cookie':'/js/libs/jquery.cookie',
         'swiper':'/js/libs/swiper.jquery.umd',
         'ellipsis':'/js/libs/jquery.ellipsis',

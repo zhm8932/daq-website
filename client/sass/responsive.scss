@@ -78,6 +78,12 @@ $conWidth:1600px;
 
   .health aside{width: 30%;}
   .health_detail{width: 65%;}
+  .footer dl{
+    dt{width: 70%;}
+    dd{width: 25%;
+      p{width: 80%;}
+    }
+  }
 
 }
 
@@ -106,11 +112,17 @@ $conWidth:1600px;
 
   .health aside{width: 30%;}
   .health_detail{width: 65%;}
+  .footer dl{
+    dt{width: 70%;}
+    dd{width: 25%;
+      p{width: 80%;}
+    }
+  }
 }
 //最大为768px
 @media only screen and (max-width: $win_768){
   *{font-family: 'HanHei SC', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif,"微软雅黑";}
-  body{font-size: 18px;}
+  body{font-size: 16px;}
   .userAgreement{font-size: 16px;
     h3{font-size: 18px;}
   }
@@ -322,9 +334,10 @@ $conWidth:1600px;
       dt,dd{width: 100%}
       dt{
         img{float: left;padding-right:20px;margin-right: 20px;width: 120px;background-color: $bgc_fbg;position: relative;}
-        .area{padding-bottom: 20px;margin-left:-25px;display: inline-block;}
+        //.area{padding-bottom: 20px;margin-left:-25px;display: inline-block;}
+        .area{padding-bottom: 20px;}
       }
-      dd{padding: 0px;border-top:1px solid $bdrc_2b;padding-top: 10px;
+      dd{padding: 0px;border-top:1px solid $bdrc_2b;padding-top: 10px;border-left: none;
         h4{font-size: 22px;}
         p i{position: relative;top: 5px;}
       }
@@ -332,7 +345,7 @@ $conWidth:1600px;
     }
     .qrcode{width: 100%;padding-top: 20px;text-align: center;
       .weixin{display: inline-block;}
-      figure{width:40%;margin: 0px 4%;overflow: hidden;}
+      figure{width:auto;margin: 0px 4%;overflow: hidden;}
     }
   }
   .swiper-container{
@@ -735,6 +748,11 @@ $conWidth:1600px;
     }
     .alipay{float: right;}
   }
+  .abouts{
+    margin: 0px;
+    h2{padding: 10px 0}
+    article{padding: 0px 10px;}
+  }
 
 }
 @media only screen and (max-width: 600px){
@@ -742,6 +760,17 @@ $conWidth:1600px;
   .order-success .order-box .price-box, .pay-success .order-box .price-box{top: 45px;}
   .order-success .order-box .order-detail, .pay-success .order-box .order-detail{top: 90px;}
 }
+
+@media only screen and (min-width: 360px) and (max-width: 599px){
+  .footer{
+    dl{
+      dt{
+        img{float: none;}
+      }
+    }
+  }
+}
+
 @media only screen and (min-width: 320px) and (max-width: 360px){
   .topBar{margin-left: 110px;}
   .header{
@@ -763,4 +792,22 @@ $conWidth:1600px;
   .order-success .order-box .price-box, .pay-success .order-box .price-box{left: 140px;top: 48px;}
   .order-success .order-box .order-detail, .pay-success .order-box .order-detail{left:140px;top: 90px;}
 
+  .footer dl dd p{width: 100%;}
+
+}
+@media only screen and (width: 320px){
+  .footer{
+    padding-bottom: 30px;
+    dl{
+      dt{
+        img{float: none;margin-bottom: 10px;}
+      }
+      dd{
+        p{width: 100%;}
+      }
+    }
+    .qrcode figure{width: 40%;
+      img{width: 100%}
+    }
+  }
 }
