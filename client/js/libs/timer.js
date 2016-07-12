@@ -10,6 +10,13 @@ define(function(require,exports,module) {
             var now = new Date().getTime();
             //剩余支付时间 = 总共支付时间 - (当前时间 - 下单时间),单位:秒
             var restTime = (options.totalTime - (now - payTime))/1000;
+
+            var a = new Date(payTime).toLocaleTimeString();
+            var b = new Date(now).toLocaleTimeString();
+
+            console.log('==='+ a + '==' + b);
+            console.log(now-payTime);
+            console.log(restTime);
             countTime(restTime,$this);
         });
 

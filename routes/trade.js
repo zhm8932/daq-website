@@ -87,6 +87,7 @@ router.post('/order/create', function (req, res, next) {
             var resJson = {
                 id: json.data.id,
                 totalCost: json.data.totalCost,
+                createdAt:json.data.createdAt,
                 success:true
             };
             if(JSON.parse(req.body.ids).length > 0){
@@ -170,10 +171,7 @@ router.get('/order/orderSuccess',authority.loginRequired, function (req, res, ne
 
     res.render('trade/orderSuccess', {
         title: '下单成功',
-        data: {
-            id: req.query.id,
-            totalCost: req.query.totalCost
-        }
+        data: req.query
     });
 });
 

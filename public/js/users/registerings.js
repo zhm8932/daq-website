@@ -5,7 +5,7 @@ define(function (require, exports, module) {
 
     $(function(){
         timer.updateTime({
-            totalTime:30*60,
+            totalTime:30*60*1000,
             outdatedFun:function(){
                 window.location.href = '/users/register/list';
             }

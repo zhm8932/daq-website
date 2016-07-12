@@ -1,10 +1,20 @@
 define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
+    var timer = require('../libs/timer.js');
     var login = require('../login');
 
     var href = window.location.href;
     var domain = href.substr(0,href.indexOf('/',href.indexOf('/',href.indexOf('/')+1)+1));
     console.log(domain);
+    $(function(){
+        timer.updateTime({
+            totalTime:30*60*1000,
+            outdatedFun:function(){
+                window.location.href = '/trade/order/list';
+            }
+        });
+    });
+
 
     $('.alipay').on('click',function(){
         getPayId(alipay,4);

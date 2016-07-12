@@ -1,14 +1,10 @@
 define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
     var login = require('../login.js');
+    var timer = require('../libs/timer.js');
 
     var payId = $('#payId').val();
-    var payTime = parseInt($('#payTime').val());
-    var now = new Date().getTime();
-    //剩余支付时间 = 总共支付时间 - (当前时间 - 下单时间),单位:秒
-    var restTime = (30*60*1000 - (now - payTime))/1000;
 
-    var timerInterval = null;
 
     // var a = new Date(payTime).toLocaleTimeString();
     // var b = new Date(now).toLocaleTimeString();
@@ -18,22 +14,14 @@ define(function (require, exports, module) {
     // console.log(restTime);
 
     $(function(){
-        updateTime();
-        timerInterval = setInterval(function(){
-            updateTime();
-        },1000);
+        timer.updateTime({
+            totalTime:30*60*1000,
+            outdatedFun:function(){
+                window.location.href = '/users/register/list';
+            }
+        });
     });
 
-    function updateTime(){
-        restTime--;
-        var minutes = parseInt(restTime/60) < 10 ? '0'+parseInt(restTime/60) : parseInt(restTime/60);
-        var seconds = parseInt(restTime%60) < 10 ? '0'+parseInt(restTime%60) : parseInt(restTime%60);
-        $('#timer').html(minutes+'分'+seconds+'秒');
-        if(restTime <= 0){
-            clearInterval(timerInterval);
-            window.location.href = '/users/register/list';
-        }
-    }
 
     $('.alipay').on('click',function(){
         alipay(payId,4);

@@ -29,7 +29,7 @@ block content
                 .box-right
                     p.timer-box
                         |订单提交成功,请在
-                        span.timer.text-stress 19分28秒
+                        span.timer.text-stress(data-paytime="#{data.payTime}") 19分28秒
                         |内完成支付
                     p.order-detail.text-main
                         a.text-main(href='/trade/order/detail?id=#{data.id}') 订单详情>>
