@@ -256,6 +256,7 @@ $conWidth:1600px;
     }
     i{display: none;}
   }
+  .swiper-container{height: 100%;overflow: hidden}
   .lr_list figure {
     h4{font-size: 18px; padding: 10px 0; margin-bottom: 10px;}
     font-size: 16px;
@@ -353,7 +354,7 @@ $conWidth:1600px;
   }
   .login-view .wrapper{background-size: 100%;}
   .loginBox2{float: none;margin:10px auto 0;}
-  .copyright{height: auto;
+  .copyright{height: auto; line-height: 30px;margin-bottom: 60px;
     a{display: inline-block;}
   }
   .rightNav{display: none;}
@@ -629,7 +630,7 @@ $conWidth:1600px;
             }
             &:nth-child(3){
               &:before{
-                content:'适用范围：'
+                //content:'适用范围：'
               }
             }
             &:nth-child(4){
@@ -690,6 +691,10 @@ $conWidth:1600px;
       margin: 10px 0 0;border-bottom: 1px solid $bdrc_ddd;padding-bottom: 5px;
     }
     .table-div{margin-bottom: 0px;}
+    .empty-cart{margin: 30% 0 5%;
+      .empty-cart-box img{width: 70px;height: auto;margin: 20px 0 0 -20px}
+      .text{margin-right: 20px;}
+    }
   }
 
 
@@ -787,6 +792,10 @@ $conWidth:1600px;
     height: 50px;line-height: 50px;
     .logo{width: 100px;}
   }
+  //.swiper-container{
+  //  .swiper-button-prev,
+  //  .swiper-button-next {top:24%}
+  //}
   .health_list .lr_list figure{
     img{
       width: 130px;

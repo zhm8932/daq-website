@@ -336,6 +336,10 @@
   .nav ul i {
     display: none; }
 
+  .swiper-container {
+    height: 100%;
+    overflow: hidden; }
+
   .lr_list figure {
     font-size: 16px; }
     .lr_list figure h4 {
@@ -482,7 +486,9 @@
     margin: 10px auto 0; }
 
   .copyright {
-    height: auto; }
+    height: auto;
+    line-height: 30px;
+    margin-bottom: 60px; }
     .copyright a {
       display: inline-block; }
 
@@ -942,8 +948,6 @@
           color: #f1292b; }
         .coupons .table tbody tr td:nth-child(2):before {
           content: "限用条件："; }
-        .coupons .table tbody tr td:nth-child(3):before {
-          content: "适用范围："; }
         .coupons .table tbody tr td:nth-child(4):before {
           content: "有效期："; }
 
@@ -991,6 +995,14 @@
     padding-bottom: 5px; }
   .cart .table-div {
     margin-bottom: 0px; }
+  .cart .empty-cart {
+    margin: 30% 0 5%; }
+    .cart .empty-cart .empty-cart-box img {
+      width: 70px;
+      height: auto;
+      margin: 20px 0 0 -20px; }
+    .cart .empty-cart .text {
+      margin-right: 20px; }
 
   .table-div .table-tr {
     border-bottom: 1px solid #dddddd;

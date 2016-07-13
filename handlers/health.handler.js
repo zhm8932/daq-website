@@ -21,7 +21,7 @@ exports.get_article_list = function(req,res) {
         get_article_list_diseases = get_article_list_diseases.data.data;
     }
     res.render('healths/list', {
-        title: '筛查服务_CONST.GLOBAL_TITLE',
+        title: '筛查服务_'+CONST.GLOBAL_TITLE,
         keywords: '筛查服务,'+CONST.GLOBAL_TITLE,
         description: '筛查服务,'+CONST.GLOBAL_TITLE,
         get_article_list:get_article_list,
@@ -32,8 +32,6 @@ exports.get_article_list = function(req,res) {
 }
 
 exports.get_article = function (req,res) {
-    console.log('res.locals:',res.locals)
-
     var get_article_detail = req.get_article_detail;
     var get_article_list = req.get_article_list;
     var get_article_list_ask = req.get_article_list_ask;
@@ -69,6 +67,7 @@ exports.get_article = function (req,res) {
     var title = get_article_detail.title;
     var keywords = get_article_detail.keyword;
     var description = get_article_detail.wapDesc;
+
     res.render('healths/article', {
         title: title+'_健康常识_'+CONST.GLOBAL_TITLE,
         keywords: keywords+CONST.GLOBAL_TITLE+',健康常识',
