@@ -30,19 +30,21 @@
     .outpatient .outpatient-info .hgroup {
       margin-bottom: 19px; }
       .outpatient .outpatient-info .hgroup h4 {
-        font-size: 16px; }
+        font-size: 16px;
+        vertical-align: middle; }
     .outpatient .outpatient-info .address {
       background-position: -32px -99px; }
     .outpatient .outpatient-info .traffic {
       background-position: -82px -100px; }
 
 .vertical {
-  background-position: -209px -26px; }
+  background-position: -205px -26px; }
 
 .title {
   margin-top: 42px;
   margin-bottom: 12px;
-  font-size: 20px; }
+  font-size: 20px;
+  vertical-align: middle; }
   .title .info {
     margin-left: 10px;
     font-size: 14px; }

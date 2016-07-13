@@ -244,6 +244,15 @@ $conWidth:1600px;
 }
 
 @media only screen and (max-width:$win_768 - 1px){
+  .btn{
+    display: inline-block;line-height:25px;background-color:#fff;border: 1px solid;border-radius: 5px;padding:0 10px;
+  }
+  .btn.btn-disabled{
+      color:$bdrc1;
+  }
+  .btn.btn-primary{
+      color:$textc_48B;
+  }
 
   .positon{margin-bottom: 10px;display: none;}
   .nav ul {
@@ -761,6 +770,50 @@ $conWidth:1600px;
     .gotoTop{width: 100px;float: right;background-color: $bgc_gray_4A;line-height: 30px;text-align: center;
       i{background-position:-358px 0;width: 45px;margin:0 0 -14px 0;}
       em{display: block;height: 30px;}
+    }
+  }
+
+  /*诊疗服务列表*/
+  .treat-name{font-size:18px;}
+  .outpatient{
+    img{width:100%;}
+    .outpatient-info{
+      width:100%;
+      margin-top:20px;
+    }
+  }
+  .reg{
+    .title{
+      margin:20px;
+      .vertical{vertical-align: middle;}
+      span{
+        vertical-align: middle;}
+    }
+    .doctor-info{
+      padding:10px 20px;
+      color:#fff;
+      background-color:#48BED8;
+      .doctor-name{
+        font-size:18px;
+        margin-right:10px;
+      }
+    }
+    .reg-list{
+      text-align:left;
+      margin-bottom:10px;
+      li{
+        line-height:30px;
+        padding:8px 20px;
+        .btn{
+          color:$textc_48B;
+        }
+        &.disabled{
+          color:$bdrc1;
+          .btn{
+            color:$bdrc1;
+          }
+        }
+      }
     }
   }
 

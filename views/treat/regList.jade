@@ -6,6 +6,7 @@ block content
     include ../includes/nav
     .positon.wrapper
         |您的位置为：首页<em>#{sep}</em>诊疗服务
+
     .wrapper
         h2.treat-name 深圳南山区都安全门诊部
     -var week = ['周一','周二','周三','周四','周五','周六','周日'];
@@ -23,54 +24,89 @@ block content
                         i.icon.traffic
                         | 交通指南
                     p 乘坐公交327路、M435路、81路、337路在深大北站下车,或乘坐地铁龙华线在深大北站A出口下
-    section.wrapper
-        //-h3.title
-            i.icon.vertical
-            span 预约挂号
-            span.info.text-sec 该号别挂号时不指定具体的接诊医生
-        h3.title
-            i.icon.vertical
-            span 门诊医生
-        table.table.reg-list
-            -var regData = data.data;
-            if regData.length > 0
-                thead
-                    th(width="19%")
-                    th(width="18%")
-                    each item in regData[0].scheduleList
-                        th(width="9%")
-                            p.month-date #{moment(item.scheduleDate).format('MM/DD')}
-                            p #{week[parseInt(item.dayOfWeek)-1]}
-                tbody
-                    each item in regData
-                        -var hos = item.doctor.hospitalReDepartments
-                        -var hosname = '';
-                        each h in hos
-                            -var name = h.hospitalName;
-                            -hosname += name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
-                        tr(data-accountid="#{item.doctor.id}")
-                            td.doctor
-                                img.fl(src="#{item.doctor.doctorPhoto}")
-                                .doctor-info.fl
-                                    p.text-main #{item.doctor.doctorName}
-                                    p #{item.doctor.title}
-                                    p #{hosname}
-                            td #{item.doctor.skill}
-                            each schedule in item.scheduleList
-                                if schedule.hasSetSchedule
-                                    if schedule.consumeCount < schedule.capacityCount
-                                        td.register(data-date="#{schedule.scheduleDate}")
-                                            p 预约
-                                            p (#{schedule.consumeCount}/#{schedule.capacityCount})
-                                    else if schedule.consumeCount == schedule.capacityCount
+    if !browser.mobile
+        section.wrapper
+            //-h3.title
+                i.icon.vertical
+                span 预约挂号
+                span.info.text-sec 该号别挂号时不指定具体的接诊医生
+            h3.title
+                i.icon.vertical
+                span 门诊医生
+
+            table.table.reg-list
+                -var regData = data.data;
+                if regData.length > 0
+                    thead
+                        th(width="19%")
+                        th(width="18%")
+                        each item in regData[0].scheduleList
+                            th(width="9%")
+                                p.month-date #{moment(item.scheduleDate).format('MM/DD')}
+                                p #{week[parseInt(item.dayOfWeek)-1]}
+                    tbody
+                        each item in regData
+                            -var hos = item.doctor.hospitalReDepartments
+                            -var hosname = '';
+                            each h in hos
+                                -var name = h.hospitalName;
+                                -hosname += name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
+                            tr(data-accountid="#{item.doctor.id}")
+                                td.doctor
+                                    img.fl(src="#{item.doctor.doctorPhoto}")
+                                    .doctor-info.fl
+                                        p.text-main #{item.doctor.doctorName}
+                                        p #{item.doctor.title}
+                                        p #{hosname}
+                                td #{item.doctor.skill}
+                                each schedule in item.scheduleList
+                                    if schedule.hasSetSchedule
+                                        if schedule.consumeCount < schedule.capacityCount
+                                            td.register(data-date="#{schedule.scheduleDate}")
+                                                p 预约
+                                                p (#{schedule.consumeCount}/#{schedule.capacityCount})
+                                        else if schedule.consumeCount == schedule.capacityCount
+                                            td.disabled
+                                                p 约满
+                                                p (#{schedule.consumeCount}/#{schedule.capacityCount})
+                                    else
                                         td.disabled
-                                            p 约满
-                                            p (#{schedule.consumeCount}/#{schedule.capacityCount})
-                                else
-                                    td.disabled
-                                        p 未排班
-            else
-                th 该城市暂无医生排班信息
+                                            p 未排班
+                else
+                    th 该城市暂无医生排班信息
+    else
+        .reg
+            -var regData = data.data;
+            h3.title
+                i.icon.vertical
+                span 门诊医生
+            if regData.length > 0
+                each item in regData
+                    -var hos = item.doctor.hospitalReDepartments
+                    -var hosname = '';
+                    each h in hos
+                        -var name = h.hospitalName;
+                        -hosname += name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
+                    .doctor-info
+                        p
+                            span.doctor-name #{item.doctor.doctorName}
+                            span.doctor-title #{item.doctor.title}
+                        p #{hosname}
+                    ul.reg-list(data-accountid="#{item.doctor.id}")
+                        each schedule in item.scheduleList
+                            if schedule.hasSetSchedule
+                                if schedule.consumeCount < schedule.capacityCount
+                                    li
+                                        span #{moment(schedule.scheduleDate).format('YYYY/MM/DD')} #{week[parseInt(schedule.dayOfWeek) - 1]}(#{schedule.consumeCount}/#{schedule.capacityCount})
+                                        button.btn.fr.register(data-date="#{schedule.scheduleDate}") 预约
+                                else if schedule.consumeCount == schedule.capacityCount
+                                    li.disabled
+                                        span #{moment(schedule.scheduleDate).format('YYYY/MM/DD')} #{week[parseInt(schedule.dayOfWeek) - 1]}(#{schedule.consumeCount}/#{schedule.capacityCount})
+                                        button.btn.fr 约满
+                            else
+                                li.disabled
+                                    span #{moment(schedule.scheduleDate).format('YYYY/MM/DD')} #{week[parseInt(schedule.dayOfWeek) - 1]}(#{schedule.consumeCount}/#{schedule.capacityCount})
+                                    button.btn.fr 未排班
 
     section.info_list.clearfix
 

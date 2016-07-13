@@ -325,6 +325,20 @@
       width: 32%;
       margin-left: 1.3%; } }
 @media only screen and (max-width: 767px) {
+  .btn {
+    display: inline-block;
+    line-height: 25px;
+    background-color: #fff;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 0 10px; }
+
+  .btn.btn-disabled {
+    color: #c9c9c9; }
+
+  .btn.btn-primary {
+    color: #48BED8; }
+
   .positon {
     margin-bottom: 10px;
     display: none; }
@@ -1123,7 +1137,43 @@
         margin: 0 0 -14px 0; }
       .footerWap .gotoTop em {
         display: block;
-        height: 30px; } }
+        height: 30px; }
+
+  /*诊疗服务列表*/
+  .treat-name {
+    font-size: 18px; }
+
+  .outpatient img {
+    width: 100%; }
+  .outpatient .outpatient-info {
+    width: 100%;
+    margin-top: 20px; }
+
+  .reg .title {
+    margin: 20px; }
+    .reg .title .vertical {
+      vertical-align: middle; }
+    .reg .title span {
+      vertical-align: middle; }
+  .reg .doctor-info {
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #48BED8; }
+    .reg .doctor-info .doctor-name {
+      font-size: 18px;
+      margin-right: 10px; }
+  .reg .reg-list {
+    text-align: left;
+    margin-bottom: 10px; }
+    .reg .reg-list li {
+      line-height: 30px;
+      padding: 8px 20px; }
+      .reg .reg-list li .btn {
+        color: #48BED8; }
+      .reg .reg-list li.disabled {
+        color: #c9c9c9; }
+        .reg .reg-list li.disabled .btn {
+          color: #c9c9c9; } }
 @media only screen and (max-width: 600px) {
   .loginBox2 {
     border: none;
