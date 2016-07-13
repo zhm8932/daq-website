@@ -25,7 +25,7 @@ block content
                     span.text-info 成功提交订单
 
 
-            //.order-box.border-default
+            .order-box.border-default
                 i.icon.success
                 .box-right
                     p.pay-tip.text-success 订单支付成功
@@ -33,11 +33,10 @@ block content
                         span 订单号 : #{data.data.id}
                         span 支付金额 : ￥#{(parseFloat(data.data.totalCost) / 100).toFixed(2)}
                     p.order-detail.text-main
-                        a.text-main(href='/trade/order/detail?id=#{data.id}') 订单详情>>
-                    p.price-box
-                        span.text-sec 应付金额:
-                        span.price.text-stress ￥#{(parseFloat(data.totalCost) / 100).toFixed(2)}
-            .order-box.border-default
+                        a.text-main(href='/trade/order/detail?id=#{data.data.id}') 订单详情>>
+                    p.order-tel.text-info 电话预约筛查:
+                        span.text-main 400-686-9911
+            //.order-box.border-default
                 i.icon.success
                 p.pay-tip.text-success 订单支付成功
                 p.order-num-price
@@ -47,10 +46,6 @@ block content
                     a.text-main(href='/trade/order/detail?id=#{data.data.id}') 订单详情>>
                 p.order-tel.text-info 电话预约筛查:
                     span.text-main 400-686-9911
-
-
-
-
 
 
     include ../includes/footer

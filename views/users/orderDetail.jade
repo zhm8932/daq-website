@@ -9,7 +9,7 @@ block content
     .positon.wrapper
         |您的位置：首页<em>#{sep}</em>我的订单<em>#{sep}</em>订单详情
     section.wrapper.userBox.clearfix
-        -var orderStateJSON = {'1':'未支付','2':'已支付','3':'已取消','4':'退款中','5':'已退款'};
+        -var orderStateJSON = {'1':'待支付','2':'已支付','3':'已取消','4':'退款中','5':'已退款'};
         if browser.mobile
             include ../includes/usersNav
         if !browser.mobile
@@ -20,7 +20,10 @@ block content
                         span #{data.id}
                     span.info
                         span.text-sec 状态:
-                        span #{orderStateJSON[data.orderState]}
+                        if data.orderState == 1
+                            span.text-stress 待支付
+                        else
+                            span #{orderStateJSON[data.orderState]}
                     span.info
                         span.text-sec 服务区域:
                         span
@@ -73,7 +76,7 @@ block content
                                 else
                                     td
                                     td
-                .table-div
+                //.table-div
                     .tfoot.clearfix
                         #actualTotal.price-text
                             span.text-sec 支付:
@@ -83,6 +86,22 @@ block content
                                     |(已优惠￥#{(parseFloat(data.feeMap.coupon_fee)/100).toFixed(2)})
                                 else
                                     |(已优惠￥0.00)
+                .price-btn.fr
+                    p
+                        span.text-sec 支付:
+                        span.price.text-stress ￥#{(parseFloat(data.totalCost)/100).toFixed(2)}
+                        span.fav
+                            if data.feeMap.coupon_fee
+                                | (已优惠￥#{(parseFloat(data.feeMap.coupon_fee) / 100).toFixed(2)})
+                            else
+                                | (已优惠￥0.00)
+                    if data.orderState == 1
+                        a.fr.submitBtn(href='/trade/order/orderSuccess?id=#{data.id}&totalCost=#{data.totalCost}&payTime=#{data.updatedAt}')
+                            |去支付&nbsp;
+                            span.timer(data-paytime="#{data.updatedAt}") 00分00秒
+
+
+
         else
             .detail-wap
                 h3
@@ -141,5 +160,5 @@ block content
 
 
     include ../includes/footer
-    //-script.
-        seajs.use('/js/trade/order_detail.js')
+    script.
+        seajs.use('/js/users/order_detail.js')

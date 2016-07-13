@@ -168,7 +168,6 @@ router.post('/order/pay', function (req, res, next) {
 
 
 router.get('/order/orderSuccess',authority.loginRequired, function (req, res, next) {
-
     res.render('trade/orderSuccess', {
         title: '下单成功',
         data: req.query

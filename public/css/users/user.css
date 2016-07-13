@@ -71,21 +71,21 @@
         .box-right .order dd .row-col:first-child {
           padding-left: 15px; }
       .box-right .order dd .goods {
-        width: 53%;
+        width: 57%;
         padding-left: 0;
         padding-right: 0;
         padding-top: 0; }
         .box-right .order dd .goods .row + .row {
           border-top: 1px solid #ddd; }
         .box-right .order dd .goods .goods-detail {
-          width: 55%; }
+          width: 50%; }
           .box-right .order dd .goods .goods-detail img {
             width: 40%;
             height: auto; }
           .box-right .order dd .goods .goods-detail h5 {
             width: 55%; }
         .box-right .order dd .goods .goods-others {
-          width: 25%; }
+          width: 23%; }
         .box-right .order dd .goods .reservation {
           width: 25%; }
       .box-right .order dd .order-state {

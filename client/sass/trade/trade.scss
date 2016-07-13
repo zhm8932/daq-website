@@ -402,7 +402,6 @@ header {
     }
   }
   .order-box {
-    height: 243px;
     p{margin-bottom:25px;}
     .pay-tip {
       font-size: 20px;
@@ -447,6 +446,22 @@ header {
       padding-left: 13px;
       line-height: 17px;
       box-sizing: border-box;
+    }
+  }
+
+  .price-btn{
+    margin-top:-25px;
+    .price{
+      padding:0 5px;
+      font-size:20px;
+    }
+    .submitBtn{
+      margin-top:25px;
+      padding:8px 20px;
+      font-size:18px;
+      display:inline-block;
+      background:#ED9E9A;
+      border:1px solid #ED9E9A;
     }
   }
 }

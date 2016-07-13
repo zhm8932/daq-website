@@ -271,18 +271,16 @@ header {
   background-position: -75px -397px; }
 .pay-success .trade-step .commit i {
   background-position: -163px -397px; }
-.pay-success .order-box {
-  height: 243px; }
-  .pay-success .order-box p {
-    margin-bottom: 25px; }
-  .pay-success .order-box .pay-tip {
-    font-size: 20px;
-    margin-bottom: 15px; }
-  .pay-success .order-box .order-num-price span {
-    margin-right: 30px; }
-  .pay-success .order-box .order-tel span {
-    margin: 0 10px;
-    font-size: 16px; }
+.pay-success .order-box p {
+  margin-bottom: 25px; }
+.pay-success .order-box .pay-tip {
+  font-size: 20px;
+  margin-bottom: 15px; }
+.pay-success .order-box .order-num-price span {
+  margin-right: 30px; }
+.pay-success .order-box .order-tel span {
+  margin: 0 10px;
+  font-size: 16px; }
 
 .order-detail .overview {
   margin-bottom: 27px;
@@ -302,6 +300,18 @@ header {
   padding-left: 13px;
   line-height: 17px;
   box-sizing: border-box; }
+.order-detail .price-btn {
+  margin-top: -25px; }
+  .order-detail .price-btn .price {
+    padding: 0 5px;
+    font-size: 20px; }
+  .order-detail .price-btn .submitBtn {
+    margin-top: 25px;
+    padding: 8px 20px;
+    font-size: 18px;
+    display: inline-block;
+    background: #ED9E9A;
+    border: 1px solid #ED9E9A; }
 
 .wechat-pay-dialog {
   width: 730px;
