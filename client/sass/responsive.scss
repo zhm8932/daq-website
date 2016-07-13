@@ -265,6 +265,7 @@ $conWidth:1600px;
     }
     i{display: none;}
   }
+  .swiper-container{height: 100%;overflow: hidden}
   .lr_list figure {
     h4{font-size: 18px; padding: 10px 0; margin-bottom: 10px;}
     font-size: 16px;
@@ -362,7 +363,7 @@ $conWidth:1600px;
   }
   .login-view .wrapper{background-size: 100%;}
   .loginBox2{float: none;margin:10px auto 0;}
-  .copyright{height: auto;
+  .copyright{height: auto; line-height: 30px;margin-bottom: 60px;
     a{display: inline-block;}
   }
   .rightNav{display: none;}
@@ -591,6 +592,7 @@ $conWidth:1600px;
       }
       dd{background-color: $white;padding: 10px;
         a{float: right;border:1px solid $bdrc1;padding: 0px 20px;border-radius: 5px;}
+        p span{padding-left: 10px;}
       }
 
 
@@ -638,7 +640,7 @@ $conWidth:1600px;
             }
             &:nth-child(3){
               &:before{
-                content:'适用范围：'
+                //content:'适用范围：'
               }
             }
             &:nth-child(4){
@@ -699,6 +701,10 @@ $conWidth:1600px;
       margin: 10px 0 0;border-bottom: 1px solid $bdrc_ddd;padding-bottom: 5px;
     }
     .table-div{margin-bottom: 0px;}
+    .empty-cart{margin: 30% 0 5%;
+      .empty-cart-box img{width: 70px;height: auto;margin: 20px 0 0 -20px}
+      .text{margin-right: 20px;}
+    }
   }
 
 
@@ -765,7 +771,7 @@ $conWidth:1600px;
 
   .footerWap{position: fixed;display:block;background:rgba(0, 0, 0, 0.79);bottom: 0px;left: 0px;z-index: 99;width: 100%;height:60px;line-height:60px;color: $white;
     a{font-size:30px;color: $white;padding-left: 15px;font-family: ArialMT;
-      i{background-position:-58px -602px;width: 48px;height: 40px;position: relative;top: 10px;margin-right: 5px;}
+      i{background-position:-56px -602px;width: 48px;height: 40px;position: relative;top: 10px;margin-right: 5px;}
     }
     .gotoTop{width: 100px;float: right;background-color: $bgc_gray_4A;line-height: 30px;text-align: center;
       i{background-position:-358px 0;width: 45px;margin:0 0 -14px 0;}
@@ -854,6 +860,10 @@ $conWidth:1600px;
     height: 50px;line-height: 50px;
     .logo{width: 100px;}
   }
+  //.swiper-container{
+  //  .swiper-button-prev,
+  //  .swiper-button-next {top:24%}
+  //}
   .health_list .lr_list figure{
     img{
       width: 130px;
