@@ -65,7 +65,7 @@ define(function (require, exports, module) {
                         },
                         errorFun: function (result) {
                             $this.removeClass('disabled').on('click', function () {
-                                delItem($this);
+                                cancelItem($this);
                             });
                         }
                     });

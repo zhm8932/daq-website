@@ -53,8 +53,7 @@ block content
 
                             if orderState == 1
                                 p.state-info.bdr-bt.text-stress
-                                    |#{orderStateJSON[orderState]}&nbsp;
-                                    span.timer(data-paytime="#{item.updatedAt}") 00分00秒
+                                    |#{orderStateJSON[orderState]}
                                 p 支付剩余时间:&nbsp;
                                     span.timer.text-stress(data-paytime="#{item.updatedAt}") 00分00秒
                             else

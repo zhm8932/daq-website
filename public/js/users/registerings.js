@@ -62,18 +62,19 @@ define(function (require, exports, module) {
                         method: 'POST',
                         tipText: '取消挂号',
                         callback: function (result) {
-                            var td = $this.closest('td,p');
-                            console.log("td:",td)
-                            // td.prev().prev().html('已取消').removeClass('text-stress').addClass('text-sec');
-                            tr.find('.status').html('已取消').removeClass('text-stress').addClass('text-sec');
-                            td.html('<a href="javascript:void(0)" class="del-reg">删除</a>');
-                            td.find('.del-reg').on('click',function(){
-                                delItem($(this));
-                            });
+                            window.location.reload();
+                            // var td = $this.closest('td,p');
+                            // console.log("td:",td)
+                            // // td.prev().prev().html('已取消').removeClass('text-stress').addClass('text-sec');
+                            // tr.find('.status').html('已取消').removeClass('text-stress').addClass('text-sec');
+                            // td.html('<a href="javascript:void(0)" class="del-reg">删除</a>');
+                            // td.find('.del-reg').on('click',function(){
+                            //     delItem($(this));
+                            // });
                         },
                         errorFun: function (result) {
                             $this.removeClass('disabled').on('click', function () {
-                                delItem($this);
+                                cancelItem($this);
                             });
                         }
                     });
