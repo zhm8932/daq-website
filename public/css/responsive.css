@@ -1092,8 +1092,6 @@
     width: 48%;
     margin: 0px;
     box-sizing: border-box; }
-  .order-success .alipay {
-    float: right; }
 
   .abouts {
     margin: 0px; }
@@ -1149,31 +1147,40 @@
     width: 100%;
     margin-top: 20px; }
 
-  .reg .title {
+  .reg-doc-list .title {
     margin: 20px; }
-    .reg .title .vertical {
+    .reg-doc-list .title .vertical {
       vertical-align: middle; }
-    .reg .title span {
+    .reg-doc-list .title span {
       vertical-align: middle; }
-  .reg .doctor-info {
+  .reg-doc-list .doctor-info {
     padding: 10px 20px;
     color: #fff;
     background-color: #48BED8; }
-    .reg .doctor-info .doctor-name {
+    .reg-doc-list .doctor-info .doctor-name {
       font-size: 18px;
       margin-right: 10px; }
-  .reg .reg-list {
+  .reg-doc-list .reg-list {
     text-align: left;
     margin-bottom: 10px; }
-    .reg .reg-list li {
+    .reg-doc-list .reg-list li {
       line-height: 30px;
       padding: 8px 20px; }
-      .reg .reg-list li .btn {
+      .reg-doc-list .reg-list li .btn {
         color: #48BED8; }
-      .reg .reg-list li.disabled {
+      .reg-doc-list .reg-list li.disabled {
         color: #c9c9c9; }
-        .reg .reg-list li.disabled .btn {
-          color: #c9c9c9; } }
+        .reg-doc-list .reg-list li.disabled .btn {
+          color: #c9c9c9; }
+
+  .reg-by-doc .regbox {
+    padding: 20px 20px; }
+  .reg-by-doc label {
+    padding-right: 0;
+    margin-right: 10%;
+    width: 22%; }
+  .reg-by-doc .submitBtn {
+    margin-left: 33%; } }
 @media only screen and (max-width: 600px) {
   .loginBox2 {
     border: none;

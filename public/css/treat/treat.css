@@ -77,42 +77,42 @@
       .reg-list tr td:nth-child(3).disabled p, .reg-list tr td:nth-child(4).disabled p, .reg-list tr td:nth-child(5).disabled p, .reg-list tr td:nth-child(6).disabled p, .reg-list tr td:nth-child(7).disabled p, .reg-list tr td:nth-child(8).disabled p, .reg-list tr td:nth-child(9).disabled p {
         color: #9B9B9B; }
 
-.reg header {
+.reg-by-doc header {
   position: relative;
   padding-bottom: 20px; }
-  .reg header h2 {
+  .reg-by-doc header h2 {
     background-color: #FFF;
     padding: 20px 10px 0;
     font-size: 20px; }
-  .reg header p {
+  .reg-by-doc header p {
     color: #9d9d9d;
     font-size: 16px; }
-.reg h4 {
+.reg-by-doc h4 {
   display: inline-block;
   font-size: 18px; }
-.reg mark {
+.reg-by-doc mark {
   font-size: 14px;
   color: #9d9d9d;
   padding-left: 10px; }
-.reg label {
+.reg-by-doc label {
   display: inline-block;
   width: 140px;
   font-size: 16px;
   line-height: 30px;
   text-align: right;
   padding-right: 30px; }
-.reg .regbox {
+.reg-by-doc .regbox {
   border: 1px solid #dddddd;
   padding: 30px 50px; }
-.reg ul li {
+.reg-by-doc ul li {
   position: relative;
   padding-bottom: 15px; }
-  .reg ul li input {
+  .reg-by-doc ul li input {
     width: 220px;
     padding: 0 5px;
     line-height: 32px;
     height: 32px; }
-  .reg ul li .add-patient {
+  .reg-by-doc ul li .add-patient {
     margin-left: 175px; }
 
 .complete-dialog {

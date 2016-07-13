@@ -755,7 +755,7 @@ $conWidth:1600px;
     .pay-box{
       width: 48%;margin:0px;box-sizing: border-box;
     }
-    .alipay{float: right;}
+    //.alipay{float: right;}
   }
   .abouts{
     margin: 0px;
@@ -782,7 +782,7 @@ $conWidth:1600px;
       margin-top:20px;
     }
   }
-  .reg{
+  .reg-doc-list{
     .title{
       margin:20px;
       .vertical{vertical-align: middle;}
@@ -814,6 +814,20 @@ $conWidth:1600px;
           }
         }
       }
+    }
+  }
+
+  .reg-by-doc{
+    .regbox{
+      padding:20px 20px;
+    }
+    label{
+      padding-right:0;
+      margin-right:10%;
+      width:22%;
+    }
+    .submitBtn{
+      margin-left:33%;
     }
   }
 
