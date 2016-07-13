@@ -26,7 +26,6 @@ define(function (require, exports, module) {
     var hasBind = $('#hasBind').val();
     if (hasBind != 'true') {
         showAccountDialog({});
-        // utils.BuildSelect($('#gender'));
 
         $('#birthday').daterangepicker({
             singleDatePicker: true,
@@ -41,28 +40,7 @@ define(function (require, exports, module) {
         }, function(start, end, label) {
             $('#birthday').val(start.format('YYYY-MM-DD'));
         });
-
-        // completeDialog.find('input').on('blur',function(){
-        //     validateInput(completeDialog);
-        // });
-        // completeDialog.find('#gender .option').on('click',function(){
-        //     validateInput(completeDialog);
-        // })
-
-
     }
-
-
-
-
-    // function validateInput(completeDialog){
-    //     var name = completeDialog.find('[name=name]').val().trim();
-    //     var birthday = completeDialog.find('[name=birthday]').val().trim();
-    //     var gender = completeDialog.find('#gender .option.active').attr('data-value');
-    //     if(name && birthday && gender){
-    //         completeDialog.find('span.ok').removeClass('disabled');
-    //     }
-    // }
 
     function commitReg($this) {
         $this.addClass('disabled').off('click');
@@ -80,7 +58,7 @@ define(function (require, exports, module) {
                     if (needPay != 'true' || json.amount <= 0) {
                         window.location.href = "/users/register/list";
                     }else{
-                        window.location.href = "/treats/reg/topay?id="+json.id+'&cost='+json.amount+'&orderId='+result.data.id;
+                        window.location.href = "/treats/reg/topay?payTime="+json.payTime+"&id="+json.id+'&cost='+json.amount+'&orderId='+result.data.id;
                     }
                 },
                 errorFun: function (result) {

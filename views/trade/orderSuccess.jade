@@ -26,11 +26,16 @@ block content
 
             .order-box.border-default
                 i.icon.success
-                span.price-box
-                    span.text-sec 订单支付:
-                    span.price.text-stress ￥#{(parseFloat(data.totalCost)/100).toFixed(2)}
-                span.order-detail.text-main
-                    a.text-main(href='/trade/order/detail?id=#{data.id}') 订单详情>>
+                .box-right
+                    p.timer-box
+                        |订单提交成功,请在
+                        span.timer.text-stress(data-paytime="#{data.payTime}") 19分28秒
+                        |内完成支付
+                    p.order-detail.text-main
+                        a.text-main(href='/trade/order/detail?id=#{data.id}') 订单详情>>
+                    p.price-box
+                        span.text-sec 应付金额:
+                        span.price.text-stress ￥#{(parseFloat(data.totalCost) / 100).toFixed(2)}
 
 
             .list-info 选择支付方式

@@ -83,7 +83,7 @@ define(function (require, exports, module) {
             tipText: '提交订单',
             callback: function (result) {
                 checkSubmitFlg = true;
-                window.location.href = '/trade/order/orderSuccess?id='+result.id+'&totalCost='+result.totalCost;
+                window.location.href = '/trade/order/orderSuccess?id='+result.id+'&totalCost='+result.totalCost+'&payTime='+result.createdAt;
             },
             errorFun: function () {
                 $this.removeClass('disabled').on('click', function () {

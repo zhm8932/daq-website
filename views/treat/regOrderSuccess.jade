@@ -8,14 +8,23 @@ block content
         |您的位置为：首页<em>#{sep}</em>诊疗服务<em>#{sep}</em>挂号预约<em>#{sep}</em>医生预约
     section.wrapper
         .order-success
-            .order-box.border-default
+            //.order-box.border-default
                 i.icon.success
                 span.price-box
                     span.text-sec 订单支付:
                     span.price.text-stress ￥#{(parseFloat(data.totalCost)/100).toFixed(2)}
                 //span.order-detail.text-main
                     a.text-main(href='/trade/order/detail?id=#{data.id}') 订单详情>>
-
+            .order-box.border-default
+                i.icon.success
+                .box-right
+                    p.timer-box
+                        | 提交成功,请在
+                        span#timer.timer.text-stress(data-paytime="#{data.payTime}") 00分00秒
+                        | 内完成支付
+                    p.price-box
+                        span.text-sec 应付金额:
+                        span.price.text-stress ￥#{(parseFloat(data.totalCost) / 100).toFixed(2)}
 
             .list-info 选择支付方式
 
@@ -25,6 +34,7 @@ block content
 
             input#payId(type="hidden",value="#{data.id}")
             input#orderId(type="hidden",value="#{data.orderId}")
+            //input#payTime(type="hidden",value="#{data.payTime}")
 
     include ../includes/footer
     script.

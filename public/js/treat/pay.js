@@ -1,8 +1,27 @@
 define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
     var login = require('../login.js');
+    var timer = require('../libs/timer.js');
 
     var payId = $('#payId').val();
+
+
+    // var a = new Date(payTime).toLocaleTimeString();
+    // var b = new Date(now).toLocaleTimeString();
+    //
+    // console.log('==='+ a + '==' + b);
+    // console.log(now-payTime);
+    // console.log(restTime);
+
+    $(function(){
+        timer.updateTime({
+            totalTime:30*60*1000,
+            outdatedFun:function(){
+                window.location.href = '/users/register/list';
+            }
+        });
+    });
+
 
     $('.alipay').on('click',function(){
         alipay(payId,4);

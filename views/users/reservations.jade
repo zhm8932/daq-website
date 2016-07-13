@@ -13,7 +13,7 @@ block content
         .box-right.reservation.fr
            if !data.length
                .noData
-                   p 还没有预约哦
+                   p 还没有挂号哦
            else
             each item in data
                 -var orderState = item.orderState;
@@ -27,9 +27,13 @@ block content
                             each goods,index in item.reservations
                                 .row
                                     span.row-col.goods-detail
-                                        a(href="/screenings/goods/detail/#{goods.goodsInfo.goodsId}")
-                                            img.fl(src='#{goods.goodsInfo.imageUrls[0]}')
-                                            h5.fr #{goods.goodsInfo.goodsName}
+                                        if goods && goods.goodsInfo
+                                            a(href="/screenings/goods/detail/#{goods.goodsInfo.goodsId}")
+                                                img.fl(src='#{goods.goodsInfo.imageUrls[0]}')
+                                                h5.fr #{goods.goodsInfo.goodsName}
+                                        else
+                                            p 暂无商品
+
                         .col.detail.text-sec
                             if item.serviceType == 1
                                 p 门诊取样

@@ -1,15 +1,24 @@
 define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
+    var timer = require('../libs/timer.js');
     var login = require('../login.js');
 
     $(function(){
+        timer.updateTime({
+            totalTime:30*60*1000,
+            outdatedFun:function(){
+                window.location.href = '/users/register/list';
+            }
+        });
+
         $('.del-reg').on('click',function(){
             delItem($(this));
         });
 
         $('.cancel-reg').on('click',function(){
             cancelItem($(this));
-        })
+        });
+        
     });
 
     function delItem($this){
