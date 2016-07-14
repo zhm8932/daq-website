@@ -12,7 +12,7 @@ block content
         .box-right.fr
             if !data.length
                 .noData
-                    p 还没有预约哦
+                    p 还没有挂号哦
             else
                 if !browser.mobile
                     table.users-table.table-bordered.table
@@ -56,7 +56,7 @@ block content
 
                             else
                             each item in data
-                                tr(data-id="#{item.id}")
+                                tr(data-id="#{item.id}",data-payid="#{item.payId}",data-cost="#{item.cost}")
                                     -var hosname = '';
                                     each h in item.doctorDTO.hospitalReDepartments
                                         -var name = h.hospitalName;
@@ -81,9 +81,9 @@ block content
                                         //+payway(item)
                                         td
                                             p 支付剩余时间
-                                            p.timer.text-stress(data-paytime="#{item.updatedAt}") 00分00秒
+                                            p.timer.text-stress(data-paytime="#{item.updatedAt}",data-currenttime="#{item.currentTime}") 00分00秒
                                         td
-                                            p: a(href="/treats/reg/topay?payTime=#{item.updatedAt}&id=#{item.payId}&cost=#{item.cost}&orderId=#{item.id}").to-pay 继续支付
+                                            p: a(href="javascript:void(0)").to-pay 继续支付
                                             p: a(href="javascript:void(0)").cancel-reg 取消
                                     else if item.reservationStatus == 1
                                         td.status.text-stress 待就诊
