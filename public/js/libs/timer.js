@@ -36,8 +36,7 @@ define(function (require, exports, module) {
         });
 
         function countTime(restTime, $this) {
-            restTime--;
-            if (restTime <= 0) {
+            if (restTime < 0) {
                 options.outdatedFun && options.outdatedFun();
                 return false;
             }
@@ -45,6 +44,7 @@ define(function (require, exports, module) {
             var minutes = parseInt(restTime / 60) < 10 ? '0' + parseInt(restTime / 60) : parseInt(restTime / 60);
             var seconds = parseInt(restTime % 60) < 10 ? '0' + parseInt(restTime % 60) : parseInt(restTime % 60);
             $this.html(minutes + options.minuteUnit + seconds + options.secondUnit);
+            restTime--;
             setTimeout(function () {
                 countTime(restTime, $this);
             }, 1000);
