@@ -98,7 +98,7 @@ block content
                     if data.orderState == 1
                         a.fr.submitBtn(href='/trade/order/orderSuccess?id=#{data.id}&totalCost=#{data.totalCost}&payTime=#{data.updatedAt}')
                             |去支付&nbsp;
-                            span.timer(data-paytime="#{data.updatedAt}") 00分00秒
+                            span.timer(data-paytime="#{data.updatedAt}") 00:00
 
 
 
@@ -154,9 +154,9 @@ block content
                         |#{moment(data.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
                 //-p #{moment(data.currentTime).format('YYYY-MM-DD HH:mm:ss')}
                 if data.orderState == 1
-                    p.topay: a.btn(href='/trade/order/orderSuccess?id=#{data.id}&totalCost=#{data.totalCost}')
+                    p.topay: a.btn(href='/trade/order/orderSuccess?id=#{data.id}&totalCost=#{data.totalCost}&payTime=#{data.updatedAt}')
                                 |去支付
-                                time 29:30
+                                time.timer(data-paytime="#{data.updatedAt}") 00:00
 
 
     include ../includes/footer

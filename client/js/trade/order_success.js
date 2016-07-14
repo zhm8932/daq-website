@@ -17,7 +17,8 @@ define(function (require, exports, module) {
 
 
     $('.alipay').on('click',function(){
-        getPayId(alipay,4);
+        var paynum = $(this).attr('data-paynum');
+        getPayId(alipay,paynum);
     });
 
     $('.wechat-pay').on('click',function(){

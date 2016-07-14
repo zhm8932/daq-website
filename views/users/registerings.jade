@@ -12,7 +12,7 @@ block content
         .box-right.fr
             if !data.length
                 .noData
-                    p 还没有预约哦
+                    p 还没有挂号哦
             else
                 if !browser.mobile
                     table.users-table.table-bordered.table
@@ -27,22 +27,36 @@ block content
                         tbody
                             mixin payway(item)
                                 td
-                                    if item.payOrder
-                                        if browser.mobile
-                                            em #{item.payWay}
+                                    if item.reservationStatus == 4 || item.reservationStatus == 5 || item.reservationStatus == 6
+                                        if item.payOrder
+                                            if item.payWay
+                                                if browser.mobile
+                                                    em #{item.payWay}
+                                                else
+                                                    p #{item.payWay}
+                                                if item.cost
+                                                    span #{(parseFloat(item.cost) / 100).toFixed(2)}元
+                                            else
+                                                p 未支付
                                         else
-                                            p #{item.payWay}
-                                        if item.cost
-                                            span #{(parseFloat(item.cost) / 100).toFixed(2)}元
+                                            span 线下支付
                                     else
-                                        span 线下支付
+                                        if item.payOrder
+                                            if browser.mobile
+                                                em #{item.payWay}
+                                            else
+                                                p #{item.payWay}
+                                            if item.cost
+                                                span #{(parseFloat(item.cost) / 100).toFixed(2)}元
+                                        else
+                                            span 线下支付
                             if !data.length
                               tr
                                 td(colspan='6').tc 暂无挂号
 
                             else
                             each item in data
-                                tr(data-id="#{item.id}")
+                                tr.item(data-id="#{item.id}",data-payid="#{item.payId}",data-cost="#{item.cost}")
                                     -var hosname = '';
                                     each h in item.doctorDTO.hospitalReDepartments
                                         -var name = h.hospitalName;
@@ -67,9 +81,9 @@ block content
                                         //+payway(item)
                                         td
                                             p 支付剩余时间
-                                            p.timer.text-stress(data-paytime="#{item.updatedAt}") 00分00秒
+                                            p.timer.text-stress(data-paytime="#{item.updatedAt}",data-currenttime="#{item.currentTime}") 00分00秒
                                         td
-                                            p: a(href="/treats/reg/topay?payTime=#{item.updatedAt}&id=#{item.payId}&cost=#{item.cost}&orderId=#{item.id}").to-pay 继续支付
+                                            p: a(href="javascript:void(0)").to-pay 继续支付
                                             p: a(href="javascript:void(0)").cancel-reg 取消
                                     else if item.reservationStatus == 1
                                         td.status.text-stress 待就诊
@@ -98,7 +112,7 @@ block content
                 else
                     .registerings
                         each item in data
-                            dl.clearfix(data-id="#{item.id}")
+                            dl.item.clearfix(data-id="#{item.id}",data-payid="#{item.payId}",data-cost="#{item.cost}")
                                 h3 订单编号：#{item.id}
                                     span.status
                                         if item.reservationStatus == 0
@@ -132,6 +146,9 @@ block content
                                         +payway(item)
                                     p
                                         if item.reservationStatus == 0
+                                            td
+                                                a(href="javascript:void(0)").to-pay.text-stress 支付
+                                                    span.timer.text-stress(data-paytime="#{item.updatedAt}",data-currenttime="#{item.currentTime}") 00 : 00
                                             td: a(href="javascript:void(0)").cancel-reg 取消
                                         else if item.reservationStatus == 1
                                             td: a(href="javascript:void(0)").cancel-reg 取消
@@ -142,6 +159,7 @@ block content
 
 
 
+    input#browser-mobile(type="hidden",value="#{browser.mobile}")
     include ../includes/footer
     script.
         seajs.use('/js/users/registerings.js')

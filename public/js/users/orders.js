@@ -18,6 +18,16 @@ define(function (require, exports, module) {
         $('.cancel-order').on('click',function(){
             cancelItem($(this));
         });
+
+        $('.topay').on('click',function(){
+            var tr = $(this).closest('dl.order');
+            var timer = tr.find('.timer');
+            var payTime = timer.attr('data-paytime');
+            var currentTime = parseInt(payTime) + (30*60*1000 - parseInt(timer.attr('data-restTime')));
+            var cost = tr.attr('data-cost');
+            var id = tr.attr('data-id');
+            window.location.href = '/treats/reg/topay?payTime='+payTime+'&id='+id+'&totalCost='+cost+'&orderId='+id+'&currentTime='+currentTime;
+        });
     });
 
     function delItem($this){
@@ -65,7 +75,7 @@ define(function (require, exports, module) {
                         },
                         errorFun: function (result) {
                             $this.removeClass('disabled').on('click', function () {
-                                delItem($this);
+                                cancelItem($this);
                             });
                         }
                     });

@@ -72,12 +72,7 @@ router.get('/reg/topay', function (req, res, next) {
     var query = req.query;
     res.render('treat/regOrderSuccess', {
         title: '支付页面',
-        data: {
-            id: query.id,
-            totalCost: query.cost,
-            orderId:query.orderId,
-            payTime:query.payTime
-        }
+        data: query
     });
 });
 

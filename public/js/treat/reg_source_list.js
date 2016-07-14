@@ -6,8 +6,7 @@ define(function (require, exports, module) {
         $('.register').on('click',function(){
             var $this = $(this);
             var date = utils.GetLoacalDateString(parseFloat($this.data('date')));
-            var tr = $this.closest('tr')
-            var doctorId = tr.data('accountid');
+            var doctorId = $this.closest('.doctor-id').data('accountid');
             window.location.href = '/treat/reg/doctorView?date='+date+'&doctorId='+doctorId;
         });
     });

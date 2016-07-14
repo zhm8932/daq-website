@@ -26,10 +26,10 @@ block content
 
             .order-box.border-default
                 i.icon.success
-                .box-right
+                .order-box-right
                     p.timer-box
                         |订单提交成功,请在
-                        span.timer.text-stress(data-paytime="#{data.payTime}") 19分28秒
+                        span.timer.text-stress(data-paytime="#{data.payTime}",data-currenttime="#{data.currentTime}") 19分28秒
                         |内完成支付
                     p.order-detail.text-main
                         a.text-main(href='/trade/order/detail?id=#{data.id}') 订单详情>>
@@ -40,8 +40,11 @@ block content
 
             .list-info 选择支付方式
 
-            .pay-box.wechat-pay.border-default 微信支付
-            .pay-box.alipay.border-default 支付宝支付
+            if !browser.mobile
+                .pay-box.wechat-pay.border-default 微信支付
+                .pay-box.alipay.border-default(data-paynum='4') 支付宝支付
+            else
+                .pay-box.alipay.border-default(data-paynum='5') 支付宝支付
 
 
             #order-detail(data-id="#{data.id}")
