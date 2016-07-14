@@ -170,14 +170,14 @@ $conWidth:1600px;
     .wapUser{width:20px;position: relative;top:15px;margin-right: 10px;display: inline-block;
       img{width: 100%}
     }
-    aside{display: none;position: absolute;right:60px;border: 1px solid $bdrc_ddd;padding:0 10px;background-color: $white;margin-top:26px;border-radius: 3px;
+    aside{display: none;position: absolute;right:48px;border: 1px solid $bdrc_ddd;padding:0 10px;background-color: $white;margin-top:16px;border-radius: 3px;
       a{display: block;padding:0 10px;
         border-bottom:1px solid $bdrc_ddd;margin-bottom: -1px;
       }
       .arrow{
         position: absolute;
         top:-26px;
-        left:48px;
+        left:42px;
         width: 0;
         height: 0;
         border-width:13px 10px;
@@ -472,6 +472,7 @@ $conWidth:1600px;
       p{display: block;margin: 0px;float: right;}
     }
   }
+  .order-success .order-box .box-right{background: none;margin-left: 120px;}
   .box-right{
     background-color: $bgc_F7;
     .order{
@@ -522,9 +523,34 @@ $conWidth:1600px;
       }
     }
   }
+  //完善信息
+  .complete-dialog{
+    width: 100%;
+    .box-body{
+      padding: 17px 10px 0 10px;
+      .tip-box{padding-right: 10px;}
+      form[name=accInfoForm]{padding: 10px 0;
+        .select-box{width: 160px;}
+        .info-box > li{
+          label{height: 20px;}
+          input{width: 160px;}
+        }
+      }
+    }
+    .submitBox{margin-left: 30px;}
+    span.ok{width: 160px;}
+
+  }
   //账号信息
   .accountBox aside,.account{background: none;}
-  .account .info-box > li label{width: 80px;}
+  .account{
+    .select-box{width: 60%;}
+    .btn-box .submitBtn{margin-left: 25px;}
+  }
+  .account .info-box > li{
+    label{width: 80px;}
+    input{width: 60%;}
+  }
   .table tbody td{padding: 10px;}
   //-我的订单
   .detail-wap{
@@ -773,7 +799,7 @@ $conWidth:1600px;
     a{font-size:30px;color: $white;padding-left: 15px;font-family: ArialMT;
       i{background-position:-56px -602px;width: 48px;height: 40px;position: relative;top: 10px;margin-right: 5px;}
     }
-    .gotoTop{width: 100px;float: right;background-color: $bgc_gray_4A;line-height: 30px;text-align: center;
+    .gotoTop{width: 100px;float: right;background-color: $bgc_gray_4A;line-height: 30px;text-align: center;display: none;
       i{background-position:-358px 0;width: 45px;margin:0 0 -14px 0;}
       em{display: block;height: 30px;}
     }
@@ -855,6 +881,7 @@ $conWidth:1600px;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 360px){
+
   .topBar{margin-left: 110px;}
   .header{
     height: 50px;line-height: 50px;
@@ -866,10 +893,10 @@ $conWidth:1600px;
   //}
   .health_list .lr_list figure{
     img{
-      width: 130px;
+      width: 120px;
     }
     h4{padding: 0px;margin-bottom: 0px;}
-    p{padding-top: 5px;height: 48px;overflow: hidden;}
+    p{padding-top: 0px;height: 48px;overflow: hidden;}
     time{font-size: 14px;}
   }
   .order-success .pay-box{
@@ -878,7 +905,7 @@ $conWidth:1600px;
   .order-success .order-box i.success, .pay-success .order-box i.success{left: 30px;}
   .order-success .order-box .price-box, .pay-success .order-box .price-box{left: 140px;top: 48px;}
   .order-success .order-box .order-detail, .pay-success .order-box .order-detail{left:140px;top: 90px;}
-
+  .tab ul li a{padding: 0 10px;}
   .footer dl dd p{width: 100%;}
   .footerWap{
     a{font-size: 24px;}

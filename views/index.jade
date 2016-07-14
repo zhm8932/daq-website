@@ -5,7 +5,10 @@ block content
   include includes/responsive
 
   .banner
-    img(src='images/BG.png')
+    if !browser.mobile
+      img(src='images/BG.png')
+    else
+      img(src='images/BG_small.png')
     .wrapper
       dl
         dt

@@ -21,6 +21,8 @@ h2 {
   width: 100%; }
 .abouts article {
   padding: 0 20px; }
+  .abouts article a {
+    color: #4A4A4A; }
 .abouts p {
   text-indent: 2em;
   margin-top: 10px; }

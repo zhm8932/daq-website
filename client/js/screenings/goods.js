@@ -21,12 +21,12 @@ define(function(require){
         });
 
         $('.ellips').ellipsis({
-            row:2,
+            row:1,
             char:'……',
             callback: function() {
-                // console.log($(this).text());
+                console.log($(this).text());
             }
-        })
+        });
         // $.each($('.ellips'),function (index,item) {
         //     // console.log(item)
         //     $(item).ellipsis({

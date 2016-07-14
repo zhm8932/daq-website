@@ -248,11 +248,11 @@
   .topBar_info aside {
     display: none;
     position: absolute;
-    right: 60px;
+    right: 48px;
     border: 1px solid #dddddd;
     padding: 0 10px;
     background-color: #FFF;
-    margin-top: 26px;
+    margin-top: 16px;
     border-radius: 3px; }
     .topBar_info aside a {
       display: block;
@@ -262,7 +262,7 @@
     .topBar_info aside .arrow {
       position: absolute;
       top: -26px;
-      left: 48px;
+      left: 42px;
       width: 0;
       height: 0;
       border-width: 13px 10px;
@@ -685,6 +685,10 @@
       margin: 0px;
       float: right; }
 
+  .order-success .order-box .box-right {
+    background: none;
+    margin-left: 120px; }
+
   .box-right {
     background-color: #f7f7f7; }
     .box-right .order {
@@ -784,11 +788,37 @@
           .box-right .order dd .operation .topay a {
             color: #f1292b; }
 
+  .complete-dialog {
+    width: 100%; }
+    .complete-dialog .box-body {
+      padding: 17px 10px 0 10px; }
+      .complete-dialog .box-body .tip-box {
+        padding-right: 10px; }
+      .complete-dialog .box-body form[name=accInfoForm] {
+        padding: 10px 0; }
+        .complete-dialog .box-body form[name=accInfoForm] .select-box {
+          width: 160px; }
+        .complete-dialog .box-body form[name=accInfoForm] .info-box > li label {
+          height: 20px; }
+        .complete-dialog .box-body form[name=accInfoForm] .info-box > li input {
+          width: 160px; }
+    .complete-dialog .submitBox {
+      margin-left: 30px; }
+    .complete-dialog span.ok {
+      width: 160px; }
+
   .accountBox aside, .account {
     background: none; }
 
+  .account .select-box {
+    width: 60%; }
+  .account .btn-box .submitBtn {
+    margin-left: 25px; }
+
   .account .info-box > li label {
     width: 80px; }
+  .account .info-box > li input {
+    width: 60%; }
 
   .table tbody td {
     padding: 10px; }
@@ -1142,7 +1172,8 @@
       float: right;
       background-color: #4A4A4A;
       line-height: 30px;
-      text-align: center; }
+      text-align: center;
+      display: none; }
       .footerWap .gotoTop i {
         background-position: -358px 0;
         width: 45px;
@@ -1220,12 +1251,12 @@
       width: 100px; }
 
   .health_list .lr_list figure img {
-    width: 130px; }
+    width: 120px; }
   .health_list .lr_list figure h4 {
     padding: 0px;
     margin-bottom: 0px; }
   .health_list .lr_list figure p {
-    padding-top: 5px;
+    padding-top: 0px;
     height: 48px;
     overflow: hidden; }
   .health_list .lr_list figure time {
@@ -1244,6 +1275,9 @@
   .order-success .order-box .order-detail, .pay-success .order-box .order-detail {
     left: 140px;
     top: 90px; }
+
+  .tab ul li a {
+    padding: 0 10px; }
 
   .footer dl dd p {
     width: 100%; }
