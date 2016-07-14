@@ -210,15 +210,16 @@ define(function(require,exports,module) {
                         title:'<i class="icon"></i>登录成功!',
                         otherBox:'successBox'
                     });
+                    var userAllInfo = json.data.userAllInfo;
                     if(popup){
                         popup.hideBox(function () {
                             $topBarAside.html(logoutHtml);
-                            var userAllInfo = json.data.userAllInfo
                             afterLoginFun && afterLoginFun(userAllInfo);
 
                         });
                     }else if(redirectUrl){
-                        window.location.href = redirectUrl;
+                        //window.location.href = redirectUrl;
+                        afterLoginFun&&afterLoginFun(userAllInfo);
                     }
                     myMsg.hideMsg(1000);
 
@@ -340,7 +341,28 @@ define(function(require,exports,module) {
     $('body').on('click','.loginBox2 .ok',function () {
         var data = validateLogin();
         var redirectUrl = $('#redirectUrl').val()||'/';
-        if(data) login(data,null,redirectUrl);
+        if(data) login(data,null,redirectUrl,function (userAllInfo) {
+            console.log("单页登录成功")
+            hasBindHis({
+                accountId:userAllInfo.accountCommon.id,
+                callback:function (json) {
+                    var json=JSON.parse(json);
+                    console.log("json:",json)
+                    if(json.success){
+                        if(!json.data){
+                            window.location.href = "/users/account/info";
+                        }else{
+                            // console.log("用户信息已完善")
+                            window.location.href = redirectUrl
+                        }
+
+                    }
+
+                }
+
+            })
+
+        });
     })
     //检查登录:已经登录则继续执行callback,没有登录则把callback传到登录函数中去,登录后继续执行
     function checkLogin(callBack){
@@ -377,7 +399,6 @@ define(function(require,exports,module) {
             okText: '提交',
             cancel: 'closePopup',
             otherBox: 'complete-dialog',
-            width: '475',
             isHide:false,
             cancelFun: function () {
                 //window.location.href = "/treat/regsource/list";
