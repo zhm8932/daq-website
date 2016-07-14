@@ -11,6 +11,11 @@ define(function (require, exports, module) {
                 window.location.reload();
             }
         };
+        var isMobile = $('#browser-mobile').val() === 'true';
+        if(isMobile){
+            defaults.minuteUnit = ' : ';
+            defaults.secondUnit = '';
+        }
         options = $.extend({}, defaults, options);
 
         var timerList = $('.timer');
