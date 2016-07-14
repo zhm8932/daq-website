@@ -19,16 +19,16 @@ define(function (require, exports, module) {
             cancelItem($(this));
         });
 
-        $('.to-pay').on('click',function(){
-            var item = $(this).closest('.item');
-            var timer = item.find('.timer');
-            var payTime = timer.attr('data-paytime');
-            var currentTime = parseInt(payTime) + (30*60*1000 - parseInt(timer.attr('data-restTime')));
-            var id = item.attr('data-payid');
-            var cost = item.attr('data-cost');
-            var orderId = item.attr('data-id');
-            window.location.href = '/treats/reg/topay?payTime='+payTime+'&id='+id+'&totalCost='+cost+'&orderId='+id+'&currentTime='+currentTime;
-        });
+        // $('.to-pay').on('click',function(){
+        //     var item = $(this).closest('.item');
+        //     var timer = item.find('.timer');
+        //     var payTime = timer.attr('data-paytime');
+        //     var currentTime = parseInt(payTime) + (30*60*1000 - parseInt(timer.attr('data-restTime')));
+        //     var id = item.attr('data-payid');
+        //     var cost = item.attr('data-cost');
+        //     var orderId = item.attr('data-id');
+        //     window.location.href = '/treats/reg/topay?payTime='+payTime+'&id='+id+'&totalCost='+cost+'&orderId='+id+'&currentTime='+currentTime;
+        // });
         
     });
 

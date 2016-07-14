@@ -20,11 +20,11 @@ block content
                 .order-box-right
                     p.timer-box
                         | 提交成功,请在
-                        span#timer.timer.text-stress(data-paytime="#{data.payTime}",data-currenttime="#{data.currentTime}") 00分00秒
+                        span#timer.timer.text-stress(data-paytime="#{data.updatedAt}",data-currenttime="#{data.currentTime}") 00分00秒
                         | 内完成支付
                     p.price-box
                         span.text-sec 应付金额:
-                        span.price.text-stress ￥#{(parseFloat(data.totalCost) / 100).toFixed(2)}
+                        span.price.text-stress ￥#{(parseFloat(data.cost) / 100).toFixed(2)}
 
             .list-info 选择支付方式
             if !browser.mobile
@@ -33,8 +33,8 @@ block content
             else
                 .pay-box.alipay.border-default(data-paynum='5') 支付宝支付
 
-            input#payId(type="hidden",value="#{data.id}")
-            input#orderId(type="hidden",value="#{data.orderId}")
+            input#payId(type="hidden",value="#{data.payId}")
+            input#orderId(type="hidden",value="#{data.id}")
             //input#payTime(type="hidden",value="#{data.payTime}")
 
     include ../includes/footer

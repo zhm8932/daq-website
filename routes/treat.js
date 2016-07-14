@@ -69,10 +69,16 @@ router.post('/reg/byDoc', function (req, res, next) {
 });
 
 router.get('/reg/topay', function (req, res, next) {
-    var query = req.query;
-    res.render('treat/regOrderSuccess', {
-        title: '支付页面',
-        data: query
+    request.GetOrderDetail(req, function (data, success) {
+        var json = JSON.parse(data);
+        if (success) {
+            res.render('treat/regOrderSuccess', {
+                title: '支付页面',
+                data: json.data
+            });
+        }else{
+            next();
+        }
     });
 });
 

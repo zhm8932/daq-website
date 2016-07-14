@@ -83,7 +83,7 @@ block content
                                             p 支付剩余时间
                                             p.timer.text-stress(data-paytime="#{item.updatedAt}",data-currenttime="#{item.currentTime}") 00分00秒
                                         td
-                                            p: a(href="javascript:void(0)").to-pay 继续支付
+                                            p: a(href="/treats/reg/topay?reservationId=#{item.id}") 继续支付
                                             p: a(href="javascript:void(0)").cancel-reg 取消
                                     else if item.reservationStatus == 1
                                         td.status.text-stress 待就诊
@@ -147,7 +147,7 @@ block content
                                     p
                                         if item.reservationStatus == 0
                                             td
-                                                a(href="javascript:void(0)").to-pay.text-stress 支付
+                                                a(href="/treats/reg/topay?reservationId=#{item.id}").text-stress 支付
                                                     span.timer.text-stress(data-paytime="#{item.updatedAt}",data-currenttime="#{item.currentTime}") 00 : 00
                                             td: a(href="javascript:void(0)").cancel-reg 取消
                                         else if item.reservationStatus == 1

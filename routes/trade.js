@@ -6,24 +6,6 @@ var router = express.Router();
 var request = require('../requests/trade.request');
 var authority = require('../handlers/authority.handler');
 
-// router.get('/cart/list',middleware.judge_client,function(req,res,next){
-//     if(req.mobile){
-//         res.json({"client":"是手机"});
-//     }else{
-//         request.GetCartList(req,function(data,success) {
-//             var json = JSON.parse(data);
-//             if(success){
-//                 res.render('trade/cart',{
-//                     title:'购物车',
-//                     data:json.data
-//                 });
-//             }else{
-//                 res.json(json);
-//             }
-//         });
-//     }
-// });
-
 router.get('/cart/list', authority.loginRequired,function (req, res, next) {
     request.GetCartList(req, function (data, success) {
         var currentCityId = req.session.locals_address[1].categoryId;
@@ -168,10 +150,18 @@ router.post('/order/pay', function (req, res, next) {
 
 
 router.get('/order/orderSuccess',authority.loginRequired, function (req, res, next) {
-    res.render('trade/orderSuccess', {
-        title: '下单成功',
-        data: req.query
+    request.GetOrderDetail(req, function (data, success) {
+        var json = JSON.parse(data);
+        if (success) {
+            res.render('trade/orderSuccess', {
+                title: '下单成功',
+                data: json.data
+            });
+        }else{
+            next();
+        }
     });
+
 });
 
 router.get('/order/wechatPay',authority.loginRequired, function (req, res, next) {

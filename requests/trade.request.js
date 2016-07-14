@@ -12,9 +12,6 @@ exports.GetCartList = function (req, callback) {
         "accountId": req.accountId
     };
 
-    console.log('===='+req.accessToken);
-    console.log('===='+bizParam);
-
     util.ajax('GET', api.GetCartList, req, bizParam, function (data, success) {
         callback && callback(data, success);
     });
