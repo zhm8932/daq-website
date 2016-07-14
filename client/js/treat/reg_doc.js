@@ -58,7 +58,7 @@ define(function (require, exports, module) {
                     if (needPay != 'true' || json.amount <= 0) {
                         window.location.href = "/users/register/list";
                     }else{
-                        window.location.href = "/treats/reg/topay?payTime="+json.payTime+"&id="+json.id+'&cost='+json.amount+'&orderId='+result.data.id+'&currentTime='+json.payTime;
+                        window.location.href = "/treats/reg/topay?payTime="+json.payTime+"&id="+json.id+'&totalCost='+json.amount+'&orderId='+result.data.id+'&currentTime='+json.payTime;
                     }
                 },
                 errorFun: function (result) {

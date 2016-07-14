@@ -19,13 +19,13 @@ define(function (require, exports, module) {
             cancelItem($(this));
         });
 
-        $('.to-pay').on('click',function(){
-            var tr = $(this).closest('tr');
+        $('.topay').on('click',function(){
+            var tr = $(this).closest('dl.order');
             var timer = tr.find('.timer');
             var payTime = timer.attr('data-paytime');
             var currentTime = parseInt(payTime) + (30*60*1000 - parseInt(timer.attr('data-restTime')));
             var cost = tr.attr('data-cost');
-            var orderId = tr.attr('data-id');
+            var id = tr.attr('data-id');
             window.location.href = '/treats/reg/topay?payTime='+payTime+'&id='+id+'&totalCost='+cost+'&orderId='+id+'&currentTime='+currentTime;
         });
     });

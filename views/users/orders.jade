@@ -17,7 +17,7 @@ block content
           else
             each item in data
                 -var orderState = item.orderState;
-                dl.order(data-id="#{item.id}")
+                dl.order(data-id="#{item.id}",data-cost="#{item.totalCost}")
                     dt
                         |订单编号：#{item.id}
                         time.date-time.text-sec #{moment(item.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
@@ -55,7 +55,7 @@ block content
                                 p.state-info.bdr-bt.text-stress
                                     |#{orderStateJSON[orderState]}
                                 p 支付剩余时间:&nbsp;
-                                    span.timer.text-stress(data-paytime="#{item.updatedAt}") 00分00秒
+                                    span.timer.text-stress(data-paytime="#{item.updatedAt}",data-currenttime="#{item.currentTime}") 00分00秒
                             else
                                 p.state-info.bdr-bt
                                     |#{orderStateJSON[orderState]}
@@ -75,7 +75,7 @@ block content
                         .col.operation
                             p: a(href='/trade/order/detail?id=#{item.id}') 订单详情
                             if orderState == 1
-                                p.topay: a(href='/trade/order/orderSuccess?id=#{item.id}&totalCost=#{item.totalCost}&payTime=#{item.updatedAt}') 继续支付
+                                p: a.topay(href='javascript:void(0);') 继续支付
                                 p: a.cancel-order(href='javascript:void(0);') 取消订单
                             //if orderState ==2
                             //    p: a(href='/trade/order/orderSuccess?id=#{item.id}&totalCost=#{item.totalCost}') 申请退款

@@ -56,7 +56,7 @@ block content
 
                             else
                             each item in data
-                                tr(data-id="#{item.id}",data-payid="#{item.payId}",data-cost="#{item.cost}")
+                                tr.item(data-id="#{item.id}",data-payid="#{item.payId}",data-cost="#{item.cost}")
                                     -var hosname = '';
                                     each h in item.doctorDTO.hospitalReDepartments
                                         -var name = h.hospitalName;
@@ -112,7 +112,7 @@ block content
                 else
                     .registerings
                         each item in data
-                            dl.clearfix(data-id="#{item.id}")
+                            dl.item.clearfix(data-id="#{item.id}",data-payid="#{item.payId}",data-cost="#{item.cost}")
                                 h3 订单编号：#{item.id}
                                     span.status
                                         if item.reservationStatus == 0
@@ -146,6 +146,9 @@ block content
                                         +payway(item)
                                     p
                                         if item.reservationStatus == 0
+                                            td
+                                                a(href="javascript:void(0)").to-pay.text-stress 支付
+                                                    span.timer.text-stress(data-paytime="#{item.updatedAt}",data-currenttime="#{item.currentTime}") 00分00秒
                                             td: a(href="javascript:void(0)").cancel-reg 取消
                                         else if item.reservationStatus == 1
                                             td: a(href="javascript:void(0)").cancel-reg 取消
