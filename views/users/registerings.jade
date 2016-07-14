@@ -27,15 +27,29 @@ block content
                         tbody
                             mixin payway(item)
                                 td
-                                    if item.payOrder
-                                        if browser.mobile
-                                            em #{item.payWay}
+                                    if item.reservationStatus == 4 || item.reservationStatus == 5 || item.reservationStatus == 6
+                                        if item.payOrder
+                                            if item.payWay
+                                                if browser.mobile
+                                                    em #{item.payWay}
+                                                else
+                                                    p #{item.payWay}
+                                                if item.cost
+                                                    span #{(parseFloat(item.cost) / 100).toFixed(2)}元
+                                            else
+                                                p 未支付
                                         else
-                                            p #{item.payWay}
-                                        if item.cost
-                                            span #{(parseFloat(item.cost) / 100).toFixed(2)}元
+                                            span 线下支付
                                     else
-                                        span 线下支付
+                                        if item.payOrder
+                                            if browser.mobile
+                                                em #{item.payWay}
+                                            else
+                                                p #{item.payWay}
+                                            if item.cost
+                                                span #{(parseFloat(item.cost) / 100).toFixed(2)}元
+                                        else
+                                            span 线下支付
                             if !data.length
                               tr
                                 td(colspan='6').tc 暂无挂号
