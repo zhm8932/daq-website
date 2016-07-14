@@ -1276,6 +1276,9 @@
     left: 140px;
     top: 90px; }
 
+  .tab ul li a {
+    padding: 0 10px; }
+
   .footer dl dd p {
     width: 100%; }
 

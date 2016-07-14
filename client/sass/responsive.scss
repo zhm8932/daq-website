@@ -170,14 +170,14 @@ $conWidth:1600px;
     .wapUser{width:20px;position: relative;top:15px;margin-right: 10px;display: inline-block;
       img{width: 100%}
     }
-    aside{display: none;position: absolute;right:60px;border: 1px solid $bdrc_ddd;padding:0 10px;background-color: $white;margin-top:26px;border-radius: 3px;
+    aside{display: none;position: absolute;right:48px;border: 1px solid $bdrc_ddd;padding:0 10px;background-color: $white;margin-top:16px;border-radius: 3px;
       a{display: block;padding:0 10px;
         border-bottom:1px solid $bdrc_ddd;margin-bottom: -1px;
       }
       .arrow{
         position: absolute;
         top:-26px;
-        left:48px;
+        left:42px;
         width: 0;
         height: 0;
         border-width:13px 10px;
@@ -881,6 +881,7 @@ $conWidth:1600px;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 360px){
+
   .topBar{margin-left: 110px;}
   .header{
     height: 50px;line-height: 50px;
@@ -904,7 +905,7 @@ $conWidth:1600px;
   .order-success .order-box i.success, .pay-success .order-box i.success{left: 30px;}
   .order-success .order-box .price-box, .pay-success .order-box .price-box{left: 140px;top: 48px;}
   .order-success .order-box .order-detail, .pay-success .order-box .order-detail{left:140px;top: 90px;}
-
+  .tab ul li a{padding: 0 10px;}
   .footer dl dd p{width: 100%;}
   .footerWap{
     a{font-size: 24px;}

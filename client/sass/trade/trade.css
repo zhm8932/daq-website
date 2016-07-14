@@ -253,16 +253,16 @@ header {
     width: 70px;
     height: 70px;
     background-position: 0 -463px; }
-  .order-success .order-box .box-right, .pay-success .order-box .box-right {
+  .order-success .order-box .order-box-right, .pay-success .order-box .order-box-right {
     margin: 40px 30px 40px 151px; }
-    .order-success .order-box .box-right p, .pay-success .order-box .box-right p {
+    .order-success .order-box .order-box-right p, .pay-success .order-box .order-box-right p {
       margin-bottom: 10px; }
-    .order-success .order-box .box-right .price-box .price, .pay-success .order-box .box-right .price-box .price {
+    .order-success .order-box .order-box-right .price-box .price, .pay-success .order-box .order-box-right .price-box .price {
       font-size: 20px;
       margin: 0 10px; }
-    .order-success .order-box .box-right .timer-box, .pay-success .order-box .box-right .timer-box {
+    .order-success .order-box .order-box-right .timer-box, .pay-success .order-box .order-box-right .timer-box {
       font-size: 18px; }
-      .order-success .order-box .box-right .timer-box .timer, .pay-success .order-box .box-right .timer-box .timer {
+      .order-success .order-box .order-box-right .timer-box .timer, .pay-success .order-box .order-box-right .timer-box .timer {
         margin: 0 5px; }
 
 .pay-success .trade-step .cart i {
