@@ -62,9 +62,16 @@
       border-right:1px solid #ddd;
     }
     .doctor{
-      img{width:30%;}
+      img{
+        width:60px;
+        height:60px;
+        border-radius:50%;
+        vertical-align: middle;
+      }
       .doctor-info{
-        width:63%;
+        display: inline-block;
+        vertical-align: middle;
+        width:50%;
         margin-left:5%;
       }
     }

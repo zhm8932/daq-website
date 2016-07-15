@@ -38,10 +38,10 @@ block content
                 -var regData = data.data;
                 if regData.length > 0
                     thead
-                        th(width="19%")
-                        th(width="18%")
+                        th(width="25%")
+                        th(width="21%")
                         each item in regData[0].scheduleList
-                            th(width="9%")
+                            th(width="8%")
                                 p.month-date #{moment(item.scheduleDate).format('MM/DD')}
                                 p #{week[parseInt(item.dayOfWeek)-1]}
                     tbody
@@ -53,8 +53,8 @@ block content
                                 -hosname += name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
                             tr.doctor-id(data-accountid="#{item.doctor.id}")
                                 td.doctor
-                                    img.fl(src="#{item.doctor.doctorPhoto}")
-                                    .doctor-info.fl
+                                    img(src="#{item.doctor.doctorPhoto}")
+                                    .doctor-info
                                         p.text-main #{item.doctor.doctorName}
                                         p #{item.doctor.title}
                                         p #{hosname}
@@ -71,7 +71,7 @@ block content
                                                 p (#{schedule.consumeCount}/#{schedule.capacityCount})
                                     else
                                         td.disabled
-                                            p 未排班
+                                            //p 未排班
                 else
                     th 该城市暂无医生排班信息
     else
@@ -103,7 +103,7 @@ block content
                                     li.disabled
                                         span #{moment(schedule.scheduleDate).format('YYYY/MM/DD')} #{week[parseInt(schedule.dayOfWeek) - 1]}(#{schedule.consumeCount}/#{schedule.capacityCount})
                                         button.btn.fr 约满
-                            else
+                            //else
                                 li.disabled
                                     span #{moment(schedule.scheduleDate).format('YYYY/MM/DD')} #{week[parseInt(schedule.dayOfWeek) - 1]}(#{schedule.consumeCount}/#{schedule.capacityCount})
                                     button.btn.fr 未排班
