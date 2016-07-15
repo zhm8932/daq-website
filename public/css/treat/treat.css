@@ -59,9 +59,14 @@
     vertical-align: middle;
     border-right: 1px solid #ddd; }
   .reg-list tr .doctor img {
-    width: 30%; }
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    vertical-align: middle; }
   .reg-list tr .doctor .doctor-info {
-    width: 63%;
+    display: inline-block;
+    vertical-align: middle;
+    width: 50%;
     margin-left: 5%; }
   .reg-list tr td:nth-child(1), .reg-list tr td:nth-child(2) {
     text-align: left; }
