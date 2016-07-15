@@ -143,7 +143,54 @@
   .footer dl dd {
     width: 25%; }
     .footer dl dd p {
-      width: 80%; } }
+      width: 80%; }
+
+  /*诊疗服务列表*/
+  .treat-name {
+    font-size: 18px; }
+
+  .outpatient img {
+    width: 100%; }
+  .outpatient .outpatient-info {
+    width: 100%;
+    margin-top: 20px; }
+
+  .reg-doc-list .btn {
+    display: inline-block;
+    line-height: 25px;
+    background-color: #fff;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 0 10px; }
+  .reg-doc-list .btn.btn-disabled {
+    color: #c9c9c9; }
+  .reg-doc-list .btn.btn-primary {
+    color: #48BED8; }
+  .reg-doc-list .title {
+    margin: 20px; }
+    .reg-doc-list .title .vertical {
+      vertical-align: middle; }
+    .reg-doc-list .title span {
+      vertical-align: middle; }
+  .reg-doc-list .doctor-info {
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #48BED8; }
+    .reg-doc-list .doctor-info .doctor-name {
+      font-size: 18px;
+      margin-right: 10px; }
+  .reg-doc-list .reg-list {
+    text-align: left;
+    margin-bottom: 10px; }
+    .reg-doc-list .reg-list li {
+      line-height: 30px;
+      padding: 8px 20px; }
+      .reg-doc-list .reg-list li .btn {
+        color: #48BED8; }
+      .reg-doc-list .reg-list li.disabled {
+        color: #c9c9c9; }
+        .reg-doc-list .reg-list li.disabled .btn {
+          color: #c9c9c9; } }
 @media only screen and (max-width: 768px) {
   * {
     font-family: 'HanHei SC', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif,"微软雅黑"; }
@@ -1181,42 +1228,6 @@
       .footerWap .gotoTop em {
         display: block;
         height: 30px; }
-
-  /*诊疗服务列表*/
-  .treat-name {
-    font-size: 18px; }
-
-  .outpatient img {
-    width: 100%; }
-  .outpatient .outpatient-info {
-    width: 100%;
-    margin-top: 20px; }
-
-  .reg-doc-list .title {
-    margin: 20px; }
-    .reg-doc-list .title .vertical {
-      vertical-align: middle; }
-    .reg-doc-list .title span {
-      vertical-align: middle; }
-  .reg-doc-list .doctor-info {
-    padding: 10px 20px;
-    color: #fff;
-    background-color: #48BED8; }
-    .reg-doc-list .doctor-info .doctor-name {
-      font-size: 18px;
-      margin-right: 10px; }
-  .reg-doc-list .reg-list {
-    text-align: left;
-    margin-bottom: 10px; }
-    .reg-doc-list .reg-list li {
-      line-height: 30px;
-      padding: 8px 20px; }
-      .reg-doc-list .reg-list li .btn {
-        color: #48BED8; }
-      .reg-doc-list .reg-list li.disabled {
-        color: #c9c9c9; }
-        .reg-doc-list .reg-list li.disabled .btn {
-          color: #c9c9c9; }
 
   .reg-by-doc .regbox {
     padding: 20px 20px; }
