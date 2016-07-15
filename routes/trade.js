@@ -40,8 +40,7 @@ router.post('/cart/delItem',function (req, res, next) {
 
 
 router.post('/order/comfirmView', authority.loginRequired,function (req, res, next) {
-    var orderToken = Math.random().toFixed(8);
-    console.log('1111111'+orderToken);
+    var orderToken = Math.random().toString(36).substr(2);
     req.session.orderToken = orderToken;
     res.render('trade/orderConfirm', {
         title: '核对订单信息',
@@ -52,8 +51,6 @@ router.post('/order/comfirmView', authority.loginRequired,function (req, res, ne
 
 
 router.post('/order/create', function (req, res, next) {
-    console.log('======orderToken'+req.body.orderToken);
-    console.log('======orderTokenSession'+req.session.orderToken);
     if(req.body.orderToken != req.session.orderToken){
         var json = JSON.stringify({success:false,msg:'请勿重复提交订单'});
         res.json(json);
