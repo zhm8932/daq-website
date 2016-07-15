@@ -72,13 +72,45 @@ define(function (require, exports, module) {
                 method: 'POST',
                 tipText: '前往支付页面',
                 callback: function (result) {
-                    showDialog(result);
+                    var isMobile = $('#isMobile').val() === 'true';
+                    if(isMobile){
+                        showMobileDialog(result);
+                    }else{
+                        showDialog(result);
+                    }
                 },
                 errorFun: function (result) {
 
                 }
             });
         });
+    }
+
+    function showMobileDialog(result) {
+        var stateTimer = null;
+        var popup = new utils.Popup({
+            msg: '<div class="wechat-pay-dialog"><div class="left-box"><img src="data:image/png;base64,'+result.data.credentia.orderInfo+'"/><div class="wechat-tip"><i class="icon scan"></i>'+
+            '<span class="scan-tip">请使用微信"扫一扫"扫描二维码支付</span></div><div class="price text-stress">￥'+result.data.tradeDTO.amount/100+'</div></div>'+
+            '<div>',
+            otherMsg:'',
+            bOhterMsg:true,
+            callback:function () {
+                stateTimer = setInterval(function(){
+                    queryOrderState();
+                },3000);
+            },
+            okText:'登录',
+            width:'300',
+            otherBox:'wechat-box',
+            isHide:false,
+            okCallback:function(){
+
+            },
+            cancelFun:function(){
+                clearInterval(stateTimer);
+            }
+        })
+
     }
 
     function showDialog(result) {
