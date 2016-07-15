@@ -863,9 +863,17 @@ $conWidth:1600px;
     }
   }
 
-  //.wechat-box{
-  //
-  //}
+  .wechat-box{
+    .wechat-pay-dialog{
+      width:inherit;
+      .left-box{
+        width:inherit;
+        img{
+          width:250px;
+        }
+      }
+    }
+  }
 }
 @media only screen and (max-width: 600px){
   .loginBox2{border: none;box-sizing: border-box;width: 100%;}
