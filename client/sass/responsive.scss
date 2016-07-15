@@ -611,11 +611,16 @@ $conWidth:1600px;
   .accountBox aside,.account{background: none;}
   .account{
     .select-box{width: 60%;}
-    .btn-box .submitBtn{margin-left: 25px;}
+    .btn-box .submitBtn{margin:10px 0 0 0px;font-size: 18px;}
   }
-  .account .info-box > li{
-    label{width: 80px;}
-    input{width: 60%;}
+  .account{
+    .info-box > li{
+      label{width: 80px;}
+      input{width: 60%;font-size: 16px;-webkit-appearance: none;}
+    }
+    .btn-box{
+      margin-left: 98px;width: 60%;
+    }
   }
   .table tbody td{padding: 10px;}
   //-我的订单
