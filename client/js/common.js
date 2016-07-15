@@ -114,14 +114,25 @@ define(function(require, exports, module){
         $("section img").lazyload({
             effect : "fadeIn"
         });
-
-        $body.on('click','.gotoTop',function () {
-            // $(window).scrollTop(0);
-            $('body,html').animate({scrollTop:0},600)
-        });
-
         var winHeight = $(window).height();
         $gotoTop = $('.gotoTop');
+
+        $gotoTop.click(function () {
+            $('body,html').animate({scrollTop:0},600)
+        })
+        // $body.on('click','.gotoTop',function () {
+        //     // $(window).scrollTop(0);
+        //     alert("返回顶部")
+        //     if(utils.browser.ios){
+        //         alert('ios端')
+        //     }else if(utils.browser.android){
+        //         alert('android端')
+        //     }else{
+        //         console.log("电脑端")
+        //     }
+        //     $('body,html').animate({scrollTop:0},600)
+        // });
+
         $(window).scroll(function () {
             var scrollTop = $(window).scrollTop();
             if(scrollTop>winHeight/2){

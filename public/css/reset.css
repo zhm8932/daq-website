@@ -224,6 +224,9 @@ input[type="text"], input.text {
   padding: 0px;
   line-height: 24px; }
 
+input {
+  -webkit-appearance: none; }
+
 .lt {
   float: left; }
 

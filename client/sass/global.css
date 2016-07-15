@@ -950,7 +950,9 @@ select {
         height: 36px;
         line-height: 36px;
         padding: 0 5px;
-        box-sizing: border-box; }
+        box-sizing: border-box;
+        font-size: 18px;
+        font-family: 'Arial'; }
   .loginBox2 .bd .prompt {
     color: #ED9E9A;
     margin-top: -28px;

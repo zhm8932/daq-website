@@ -17,6 +17,19 @@ define(function(require){
                 toOrder();
             });
         }
+        //取样方式
+        var $span = $('.service_type span');
+        var len = $span.length;
+        var $serviceParent = $span.parents('.service_type_wrapper');
+        console.log("len:",len)
+        console.log("$serviceParent:",$serviceParent);
+        if(len==1){
+            $serviceParent.addClass('service_type_one')
+        }else if(len==2){
+            $serviceParent.addClass('service_type_two')
+        }else{
+            $serviceParent.addClass('service_type_three')
+        }
 
         //锚点作用
         $('.goods_detail .tab span').on('click',function(){

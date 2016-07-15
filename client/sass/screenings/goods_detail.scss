@@ -66,7 +66,7 @@
       }
       label{padding-right: 5px;}
       .service_type{display: inline-block;padding:5px 0 15px; margin-left: -3px;
-        span{border: 1px solid $bdrc_ddd;padding:5px 10px; display: inline-block;margin: 0 8px 0 0px;line-height: 20px;
+        span{border: 1px solid $bdrc_ddd;padding:5px 8px; display: inline-block;margin: 0 8px 0 0px;line-height: 20px;
           text-align: center;vertical-align: middle;
           &:hover,&.on{border-color: $bdrc_ED9;cursor: pointer; }
         }

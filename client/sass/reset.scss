@@ -26,6 +26,7 @@ a{text-decoration:none;outline:none;}
 a img{border:none;display:block;}
 input[type="submit"],input.submit{cursor:pointer;}
 input[type="text"],input.text{padding:0px; line-height:24px;}
+input{-webkit-appearance: none;}
 .lt{ float:left}
 .rt{ float:right}
 .icon{ background: url("../images/icon.png") no-repeat 0 0; width: 20px; height: 24px; display: inline-block; vertical-align: top;}
