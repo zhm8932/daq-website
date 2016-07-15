@@ -151,6 +151,7 @@ router.post('/order/pay', function (req, res, next) {
 
 router.get('/order/orderSuccess',authority.loginRequired, function (req, res, next) {
     request.GetOrderDetail(req, function (data, success) {
+        
         var json = JSON.parse(data);
         if (success) {
             res.render('trade/orderSuccess', {
