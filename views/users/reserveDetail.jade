@@ -6,7 +6,7 @@ block content
     .users
         include ../includes/nav
     .positon.wrapper
-        |您的位置：首页<em>#{sep}</em>我的预约<em>#{sep}</em>预约详情
+        |您的位置：首页<em>#{sep}</em>我的报告<em>#{sep}</em>预约详情
     section.wrapper.userBox
         .reservation-detail
             -var serviceTypeJSON = {'0':'未选择','1':'门诊取样','2':'上门取样','3':'快递取样'};
@@ -30,7 +30,7 @@ block content
                             span.text-sec.date-time #{moment(data.createdAt).format('YYYY-MM-DD HH:mm:ss')}
                         if data.reservationStatus == 1900 || data.reservationStatus == 2900 || data.reservationStatus == 3900
                             sapn.info
-                                span.check-report 查看报告
+                                a.check-report(href="/searchs/report") 查看报告
                     .list-info 商品列表
                     table.table.goods-list
                         thead
