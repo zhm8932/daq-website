@@ -1020,13 +1020,12 @@ select {
     }
   }
   .touchslider-viewport {
-    overflow: hidden
+    overflow: hidden;height:152px;
   }
   .bd {
     ul {
       //padding: 10px;background: #000;height: 100px; width: 100%;
-      width: 300px;
-      overflow: hidden;
+      width: 300px;overflow: hidden;
       //background-color: #FF0000;
       li {
         margin: 20px 0 30px;

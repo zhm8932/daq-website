@@ -937,7 +937,8 @@ select {
         color: #48BED8;
         border-bottom-color: #48BED8; }
   .loginBox2 .touchslider-viewport {
-    overflow: hidden; }
+    overflow: hidden;
+    height: 152px; }
   .loginBox2 .bd ul {
     width: 300px;
     overflow: hidden; }

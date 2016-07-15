@@ -45,11 +45,12 @@ block content
                                 img(data-original='/images/product1.png')
                             figcaption
                                 h4: a(href='javascript:;',target='_blank') #{item.deptName}
-                                //-time 发表于：#{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')}
+                                //-time 发表于：#{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')
                                 p
-                                    if item.description.length > 60
+                                    | #{item.description}
+                                    //-if item.description.length > 60
                                         | #{item.description.substring(0, 60)}……
-                                    else
+                                    //-else
                                         | #{item.description}
     include ../includes/footer
     script.

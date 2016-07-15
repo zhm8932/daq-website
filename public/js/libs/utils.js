@@ -85,8 +85,8 @@ define(function(require,exports,module) {
 
             self.opts.callback && self.opts.callback();
             var height = $('.'+this.opts.popupBox).height();
-            $('.'+self.popupBox).css({'height':height,'margin-top':-height/2});
-
+            var width = $('.'+this.opts.popupBox).outerWidth();
+            $('.'+self.popupBox).css({'height':height,'margin-top':-height/2,'margin-left':-width/2});
             
         },
         popupHtml:function(){
