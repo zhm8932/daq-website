@@ -416,6 +416,9 @@
     color: #FFF;
     margin-bottom: -50px; }
 
+  .cart .empty-cart .empty-cart-box {
+    height: 160px; }
+
   .item_list {
     padding-bottom: 20px; }
     .item_list .pic_list ul {
