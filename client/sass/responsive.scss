@@ -716,7 +716,7 @@ $conWidth:1600px;
       }
       dd{background-color: $white;padding: 10px;
         a{float: right;border:1px solid $bdrc1;padding: 0px 20px;border-radius: 5px;}
-        p span{padding-left: 10px;}
+        p span.cost{padding-left: 10px;}
         .text-stress{
           background-color: $bgc_red_ED9;color: $white;padding: 0 5px;
         }
