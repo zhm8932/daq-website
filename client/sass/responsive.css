@@ -919,9 +919,13 @@
 
   .detail-wap h3 {
     font-size: 18px;
-    padding: 10px; }
+    padding: 10px;
+    position: relative; }
     .detail-wap h3 .orderState {
-      float: right; }
+      float: right;
+      position: absolute;
+      right: 10px;
+      top: 10px; }
   .detail-wap dl {
     margin-bottom: 5px;
     background-color: #f7f7f7;
@@ -1552,10 +1556,7 @@
     padding-top: 20px;
     margin: -20px 0 20px; }
     .userBox .pagination a, .userBox .pagination span {
-      margin: 0px; }
-
-  .detail-wap h3 {
-    font-size: 14px; } }
+      margin: 0px; } }
 @media only screen and (width: 320px) {
   .footer {
     padding-bottom: 30px; }

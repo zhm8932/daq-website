@@ -630,8 +630,8 @@ $conWidth:1600px;
   .table tbody td{padding: 10px;}
   //-我的订单
   .detail-wap{
-    h3{font-size: 18px;padding:10px;
-      .orderState{float: right;}
+    h3{font-size: 18px;padding:10px;position: relative;
+      .orderState{float: right;position: absolute;right: 10px;top: 10px;}
     }
     dl{
       margin-bottom: 5px;background-color: $bgc_F7;padding: 10px;
@@ -1158,9 +1158,6 @@ $conWidth:1600px;
       background: none;clear: both;padding-top: 20px;margin:-20px 0 20px;
       a,span{margin:0px;}
     }
-  }
-  .detail-wap{
-    h3{font-size: 14px;}
   }
 
 }
