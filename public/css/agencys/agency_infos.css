@@ -39,7 +39,8 @@
     .info_detail hgroup h4 {
       color: #48BED8;
       margin: 5px 0;
-      font-size: 20px; }
+      font-size: 16px;
+      font-weight: bold; }
       .info_detail hgroup h4 i {
         margin-right: 5px; }
       .info_detail hgroup h4 .jieshao {
@@ -47,7 +48,7 @@
       .info_detail hgroup h4 .address {
         background-position: -28px -99px; }
     .info_detail hgroup p {
-      padding-left: 20px; }
+      padding: 0 0 5px 20px; }
   .info_detail address {
     font-size: 18px;
     line-height: 40px;
@@ -63,7 +64,8 @@
     float: left;
     width: 310px;
     height: auto;
-    margin: 0 0 20px 0; }
+    margin: 0 0 20px 0;
+    border: 5px solid #f2f2f2; }
   .lr_list figure figcaption {
     width: 680px;
     float: right; }

@@ -725,8 +725,8 @@ select {
       background-color: #48BED8;
       color: #FFF; }
     .health aside .list ul li {
-      line-height: 40px;
-      height: 40px;
+      line-height: 50px;
+      height: 50px;
       overflow: hidden;
       border-bottom: 1px solid #f2f2f2;
       padding: 0 10px; }
@@ -845,7 +845,8 @@ select {
       color: #ffffff;
       margin: 0 auto; }
   .popupBox .otherMsg {
-    margin-top: 10px; }
+    margin-top: 10px;
+    color: #9B9B9B; }
 
 .msgBox {
   position: fixed;
@@ -883,6 +884,7 @@ select {
     padding: 0 15px;
     width: 150px;
     border: 1px solid #48BED8;
+    color: #48BED8;
     background-color: #e5faff; }
   .loginBox .disable {
     background-color: #F2F6F7;
@@ -916,6 +918,7 @@ select {
     padding: 0 15px;
     width: 150px;
     border: 1px solid #48BED8;
+    color: #48BED8;
     background-color: #e5faff; }
   .loginBox2 .disable {
     background-color: #F2F6F7;
@@ -945,7 +948,7 @@ select {
     width: 300px;
     overflow: hidden; }
     .loginBox2 .bd ul li {
-      margin: 20px 0 30px;
+      margin: 20px 0;
       position: relative; }
       .loginBox2 .bd ul li input {
         width: 100%;
@@ -957,7 +960,7 @@ select {
         font-family: 'Arial','微软雅黑'; }
   .loginBox2 .bd .prompt {
     color: #ED9E9A;
-    margin-top: -28px;
+    margin-top: -20px;
     display: none; }
     .loginBox2 .bd .prompt i {
       background-position: -178px -22px; }
@@ -965,6 +968,7 @@ select {
     height: 36px;
     line-height: 36px;
     font-size: 16px;
+    margin-top: 10px;
     text-align: center; }
     .loginBox2 .submitBox .ok {
       display: block;
@@ -975,7 +979,8 @@ select {
       margin: 0 auto; }
   .loginBox2 .otherMsg {
     text-align: center;
-    padding-top: 10px; }
+    padding-top: 10px;
+    color: #9B9B9B; }
   .loginBox2 .lgbg {
     width: 42px;
     height: 42px;
@@ -1002,7 +1007,8 @@ select {
   .pagination a, .pagination span {
     display: inline-block;
     padding: 0 8px;
-    margin: 0 3px; }
+    margin: 0 3px;
+    color: #9B9B9B; }
   .pagination a:hover, .pagination span.current {
     background-color: #48BED8;
     border-radius: 3px;
@@ -1015,22 +1021,34 @@ select {
   .pagination .prev {
     margin: 0 5px; }
     .pagination .prev i {
-      background-position: 0px -132px; }
+      background-position: 0px -167px; }
+    .pagination .prev .disable {
+      background-position: 0px -132px;
+      cursor: inherit; }
+      .pagination .prev .disable:hover {
+        opacity: 1; }
     .pagination .prev:hover {
       background: none; }
       .pagination .prev:hover i {
-        background-position: 0px -167px; }
+        background-position: 0px -167px;
+        opacity: 0.7; }
       .pagination .prev:hover .disable {
         background-position: 0px -132px;
         cursor: inherit; }
   .pagination .next {
     margin: 0 5px; }
     .pagination .next i {
-      background-position: -25px -132px; }
+      background-position: -25px -167px; }
+    .pagination .next .disable {
+      background-position: -25px -132px;
+      cursor: inherit; }
+      .pagination .next .disable:hover {
+        opacity: 1; }
     .pagination .next:hover {
       background: none; }
       .pagination .next:hover i {
-        background-position: -25px -167px; }
+        background-position: -25px -167px;
+        opacity: 0.7; }
       .pagination .next:hover .disable {
         background-position: -25px -132px;
         cursor: inherit; }

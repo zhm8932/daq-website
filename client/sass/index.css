@@ -15,11 +15,14 @@
 .box {
   content: 'what'; }
 
-.login-view .bg {
-  background: #F2F6F7; }
-.login-view .wrapper {
-  height: 494px;
-  background: url(../images/lg_img.png) 0 0 no-repeat; }
+.login-view {
+  overflow: hidden;
+  margin-bottom: -82px; }
+  .login-view .bg {
+    background: #F2F6F7; }
+  .login-view .wrapper {
+    height: 494px;
+    background: url(../images/lg_img.png) 0 0 no-repeat; }
 
 .item_list .standard {
   border: 2px solid #48BED8; }

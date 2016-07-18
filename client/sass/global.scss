@@ -792,8 +792,8 @@ select {
       ul {
 
         li {
-          line-height: 40px;
-          height: 40px;
+          line-height: 50px;
+          height: 50px;
           overflow: hidden;
           border-bottom: 1px solid $bdrc_f2;
           padding: 0 10px;
@@ -951,7 +951,7 @@ select {
 
   }
   .otherMsg {
-    margin-top: 10px;
+    margin-top: 10px; color: $gray9B;
   }
 
 }
@@ -971,7 +971,7 @@ select {
     line-height: 34px;
     cursor: pointer;
     padding: 0 15px;width: 150px;
-    border: 1px solid $bdrc_48B;
+    border: 1px solid $bdrc_48B;color: $textc_48B;
     background-color: $bgc_E5F;
   }
   .disable{background-color: $bgc_gray;border-color:$bdrc1;outline: none;cursor: default;}
@@ -995,7 +995,7 @@ select {
     line-height: 34px;
     cursor: pointer;
     padding: 0 15px;width: 150px;
-    border: 1px solid $bdrc_48B;
+    border: 1px solid $bdrc_48B;color: $textc_48B;
     background-color: $bgc_E5F;
   }
   .disable{background-color: $bgc_gray;border-color:$bdrc1;outline: none;cursor: default;}
@@ -1027,7 +1027,7 @@ select {
       width: 300px;overflow: hidden;
       //background-color: #FF0000;
       li {
-        margin: 20px 0 30px;
+        margin: 20px 0;
         position: relative;
         input {
           width: 100%;
@@ -1041,7 +1041,7 @@ select {
       }
     }
     .prompt {
-      color: $red_ED9;margin-top: -28px;display: none;
+      color: $red_ED9;margin-top: -20px;display: none;
       i {
         background-position: -178px -22px;
       }
@@ -1050,7 +1050,7 @@ select {
   .submitBox {
     height: 36px;
     line-height: 36px;
-    font-size: 16px;
+    font-size: 16px;margin-top: 10px;
     text-align: center;
     .ok {
         display: block;
@@ -1062,7 +1062,7 @@ select {
     }
   }
 
-  .otherMsg{text-align: center;padding-top: 10px;}
+  .otherMsg{text-align: center;padding-top: 10px;color: $gray9B;}
   .lgbg{width: 42px;height: 42px;display: inline-block;position: absolute;left:-6px;bottom:-6px;background: url("../images/lg_l.png") no-repeat}
   .lgrt{left:auto;right: -6px;background: url("../images/lg_r.png") no-repeat}
 }
@@ -1082,6 +1082,7 @@ select {
     display: inline-block;
     padding: 0 8px;
     margin: 0 3px;
+    color: $gray9B;
 
   }
   a:hover, span.current {
@@ -1093,12 +1094,18 @@ select {
   .prev {
     margin: 0 5px;
     i {
-      background-position: 0px -132px
+      //background-position: 0px -132px
+      background-position: 0px -167px;
+    }
+    .disable {
+      background-position: 0px -132px;
+      cursor: inherit;
+      &:hover{opacity: 1;}
     }
     &:hover {
       background: none;
       i {
-        background-position: 0px -167px;
+        background-position: 0px -167px;opacity: 0.7;
       }
       .disable {
         background-position: 0px -132px;
@@ -1109,12 +1116,18 @@ select {
   .next {
     margin: 0 5px;
     i {
-      background-position: -25px -132px
+      //background-position: -25px -132px
+      background-position: -25px -167px
+    }
+    .disable {
+      background-position: -25px -132px;
+      cursor: inherit;
+      &:hover{opacity: 1;}
     }
     &:hover {
       background: none;
       i {
-        background-position: -25px -167px
+        background-position: -25px -167px;opacity: 0.7;
       }
       .disable {
         background-position: -25px -132px;
