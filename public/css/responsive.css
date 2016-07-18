@@ -1278,7 +1278,7 @@
     .order-success .order-box .order-box-right, .pay-success .order-box .order-box-right {
       margin: 40px 10px 40px 105px; }
     .order-success .order-box .timer-box .timer, .pay-success .order-box .timer-box .timer {
-      display: inline-block; }
+      display: block; }
 
   .confirm-buy .goods-list {
     margin-bottom: -10px; }
