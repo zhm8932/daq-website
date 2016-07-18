@@ -334,13 +334,14 @@ $conWidth:1600px;
     .pic_list{
       ul{margin-left: -3%;
         //li{width: 47%;margin:20px 0 0 3%;height: auto;
-        li{width: 100%;margin:20px 0 0 3%;height: auto;
+        li{width: auto;margin:20px 0 0 3%;height: auto;border: 1px solid $bdrc_ddd;
           a{
-            h4{line-height:30px;height:30px;position: static;margin-top: 10px;font-size: 20px;background: none;color: $textc_48B;margin-bottom:0px;overflow: hidden}
+            h4{line-height:40px;height:40px;position: relative;margin-top:-40px;font-size: 20px;background: none;color: $textc_48B;margin-bottom:10px;overflow: hidden;background-color: rgba(255, 255, 255, 0.75);text-align: right;padding-right: 10px;width: auto;box-sizing: border-box;}
           }
           p{color: $textc_333;padding: 0 10px;margin: 0px; font-size: 16px;height: 48px;overflow: hidden;}
-          .price{padding-top: 0px;
+          .price{padding-top: 0px;position: absolute;bottom:65px; left: 10px;
             .new{font-size: 18px;}
+            .old{display: none;}
           }
         }
       }
@@ -348,8 +349,11 @@ $conWidth:1600px;
       .more{margin-top: 20px;}
     }
     .department_list{
-      li{
-        h4{margin: 0px;background: none;display: block;position: static;color: $textc_48B;font-size: 18px;font-weight: bold;text-align:left;padding-left: 10px;}
+      ul{
+        li{
+          border: none;
+          h4{margin: 0px;background: none;display: block;position: static;color: $textc_48B;font-size: 18px;font-weight: bold;text-align:left;padding-left: 10px;}
+        }
       }
     }
     .standard{
@@ -433,7 +437,7 @@ $conWidth:1600px;
   .recommend ul{width: 100%;}
 
   .userBox{
-    margin: 0 auto;overflow: visible;
+    margin: 0 auto -50px;overflow: visible;
     aside{width: 100%;padding:0 0 20px 0px;margin: 0px;position: relative;}
     .box-right{width: 100%;overflow: hidden;}
     .user-main{display: none;}
@@ -704,12 +708,16 @@ $conWidth:1600px;
 
     }
   }
+  .pay-success-wrapper{
+    margin: -10px 0 0;
+    .order-num-price span{display: block;}
+  }
   //-我的报告
   .registerings{
     dl{
       line-height: 30px;margin-bottom: 10px;border-bottom: 1px solid $bdrc_ddd;
-      h3{padding: 10px;background-color: $white;font-size: 18px;
-        .status{float: right;}
+      h3{padding: 10px;background-color: $white;font-size: 18px;position: relative;
+        .status{float: right;position: absolute;right: 10px;top: 10px;}
       }
       dt{
         padding: 10px;
@@ -1081,7 +1089,7 @@ $conWidth:1600px;
     }
   }
   .detail-wap{
-    h3{font-size: 16px;}
+    h3{font-size: 14px;}
   }
 }
 

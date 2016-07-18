@@ -424,19 +424,25 @@
     .item_list .pic_list ul {
       margin-left: -3%; }
       .item_list .pic_list ul li {
-        width: 100%;
+        width: auto;
         margin: 20px 0 0 3%;
-        height: auto; }
+        height: auto;
+        border: 1px solid #dddddd; }
         .item_list .pic_list ul li a h4 {
-          line-height: 30px;
-          height: 30px;
-          position: static;
-          margin-top: 10px;
+          line-height: 40px;
+          height: 40px;
+          position: relative;
+          margin-top: -40px;
           font-size: 20px;
           background: none;
           color: #48BED8;
-          margin-bottom: 0px;
-          overflow: hidden; }
+          margin-bottom: 10px;
+          overflow: hidden;
+          background-color: rgba(255, 255, 255, 0.75);
+          text-align: right;
+          padding-right: 10px;
+          width: auto;
+          box-sizing: border-box; }
         .item_list .pic_list ul li p {
           color: #333333;
           padding: 0 10px;
@@ -445,21 +451,28 @@
           height: 48px;
           overflow: hidden; }
         .item_list .pic_list ul li .price {
-          padding-top: 0px; }
+          padding-top: 0px;
+          position: absolute;
+          bottom: 65px;
+          left: 10px; }
           .item_list .pic_list ul li .price .new {
             font-size: 18px; }
+          .item_list .pic_list ul li .price .old {
+            display: none; }
     .item_list .pic_list .more {
       margin-top: 20px; }
-    .item_list .department_list li h4 {
-      margin: 0px;
-      background: none;
-      display: block;
-      position: static;
-      color: #48BED8;
-      font-size: 18px;
-      font-weight: bold;
-      text-align: left;
-      padding-left: 10px; }
+    .item_list .department_list ul li {
+      border: none; }
+      .item_list .department_list ul li h4 {
+        margin: 0px;
+        background: none;
+        display: block;
+        position: static;
+        color: #48BED8;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: left;
+        padding-left: 10px; }
     .item_list .standard {
       border: none; }
       .item_list .standard h2 {
@@ -587,7 +600,7 @@
     width: 100%; }
 
   .userBox {
-    margin: 0 auto;
+    margin: 0 auto -50px;
     overflow: visible; }
     .userBox aside {
       width: 100%;
@@ -1032,6 +1045,11 @@
     .order-success-wrapper .order-success .list-info {
       margin: 10px; }
 
+  .pay-success-wrapper {
+    margin: -10px 0 0; }
+    .pay-success-wrapper .order-num-price span {
+      display: block; }
+
   .registerings dl {
     line-height: 30px;
     margin-bottom: 10px;
@@ -1039,9 +1057,13 @@
     .registerings dl h3 {
       padding: 10px;
       background-color: #FFF;
-      font-size: 18px; }
+      font-size: 18px;
+      position: relative; }
       .registerings dl h3 .status {
-        float: right; }
+        float: right;
+        position: absolute;
+        right: 10px;
+        top: 10px; }
     .registerings dl dt {
       padding: 10px; }
     .registerings dl dd {
@@ -1381,7 +1403,7 @@
   .outpatient img {
     width: 100%; }
   .outpatient .outpatient-info {
-    width: 100%;
+    width: auto;
     margin-top: 20px; }
 
   .reg-doc-list .btn {
@@ -1487,7 +1509,7 @@
     font-size: 16px; }
 
   .detail-wap h3 {
-    font-size: 16px; } }
+    font-size: 14px; } }
 @media only screen and (min-width: 360px) and (max-width: 599px) {
   .footer dl dt img {
     float: none; }
