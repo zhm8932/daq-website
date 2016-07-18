@@ -35,7 +35,7 @@ block content
                                                 else
                                                     p #{item.payWay}
                                                 if item.cost
-                                                    span #{(parseFloat(item.cost) / 100).toFixed(2)}元
+                                                    span.cost #{(parseFloat(item.cost) / 100).toFixed(2)}元
                                             else
                                                 if browser.mobile
                                                     em.text-stress 未支付
@@ -50,7 +50,7 @@ block content
                                             else
                                                 p #{item.payWay}
                                             if item.cost
-                                                span #{(parseFloat(item.cost) / 100).toFixed(2)}元
+                                                span.cost #{(parseFloat(item.cost) / 100).toFixed(2)}元
                                         else
                                             span 线下支付
                             if !data.length
@@ -143,7 +143,7 @@ block content
                                         span.start #{moment(item.start).format('YYYY-MM-DD HH:mm')}
                                         | -
                                         span.end #{moment(item.end).format('HH:mm')}
-                                    p.text-sec 下单时间:&nbsp;
+                                    p 下单时间:&nbsp;
                                         span #{moment(item.updatedAt).format('YYYY-MM-DD HH:mm')}
                                     p 支付方式：
                                         +payway(item)
