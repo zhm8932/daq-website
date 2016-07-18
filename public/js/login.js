@@ -47,7 +47,7 @@ define(function(require,exports,module) {
                 });
             },
             okText:'登录',
-            width:'360',
+            // width:'360',
             otherBox:'loginBox',
             isHide:false,
             okCallback:function(){

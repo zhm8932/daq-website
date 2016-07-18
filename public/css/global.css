@@ -872,29 +872,31 @@ select {
     background-position: -51px -94px;
     margin: 4px 10px 0 0; }
 
-.loginBox .getCode {
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  line-height: 34px;
-  cursor: pointer;
-  padding: 0 15px;
-  width: 150px;
-  border: 1px solid #48BED8;
-  background-color: #e5faff; }
-.loginBox .disable {
-  background-color: #F2F6F7;
-  border-color: #c9c9c9;
-  outline: none;
-  cursor: default; }
-.loginBox .prompt {
-  color: #ED9E9A;
-  position: absolute;
-  left: 0px;
-  bottom: -24px;
-  display: none; }
-  .loginBox .prompt i {
-    background-position: -178px -22px; }
+.loginBox {
+  width: 360px; }
+  .loginBox .getCode {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    line-height: 34px;
+    cursor: pointer;
+    padding: 0 15px;
+    width: 150px;
+    border: 1px solid #48BED8;
+    background-color: #e5faff; }
+  .loginBox .disable {
+    background-color: #F2F6F7;
+    border-color: #c9c9c9;
+    outline: none;
+    cursor: default; }
+  .loginBox .prompt {
+    color: #ED9E9A;
+    position: absolute;
+    left: 0px;
+    bottom: -24px;
+    display: none; }
+    .loginBox .prompt i {
+      background-position: -178px -22px; }
 
 .loginBox2 {
   width: 300px;
@@ -951,8 +953,8 @@ select {
         line-height: 36px;
         padding: 0 5px;
         box-sizing: border-box;
-        font-size: 18px;
-        font-family: 'Arial'; }
+        font-size: 16px;
+        font-family: 'Arial','微软雅黑'; }
   .loginBox2 .bd .prompt {
     color: #ED9E9A;
     margin-top: -28px;

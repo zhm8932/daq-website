@@ -731,7 +731,7 @@
       transform: rotate(-45deg); }
 
   .reservation.box-right dl.order .goods {
-    width: auto;
+    width: 100%;
     margin-bottom: 10px; }
     .reservation.box-right dl.order .goods .goods-detail {
       margin: 0px; }
@@ -810,11 +810,15 @@
             top: 60px;
             width: auto;
             display: none; }
-            .box-right .order dd .goods .goods-others .text-stress {
+            .box-right .order dd .goods .goods-others p.text-stress {
               display: none; }
           .box-right .order dd .goods .text-sec {
             display: block;
             top: 40px; }
+            .box-right .order dd .goods .text-sec span.text-stress {
+              color: #FFF;
+              background-color: #f23a30;
+              padding: 3px 10px; }
           .box-right .order dd .goods .reservation {
             position: absolute;
             left: 10px;
@@ -825,6 +829,12 @@
               display: block;
               border-radius: 5px;
               padding: 3px 8px; }
+          .box-right .order dd .goods .reservation_detail {
+            position: absolute;
+            bottom: -77px;
+            top: auto; }
+          .box-right .order dd .goods .text-main {
+            display: none; }
         .box-right .order dd .col + .order-state {
           border-left: none; }
         .box-right .order dd .order-state {
@@ -1111,11 +1121,11 @@
         .coupons .table tbody tr td:nth-child(4):before {
           content: "有效期："; }
 
-  .cart .trade-step, .confirm-buy .trade-step, .order-success .trade-step {
+  .cart .trade-step, .confirm-buy .trade-step, .order-success .trade-step, .pay-success .trade-step {
     background-color: #f3f3f3;
     margin: 0px;
     padding: 20px 0 10px; }
-    .cart .trade-step .step-wrapper span, .confirm-buy .trade-step .step-wrapper span, .order-success .trade-step .step-wrapper span {
+    .cart .trade-step .step-wrapper span, .confirm-buy .trade-step .step-wrapper span, .order-success .trade-step .step-wrapper span, .pay-success .trade-step .step-wrapper span {
       position: relative;
       z-index: 1; }
 
@@ -1259,8 +1269,12 @@
     box-sizing: border-box;
     width: auto;
     margin: 10px; }
+    .order-success .order-box i.success, .pay-success .order-box i.success {
+      left: 20px; }
     .order-success .order-box .order-box-right, .pay-success .order-box .order-box-right {
       margin: 40px 10px 40px 105px; }
+    .order-success .order-box .timer-box .timer, .pay-success .order-box .timer-box .timer {
+      display: inline-block; }
 
   .confirm-buy .goods-list {
     margin-bottom: -10px; }
@@ -1297,7 +1311,7 @@
     z-index: 0;
     top: 41px; }
   .trade-step .line2 {
-    left: 56%; }
+    left: 52%; }
 
   .order-success .pay-way {
     padding: 0 10px; }
@@ -1352,6 +1366,9 @@
       .footerWap .gotoTop em {
         display: block;
         height: 30px; }
+
+  .footer_fixed {
+    position: absolute; }
 
   /*诊疗服务列表*/
   .treat-name {
@@ -1420,6 +1437,14 @@
     border: none;
     box-sizing: border-box;
     width: 100%; }
+
+  .loginBox {
+    width: 100%; }
+
+  .left-nav-tit h2 a {
+    font-size: 22px; }
+  .left-nav-tit a {
+    font-size: 18px; }
 
   .order-success .order-box .price-box, .pay-success .order-box .price-box {
     top: 45px; }
@@ -1525,9 +1550,12 @@
     background: none;
     clear: both;
     padding-top: 20px;
-    margin-top: -20px; }
+    margin: -20px 0 20px; }
     .userBox .pagination a, .userBox .pagination span {
-      margin: 0px; } }
+      margin: 0px; }
+
+  .detail-wap h3 {
+    font-size: 14px; } }
 @media only screen and (width: 320px) {
   .footer {
     padding-bottom: 30px; }

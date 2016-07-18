@@ -60,7 +60,7 @@ block content
                 else
                     .detail-wap
                         h3
-                            span.text-sec 订单编号:#{data.id}
+                            span.text-sec 预约编号:#{data.id}
                             span.orderState #{statusJSON[parseInt(data.serviceType)-1][data.reservationStatus]}
                         each item,i in data.reservations
                             dl.clearfix
