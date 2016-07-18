@@ -24,12 +24,26 @@ define(function (require, exports, module) {
 
 
     $('.alipay').on('click',function(){
-        var paynum = $(this).attr('data-paynum');
-        alipay(payId,paynum);
+        var $this = $(this);
+        queryOrderState(function(result){
+            if (result.data.reservationStatus == 0) {
+                var paynum = $this.attr('data-paynum');
+                alipay(payId,paynum);
+            }else{
+                utils.ShowComfirmDialog({tipText:'不是未支付状态的订单不允许支付！',noConfirmBtn:true});
+            }
+        });
+
     });
 
     $('.wechat-pay').on('click',function(){
-        wechatPay(payId,6);
+        queryOrderState(function(result) {
+            if (result.data.reservationStatus == 0) {
+                wechatPay(payId, 6);
+            } else {
+                utils.ShowComfirmDialog({tipText: '不是未支付状态的订单不允许支付！', noConfirmBtn: true});
+            }
+        });
     });
 
     function alipay(id,payWay){
@@ -84,7 +98,11 @@ define(function (require, exports, module) {
             bOhterMsg:true,
             callback:function () {
                 stateTimer = setInterval(function(){
-                    queryOrderState();
+                    queryOrderState(function(result){
+                        if (result.data.reservationStatus != 0) {
+                            window.location.href = '/users/register/list';
+                        }
+                    });
                 },3000);
             },
             okText:'登录',
@@ -112,7 +130,11 @@ define(function (require, exports, module) {
             bOhterMsg:true,
             callback:function () {
                 stateTimer = setInterval(function(){
-                    queryOrderState();
+                    queryOrderState(function(result){
+                        if (result.data.reservationStatus != 0) {
+                            window.location.href = '/users/register/list';
+                        }
+                    });
                 },3000);
             },
             okText:'登录',
@@ -129,7 +151,7 @@ define(function (require, exports, module) {
 
     }
 
-    function queryOrderState(){
+    function queryOrderState(fun){
         var orderId = $('#orderId').val();
         utils.SendAjax({
             url: '/treats/order/state',
@@ -137,9 +159,7 @@ define(function (require, exports, module) {
             method: 'GET',
             tipText: '查询订单状态',
             callback: function (result) {
-                if (result.data.reservationStatus == 1) {
-                    window.location.href = '/users/register/list';
-                }
+                fun && fun(result);
             },
             errorFun: function (result) {
 

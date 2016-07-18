@@ -106,8 +106,8 @@
     }
     .submitBox{
       padding-top: 20px;
-      .submitBtn{padding: 0 40px;line-height: 50px; font-size: 18px;margin-right:30px;}
-      .addCartBtn{background-color: $bgc_E5F;color: $textc_48B;
+      .submitBtn{padding: 0 40px;line-height: 50px; font-size: 18px;margin-right:30px;outline:none;}
+      .addCartBtn{background-color: $bgc_E5F;color: $textc_48B;outline:none;
         &:hover{
           color: #ED9E9A;border-color:#ED9E9A;
         }
