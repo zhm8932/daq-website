@@ -149,7 +149,7 @@ define(function (require, exports, module) {
                 method: 'GET',
                 tipText: '前往支付页面',
                 callback: function (result) {
-                    if (result.data.orderState == 2) {
+                    if (result.data.orderState != 1) {
                         window.location.href = '/trade/order/paySuccess?order_no=' + id;
                     }
                 },

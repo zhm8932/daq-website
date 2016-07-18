@@ -1381,7 +1381,7 @@
   .outpatient img {
     width: 100%; }
   .outpatient .outpatient-info {
-    width: 100%;
+    width: auto;
     margin-top: 20px; }
 
   .reg-doc-list .btn {

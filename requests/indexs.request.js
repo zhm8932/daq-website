@@ -60,7 +60,7 @@ exports.logout = function (req,res,next) {
 
 exports.checkLogin = function (req,res,next) {
     var _user = req.session.userInfo;
-    var json = {"code":"200",login:false,"success":"true"};
+    var json = {"code":"200",login:false,"success":true};
     
     if(_user) {
         json.login = true;
