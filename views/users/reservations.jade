@@ -6,7 +6,7 @@ block content
     .users
         include ../includes/nav
     .positon.wrapper
-        |您的位置为：首页<em>#{sep}</em>#{title}
+        |您的位置为：首页<em>#{sep}</em>我的报告
     section.wrapper.userBox.clearfix
         -var serviceTypeJSON = {'0':'未选择','1':'门诊取样','2':'上门取样','3':'快递取样'};
         include ../includes/usersNav
@@ -58,7 +58,7 @@ block content
                         .col.operation.clearfix
                             p: a(href='/users/reservation/detail?id=#{item.id}') 预约详情
                             if resStatus == 2
-                                p: a(href='') 查看报告
+                                p: a(href='/searchs/report') 查看报告
 
 
 
