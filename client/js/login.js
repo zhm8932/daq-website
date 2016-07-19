@@ -112,8 +112,9 @@ define(function(require,exports,module) {
         var $ok = $loginWrap.find('.submitBox .ok');
         var $self = $(this);
         var index = $loginWrap.find('.tit span.on').index();
-        $loginWrap.find('ul').eq(index).find('.checkbox').toggleClass('checked');
-        if($self.hasClass('checked')){
+        var $checkbox = $loginWrap.find('ul').eq(index).find('.checkbox')
+        $checkbox.toggleClass('checked');
+        if($checkbox.hasClass('checked')){
             $ok.removeClass('disabled').attr('disabled',false)
         }else{
             $ok.addClass('disabled').attr('disabled',true)
