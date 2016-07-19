@@ -825,25 +825,39 @@ select {
       .popupBox article .bd ul li {
         margin: 20px 0;
         position: relative; }
-        .popupBox article .bd ul li input {
+        .popupBox article .bd ul li input[type='text'], .popupBox article .bd ul li input[type='password'] {
           width: 100%;
           height: 36px;
           line-height: 36px;
           padding: 0 5px;
           box-sizing: border-box; }
+      .popupBox article .bd ul p span {
+        position: relative;
+        top: 3px;
+        margin-right: 5px; }
+      .popupBox article .bd ul p a {
+        color: #48BED8; }
   .popupBox .submitBox {
     height: 33px;
     line-height: 32px;
     margin: 10px 20px 0;
     font-size: 16px;
     text-align: center; }
-    .popupBox .submitBox span.ok {
+    .popupBox .submitBox .ok {
       display: block;
       text-align: center;
       cursor: pointer;
       background-color: #48BED8;
       color: #ffffff;
-      margin: 0 auto; }
+      margin: 0 auto;
+      border: none;
+      height: 32px;
+      line-height: 32px;
+      width: 100%;
+      outline: none; }
+    .popupBox .submitBox .disabled {
+      background-color: #cccccc;
+      cursor: default; }
   .popupBox .otherMsg {
     margin-top: 10px;
     color: #9B9B9B; }
@@ -958,6 +972,12 @@ select {
         box-sizing: border-box;
         font-size: 16px;
         font-family: 'Arial','微软雅黑'; }
+    .loginBox2 .bd ul p span {
+      position: relative;
+      top: 3px;
+      margin-right: 5px; }
+    .loginBox2 .bd ul p a {
+      color: #48BED8; }
   .loginBox2 .bd .prompt {
     color: #ED9E9A;
     margin-top: -20px;
@@ -976,7 +996,15 @@ select {
       cursor: pointer;
       background-color: #48BED8;
       color: #ffffff;
-      margin: 0 auto; }
+      margin: 0 auto;
+      border: none;
+      height: 32px;
+      line-height: 32px;
+      width: 100%;
+      outline: none; }
+    .loginBox2 .submitBox .disabled {
+      background-color: #cccccc;
+      cursor: default; }
   .loginBox2 .otherMsg {
     text-align: center;
     padding-top: 10px;

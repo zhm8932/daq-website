@@ -18,13 +18,14 @@ define(function(require,exports,module) {
     var index = '';
     var $prompt = '';
 
+
     //显示登陆页面
     function showLogin(options) {
         var popup = new utils.Popup({
             msg:'<div class="slideLogin"><div class="tit"><span class="on">密码登录</span><span>验证码登录</span></div>' +
             '<div class="touchslider-viewport"><div class="bd"> ' +
-            '<ul><li><input type="text" class="username" placeholder="请输入手机号码" value="13689557622"></li><li><input type="password" class="password" placeholder="请输入密码" value="zhm123456"><span class="prompt"><i class="icon"></i><em>手机输入格式有误/验证码有误</em></span></li></ul>' +
-            '<ul style="float: left"><li><input type="text" class="username" placeholder="请输入手机号码"></li><li><input type="text" class="password" placeholder="请输入短信验证码"><button class="getCode">获取短信验证码</button><span class="prompt"><i class="icon"></i><em>手机输入格式有误/验证码有误</em></span></li></ul>' +
+            '<ul><li><input type="text" class="username" placeholder="请输入手机号码" value="13689557622"></li><li><input type="password" class="password" placeholder="请输入密码" value="zhm123456"><span class="prompt"><i class="icon"></i><em>手机输入格式有误/验证码有误</em></span></li><p><span class="checkbox checked"></span> 我已阅读并同意<a href="/userAgreement" target="_blank">《都安全用户协议》</a></p></ul>' +
+            '<ul style="float: left"><li><input type="text" class="username" placeholder="请输入手机号码"></li><li><input type="text" class="password" placeholder="请输入短信验证码"><button class="getCode">获取短信验证码</button><span class="prompt"><i class="icon"></i><em>手机输入格式有误/验证码有误</em></span></li><p><span class="checkbox checked"></span> 我已阅读并同意<a href="/userAgreement" target="_blank">《都安全用户协议》</a></p></ul>' +
             '</div></div></div>',
             otherMsg:'手机号码用来获取预约码和报告服务码',
             bOhterMsg:true,
@@ -42,6 +43,9 @@ define(function(require,exports,module) {
                     currentClass: "on", // current 样式指定
                     prev: ".touchslider-prev", // prev 样式指定
                     // scroller: viewport.children(),
+                    complete:function () {
+                      console.log("hahahh")
+                    },
                     autoplay: false, // 自动播放
                     viewport: ".touchslider-viewport"  //内容区域
                 });
@@ -92,6 +96,30 @@ define(function(require,exports,module) {
          var $loginWrap = $('.loginBox,.loginBox2');
         return $loginWrap
     }
+
+    $('body').on('click','.loginBox .tit span,.loginBox2 .tit span',function () {
+        var $loginWrap = getLoginWrap();
+        var index = $loginWrap.find('.tit span.on').index();
+        var $ok = $loginWrap.find('.submitBox .ok');
+        if($loginWrap.find('ul').eq(index).find('.checkbox').hasClass('checked')){
+            $ok.removeClass('disabled').attr('disabled',false)
+        }else{
+            $ok.addClass('disabled').attr('disabled',true)
+        }
+    })
+    $('body').on('click','ul p',function () {
+        var $loginWrap = getLoginWrap();
+        var $ok = $loginWrap.find('.submitBox .ok');
+        var $self = $(this);
+        var index = $loginWrap.find('.tit span.on').index();
+        $loginWrap.find('ul').eq(index).find('.checkbox').toggleClass('checked');
+        if($self.hasClass('checked')){
+            $ok.removeClass('disabled').attr('disabled',false)
+        }else{
+            $ok.addClass('disabled').attr('disabled',true)
+        }
+    })
+
     // var $loginWrap = $('.loginBox,.loginBox2');
     //获取登陆数据
     function getLoginData() {

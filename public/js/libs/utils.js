@@ -93,7 +93,7 @@ define(function(require,exports,module) {
             var opts = this.opts;
             var ConfimHtml = '<div class="'+this.popupBox+' '+this.opts.otherBox+'" style="width: '+opts.width+'px;margin-left:-'+opts.width/2+'px">' +
                 '<div class="innerBg"><span class="'+this.opts.cancel+'"><i class="icon"></i></span><article>'+this.opts.msg+'</article>' +
-                '<div class="submitBox"><span class="'+this.opts.ok+'">'+this.opts.okText+'</span></div>';
+                '<div class="submitBox"><button class="'+this.opts.ok+'">'+this.opts.okText+'</button></div>';
             if(opts.bOhterMsg){
                 ConfimHtml+='<div class="otherMsg">'+opts.otherMsg+'</div>'
             }
