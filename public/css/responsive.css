@@ -386,6 +386,12 @@
   .btn.btn-primary {
     color: #48BED8; }
 
+  .login-view {
+    margin-bottom: -4; }
+
+  .loginBox2 .bd .prompt i {
+    vertical-align: top; }
+
   .positon {
     margin-bottom: 10px;
     display: none; }

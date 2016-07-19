@@ -226,7 +226,13 @@ define(function(require,exports,module) {
                 }else{
                     // console.log('登录失败')
                     // $prompt.show().find('em').html(json.msg)
-                    $prompt.show().find('em').html("登录失败:服务器异常")
+                    var code = json.code;
+                    if(code==300){
+                        $prompt.show().find('em').html("登录失败:服务器异常")
+                    }else{
+                        $prompt.show().find('em').html(json.msg)
+                    }
+
                 }
 
 
