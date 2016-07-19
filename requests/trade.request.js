@@ -87,17 +87,17 @@ exports.DeleteOrder = function (req, callback) {
     });
 };
 
-exports.GetOrderList = function (req, callback) {
+exports.GetOrderList = function (req, res,callback) {
     var query = req.query;
     var bizParam = {
         pageSize:config.pageSize||'5',
         pageIndex: query.page || 1,
-        "accountId": req.session.userInfo.userAllInfo.accountCommon.id
+        "accountd": req.session.userInfo.userAllInfo.accountCommon.id
     };
 
-    util.ajax('GET', api.GetOrderList,req,  bizParam, function (data, success) {
-        callback && callback(data, success);
-    });
+    util.ajax('GET', api.GetOrderList,req,  bizParam, function (err, data) {
+        callback && callback(err, data);
+    },res);
 };
 
 exports.GetOrderDetail = function (req, callback) {

@@ -9,7 +9,7 @@ exports.getErrorMsg = function(error){
 };
 
 exports.handleServerError = function handleInternalError(res, code, type, error) {
-    if (code === '300') {
+    if (code === '200') {
         _handleError(res, '200', type, error);
     } else {
         _handleError(res, '500', type, error);
@@ -25,7 +25,7 @@ function _handleError(res, code, type, error){
         res.render(errorPage, {
             message: error.externalMsg
         });
-    } else if (type === 'json') {
+    } else{
         var errorJson = {code: code, msg: error.externalMsg, success: false};
         res.json(JSON.stringify(errorJson));
     }

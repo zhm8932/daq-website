@@ -6,6 +6,7 @@ var config = require('../config');
 var md5 = require("blueimp-md5");
 var request = require("request");
 var BufferHelper = require('./bufferhelper');//处理buffer接收问题
+var errorHandler = require('./errorHandler');//处理buffer接收问题
 // var logFactory = require('./logFactory');
 
 // var logger = logFactory.getLogger('request');
@@ -67,7 +68,7 @@ function sysParam(apiName,bizParam,accessToken) {
     return JSON.stringify(sysParameters);
 }
 
-module.exports.ajax = function (method,apiName,browserReq,bizParam,callback) {
+module.exports.ajax = function (method,apiName,browserReq,bizParam,callback,browserRes) {
 
     var method = method.toUpperCase();
 
@@ -161,20 +162,26 @@ module.exports.ajax = function (method,apiName,browserReq,bizParam,callback) {
 
                 try {
                     resObj = JSON.parse(body);
+                    if(!resObj.success){
+                        var err = new Error(resObj.msg);
+                        return handleError(resObj.code,err,body,true);
+                    }
                     success = resObj.success;
-                    callback && callback(body,success);
+                    callback && callback(null,body);
                 }catch (err) {
-                    success = false;
-                    callback && callback(JSON.stringify(errorJson),success);
+                    // success = false;
+                    // callback && callback(JSON.stringify(errorJson),success);
+                    return handleError('500',err,body);
                 }
             });
 
-        }).on('error', function (e) {
-            console.log('problem with request: ' + e.message);
-            console.log('problem with request: ',e);
-            var success = false;
+        }).on('error', function (err) {
+            console.log('problem with request: ' + err.message);
+            console.log('problem with request: ',err);
+            // var success = false;
             errorJson.msg = e.message;
-            callback && callback(JSON.stringify(errorJson),success);
+            // callback && callback(JSON.stringify(errorJson),success);
+            return handleError('500',err,JSON.stringify(errorJson));
         });
 
         if(method != 'GET') {req.write(param);}
@@ -184,7 +191,19 @@ module.exports.ajax = function (method,apiName,browserReq,bizParam,callback) {
 
     }
 
+    function handleError(code,err,data,serverError){
+        if(!browserReq.autoHandleError){
+            if(serverError){
+                return errorHandler.handleServerError(browserRes,code,browserReq.resType,err);
+            }else{
+                return errorHandler.handleError(browserRes,code,browserReq.resType,err);
+            }
+        }
+        callback && callback(err,data);
+    }
 };
+
+
 
 
 function extend() {
