@@ -11,6 +11,7 @@ var CONST = require('./utils/const');
 var app = express();
 
 var config = require('./config');
+var errorHandler = require('./utils/errorHandler');
 //路由
 var indexs = require('./routes/index');
 var abouts = require('./routes/about');
@@ -98,45 +99,8 @@ app.use('/treat',treats);
 
 //捕获404错误并转发到错误处理中间件
 app.use(function(req, res, next) {
-  var errorMsg = req.errorMsg || 'Not Found';
-  var err = new Error(errorMsg);
-  err.status = 404;
-  console.log('404');
-  next(err);
+  var err = new Error('抱歉，您访问的资源不存在');
+  errorHandler.handleError(res, '404', 'html', err);
 });
-
-// error handlers
-
-//开发时的错误处理
-if (app.get('env') === 'development') {
-
-  app.set('showStackError',true);
-
-  app.locals.pretty = true ; //格式化页面内容
-
-  app.use(function(err, req, res, next) {
-    console.log('development')
-    console.log('err1:',err)
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
-
-//生产环境下的错误处理 product
-//不向用户暴露堆栈信息
-app.use(function(err, req, res, next) {
-  console.log('production')
-  console.log('err2:',err)
-  res.status(err.status || 500);
-  res.render('error', {
-    // message: err.message,
-    message: err.message,
-    error: ''
-  });
-});
-
 
 module.exports = app;

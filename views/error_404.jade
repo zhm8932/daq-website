@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    link(href='/css/error404.css',rel='styleSheet')
+    include includes/responsive
+    include includes/nav
+    .positon.wrapper
+      |您的位置为：404
+    section.wrapper
+      .error404
+        img(src='/images/404.png')
+        .msg= message
+        a.btn(href='/') 返回首页
+
+    script(src='/js/libs/sea.js')
+    script(src='/js/seajs.config.js')
+    script.
+        seajs.use('/js/common.js');

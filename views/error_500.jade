@@ -5,18 +5,13 @@ block content
     include includes/responsive
     include includes/nav
     .positon.wrapper
-      |您的位置为：404
+      |您的位置为：500
     section.wrapper
       .error404
         img(src='/images/404.png')
-        .msg 抱歉，您访问的页面不存在
+        .msg= message
         a.btn(href='/') 返回首页
-      h1= message
-      //h2= error.status
-      //pre #{error.stack}
 
-      h2= error
-      pre #{error}
     script(src='/js/libs/sea.js')
     script(src='/js/seajs.config.js')
     script.
