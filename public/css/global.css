@@ -519,9 +519,9 @@ select {
     text-align: left;
     color: #FFFFFF; }
     .banner dl h3, .banner dl p {
-      padding: 0 0 15px 50px; }
+      padding: 0 0 10px 50px; }
     .banner dl h3 {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: normal;
       padding-top: 20px; }
     .banner dl p {
