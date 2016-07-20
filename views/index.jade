@@ -41,21 +41,25 @@ block content
       .pic_list.department_list
         if get_department_success
           ul
-            each item,index in get_department
-              if index<=2
-                li
-                  a(href='/agencys')
-                    if browser.ie
-                      img(src='images/product1.png')
-                    else
-                      img(data-original='images/product1.png')
-                  h4 #{item.deptName}
-                  p
-                    if item.description
-                      if item.description.length>30
-                        |#{item.description.substring(0,30)}……
-                      else
-                        |#{item.description}
+            li
+              a(href='/agencys')
+                  img(src='images/department/gynaecology_01.jpg')
+              h4 妇科
+              p
+                |预防保健是家庭医学的基础。都安全医疗预防保健科将个人及家庭的健康需求纳入全流程健...
+            li
+              a(href='/agencys')
+                img(src='images/department/laboratory_01.jpg')
+              h4 皮肤科
+              p
+                |都安全医疗皮肤科具备专业的医护团队及人性化的护理流程系统，提供全面、专业的常见皮...
+            li
+              a(href='/agencys')
+                img(src='images/department/urology_03.jpg')
+              h4 泌尿科
+              p
+                |泌尿外科是都安全医疗基于精准检查与诊疗的重点科室之一，由国内外知名资深外科专家领...
+
 
         div.clear
           a.more(href='/agencys',target='_blank')
