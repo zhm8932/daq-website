@@ -66,6 +66,12 @@
   .health_detail {
     width: 65%; } }
 @media only screen and (min-width: 1024px) and (max-width: 1279px) {
+  .banner dl h3 {
+    padding-top: 5px;
+    font-size: 18px; }
+  .banner dl p {
+    padding: 0 0 5px 50px; }
+
   .wrapper {
     width: 800px; }
 
@@ -430,7 +436,7 @@
     .item_list .pic_list ul {
       margin-left: -3%; }
       .item_list .pic_list ul li {
-        width: auto;
+        width: 100%;
         margin: 20px 0 0 3%;
         height: auto;
         border: 1px solid #dddddd; }
@@ -606,7 +612,7 @@
     width: 100%; }
 
   .userBox {
-    margin: 0 auto -50px;
+    margin: 0 auto 0px;
     overflow: visible; }
     .userBox aside {
       width: 100%;

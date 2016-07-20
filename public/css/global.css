@@ -427,9 +427,10 @@ select {
     float: left; }
   .header .slogan {
     height: 30px;
-    margin-left: 50px; }
+    margin-left: 10px; }
     .header .slogan img {
-      vertical-align: middle; }
+      vertical-align: middle;
+      width: 52%; }
   .header .tel {
     float: right;
     position: absolute;
