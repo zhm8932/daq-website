@@ -40,10 +40,10 @@ exports.get_cart_num = function (req,res,next) {
     console.log("req::url:",req.url);
     console.log("browser:",browser);
 
-    var accountId = req.accountId = req.session.userInfo?req.session.userInfo.userAllInfo.accountCommon.id:'';
+    var accountId = req.accountId = req.session.userInfo?req.accountId:'';
     console.log("accountId:",accountId);
     if(accountId){
-        TradeRequest.GetCartList(req, function (data, success) {
+        TradeRequest.GetCartList(req, function (err,data) {
             var query = req.query;
             var json = JSON.parse(data);
             if(success){

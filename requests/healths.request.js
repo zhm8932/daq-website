@@ -36,7 +36,7 @@ function get_article_list(req,res,next,obj) {
 
     if(bizParam.tc){bizParam.tc = encodeURI(bizParam.tc);}
 
-    util.ajax('GET',api.ArticlPageQueryArticleByCategory,req, bizParam,function (data,success) {
+    util.ajax('GET',api.ArticlPageQueryArticleByCategory,req,res,bizParam,function (err,data) {
         var json = JSON.parse(data);
         // console.log('json:',json)
         res.locals[obj.data_name+'_success'] = json.success;
@@ -104,7 +104,7 @@ exports.get_article_list_recommend = function (req,res,next) {
     var ids = req.ids;
     var bizParam = {"ids": ids};
     if(ids){
-        util.ajax('GET', api.ArticleQueryArticleByIdBatch,req,bizParam, function (data, success) {
+        util.ajax('GET', api.ArticleQueryArticleByIdBatch,req,res,bizParam, function (err,data) {
             console.log("jsonjsonjson:",json)
             var json = JSON.parse(data);
             console.log("这里执行了几次")
@@ -120,7 +120,7 @@ exports.get_article_list_recommend = function (req,res,next) {
 exports.get_article_detail = function(req,res,next){
     var id = req.params.id;
     var bizParam = {"id": id};
-    util.ajax('GET', api.ArticleDetail,req,  bizParam, function (data, success) {
+    util.ajax('GET', api.ArticleDetail,req,res,bizParam, function (err,data) {
         var json = JSON.parse(data);
         console.log("这里执行了几次22222222")
         res.locals.get_article_detail_success = json.success;
@@ -139,7 +139,7 @@ exports.get_banner = function (req,res,next) {
         "category": req.id || 1000
     };
     console.log('bizParam:::',bizParam)
-    util.ajax('GET',api.BannerSelectBannerClientByCategory,req, bizParam,function (data,success) {
+    util.ajax('GET',api.BannerSelectBannerClientByCategory,req,res,bizParam,function (err,data) {
         var json = JSON.parse(data);
         res.locals.get_banner = json.data;
         res.locals.get_banner_success = json.success;

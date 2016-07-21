@@ -8,21 +8,18 @@ var users = require('../requests/users.request.js');
 var authority = require('../handlers/authority.handler');
 
 router.get('/regsource/list', function (req, res, next) {
-    request.GetRegsourceList(req, function (data, success) {
+    req.resType = 'html';
+    request.GetRegsourceList(req,res,function (err,data) {
         var json = JSON.parse(data);
-        if (success) {
-            res.render('treat/regList', {
-                title: '诊疗服务',
-                data: json.data
-            });
-        }else{
-            next();
-        }
+        res.render('treat/regList', {
+            title: '诊疗服务',
+            data: json.data
+        });
     });
 });
 
 // router.get('/reg/doctorView', function (req, res, next) {
-//     request.GetRegTimeSlot(req, function (data, success) {
+//     request.GetRegTimeSlot(req,res,function (err,data) {
 //         if (success) {
 //             var json = JSON.parse(data);
 //             res.render('treat/regByDoc', {
@@ -36,63 +33,46 @@ router.get('/regsource/list', function (req, res, next) {
 
 
 router.get('/reg/doctorView',authority.loginRequired, function (req, res, next) {
-    request.GetRegTimeSlot(req, function (data, success) {
-        if(success){
-            var timeSlotJson = JSON.parse(data);
-            timeSlotJson.data.timeWithIdMap = tidyTimeMap(timeSlotJson.data.timeWithIdMap);
+    req.resType = 'html';
+    request.GetRegTimeSlot(req,res,function (err,data) {
+        var timeSlotJson = JSON.parse(data);
+        timeSlotJson.data.timeWithIdMap = tidyTimeMap(timeSlotJson.data.timeWithIdMap);
 
-            users.HasBindHis(req,res,function (data, success) {
-                if(success){
-                    var hasBindHISJson = JSON.parse(data);
-                    res.render('treat/regByDoc', {
-                        title: '诊疗服务',
-                        timeSlot: timeSlotJson.data,
-                        hasBind: hasBindHISJson.data
-                    });
-                }else{
-                    next();
-                }
-
+        users.HasBindHis(req,res,function (err,data) {
+            var hasBindHISJson = JSON.parse(data);
+            res.render('treat/regByDoc', {
+                title: '诊疗服务',
+                timeSlot: timeSlotJson.data,
+                hasBind: hasBindHISJson.data
             });
-        }else{
-            next();
-        }
-
+        });
     });
 });
 
 
 router.post('/reg/byDoc', function (req, res, next) {
-    request.AddRegByDoc(req, function (data, success) {
+    request.AddRegByDoc(req,res,function (err,data) {
         res.json(data);
     });
 });
 
 router.get('/reg/topay', function (req, res, next) {
-    request.GetOrderDetail(req, function (data, success) {
+    req.resType = 'html';
+    request.GetOrderDetail(req,res,function (err,data) {
         var json = JSON.parse(data);
-        if (success) {
-            res.render('treat/regOrderSuccess', {
-                title: '支付页面',
-                data: json.data
-            });
-        }else{
-            next();
-        }
+        res.render('treat/regOrderSuccess', {
+            title: '支付页面',
+            data: json.data
+        });
     });
 });
 
 router.get('/order/state', function (req, res, next) {
-    request.GetOrderDetail(req, function (data, success) {
-        var resJson = {};
-        if (success) {
-            resJson = {"code": "200", msg: "", data: {}, "success": true};
-            var json = JSON.parse(data);
-            resJson.data.reservationStatus = json.data.reservationStatus;
-            resJson.data.id = json.data.id;
-        }else{
-            resJson = {"code": "200", msg: "查询状态失败", data: {}, "success": false};
-        }
+    request.GetOrderDetail(req,res,function (err,data) {
+        var resJson = {"code": "200", msg: "", data: {}, "success": true};
+        var json = JSON.parse(data);
+        resJson.data.reservationStatus = json.data.reservationStatus;
+        resJson.data.id = json.data.id;
         res.json(JSON.stringify(resJson));
     });
 });

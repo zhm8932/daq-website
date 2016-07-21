@@ -6,7 +6,7 @@ var api = require('../utils/api');
 var config = require('../config');
 
 
-exports.GetRegsourceList = function (req, callback) {
+exports.GetRegsourceList = function (req,res,callback) {
     var query = req.query;
     var bizParam = {
         city:req.session.locals_address[1].categoryId,
@@ -14,40 +14,40 @@ exports.GetRegsourceList = function (req, callback) {
         pageIndex:query.pageIndex || 1
     };
 
-    util.ajax('GET', api.GetRegsourceList,req,  bizParam, function (data, success) {
-        callback && callback(data, success);
+    util.ajax('GET', api.GetRegsourceList,req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
     });
 };
 
-exports.GetRegTimeSlot = function (req, callback) {
+exports.GetRegTimeSlot = function (req,res,callback) {
     var bizParam = req.query;
 
-    util.ajax('GET', api.GetRegTimeSlot,req,  bizParam, function (data, success) {
-        callback && callback(data, success);
+    util.ajax('GET', api.GetRegTimeSlot,req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
     });
 };
 
-exports.AddRegByDoc = function (req, callback) {
+exports.AddRegByDoc = function (req,res,callback) {
     var body = req.body;
     var bizParam = {
         "command": {
-            "accountId": req.session.userInfo.userAllInfo.accountCommon.id,
+            "accountId": req.accountId,
             "scheduleId": body.scheduleId
         }
     };
 
-    util.ajax('POST', api.AddRegByDoc,req,  bizParam, function (data, success) {
-        callback && callback(data, success);
+    util.ajax('POST', api.AddRegByDoc,req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
     });
 };
 
-exports.GetOrderDetail = function (req, callback) {
+exports.GetOrderDetail = function (req,res,callback) {
     var bizParam = {
         role:1,
         reservationId:req.query.reservationId
     };
 
-    util.ajax('GET', api.GetRegDetail,req,  bizParam, function (data, success) {
-        callback && callback(data, success);
+    util.ajax('GET', api.GetRegDetail,req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
     });
 };

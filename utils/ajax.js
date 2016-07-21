@@ -68,11 +68,22 @@ function sysParam(apiName,bizParam,accessToken) {
     return JSON.stringify(sysParameters);
 }
 
-module.exports.ajax = function (method,apiName,browserReq,bizParam,callback,browserRes) {
+/**
+ * 向[JAVA]服务器发起请求的公共方法
+ * 如果出现错误,该方法默认直接处理。如不需处理,则把客户端请求req的属性autoHandleError设为true
+ * 默认处理错误需设置客户端请求req的属性resType:'html'或'json'。默认为json
+ * @param method http方法:DELETE、PUT、GET、POST
+ * @param apiName 接口名称
+ * @param browserReq 客户端请求
+ * @param browserRes 客户端响应
+ * @param bizParam 业务参数
+ * @param callback 请求后的回调方法
+ */
+module.exports.ajax = function (method,apiName,browserReq,browserRes,bizParam,callback) {
 
     var method = method.toUpperCase();
 
-    var accessToken = (browserReq && browserReq.sesssion && browserReq.session.userInfo && browserReq.session.userInfo.accessToken) || '11';
+    var accessToken = (browserReq && browserReq.session && browserReq.session.userInfo && browserReq.session.userInfo.accessToken) || '11';
     
     var sysPara = sysParam(apiName,bizParam,accessToken);
     var param = encodeURI('bizParam=' + encodeURIComponent(JSON.stringify(bizParam))+'&sysParam=' + sysPara);
@@ -117,27 +128,28 @@ module.exports.ajax = function (method,apiName,browserReq,bizParam,callback,brow
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'enctype':'application/x-www-form-urlencoded'
             }
-        }, function(error, response, body) {
+        }, function(err, response, body) {
 
             console.log("body:",body);
 
-            var success = true;
-
             var resObj = null;
 
-            if (error) {
-                console.log('problem with request: ' + error);
-                success = false;
-                errorJson.msg = e.message;
-                callback && callback(JSON.stringify(errorJson),success);
+            if (err) {
+                console.log('problem with request: ' + err);
+                errorJson.msg = err.message;
+                return handleError('500',err,JSON.stringify(errorJson));
             }else {
                 try {
                     resObj = JSON.parse(body);
-                    success = resObj.success;
-                    callback && callback(body,success);
+                    if(!resObj.success){
+                        var err = new Error(resObj.msg);
+                        handleError(resObj.code,err,body,true);
+                    }else{
+                        callback && callback(null,body);
+                    }
+
                 }catch (err) {
-                    success = false;
-                    callback && callback(JSON.stringify(errorJson),success);
+                    handleError('500',err,body);
                 }
             }
 
@@ -156,31 +168,25 @@ module.exports.ajax = function (method,apiName,browserReq,bizParam,callback,brow
 
                 console.log(body);
 
-                var success = true;
-
                 var resObj = null;
 
                 try {
                     resObj = JSON.parse(body);
                     if(!resObj.success){
                         var err = new Error(resObj.msg);
-                        return handleError(resObj.code,err,body,true);
+                        handleError(resObj.code,err,body,true);
+                    }else{
+                        callback && callback(null,body);
                     }
-                    success = resObj.success;
-                    callback && callback(null,body);
+
                 }catch (err) {
-                    // success = false;
-                    // callback && callback(JSON.stringify(errorJson),success);
-                    return handleError('500',err,body);
+                    handleError('500',err,body);
                 }
             });
 
         }).on('error', function (err) {
-            console.log('problem with request: ' + err.message);
             console.log('problem with request: ',err);
-            // var success = false;
             errorJson.msg = e.message;
-            // callback && callback(JSON.stringify(errorJson),success);
             return handleError('500',err,JSON.stringify(errorJson));
         });
 
@@ -192,14 +198,16 @@ module.exports.ajax = function (method,apiName,browserReq,bizParam,callback,brow
     }
 
     function handleError(code,err,data,serverError){
-        if(!browserReq.autoHandleError){
+        browserReq.autoHandleError = browserReq.autoHandleError != false;//不为false时都赋值为true
+        if(browserReq.autoHandleError){
             if(serverError){
-                return errorHandler.handleServerError(browserRes,code,browserReq.resType,err);
+               return  errorHandler.handleServerError(browserRes,code,browserReq.resType,err);
             }else{
                 return errorHandler.handleError(browserRes,code,browserReq.resType,err);
             }
         }
-        callback && callback(err,data);
+            callback && callback(err,data);
+
     }
 };
 

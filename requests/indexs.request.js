@@ -16,7 +16,7 @@ exports.get_goods_list = function (req,res,next) {
         "goodsState": goodsState
     };
 
-    util.ajax('GET',api.GoodsQuery,req, bizParam,function (data,success) {
+    util.ajax('GET',api.GoodsQuery,req,res,bizParam,function (err,data) {
         var json = JSON.parse(data);
         req.get_goods_list = json;
         next()
@@ -38,13 +38,10 @@ exports.login = function (req,res,next) {
         "loginParam": body
     };
     console.log("bizParam:",bizParam)
-    util.ajax('GET',api.UserWebLogin,req, bizParam,function (data,success) {
-        if(success){
-            req.session.userInfo = JSON.parse(data).data;
-            res.cookie('accountId',JSON.parse(data).data.userAllInfo.accountCommon.id);
-
-        }
-        res.send(data)
+    util.ajax('GET',api.UserWebLogin,req,res, bizParam,function (err,data) {
+        req.session.userInfo = JSON.parse(data).data;
+        res.cookie('accountId',JSON.parse(data).data.userAllInfo.accountCommon.id);
+        res.json(data);
     });
 
 };
@@ -64,7 +61,6 @@ exports.checkLogin = function (req,res,next) {
     
     if(_user) {
         json.login = true;
-        req.accountId = _user.userAllInfo.accountCommon.id;
     }
     res.send(JSON.stringify(json));
 };
@@ -81,7 +77,7 @@ exports.changeCity = function (req,res,next) {
     var ids = [];
     ids.push(city.parentId);
     req.ids = ids;
-    dictionnary.GetDetailByIds(req,function(data,success) {
+    dictionnary.GetDetailByIds(req,res,function(err,data) {
         console.log("获取当前城市：",data)
         var parentJson = JSON.parse(data).data[0];
         var locals_address = [{"categoryId":parentJson.id,"name":parentJson.name,"level":parentJson.level},{"categoryId":city.id,"name":city.name,"level":city.level}];
@@ -101,7 +97,7 @@ exports.getVerCode = function (req,res,next) {
             "rawRequest":body
         }
     };
-    util.ajax('post',api.SmsSendVerCode,req, bizParam,function (data,success) {
+    util.ajax('post',api.SmsSendVerCode,req,res, bizParam,function (err,data) {
         res.send(data)
     });
 

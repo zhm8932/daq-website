@@ -6,34 +6,34 @@ var api = require('../utils/api');
 var config = require('../config');
 
 
-exports.GetCartList = function (req, callback) {
+exports.GetCartList = function (req,res,callback) {
     var bizParam = {
-        // "accountId": req.session.userInfo.userAllInfo.accountCommon.id
+        // "accountId": req.accountId
         "accountId": req.accountId
     };
 
-    util.ajax('GET', api.GetCartList, req, bizParam, function (data, success) {
-        callback && callback(data, success);
+    util.ajax('GET', api.GetCartList, req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
     });
 };
 
-exports.DelCartItem = function (req, callback) {
+exports.DelCartItem = function (req,res,callback) {
     var bizParam = req.body;
 
-    util.ajax('DELETE', api.DelCartItem, req, bizParam, function (data, success) {
-        callback && callback(data, success);
+    util.ajax('DELETE', api.DelCartItem, req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
     });
 };
 
-exports.DelCartItemBatch = function (req, callback) {
+exports.DelCartItemBatch = function (req,res,callback) {
     var bizParam = {ids:JSON.parse(req.body.ids)};
 
-    util.ajax('DELETE', api.DelCartItemBatch, req, bizParam, function (data, success) {
-        callback && callback(data, success);
+    util.ajax('DELETE', api.DelCartItemBatch, req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
     });
 };
 
-exports.AddCartItem = function (req, callback) {
+exports.AddCartItem = function (req,res,callback) {
     var body = req.body;
     var bizParam = {
         "cartItem": {
@@ -49,41 +49,41 @@ exports.AddCartItem = function (req, callback) {
             ],
             "count": 1,
             "goodsId": body.goodsId,
-            "accountId": req.session.userInfo.userAllInfo.accountCommon.id
+            "accountId": req.accountId
         }
     };
 
-    util.ajax('POST', api.AddCartItem,req,  bizParam, function (data, success) {
-        callback && callback(data,success);
+    util.ajax('POST', api.AddCartItem,req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
     });
 };
 
 
-exports.CreateOrder = function (req, callback) {
+exports.CreateOrder = function (req,res,callback) {
     var orderPlaceDTO = JSON.parse(req.body.orderPlaceDTO);
-    orderPlaceDTO.accountId = req.session.userInfo.userAllInfo.accountCommon.id;
+    orderPlaceDTO.accountId = req.accountId;
     var bizParam = {
         orderPlaceDTO: orderPlaceDTO
     };
 
-    util.ajax('POST', api.CreateOrder,req,  bizParam, function (data, success) {
-        callback && callback(data, success);
+    util.ajax('POST', api.CreateOrder,req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
     });
 };
 
-exports.CancelOrder = function (req, callback) {
+exports.CancelOrder = function (req,res,callback) {
     var bizParam = req.body;
 
-    util.ajax('PUT', api.CancelOrder,req,  bizParam, function (data, success) {
-        callback && callback(data, success);
+    util.ajax('PUT', api.CancelOrder,req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
     });
 };
 
-exports.DeleteOrder = function (req, callback) {
+exports.DeleteOrder = function (req,res,callback) {
     var bizParam = req.body;
 
-    util.ajax('DELETE', api.DeleteOrder,req,  bizParam, function (data, success) {
-        callback && callback(data, success);
+    util.ajax('DELETE', api.DeleteOrder,req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
     });
 };
 
@@ -92,21 +92,21 @@ exports.GetOrderList = function (req, res,callback) {
     var bizParam = {
         pageSize:config.pageSize||'5',
         pageIndex: query.page || 1,
-        "accountd": req.session.userInfo.userAllInfo.accountCommon.id
+        "accountId": req.accountId
     };
 
-    util.ajax('GET', api.GetOrderList,req,  bizParam, function (err, data) {
+    util.ajax('GET', api.GetOrderList,req,res,bizParam, function (err, data) {
         callback && callback(err, data);
-    },res);
+    });
 };
 
-exports.GetOrderDetail = function (req, callback) {
+exports.GetOrderDetail = function (req,res,callback) {
     var bizParam = {
         id:req.query.id
     };
 
-    util.ajax('GET', api.GetOrderDetail,req,  bizParam, function (data, success) {
-        callback && callback(data, success);
+    util.ajax('GET', api.GetOrderDetail,req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
     });
 };
 
@@ -114,28 +114,28 @@ exports.GetOrderDetail = function (req, callback) {
 
 
 
-exports.GetPayId = function (req, callback) {
+exports.GetPayId = function (req,res,callback) {
     var bizParam = req.body;
 
-    util.ajax('POST', api.GetPayId,req, bizParam, function (data, success) {
-        callback && callback(data, success);
+    util.ajax('POST', api.GetPayId,req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
     });
 };
 
-exports.OrderPay = function (req, callback) {
+exports.OrderPay = function (req,res,callback) {
     var body = req.body;
     var bizParam = {
         "command": {
             "rawRequest": {
                 "id": body.id,
-                "accountId": req.session.userInfo.userAllInfo.accountCommon.id,
+                "accountId": req.accountId,
                 "payWay": body.payWay,
                 "ext":body.ext
             }
         }
     };
 
-    util.ajax('POST', api.OrderPay,req, bizParam, function (data, success) {
-        callback && callback(data, success);
+    util.ajax('POST', api.OrderPay,req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
     });
 };

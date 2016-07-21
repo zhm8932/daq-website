@@ -37,20 +37,14 @@ router.use(function(req, res, next) {
     }else{
         req.session.locals_address = config.addressJSON;
         res.locals.locals_address = JSON.stringify(config.addressJSON);
-        console.log("1111111111111")
     }
-    console.log("222222222222222222222222")
     if(!req.session){
         return next(new Error('no session')) // handle error
     }
     if(req.session.userInfo){
-        var account = req.session.userInfo.userAllInfo.accountCommon.account;
-        res.locals.account = account; //每次请求首页都会动态从session获取值，并保存在本地变量中
+        //每次请求首页都会动态从session获取值，保存在本地变量和req.accountId中
+        res.locals.account = req.accountId = req.session.userInfo.userAllInfo.accountCommon.account;
     }
-
-    // req.accessToken = (req.session.userInfo && req.session.userInfo.accessToken) || '11';
-
-
 
     var browser = Tools.browser(req);
     global.browser = browser;

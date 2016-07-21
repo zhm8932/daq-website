@@ -1,47 +1,95 @@
-var errorPageJson = {'404': 'error_404', '500': 'error_500', '200': 'error_tip'};
-
+var errorPageJson = {'404': 'error_404', '500': 'error_500', '200': 'error_tip'};//不同响应码的不同提示页面
+/**
+ * 统一处理[NODE]服务器中错误的方法
+ * @param res 响应
+ * @param code http响应码
+ * @param type 响应类型,HTML或json。默认为json
+ * @param error 错误Error
+ */
 exports.handleError = function(res, code, type, error){
     _handleError(res, code, type, error);
 };
 
-exports.getErrorMsg = function(error){
-    _getErrorMsg(error);
-};
-
-exports.handleServerError = function handleInternalError(res, code, type, error) {
-    if (code === '200') {
-        _handleError(res, '200', type, error);
+/**
+ * 处理[JAVA]服务器端返回的错误。
+ * [JAVA]服务器返回success为false时调用该方法。错误码为300时,http响应码设为200,原样展示错误信息。错误码为其他时,http响应码设为500,提示信息为"服务器内部错误"
+ * @param res 响应
+ * @param serverCode 服务器返回的响应码
+ * @param type 响应类型:'html'或者'json',默认为json
+ * @param error 错误Error
+ */
+exports.handleServerError = function handleInternalError(res, serverCode, type, error) {
+    if (serverCode === '300' || serverCode === '200300') {
+        _handleError(res, '200', type, error,true);
     } else {
-        _handleError(res, '500', type, error);
+        _handleError(res, '500', type, error,true);
     }
 };
 
-function _handleError(res, code, type, error){
-    error = _getErrorMsg(error,code);
 
-    res.statusCode = code;
-    var errorPage = errorPageJson[code] || 'error_tip';
-    if (type === 'html') {
+/**
+ * 根据是生产环境还是开发环境来决定返回的错误的描述信息,存放在error.externalMsg里。默认错误信息为"服务器内部错误"
+ * @param error 错误Error
+ * @param code http响应码。为200时代表Java服务器返回的错误信息应该展示给用户
+ * @returns {*} 错误Error,已定义好error.externalMsg
+ */
+exports.getErrorMsg = function(error,code){
+    _getErrorMsg(error,code);
+};
+
+
+/**
+ * 统一处理错误的方法
+ * @param res 响应
+ * @param code http响应码
+ * @param type 响应类型,HTML或json。默认为json
+ * @param error 错误Error
+ * @param isServerError 是否是服务器错误
+ * @private
+ */
+function _handleError(res, code, type, error,isServerError){
+    type = type || 'json';
+    error = _getErrorMsg(error,code,isServerError);//根据情况构造错误提示信息
+
+    res.statusCode = code;//设置http响应码
+    if (type === 'html') {//响应类型为html时,渲染错误页面并返回
+        var errorPage = errorPageJson[code] || 'error_tip';//根据不同的响应码渲染不同的错误页面,默认渲染error_tip页面
         res.render(errorPage, {
             message: error.externalMsg
         });
-    } else{
+    } else{//响应类型为json时,构造json,并返回json
         var errorJson = {code: code, msg: error.externalMsg, success: false};
         res.json(JSON.stringify(errorJson));
     }
 }
 
-function _getErrorMsg(error,code){
+/**
+ * 构造错误信息,存放在error.externalMsg里
+ * 生产环境返回错误堆栈信息,开发环境不返回堆栈信息
+ * 响应码200:原样展示错误信息。响应码404:""。响应码500及其他:"服务器内部错误"。
+ * @param error 错误Error
+ * @param code http响应码。为200时代表Java服务器返回的错误信息应该展示给用户
+ * @param isServerError 是否是服务器错误。如果是服务器错误,并且handleServerError方法已经将http响应码已经设为200,则无需展示堆栈信息
+ * @returns {*} 错误Error,已定义好error.externalMsg
+ * @private
+ */
+function _getErrorMsg(error,code,isServerError){
     var env = process.env.NODE_ENV || 'development';
-    error.externalMsg = '服务器内部错误';
     if (env === 'development') {
-        error.externalMsg = error.message + '\n' + error.stack;
+        if(isServerError && code == '200'){//如果是服务器错误,并且http响应码已经设为200,则无需展示堆栈信息
+            error.externalMsg = error.message;
+        }else{
+            error.externalMsg = error.message + '.\n' + error.stack;
+        }
     } else {
         if (code === '200') {
             error.externalMsg = error.message;
         } else if (code == '404') {
             error.externalMsg = '抱歉，您访问的资源不存在';
+        }else{
+            error.externalMsg = '服务器内部错误';
         }
     }
     return error;
 }
+
