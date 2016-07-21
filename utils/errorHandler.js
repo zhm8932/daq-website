@@ -1,3 +1,7 @@
+const logUtil = require('./logFactory');
+const errorLog = logUtil.getLogger('error');
+const routerLog = logUtil.getLogger('router');
+
 var errorPageJson = {'404': 'error_404', '500': 'error_500', '200': 'error_tip'};//不同响应码的不同提示页面
 /**
  * 统一处理[NODE]服务器中错误的方法
@@ -48,6 +52,9 @@ exports.getErrorMsg = function(error,code){
  * @private
  */
 function _handleError(res, code, type, error,isServerError){
+    errorLog.error(error);
+    routerLog.error(error);
+    console.log(error);
     type = type || 'json';
     error = _getErrorMsg(error,code,isServerError);//根据情况构造错误提示信息
 

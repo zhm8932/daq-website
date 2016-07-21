@@ -9,7 +9,7 @@ var authority = require('../handlers/authority.handler');
 router.get('/cart/list', authority.loginRequired,function (req, res, next) {
     req.resType = 'html';
     request.GetCartList(req,res,function (err,data) {
-        var currentCityId = req.session.locals_address[1].categoryId;
+        var currentCityId = req.session.locals_address && req.session.locals_address[1].categoryId;
         var json = tidyCartList(JSON.parse(data).data,currentCityId);
         res.render('trade/cart', {
             title: '购物车',

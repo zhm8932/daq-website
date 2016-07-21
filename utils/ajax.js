@@ -7,9 +7,9 @@ var md5 = require("blueimp-md5");
 var request = require("request");
 var BufferHelper = require('./bufferhelper');//处理buffer接收问题
 var errorHandler = require('./errorHandler');//处理buffer接收问题
-// var logFactory = require('./logFactory');
+const logUtil = require('./logFactory');
+const routerLog = logUtil.getLogger('router');
 
-// var logger = logFactory.getLogger('request');
 var errorJson = {"code":"111","data":null,"msg":"json parse exception","success":false};
 
 function signParam(sysParam,bizParam) {
@@ -90,6 +90,7 @@ module.exports.ajax = function (method,apiName,browserReq,browserRes,bizParam,ca
 
     var path = config.path;
 
+    routerLog.info('method:'+method+'\n\t'+'bizParam:'+JSON.stringify(bizParam)+'\n\t'+'sysPara:'+sysPara);
     console.log('---method:'+method);
     console.log('---bizParam:'+JSON.stringify(bizParam));
     console.log('---sysPara:'+sysPara);
@@ -135,7 +136,7 @@ module.exports.ajax = function (method,apiName,browserReq,browserRes,bizParam,ca
             var resObj = null;
 
             if (err) {
-                console.log('problem with request: ' + err);
+                // console.log('problem with request: ' + err);
                 errorJson.msg = err.message;
                 return handleError('500',err,JSON.stringify(errorJson));
             }else {
@@ -185,7 +186,7 @@ module.exports.ajax = function (method,apiName,browserReq,browserRes,bizParam,ca
             });
 
         }).on('error', function (err) {
-            console.log('problem with request: ',err);
+            // console.log('problem with request: ',err);
             errorJson.msg = e.message;
             return handleError('500',err,JSON.stringify(errorJson));
         });
