@@ -42,8 +42,10 @@ router.use(function(req, res, next) {
         return next(new Error('no session')) // handle error
     }
     if(req.session.userInfo){
-        //每次请求首页都会动态从session获取值，保存在本地变量和req.accountId中
-        res.locals.account = req.accountId = req.session.userInfo.userAllInfo.accountCommon.account;
+        //每次请求首页都会动态从session获取值，保存在本地变量中
+        req.accountId = req.session.userInfo.userAllInfo.accountCommon.id;
+        //从session获取值和accountId，保存在和req.accountId
+        res.locals.account  = req.session.userInfo.userAllInfo.accountCommon.account;
     }
 
     var browser = Tools.browser(req);
