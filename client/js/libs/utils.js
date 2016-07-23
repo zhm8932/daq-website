@@ -228,9 +228,10 @@ define(function(require,exports,module) {
             url: options.url,
             type: options.method || 'GET',
             data: options.param || {},
+            dataType:options.dataType || 'json',
             // contentType: options.contentType || 'application/x-www-form-urlencoded;charset=UTF-8;',
-            success: function (data) {
-                var result = JSON.parse(data);
+            success: function (result) {
+                // var result = JSON.parse(data);
                 if (result.success) {
                     options.callback && options.callback(result);
                 } else {

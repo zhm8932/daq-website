@@ -41,7 +41,7 @@ exports.login = function (req,res,next) {
     util.ajax('GET',api.UserWebLogin,req,res, bizParam,function (err,data) {
         req.session.userInfo = JSON.parse(data).data;
         res.cookie('accountId',JSON.parse(data).data.userAllInfo.accountCommon.id);
-        res.json(data);
+        res.send(data);
     });
 
 };
@@ -62,7 +62,7 @@ exports.checkLogin = function (req,res,next) {
     if(_user) {
         json.login = true;
     }
-    res.send(JSON.stringify(json));
+    res.send(json);
 };
 
 exports.loginView = function (req,res,next) {
@@ -83,7 +83,7 @@ exports.changeCity = function (req,res,next) {
         var locals_address = [{"categoryId":parentJson.id,"name":parentJson.name,"level":parentJson.level},{"categoryId":city.id,"name":city.name,"level":city.level}];
         req.session.locals_address = locals_address;
         var resJson = {"code":"200","data":null,"msg":"","success":true};
-        res.json(JSON.stringify(resJson));
+        res.send(JSON.stringify(resJson));
     });
 
 };

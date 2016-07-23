@@ -7,11 +7,10 @@ var errorPageJson = {'404': 'error_404', '500': 'error_500', '200': 'error_tip'}
  * 统一处理[NODE]服务器中错误的方法
  * @param res 响应
  * @param code http响应码
- * @param type 响应类型,HTML或json。默认为json
  * @param error 错误Error
  */
-exports.handleError = function(res, code, type, error){
-    _handleError(res, code, type, error);
+exports.handleError = function(res, code, error){
+    _handleError(res, code,  error);
 };
 
 /**
@@ -19,14 +18,13 @@ exports.handleError = function(res, code, type, error){
  * [JAVA]服务器返回success为false时调用该方法。错误码为300时,http响应码设为200,原样展示错误信息。错误码为其他时,http响应码设为500,提示信息为"服务器内部错误"
  * @param res 响应
  * @param serverCode 服务器返回的响应码
- * @param type 响应类型:'html'或者'json',默认为json
  * @param error 错误Error
  */
-exports.handleServerError = function handleInternalError(res, serverCode, type, error) {
-    if (serverCode === '300' || serverCode === '200300') {
-        _handleError(res, '200', type, error,true);
+exports.handleServerError = function handleInternalError(res, serverCode, error) {
+    if (serverCode === '300' || serverCode === '200300' || serverCode ==='10000000') {
+        _handleError(res, '200',  error,true);
     } else {
-        _handleError(res, '500', type, error,true);
+        _handleError(res, '500', error,true);
     }
 };
 
@@ -46,28 +44,41 @@ exports.getErrorMsg = function(error,code){
  * 统一处理错误的方法
  * @param res 响应
  * @param code http响应码
- * @param type 响应类型,HTML或json。默认为json
  * @param error 错误Error
  * @param isServerError 是否是服务器错误
  * @private
  */
-function _handleError(res, code, type, error,isServerError){
+function _handleError(res, code, error,isServerError){
     errorLog.error(error);
     routerLog.error(error);
     console.log(error);
-    type = type || 'json';
     error = _getErrorMsg(error,code,isServerError);//根据情况构造错误提示信息
 
-    res.statusCode = code;//设置http响应码
-    if (type === 'html') {//响应类型为html时,渲染错误页面并返回
-        var errorPage = errorPageJson[code] || 'error_tip';//根据不同的响应码渲染不同的错误页面,默认渲染error_tip页面
-        res.render(errorPage, {
-            message: error.externalMsg
-        });
-    } else{//响应类型为json时,构造json,并返回json
-        var errorJson = {code: code, msg: error.externalMsg, success: false};
-        res.json(JSON.stringify(errorJson));
-    }
+    res.status(code).format({
+        html:function(){
+            var errorPage = errorPageJson[code] || 'error_tip';//根据不同的响应码渲染不同的错误页面,默认渲染error_tip页面
+            res.render(errorPage, {
+                message: error.externalMsg
+            });
+        },
+        json:function(){
+            var errorJson = {code: code, msg: error.externalMsg, success: false};
+            res.send(errorJson);
+        }
+    });
+
+
+
+    // res.statusCode = code;//设置http响应码
+    // if (type === 'html') {//响应类型为html时,渲染错误页面并返回
+    //     var errorPage = errorPageJson[code] || 'error_tip';//根据不同的响应码渲染不同的错误页面,默认渲染error_tip页面
+    //     res.render(errorPage, {
+    //         message: error.externalMsg
+    //     });
+    // } else{//响应类型为json时,构造json,并返回json
+    //     var errorJson = {code: code, msg: error.externalMsg, success: false};
+    //     res.json(JSON.stringify(errorJson));
+    // }
 }
 
 /**

@@ -49,20 +49,20 @@ router.get('/register/list',authority.loginRequired,function(req,res,next){
 
 router.post('/register/del',function(req,res,next) {
     request.DelRegister(req,res,function(err,data) {
-        res.json(data);
+        res.send(data);
     });
 });
 
 router.post('/register/cancel',function(req,res,next) {
     request.CancelRegister(req,res,function(err,data) {
-        res.json(data);
+        res.send(data);
     });
 });
 
 
 router.get('/coupon/list',function(req,res,next) {
     request.GetCouponList(req,res,function(err,data) {
-        res.json(data);
+        res.send(data);
     });
 });
 
@@ -80,7 +80,7 @@ router.get('/coupon/listView',authority.loginRequired,function(req,res,next) {
 
 router.post('/coupon/addByInvite',function(req,res,next) {
     request.AddCouponByInvite(req,res,function(err,data) {
-        res.json(data);
+        res.send(data);
     });
 });
 
@@ -99,13 +99,13 @@ router.get('/patient/list',authority.loginRequired,function(req,res,next) {
 
 router.post('/patient/add',function(req,res,next) {
     request.AddPatient(req,res,function(err,data) {
-        res.json(data);
+        res.send(data);
     });
 });
 
 router.post('/patient/del',function(req,res,next) {
     request.DelPatient(req,res,function(err,data) {
-        res.json(data);
+        res.send(data);
     });
 });
 
@@ -134,13 +134,13 @@ router.get('/account/info',authority.loginRequired,function(req,res,next) {
 
 router.get('/account/hasBindHis',function(req,res,next) {
     request.HasBindHis(req,res,function(err,data) {
-        res.json(data);
+        res.send(data);
     });
 });
 
 router.post('/account/complete',function(req,res,next) {
     request.CompleteAccount(req,res,function(err,data) {
-        res.json(data);
+        res.send(data);
     });
 });
 

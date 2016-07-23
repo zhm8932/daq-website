@@ -202,13 +202,12 @@ module.exports.ajax = function (method,apiName,browserReq,browserRes,bizParam,ca
         browserReq.autoHandleError = browserReq.autoHandleError != false;//不为false时都赋值为true
         if(browserReq.autoHandleError){
             if(serverError){
-               return  errorHandler.handleServerError(browserRes,code,browserReq.resType,err);
+               return  errorHandler.handleServerError(browserRes,code,err);
             }else{
-                return errorHandler.handleError(browserRes,code,browserReq.resType,err);
+                return errorHandler.handleError(browserRes,code,err);
             }
         }
-            callback && callback(err,data);
-
+        callback && callback(err,data);
     }
 };
 

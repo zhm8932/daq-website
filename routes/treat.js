@@ -52,7 +52,7 @@ router.get('/reg/doctorView',authority.loginRequired, function (req, res, next) 
 
 router.post('/reg/byDoc', function (req, res, next) {
     request.AddRegByDoc(req,res,function (err,data) {
-        res.json(data);
+        res.send(data);
     });
 });
 
@@ -73,7 +73,7 @@ router.get('/order/state', function (req, res, next) {
         var json = JSON.parse(data);
         resJson.data.reservationStatus = json.data.reservationStatus;
         resJson.data.id = json.data.id;
-        res.json(JSON.stringify(resJson));
+        res.send(JSON.stringify(resJson));
     });
 });
 

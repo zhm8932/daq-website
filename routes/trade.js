@@ -25,13 +25,13 @@ router.get('/cart/GetCartCount', authority.loginRequired,function (req, res, nex
 
 router.post('/cart/addItem',function (req, res, next) {
     request.AddCartItem(req,res,function (err,data) {
-        res.json(data);
+        res.send(data);
     });
 });
 
 router.post('/cart/delItem',function (req, res, next) {
     request.DelCartItem(req,res,function (err,data) {
-        res.json(data);
+        res.send(data);
     });
 });
 
@@ -52,7 +52,7 @@ router.post('/order/create', function (req, res, next) {
     req.resType = 'html';
     if(req.body.orderToken != req.session.orderToken){
         var json = JSON.stringify({success:false,msg:'请勿重复提交订单'});
-        res.json(json);
+        res.send(json);
         res.end();
         return false;
     }
@@ -70,10 +70,10 @@ router.post('/order/create', function (req, res, next) {
             req.autoHandleError = false;
             request.DelCartItemBatch(req,res,function (err,data) {
                 // var delJson = JSON.parse(data);
-                res.json(JSON.stringify(resJson));//无论删除购物车是否出错,只要下单成功都返回成功
+                res.send(JSON.stringify(resJson));//无论删除购物车是否出错,只要下单成功都返回成功
             });
         }else{
-            res.json(JSON.stringify(resJson));
+            res.send(JSON.stringify(resJson));
         }
 
     });
@@ -97,13 +97,13 @@ router.get('/order/list',authority.loginRequired, function (req, res, next) {
 
 router.post('/order/cancel', function (req, res, next) {
     request.CancelOrder(req,res,function (err,data) {
-        res.json(data);
+        res.send(data);
     });
 });
 
 router.post('/order/delete', function (req, res, next) {
     request.DeleteOrder(req,res,function (err,data) {
-        res.json(data);
+        res.send(data);
     });
 });
 
@@ -121,13 +121,13 @@ router.get('/order/detail', authority.loginRequired,function (req, res, next) {
 
 router.post('/pay/payid', function (req, res, next) {
     request.GetPayId(req,res,function (err,data) {
-        res.json(data);
+        res.send(data);
     });
 });
 
 router.post('/order/pay', function (req, res, next) {
     request.OrderPay(req,res,function (err,data) {
-        res.json(data);
+        res.send(data);
     });
 });
 
@@ -162,7 +162,7 @@ router.get('/order/state', function (req, res, next) {
         var json = JSON.parse(data);
         resJson.data.orderState = json.data.orderState;
         resJson.data.id = json.data.id;
-        res.json(JSON.stringify(resJson));
+        res.send(JSON.stringify(resJson));
     });
 });
 
