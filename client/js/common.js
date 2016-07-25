@@ -21,14 +21,14 @@ define(function(require, exports, module){
                 // console.log("result:",result)
                 cityName = result.name;
                 map.setCenter(cityName);
-                console.log("当前定位城市:"+cityName);
+                // console.log("当前定位城市:"+cityName);
                 if(!$.cookie('locals_city')){
                     getCityList(cityName,function (newArr) {
                         // console.log("newArr:",newArr)
                         var is_locals_city= $.cookie('locals_city');
                         // console.log("is_locals_city:",is_locals_city)
                         if(!is_locals_city&&newArr.length){
-                            console.log("初始化定位城市:",newArr[0]);
+                            // console.log("初始化定位城市:",newArr[0]);
                             changeCity(newArr[0])
                         }
                         if(newArr.length){
@@ -218,7 +218,7 @@ define(function(require, exports, module){
     function changeCity($this){
         // var city = $this=='string'? $this: $this.data&&$this.data('city');
         var city =$this.hasClass&&$this.hasClass('city')&&$this.data('city')||$this;
-        console.log('city:',city)
+        // console.log('city:',city)
         utils.SendAjax({
             url: '/changeCity',
             param: {city:city},
@@ -248,7 +248,7 @@ define(function(require, exports, module){
     var $topBar_info_aside=$('.topBar_info aside');
     $('.wapUser').click(function () {
         var accountId = $.cookie('accountId');
-        console.log("accountId:",accountId)
+        // console.log("accountId:",accountId)
         if(accountId){
             $topBar_info_aside.slideToggle();
         }else{

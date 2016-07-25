@@ -320,11 +320,13 @@ select {
   }
   .devidel {
     background-position: -19px 3px;
+
   }
   .wapUser{display: none;}
-  aside{display:inline-block;}
+  aside{display:inline-block;display: inline\9;}
   a {
     color: $gray9B;
+    display: inline\9;
     &:hover {
       color: $textc_48B;
     }
@@ -333,6 +335,7 @@ select {
   .city-name {
     position:relative;
     display:inline-block;
+    display: inline\9;
     i {
       background-position: 0px 6px; margin-left: 5px;
     }

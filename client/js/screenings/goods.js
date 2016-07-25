@@ -35,7 +35,7 @@ define(function(require){
                 row:1,
                 char:'……',
                 callback: function() {
-                    console.log($(this).text());
+                    // console.log($(this).text());
                 }
             });
         }
@@ -54,7 +54,7 @@ define(function(require){
         $('.pages').on('click','.prev,.next',function () {
             var page = $(this).attr('data-page'),
                 $self =$(this);
-            console.log(page);
+            // console.log(page);
             var data = {
                 pageIndex:page
             }
@@ -64,7 +64,7 @@ define(function(require){
                     data:data,
                     url:'/healths/list/list_ask_web',
                     beforeSend:function () {
-                        console.log('数据请求中……')
+                        // console.log('数据请求中……')
                     },
                     success:function(data){
                         // console.log(json);
@@ -161,7 +161,7 @@ define(function(require){
                             pageIndex +=1;
                             $(html).appendTo($("#waterfal"));
                         }else{
-                            console.log('没有下一页了')
+                            // console.log('没有下一页了')
                         }
                         // console.log("数据请求渲染完成:",pageIndex)
 
@@ -212,7 +212,7 @@ define(function(require){
             }else if(pageIndex<=pageCount){
                 getListData(data)
             }else{
-                console.log('不再加载')
+                // console.log('不再加载')
             }
         }
 
@@ -253,7 +253,7 @@ define(function(require){
                     }else if(pageIndex<=pageCount){
                         getListData(data)
                     }else{
-                        console.log('不再加载')
+                        // console.log('不再加载')
                     }
 
                     // console.log("pageIndex:",pageIndex)

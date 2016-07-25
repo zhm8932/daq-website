@@ -354,16 +354,19 @@ select {
   .topBar_info .wapUser {
     display: none; }
   .topBar_info aside {
-    display: inline-block; }
+    display: inline-block;
+    display: inline\9; }
   .topBar_info a {
-    color: #9B9B9B; }
+    color: #9B9B9B;
+    display: inline\9; }
     .topBar_info a:hover {
       color: #48BED8; }
   .topBar_info .accountInfo {
     display: none; }
   .topBar_info .city-name {
     position: relative;
-    display: inline-block; }
+    display: inline-block;
+    display: inline\9; }
     .topBar_info .city-name i {
       background-position: 0px 6px;
       margin-left: 5px; }
