@@ -12,7 +12,7 @@
 480 ， 600 ， 720 ， 768 ， 800 ， 854 ， 960 ， 1024 ， 1080 ， 1136 ， 1280 ， 1536 ， 1920 ， 2048 ， 2560
 
 */
-.wrapper {
+.goods_detail.wrapper {
   position: static; }
 
 .goods_basic {
@@ -133,6 +133,8 @@
         border: 2px solid #ED9E9A; }
         .goods_basic dl dd .type-box.unchoose .box-header {
           display: block; }
+      .goods_basic dl dd .type-box .select-box {
+        margin-left: 10px; }
   .goods_basic dl .submitBox {
     padding-top: 20px; }
     .goods_basic dl .submitBox .submitBtn {

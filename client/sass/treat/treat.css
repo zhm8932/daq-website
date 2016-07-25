@@ -39,10 +39,6 @@
 
 .vertical {
   background-position: -209px -26px;
-  position: relative;
-  top: 3px;
-  border-radius: 8px;
-  overflow: hidden;
   margin-right: 10px;
   width: 5px; }
 

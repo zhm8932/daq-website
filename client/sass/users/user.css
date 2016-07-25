@@ -35,10 +35,14 @@
       .userBox aside .left-nav li {
         padding: 8px 0; }
 
+.footer {
+  margin-top: 0; }
+
 .box-right {
   width: 80%;
   margin-left: 2%;
-  word-break: break-all; }
+  word-break: break-all;
+  padding-bottom: 50px; }
   .box-right .order {
     margin-bottom: 16px;
     border: 1px solid #ddd; }

@@ -576,7 +576,7 @@ select {
       margin-left: -17px;
     }
     li {
-      margin-top: 40px;
+      margin-top: 70px;
       width: 330px;
       float: left;
       display: inline;
@@ -616,7 +616,7 @@ select {
         height: 50px;
         color: $white;
         position: absolute;
-        top: 0px;
+        top: -40px;
         left: 0px;
         text-align: center;
         background-color: $bgc_48B;
@@ -624,7 +624,7 @@ select {
         overflow: hidden;
       }
       p {
-        color: $gray9B;
+        color: $textc_333;
         margin-top: 10px;height: 48px;overflow: hidden;
       }
       //&:hover{
@@ -646,7 +646,7 @@ select {
 
     .more {
       float: right;
-      margin-top: 50px;color: $textOnColor;
+      margin-top: 20px;color: $textOnColor;
       i {
         background-position: -114px 0px;
         vertical-align: top;
@@ -683,7 +683,7 @@ select {
       position: relative;
       li{
         //margin-left: 0px;
-        padding-bottom: 20px;padding: 2px;
+        padding-bottom: 20px;padding: 2px;margin-top: 40px;
         display: block;
         a{
           h4 {
@@ -691,6 +691,7 @@ select {
             background: none;
             color: $textColor;
             margin-bottom: -15px;
+            top:0px;text-align: left;
           }
           &:hover{
             h4{color:$textc_48B;}
@@ -996,7 +997,7 @@ select {
   }
 }
 .loginBox2{
-  width: 300px;float: right;position: relative;z-index: 2;margin-top:80px;background-color: #FFFFFF;padding:30px;border: 1px solid $bdrc_ddd;
+  width: 300px;float: right;position: relative;z-index: 2;margin-top:80px;background-color:rgba(255, 255, 255, 0.7);padding:30px;border: 1px solid $bdrc_ddd;
   .getCode {
     position: absolute;
     right: 0px;

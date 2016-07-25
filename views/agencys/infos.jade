@@ -41,43 +41,43 @@ block content
         .wrapper
             .lr_list
                 figure
-                    a(href='javascript:;')
+                    a(href='javascript:void(0)')
                         img(data-original='images/department/gynaecology_02.jpg')
                     figcaption
-                        h4: a(href='javascript:;',target='_blank') 妇科
+                        h4: a(href='javascript:void(0)') 妇科
                         //-time 发表于：#{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')
                         p
                             | 都安全医疗妇科非常重视常见妇科疾病的临床诊断与诊疗，专注于帮助女性解决妇科疾病的预防保健、精准检查及科学治疗，全程参照国际诊疗指南推荐的诊疗方法和技术，同时联合国内外顶级妇科专家，解决各种疑难问题，根据女性不同生理阶段特点提供私密、受尊重的“一站式”健康管理服务。
                 figure
-                    a(href='javascript:;')
+                    a(href='javascript:void(0)')
                         img(data-original='images/department/dermatology_01.jpg')
                     figcaption
-                        h4: a(href='javascript:;',target='_blank') 皮肤科
+                        h4: a(href='javascript:void(0)') 皮肤科
                         //-time 发表于：#{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')
                         p
                             | 都安全医疗皮肤科具备专业的医护团队及人性化的护理流程系统，提供全面、专业的常见皮肤病诊疗与护理，开展各种激光疗法、冷冻疗法、光动力疗法，解决不同皮肤问题及皮肤性病问题。
                 figure
-                    a(href='javascript:;')
+                    a(href='javascript:void(0)')
                         img(data-original='images/department/laboratory_02.jpg')
                     figcaption
-                        h4: a(href='javascript:;',target='_blank') 检验科
+                        h4: a(href='javascript:void(0)') 检验科
                         //-time 发表于：#{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')
                         p
                             | 都安全医疗检验科是都安全医疗机构重点科室之一，与罗氏诊断、碧迪医疗等世界医疗巨头深度合作，共建符合国际认证的标准化实验室和PCR实验室。科室整合全新的服务理念、采样方式和进口产品，开展基因检测、分子探针、微流控芯片、质谱技术等行业顶尖的临床技术，基于精准检测的个性化解决方案及专业经历丰富的医学检验专家团队，为您提供便捷、快速、精准、及时的检验服务，及早发现疾病、及早预防、及早治疗。
                 figure
-                    a(href='javascript:;')
+                    a(href='javascript:void(0)')
                         img(data-original='images/department/preventive_03.jpg')
                     figcaption
-                        h4: a(href='javascript:;',target='_blank') 预防保健科
+                        h4: a(href='javascript:void(0)') 预防保健科
                         //-time 发表于：#{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')
                         p
                             | 预防保健是家庭医学的基础。都安全医疗预防保健科将个人及家庭的健康需求纳入全流程健康管理范畴，为个人及家庭提供一系列专业的健康教育、健康咨询及预防保健计划，并通过早期干预等措施，达到预防疾病，促进健康和提高生命质量的健康需求，可针对个人或家庭制定个性化的疾病防治及控制方案，确保个人及家庭成员的健康，避免出现健康隐患。
 
                 figure
-                    a(href='javascript:;')
+                    a(href='javascript:void(0)')
                         img(data-original='images/department/urology_02.jpg')
                     figcaption
-                        h4: a(href='javascript:;',target='_blank') 泌尿外科
+                        h4: a(href='javascript:void(0)') 泌尿外科
                         //-time 发表于：#{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')
                         p
                             | 泌尿外科是都安全医疗基于精准检查与诊疗的重点科室之一，由国内外知名资深外科专家领衔，配备经验丰富的护理团队，提供符合国际标准的常见泌尿系统疾病的诊疗服务，基于与国际一流水平同步的精准检测设备，践行“明确病因，个性诊疗”的诊疗理念，在前列腺炎、男性不育、性功能障碍等泌尿外科疾病方面提供个性化的诊疗方案及全程的健康管理服务。
@@ -85,10 +85,10 @@ block content
                 //-if get_department_success
                        each item in get_department
                             figure
-                                a(href='javascript:;')
+                                a(href='javascript:void(0)')
                                     img(data-original='/images/product1.png')
                                 figcaption
-                                    h4: a(href='javascript:;',target='_blank') #{item.deptName}
+                                    h4: a(href='javascript:void(0)') #{item.deptName}
                                     //-time 发表于：#{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')
                                     p
                                         | #{item.description}

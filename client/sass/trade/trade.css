@@ -114,7 +114,8 @@ header {
       padding: 10px;
       box-sizing: border-box; }
   .table-div .table-tr {
-    position: relative; }
+    position: relative;
+    border-bottom: 1px solid #DDDDDD; }
     .table-div .table-tr div {
       float: left;
       padding: 20px 10px;
