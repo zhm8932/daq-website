@@ -86,6 +86,7 @@ define(function(require,exports,module) {
             return
         }
         if(data&&data.account){
+            console.log("data::",data)
             getVerCode($self,60)
 
         }
@@ -192,6 +193,9 @@ define(function(require,exports,module) {
             type:'post',
             url:'/getVerCode',
             data:requestData,
+            beforeSend:function () {
+                $self.html('正在获取验证码……')
+            },
             success:function(json){
                 console.log(json);
                 var json = JSON.parse(json);

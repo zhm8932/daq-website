@@ -58,7 +58,9 @@
       .health_list .lr_list figure time {
         color: #9B9B9B; }
       .health_list .lr_list figure p {
-        padding: 10px 0 0 0; }
+        padding: 10px 0 0 0;
+        overflow: hidden;
+        max-height: 48px; }
       .health_list .lr_list figure figcaption {
         padding-bottom: 20px; }
 

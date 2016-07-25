@@ -422,7 +422,7 @@ $conWidth:1600px;
   .health_list{
     width: 100%;
     .lr_list figure img{
-      width: 160px;margin-right: 12px;
+      width: 160px;margin-right: 10px;
     }
   }
   .health aside{width: 100%}
@@ -451,7 +451,7 @@ $conWidth:1600px;
   .swiper-container{
     .swiper-button-prev, .swiper-button-next{display: block}
   }
-  .login-view .wrapper{background-size: 100%;height: auto;}
+  .login-view .wrapper{background-size: 100%;height: auto;background: none;}
   .loginBox2{float: none;margin:10px auto 0;padding-top: 0px;}
   .copyright{height: auto; line-height: 30px;margin-bottom: 60px;
     a{display: inline-block;}
@@ -695,9 +695,10 @@ $conWidth:1600px;
         font-size: 14px;border-radius: 5px;float: right;margin: 0px;
       }
     }
+    .totalCost{padding: 0 10px 10px 0}
     .topay{
       .btn{
-        background-color: $bgc_red_ED9;border-color:$bdrc_ED9;display:block;margin: 0 10px;line-height:40px;color:$white;text-align:center;box-sizing: border-box;border-radius: 3px;
+        background-color: $bgc_red_ED9;border-color:$bdrc_ED9;display:block;margin: 0 10px 10px;line-height:40px;color:$white;text-align:center;box-sizing: border-box;border-radius: 3px;
       }
     }
 
@@ -1077,7 +1078,7 @@ $conWidth:1600px;
   }
 }
 @media only screen and (max-width: 600px){
-  .loginBox2{border: none;box-sizing: border-box;width: 100%;}
+  .loginBox2{border: none;box-sizing: border-box;width: 100%;padding: 0 10px 0}
   .loginBox{width: 100%;}
 
   .left-nav-tit{
@@ -1158,7 +1159,8 @@ $conWidth:1600px;
     img{
       width: 120px;
     }
-    h4{padding: 0px;margin-bottom: 0px;}
+    figcaption{position: relative;top:-5px;}
+    h4{padding: 0px;margin-bottom: 0px;font-size: 18px;}
     p{padding-top: 0px;height: 48px;overflow: hidden;}
     time{font-size: 14px;}
   }
@@ -1195,6 +1197,8 @@ $conWidth:1600px;
       a,span{margin:0px;}
     }
   }
+  .loginBox2 .bd ul li input{font-size: 14px;}
+  .copyright{font-size: 14px;}
 
 }
 @media only screen and (width: 320px){

@@ -10,6 +10,10 @@
   dl{
     dt{
       width: 45%;float: left;overflow: hidden;
+
+      .bd{
+        max-height: 305px;overflow: hidden;
+      }
       .tit{
         margin: 20px 20px 0;height: 90px;overflow:hidden;
         div{width: 1000px;}

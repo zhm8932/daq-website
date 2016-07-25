@@ -19,7 +19,6 @@
     }
 })(function($) {
     $.fn.ellipsis = function(options) {
-
         // default option
         var defaults = {
             'row' : 1, // show rows
@@ -46,6 +45,10 @@
             var gapHeight = lineHeight > rowHeight ? (lineHeight - rowHeight) : 0;
             var targetHeight = gapHeight * (options.row - 1) + rowHeight * options.row;
 
+
+
+            console.log("textOriginal:",text)
+
             if (origHeight <= targetHeight) {
                 $this.text(text);
                 options.callback.call(this);
@@ -56,10 +59,20 @@
             var end = text.length;
 
             if(options.position === 'tail') {
-                while (start < end) { // Binary search for max length
-                    length = Math.ceil((start + end) / 2);
 
+                console.log("origHeight:",origHeight);
+                console.log("targetHeight:",targetHeight);
+
+                console.log("start:",start)
+                console.log("end:",end)
+
+
+                while (start < end) { // Binary search for max length
+                    console.log("2222222")
+                    length = Math.ceil((start + end) / 2);
+                    console.log("length:",length)
                     $this.text(text.slice(0, length) + options['char']);
+                    // console.log("$this.height():",$this.height())
 
                     if ($this.height() <= targetHeight) {
                         start = length;
@@ -68,12 +81,15 @@
                     }
                 }
 
+                console.log("start2:",start)
                 text = text.slice(0, start);
+
 
                 if (options.onlyFullWords) {
                     text = text.replace(/[\u00AD\w\uac00-\ud7af]+$/, ''); // remove fragment of the last word together with possible soft-hyphen characters
                 }
                 text += options['char'];
+                console.log("text:",text)
 
             }else if(options.position === 'middle') {
 
@@ -84,8 +100,8 @@
 
                     $this.text(
                         origText.slice(0, Math.floor((origLength - sliceLength) / 2)) +
-                        options['char'] +
-                        origText.slice(Math.floor((origLength + sliceLength) / 2), origLength)
+                               options['char'] +
+                               origText.slice(Math.floor((origLength + sliceLength) / 2), origLength)
                     );
 
                     if ($this.height() <= targetHeight) {

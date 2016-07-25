@@ -1,9 +1,8 @@
 define(function(require){
-    console.log('111111111');
     require('jquery');
     $(function () {
         var BMap = require('../libs/BMap.js');
-        console.log(BMap);
+        // console.log(BMap);
         
         
         function initBMap() {
@@ -26,7 +25,7 @@ define(function(require){
             var options = {
                 renderOptions:{map: map, panel:"r-result"},
                 onSearchComplete: function(results){
-                    console.log(results);
+                    // console.log(results);
                     //document.getElementById("log").innerHTML = JSON.stringify(results)
                     if (local.getStatus() == BMAP_STATUS_SUCCESS){
                         // 判断状态是否正确
@@ -34,7 +33,7 @@ define(function(require){
                         for (var i = 0; i < results.getCurrentNumPois(); i ++){
                             s.push(results.getPoi(i).title + ", " + results.getPoi(i).address);
                         }
-                        console.log(s);
+                        // console.log(s);
                         //document.getElementById("log").innerHTML = s.join("<br>");
 
                     }
@@ -52,7 +51,7 @@ define(function(require){
             var wrapperWidth = $('.wrapper').width();
             if(wrapperWidth==winWidth){
                 winWidth=wrapperWidth;
-                console.log(winWidth);
+                // console.log(winWidth);
                 initBMap();
             }
 

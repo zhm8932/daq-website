@@ -20,7 +20,11 @@
       }
       h4{font-size: 20px;padding: 5px 0 0;height: 24px;overflow: hidden;margin-bottom: 10px;}
       time{color:$gray9B;}
-      p{padding: 10px 0 0 0}
+      p{padding: 10px 0 0 0;
+        overflow: hidden;max-height: 48px;
+        //height: 48px;overflow: hidden;
+        //white-space:nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden;height: 48px;
+      }
       figcaption{padding-bottom: 20px;}
     }
   }

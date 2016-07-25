@@ -22,6 +22,9 @@
     width: 45%;
     float: left;
     overflow: hidden; }
+    .goods_basic dl dt .bd {
+      max-height: 305px;
+      overflow: hidden; }
     .goods_basic dl dt .tit {
       margin: 20px 20px 0;
       height: 90px;

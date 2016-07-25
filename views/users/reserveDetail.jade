@@ -72,17 +72,17 @@ block content
                             .price-text
                                 if data.serviceType == 1
                                     p 取样方式：门诊取样
-                                    p.text-sec 门诊地址: #{data.address}
-                                    p.text-sec 预约时间: #{data.time}
+                                    p.text-sec 门诊地址：#{data.address}
+                                    p.text-sec 预约时间：#{data.time}
                                 else if data.serviceType == 2
                                     p 取样方式：上门取样
-                                    p.text-sec 取样地址: #{data.address}
-                                    p.text-sec 取样时间: #{data.time}
+                                    p.text-sec 取样地址：#{data.address}
+                                    p.text-sec 取样时间：#{data.time}
                                 else if data.serviceType == 3
                                     p 取样方式：快递取样
-                                    p.text-sec 收件地址: #{data.address}
+                                    p.text-sec 收件地址：#{data.address}
                             .area
-                                p 下单时间
+                                p 下单时间：
                                     |#{moment(data.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
                                     if data.reservationStatus == 1900 || data.reservationStatus == 2900 || data.reservationStatus == 3900
                                         sapn.info

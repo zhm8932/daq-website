@@ -6,7 +6,7 @@
 		define(['jquery'], factory);
 	} else if(typeof define === 'function') {
 		// Node/CommonJS
-		console.log('CommonJS')
+		// console.log('CommonJS')
 		define(['jquery'], function(){
 			return factory(window.jQuery,window, document, undefined);
 		})

@@ -19,6 +19,7 @@
     }
 })(function($) {
     $.fn.ellipsis = function(options) {
+
         // default option
         var defaults = {
             'row' : 1, // show rows
@@ -44,11 +45,6 @@
             var rowHeight = $this.height();
             var gapHeight = lineHeight > rowHeight ? (lineHeight - rowHeight) : 0;
             var targetHeight = gapHeight * (options.row - 1) + rowHeight * options.row;
-
-            // console.log("origHeight:",origHeight)
-            // console.log("targetHeight:",targetHeight)
-
-
 
             if (origHeight <= targetHeight) {
                 $this.text(text);
@@ -88,8 +84,8 @@
 
                     $this.text(
                         origText.slice(0, Math.floor((origLength - sliceLength) / 2)) +
-                               options['char'] +
-                               origText.slice(Math.floor((origLength + sliceLength) / 2), origLength)
+                        options['char'] +
+                        origText.slice(Math.floor((origLength + sliceLength) / 2), origLength)
                     );
 
                     if ($this.height() <= targetHeight) {

@@ -157,6 +157,14 @@ block content
                             span 下单时间：
                             |#{moment(data.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
                     //-p #{moment(data.currentTime).format('YYYY-MM-DD HH:mm:ss')}
+                    .totalCost.tr
+                        span.text-sec 支付:
+                        span.price.text-stress ￥#{(parseFloat(data.totalCost) / 100).toFixed(2)}
+                        span.fav
+                            if data.feeMap.coupon_fee
+                                | (已优惠￥#{(parseFloat(data.feeMap.coupon_fee) / 100).toFixed(2)})
+                            else
+                                | (已优惠￥0.00)
                     if data.orderState == 1
                         p.topay: a.btn(href='/trade/order/orderSuccess?id=#{data.id}')
                                     |去支付

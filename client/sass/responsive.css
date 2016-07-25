@@ -554,7 +554,7 @@
     width: 100%; }
     .health_list .lr_list figure img {
       width: 160px;
-      margin-right: 12px; }
+      margin-right: 10px; }
 
   .health aside {
     width: 100%; }
@@ -603,7 +603,8 @@
 
   .login-view .wrapper {
     background-size: 100%;
-    height: auto; }
+    height: auto;
+    background: none; }
 
   .loginBox2 {
     float: none;
@@ -1033,11 +1034,13 @@
         background-color: #ddd;
         color: #4A4A4A;
         border-color: #ddd; }
+  .detail-wap .totalCost {
+    padding: 0 10px 10px 0; }
   .detail-wap .topay .btn {
     background-color: #ED9E9A;
     border-color: #ED9E9A;
     display: block;
-    margin: 0 10px;
+    margin: 0 10px 10px;
     line-height: 40px;
     color: #FFF;
     text-align: center;
@@ -1490,7 +1493,8 @@
   .loginBox2 {
     border: none;
     box-sizing: border-box;
-    width: 100%; }
+    width: 100%;
+    padding: 0 10px 0; }
 
   .loginBox {
     width: 100%; }
@@ -1562,9 +1566,13 @@
 
   .health_list .lr_list figure img {
     width: 120px; }
+  .health_list .lr_list figure figcaption {
+    position: relative;
+    top: -5px; }
   .health_list .lr_list figure h4 {
     padding: 0px;
-    margin-bottom: 0px; }
+    margin-bottom: 0px;
+    font-size: 18px; }
   .health_list .lr_list figure p {
     padding-top: 0px;
     height: 48px;
@@ -1606,7 +1614,13 @@
     padding-top: 20px;
     margin: -20px 0 20px; }
     .userBox .pagination a, .userBox .pagination span {
-      margin: 0px; } }
+      margin: 0px; }
+
+  .loginBox2 .bd ul li input {
+    font-size: 14px; }
+
+  .copyright {
+    font-size: 14px; } }
 @media only screen and (width: 320px) {
   .footer {
     padding-bottom: 30px; }

@@ -1,6 +1,7 @@
 define(function(require){
     require('jquery');
     var config = require('../config');
+    var utils = require('../libs/utils');
     require('../libs/jquery.waterfall');
     require('../libs/jquery.ellipsis');
     var tabFn = require('../libs/tab');
@@ -20,17 +21,29 @@ define(function(require){
             }
         });
 
-        $('.ellips').ellipsis({
-            row:1,
-            char:'……',
-            callback: function() {
-                console.log($(this).text());
-            }
-        });
+
+        if(utils.browser.ie){
+            $('.ellips').ellipsis({
+                row:2,
+                char:'……',
+                callback: function() {
+                    // console.log($(this).text());
+                }
+            });
+        }else{
+            $('.ellips').ellipsis({
+                row:1,
+                char:'……',
+                callback: function() {
+                    console.log($(this).text());
+                }
+            });
+        }
+
         // $.each($('.ellips'),function (index,item) {
         //     // console.log(item)
         //     $(item).ellipsis({
-        //         row:2,
+        //         row:1,
         //         char:'……',
         //         callback: function() {
         //             console.log($(this).text());
@@ -193,7 +206,7 @@ define(function(require){
                 "categoryId":$('.tab ul li.on').attr('data-id')
             }
             var listData = '';
-            console.log("pageIndex:",pageIndex+'--pageCount:',pageCount)
+            // console.log("pageIndex:",pageIndex+'--pageCount:',pageCount)
             if(!pageCount){
                 listData = getListData(data)
             }else if(pageIndex<=pageCount){
@@ -207,8 +220,8 @@ define(function(require){
 
         var winHeight = $(document).height();
         var footerHeight = $('.footer').outerHeight()+$('.copyright').outerHeight();
-        console.log("winHeight:",winHeight)
-        console.log("footerHeight:",footerHeight);
+        // console.log("winHeight:",winHeight)
+        // console.log("footerHeight:",footerHeight);
         $(window).scroll(function () {
             var scrollTop = $(document).scrollTop();
             if(scrollTop>=winHeight-footerHeight){
