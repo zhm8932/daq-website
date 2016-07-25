@@ -10,7 +10,6 @@ var authority = require('../handlers/authority.handler');
 
 
 router.get('/reservation/list',authority.loginRequired,function(req,res,next){
-    req.resType = 'html';
     request.GetReservationList(req,res,function(err,data) {
         var json = JSON.parse(data);
         res.render('users/reservations',{
@@ -24,7 +23,6 @@ router.get('/reservation/list',authority.loginRequired,function(req,res,next){
 });
 
 router.get('/reservation/detail',authority.loginRequired,function(req,res,next){
-    req.resType = 'html';
     request.GetReserveDetail(req,res,function(err,data) {
         var json = JSON.parse(data);
         res.render('users/reserveDetail',{
@@ -36,7 +34,6 @@ router.get('/reservation/detail',authority.loginRequired,function(req,res,next){
 
 //挂号列表
 router.get('/register/list',authority.loginRequired,function(req,res,next){
-    req.resType = 'html';
     request.GetRegisterList(req,res,function(err,data) {
         var json = JSON.parse(data);
         res.render('users/registerings',{
@@ -67,7 +64,6 @@ router.get('/coupon/list',function(req,res,next) {
 });
 
 router.get('/coupon/listView',authority.loginRequired,function(req,res,next) {
-    req.resType = 'html';
     request.GetCouponList(req,res,function(err,data) {
         var json = JSON.parse(data);
         res.render('users/coupons',{
@@ -85,7 +81,6 @@ router.post('/coupon/addByInvite',function(req,res,next) {
 });
 
 router.get('/patient/list',authority.loginRequired,function(req,res,next) {
-    req.resType = 'html';
     request.GetPatientList(req,res,function(err,data) {
         var json = JSON.parse(data);
         res.render('users/patients',{
@@ -111,7 +106,6 @@ router.post('/patient/del',function(req,res,next) {
 
 //账号信息
 router.get('/account/info',authority.loginRequired,function(req,res,next) {
-    req.resType = 'html';
     request.HasBindHis(req,res,function(err,data) {
         var bindHisJson = JSON.parse(data);
         if(bindHisJson.data){

@@ -8,7 +8,6 @@ var users = require('../requests/users.request.js');
 var authority = require('../handlers/authority.handler');
 
 router.get('/regsource/list', function (req, res, next) {
-    req.resType = 'html';
     request.GetRegsourceList(req,res,function (err,data) {
         var json = JSON.parse(data);
         res.render('treat/regList', {
@@ -33,7 +32,6 @@ router.get('/regsource/list', function (req, res, next) {
 
 
 router.get('/reg/doctorView',authority.loginRequired, function (req, res, next) {
-    req.resType = 'html';
     request.GetRegTimeSlot(req,res,function (err,data) {
         var timeSlotJson = JSON.parse(data);
         timeSlotJson.data.timeWithIdMap = tidyTimeMap(timeSlotJson.data.timeWithIdMap);
@@ -57,7 +55,6 @@ router.post('/reg/byDoc', function (req, res, next) {
 });
 
 router.get('/reg/topay', function (req, res, next) {
-    req.resType = 'html';
     request.GetOrderDetail(req,res,function (err,data) {
         var json = JSON.parse(data);
         res.render('treat/regOrderSuccess', {

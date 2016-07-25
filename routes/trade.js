@@ -7,7 +7,6 @@ var request = require('../requests/trade.request');
 var authority = require('../handlers/authority.handler');
 
 router.get('/cart/list', authority.loginRequired,function (req, res, next) {
-    req.resType = 'html';
     request.GetCartList(req,res,function (err,data) {
         var currentCityId = req.session.locals_address && req.session.locals_address[1].categoryId;
         var json = tidyCartList(JSON.parse(data).data,currentCityId);
@@ -37,7 +36,6 @@ router.post('/cart/delItem',function (req, res, next) {
 
 
 router.post('/order/comfirmView', authority.loginRequired,function (req, res, next) {
-    req.resType = 'html';
     var orderToken = Math.random().toString(36).substr(2);
     req.session.orderToken = orderToken;
     res.render('trade/orderConfirm', {
@@ -49,7 +47,6 @@ router.post('/order/comfirmView', authority.loginRequired,function (req, res, ne
 
 
 router.post('/order/create', function (req, res, next) {
-    req.resType = 'html';
     if(req.body.orderToken != req.session.orderToken){
         var json = JSON.stringify({success:false,msg:'请勿重复提交订单'});
         res.send(json);
@@ -81,7 +78,6 @@ router.post('/order/create', function (req, res, next) {
 });
 
 router.get('/order/list',authority.loginRequired, function (req, res, next) {
-    req.resType = 'html';
     request.GetOrderList(req, res,function (err, data) {
         var json = JSON.parse(data);
         res.locals.pageCount = json.data.pageCount;
@@ -109,7 +105,6 @@ router.post('/order/delete', function (req, res, next) {
 
 
 router.get('/order/detail', authority.loginRequired,function (req, res, next) {
-    req.resType = 'html';
     request.GetOrderDetail(req,res,function (err,data) {
         var json = JSON.parse(data);
         res.render('users/orderDetail', {
@@ -133,7 +128,6 @@ router.post('/order/pay', function (req, res, next) {
 
 
 router.get('/order/orderSuccess',authority.loginRequired, function (req, res, next) {
-    req.resType = 'html';
     request.GetOrderDetail(req,res,function (err,data) {
         var json = JSON.parse(data);
         res.render('trade/orderSuccess', {
@@ -167,7 +161,6 @@ router.get('/order/state', function (req, res, next) {
 });
 
 router.get('/order/paySuccess',authority.loginRequired, function (req, res, next) {
-    req.resType = 'html';
     req.query.id = req.query.order_no;
     request.GetOrderDetail(req,res,function (err,data) {
         var json = JSON.parse(data);
