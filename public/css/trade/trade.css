@@ -249,7 +249,7 @@ header {
   margin: 30px 0; }
   .order-success .order-box i.success, .pay-success .order-box i.success {
     position: absolute;
-    top: 42px;
+    top: 34px;
     left: 57px;
     width: 70px;
     height: 70px;

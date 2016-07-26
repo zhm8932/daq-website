@@ -73,7 +73,7 @@ define(function (require, exports, module) {
         // $('#submitForm input[name=ids]').val(JSON.stringify(ids));
         // $('#submitForm').submit();
 
-        $this.addClass('disabled').off('click');
+        $this.off('click');
         var orderToken = $('#orderToken').val();
 
         utils.SendAjax({
@@ -86,7 +86,7 @@ define(function (require, exports, module) {
                 window.location.href = '/trade/order/orderSuccess?id='+result.id;
             },
             errorFun: function () {
-                $this.removeClass('disabled').on('click', function () {
+                $this.on('click', function () {
                     submitOrder($this);
                 });
             }
@@ -101,7 +101,7 @@ define(function (require, exports, module) {
                 utils.ShowComfirmDialog({tipText:'请输入优惠码',noConfirmBtn:true});
                 return false;
             }
-            $this.addClass('disabled').off('click');
+            $this.off('click');
             utils.SendAjax({
                 url: '/users/coupon/addByInvite',
                 param: {inviteCode: inviteCode},
@@ -123,12 +123,12 @@ define(function (require, exports, module) {
                         trs.eq(fitCouponNum).before(tr);
                     }
 
-                    $this.removeClass('disabled').on('click', function () {
+                    $this.on('click', function () {
                         addCoupon($(this));
                     });
                 },
                 errorFun: function () {
-                    $this.removeClass('disabled').on('click', function () {
+                    $this.on('click', function () {
                         addCoupon($(this));
                     });
                 }

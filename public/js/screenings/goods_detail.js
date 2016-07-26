@@ -275,17 +275,18 @@ define(function(require){
     }
 
     function checkArea(){
-        var locals_address = JSON.parse($('#locals_address').val());
-        var fit_area = JSON.parse($('#fit_area').val());
-        var currentCityId = locals_address[1].categoryId;
-        for(var i = 0; i < fit_area.length; i++){
-            if(fit_area[i].categoryId == currentCityId){
-                return true;
-            }
-        }
-        $('.submitBox button').addClass('disabled');
-        $('#district .area-tip').removeClass('none');
-        return false;
+        return true;
+        // var locals_address = JSON.parse($('#locals_address').val());
+        // var fit_area = JSON.parse($('#fit_area').val());
+        // var currentCityId = locals_address[1].categoryId;
+        // for(var i = 0; i < fit_area.length; i++){
+        //     if(fit_area[i].categoryId == currentCityId){
+        //         return true;
+        //     }
+        // }
+        // $('.submitBox button').addClass('disabled');
+        // $('#district .area-tip').removeClass('none');
+        // return false;
     }
 
 });
