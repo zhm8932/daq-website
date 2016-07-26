@@ -79,51 +79,6 @@ header {
   width: 100%;
   text-align: left;
   margin-bottom: 200px;
-  .mask {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    span {
-      position: absolute;
-      bottom: 13px;
-      right: 16px;
-      padding: 0 5px;
-      color: #fff;
-      border: 1px solid;
-    }
-  }
-  .check {
-    width: 5%;
-    text-align: center;
-  }
-  .name {
-    width: 30%;
-    img {
-      width: 40%;
-      //height: 85px;
-      float: left;
-    }
-    span {
-      width: 60%;
-      float: right;
-      padding-left: 13px;
-      line-height: 17px;
-      box-sizing: border-box;
-    }
-  }
-  .price {
-    width: 15%;
-  }
-  .info {
-    width: 25%;
-  }
-  .tot-price {
-    width: 15%;
-  }
-  .operation {
-    width: 10%;
-  }
   .thead {
     position: relative;
     div {
@@ -139,6 +94,55 @@ header {
       float: left;
       padding: 20px 10px;
       box-sizing: border-box;
+    }
+    .mask {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      span {
+        position: absolute;
+        bottom: 13px;
+        right: 16px;
+        padding: 0 5px;
+        color: #fff;
+        border: 1px solid;
+      }
+    }
+    .check {
+      position:absolute;
+      top:50%;
+      margin-top:-30px;
+      width: 5%;
+      text-align: center;
+    }
+    .name {
+      width: 30%;
+      margin-left:5%;
+      img {
+        width: 40%;
+        //height: 85px;
+        float: left;
+      }
+      span {
+        width: 60%;
+        float: right;
+        padding-left: 13px;
+        line-height: 17px;
+        box-sizing: border-box;
+      }
+    }
+    .price {
+      width: 15%;
+    }
+    .info {
+      width: 25%;
+    }
+    .tot-price {
+      width: 15%;
+    }
+    .operation {
+      width: 10%;
     }
   }
 

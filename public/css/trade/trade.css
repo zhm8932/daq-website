@@ -73,40 +73,6 @@ header {
   width: 100%;
   text-align: left;
   margin-bottom: 200px; }
-  .table-div .mask {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%; }
-    .table-div .mask span {
-      position: absolute;
-      bottom: 13px;
-      right: 16px;
-      padding: 0 5px;
-      color: #fff;
-      border: 1px solid; }
-  .table-div .check {
-    width: 5%;
-    text-align: center; }
-  .table-div .name {
-    width: 30%; }
-    .table-div .name img {
-      width: 40%;
-      float: left; }
-    .table-div .name span {
-      width: 60%;
-      float: right;
-      padding-left: 13px;
-      line-height: 17px;
-      box-sizing: border-box; }
-  .table-div .price {
-    width: 15%; }
-  .table-div .info {
-    width: 25%; }
-  .table-div .tot-price {
-    width: 15%; }
-  .table-div .operation {
-    width: 10%; }
   .table-div .thead {
     position: relative; }
     .table-div .thead div {
@@ -120,6 +86,44 @@ header {
       float: left;
       padding: 20px 10px;
       box-sizing: border-box; }
+    .table-div .table-tr .mask {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%; }
+      .table-div .table-tr .mask span {
+        position: absolute;
+        bottom: 13px;
+        right: 16px;
+        padding: 0 5px;
+        color: #fff;
+        border: 1px solid; }
+    .table-div .table-tr .check {
+      position: absolute;
+      top: 50%;
+      margin-top: -30px;
+      width: 5%;
+      text-align: center; }
+    .table-div .table-tr .name {
+      width: 30%;
+      margin-left: 5%; }
+      .table-div .table-tr .name img {
+        width: 40%;
+        float: left; }
+      .table-div .table-tr .name span {
+        width: 60%;
+        float: right;
+        padding-left: 13px;
+        line-height: 17px;
+        box-sizing: border-box; }
+    .table-div .table-tr .price {
+      width: 15%; }
+    .table-div .table-tr .info {
+      width: 25%; }
+    .table-div .table-tr .tot-price {
+      width: 15%; }
+    .table-div .table-tr .operation {
+      width: 10%; }
   .table-div .tfoot {
     width: 100%;
     height: 60px;
