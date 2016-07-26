@@ -86,7 +86,7 @@ block content
                                     |#{moment(data.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
                                     if data.reservationStatus == 1900 || data.reservationStatus == 2900 || data.reservationStatus == 3900
                                         sapn.info
-                                            span.check-report 查看报告
+                                            span.check-report: a(href='/searchs/report') 查看报告
 
 
 
