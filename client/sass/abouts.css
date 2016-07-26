@@ -1,0 +1,46 @@
+@charset "UTF-8";
+/*
+
+
+设备像素\宽度：17种
+
+320 ， 480 ， 540 ， 600 ， 640 ， 720 ， 768 ， 800 ， 1024 ， 1080 ， 1200 ， 1280 ， 1366 ， 1536 ， 1600 ， 1920 ， 2048  2560
+
+
+设备像素\高度：15种
+
+480 ， 600 ， 720 ， 768 ， 800 ， 854 ， 960 ， 1024 ， 1080 ， 1136 ， 1280 ， 1536 ， 1920 ， 2048 ， 2560
+
+*/
+h2 {
+  font-size: 24px;
+  text-align: center;
+  padding: 20px 0; }
+
+.abouts .ad img {
+  width: 100%; }
+.abouts article {
+  padding: 0 20px; }
+  .abouts article a {
+    color: #4A4A4A; }
+.abouts p {
+  text-indent: 2em;
+  margin-top: 10px; }
+.abouts figure {
+  margin-left: -3%; }
+  .abouts figure img {
+    width: 47%;
+    margin: 20px 0 0 3%; }
+  .abouts figure.big {
+    margin: 20px 0 0 0; }
+    .abouts figure.big img {
+      width: 100%;
+      margin: 0px; }
+.abouts .contact p {
+  text-indent: 0; }
+.abouts a {
+  color: #48BED8; }
+  .abouts a:hover {
+    color: #4A4A4A; }
+
+/*# sourceMappingURL=abouts.css.map */
