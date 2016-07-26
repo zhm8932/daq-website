@@ -27,7 +27,7 @@ $conWidth:1600px;
   .home{margin-left:-$wrapperWidth/2 }
   .item_list .pic_list{
     li{width: 315px;
-      h4{line-height: 40px;height: 40px;}
+      //h4{line-height: 40px;height: 40px;}
     }
   }
   .rightNav{margin-right: -660px;}
@@ -42,7 +42,7 @@ $conWidth:1600px;
   .item_list{
     .pic_list{
       li{width: 288px;
-        h4{line-height: 40px;height: 40px;}
+        //h4{line-height: 40px;height: 40px;}
       }
     }
     .department_list{
@@ -73,7 +73,7 @@ $conWidth:1600px;
   .item_list{
     .pic_list{
       li{width: 255px;
-        h4{line-height: 40px;height: 40px;}
+        //h4{line-height: 40px;height: 40px;}
       }
     }
     .standard{
@@ -211,7 +211,8 @@ $conWidth:1600px;
   .item_list header{
     padding-top: 20px;
     h2{
-      font-size: 24px;line-height: 40px;height: 40px;padding-bottom: 0px;font-weight:500;
+      //font-size: 24px;
+      line-height: 40px;height: 40px;padding-bottom: 0px;font-weight:500;
       i{top: auto;height: 18px;}
 
     }
@@ -239,10 +240,10 @@ $conWidth:1600px;
     .devidel,.loginBtn{display: none;}
     .cartBtn{
       margin-right: 10px;position: relative;top: 5px;
-      i{background:url("../images/top_car.png") no-repeat 0 0;width: 30px;height: 28px;background-size: 100%;}
+      i{background:url("../images/top_car.png") no-repeat 0 0;width: 26px;height: 25px;background-size: 100%;}
     }
     .accountInfo{display: block;}
-    .wapUser{width:20px;position: relative;top:15px;margin-right: 10px;display: inline-block;
+    .wapUser{width:18px;position: relative;top:15px;margin-right: 10px;display: inline-block;
       img{width: 100%}
     }
     aside{display: none;position: absolute;right:48px;border: 1px solid $bdrc_ddd;padding:0 10px;background-color: $white;margin-top:16px;border-radius: 3px;
@@ -280,7 +281,7 @@ $conWidth:1600px;
     }
   }
   .nav ul li{
-    font-size: 17px;
+    font-size: 17px;margin-left: 0px;
     a{
       padding: 0 5px;
     }
@@ -331,15 +332,34 @@ $conWidth:1600px;
   .login-view{margin-bottom:-40px;}
   .loginBox2 .bd .prompt i{vertical-align: top;}
   .positon{margin-bottom: 10px;display: none;}
-  .nav ul {
-    li{
-      &.on{background: none;
+  .nav{
+    height: 80px;line-height: inherit;
+    ul {
+      li{
+        &.on{background-color:inherit  }
+        &.index{display: none;}
+        &:last-child{
+          i{display: inline-block;}
+        }
+        a{
+          padding:50px 0px 0;position: relative;
+        }
+        p{display: block;margin: 5px 0 -3px;}
+        i{display: inline-block;width: 45px;height:45px;float: none;position: static;border: none;background:url('../images/icon.png');background-size: 600px;margin: 0px;
+          position: absolute;left: 50%;top: 4px;margin-left: -22px;
+          &.n01{background-position:0px -1041px}
+          &.n02{background-position:-54px -1041px}
+          &.n03{background-position:-110px -1041px}
+          &.n04{background-position:-166px -1041px}
+          &.n05{background-position:-222px -1041px}
+          &.n06{background-position:-276px -1041px}
+        }
+        &:hover{
+          i{background-image:url('../images/icon.png');background-size: 600px;}
+        }
       }
-      a{
-        padding: 0px;
-      }
+      i{display: none;}
     }
-    i{display: none;}
   }
   .swiper-container{height: 100%;overflow: hidden}
   .lr_list figure {
@@ -349,7 +369,7 @@ $conWidth:1600px;
     font-size: 16px;
   }
   .standard_wrapper{
-    background-color: $bgc_48B;color: $white;margin-bottom: -50px;
+    background-color: $bgc_48B;color: $white;margin-bottom: -50px;padding: 30px 0 ;
   }
   .cart .empty-cart .empty-cart-box{height: 160px;}
   .item_list {
@@ -359,10 +379,10 @@ $conWidth:1600px;
         //li{width: 47%;margin:20px 0 0 3%;height: auto;
         li{width:auto;margin:20px 0 0 3%;height: auto;border: 1px solid $bdrc_ddd;
           a{
-            h4{line-height:40px;height:40px;position: relative;margin-top:-40px;font-size: 20px;background: none;color: $textc_48B;margin-bottom:10px;overflow: hidden;background-color: rgba(255, 255, 255, 0.75);text-align: right;padding-right: 10px;width: auto;box-sizing: border-box;}
+            h4{line-height:50px;height:50px;position: relative;margin-bottom:-30px;font-size: 20px;background: none;color: $textc_48B;overflow: hidden;background-color: rgba(255, 255, 255, 0.75);text-align: right;padding-right: 10px;width: auto;box-sizing: border-box;}
           }
           p{color: $textc_333;padding: 0 10px;margin: 0px; font-size: 16px;height: 48px;overflow: hidden;}
-          .price{padding-top: 0px;position: absolute;bottom:65px; left: 10px;
+          .price{padding-top: 0px;position: absolute;bottom:80px; left: 10px;
             .new{font-size: 18px;}
             .old{display: none;}
           }
@@ -375,7 +395,8 @@ $conWidth:1600px;
       ul{
         li{
           border: none;
-          h4{margin: 0px;background: none;display: block;position: static;color: $textc_48B;font-size: 18px;font-weight: bold;text-align:left;padding-left: 10px;}
+          h4{margin: 0px;background: none;display: block;position: static;color: $textc_48B;font-size: 22px;font-weight: normal;text-align:left;padding-left: 20px;}
+          p{padding-left: 20px;}
         }
       }
     }
@@ -394,7 +415,7 @@ $conWidth:1600px;
           padding: 0 15px;
           img{width: 100%;height: auto;}
           figcaption{
-            padding-top: 5px;font-size: 20px;
+            padding-top: 0px;font-size: 20px;margin-top: -5px;
           }
           em{padding:5px 0 10px;color: $white;font-size: 14px;}
         }
@@ -443,7 +464,7 @@ $conWidth:1600px;
       }
 
     }
-    .qrcode{width: 100%;padding-top: 20px;text-align: center;
+    .qrcode{width: 100%;padding-top: 20px;text-align: left;
       .weixin{display: inline-block;}
       figure{width:auto;margin: 0px 4%;overflow: hidden;}
     }
@@ -485,11 +506,11 @@ $conWidth:1600px;
 
       }
       .nav_toggle{
-        position: absolute;right: 10px;top: 10px;float: right;width: 35px;height: 35px; display: block;
+        position: absolute;right: 10px;top: 12px;float: right;width: 35px;height: 35px; display: block;
         span,span:before,span:after{
           border-radius: 1px;
           height: 4px;
-          width: 35px;
+          width: 25px;
           background: white;
           position: absolute;
           display: block;
@@ -1152,7 +1173,8 @@ $conWidth:1600px;
   //}
   .item_list{
     .standard h2{
-        font-size: 20px;height: 32px;
+        font-size: 20px;
+      height: 32px;
     }
   }
   .health_list .lr_list figure{

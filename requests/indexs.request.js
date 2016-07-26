@@ -38,7 +38,7 @@ exports.login = function (req,res,next) {
         "loginParam": body
     };
     console.log("bizParam:",bizParam)
-    util.ajax('GET',api.UserWebLogin,req, bizParam,function (data,success) {
+    util.ajax('post',api.UserWebLogin,req, bizParam,function (data,success) {
         if(success){
             req.session.userInfo = JSON.parse(data).data;
             res.cookie('accountId',JSON.parse(data).data.userAllInfo.accountCommon.id);

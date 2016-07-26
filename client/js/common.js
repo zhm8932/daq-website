@@ -154,10 +154,12 @@ define(function(require, exports, module){
                 // spaceBetween: 30
             });
         }else{
-            $nav.removeClass('swiper-container');
+            $nav.removeClass().addClass('wrapper');
+            $nav.find('li').removeAttr("style");
         }
         $(window).resize(function () {
             winWidth = $(window).width();
+            console.log("winWidth:",winWidth)
             if(winWidth<768){
                 //导航滑动
                 $nav.addClass('swiper-container');
@@ -167,8 +169,11 @@ define(function(require, exports, module){
                     slidesPerView: 4
                     // spaceBetween: 30
                 });
+                console.log("111")
             }else{
-                $nav.removeClass('swiper-container');
+                console.log("222:",swiper)
+                $nav.removeClass().addClass('wrapper');
+                $nav.find('.swiper-slide').addClass('3333333333333').removeAttr("style")
             }
         })
     })

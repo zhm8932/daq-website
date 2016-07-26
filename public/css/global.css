@@ -452,6 +452,7 @@ select {
   height: 50px;
   line-height: 50px;
   background-color: #48BED8;
+  overflow: hidden;
   position: relative;
   z-index: 2;
   margin-bottom: 10px; }
@@ -471,6 +472,8 @@ select {
     font-size: 16px;
     margin-left: -2px;
     position: relative; }
+    .nav ul li:last-child i {
+      display: none; }
     .nav ul li a {
       color: #FFF;
       display: block;
@@ -479,7 +482,7 @@ select {
     .nav ul li.on, .nav ul li:hover {
       background-color: #4A4A4A; }
       .nav ul li.on i, .nav ul li:hover i {
-        background: none;
+        background-color: inherit;
         border-color: transparent; }
 
 .positon {
@@ -602,7 +605,7 @@ select {
       height: 50px;
       color: #FFF;
       position: absolute;
-      top: -40px;
+      top: -50px;
       left: 0px;
       text-align: center;
       background-color: #48BED8;
@@ -1151,7 +1154,7 @@ select {
         clear: both; }
         .footer dl dt .area h4 {
           padding: 10px 0;
-          font-size: 18px; }
+          font-size: 20px; }
     .footer dl dd {
       width: 35%;
       padding-left: 5%;
@@ -1300,7 +1303,7 @@ select {
   .swiper-container .swiper-button-next {
     position: absolute;
     top: 50%;
-    width: 24px;
+    width: 18px;
     height: 20px;
     margin-top: -11px;
     z-index: 10;

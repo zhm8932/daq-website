@@ -435,7 +435,7 @@ select {
 .nav {
   height: 50px;
   line-height: 50px;
-  background-color: $navBgColor;
+  background-color: $navBgColor;overflow: hidden;
   position: relative;
   z-index: 2;margin-bottom: 10px;
   ul {
@@ -456,6 +456,9 @@ select {
       font-size: 16px;
       margin-left: -2px;
       position: relative;
+      &:last-child{
+        i{display: none;}
+      }
       a {
         color: #FFF;
         display: block;
@@ -466,7 +469,7 @@ select {
         background-color: $navBgOnColor;
         //@include transition(all .3s linear);
         i {
-          background: none;
+          background-color: inherit;
           border-color: transparent;
         }
       }
@@ -619,7 +622,7 @@ select {
         height: 50px;
         color: $white;
         position: absolute;
-        top: -40px;
+        top: -50px;
         left: 0px;
         text-align: center;
         background-color: $bgc_48B;
@@ -1247,7 +1250,7 @@ select {
         }
       }
       .area {
-        h4{padding: 10px 0;font-size: 18px;}
+        h4{padding: 10px 0;font-size:20px;}
         margin-left:0px;clear: both;
       }
 
@@ -1433,7 +1436,7 @@ $rightNavLI: 50px;
   .swiper-button-next {
     position: absolute;
     top: 50%;
-    width: 24px;
+    width: 18px;
     height: 20px;
     margin-top: -11px;
     z-index: 10;

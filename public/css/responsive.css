@@ -41,9 +41,6 @@
 
   .item_list .pic_list li {
     width: 315px; }
-    .item_list .pic_list li h4 {
-      line-height: 40px;
-      height: 40px; }
 
   .rightNav {
     margin-right: -660px; }
@@ -62,9 +59,6 @@
 
   .item_list .pic_list li {
     width: 288px; }
-    .item_list .pic_list li h4 {
-      line-height: 40px;
-      height: 40px; }
   .item_list .department_list li {
     height: auto; }
 
@@ -91,9 +85,6 @@
 
   .item_list .pic_list li {
     width: 255px; }
-    .item_list .pic_list li h4 {
-      line-height: 40px;
-      height: 40px; }
   .item_list .standard p {
     bottom: -25px;
     margin: 0 50px -15px; }
@@ -240,7 +231,6 @@
   .item_list header {
     padding-top: 20px; }
     .item_list header h2 {
-      font-size: 24px;
       line-height: 40px;
       height: 40px;
       padding-bottom: 0px;
@@ -297,13 +287,13 @@
     top: 5px; }
     .topBar_info .cartBtn i {
       background: url("../images/top_car.png") no-repeat 0 0;
-      width: 30px;
-      height: 28px;
+      width: 26px;
+      height: 25px;
       background-size: 100%; }
   .topBar_info .accountInfo {
     display: block; }
   .topBar_info .wapUser {
-    width: 20px;
+    width: 18px;
     position: relative;
     top: 15px;
     margin-right: 10px;
@@ -352,7 +342,8 @@
         border-top-color: transparent; }
 
   .nav ul li {
-    font-size: 17px; }
+    font-size: 17px;
+    margin-left: 0px; }
     .nav ul li a {
       padding: 0 5px; }
 
@@ -414,12 +405,52 @@
     margin-bottom: 10px;
     display: none; }
 
-  .nav ul li.on {
-    background: none; }
-  .nav ul li a {
-    padding: 0px; }
-  .nav ul i {
-    display: none; }
+  .nav {
+    height: 80px;
+    line-height: inherit; }
+    .nav ul li.on {
+      background-color: inherit; }
+    .nav ul li.index {
+      display: none; }
+    .nav ul li:last-child i {
+      display: inline-block; }
+    .nav ul li a {
+      padding: 50px 0px 0;
+      position: relative; }
+    .nav ul li p {
+      display: block;
+      margin: 5px 0 -3px; }
+    .nav ul li i {
+      display: inline-block;
+      width: 45px;
+      height: 45px;
+      float: none;
+      position: static;
+      border: none;
+      background: url("../images/icon.png");
+      background-size: 600px;
+      margin: 0px;
+      position: absolute;
+      left: 50%;
+      top: 4px;
+      margin-left: -22px; }
+      .nav ul li i.n01 {
+        background-position: 0px -1041px; }
+      .nav ul li i.n02 {
+        background-position: -54px -1041px; }
+      .nav ul li i.n03 {
+        background-position: -110px -1041px; }
+      .nav ul li i.n04 {
+        background-position: -166px -1041px; }
+      .nav ul li i.n05 {
+        background-position: -222px -1041px; }
+      .nav ul li i.n06 {
+        background-position: -276px -1041px; }
+    .nav ul li:hover i {
+      background-image: url("../images/icon.png");
+      background-size: 600px; }
+    .nav ul i {
+      display: none; }
 
   .swiper-container {
     height: 100%;
@@ -438,7 +469,8 @@
   .standard_wrapper {
     background-color: #48BED8;
     color: #FFF;
-    margin-bottom: -50px; }
+    margin-bottom: -50px;
+    padding: 30px 0; }
 
   .cart .empty-cart .empty-cart-box {
     height: 160px; }
@@ -453,14 +485,13 @@
         height: auto;
         border: 1px solid #dddddd; }
         .item_list .pic_list ul li a h4 {
-          line-height: 40px;
-          height: 40px;
+          line-height: 50px;
+          height: 50px;
           position: relative;
-          margin-top: -40px;
+          margin-bottom: -30px;
           font-size: 20px;
           background: none;
           color: #48BED8;
-          margin-bottom: 10px;
           overflow: hidden;
           background-color: rgba(255, 255, 255, 0.75);
           text-align: right;
@@ -477,7 +508,7 @@
         .item_list .pic_list ul li .price {
           padding-top: 0px;
           position: absolute;
-          bottom: 65px;
+          bottom: 80px;
           left: 10px; }
           .item_list .pic_list ul li .price .new {
             font-size: 18px; }
@@ -493,10 +524,12 @@
         display: block;
         position: static;
         color: #48BED8;
-        font-size: 18px;
-        font-weight: bold;
+        font-size: 22px;
+        font-weight: normal;
         text-align: left;
-        padding-left: 10px; }
+        padding-left: 20px; }
+      .item_list .department_list ul li p {
+        padding-left: 20px; }
     .item_list .standard {
       border: none; }
       .item_list .standard h2 {
@@ -522,8 +555,9 @@
             width: 100%;
             height: auto; }
           .item_list .feature ul li figure figcaption {
-            padding-top: 5px;
-            font-size: 20px; }
+            padding-top: 0px;
+            font-size: 20px;
+            margin-top: -5px; }
           .item_list .feature ul li figure em {
             padding: 5px 0 10px;
             color: #FFF;
@@ -590,7 +624,7 @@
   .footer .qrcode {
     width: 100%;
     padding-top: 20px;
-    text-align: center; }
+    text-align: left; }
     .footer .qrcode .weixin {
       display: inline-block; }
     .footer .qrcode figure {
@@ -679,7 +713,7 @@
     .left-nav-tit .nav_toggle {
       position: absolute;
       right: 10px;
-      top: 10px;
+      top: 12px;
       float: right;
       width: 35px;
       height: 35px;
@@ -687,7 +721,7 @@
       .left-nav-tit .nav_toggle span, .left-nav-tit .nav_toggle span:before, .left-nav-tit .nav_toggle span:after {
         border-radius: 1px;
         height: 4px;
-        width: 35px;
+        width: 25px;
         background: white;
         position: absolute;
         display: block;
