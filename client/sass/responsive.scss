@@ -393,7 +393,7 @@ $conWidth:1600px;
     .department_list{
       ul{
         li{
-          border: none;
+          border: none;padding-bottom: 10px;
           h4{margin: 0px;background: none;display: block;position: static;color: $textc_48B;font-size: 22px;font-weight: normal;text-align:left;padding-left: 20px;}
           p{padding-left: 20px;}
         }
@@ -421,6 +421,14 @@ $conWidth:1600px;
       }
     }
   }
+  .treat_list{background-color: $bgc_gray_F5;margin-top: -10px;
+    ul{
+      li{
+        background-color: $white;
+      }
+    }
+  }
+  .boxBg{background: none;}
   .goods_basic{
     .wrapper{overflow: visible;}
   }
