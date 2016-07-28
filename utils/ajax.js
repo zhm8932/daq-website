@@ -70,7 +70,7 @@ function sysParam(apiName,bizParam,accessToken) {
 
 /**
  * 向[JAVA]服务器发起请求的公共方法
- * 如果出现错误,该方法默认直接处理。如不需处理,则把客户端请求req的属性autoHandleError设为true
+ * 如果出现错误,该方法默认直接处理。如不需处理,则把客户端请求req的属性autoHandleError设为false
  * 默认处理错误需设置客户端请求req的属性resType:'html'或'json'。默认为json
  * @param method http方法:DELETE、PUT、GET、POST
  * @param apiName 接口名称
