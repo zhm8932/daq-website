@@ -67,7 +67,7 @@ define(function (require, exports, module) {
     }
 
     function delCartItem($this) {
-        console.log($this)
+        console.log($this);
         login.CheckLogin(function() {
             utils.ShowComfirmDialog({
                 tipText:'确定删除吗?',
