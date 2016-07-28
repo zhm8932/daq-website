@@ -159,10 +159,9 @@
     font-size: 18px; }
 
   .outpatient img {
-    width: 100%; }
+    width: 50%; }
   .outpatient .outpatient-info {
-    width: 100%;
-    margin-top: 20px; }
+    width: 46%; }
 
   .reg-doc-list .btn {
     display: inline-block;
@@ -1308,10 +1307,7 @@
     border-bottom: 1px solid #dddddd;
     padding-bottom: 5px; }
     .table-div .table-tr .check {
-      width: 30px;
-      margin-right: 0px;
-      margin: 12% 0 0 0;
-      padding: 0px; }
+      width: 30px; }
     .table-div .table-tr .name {
       width: auto;
       float: none; }

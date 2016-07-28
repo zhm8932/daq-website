@@ -275,16 +275,23 @@ define(function(require){
     }
 
     function checkArea(){
-        var locals_address = JSON.parse($('#locals_address').val());
-        var fit_area = JSON.parse($('#fit_area').val());
+        var locals_address,fit_hospital;
+        try{
+            locals_address = JSON.parse($('#locals_address').val());
+            fit_hospital = JSON.parse($('#fit_hospital').val());
+        }catch(e){
+            console.log(e);
+            return false;
+        }
         var currentCityId = locals_address[1].categoryId;
-        for(var i = 0; i < fit_area.length; i++){
-            if(fit_area[i].categoryId == currentCityId){
+        for(var i = 0; i < fit_hospital.length; i++){
+            if(fit_hospital[i].city == currentCityId){
+                $('#hospitalName').text(fit_hospital[i].hospitalName);
                 return true;
             }
         }
         $('.submitBox button').addClass('disabled');
-        $('#district .area-tip').removeClass('none');
+        $('#hospital .hospital-tip').removeClass('none');
         return false;
     }
 

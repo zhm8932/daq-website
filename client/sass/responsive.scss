@@ -144,10 +144,9 @@ $conWidth:1600px;
   /*诊疗服务列表*/
   .treat-name{font-size:18px;}
   .outpatient{
-    img{width:100%;}
+    img{width:50%;}
     .outpatient-info{
-      width:100%;
-      margin-top:20px;
+      width:46%;
     }
   }
   .reg-doc-list{
@@ -934,7 +933,7 @@ $conWidth:1600px;
   .table-div{
     .table-tr{
       border-bottom: 1px solid $bdrc_ddd;padding-bottom: 5px;
-      .check{width: 30px;margin-right:0px;margin: 12% 0 0 0;padding: 0px;}
+      .check{width: 30px;}
       .name{width:auto;float: none;
         span{float: none;}
         img{width: 25%;}

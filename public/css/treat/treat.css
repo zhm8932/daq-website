@@ -70,8 +70,11 @@
     vertical-align: middle;
     width: 50%;
     margin-left: 5%; }
+    .reg-list tr .doctor .doctor-info .doctor-name {
+      font-size: 16px; }
   .reg-list tr td:nth-child(1), .reg-list tr td:nth-child(2) {
-    text-align: left; }
+    text-align: left;
+    vertical-align: top; }
   .reg-list tr td:nth-child(3), .reg-list tr td:nth-child(4), .reg-list tr td:nth-child(5), .reg-list tr td:nth-child(6), .reg-list tr td:nth-child(7), .reg-list tr td:nth-child(8), .reg-list tr td:nth-child(9) {
     border-right: 1px solid #fff;
     background: #E5FAFF; }
@@ -195,4 +198,5 @@
   border: 1px solid #48BED8;
   background-color: #48BED8;
   font-size: 16px;
-  margin-left: 175px; }
+  margin-left: 175px;
+  outline: none; }

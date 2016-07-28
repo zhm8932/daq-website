@@ -67,12 +67,12 @@ define(function (require, exports, module) {
     }
 
     function delCartItem($this) {
-        console.log($this)
+        console.log($this);
         login.CheckLogin(function() {
             utils.ShowComfirmDialog({
                 tipText:'确定删除吗?',
                 okCallback:function(){
-                    $this.addClass('disabled').off('click');
+                    $this.off('click');
                     var id = $($this).closest('.operation').attr('data-id');
                     utils.SendAjax({
                         url: '/trade/cart/delItem',
@@ -87,7 +87,7 @@ define(function (require, exports, module) {
                             updateTotalView();
                         },
                         errorFun: function (result) {
-                            $this.removeClass('disabled').on('click', function () {
+                            $this.on('click', function () {
                                 delCartItem($this);
                             });
                         }
