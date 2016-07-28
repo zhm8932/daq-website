@@ -43,7 +43,13 @@ exports.get_goods_detail = function (req,res,next) {
 
     var bizParam = {"goodsId":goodsId};
 
-    util.ajax('GET',api.GoodsDetail,req, bizParam,function (data,success) {
+    // var apiName = api.GoodsDetail
+    var apiName = api.GoodsFindGoodsByIdToPC;
+    if(browser.mobile){
+        apiName = api.GoodsFindGoodsByIdToMobile
+    }
+    // console.log("apiName:",apiName)
+    util.ajax('GET',apiName,req, bizParam,function (data,success) {
         var json = JSON.parse(data);
         console.log("json.success::",json.success)
         res.locals.get_goods_detail_success = json.success

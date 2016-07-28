@@ -22,31 +22,42 @@ exports.get_goods_detail = function (req,res) {
 
     if(get_goods_detail.success){
         get_goods_detail = get_goods_detail.data
-        get_goods_detail.productKeyAttributeList.forEach(function (item,index) {
-            console.log(item)
-            if(item.attributeName=='title'){
-                title = item.value
-            }
-            if(item.attributeName=='keyword'){
-                keywords = item.value
-            }
-            if(item.attributeName=='page_description'){
-                description = item.value
-            }
-            if(item.attributeName=='transmit_type'){
-                res.locals.transmitType = JSON.parse(item.value)
-            }
-            if(item.attributeName=='transmit_items'){
-                res.locals.transmitItems = JSON.parse(item.value)
-            }
-            if(item.attributeName=='fit_people'){
-                res.locals.fitPeople = item.value;
-            }
-            if(item.attributeName=='slogan'){
-                res.locals.slogan = item.value
-            }
+        if(get_goods_detail.productKeyAttributeList){
+            get_goods_detail.productKeyAttributeList.forEach(function (item,index) {
+                console.log(item)
+                if(item.attributeName=='title'){
+                    title = item.value
+                }
+                if(item.attributeName=='keyword'){
+                    keywords = item.value
+                }
+                if(item.attributeName=='page_description'){
+                    description = item.value
+                }
+                if(item.attributeName=='transmit_type'){
+                    res.locals.transmitType = JSON.parse(item.value)
+                }
+                if(item.attributeName=='transmit_items'){
+                    res.locals.transmitItems = JSON.parse(item.value)
+                }
+                if(item.attributeName=='fit_people'){
+                    res.locals.fitPeople = item.value;
+                }
+                if(item.attributeName=='slogan'){
+                    res.locals.slogan = item.value
+                }
 
-        })
+            })
+        }
+        title = get_goods_detail.title
+        keywords = get_goods_detail.keywords
+        description = get_goods_detail.page_description
+        res.locals.transmitType = JSON.parse(get_goods_detail.transmitType)
+        res.locals.transmitItems = JSON.parse(get_goods_detail.transmitItems)
+        res.locals.fitPeople = get_goods_detail.fitPeople
+        res.locals.fitPeople = get_goods_detail.fitPeople
+        res.locals.slogan = get_goods_detail.slogan
+
     }
 
     res.render('screenings/goods_detail', {

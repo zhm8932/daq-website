@@ -44,7 +44,7 @@ block content
                                     label.text-sec 样品种类：
                                     each item,index in transmitItems
                                         | #{item.name}
-                                        if(index != transmitItems.length-1)
+                                        if(index != transmitItems.length-1&&transmitItems.length!=1)
                                             |、
                                 .type-box
                                     .box-header
@@ -62,10 +62,15 @@ block content
 
 
                                     div#district
-                                        label.text-sec 服务区域：
-                                        -var address = JSON.parse(locals_address)
-                                        span#province #{address[0].name}
-                                        span#city #{address[1].name}
+                                        label.text-sec 服务门诊：
+                                        //-var address = JSON.parse(locals_address)
+                                        //span#province #{address[0].name}
+                                        //span#city #{address[1].name}
+                                        if goods_detail.fitHospital
+                                            -var fitHospital = JSON.parse(goods_detail.fitHospital)
+                                            each item in fitHospital
+                                              //-span #{JSON.stringify(item)}
+                                              span(data-hospitalCode=item.hospitalCode) #{item.hospitalName}
                                         #area.select-box.none
                                             .selected
                                                 span.text
@@ -108,9 +113,10 @@ block content
                             | 相关问题
                         div!= goods_detail.commonQa
 
-            each item in goods_detail.saleAttributes
-                if item.attributeName == "fit_area"
-                    input#fit_area(type="hidden",value="#{item.value}")
+            if goods_detail.fitHospital
+                each item in JSON.parse(goods_detail.fitHospital)
+                    if item.attributeName == "fit_area"
+                        input#fit_area(type="hidden",value="#{item.hospitalName}")
             input#locals_address(type="hidden",value="#{locals_address}")
             input#goods(type="hidden",data-id="#{goods_detail.id}",data-goodsName="#{goods_detail.goodsName}",data-imgUrl="#{goods_detail.goodsImages[0].imageUrl}",data-discountPrice="#{goods_detail.discountPrice}",data-address="#{locals_address}",data-city="#{JSON.parse(locals_address)[1].name}")
             form#submitForm(action = "/trade/order/comfirmView",method="POST")
