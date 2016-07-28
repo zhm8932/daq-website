@@ -141,6 +141,7 @@
   .goods_basic dl .submitBox {
     padding-top: 20px; }
     .goods_basic dl .submitBox .submitBtn {
+      height: 50px;
       padding: 0 40px;
       line-height: 50px;
       font-size: 18px;
@@ -173,7 +174,6 @@
   .goods_detail article h3 {
     color: #48BED8;
     font-size: 16px;
-    font-weight: bold;
     margin-bottom: 10px; }
     .goods_detail article h3 i {
       background-position: -213px 6px;
