@@ -164,6 +164,7 @@ define(function (require, exports, module) {
             item.discountPrice = operation.attr('data-discountPrice');
             item.transmitType = operation.attr('data-transmitType');
             item.address = operation.attr('data-address');
+            item.hospital = operation.attr('data-hospital');
             item.subTotal = operation.attr('data-subTotal');
             item.favPrice = operation.attr('data-favPrice');
             items.push(item);

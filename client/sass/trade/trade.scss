@@ -79,15 +79,8 @@ header {
   width: 100%;
   text-align: left;
   margin-bottom: 200px;
-  .thead {
-    position: relative;
-    div {
-      float: left;
-      padding: 10px;
-      box-sizing: border-box;
-    }
-  }
-  .table-tr {
+
+  .table-tr,.thead {
     position: relative;
     border-bottom: 1px solid #DDDDDD;
     div {
@@ -146,6 +139,15 @@ header {
     }
   }
 
+  .thead {
+    position: relative;
+    border-bottom: none;
+    div {
+      float: left;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+  }
   .tfoot {
     width: 100%;
     height: 60px;

@@ -60,7 +60,7 @@ block content
                                                     mark 服务费￥
                                                         +transferUnit(value)
 
-                                    div#hospital
+                                    div
                                         label.text-sec 服务门诊：
                                         span#hospitalName
                                         span.hospital-tip.text-sec.small-text.none （该城市暂无门诊提供服务）
@@ -114,6 +114,7 @@ block content
                 if item.attributeName == "fit_hospital"
                     input#fit_hospital(type="hidden",value="#{item.value}")
             input#locals_address(type="hidden",value="#{locals_address}")
+            input#hospital(type="hidden",value="")
             input#goods(type="hidden",data-id="#{goods_detail.id}",data-goodsName="#{goods_detail.goodsName}",data-imgUrl="#{goods_detail.goodsImages[0].imageUrl}",data-discountPrice="#{goods_detail.discountPrice}",data-address="#{locals_address}",data-city="#{JSON.parse(locals_address)[1].name}")
             form#submitForm(action = "/trade/order/comfirmView",method="POST")
                 input(type="hidden",name="items")

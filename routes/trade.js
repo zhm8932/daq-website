@@ -20,6 +20,7 @@ router.get('/cart/list', authority.loginRequired,function (req, res, next) {
         }
     });
 });
+
 router.get('/cart/GetCartCount', authority.loginRequired,function (req, res, next) {
     request.GetCartList(req, function (data, success) {
         res.send(data);

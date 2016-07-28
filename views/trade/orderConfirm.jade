@@ -38,7 +38,7 @@ block content
                     -var cityId='',proCity='';
                     -var sampleJson = JSON.parse(locals_sample);
                     each item,i in JSON.parse(data.items)
-                        tr(data-address="#{item.address}",data-transmitType="#{item.transmitType}",data-goodsId="#{item.goodsId}",data-id="#{item.id}")
+                        tr(data-address="#{item.address}",data-hospital="#{item.hospital}",data-transmitType="#{item.transmitType}",data-goodsId="#{item.goodsId}",data-id="#{item.id}")
                             -var discountPrice = parseFloat(item.discountPrice);
                             -var servicePrice = parseFloat(item.favPrice);
                             - discountPriceTotal += discountPrice;
@@ -58,6 +58,8 @@ block content
                                             if i==0 && j < 2
                                                 -proCity += areaObj.name;
                                             | #{areaObj.name}
+                                p.text-sec 服务门诊:#{JSON.parse(item.hospital).hospitalName}
+
                             td.text-stress ￥#{(parseFloat(item.subTotal)/100).toFixed(2)}
 
             .list-info.coupon-trigger
@@ -92,12 +94,12 @@ block content
             input(type="hidden",id="discountPriceTotal",value="#{discountPriceTotal}")
             input(type="hidden",id="servicePriceTotal",value="#{servicePriceTotal}")
             input(type="hidden",id="cityId",value="#{cityId}")
+            //input(type="hidden",id="hospital",value="#{cityId}")
             input(type="hidden",id="orderToken",value="#{orderToken}")
 
             form#submitForm(action = "/trade/order/create",method="POST")
                 input(type="hidden",name="orderPlaceDTO")
                 input(type="hidden",name="ids")
     include ../includes/footer
-    script(src="/js/trade/order_confirm.js")
     script.
         seajs.use('/js/trade/order_confirm.js')

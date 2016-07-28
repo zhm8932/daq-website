@@ -45,6 +45,10 @@ exports.AddCartItem = function (req, callback) {
                 {
                     "attributeName": "transmit_type",
                     "value": body.transmit_type
+                },
+                {
+                    "attributeName": "hospital",
+                    "value": body.hospital
                 }
             ],
             "count": 1,

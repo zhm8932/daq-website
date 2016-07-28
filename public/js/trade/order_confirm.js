@@ -4,17 +4,12 @@ define(function (require, exports, module) {
 
     var unfitCouponNum = 0;
     var fitCouponNum = 0;
-    var checkSubmitFlg = false;
 
     $(function () {
         $('.add-coupon').on('click', function () {
             addCoupon($(this));
         });
         $('#submit-btn').on('click', function () {
-            if(checkSubmitFlg){
-                utils.ShowComfirmDialog({tipText:'请勿重复提交订单',noConfirmBtn:true});
-                return false;
-            }
             submitOrder($(this));
         });
 
@@ -42,14 +37,15 @@ define(function (require, exports, module) {
         var id = trs.eq(0).attr('data-goodsid');
         var ids = [];
         trs.each(function (index, ele) {
-            var $this = $(ele);
+            var tr = $(ele);
             var item = {};
-            item.goodsId = $this.attr('data-goodsid');
-            if($this.attr('data-id') && $this.attr('data-id') != 'undefined'){
-                ids.push($this.attr('data-id'));
+            item.goodsId = tr.attr('data-goodsid');
+            if(tr.attr('data-id') && tr.attr('data-id') != 'undefined'){
+                ids.push(tr.attr('data-id'));
             }
-            item.transmitType = $this.attr('data-transmitType');
-            item.address = JSON.parse($this.attr('data-address'));
+            item.transmitType = tr.attr('data-transmitType');
+            item.address = JSON.parse(tr.attr('data-address'));
+            item.hospital = JSON.parse(tr.attr('data-hospital'));
             item.amount = 1;//默认数量为1
             items.push(item);
         });

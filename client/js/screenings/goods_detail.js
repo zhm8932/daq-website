@@ -182,6 +182,7 @@ define(function(require){
             item.imgUrl = goods.attr('data-imgUrl');
             item.goodsName = goods.attr('data-goodsName');
             item.discountPrice = goods.attr('data-discountPrice');
+            item.hospital = $('#hospital').val();
             items.push(item);
 
             $('#submitForm input[name=items]').val(JSON.stringify(items));
@@ -232,11 +233,17 @@ define(function(require){
                 address.push(area);
             }
 
+            // var hospital = {
+            //     "hospitalCode": "H1001",
+            //     "hospitalName": "都安全健康产业（深圳市南山区门诊部)"
+            // };
+
             var goodsId = $('#goods').attr('data-id');
             var param = {
                 "address":JSON.stringify(address),
                 "transmit_type":transmitValue,
-                "goodsId": goodsId
+                "goodsId": goodsId,
+                "hospital":$('#hospital').val()
             };
 
             utils.SendAjax({
@@ -285,13 +292,19 @@ define(function(require){
         }
         var currentCityId = locals_address[1].categoryId;
         for(var i = 0; i < fit_hospital.length; i++){
-            if(fit_hospital[i].city == currentCityId){
-                $('#hospitalName').text(fit_hospital[i].hospitalName);
+            var item = fit_hospital[i];
+            if(item.city == currentCityId){
+                $('#hospitalName').text(item.hospitalName);
+                var hospital = {
+                    hospitalCode:item.hospitalCode,
+                    hospitalName:item.hospitalName
+                };
+                $('#hospital').val(JSON.stringify(hospital));
                 return true;
             }
         }
         $('.submitBox button').addClass('disabled');
-        $('#hospital .hospital-tip').removeClass('none');
+        $('.hospital-tip').removeClass('none');
         return false;
     }
 

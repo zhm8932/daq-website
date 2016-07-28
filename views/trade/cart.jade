@@ -45,6 +45,7 @@ block content
                             -var address = '',area = '';
                             -var city = '';
                             -var transmitType = '';
+                            -var hospital= null;
                             .check
                                 span.checkbox
                             .name
@@ -70,10 +71,13 @@ block content
                                                     -cityId = areaObj.categoryId;
                                                 if i<2
                                                    -proCity += areaObj.name;
+                                    if 'hospital' == cartItemAttr.attributeName
+                                        -hospital = value;
                                 p.text-sec 取样地址:#{area}
+                                p.text-sec 服务门诊:#{hospital.hospitalName}
                             -var subTotal = discountPrice+favPrice;
                             .tot-price.text-stress ￥#{(subTotal/100).toFixed(2)}
-                            .operation(data-id="#{item.id}",data-goodsId="#{item.goodsId}",data-goodsName="#{item.goodsName}",data-imgUrl="#{imgUrl}",data-discountPrice="#{discountPrice}",data-transmitType="#{transmitType}",data-subTotal="#{subTotal}",data-favPrice="#{favPrice}",data-address="#{address}",data-city="#{city}")
+                            .operation(data-id="#{item.id}",data-goodsId="#{item.goodsId}",data-hospital='#{JSON.stringify(hospital)}',data-goodsName="#{item.goodsName}",data-imgUrl="#{imgUrl}",data-discountPrice="#{discountPrice}",data-transmitType="#{transmitType}",data-subTotal="#{subTotal}",data-favPrice="#{favPrice}",data-address="#{address}",data-city="#{city}")
                                 a.del-cart-item 删除
                             if item.isfit
                                 .mask.back-mask.none
