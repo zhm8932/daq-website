@@ -135,7 +135,7 @@ $winW_2560:2560px;
 }
 
 @mixin btn($bgc,$bgcHover,$textc,$textcHover,$borderC){
-  background-color:$bgc; border: none; color:$textc; line-height: 30px; cursor: pointer; padding: 0 20px; margin:10px 0;display: inline-block; font-family: "微软雅黑","Microsoft Himalaya";border:1px solid $borderC;
+  background-color:$bgc; border: none; color:$textc; line-height: 30px; cursor: pointer; padding: 0 20px; margin:10px 0;display: inline-block; font-family: "微软雅黑";border:1px solid $borderC;
   &:hover{
     @include transition(all .3s);
     background-color: $bgcHover;color: $textcHover;border-color:$bgcHover;

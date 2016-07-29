@@ -247,7 +247,7 @@ select {
 }
 
 .submitBtn {
-  @include btn($bgc_48B, $red_ED9, $white, $white,$bgc_48B);
+  @include btn($bgc_48B, #3DAAC2, $white, $white,$bgc_48B);
 }
 
 .cancelBtn {
@@ -960,6 +960,9 @@ select {
       //background-color:$bgc_ccc;
       color: #ffffff;
       margin: 0 auto;border: none;height: 32px;line-height: 32px;width: 100%;outline: none;
+      &:hover{
+        background-color: #3DAAC2;
+      }
     }
     .disabled{
       background-color:$bgc_ccc;cursor: default;
@@ -1080,6 +1083,9 @@ select {
         background-color: $navBgColor;
         color: #ffffff;
         margin: 0 auto;border: none;height: 32px;line-height: 32px;width: 100%;outline: none;
+        &:hover{
+          background-color: #3DAAC2;
+        }
     }
     .disabled{
       background-color:$bgc_ccc;cursor: default;
