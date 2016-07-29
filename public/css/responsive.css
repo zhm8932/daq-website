@@ -399,6 +399,8 @@
 
   .loginBox2 .bd .prompt i {
     vertical-align: top; }
+  .loginBox2 .submitBox .ok {
+    font-size: 18px; }
 
   .positon {
     margin-bottom: 10px;
@@ -552,7 +554,7 @@
         .item_list .feature ul li p {
           display: none; }
         .item_list .feature ul li figure {
-          padding: 0 15px; }
+          padding: 0 30px; }
           .item_list .feature ul li figure img {
             width: 100%;
             height: auto; }
@@ -724,23 +726,23 @@
     .left-nav-tit .nav_toggle {
       position: absolute;
       right: 10px;
-      top: 12px;
+      top: 14px;
       float: right;
-      width: 35px;
-      height: 35px;
+      width: 25px;
+      height: 25px;
       display: block; }
       .left-nav-tit .nav_toggle span, .left-nav-tit .nav_toggle span:before, .left-nav-tit .nav_toggle span:after {
         border-radius: 1px;
-        height: 4px;
+        height: 3px;
         width: 25px;
         background: white;
         position: absolute;
         display: block;
         content: ''; }
       .left-nav-tit .nav_toggle span:before {
-        top: 10px; }
+        top: 9px; }
       .left-nav-tit .nav_toggle span:after {
-        top: 20px; }
+        top: 18px; }
       .left-nav-tit .nav_toggle.active span {
         height: 0px; }
         .left-nav-tit .nav_toggle.active span:before {
@@ -1436,32 +1438,33 @@
     left: 0px;
     z-index: 99;
     width: 100%;
-    height: 60px;
-    line-height: 60px;
+    height: 50px;
+    line-height: 50px;
     color: #FFF; }
     .footerWap a {
-      font-size: 30px;
+      font-size: 26px;
       color: #FFF;
-      padding-left: 15px;
-      font-family: ArialMT; }
+      padding-left: 15px; }
       .footerWap a i {
-        background-position: -56px -602px;
-        width: 48px;
-        height: 40px;
+        background-position: -35px -422px;
+        width: 40px;
+        height: 35px;
         position: relative;
         top: 10px;
-        margin-right: 5px; }
+        margin-right: 5px;
+        background-size: 700px; }
     .footerWap .gotoTop {
       width: 100px;
       float: right;
       background-color: #4A4A4A;
-      line-height: 30px;
+      line-height: 20px;
       text-align: center;
       display: none; }
       .footerWap .gotoTop i {
-        background-position: -358px 0;
-        width: 45px;
-        margin: 0 0 -14px 0; }
+        background-position: -210px 0;
+        width: 34px;
+        margin: 0 0 -16px 0;
+        background-size: 600px; }
       .footerWap .gotoTop em {
         display: block;
         height: 30px; }
