@@ -515,6 +515,8 @@
             display: none; }
     .item_list .pic_list .more {
       margin-top: 20px; }
+    .item_list .goods_list ul li a h4 {
+      top: -50px; }
     .item_list .department_list ul li {
       border: none;
       padding-bottom: 10px; }
