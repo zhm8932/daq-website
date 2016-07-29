@@ -127,6 +127,7 @@ define(function(require){
             namespace: "touchslider",
             next: ".next", // next 样式指定
             pagination: ".tit span",
+            heightType:true,
             currentClass: "on", // current 样式指定
             prev: ".prev", // prev 样式指定
             // scroller: viewport.children(),
