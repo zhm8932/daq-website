@@ -42,7 +42,8 @@
       font-size: 16px;
       font-weight: bold; }
       .info_detail hgroup h4 i {
-        margin-right: 5px; }
+        margin-right: 5px;
+        vertical-align: middle; }
       .info_detail hgroup h4 .jieshao {
         background-position: 0px -99px; }
       .info_detail hgroup h4 .address {

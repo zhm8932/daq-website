@@ -666,8 +666,6 @@ select {
         text-align: left; }
       .item_list .goods_list ul li a:hover h4 {
         color: #48BED8; }
-      .item_list .goods_list ul li:hover {
-        box-shadow: 0px 0px 3px 0px #D2D2D2; }
   .item_list .feature ul {
     margin-left: -4%;
     padding-top: 40px; }
@@ -1313,6 +1311,7 @@ select {
     z-index: 10;
     cursor: pointer;
     background-size: 100%;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     display: none; }

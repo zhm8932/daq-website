@@ -45,6 +45,7 @@ http://touchslider.com
 				pagination: "." + namespace + "-nav-item",
 				currentClass: namespace + "-nav-item-current",
 				duration: 350,
+				heightType:false,
 				mouseTouch: true,
 				mobile:mobile
 				// [container, scroller]
@@ -66,10 +67,13 @@ http://touchslider.com
 			slides = scroller.children(),
 			pagination = $(options.pagination, container);
 
-		if (scroller.css("position") !== "absolute") {
+		pagination.first().addClass('on');
 
-			// var viewportHeight = viewport.height();
+		if (scroller.css("position") !== "absolute") {
 			var viewportHeight = viewport.children().children().height();
+			if(options.heightType){
+				viewportHeight = viewport.height();
+			}
 
 			// console.log(viewport)
 			// console.log(viewportHeight)

@@ -26,9 +26,10 @@
       max-height: 305px;
       overflow: hidden; }
     .goods_basic dl dt .tit {
-      margin: 20px 20px 0;
+      padding: 20px 20px 0;
       height: 90px;
-      overflow: hidden; }
+      overflow: hidden;
+      z-index: 2; }
       .goods_basic dl dt .tit div {
         width: 1000px; }
       .goods_basic dl dt .tit span {
@@ -43,7 +44,8 @@
         .goods_basic dl dt .tit span.on img {
           border: 1px solid #48BED8; }
     .goods_basic dl dt .switch {
-      position: relative; }
+      position: relative;
+      z-index: 3; }
       .goods_basic dl dt .switch div {
         position: absolute;
         top: 38px;
@@ -54,13 +56,13 @@
       .goods_basic dl dt .switch .prev {
         left: 0px; }
         .goods_basic dl dt .switch .prev i {
-          background-position: 0px -128px; }
+          background-position: -52px -128px; }
         .goods_basic dl dt .switch .prev:hover i {
           background-position: 0px -163px; }
       .goods_basic dl dt .switch .next {
         right: 0px; }
         .goods_basic dl dt .switch .next i {
-          background-position: -21px -128px; }
+          background-position: -69px -128px; }
         .goods_basic dl dt .switch .next:hover i {
           background-position: -21px -163px; }
   .goods_basic dl .slideBox .bd img {

@@ -15,7 +15,7 @@
         max-height: 305px;overflow: hidden;
       }
       .tit{
-        margin: 20px 20px 0;height: 90px;overflow:hidden;
+        padding: 20px 20px 0;height: 90px;overflow:hidden;z-index: 2;
         div{width: 1000px;}
         span{
           margin: 0 5px 10px; float: left;display: inline;cursor: pointer;
@@ -28,7 +28,7 @@
           }
         }
       }
-      .switch{position: relative;
+      .switch{position: relative;z-index: 3;
         div{
           position: absolute;top: 38px;cursor: pointer;
           i{width: 24px;height: 30px;}
@@ -36,14 +36,16 @@
         }
         .prev{
           left: 0px;
-          i{background-position: 0px -128px;}
+          //i{background-position: 0px -128px;}
+          i{background-position: -52px -128px}
           &:hover{
             i{background-position: 0px -163px;}
           }
         }
         .next{
           right: 0px;
-          i{background-position: -21px -128px}
+          //i{background-position: -21px -128px}
+          i{background-position: -69px -128px}
           &:hover{
             i{background-position: -21px -163px;}
           }
