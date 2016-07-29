@@ -44,7 +44,10 @@ define(function (require, exports, module) {
                 ids.push(tr.attr('data-id'));
             }
             item.transmitType = tr.attr('data-transmitType');
-            item.address = JSON.parse(tr.attr('data-address'));
+            var addressArr = JSON.parse(tr.attr('data-address'));
+            for(var i = 0; i < addressArr.length; i++){
+                item.address = ''+addressArr[i].name;
+            }
             item.hospital = JSON.parse(tr.attr('data-hospital'));
             item.amount = 1;//默认数量为1
             items.push(item);
