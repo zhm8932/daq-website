@@ -230,3 +230,6 @@
   display: none; }
   .account .prompt i {
     background-position: -178px -22px; }
+
+.order-detail, .reservation-detail {
+  padding-bottom: 100px; }

@@ -36,10 +36,10 @@ block content
                             -var faceValue, enoughMoney;
                             -var fitAreaArr = data.fitArea;
                             -var j;
-                            -var areaNames = [];
+                            -var hospitalNames = [];
                             -var areaIds = [];
-                            for city in JSON.parse(item.fitArea)
-                                -areaNames.push(city.name);
+                            for hospital in JSON.parse(item.fitArea)
+                                -hospitalNames.push(hospital.hospitalName);
                             tr
                                 if item.ftype == 'cash'
                                     td #{(parseFloat(item.faceValue) / 100).toFixed(2)}元
@@ -51,7 +51,7 @@ block content
                                 else if item.ftype == 'discount'
                                     td #{item.discount}折
                                     td 最多可抵#{(parseFloat(item.mostDeduction)/100).toFixed(2)}元
-                                td 限定地区:#{areaNames.join(',')}
+                                td 限#{hospitalNames.join('、')}
                                 td #{moment(item.beginTime).format('YYYY-MM-DD')} 至 #{moment(item.endTime).format('YYYY-MM-DD')}
             //-else
                 .clearfix

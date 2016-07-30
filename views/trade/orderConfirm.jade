@@ -10,6 +10,7 @@ block content
         .confirm-buy
             -var discountPriceTotal = 0;
             -var servicePriceTotal = 0;
+            -var currentHospitalCode = '';
             .trade-step
                 p.cart.step-wrapper
                     span
@@ -59,6 +60,7 @@ block content
                                                 -proCity += areaObj.name;
                                             | #{areaObj.name}
                                 p.text-sec 服务门诊:#{JSON.parse(item.hospital).hospitalName}
+                                -currentHospitalCode = JSON.parse(item.hospital).hospitalCode;
 
                             td.text-stress ￥#{(parseFloat(item.subTotal)/100).toFixed(2)}
 
@@ -90,11 +92,12 @@ block content
                         span.text-sec 应支付:
                         span.price.text-stress ￥#{(parseFloat(data.totalPrice)/100).toFixed(2)}
                         span.fav (已优惠￥0.00)
+
             input(type="hidden",id="goodsTotalPrice",value="#{data.totalPrice}")
             input(type="hidden",id="discountPriceTotal",value="#{discountPriceTotal}")
             input(type="hidden",id="servicePriceTotal",value="#{servicePriceTotal}")
             input(type="hidden",id="cityId",value="#{cityId}")
-            //input(type="hidden",id="hospital",value="#{cityId}")
+            input(type="hidden",id="currentHospitalCode",value="#{currentHospitalCode}")
             input(type="hidden",id="orderToken",value="#{orderToken}")
 
             form#submitForm(action = "/trade/order/create",method="POST")

@@ -45,9 +45,11 @@ define(function (require, exports, module) {
             }
             item.transmitType = tr.attr('data-transmitType');
             var addressArr = JSON.parse(tr.attr('data-address'));
+            var address = '';
             for(var i = 0; i < addressArr.length; i++){
-                item.address = ''+addressArr[i].name;
+                address += addressArr[i].name;
             }
+            item.address = address;
             item.hospital = JSON.parse(tr.attr('data-hospital'));
             item.amount = 1;//默认数量为1
             items.push(item);
@@ -203,26 +205,26 @@ define(function (require, exports, module) {
     function buildCouponTableTr(data) {
         var trArr = [];
         var discountPriceTotal = parseInt($('#discountPriceTotal').val());
-        var cityId = $('#cityId').val();
+        var currentHospitalCode = $('#currentHospitalCode').val();
         var faceValue, enoughMoney;
         var j;
         var fitAreaArr = JSON.parse(data.fitArea);
-        var areaNames = [];
-        var areaIds = [];
+        var hospitalNameList = [];
+        var hospitalCodeList = [];
         var isfit = false;//是否可使用
         var nowTime = new Date().getTime();
         console.log('===nowTime:'+nowTime+'---beginTime:'+data.beginTime+'----endTime:'+data.endTime);
         console.log(data.beginTime<=nowTime);
         for (j = 0; j < fitAreaArr.length; j++) {
-            areaNames.push(fitAreaArr[j].name);
-            areaIds.push(fitAreaArr[j].categoryId);
+            hospitalNameList.push(fitAreaArr[j].hospitalName);
+            hospitalCodeList.push(fitAreaArr[j].hospitalCode);
         }
 
 
         if (data.ftype == 'cash') {
             faceValue = parseFloat(data.faceValue);
             enoughMoney = parseFloat(data.enoughMoney);
-            if (!(discountPriceTotal >= enoughMoney && isInArea(cityId, areaIds) && nowTime >= data.beginTime && nowTime<=data.endTime)) {
+            if (!(discountPriceTotal >= enoughMoney && hospitalIsFit(currentHospitalCode, hospitalCodeList) && nowTime >= data.beginTime && nowTime<=data.endTime)) {
                 trArr.push('<tr data-id="' + data.couponCodeId + '" data-faceValue="' + faceValue + '" data-enoughMoney="' + enoughMoney + '" data-ftype="' + data.ftype + '"><td><span class="radio coupon-radio disabled"></span></td>');
                 isfit = false;
             } else {
@@ -237,7 +239,7 @@ define(function (require, exports, module) {
                 trArr.push('<td>满' + (enoughMoney / 100).toFixed(2) + '元使用</td>');
             }
         } else if (data.ftype == 'discount') {
-            if (!(isInArea(cityId, areaIds) && nowTime >= data.beginTime && nowTime<=data.endTime)) {
+            if (!(hospitalIsFit(currentHospitalCode, hospitalCodeList) && nowTime >= data.beginTime && nowTime<=data.endTime)) {
                 trArr.push('<tr data-id="' + data.couponCodeId + '" data-discount="' + data.discount + '" data-mostDeduction="' + data.mostDeduction + '" data-ftype="' + data.ftype + '"><td><span class="radio coupon-radio disabled"></span></td>');
                 isfit = false;
             } else {
@@ -249,7 +251,7 @@ define(function (require, exports, module) {
             trArr.push('<td>最多可抵' + (parseFloat(data.mostDeduction) / 100).toFixed(2) + '元</td>');
         }
 
-        trArr.push('<td>限定地区:' + areaNames.join(',') + '</td>');
+        trArr.push('<td>限' + hospitalNameList.join('、') + '</td>');
 
         trArr.push('<td >'+utils.GetLoacalDateString(data.beginTime)+' 至 ' + utils.GetLoacalDateString(data.endTime) + '</td></tr>');
 
@@ -262,12 +264,22 @@ define(function (require, exports, module) {
 
     }
 
-    function isInArea(id, areaIds) {
-        for (var i = 0; i < areaIds.length; i++) {
-            if (id == areaIds[i]) {
+    // function isInArea(id, areaIds) {
+    //     for (var i = 0; i < areaIds.length; i++) {
+    //         if (id == areaIds[i]) {
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+
+    function hospitalIsFit(hospitalCode, hospitalCodeList) {
+        for (var i = 0; i < hospitalCodeList.length; i++) {
+            if (hospitalCode === hospitalCodeList[i]) {
                 return true;
             }
         }
         return false;
     }
+
 });

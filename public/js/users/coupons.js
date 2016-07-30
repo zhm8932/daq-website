@@ -92,11 +92,11 @@ define(function (require, exports, module) {
         var enoughMoney;
         var fitAreaArr = JSON.parse(data.fitArea);
         var j;
-        var areaNames = [];
-        var areaIds = [];
+        var hospitalNameList = [];
+        var hospitalCodeList = [];
         for (j = 0; j < fitAreaArr.length; j++) {
-            areaNames.push(fitAreaArr[j].name);
-            areaIds.push(fitAreaArr[j].categoryId);
+            hospitalNameList.push(fitAreaArr[j].hospitalName);
+            hospitalCodeList.push(fitAreaArr[j].hospitalCode);
         }
 
         if (data.ftype == 'cash') {
@@ -115,7 +115,7 @@ define(function (require, exports, module) {
             trArr.push('<td>最多可抵' + (parseFloat(data.mostDeduction) / 100).toFixed(2) + '元</td>');
         }
 
-        trArr.push('<td>限定地区:' + areaNames.join(',') + '</td>');
+        trArr.push('<td>限定地区:' + hospitalNameList.join(',') + '</td>');
 
         trArr.push('<td >' + utils.GetLoacalDateString(data.beginTime) + ' 至 ' + utils.GetLoacalDateString(data.endTime) + '</td></tr>');
 
