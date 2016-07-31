@@ -24,7 +24,7 @@ block content
                             span #{data.id}
                         span.info
                             span.text-sec 状态:
-                            if data.orderState == 1 || data.orderState == 2
+                            if data.orderState == 1
                                 span.text-stress 待支付
                             else
                                 span #{orderStateJSON[data.orderState]}
