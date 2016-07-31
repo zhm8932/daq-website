@@ -691,6 +691,9 @@ select {
         //margin-left: 0px;
         padding-bottom: 20px;padding: 2px;margin-top: 40px;
         display: block;
+        p {
+          color: $gray9B;
+        }
         a{
           h4 {
             position: relative;

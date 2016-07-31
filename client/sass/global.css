@@ -258,7 +258,7 @@ select {
   padding: 0 20px;
   margin: 10px 0;
   display: inline-block;
-  font-family: "微软雅黑","Microsoft Himalaya";
+  font-family: "微软雅黑";
   border: 1px solid #48BED8; }
   .submitBtn:hover {
     -webkit-transition: all 0.3s;
@@ -266,9 +266,9 @@ select {
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
-    background-color: #ED9E9A;
+    background-color: #3DAAC2;
     color: #FFF;
-    border-color: #ED9E9A; }
+    border-color: #3DAAC2; }
 
 .cancelBtn {
   background-color: #fff;
@@ -279,7 +279,7 @@ select {
   padding: 0 20px;
   margin: 10px 0;
   display: inline-block;
-  font-family: "微软雅黑","Microsoft Himalaya";
+  font-family: "微软雅黑";
   border: 1px solid #ddd; }
   .cancelBtn:hover {
     -webkit-transition: all 0.3s;
@@ -657,6 +657,8 @@ select {
       padding: 2px;
       margin-top: 40px;
       display: block; }
+      .item_list .goods_list ul li p {
+        color: #9B9B9B; }
       .item_list .goods_list ul li a h4 {
         position: relative;
         background: none;
@@ -863,6 +865,8 @@ select {
       line-height: 32px;
       width: 100%;
       outline: none; }
+      .popupBox .submitBox .ok:hover {
+        background-color: #3DAAC2; }
     .popupBox .submitBox .disabled {
       background-color: #cccccc;
       cursor: default; }
@@ -1010,6 +1014,8 @@ select {
       line-height: 32px;
       width: 100%;
       outline: none; }
+      .loginBox2 .submitBox .ok:hover {
+        background-color: #3DAAC2; }
     .loginBox2 .submitBox .disabled {
       background-color: #cccccc;
       cursor: default; }
