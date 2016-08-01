@@ -56,11 +56,13 @@ define(function (require, exports, module) {
             tipText: '完善信息',
             callback: function (result) {
                 var myMsg = new utils.MsgShow({
-                    delayTime: 2000,
+                    delayTime: 1000,
                     title: '<i class="icon"></i>完善成功!',
                     otherBox: 'successBox'
                 });
-                myMsg.hideMsg(1000);
+                myMsg.hideMsg(function(){
+                    window.location.reload();
+                });
             },
             errorFun: function (result) {
                 if(result && result.msg){
