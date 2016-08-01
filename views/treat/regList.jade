@@ -53,7 +53,10 @@ block content
                                 //-hosname += name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
                             tr.doctor-id(data-accountid="#{item.doctor.id}")
                                 td.doctor
-                                    img(src="#{item.doctor.doctorPhoto}")
+                                    if item.doctor.doctorPhoto
+                                        img(src="#{item.doctor.doctorPhoto}")
+                                    else
+                                        img(src="/images/doctor.png")
                                     .doctor-info
                                         p.text-main.doctor-name #{item.doctor.doctorName}
                                         p #{item.doctor.title}
