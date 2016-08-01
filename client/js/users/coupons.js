@@ -73,6 +73,7 @@ define(function (require, exports, module) {
                 $('#coupon-code').val('');
                 var tr = $(buildCouponTableTr(result.data).join(''));
                 $('#coupon-table tbody tr').eq(0).before(tr);
+                $('#coupon-table tbody tr.no-record').remove();
 
                 $this.removeClass('disabled').on('click', function () {
                     addCoupon($this);
@@ -115,7 +116,7 @@ define(function (require, exports, module) {
             trArr.push('<td>最多可抵' + (parseFloat(data.mostDeduction) / 100).toFixed(2) + '元</td>');
         }
 
-        trArr.push('<td>限定地区:' + hospitalNameList.join(',') + '</td>');
+        trArr.push('<td>限' + hospitalNameList.join('、') + '</td>');
 
         trArr.push('<td >' + utils.GetLoacalDateString(data.beginTime) + ' 至 ' + utils.GetLoacalDateString(data.endTime) + '</td></tr>');
 

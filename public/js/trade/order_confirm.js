@@ -123,7 +123,7 @@ define(function (require, exports, module) {
                     }else{
                         trs.eq(fitCouponNum).before(tr);
                     }
-
+                    $('#coupon-table tbody tr.no-record').remove();
                     $this.on('click', function () {
                         addCoupon($(this));
                     });
@@ -182,15 +182,22 @@ define(function (require, exports, module) {
                     var data = result.data;
                     var fitTableArr = [];
                     var unfitTableArr = [];
-                    for (var i = 0; i < data.length; i++) {
-                        var json = buildCouponTableTr(data[i]);
-                        if(json.isfit){
-                            fitTableArr.push(json.trArr);
-                        }else{
-                            unfitTableArr.push(json.trArr);
+
+                    if(data.length === 0){
+                        $('#coupon-table tbody').html('<tr class="text-center no-record"><td colspan="5">暂无优惠券记录</td></tr>');
+                    }else{
+                        for (var i = 0; i < data.length; i++) {
+                            var json = buildCouponTableTr(data[i]);
+                            if(json.isfit){
+                                fitTableArr.push(json.trArr);
+                            }else{
+                                unfitTableArr.push(json.trArr);
+                            }
                         }
+
+                        $('#coupon-table tbody').html(fitTableArr.join('')+unfitTableArr.join(''));
                     }
-                    $('#coupon-table tbody').html(fitTableArr.join('')+unfitTableArr.join(''));
+
                     $('.coupon-radio').off('click').on('click', function () {
                         checkCouponRadio($(this));
                     });
