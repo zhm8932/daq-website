@@ -8,7 +8,6 @@ var config = require('../config');
 
 exports.GetCartList = function (req,res,callback) {
     var bizParam = {
-        // "accountId": req.accountId
         "accountId": req.accountId
     };
 

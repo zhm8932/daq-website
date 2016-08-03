@@ -105,7 +105,7 @@ app.use('/treat',treats);
 //捕获404错误并转发到错误处理中间件
 app.use(function(req, res, next) {
   var err = new Error('抱歉，您访问的资源不存在');
-  errorHandler.handleError(res, '404', 'html', err);
+  errorHandler.handleError(res, '404', err);
 });
 
 
