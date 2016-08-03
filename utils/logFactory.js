@@ -5,9 +5,10 @@
 
 const fs = require('fs');
 const log4js = require('log4js');
+const path = require('path');
 
-const JSON_PATH = '../config/log4js.json';
-const LOG_DIR = '../logs';
+const JSON_PATH = path.resolve(__dirname, '../config/log4js.json');
+const LOG_DIR = path.resolve(__dirname, '../logs');
 
 class Log {
     constructor() {
