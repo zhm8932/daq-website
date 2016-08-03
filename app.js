@@ -84,7 +84,7 @@ global.CONST = CONST;
 app.locals.locals_sample = JSON.stringify(config.sample);//取样方式及其对应的中文,存入配置文件
 
 app.use(logger(':method :url :status'));  //打印请求状态等信息
-app.use(logFactory.connectLogger('router'));
+// app.use(logFactory.connectLogger('router'));
 
 //指定路由
 app.use('/routes', routes);

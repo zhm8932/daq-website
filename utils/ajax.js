@@ -7,8 +7,8 @@ var md5 = require("blueimp-md5");
 var request = require("request");
 var BufferHelper = require('./bufferhelper');//处理buffer接收问题
 var errorHandler = require('./errorHandler');//处理buffer接收问题
-const logUtil = require('./logFactory');
-const routerLog = logUtil.getLogger('router');
+// const logUtil = require('./logFactory');
+// const routerLog = logUtil.getLogger('router');
 
 var errorJson = {"code":"111","data":null,"msg":"json parse exception","success":false};
 
@@ -90,7 +90,7 @@ module.exports.ajax = function (method,apiName,browserReq,browserRes,bizParam,ca
 
     var path = config.path;
 
-    routerLog.info('method:'+method+'\n\t'+'bizParam:'+JSON.stringify(bizParam)+'\n\t'+'sysPara:'+sysPara);
+    // routerLog.info('method:'+method+'\n\t'+'bizParam:'+JSON.stringify(bizParam)+'\n\t'+'sysPara:'+sysPara);
     console.log('---method:'+method);
     console.log('---bizParam:'+JSON.stringify(bizParam));
     console.log('---sysPara:'+sysPara);
