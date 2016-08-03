@@ -24,7 +24,7 @@ exports.get_goods_list = function (req,res,next) {
 
     };
 
-    util.ajax('GET',api.GoodsQuery,req, bizParam,function (data,success) {
+    util.ajax('GET',api.GoodsQuery,req,res,bizParam,function (err,data) {
         if(query.send){
             res.send(data)
         }else{
@@ -48,12 +48,12 @@ exports.get_goods_detail = function (req,res,next) {
     if(browser.mobile){
         apiName = api.GoodsFindGoodsByIdToMobile
     }
-    // console.log("apiName:",apiName)
-    util.ajax('GET',apiName,req, bizParam,function (data,success) {
+
+    util.ajax('GET',api.GoodsDetail,req,res,bizParam,function (err,data) {
         var json = JSON.parse(data);
-        console.log("json.success::",json.success)
-        res.locals.get_goods_detail_success = json.success
-        req.get_goods_detail = json
+        console.log("json.success::",json.success);
+        res.locals.get_goods_detail_success = json.success;
+        req.get_goods_detail = json;
         next()
     });
 }

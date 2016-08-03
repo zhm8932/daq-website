@@ -228,27 +228,23 @@ define(function(require,exports,module) {
             url: options.url,
             type: options.method || 'GET',
             data: options.param || {},
+            dataType:options.dataType || 'json',
             // contentType: options.contentType || 'application/x-www-form-urlencoded;charset=UTF-8;',
-            success: function (data) {
-                var result = JSON.parse(data);
+            success: function (result) {
                 if (result.success) {
                     options.callback && options.callback(result);
                 } else {
                     //弹框提示失败
-                    // alertTip('fail', options.tipText + '失败,原因是:' + result.msg);
                     showComfirmDialog({tipText:options.tipText + '失败,原因是:' + result.msg,noConfirmBtn:true});
                     options.errorFun && options.errorFun(result);
                 }
             },
             error: function (data) {
                 if (data.status == '404') {
-                    // alertTip('fail', '页面丢失，稍后再试');
                     showComfirmDialog({tipText:'页面丢失，请稍后再试',noConfirmBtn:true});
                 } else if (data.status == '500') {
-                    // alertTip('fail', '系统忙，稍后再试');
                     showComfirmDialog({tipText:'系统忙，请稍后再试',noConfirmBtn:true});
                 } else {
-                    // alertTip('fail', '出错了,响应码是' + data.status + ',请联系管理员');
                     showComfirmDialog({tipText:'出错了,响应码是' + data.status + ',请联系管理员',noConfirmBtn:true});
                 }
                 options.errorFun && options.errorFun();

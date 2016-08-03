@@ -29,7 +29,10 @@
             a.cartBtn(href='/trade/cart/list')
                 i.icon
                 |(
-                span.cartNum #{cartNum}
+                if typeof cartNum != 'undefined'
+                    span.cartNum #{cartNum}
+                else
+                    span.cartNum #{0}
                 |)
             if userInfo
                 input(type="hidden",id="userInfo",value="#{userInfo}")

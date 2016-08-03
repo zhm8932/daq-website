@@ -6,27 +6,27 @@ var api = require('../utils/api');
 var config = require('../config');
 
 
-exports.GetListByTypeAndLevel = function (req, callback) {
+exports.GetListByTypeAndLevel = function (req,res,callback) {
     var bizParam = req.query;
     
-    util.ajax('GET', api.GetListByTypeAndLevel,req,  bizParam, function (data, success) {
-        callback && callback(data, success);
+    util.ajax('GET', api.GetListByTypeAndLevel,req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
     });
 };
 
-exports.GetListByParentId = function (req, callback) {
+exports.GetListByParentId = function (req,res,callback) {
     var bizParam = req.query;
 
-    util.ajax('GET', api.GetListByParentId,req,  bizParam, function (data, success) {
-        callback && callback(data, success);
+    util.ajax('GET', api.GetListByParentId,req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
     });
 };
 
-exports.GetDetailByIds = function (req, callback) {
+exports.GetDetailByIds = function (req,res,callback) {
     var bizParam = {ids:req.ids};
 
-    util.ajax('GET', api.GetDetailByIds,req,  bizParam, function (data, success) {
-        callback && callback(data, success);
+    util.ajax('GET', api.GetDetailByIds,req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
     });
 };
 

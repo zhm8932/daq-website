@@ -52,11 +52,11 @@ exports.get_goods_detail = function (req,res) {
         title = get_goods_detail.title
         keywords = get_goods_detail.keywords
         description = get_goods_detail.page_description
-        res.locals.transmitType = JSON.parse(get_goods_detail.transmitType)
-        res.locals.transmitItems = JSON.parse(get_goods_detail.transmitItems)
-        res.locals.fitPeople = get_goods_detail.fitPeople
-        res.locals.fitPeople = get_goods_detail.fitPeople
-        res.locals.slogan = get_goods_detail.slogan
+        // res.locals.transmitType = JSON.parse(get_goods_detail.transmitType)
+        // res.locals.transmitItems = JSON.parse(get_goods_detail.transmitItems)
+        // res.locals.fitPeople = get_goods_detail.fitPeople
+        // res.locals.fitPeople = get_goods_detail.fitPeople
+        // res.locals.slogan = get_goods_detail.slogan
 
     }
 

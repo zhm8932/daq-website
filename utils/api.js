@@ -121,6 +121,7 @@ module.exports = {
 
     //购物车
     GetCartList: "trade.getAllCartItemDTO",
+    GetCartCount: "trade.selectMyCartItemCount",
     AddCartItem: "trade.addCartItem",
     DelCartItem: "trade.removeCartItemById",
     DelCartItemBatch: "trade.removeCartItemByIdBatch",

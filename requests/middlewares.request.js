@@ -12,10 +12,10 @@ exports.get_city = function(req,res,next){
         "activeState":1
     }
 
-    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,req,bizParam,function (data,success) {
+    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,req,res,bizParam,function (err,data) {
         var json = JSON.parse(data);
         console.log("get_city:",json)
-        if(json&&json.success) {
+        if(!err) {
             console.log("333333333:")
             req.get_city = json.data;
         }
@@ -31,12 +31,12 @@ exports.get_goods_category = function(req,res,next){
         "activeState":1
     }
 
-    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,req,bizParam,function (data,success) {
+    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,req,res,bizParam,function (err,data) {
         var json = JSON.parse(data);
         if(json) {
             // console.log("goods_category:",json)
             req.get_goods_category = json
-            res.locals.get_goods_category_success = req.get_goods_category_success= json.success
+            res.locals.get_goods_category_success = req.get_goods_category_success= !err
         }
         next()
     });
@@ -44,18 +44,19 @@ exports.get_goods_category = function(req,res,next){
 
 //获取文章栏目
 exports.get_articles_category = function(req,res,next){
+    req.autoHandleError = false;
     var bizParam = {
         "type":"article_category", //栏目
         "level":1,
         "activeState":1
     }
 
-    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,req,bizParam,function (data,success) {
+    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,req,res,bizParam,function (err,data) {
         var json = JSON.parse(data);
         if(json) {
             // console.log("goods_category:",json)
             req.get_articles_category = json
-            res.locals.get_articles_category_success = req.get_articles_category_success= json.success
+            res.locals.get_articles_category_success = req.get_articles_category_success= !err
         }
         next()
     });
@@ -67,10 +68,10 @@ exports.get_doctor_title = function(req,res,next){
         "activeState":1
     }
 
-    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,req,bizParam,function (data,success) {
+    util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,req,res,bizParam,function (err,data) {
         var json = JSON.parse(data);
         //console.log("get_doctor_title:",json)
-        if(json&&json.success) {
+        if(!err) {
             req.get_doctor_title = json.data;
         }
         next()
@@ -86,10 +87,10 @@ exports.get_hospital_all = function(req,res,next){
         }
     }
 
-    util.ajax('GET',api.HospitalAll,bizParam,function (data,success) {
+    util.ajax('GET',api.HospitalAll,req,res,bizParam,function (err,data) {
         var json = JSON.parse(data);
         console.log("get_hospital_all:",json)
-        if(json&&json.success){
+        if(!err){
             req.get_hospital_all = json.data;
         }
         next()
@@ -109,7 +110,7 @@ exports.get_department =function(req,res,next){
         }
     }
 
-    util.ajax('GET',api.DepartmentAll,req,bizParam,function (data,success) {
+    util.ajax('GET',api.DepartmentAll,req,res,bizParam,function (err,data) {
         var json = JSON.parse(data);
         if(json) {
             req.get_department = json;

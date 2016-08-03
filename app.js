@@ -11,6 +11,9 @@ var CONST = require('./utils/const');
 var app = express();
 
 var config = require('./config');
+var errorHandler = require('./utils/errorHandler');//错误处理公共类
+const logFactory = require('./utils/logFactory');
+
 //路由
 var indexs = require('./routes/index');
 var abouts = require('./routes/about');
@@ -36,6 +39,7 @@ app.use(favicon(path.join(__dirname, 'public','images', 'favicon.png')));
 // app.use(logger('dev'));
 
 
+
 app.use(bodyParser.json());  //处理content-type=json的请求体
 app.use(bodyParser.urlencoded({ extended: false }));  //处理content-type=urlencoded的请求体 extended为true表示使用querystring来将请求体的字符串转成对象
 app.use(cookieParser());
@@ -46,7 +50,8 @@ var redisClient = redis.createClient(6379,config.options.host, {});
 // console.log("options:",options);
 
 redisClient.on("error", function (err) {
-  console.log("Error " + err);
+  var err = new Error('redis错误');
+  errorHandler.handleError(res, '500', 'html', err);
 });
 
 redisClient.on('ready',function(err){
@@ -79,6 +84,7 @@ global.CONST = CONST;
 app.locals.locals_sample = JSON.stringify(config.sample);//取样方式及其对应的中文,存入配置文件
 
 app.use(logger(':method :url :status'));  //打印请求状态等信息
+// app.use(logFactory.connectLogger('router'));
 
 //指定路由
 app.use('/routes', routes);
@@ -98,45 +104,19 @@ app.use('/treat',treats);
 
 //捕获404错误并转发到错误处理中间件
 app.use(function(req, res, next) {
-  var errorMsg = req.errorMsg || 'Not Found';
-  var err = new Error(errorMsg);
-  err.status = 404;
-  console.log('404');
-  next(err);
+  var err = new Error('抱歉，您访问的资源不存在');
+  errorHandler.handleError(res, '404', err);
 });
 
-// error handlers
 
-//开发时的错误处理
-if (app.get('env') === 'development') {
 
-  app.set('showStackError',true);
-
-  app.locals.pretty = true ; //格式化页面内容
-
-  app.use(function(err, req, res, next) {
-    console.log('development')
-    console.log('err1:',err)
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
-
-//生产环境下的错误处理 product
-//不向用户暴露堆栈信息
-app.use(function(err, req, res, next) {
-  console.log('production')
-  console.log('err2:',err)
-  res.status(err.status || 500);
-  res.render('error', {
-    // message: err.message,
-    message: err.message,
-    error: ''
-  });
+//捕获未处理的异常
+process.on('uncaughtException', function(err) {
+  console.error('Error caught in uncaughtException event:', err);
+  // res.render('error', {
+  //   message: err.message,
+  //   error: err
+  // });
 });
-
 
 module.exports = app;

@@ -6,7 +6,7 @@ var authority = require('../handlers/authority.handler');
 
 /* GET users listing. */
 router.get('/report',authority.loginRequired,function (req,res,next) {
-    UsersRequest.HasBindHis(req,res,function (data, success) {
+    UsersRequest.HasBindHis(req,res,function (err,data) {
         if(success){
             var hasBindHISJson = JSON.parse(data);
             res.locals.hasBind = hasBindHISJson.data;

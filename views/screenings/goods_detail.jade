@@ -63,7 +63,7 @@ block content
                                     div#hospital
                                         label.text-sec 服务门诊：
                                         span#hospitalName
-                                        span.hospital-tip.text-sec.small-text.none （该城市暂无门诊提供服务）
+                                        span.hospital-tip.text-sec.small-text.none （该城市暂不提供此套餐服务）
                                     div#district
                                         label.text-sec 服务区域：
                                         -var address = JSON.parse(locals_address)
@@ -110,7 +110,9 @@ block content
                         div!= goods_detail.commonQa
 
 
-            input#fit_hospital(type="hidden",value="#{goods_detail.fitHospital}")
+            each attr,index in goods_detail.saleAttributes
+                if(attr.attributeName === 'fit_hospital')
+                    input#fit_hospital(type="hidden",value="#{attr.value}")
             input#locals_address(type="hidden",value="#{locals_address}")
             input#hospital(type="hidden",value="")
             input#goods(type="hidden",data-id="#{goods_detail.id}",data-goodsName="#{goods_detail.goodsName}",data-imgUrl="#{goods_detail.goodsImages[0].imageUrl}",data-discountPrice="#{goods_detail.discountPrice}",data-address="#{locals_address}",data-city="#{JSON.parse(locals_address)[1].name}")

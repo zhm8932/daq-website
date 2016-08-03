@@ -57,30 +57,27 @@ define(function(require){
             // console.log(page);
             var data = {
                 pageIndex:page
-            }
+            };
             if(!$self.hasClass('disable')){
-                $.ajax({
-                    type:'POST',
-                    data:data,
-                    url:'/healths/list/list_ask_web',
-                    beforeSend:function () {
-                        // console.log('数据请求中……')
-                    },
-                    success:function(data){
-                        // console.log(json);
-                        var json = data
-                            $list = $('#list_ask ul');
+                utils.SendAjax({
+                    url: '/healths/list/list_ask_web',
+                    param: data,
+                    method: 'POST',
+                    tipText: '请求问答数据',
+                    callback: function (result) {
+                        var json = data;
+                        var $list = $('#list_ask ul');
                         if(json.success){
                             var data = json.data.data,
                                 html = '',
                                 currentPage = json.data.currentPage,
-                                //currentPage = json.data.currentPageDirectly,
+                            //currentPage = json.data.currentPageDirectly,
                                 pageCount = json.data.pageCount;
 
                             // console.log(currentPage);
                             $.each(data,function (index,item) {
                                 html +='<li><a href="/healths/list/article/'+item.id+'" title="'+item.title+'"><i class="icon"></i>'+item.title+'</a></li>'
-                            })
+                            });
                             if($self.hasClass('next')){
                                 if(currentPage==pageCount){
                                     $self.addClass('disable');
@@ -106,14 +103,14 @@ define(function(require){
 
                             }
 
-                            $list.html(html)
+                            $list.html(html);
 
                         }
                     }
-                })
+                });
             }
 
-        })
+        });
 
         function transferUnit(arr) {
             if(parseFloat(arr)/100%1!=0){
@@ -126,13 +123,13 @@ define(function(require){
         }
         //获取数据
         function getListData(data) {
-            $.ajax({
-                type: 'get',
-                data: data,
+            utils.SendAjax({
                 url: '/screenings/goods',
-                success: function (json) {
+                param: data,
+                tipText: '获取套餐列表',
+                callback: function (result) {
                     // console.log(json)
-                    var json = JSON.parse(json);
+                    var json = result;
                     var html = '';
                     // console.log('data:',json)
                     if(json.success){
@@ -142,7 +139,7 @@ define(function(require){
                         $.each(data,function (index,arr) {
                             var fit_people_html = '';
                             var discountPrice='';
-                            var price=''
+                            var price='';
                             if(arr.productKeyAttributeList){
                                 arr.productKeyAttributeList.forEach(function (item,index) {
                                     // console.log('item:',item)
@@ -155,7 +152,7 @@ define(function(require){
                             price=transferUnit(arr.price);
 
                             html += '<li class="box" style="opacity:0;filter:alpha(opacity=0);"><a href="/screenings/goods/detail/'+arr.id+'"><img src="'+arr.goodsImages[0].imageUrl+'"/><h4>'+arr.goodsName+'</h4></a><p>'+fit_people_html+'</p>' +
-                                    '<div class="price"><span class="new"><em>￥</em>'+discountPrice+'</span><span class="old">原价'+price+'</span></div></div></li>'
+                                '<div class="price"><span class="new"><em>￥</em>'+discountPrice+'</span><span class="old">原价'+price+'</span></div></div></li>'
                         })
                         if(pageIndex<=pageCount){
                             pageIndex +=1;
@@ -167,7 +164,7 @@ define(function(require){
 
                     }
                 }
-            })
+            });
 
             return {
                 pageCount:pageCount,

@@ -189,25 +189,23 @@ define(function(require,exports,module) {
             "domain":"DAQ-WEB-LOGIN"
             // "deviceUid":""
         };
-        $.ajax({
-            type:'post',
-            url:'/getVerCode',
-            data:requestData,
-            beforeSend:function () {
-                $self.html('正在获取验证码……')
-            },
-            success:function(json){
-                console.log(json);
-                var json = JSON.parse(json);
-                if(json.success){
+        $self.html('正在获取验证码……');
+        utils.SendAjax({
+            url: '/getVerCode',
+            param: requestData,
+            method: 'POST',
+            tipText: '获取验证码',
+            callback: function (result) {
+                if(result.success){
                     // console.log('验证码获取成功')
                     timer($self,time)
                 }else{
                     // console.log(json.msg)
-                    $prompt.show().find('em').html(json.msg)
+                    $prompt.show().find('em').html(result.msg);
                 }
             }
-        })
+        });
+
     }
     //定时器
     function timer($self,time) {
@@ -227,23 +225,24 @@ define(function(require,exports,module) {
     //redirectUrl用于同步登录后继续跳转,afterLoginFun用于异步登录后继续执行
     //登陆
     function login(data,popup,redirectUrl,afterLoginFun) {
-        $loginWrap = $('.loginBox,.loginBox2');
+        var $loginWrap = $('.loginBox,.loginBox2');
         var index = $loginWrap.find('.tit span.on').index();
         $prompt = $loginWrap.find('ul').eq(index).find('.prompt');
-        $.ajax({
-            type:'post',
-            url:'/login',
-            data:data,
-            success:function(json){
-                var json = JSON.parse(json);
-                if(json.success){
+
+        utils.SendAjax({
+            url: '/login',
+            param: data,
+            method: 'POST',
+            tipText: '登录',
+            callback: function (result) {
+                if(result.success){
                     getCartCount();
                     var myMsg = new utils.MsgShow({
                         delayTime:2000,
                         title:'<i class="icon"></i>登录成功!',
                         otherBox:'successBox'
                     });
-                    var userAllInfo = json.data.userAllInfo;
+                    var userAllInfo = result.data.userAllInfo;
                     if(popup){
                         popup.hideBox(function () {
                             $topBarAside.html(logoutHtml);
@@ -258,32 +257,30 @@ define(function(require,exports,module) {
 
                 }else{
                     // console.log('登录失败')
-                    // $prompt.show().find('em').html(json.msg)
-                    var code = json.code;
+                    // $prompt.show().find('em').html(result.msg)
+                    var code = result.code;
                     if(code==300){
                         $prompt.show().find('em').html("登录失败:服务器异常")
                     }else{
-                        $prompt.show().find('em').html(json.msg)
+                        $prompt.show().find('em').html(result.msg)
                     }
 
                 }
 
-
             }
-        })
+        });
     }
     var loginRequiredArr = ['/trade/order','/trade/cart/list','/treats/reg/','/users/'];
 
     //退出登陆
     function logout() {
-        $.ajax({
-            type:'post',
-            url:'/logout',
-            //data:data,
-            success:function(json){
-                // console.log(json)
-                var json = JSON.parse(json);
-                if(json.success){
+        utils.SendAjax({
+            url: '/logout',
+            param: {},
+            method: 'POST',
+            tipText: '退出登录',
+            callback: function (result) {
+                if(result.success){
                     $cartNum.html('0');
                     loginRequiredArr.forEach(function (item) {
                         if(pathname.search(item)!=-1){
@@ -296,23 +293,22 @@ define(function(require,exports,module) {
 
                 }
             }
-        })
+        });
     }
     //检查信息完善 hasBindHis
     function hasBindHis(obj) {
-        $.ajax({
-            type:'post',
-            url:'/hasBindHis',
-            data:{
+        utils.SendAjax({
+            url: '/hasBindHis',
+            param: {
                 accountId:obj.accountId,
                 send:true
             },
-            success:function(json){
-                console.log(json);
-                obj.callback&&obj.callback(json)
+            method: 'POST',
+            tipText: '检查是否完善信息',
+            callback: function (result) {
+                obj.callback&&obj.callback(result);
             }
-
-        })
+        });
     }
 
     $('body').on('click','.loginBtn',function () {
@@ -321,7 +317,6 @@ define(function(require,exports,module) {
                 hasBindHis({
                     accountId:userAllInfo.accountCommon.id,
                     callback:function (json) {
-                        var json=JSON.parse(json);
                         if(json.success){
                             if(!json.data){
                                 showAccountDialog();
@@ -386,8 +381,6 @@ define(function(require,exports,module) {
             hasBindHis({
                 accountId:userAllInfo.accountCommon.id,
                 callback:function (json) {
-                    var json=JSON.parse(json);
-                    console.log("json:",json)
                     if(json.success){
                         if(!json.data){
                             window.location.href = "/users/account/info";
@@ -499,30 +492,26 @@ define(function(require,exports,module) {
     var $cartNum = $('.cartNum');
     //获取购物车数量
     function getCartCount(accountId) {
-        $.ajax({
-            type:'get',
-            url:'/trade/cart/GetCartCount',
-            // data:data,
-            success:function(json){
-                var json = JSON.parse(json);
-                console.log(json);
-                if(json.success){
-                    var cartCout = json.data.length||'0';
+        utils.SendAjax({
+            url: '/trade/cart/GetCartCount',
+            param: {},
+            method: 'GET',
+            tipText: '获取购物车数量',
+            callback: function (result) {
+                if(result.success){
+                    var cartCout = result.data||'0';
                     $cartNum.html(cartCout)
                 }
-
             }
-        })
+        });
     }
     function cartCoutAddOne() {
         var cartNum = parseInt($cartNum.text())+1;
         $cartNum.text(cartNum);
-
     }
     function cartCoutDelOne() {
         var cartNum = parseInt($cartNum.text())-1;
         $cartNum.text(cartNum);
-
     }
 
 
