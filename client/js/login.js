@@ -44,7 +44,7 @@ define(function(require,exports,module) {
                     prev: ".touchslider-prev", // prev 样式指定
                     // scroller: viewport.children(),
                     complete:function () {
-                      console.log("hahahh")
+                      //console.log("hahahh")
                     },
                     autoplay: false, // 自动播放
                     viewport: ".touchslider-viewport"  //内容区域
@@ -56,7 +56,7 @@ define(function(require,exports,module) {
             isHide:false,
             okCallback:function(){
                 var data = validateLogin();
-                // console.log('data::',data);
+                // //console.log('data::',data);
                 if(data){
                     if(options && options.afterLoginFun){
                         // login(data,popup,'',options.afterLoginFun);
@@ -75,9 +75,9 @@ define(function(require,exports,module) {
         $loginWrap = getLoginWrap();
         var data = getLoginData();
         var $self = $(this);
-        console.log("data:",data);
+        //console.log("data:",data);
         if(!data.account){
-            console.log('输入手机号');
+            //console.log('输入手机号');
             $prompt.show().find('em').html('手机号码不能为空');
             return
         }
@@ -86,7 +86,7 @@ define(function(require,exports,module) {
             return
         }
         if(data&&data.account){
-            console.log("data::",data)
+            //console.log("data::",data)
             getVerCode($self,60)
 
         }
@@ -128,22 +128,22 @@ define(function(require,exports,module) {
         $loginWrap = getLoginWrap();
         index = $loginWrap.find('.tit span.on').index();
         $prompt = $loginWrap.find('ul').eq(index).find('.prompt');
-        console.log('index::',index);
+        //console.log('index::',index);
         var data = {
             "password":$loginWrap.find('ul').eq(index).find(".password").val(),
             "account":$loginWrap.find('ul').eq(index).find(".username").val(),
             "loginType":1
         }
-        // console.log('data::',data)
+        // //console.log('data::',data)
         return data
     }
     //登陆数据验证
     function validateLogin() {
         var data = getLoginData();
         var requestData = {};
-        // console.log('data::',data)
+        // //console.log('data::',data)
         if(index==0){
-            // console.log('密码')
+            // //console.log('密码')
             requestData.loginType=1;
             if(!data.account){
                 $prompt.show().find('em').html('手机号码不能为空');
@@ -159,13 +159,13 @@ define(function(require,exports,module) {
             requestData.password =data.password;
         }
         if(index==1){
-            // console.log('验证码',data.account,utils.check_tel(data.account))
+            // //console.log('验证码',data.account,utils.check_tel(data.account))
             requestData.loginType=2;
             if(!data.account){
                 $prompt.show().find('em').html('手机号码不能为空');
                 return
             }else if(data.account && !utils.check_tel(data.account)){
-                // console.log("手机号码：",utils.check_tel(data.account));
+                // //console.log("手机号码：",utils.check_tel(data.account));
                 $prompt.show().find('em').html('手机号码不正确');
                 return
             }
@@ -178,7 +178,7 @@ define(function(require,exports,module) {
         }
 
         requestData.account =data.account;
-        // console.log("requestData:",requestData)
+        // //console.log("requestData:",requestData)
         return requestData;
     }
     //获取短信验证码
@@ -197,10 +197,10 @@ define(function(require,exports,module) {
             tipText: '获取验证码',
             callback: function (result) {
                 if(result.success){
-                    // console.log('验证码获取成功')
+                    // //console.log('验证码获取成功')
                     timer($self,time)
                 }else{
-                    // console.log(json.msg)
+                    // //console.log(json.msg)
                     $prompt.show().find('em').html(result.msg);
                 }
             }
@@ -256,7 +256,7 @@ define(function(require,exports,module) {
                     myMsg.hideMsg(1000);
 
                 }else{
-                    // console.log('登录失败')
+                    // //console.log('登录失败')
                     // $prompt.show().find('em').html(result.msg)
                     var code = result.code;
                     if(code==300){
@@ -284,7 +284,7 @@ define(function(require,exports,module) {
                     $cartNum.html('0');
                     loginRequiredArr.forEach(function (item) {
                         if(pathname.search(item)!=-1){
-                            console.log('页面跳转');
+                            //console.log('页面跳转');
                             window.location.href='/';
                         }else{
                             $topBarAside.html(loginHtml);
@@ -335,7 +335,7 @@ define(function(require,exports,module) {
                                     $('#birthday').val(start.format('YYYY-MM-DD'));
                                 });
                             }else{
-                                // console.log("用户信息已完善")
+                                // //console.log("用户信息已完善")
                             }
 
                         }
@@ -377,7 +377,7 @@ define(function(require,exports,module) {
         var data = validateLogin();
         var redirectUrl = $('#redirectUrl').val()||'/';
         if(data) login(data,null,redirectUrl,function (userAllInfo) {
-            console.log("单页登录成功")
+            //console.log("单页登录成功")
             hasBindHis({
                 accountId:userAllInfo.accountCommon.id,
                 callback:function (json) {
@@ -385,7 +385,7 @@ define(function(require,exports,module) {
                         if(!json.data){
                             window.location.href = "/users/account/info";
                         }else{
-                            // console.log("用户信息已完善")
+                            // //console.log("用户信息已完善")
                             window.location.href = redirectUrl
                         }
 
@@ -442,7 +442,7 @@ define(function(require,exports,module) {
                 }
             },
             okCallback: function () {
-                console.log("提交用户完善信息");
+                //console.log("提交用户完善信息");
                 completeInfo(popup);
             }
         })
@@ -469,7 +469,7 @@ define(function(require,exports,module) {
             method: 'POST',
             tipText: '完善信息',
             callback: function (result) {
-                console.log("result:",result);
+                //console.log("result:",result);
                 var myMsg = new utils.MsgShow({
                     delayTime: 2000,
                     title: '<i class="icon"></i>完善成功!',

@@ -5,7 +5,7 @@ define(function(require){
 
     require('touchslider');
 
-    // console.log("login:",login)
+    // //console.log("login:",login)
     $(function(){
         require('../imgAuto');
         if(checkArea()){
@@ -21,8 +21,8 @@ define(function(require){
         var $span = $('.service_type span');
         var len = $span.length;
         var $serviceParent = $span.parents('.service_type_wrapper');
-        console.log("len:",len)
-        console.log("$serviceParent:",$serviceParent);
+        //console.log("len:",len)
+        //console.log("$serviceParent:",$serviceParent);
         if(len==1){
             $serviceParent.addClass('service_type_one')
         }else if(len==2){
@@ -44,7 +44,7 @@ define(function(require){
             if(id == 'content-detail'){
                 anchorTop = $('#'+id).offset().top - top ;
             }
-            console.log('top:'+top+'----offsetTop:'+$('#'+id).offset().top+'---height:'+anchorTop);
+            //console.log('top:'+top+'----offsetTop:'+$('#'+id).offset().top+'---height:'+anchorTop);
             $('html,body').animate({scrollTop:anchorTop}, 1000);
         });
 
@@ -143,7 +143,7 @@ define(function(require){
         tab.attr('data-orign-top',tab.offset().top);//得到初始高度
         // var wrapperWidth = $('.wrapper').width();
         var width = tab.closest('.wrapper').width();
-        console.log('width:'+width);
+        //console.log('width:'+width);
         $(document).scroll(function(){
             var topBarHeight = $('.topBar').height();
             var tab = $('.goods_detail #tab');
@@ -288,7 +288,7 @@ define(function(require){
             locals_address = JSON.parse($('#locals_address').val());
             fit_hospital = JSON.parse($('#fit_hospital').val());
         }catch(e){
-            console.log(e);
+            //console.log(e);
             return false;
         }
         var currentCityId = locals_address[1].categoryId;

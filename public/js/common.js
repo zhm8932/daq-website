@@ -7,7 +7,7 @@ define(function(require, exports, module){
     // var Swiper = require('./libs/swiper.jquery.umd');
     var BMap = require('./libs/BMap.js');
     require('cookie');
-    // console.log(BMap)
+    // //console.log(BMap)
 
     $(function () {
         var $body = $('body');
@@ -18,17 +18,17 @@ define(function(require, exports, module){
             map.centerAndZoom(point,12);
 
             function myFun(result){
-                // console.log("result:",result)
+                // //console.log("result:",result)
                 cityName = result.name;
                 map.setCenter(cityName);
-                // console.log("当前定位城市:"+cityName);
+                // //console.log("当前定位城市:"+cityName);
                 if(!$.cookie('locals_city')){
                     getCityList(cityName,function (newArr) {
-                        // console.log("newArr:",newArr)
+                        // //console.log("newArr:",newArr)
                         var is_locals_city= $.cookie('locals_city');
-                        // console.log("is_locals_city:",is_locals_city)
+                        // //console.log("is_locals_city:",is_locals_city)
                         if(!is_locals_city&&newArr.length){
-                            // console.log("初始化定位城市:",newArr[0]);
+                            // //console.log("初始化定位城市:",newArr[0]);
                             changeCity(newArr[0])
                         }
                         if(newArr.length){
@@ -44,9 +44,10 @@ define(function(require, exports, module){
             var myCity = new BMap.LocalCity();
             var cityName = myCity.get(myFun);
         }
-
-        if(!$.cookie('locals_city')){
+        if(!$.cookie('locals_city')&&!utils.browser.ie){
             getLocalCity();
+        }else if(utils.browser.ie){
+            alert('IE')
         }
 
 
@@ -76,7 +77,7 @@ define(function(require, exports, module){
         //     var OChooseCity = $this.find('.choose-city');
         //     if(OChooseCity.css('display') == 'none'){
         //         OChooseCity.fadeIn();
-        //         console.log(OChooseCity.data('load'));
+        //         //console.log(OChooseCity.data('load'));
         //         var data = OChooseCity.data('load')
         //         if(data === 'first'){
         //             getCityList();
@@ -85,7 +86,7 @@ define(function(require, exports, module){
         //     }
         // });
         $('.city-name').hover(function (e) {
-            e.stopPropagation();
+            // e.stopPropagation();
             var $this = $(this);
             var OChooseCity = $this.find('.choose-city');
             OChooseCity.stop(false,true).slideDown();
@@ -128,7 +129,7 @@ define(function(require, exports, module){
         //     }else if(utils.browser.android){
         //         alert('android端')
         //     }else{
-        //         console.log("电脑端")
+        //         //console.log("电脑端")
         //     }
         //     $('body,html').animate({scrollTop:0},600)
         // });
@@ -159,7 +160,7 @@ define(function(require, exports, module){
         }
         $(window).resize(function () {
             winWidth = $(window).width();
-            console.log("winWidth:",winWidth)
+            //console.log("winWidth:",winWidth)
             if(winWidth<768){
                 //导航滑动
                 $nav.addClass('swiper-container');
@@ -169,9 +170,9 @@ define(function(require, exports, module){
                     slidesPerView: 4
                     // spaceBetween: 30
                 });
-                console.log("111")
+                //console.log("111")
             }else{
-                console.log("222:",swiper)
+                //console.log("222:",swiper)
                 $nav.removeClass().addClass('wrapper');
                 $nav.find('.swiper-slide').addClass('3333333333333').removeAttr("style")
             }
@@ -180,7 +181,7 @@ define(function(require, exports, module){
 
     var curCityArr = '';
     function getCityList(cityName,callback){
-        var cityName = cityName;
+        var cityName = cityName||'';
         utils.SendAjax({
             url: '/dic/list/typeAndLevel',
             param: {type:"district",level:"2",activeState:'1'},
@@ -206,12 +207,15 @@ define(function(require, exports, module){
                     });
                 }
 
-                newArr= data.filter(function (item) {
-                    // return item.name == '南京'
-                    return item.name == cityName
-                })
-                // console.log("过滤后的data：",newArr)
-                callback&&callback(newArr)
+                if(callback){
+                    newArr= data.filter(function (item) {
+                        // return item.name == '南京'
+                        return item.name == cityName
+                    })
+                    // //console.log("过滤后的data：",newArr)
+                    callback&&callback(newArr)
+                }
+
             },
             errorFun: function (result) {
 
@@ -222,7 +226,7 @@ define(function(require, exports, module){
     function changeCity($this){
         // var city = $this=='string'? $this: $this.data&&$this.data('city');
         var city =$this.hasClass&&$this.hasClass('city')&&$this.data('city')||$this;
-        // console.log('city:',city)
+        // //console.log('city:',city)
         utils.SendAjax({
             url: '/changeCity',
             param: {city:city},
@@ -231,7 +235,7 @@ define(function(require, exports, module){
             callback: function (result) {
 
                 window.location.reload();
-                // console.log("$(this).text():",city.name)
+                // //console.log("$(this).text():",city.name)
                 // $('.city-name em').html(city.name)
             },
             errorFun: function (result) {
@@ -252,7 +256,7 @@ define(function(require, exports, module){
     var $topBar_info_aside=$('.topBar_info aside');
     $('.wapUser').click(function () {
         var accountId = $.cookie('accountId');
-        // console.log("accountId:",accountId)
+        // //console.log("accountId:",accountId)
         if(accountId){
             $topBar_info_aside.slideToggle();
         }else{
@@ -265,10 +269,10 @@ define(function(require, exports, module){
         var $footerWap = $('.footerWap');
         // $('input').focus(function () {
         //     $footerWap.addClass('footer_fixed');
-        //     console.log("进入")
+        //     //console.log("进入")
         // }).blur(function () {
         //     // $footerWap.removeClass('footer_fixed');
-        //     console.log("失去焦点")
+        //     //console.log("失去焦点")
         // })
 
         //只作用于输入框获得焦点时
@@ -276,7 +280,7 @@ define(function(require, exports, module){
             var _this = this;
             //无键盘时输入框到浏览器窗口顶部距离
             var noInputViewHeight = $(window).height() - $footerWap.height();
-            // console.log("noInputViewHeight:",noInputViewHeight)
+            // //console.log("noInputViewHeight:",noInputViewHeight)
             //网页正文内容高度
             var contentHeight = $(document).height() - $footerWap.height();
             //控制正文内容高度大于一屏，保证输入框固定底部
@@ -285,7 +289,7 @@ define(function(require, exports, module){
             setTimeout(function(){
                 //弹出输入法时滚动条的起始滚动距离
                 var startScrollY = $(window).scrollTop();
-                // console.log("startScrollY:",startScrollY)
+                // //console.log("startScrollY:",startScrollY)
                 //弹出输入法时输入框到窗口顶部的距离，即到软键盘顶部的起始距离
                 var inputTopHeight = $(_this).offset().top - startScrollY;
                 //弹出输入法时输入框预期位置，即紧贴软键盘时的位置。因输入框此时处于居中状态，所以其到窗口顶部距离即为需往下移动的距离。
@@ -302,7 +306,7 @@ define(function(require, exports, module){
                     if (inputTopHeight != noInputViewHeight) {
                         //页面滑动后，输入框需跟随移动的距离
                         var offset = $(this).scrollTop() - startScrollY;
-                        // console.log("offset:",offset);
+                        // //console.log("offset:",offset);
                         //输入框移动后位置
                         // afterScrollTopPos = inputTopPos + offset;
                         afterScrollTopPos = noInputViewHeight + offset;
