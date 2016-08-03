@@ -49,17 +49,19 @@ exports.get_goods_detail = function (req,res) {
 
             })
         }
-        title = get_goods_detail.title
-        keywords = get_goods_detail.keywords
-        description = get_goods_detail.page_description
-        // res.locals.transmitType = JSON.parse(get_goods_detail.transmitType)
-        // res.locals.transmitItems = JSON.parse(get_goods_detail.transmitItems)
-        // res.locals.fitPeople = get_goods_detail.fitPeople
-        // res.locals.fitPeople = get_goods_detail.fitPeople
-        // res.locals.slogan = get_goods_detail.slogan
+        title = get_goods_detail.title;
+        keywords = get_goods_detail.keyword;
+        description = get_goods_detail.pageDescription;
+
+
+        res.locals.transmitType = JSON.parse(get_goods_detail.transmitType);
+        res.locals.transmitItems = JSON.parse(get_goods_detail.transmitItems);
+        res.locals.fitPeople = get_goods_detail.fitPeople;
+        res.locals.slogan = get_goods_detail.slogan
 
     }
 
+    console.log("get_goods_detail:",get_goods_detail)
     res.render('screenings/goods_detail', {
         title: '筛查服务_'+get_goods_detail.goodsName,
         keywords: '筛查服务_'+keywords+','+CONST.GLOBAL_TITLE,

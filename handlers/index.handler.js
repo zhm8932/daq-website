@@ -43,13 +43,13 @@ exports.get_cart_num = function (req,res,next) {
     var accountId = req.accountId = req.session.userInfo?req.accountId:'';
     console.log("accountId:",accountId);
     if(accountId){
-        TradeRequest.GetCartList(req, function (err,data) {
+        TradeRequest.GetCartCount(req,res,function (err,data) {
             var query = req.query;
             var json = JSON.parse(data);
-            if(success){
-                console.log("json.data.length:",json.data.length);
+            if(json.success){
+                console.log("json.data.length:",json);
                 // res.locals.cartNum=json.data.length||'0';
-                var cartNum = json.data.length;
+                var cartNum = json.data;
                 res.locals.cartNum=cartNum;
             }else{
                 res.locals.cartNum='0';

@@ -109,6 +109,15 @@ app.use(function(req, res, next) {
 });
 
 
+//开发时的错误处理
+if (app.get('env') === 'development') {
+
+  app.set('showStackError',true);
+
+  app.locals.pretty = true ; //格式化页面内容
+
+}
+
 
 //捕获未处理的异常
 process.on('uncaughtException', function(err) {

@@ -193,12 +193,11 @@ define(function(require, exports, module){
                 for(var i = 0; i < data.length; i++){
                     var city = data[i];
                     if(data[i].id == choosedCityId){
-                        cityHtml += '<a href="#" class="city on">'+city.name+'</a>';
+                        cityHtml += '<a href="javascript:;" class="city on">'+city.name+'</a>';
                     }else{
-                        cityHtml += '<a href="#" class="city">'+city.name+'</a>';
+                        cityHtml += '<a href="javascript:;" class="city">'+city.name+'</a>';
                     }
                 }
-
                 $('.city-list').html(cityHtml);
                 var citys = $('.city-list .city');
                 for(var i = 0; i < data.length; i++){

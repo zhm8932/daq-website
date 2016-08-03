@@ -66,7 +66,7 @@ router.use(function(req, res, next) {
     next();
 });
 
-// router.get('*',Handlers.get_wap_tit,Handlers.get_cart_num);
+router.get('*',Handlers.get_wap_tit,Handlers.get_cart_num);
 /* GET home page. */
 router.get('/',Requests.get_goods_list,Middlewares.get_department,Handlers.index);
 

@@ -1566,11 +1566,12 @@
         width: 102%;
         margin-right: -2%; }
         .goods_basic dl dd .type-box .service_type_three .service_type span {
-          width: 31%;
+          width: 31.3%;
           box-sizing: border-box;
           padding: 5px 0px;
           text-align: center;
-          margin-right: 2%; }
+          margin-right: 2%;
+          font-size: 14px; }
 
   .info_list .lr_list figure {
     padding-bottom: 20px; }

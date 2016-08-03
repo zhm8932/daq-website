@@ -48,12 +48,12 @@ exports.get_goods_detail = function (req,res,next) {
     if(browser.mobile){
         apiName = api.GoodsFindGoodsByIdToMobile
     }
-
-    util.ajax('GET',api.GoodsDetail,req,res,bizParam,function (err,data) {
+    // console.log("apiName:",apiName)
+    util.ajax('GET',apiName,req,res, bizParam,function (err,data) {
         var json = JSON.parse(data);
-        console.log("json.success::",json.success);
-        res.locals.get_goods_detail_success = json.success;
-        req.get_goods_detail = json;
+        console.log("json.success::",json.success)
+        res.locals.get_goods_detail_success = json.success
+        req.get_goods_detail = json
         next()
     });
 }
