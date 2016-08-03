@@ -10,15 +10,4 @@ define(function (require, exports, module) {
             window.location.href = '/treat/reg/doctorView?date='+date+'&doctorId='+doctorId;
         });
     });
-
-    function getMonthAndDate(timestamp){
-        var date = new Date(timestamp);
-        var year = date.getFullYear();
-        var m = parseInt(date.getMonth()) + 1;
-        var month = m < 10 ? '0' + m : m;
-        var d = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
-        var time =  month + '/' + d;
-        return time;
-    }
-
 });
