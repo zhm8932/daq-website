@@ -7,7 +7,7 @@ var authority = require('../handlers/authority.handler');
 /* GET users listing. */
 router.get('/report',authority.loginRequired,function (req,res,next) {
     UsersRequest.HasBindHis(req,res,function (err,data) {
-        if(success){
+        if(!err){
             var hasBindHISJson = JSON.parse(data);
             res.locals.hasBind = hasBindHISJson.data;
             console.log("验证是否完善信息")

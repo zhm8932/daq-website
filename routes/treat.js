@@ -1,8 +1,9 @@
 /*
- * 科普模块  kepu
+ * 诊疗服务
  * */
 var express = require('express');
 var async = require('async');
+var moment = require('moment');
 var router = express.Router();
 var request = require('../requests/treat.request.js');
 var users = require('../requests/users.request.js');
@@ -11,6 +12,7 @@ var authority = require('../handlers/authority.handler');
 router.get('/regsource/list', function (req, res, next) {
     request.GetRegsourceList(req,res,function (err,data) {
         var json = JSON.parse(data);
+        json.data.data = _tidyRegSourceList(json.data.data);
         res.render('treat/regList', {
             title: '诊疗服务',
             data: json.data
@@ -18,8 +20,39 @@ router.get('/regsource/list', function (req, res, next) {
     });
 });
 
-function tidyRegSourceList(){
+function _tidyRegSourceList(docListSchedule){
+    var scheduleForDays = _initScheduleForDays();
+    for(var i = 0; i < docListSchedule.length; i++){
+        var docSchedule = docListSchedule[i];
+        docSchedule.scheduleForDays = JSON.parse(JSON.stringify(scheduleForDays));
+        var slotList = docSchedule.scheduleList;
+        for(var j = 0; j < slotList.length; j++){
+            var slot = slotList[j];
+            var date = moment(slot.start).format("MM/DD");
+            if(docSchedule.scheduleForDays[date]){
+                docSchedule.scheduleForDays[date].capacity += slot.capacity;
+                docSchedule.scheduleForDays[date].consume += slot.consume;
+            }
+        }
+    }
+    return docListSchedule;
+}
 
+//得到需要的日期及初始值:这里默认为一周
+function _initScheduleForDays(){
+    var needDaysNum = 7;
+    var today = moment(new Date());//得到当前日期,如08/04
+    var scheduleForDays = {};
+    for(var i = 1; i <= needDaysNum; i++){
+        var day = today.add({days:1}).format("MM/DD");
+        var dayOfWeek = today.format('d');
+        scheduleForDays[day] = {
+            capacity:0,
+            consume:0,
+            dayOfWeek:dayOfWeek
+        };
+    }
+    return scheduleForDays;
 }
 
 

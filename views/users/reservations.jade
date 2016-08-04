@@ -19,33 +19,32 @@ block content
                 -var orderState = item.orderState;
                 dl.order(data-id="#{item.id}")
                     dt
-                        |预约编号：#{item.id}
-                        time.date-time.text-sec #{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')}
+                        if item.reservations && item.reservations.length && item.reservations[0] && item.reservations[0].goodsInfo
+                            span 订单编号：#{item.reservations[0].goodsInfo.orderId}
+                        span 预约编号：#{item.id}
+                        time.fr.date-time.text-sec #{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')}
                     dd
                         .col.goods
                             -var transmitType = '';
-                            each goods,index in item.reservations
+                            if item.reservations && item.reservations.length > 0
+                                each goods,index in item.reservations
+                                    .row
+                                        span.row-col.goods-detail
+                                            if goods && goods.goodsInfo
+                                                a(href="/screenings/goods/detail/#{goods.goodsInfo.goodsId}")
+                                                    img.fl(src='#{goods.goodsInfo.imageUrls[0]}')
+                                                    h5.fr #{goods.goodsInfo.goodsName}
+                                            else
+                                                p 暂无商品
+                            else
                                 .row
-                                    span.row-col.goods-detail
-                                        if goods && goods.goodsInfo
-                                            a(href="/screenings/goods/detail/#{goods.goodsInfo.goodsId}")
-                                                img.fl(src='#{goods.goodsInfo.imageUrls[0]}')
-                                                h5.fr #{goods.goodsInfo.goodsName}
-                                        else
-                                            p 暂无商品
-
+                                    |暂无商品
                         .col.detail.text-sec
-                            if item.serviceType == 1
-                                p 门诊取样
-                                p.text-sec 门诊地址: #{item.address}
-                                p.text-sec 预约时间: #{item.time}
-                            else if item.serviceType == 2
-                                p 上门取样
-                                p.text-sec 取样地址: #{item.address}
-                                p.text-sec 取样时间: #{item.time}
-                            else if item.serviceType == 3
-                                p 快递取样
-                                p.text-sec 收件地址: #{item.address}
+                            p 取样方式:#{serviceTypeJSON[item.serviceType]}
+                            if item.reservations && item.reservations.length && item.reservations[0] && item.reservations[0].goodsInfo
+                                p.text-sec 服务门诊: #{JSON.parse(item.reservations[0].goodsInfo.hospital).hospitalName}
+                            p.text-sec 取样地址: #{item.address}
+
                         -var resStatus = item.status;
                         .col.order-state.text-sec
                             if resStatus == 0 || resStatus == 1
