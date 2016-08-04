@@ -7,7 +7,7 @@ const fs = require('fs');
 const log4js = require('log4js');
 const path = require('path');
 
-const JSON_PATH = path.resolve(__dirname, '../config/log4js.json');
+const JSON_PATH = require('../config/log4js.config');
 const LOG_DIR = path.resolve(__dirname, '../logs');
 
 class Log {

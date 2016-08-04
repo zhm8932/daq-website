@@ -1,50 +1,51 @@
-{
+const path = require('path');
+exports  = {
   "appenders": [
     {
       "type": "dateFile",
-      "filename": "../logs/app.log",
+      "filename": path.resolve(__dirname, "../logs/app.log"),
       "category": "app",
       "pattern": "-yyyy-MM-dd"
     },
     {
       "type": "dateFile",
-      "filename": "../logs/http.log",
+      "filename": path.resolve(__dirname, "../logs/http.log"),
       "category": "http",
       "pattern": "-yyyy-MM-dd"
     },
     {
       "type": "dateFile",
-      "filename": "../logs/router.log",
+      "filename": path.resolve(__dirname, "../logs/router.log"),
       "category": "router",
       "pattern": "-yyyy-MM-dd"
     },
     {
       "type": "dateFile",
-      "filename": "../logs/service.log",
+      "filename": path.resolve(__dirname, "../logs/service.log"),
       "category": "service",
       "pattern": "-yyyy-MM-dd"
     },
     {
       "type": "dateFile",
-      "filename": "../logs/request.log",
+      "filename": path.resolve(__dirname, "../logs/request.log"),
       "category": "request",
       "pattern": "-yyyy-MM-dd"
     },
     {
       "type": "dateFile",
-      "filename": "../logs/proxy.log",
+      "filename": path.resolve(__dirname, "../logs/proxy.log"),
       "category": "proxy",
       "pattern": "-yyyy-MM-dd"
     },
     {
       "type": "dateFile",
-      "filename": "../logs/middleware.log",
+      "filename": path.resolve(__dirname, "../logs/middleware.log"),
       "category": "middleware",
       "pattern": "-yyyy-MM-dd"
     },
     {
       "type": "dateFile",
-      "filename": "../logs/error.log",
+      "filename": path.resolve(__dirname, "../logs/error.log"),
       "category": "error",
       "pattern": "-yyyy-MM-dd"
     }
@@ -57,4 +58,5 @@
     "service": "INFO",
     "error": "ERROR"
   }]
-}
+};
+
