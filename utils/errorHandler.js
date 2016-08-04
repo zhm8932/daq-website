@@ -21,7 +21,7 @@ exports.handleError = function(res, code, error){
  * @param error 错误Error
  */
 exports.handleServerError = function handleInternalError(res, serverCode, error) {
-    if (serverCode === '300' || serverCode === '200300' || serverCode ==='10000000') {
+    if (serverCode === '300' || serverCode === '200300' || serverCode ==='10000000'||serverCode==='11000000') {
         _handleError(res, '200',  error,true);
     } else {
         _handleError(res, '500', error,true);

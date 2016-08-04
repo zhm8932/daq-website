@@ -65,7 +65,8 @@ define(function(require){
                     method: 'POST',
                     tipText: '请求问答数据',
                     callback: function (result) {
-                        var json = data;
+                        var json = result;
+                        console.log("json:",json)
                         var $list = $('#list_ask ul');
                         if(json.success){
                             var data = json.data.data,

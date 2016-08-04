@@ -130,7 +130,7 @@ define(function(require,exports,module) {
         $prompt = $loginWrap.find('ul').eq(index).find('.prompt');
         //console.log('index::',index);
         var data = {
-            "password":$loginWrap.find('ul').eq(index).find(".password").val(),
+            "password":utils.md5($loginWrap.find('ul').eq(index).find(".password").val()),
             "account":$loginWrap.find('ul').eq(index).find(".username").val(),
             "loginType":1
         }
@@ -229,20 +229,20 @@ define(function(require,exports,module) {
         var index = $loginWrap.find('.tit span.on').index();
         $prompt = $loginWrap.find('ul').eq(index).find('.prompt');
 
-        utils.SendAjax({
-            url: '/login',
-            param: data,
-            method: 'POST',
-            tipText: '登录',
-            callback: function (result) {
-                if(result.success){
+        $.ajax({
+            type:'post',
+            url:'/login',
+            data:data,
+            success:function(json){
+                var json = JSON.parse(json);
+                if(json.success){
                     getCartCount();
                     var myMsg = new utils.MsgShow({
                         delayTime:2000,
                         title:'<i class="icon"></i>登录成功!',
                         otherBox:'successBox'
                     });
-                    var userAllInfo = result.data.userAllInfo;
+                    var userAllInfo = json.data.userAllInfo;
                     if(popup){
                         popup.hideBox(function () {
                             $topBarAside.html(logoutHtml);
@@ -256,19 +256,18 @@ define(function(require,exports,module) {
                     myMsg.hideMsg(1000);
 
                 }else{
-                    // //console.log('登录失败')
-                    // $prompt.show().find('em').html(result.msg)
-                    var code = result.code;
+                    // $prompt.show().find('em').html(json.msg)
+                    var code = json.code;
                     if(code==300){
                         $prompt.show().find('em').html("登录失败:服务器异常")
                     }else{
-                        $prompt.show().find('em').html(result.msg)
+                        $prompt.show().find('em').html(json.msg)
                     }
 
                 }
 
             }
-        });
+        })
     }
     var loginRequiredArr = ['/trade/order','/trade/cart/list','/treats/reg/','/users/'];
 

@@ -10,7 +10,7 @@ exports.GetCartList = function (req,res,callback) {
     var bizParam = {
         "accountId": req.accountId
     };
-
+    
     util.ajax('GET', api.GetCartList, req,res,bizParam, function (err,data) {
         callback && callback(err,data);
     });

@@ -19,6 +19,7 @@ router.get('/cart/list', authority.loginRequired,function (req, res, next) {
 
 router.get('/cart/GetCartCount', authority.loginRequired,function (req, res, next) {
     request.GetCartCount(req,res,function (err,data) {
+        console.log("购物车数量：",data)
         res.send(data);
     });
 });

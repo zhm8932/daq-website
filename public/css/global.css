@@ -1395,7 +1395,9 @@ select {
       .complete-dialog .box-body .prompt i {
         background-position: -178px -22px; }
   .complete-dialog .submitBox {
-    margin-left: 98px; }
+    margin-left: 130px;
+    width: 260px;
+    margin-top: -10px; }
     .complete-dialog .submitBox span.ok.disabled {
       background: #C4C4C4;
       border: 1px solid #C4C4C4;

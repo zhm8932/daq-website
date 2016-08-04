@@ -37,9 +37,13 @@ exports.login = function (req,res,next) {
     var bizParam = {
         "loginParam": body
     };
+    req.autoHandleError = false;
     util.ajax('POST',api.UserWebLogin,req,res, bizParam,function (err,data) {
-        req.session.userInfo = JSON.parse(data).data;
-        res.cookie('accountId',JSON.parse(data).data.userAllInfo.accountCommon.id);
+        var json = JSON.parse(data);
+        if(json.success){
+            req.session.userInfo = json.data;
+            res.cookie('accountId',json.data.userAllInfo.accountCommon.id);
+        }
         res.send(data);
     });
 
