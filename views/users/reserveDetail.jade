@@ -21,7 +21,7 @@ block content
                     div.overview
                         span.info
                             span.text-sec 订单编号:
-                            if data.reservations[0] && data.reservations[0].goodsInfo
+                            if data.reservations && data.reservations.length && data.reservations[0] && data.reservations[0].goodsInfo
                                 span #{data.reservations[0].goodsInfo.orderId}
                         span.info
                             span.text-sec 状态:
@@ -51,15 +51,18 @@ block content
 
                                 td.bd-l(rowspan="#{goodsLength}")
                                     p 取样方式:#{serviceTypeJSON[data.serviceType]}
-                                        if data.reservations[0] && data.reservations[0].goodsInfo
-                                            p.text-sec 服务门诊: #{JSON.parse(data.reservations[0].goodsInfo.hospital).hospitalName}
-                                        p.text-sec 取样地址: #{data.address}
-                                        p.text-sec 预约时间: #{moment(data.time).format('YYYY-MM-DD HH:mm:ss')}
-                //-else
+                                    if data.reservations && data.reservations.length && data.reservations[0] && data.reservations[0].goodsInfo
+                                        p.text-sec 服务门诊: #{JSON.parse(data.reservations[0].goodsInfo.hospital).hospitalName}
+                                    p.text-sec 取样地址: #{data.address}
+                                    p.text-sec 预约时间: #{moment(data.time).format('YYYY-MM-DD HH:mm:ss')}
+                else
                     .detail-wap
                         h3
-                            span.text-sec 预约编号:#{data.id}
-                            span.orderState #{statusJSON[parseInt(data.serviceType)-1][data.reservationStatus]}
+                            p.text-sec 订单编号:
+                                if data.reservations && data.reservations.length && data.reservations[0] && data.reservations[0].goodsInfo
+                                    |#{data.reservations[0].goodsInfo.orderId}
+                            p.text-sec 预约编号:#{data.id}
+                            p.orderState #{statusJSON[parseInt(data.serviceType)-1][data.reservationStatus]}
                         each item,i in data.reservations
                             dl.clearfix
                                 dt
@@ -68,17 +71,11 @@ block content
                                         span #{item.goodsInfo.goodsName}
                                         p 使用密码： #{item.password}
                             .price-text
-                                if data.serviceType == 1
-                                    p 取样方式：门诊取样
-                                    p.text-sec 门诊地址：#{data.address}
-                                    p.text-sec 预约时间：#{data.time}
-                                else if data.serviceType == 2
-                                    p 取样方式：上门取样
-                                    p.text-sec 取样地址：#{data.address}
-                                    p.text-sec 取样时间：#{data.time}
-                                else if data.serviceType == 3
-                                    p 取样方式：快递取样
-                                    p.text-sec 收件地址：#{data.address}
+                                p 取样方式:#{serviceTypeJSON[data.serviceType]}
+                                    if data.reservations && data.reservations.length && data.reservations[0] && data.reservations[0].goodsInfo
+                                        p.text-sec 服务门诊: #{JSON.parse(data.reservations[0].goodsInfo.hospital).hospitalName}
+                                    p.text-sec 取样地址: #{data.address}
+                                    p.text-sec 预约时间: #{moment(data.time).format('YYYY-MM-DD HH:mm:ss')}
                             .area
                                 p 下单时间：
                                     |#{moment(data.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
