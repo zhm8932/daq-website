@@ -2,6 +2,7 @@
  * 科普模块  kepu
  * */
 var express = require('express');
+var async = require('async');
 var router = express.Router();
 var request = require('../requests/treat.request.js');
 var users = require('../requests/users.request.js');
@@ -17,34 +18,45 @@ router.get('/regsource/list', function (req, res, next) {
     });
 });
 
-// router.get('/reg/doctorView', function (req, res, next) {
-//     request.GetRegTimeSlot(req,res,function (err,data) {
-//         if (success) {
-//             var json = JSON.parse(data);
-//             res.render('treat/regByDoc', {
-//                 title: '诊疗服务',
-//                 data: json.data
-//             });
-//         }
-//     });
-//
-// });
+function tidyRegSourceList(){
+
+}
 
 
 router.get('/reg/doctorView',authority.loginRequired, function (req, res, next) {
-    request.GetRegTimeSlot(req,res,function (err,data) {
-        var timeSlotJson = JSON.parse(data);
-        timeSlotJson.data.timeWithIdMap = tidyTimeMap(timeSlotJson.data.timeWithIdMap);
-
+    var hasBindHISJson = null;
+    var timeSlotJson = null;
+    async.parallel([function (callback) {
+        request.GetRegTimeSlot(req,res,function (err,data) {
+            timeSlotJson = JSON.parse(data);
+            timeSlotJson.data.timeWithIdMap = tidyTimeMap(timeSlotJson.data.timeWithIdMap);
+            callback(null, data);
+        });
+    }, function(callback){
         users.HasBindHis(req,res,function (err,data) {
-            var hasBindHISJson = JSON.parse(data);
-            res.render('treat/regByDoc', {
-                title: '诊疗服务',
-                timeSlot: timeSlotJson.data,
-                hasBind: hasBindHISJson.data
-            });
+            hasBindHISJson = JSON.parse(data);
+            callback(null, data);
+        });
+    }],function (err, results) {
+        res.render('treat/regByDoc', {
+            title: '诊疗服务',
+            timeSlot: timeSlotJson.data,
+            hasBind: hasBindHISJson.data
         });
     });
+    // request.GetRegTimeSlot(req,res,function (err,data) {
+    //     var timeSlotJson = JSON.parse(data);
+    //     timeSlotJson.data.timeWithIdMap = tidyTimeMap(timeSlotJson.data.timeWithIdMap);
+    //
+    //     users.HasBindHis(req,res,function (err,data) {
+    //         var hasBindHISJson = JSON.parse(data);
+    //         res.render('treat/regByDoc', {
+    //             title: '诊疗服务',
+    //             timeSlot: timeSlotJson.data,
+    //             hasBind: hasBindHISJson.data
+    //         });
+    //     });
+    // });
 });
 
 

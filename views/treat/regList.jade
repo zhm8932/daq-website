@@ -42,7 +42,7 @@ block content
                         th(width="21%")
                         each item in regData[0].scheduleList
                             th(width="8%")
-                                p.month-date #{moment(item.scheduleDate).format('MM/DD')}
+                                p.month-date #{moment(item.start).format('MM/DD')}
                                 p #{week[parseInt(item.dayOfWeek)-1]}
                     tbody
                         each item in regData
