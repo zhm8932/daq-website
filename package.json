@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "async": "^2.0.1",
     "blueimp-md5": "^2.3.0",
     "body-parser": "~1.13.2",
     "connect-redis": "^3.1.0",
