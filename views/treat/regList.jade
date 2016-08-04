@@ -40,10 +40,10 @@ block content
                     thead
                         th(width="25%")
                         th(width="21%")
-                        each item in regData[0].scheduleList
+                        each schedule,date in regData[0].scheduleForDays
                             th(width="8%")
-                                p.month-date #{moment(item.start).format('MM/DD')}
-                                p #{week[parseInt(item.dayOfWeek)-1]}
+                                p.month-date #{date}
+                                p #{week[parseInt(schedule.dayOfWeek)]}
                     tbody
                         each item in regData
                             -var hos = item.doctor.hospitalReDepartments
@@ -62,16 +62,16 @@ block content
                                         p #{item.doctor.title}
                                         p #{name}
                                 td #{item.doctor.skill}
-                                each schedule in item.scheduleList
-                                    if schedule.hasSetSchedule
-                                        if schedule.consumeCount < schedule.capacityCount
-                                            td.register(data-date="#{schedule.scheduleDate}")
+                                each schedule,date in item.scheduleForDays
+                                    if schedule.capacity > 0
+                                        if schedule.consume < schedule.capacity
+                                            td.register(data-date="#{schedule.date}")
                                                 p 预约
-                                                p (#{schedule.consumeCount}/#{schedule.capacityCount})
-                                        else if schedule.consumeCount == schedule.capacityCount
+                                                p (#{schedule.consume}/#{schedule.capacity})
+                                        else if schedule.consume == schedule.capacity
                                             td.disabled
                                                 p 约满
-                                                p (#{schedule.consumeCount}/#{schedule.capacityCount})
+                                                p (#{schedule.consume}/#{schedule.capacity})
                                     else
                                         td.disabled
                                             //p 未排班

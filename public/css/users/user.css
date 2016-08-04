@@ -116,6 +116,9 @@
       .box-right .patients-table .new-tr td input:focus {
         border: 1px solid #48BED8; }
 
+.reservation dt span {
+  margin-right: 40px; }
+
 .reservation.box-right dl.order .goods {
   width: 34%; }
   .reservation.box-right dl.order .goods .goods-detail {
