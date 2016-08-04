@@ -51,7 +51,7 @@ block content
                             each h in hos
                                 -name = h.hospitalName;
                                 //-hosname += name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
-                            tr.doctor-id(data-accountid="#{item.doctor.id}")
+                            tr.doctor-info(data-accountid="#{item.doctor.id}",data-docName="#{item.doctor.doctorName}",data-docTitle="#{item.doctor.title}")
                                 td.doctor
                                     if item.doctor.doctorPhoto
                                         img(src="#{item.doctor.doctorPhoto}")
@@ -68,7 +68,7 @@ block content
                                             td.register(data-date="#{schedule.date}")
                                                 p 预约
                                                 p (#{schedule.consume}/#{schedule.capacity})
-                                        else if schedule.consume == schedule.capacity
+                                        else if schedule.consume === schedule.capacity
                                             td.disabled
                                                 p 约满
                                                 p (#{schedule.consume}/#{schedule.capacity})
@@ -95,21 +95,28 @@ block content
                             span.doctor-name #{item.doctor.doctorName}
                             span.doctor-title #{item.doctor.title}
                         p #{hosname}
-                    ul.reg-list.doctor-id(data-accountid="#{item.doctor.id}")
-                        each schedule in item.scheduleList
-                            if schedule.hasSetSchedule
-                                if schedule.consumeCount < schedule.capacityCount
+                    ul.reg-list.doctor-info(data-accountid="#{item.doctor.id}",data-docName="#{item.doctor.doctorName}",data-docTitle="#{item.doctor.title}")
+                        each schedule,date in item.scheduleForDays
+                            if schedule.capacity > 0
+                                if schedule.consume < schedule.capacity
                                     li
-                                        span #{moment(schedule.scheduleDate).format('YYYY/MM/DD')} #{week[parseInt(schedule.dayOfWeek) - 1]}(#{schedule.consumeCount}/#{schedule.capacityCount})
-                                        button.btn.fr.register(data-date="#{schedule.scheduleDate}") 预约
-                                else if schedule.consumeCount == schedule.capacityCount
+                                        span #{schedule.date} #{week[parseInt(schedule.dayOfWeek) - 1]}(#{schedule.consume}/#{schedule.capacity})
+                                        button.btn.fr.register(data-date="#{schedule.date}") 预约
+                                else if schedule.consume === schedule.capacity
                                     li.disabled
-                                        span #{moment(schedule.scheduleDate).format('YYYY/MM/DD')} #{week[parseInt(schedule.dayOfWeek) - 1]}(#{schedule.consumeCount}/#{schedule.capacityCount})
+                                        span #{schedule.date} #{week[parseInt(schedule.dayOfWeek) - 1]}(#{schedule.consume}/#{schedule.capacity})
                                         button.btn.fr 约满
                             //else
                                 li.disabled
                                     span #{moment(schedule.scheduleDate).format('YYYY/MM/DD')} #{week[parseInt(schedule.dayOfWeek) - 1]}(#{schedule.consumeCount}/#{schedule.capacityCount})
                                     button.btn.fr 未排班
+
+    form#regByDocForm(action="/treat/reg/doctorView",method="POST")
+        input(name="date",type="hidden",value="")
+        input(name="doctorId",type="hidden",value="")
+        input(name="docName",type="hidden",value="")
+        input(name="docTitle",type="hidden",value="")
+
 
     section.info_list.clearfix
 

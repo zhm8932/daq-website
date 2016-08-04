@@ -5,9 +5,13 @@ define(function (require, exports, module) {
     $(function(){
         $('.register').on('click',function(){
             var $this = $(this);
-            var date = utils.GetLoacalDateString(parseFloat($this.data('date')));
-            var doctorId = $this.closest('.doctor-id').data('accountid');
-            window.location.href = '/treat/reg/doctorView?date='+date+'&doctorId='+doctorId;
+            var doctorInfo = $this.closest('.doctor-info');
+            var form = $('#regByDocForm');
+            form.find('input[name=date]').val($this.data('date'));
+            form.find('input[name=doctorId]').val(doctorInfo.attr('data-accountid'));
+            form.find('input[name=docName]').val(doctorInfo.attr('data-docName'));
+            form.find('input[name=docTitle]').val(doctorInfo.attr('data-docTitle'));
+            form.submit();
         });
     });
 });

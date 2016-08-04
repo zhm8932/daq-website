@@ -20,7 +20,11 @@ exports.GetRegsourceList = function (req,res,callback) {
 };
 
 exports.GetRegTimeSlot = function (req,res,callback) {
-    var bizParam = req.query;
+    var body = req.body;
+    var bizParam = {
+        date:body.date,
+        doctorId:body.doctorId
+    };
 
     util.ajax('GET', api.GetRegTimeSlot,req,res,bizParam, function (err,data) {
         callback && callback(err,data);

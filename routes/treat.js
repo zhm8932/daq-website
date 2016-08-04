@@ -45,24 +45,24 @@ function _initScheduleForDays(){
     var scheduleForDays = {};
     for(var i = 1; i <= needDaysNum; i++){
         var day = today.add({days:1}).format("MM/DD");
-        var dayOfWeek = today.format('d');
         scheduleForDays[day] = {
             capacity:0,
             consume:0,
-            dayOfWeek:dayOfWeek
+            dayOfWeek:today.format('d'),
+            date:today.format('YYYY-MM-DD')
         };
     }
     return scheduleForDays;
 }
 
 
-router.get('/reg/doctorView',authority.loginRequired, function (req, res, next) {
+router.post('/reg/doctorView',authority.loginRequired, function (req, res, next) {
     var hasBindHISJson = null;
     var timeSlotJson = null;
     async.parallel([function (callback) {
         request.GetRegTimeSlot(req,res,function (err,data) {
             timeSlotJson = JSON.parse(data);
-            timeSlotJson.data.timeWithIdMap = tidyTimeMap(timeSlotJson.data.timeWithIdMap);
+            // timeSlotJson.data.scheduleItems = tidyTimeMap(timeSlotJson.data.scheduleItems);
             callback(null, data);
         });
     }, function(callback){
@@ -74,7 +74,10 @@ router.get('/reg/doctorView',authority.loginRequired, function (req, res, next) 
         res.render('treat/regByDoc', {
             title: '诊疗服务',
             timeSlot: timeSlotJson.data,
-            hasBind: hasBindHISJson.data
+            hasBind: hasBindHISJson.data,
+            docName:req.body.docName,
+            docTitle:req.body.docTitle,
+            date:req.body.date
         });
     });
     // request.GetRegTimeSlot(req,res,function (err,data) {
@@ -122,7 +125,7 @@ router.get('/order/state', function (req, res, next) {
 function tidyTimeMap(timeObjJson){
     var timeArr = [];
     var timeObjArr = [];
-    for(var time in timeObjJson){
+    for(var i =0; i < timeObjJson.length; i++){
         var timeObj = timeObjJson[time];
         if(timeObj.unConsume > 0){
             timeArr.push(time);

@@ -141,10 +141,10 @@ module.exports = {
     //挂号
     GetRegsourceList: "daq.medical.doctor.schedule.detail.page",
     GetRegisterList: "his.reservation.get.byaccount",//我的挂号列表
-    GetRegTimeSlot: "his.schedule.regsource.withid",
-    AddRegByDoc: "his.reservation.submit",
+    GetRegTimeSlot: "service.schedule.get.doctorIdWithDate.fromcrm",
+    AddRegByDoc: "service.schedule.registering.fromcrm",
     DelRegister: "his.reservation.delete",
-    CancelRegister: "his.reservation.cancel",
+    CancelRegister: "his.reservation.cancel.fromcrm",
     GetRegDetail: "his.reservation.get.byid",
 
 
