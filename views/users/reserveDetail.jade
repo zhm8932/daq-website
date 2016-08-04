@@ -11,6 +11,7 @@ block content
         .reservation-detail
             -var serviceTypeJSON = {'0':'未选择','1':'门诊取样','2':'上门取样','3':'快递取样'};
             -var statusJSON = [{'1000':'选择产品','1100':'预约成功','1150':'门诊登记','1200':'收到样本','1900':'报告生成'},{'2000':'选择产品','2100':'预约成功','2150':'已安排护士取样','2200':'护士取样','2300':'收到样本','2900':'报告生成'},{'3000':'选择产品','3100':'预约成功','3200':'物料寄出','3300':'回寄样本','3400':'收到样本','3900':'报告生成'}];
+            -var addressNameJSON = {'0':'未选择','1':'门诊地址','2':'取样地址','3':'收件地址'};
             if !data || !data.id
                 .noData
                     p 订单不存在或已被删除
@@ -53,7 +54,7 @@ block content
                                     p 取样方式:#{serviceTypeJSON[data.serviceType]}
                                     if data.reservations && data.reservations.length && data.reservations[0] && data.reservations[0].goodsInfo
                                         p.text-sec 服务门诊: #{JSON.parse(data.reservations[0].goodsInfo.hospital).hospitalName}
-                                    p.text-sec 取样地址: #{data.address}
+                                    p.text-sec #{addressNameJSON[data.serviceType]}: #{data.address}
                                     p.text-sec 预约时间: #{moment(data.time).format('YYYY-MM-DD HH:mm:ss')}
                 else
                     .detail-wap
@@ -72,10 +73,10 @@ block content
                                         p 使用密码： #{item.password}
                             .price-text
                                 p 取样方式:#{serviceTypeJSON[data.serviceType]}
-                                    if data.reservations && data.reservations.length && data.reservations[0] && data.reservations[0].goodsInfo
-                                        p.text-sec 服务门诊: #{JSON.parse(data.reservations[0].goodsInfo.hospital).hospitalName}
-                                    p.text-sec 取样地址: #{data.address}
-                                    p.text-sec 预约时间: #{moment(data.time).format('YYYY-MM-DD HH:mm:ss')}
+                                if data.reservations && data.reservations.length && data.reservations[0] && data.reservations[0].goodsInfo
+                                    p.text-sec 服务门诊: #{JSON.parse(data.reservations[0].goodsInfo.hospital).hospitalName}
+                                p.text-sec #{addressNameJSON[data.serviceType]}: #{data.address}
+                                p.text-sec 预约时间: #{moment(data.time).format('YYYY-MM-DD HH:mm:ss')}
                             .area
                                 p 下单时间：
                                     |#{moment(data.updatedAt).format('YYYY-MM-DD HH:mm:ss')}

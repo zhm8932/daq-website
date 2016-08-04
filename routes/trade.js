@@ -169,7 +169,7 @@ router.get('/order/paySuccess',authority.loginRequired, function (req, res, next
         res.render('trade/paySuccess', {
             title: '支付结果',
             data: {
-                success: success,
+                success: true,
                 data: json.data
             }
         });

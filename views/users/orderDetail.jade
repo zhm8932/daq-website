@@ -60,7 +60,7 @@ block content
                                             -favPrice = parseFloat(value);
                                         p #{sampleJson[transmitType]}(服务费￥#{favPrice/100})
                                         if transmitType == 'sampling_home'
-                                            p.text-sec 取样地址:#{data.goodsItemDTOs[0].address}
+                                            p.text-sec 取样地址:#{data.goodsItemDTOs[i].address}
                                     td.text-sec ￥#{(parseFloat(item.dealPrice + favPrice)/100).toFixed(2)}
                                     if data.orderState == 2
                                         if item.reservationState == 0
@@ -125,7 +125,7 @@ block content
                                     -favPrice = parseFloat(value);
                                 p #{sampleJson[transmitType]}(服务费￥#{favPrice / 100})
                                 if transmitType == 'sampling_home'
-                                    p.text-sec 取样地址:#{data.goodsItemDTOs[0].address}
+                                    p.text-sec 取样地址:#{data.goodsItemDTOs[i].address}
                     #actualTotal.price-text
                         p
                             span.text-sec 实付款:
