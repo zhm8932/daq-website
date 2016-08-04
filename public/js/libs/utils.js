@@ -3,7 +3,11 @@ define(function(require,exports,module) {
     //弹出框
     require('jquery');
     require('touchslider');
+    require('./md5');
 
+    function md5(str) {
+        return hex_md5(str).toUpperCase();
+    }
     function Popup(options){
         var defaults = {
             ok:'ok',
@@ -489,7 +493,8 @@ define(function(require,exports,module) {
         BuildSelect:buildSelect,
         SetMinHeight:setMinHeight,
         ShowComfirmDialog:showComfirmDialog,
-        check_tel:check_tel
+        check_tel:check_tel,
+        md5:md5
     }
 
 })

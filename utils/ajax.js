@@ -200,6 +200,7 @@ module.exports.ajax = function (method,apiName,browserReq,browserRes,bizParam,ca
 
     function handleError(code,err,data,serverError){
         browserReq.autoHandleError = browserReq.autoHandleError != false;//不为false时都赋值为true
+        console.log("browserReq.autoHandleError:",browserReq.autoHandleError)
         if(browserReq.autoHandleError){
             if(serverError){
                return  errorHandler.handleServerError(browserRes,code,err);

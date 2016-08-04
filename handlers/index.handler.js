@@ -40,7 +40,7 @@ exports.get_cart_num = function (req,res,next) {
     console.log("req::url:",req.url);
     console.log("browser:",browser);
 
-    var accountId = req.accountId = req.session.userInfo?req.accountId:'';
+    var accountId = req.accountId?req.accountId:req.body.accountId;
     console.log("accountId:",accountId);
     if(accountId){
         TradeRequest.GetCartCount(req,res,function (err,data) {
