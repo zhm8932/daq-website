@@ -51,7 +51,7 @@ block content
                             each h in hos
                                 -name = h.hospitalName;
                                 //-hosname += name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
-                            tr.doctor-info-detail(data-accountid="#{item.doctor.id}",data-docName="#{item.doctor.doctorName}",data-docTitle="#{item.doctor.title}")
+                            tr.doctor-info-detail(data-accountid="#{item.doctor.id}",data-docName="#{item.doctor.doctorName}",data-docTitle="#{item.doctor.title}",doctor-need="#{item.doctor.needPay}")
                                 td.doctor
                                     if item.doctor.doctorPhoto
                                         img(src="#{item.doctor.doctorPhoto}")
@@ -95,7 +95,7 @@ block content
                             span.doctor-name #{item.doctor.doctorName}
                             span.doctor-title #{item.doctor.title}
                         p #{hosname}
-                    ul.reg-list.doctor-info-detail(data-accountid="#{item.doctor.id}",data-docName="#{item.doctor.doctorName}",data-docTitle="#{item.doctor.title}")
+                    ul.reg-list.doctor-info-detail(data-accountid="#{item.doctor.id}",data-docName="#{item.doctor.doctorName}",data-docTitle="#{item.doctor.title}",doctor-need="#{item.doctor.needPay}")
                         each schedule,date in item.scheduleForDays
                             if schedule.capacity > 0
                                 if schedule.consume < schedule.capacity
@@ -116,6 +116,7 @@ block content
         input(name="doctorId",type="hidden",value="")
         input(name="docName",type="hidden",value="")
         input(name="docTitle",type="hidden",value="")
+        input(name="need",type="hidden",value="")
 
 
     section.info_list.clearfix

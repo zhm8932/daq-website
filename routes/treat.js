@@ -78,7 +78,8 @@ router.get('/reg/doctorView', authority.loginRequired, function (req, res, next)
             hasBind: hasBindHISJson.data,
             docName: query.docName,
             docTitle: query.docTitle,
-            date: query.date
+            date: query.date,
+            need:query.need
         });
     });
     // request.GetRegTimeSlot(req,res,function (err,data) {

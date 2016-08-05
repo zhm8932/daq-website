@@ -34,10 +34,10 @@ block content
                                         each value,index in timeSlot.scheduleItems
                                             li.option(data-value="#{value.scheduleId}",data-cost="#{value.cost}") #{moment(value.start).format('HH:mm')}-#{moment(value.end).format('HH:mm')}(#{value.consume}/#{value.capacity})
 
-
-                        li
-                            label 挂号费
-                            span#cost.text-stress
+                        if need === 'true'
+                            li
+                                label 挂号费
+                                span#cost.text-stress
 
 
                         button#commit-reg.submitBtn.disabled 确认提交

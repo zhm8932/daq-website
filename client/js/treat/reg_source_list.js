@@ -11,6 +11,7 @@ define(function (require, exports, module) {
             form.find('input[name=doctorId]').val(doctorInfo.attr('data-accountid'));
             form.find('input[name=docName]').val(doctorInfo.attr('data-docName'));
             form.find('input[name=docTitle]').val(doctorInfo.attr('data-docTitle'));
+            form.find('input[name=need]').val(doctorInfo.attr('data-need'));
             form.submit();
         });
     });
