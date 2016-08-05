@@ -126,17 +126,17 @@ router.get('/order/state', function (req, res, next) {
 function _tidyTimeMap(timeObjArr) {
     // var newArr = [];
     for (var i = 0; i < timeObjArr.length; i++) {
-        if(i < timeObjArr.length){
+        if (i < timeObjArr.length) {
             var timeObj = timeObjArr[i];
-            if (timeObj.capacity==0 || timeObj.capacity <= timeObj.consume) {
-                timeObjArr.splice(i,1);
+            if (timeObj.capacity == 0 || timeObj.capacity <= timeObj.consume) {
+                timeObjArr.splice(i, 1);
                 i--;
             }
-        }else{
+        } else {
             break;
         }
     }
-    return _bubble(timeObjArr,'start');
+    return _bubble(timeObjArr, 'start');
 }
 
 function _bubble(arr, attr) {
@@ -145,7 +145,7 @@ function _bubble(arr, attr) {
         for (var j = 0; j < arr.length - i - 1; j++) { //每一趟比较多少次数
             var flag = false;
             if (attr) {
-                flag = arr[j][attr] > arr[j][attr];//从小到大排序
+                flag = arr[j][attr] > arr[j + 1][attr];//从小到大排序
             } else {
                 flag = arr[j] > arr[j + 1];
             }
