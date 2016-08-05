@@ -63,7 +63,7 @@ router.get('/reg/doctorView', authority.loginRequired, function (req, res, next)
     async.parallel([function (callback) {
         request.GetRegTimeSlot(req, res, function (err, data) {
             timeSlotJson = JSON.parse(data);
-            // timeSlotJson.data.scheduleItems = tidyTimeMap(timeSlotJson.data.scheduleItems);
+            timeSlotJson.data.scheduleItems = _tidyTimeMap(timeSlotJson.data.scheduleItems);
             callback(null, data);
         });
     }, function (callback) {
@@ -123,57 +123,29 @@ router.get('/order/state', function (req, res, next) {
     });
 });
 
-function tidyTimeMap(timeObjArr) {
+function _tidyTimeMap(timeObjArr) {
     // var newArr = [];
-    // for (var i = 0; i < timeObjArr.length; i++) {
-    //     var timeObj = timeObjArr[i];
-    //     if (timeObj.capacity > 0 && timeObj.capacity > timeObj.consume) {
-    //         newArr.push(timeObj);
-    //     }
-    // }
-
-    var temp;
-    for (var i = 0; i < timeObjArr.length; i++) { //比较多少趟，从第一趟开始
-        for (var j = 0; j < timeObjArr.length - i - 1; j++) { //每一趟比较多少次数
-            if(timeObjArr[i].capacity <= timeObjArr[i].consume){
-                continue;
+    for (var i = 0; i < timeObjArr.length; i++) {
+        if(i < timeObjArr.length){
+            var timeObj = timeObjArr[i];
+            if (timeObj.capacity==0 || timeObj.capacity <= timeObj.consume) {
+                timeObjArr.splice(i,1);
+                i--;
             }
-            if ( timeObjArr[j].start > timeObjArr[j].start) {
-                temp = timeObjArr[j];
-                timeObjArr[j] = timeObjArr[j + 1];
-                timeObjArr[j + 1] = temp;
-            }
+        }else{
+            break;
         }
     }
-
-    return newArr;
-
-    // var timeArr = [];
-    // var timeObjArr = [];
-    // for(var i =0; i < timeObjJson.length; i++){
-    //     var timeObj = timeObjJson[time];
-    //     if(timeObj.unConsume > 0){
-    //         timeArr.push(time);
-    //     }
-    // }
-    //
-    // timeArr.sort();
-    //
-    // for(var i = 0; i < timeArr.length; i++){
-    //     var time = timeArr[i];
-    //     timeObjArr.push({time:time,timeDetail:timeObjJson[time]});
-    // }
-    //
-    // return timeObjArr;
+    return _bubble(timeObjArr,'start');
 }
 
-function bubble(arr, attr) {
+function _bubble(arr, attr) {
     var temp;
     for (var i = 0; i < arr.length; i++) { //比较多少趟，从第一趟开始
         for (var j = 0; j < arr.length - i - 1; j++) { //每一趟比较多少次数
             var flag = false;
             if (attr) {
-                flag = arr[j][attr] > arr[j][attr];
+                flag = arr[j][attr] > arr[j][attr];//从小到大排序
             } else {
                 flag = arr[j] > arr[j + 1];
             }
