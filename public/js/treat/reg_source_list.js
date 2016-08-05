@@ -5,7 +5,7 @@ define(function (require, exports, module) {
     $(function(){
         $('.register').on('click',function(){
             var $this = $(this);
-            var doctorInfo = $this.closest('.doctor-info');
+            var doctorInfo = $this.closest('.doctor-info-detail');
             var form = $('#regByDocForm');
             form.find('input[name=date]').val($this.data('date'));
             form.find('input[name=doctorId]').val(doctorInfo.attr('data-accountid'));
