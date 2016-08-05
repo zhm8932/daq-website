@@ -40,7 +40,7 @@ block content
                             th(width="25%") 商品名称
                             th(width="15%") 使用密码
                             th(width="23%") 取样方式
-                            th 小计
+                            th 商品价格
                             th 状态
                             th 操作
                         tbody
@@ -61,7 +61,7 @@ block content
                                         p #{sampleJson[transmitType]}(服务费￥#{favPrice/100})
                                         if transmitType == 'sampling_home'
                                             p.text-sec 取样地址:#{data.goodsItemDTOs[i].address}
-                                    td.text-sec ￥#{(parseFloat(item.dealPrice + favPrice)/100).toFixed(2)}
+                                    td.text-sec ￥#{(parseFloat(item.dealPrice)/100).toFixed(2)}
                                     if data.orderState == 2
                                         if item.reservationState == 0
                                             td.text-stress 未使用
@@ -107,6 +107,9 @@ block content
                         span.orderState #{orderStateJSON[data.orderState]}
                     each item,i in data.goodsItemDTOs
                         dl.clearfix
+                            each value,key in JSON.parse(item.transmitType)
+                                -transmitType = key;
+                                -favPrice = parseFloat(value);
                             dt
                                 a(href='/screenings/goods/detail/#{item.goodsId}')
                                     img(src="#{item.imageUrls[0]}")
@@ -116,13 +119,10 @@ block content
                                             span.text-stress 未使用
                                         else
                                             span.text-sec 已使用
-                                    span.dealPrice ￥#{item.dealPrice.toFixed(2)}
+                                    span.dealPrice ￥#{(parseFloat(item.dealPrice)/100).toFixed(2)}
                             dd
                                 if item.reservationPwd
                                     p.text-stress 使用密码：#{item.reservationPwd}
-                                each value,key in JSON.parse(item.transmitType)
-                                    -transmitType = key;
-                                    -favPrice = parseFloat(value);
                                 p #{sampleJson[transmitType]}(服务费￥#{favPrice / 100})
                                 if transmitType == 'sampling_home'
                                     p.text-sec 取样地址:#{data.goodsItemDTOs[i].address}
