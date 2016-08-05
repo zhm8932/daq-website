@@ -53,13 +53,12 @@ define(function (require, exports, module) {
                 method: 'POST',
                 tipText: '挂号',
                 callback: function (result) {
-                    // // var needPay = $('#needPay').val();
-                    // var json = result.data.tradeDTO;
-                    // if (needPay != 'true' || json.amount <= 0) {
-                    //     window.location.href = "/users/register/list";
-                    // }else{
-                    //     window.location.href = "/treats/reg/topay?reservationId="+result.data.id;
-                    // }
+                    var needPay =result.data.needPay;
+                    if (!needPay) {
+                        window.location.href = "/users/register/list";
+                    }else{
+                        window.location.href = "/treats/reg/topay?reservationId="+result.data.id;
+                    }
                 },
                 errorFun: function (result) {
                     $this.on('click', function () {

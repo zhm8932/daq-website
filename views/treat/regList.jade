@@ -111,7 +111,7 @@ block content
                                     span #{moment(schedule.scheduleDate).format('YYYY/MM/DD')} #{week[parseInt(schedule.dayOfWeek) - 1]}(#{schedule.consumeCount}/#{schedule.capacityCount})
                                     button.btn.fr 未排班
 
-    form#regByDocForm(action="/treat/reg/doctorView",method="POST")
+    form#regByDocForm(action="/treat/reg/doctorView",method="GET")
         input(name="date",type="hidden",value="")
         input(name="doctorId",type="hidden",value="")
         input(name="docName",type="hidden",value="")

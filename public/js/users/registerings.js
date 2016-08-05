@@ -66,10 +66,10 @@ define(function (require, exports, module) {
                 okCallback:function(){
                     $this.addClass('disabled').off('click');
                     var tr = $this.closest('tr,dl');
-                    var reservationId = tr.attr('data-id');
+                    var registrationId = tr.attr('data-id');
                     utils.SendAjax({
                         url: '/users/register/cancel',
-                        param: {reservationId: reservationId},
+                        param: {registrationId: registrationId},
                         method: 'POST',
                         tipText: '取消挂号',
                         callback: function (result) {
