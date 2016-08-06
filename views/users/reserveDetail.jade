@@ -78,7 +78,7 @@ block content
                                     p.text-sec 预约时间: #{moment(data.time).format('YYYY-MM-DD HH:mm:ss')}
                             .area
                                 p 下单时间：
-                                    |#{moment(data.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
+                                    |#{moment(data.createdAt).format('YYYY-MM-DD HH:mm:ss')}
                                     if data.reservationStatus == 1900 || data.reservationStatus == 2900 || data.reservationStatus == 3900
                                         sapn.info
                                             span.check-report: a(href='/searchs/report') 查看报告

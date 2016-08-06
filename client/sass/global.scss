@@ -1008,7 +1008,7 @@ select {
     }
   }
 }
-.loginBox2{
+.loginCom{
   width: 300px;float: right;position: relative;z-index: 2;margin-top:80px;background-color:rgba(255, 255, 255, 0.7);padding:30px;border: 1px solid $bdrc_ddd;
   .getCode {
     position: absolute;
@@ -1096,8 +1096,26 @@ select {
   }
 
   .otherMsg{text-align: center;padding-top: 10px;color: $gray9B;}
+  .operate{
+    padding: 10px  0;
+    a{color: $textc_48B;
+      &:hover{
+        color: $text_red_F1;
+      }
+    }
+    i{padding:0 8px;color: $textc_48B;}
+  }
   .lgbg{width: 42px;height: 42px;display: inline-block;position: absolute;left:-6px;bottom:-6px;background: url("../images/lg_l.png") no-repeat}
   .lgrt{left:auto;right: -6px;background: url("../images/lg_r.png") no-repeat}
+}
+.registerBox,.rPasswordBox{
+  margin-top: 40px;
+  .tit{
+    span{width: 100%;cursor:default;}
+  }
+}
+.rPasswordBox{
+  margin-top: 60px;
 }
 .ads {
   margin-bottom: 10px;

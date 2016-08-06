@@ -7,7 +7,7 @@ define(function(require,exports,module) {
     var pathname = window.location.pathname;
     var $body = $('body');
 
-    if(!utils.mobile&&pathname=='/login'||$('.loginBox2').length){
+    if(!utils.mobile&&(pathname=='/login'||pathname=='/register'||pathname=='/rPassword')||$('.loginBox2').length){
         $('.topBar').css({'height':0,'overflow':'hidden'});
         $('.header').css({'margin':0});
     }
@@ -94,7 +94,7 @@ define(function(require,exports,module) {
 
     });
     function getLoginWrap() {
-         var $loginWrap = $('.loginBox,.loginBox2');
+         var $loginWrap = $('.loginBox,.loginBox2,.registerBox,.rPasswordBox');
         return $loginWrap
     }
 
@@ -123,25 +123,26 @@ define(function(require,exports,module) {
     })
 
     // var $loginWrap = $('.loginBox,.loginBox2');
-    //获取登陆数据
-    function getLoginData() {
+    //获取数据
+    function getLoginData(bType) {
         $loginWrap = getLoginWrap();
-        index = $loginWrap.find('.tit span.on').index();
+        index = $loginWrap.find('.tit span.on').index()||0;
         $prompt = $loginWrap.find('ul').eq(index).find('.prompt');
         //console.log('index::',index);
         var data = {
-            "password":utils.md5($loginWrap.find('ul').eq(index).find(".password").val()),
+            // "password":utils.md5($loginWrap.find('ul').eq(index).find(".password").val()),
+            "password":$loginWrap.find('ul').eq(index).find(".password").val(),
             "account":$loginWrap.find('ul').eq(index).find(".username").val(),
+            "verCode":$loginWrap.find(".verCode").val(),
             "loginType":1
         }
-        // //console.log('data::',data)
         return data
     }
     //登陆数据验证
-    function validateLogin() {
+    function validateLogin(bType) {
         var data = getLoginData();
         var requestData = {};
-        // //console.log('data::',data)
+        console.log('data::',data);
         if(index==0){
             // //console.log('密码')
             requestData.loginType=1;
@@ -152,11 +153,16 @@ define(function(require,exports,module) {
                 $prompt.show().find('em').html('手机号码不正确');
                 return
             }
+            if(bType&&!data.verCode){
+                $prompt.show().find('em').html('短信验证码不能为空');
+                return
+            }
             if(!data.password){
                 $prompt.show().find('em').html('密码不能为空');
                 return
             }
-            requestData.password =data.password;
+
+            requestData.password =utils.md5(data.password);
         }
         if(index==1){
             // //console.log('验证码',data.account,utils.check_tel(data.account))
@@ -189,23 +195,27 @@ define(function(require,exports,module) {
             "domain":"DAQ-WEB-LOGIN"
             // "deviceUid":""
         };
-        $self.html('正在获取验证码……');
-        utils.SendAjax({
-            url: '/getVerCode',
-            param: requestData,
-            method: 'POST',
-            tipText: '获取验证码',
-            callback: function (result) {
-                if(result.success){
-                    // //console.log('验证码获取成功')
+        console.log("requestData:",requestData)
+        $.ajax({
+            type:'post',
+            url:'/getVerCode',
+            data:requestData,
+            beforeSend:function () {
+                $self.html('正在获取验证码……')
+            },
+            success:function(json){
+                console.log(json);
+                console.log(typeof json);
+                var json = JSON.parse(json);
+                if(json.success){
+                    // console.log('验证码获取成功')
                     timer($self,time)
                 }else{
-                    // //console.log(json.msg)
-                    $prompt.show().find('em').html(result.msg);
+                    // console.log(json.msg)
+                    $prompt.show().find('em').html(json.msg)
                 }
             }
-        });
-
+        })
     }
     //定时器
     function timer($self,time) {
@@ -350,30 +360,34 @@ define(function(require,exports,module) {
         logout()
     });
 
-    $('body').on('click keyup keydown change','.username,.password',function () {
+    $('body').on('click keyup keydown change','.username,.password,.verCode',function () {
         var $loginWrap = getLoginWrap();
         var index =$loginWrap.find('.tit span.on').index();
         $loginWrap.find('ul').eq(index).find('.prompt').hide()
     })
 
-    $(".loginBox2").touchSlider({
-        container: this,
-        duration: 350, // 动画速度
-        delay: 3000, // 动画时间间隔
-        margin: 5,
-        mouseTouch: true,
-        namespace: "touchslider",
-        next: ".touchslider-next", // next 样式指定
-        pagination: ".tit span",
-        currentClass: "on", // current 样式指定
-        prev: ".touchslider-prev", // prev 样式指定
-        // scroller: viewport.children(),
-        autoplay: false, // 自动播放
-        viewport: ".touchslider-viewport"  //内容区域
-    });
+    if($(".loginBox2").length){
+        $(".loginBox2").touchSlider({
+            container: this,
+            duration: 350, // 动画速度
+            delay: 3000, // 动画时间间隔
+            margin: 5,
+            mouseTouch: true,
+            namespace: "touchslider",
+            next: ".touchslider-next", // next 样式指定
+            pagination: ".tit span",
+            currentClass: "on", // current 样式指定
+            prev: ".touchslider-prev", // prev 样式指定
+            // scroller: viewport.children(),
+            autoplay: false, // 自动播放
+            viewport: ".touchslider-viewport"  //内容区域
+        });
+
+    }
 
     $('body').on('click','.loginBox2 .ok',function () {
         var data = validateLogin();
+        console.log("data:",data)
         var redirectUrl = $('#redirectUrl').val()||'/';
         if(data) login(data,null,redirectUrl,function (userAllInfo) {
             //console.log("单页登录成功")
@@ -395,6 +409,73 @@ define(function(require,exports,module) {
             })
 
         });
+    })
+
+    //注册
+    $('body').on('click','.registerBox .ok',function () {
+        var data = validateLogin(true);
+        console.log("注册：",data)
+        if(!data){
+
+            return
+        }else{
+            data.verCode = $('.verCode').val();
+        }
+
+        $.ajax({
+            type:'post',
+            url:'/register',
+            data:data,
+            beforeSend:function () {
+                $(this).html('正在提交注册……')
+            },
+            success:function(json){
+                console.log(json);
+                console.log(typeof json);
+                var json = JSON.parse(json);
+                if(json.success){
+                    // console.log('验证码获取成功')
+                    timer($self,time)
+                }else{
+                    // console.log(json.msg)
+                    $prompt.show().find('em').html(json.msg)
+                }
+            }
+        })
+
+    })
+
+    $('body').on('click','.rPasswordBox .ok',function () {
+        var data = validateLogin(true);
+        console.log("找回密码：",data)
+        if(!data){
+
+            return
+        }else{
+            data.verCode = $('.verCode').val();
+        }
+
+        $.ajax({
+            type:'put',
+            url:'/rPassword',
+            data:data,
+            beforeSend:function () {
+                $(this).html('正在找回密码……')
+            },
+            success:function(json){
+                console.log(json);
+                console.log(typeof json);
+                var json = JSON.parse(json);
+                if(json.success){
+                    // console.log('验证码获取成功')
+                    timer($self,time)
+                }else{
+                    // console.log(json.msg)
+                    $prompt.show().find('em').html(json.msg)
+                }
+            }
+        })
+
     })
     //检查登录:已经登录则继续执行callback,没有登录则把callback传到登录函数中去,登录后继续执行
     function checkLogin(callBack){

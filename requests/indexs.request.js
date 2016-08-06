@@ -57,6 +57,43 @@ exports.logout = function (req,res,next) {
     res.send('{"code":"200","success":"true"}');
 };
 
+exports.register = function (req,res,next) {
+    // console.log('crypto:',crypto);
+    var body = req.body;
+
+    console.log('body:',body);
+    body.origin = 'DAQ-WebPage';
+    body.deviceUid = 'd1102';
+    var bizParam = {
+        "reqRegisterCommand":{
+            rawRequest:body
+        }
+    };
+    req.autoHandleError = false;
+    util.ajax('POST',api.UserRegister,req,res, bizParam,function (err,data) {
+        var json = JSON.parse(data);
+        res.send(data);
+    });
+
+};
+exports.retrieve_password = function (req,res,next) {
+    // console.log('crypto:',crypto);
+    var body = req.body;
+
+    console.log('body:',body);
+    var bizParam = {
+        "reqFindPasswordCommands":{
+            rawRequest:body
+        }
+    };
+    req.autoHandleError = false;
+    util.ajax('PUT',api.UserPasswordFind,req,res, bizParam,function (err,data) {
+        var json = JSON.parse(data);
+        res.send(data);
+    });
+
+};
+
 
 exports.checkLogin = function (req,res,next) {
     var _user = req.session.userInfo;
@@ -100,6 +137,8 @@ exports.getVerCode = function (req,res,next) {
             "rawRequest":body
         }
     };
+    req.autoHandleError = false;
+
     util.ajax('post',api.SmsSendVerCode,req,res, bizParam,function (err,data) {
         res.send(data)
     });
