@@ -61,12 +61,13 @@ exports.register = function (req,res,next) {
     // console.log('crypto:',crypto);
     var body = req.body;
 
+    delete body.loginType;
     console.log('body:',body);
     body.origin = 'DAQ-WebPage';
     body.deviceUid = 'd1102';
     var bizParam = {
         "reqRegisterCommand":{
-            rawRequest:body
+            "rawRequest":body
         }
     };
     req.autoHandleError = false;

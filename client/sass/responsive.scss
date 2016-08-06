@@ -734,7 +734,7 @@ $conWidth:1600px;
       border-color: $bgc_F7;line-height: 30px;
       .check-report{
         @include btn(#fff, #ddd, #4A4A4A, #4A4A4A,#ddd);
-        font-size: 14px;border-radius: 5px;float: right;margin: 0px;
+        font-size: 14px;border-radius: 5px;float: right;margin: 0px;padding:0 5px;
       }
     }
     .totalCost{padding: 0 10px 10px 0}
@@ -1245,6 +1245,7 @@ $conWidth:1600px;
 
 }
 @media only screen and (width: 320px){
+  body{font-size: 14px;}
   .footer{
     padding-bottom: 30px;
     dl{

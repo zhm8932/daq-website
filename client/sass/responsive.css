@@ -1070,7 +1070,8 @@
       font-size: 14px;
       border-radius: 5px;
       float: right;
-      margin: 0px; }
+      margin: 0px;
+      padding: 0 5px; }
       .detail-wap .area .check-report:hover {
         -webkit-transition: all 0.3s;
         -moz-transition: all 0.3s;
@@ -1667,6 +1668,9 @@
   .copyright {
     font-size: 14px; } }
 @media only screen and (width: 320px) {
+  body {
+    font-size: 14px; }
+
   .footer {
     padding-bottom: 30px; }
     .footer dl dt img {

@@ -21,7 +21,7 @@ router.use(function(req, res, next) {
     console.log('req.body',req.body);
     // console.log('req.session',req.session);
     console.log('req.url',req.url);
-    console.log('req.host',req.host);
+    // console.log('req.host',req.host);
     // var host = req.host;
     // if(host=='localhost'){
     //     config.options.host=host

@@ -55,7 +55,8 @@ block content
                                     if data.reservations && data.reservations.length && data.reservations[0] && data.reservations[0].goodsInfo
                                         p.text-sec 服务门诊: #{JSON.parse(data.reservations[0].goodsInfo.hospital).hospitalName}
                                     p.text-sec #{addressNameJSON[data.serviceType]}: #{data.address}
-                                    p.text-sec 预约时间: #{moment(data.time).format('YYYY-MM-DD HH:mm:ss')}
+                                    if data.serviceType
+                                        p.text-sec 预约时间: #{moment(data.time).format('YYYY-MM-DD HH:mm:ss')}
                 else
                     .detail-wap
                         h3

@@ -175,7 +175,9 @@ button.disabled, .btn.disabled {
     top: 100%;
     left: 0;
     min-width: 100%;
-    overflow: hidden;
+    max-height: 500%;
+    overflow: scroll;
+    overflow-x: hidden;
     display: none;
     list-style: none;
     background: #fff;
@@ -811,46 +813,46 @@ select {
     text-align: left;
     padding: 20px 20px 0;
     position: relative; }
-    .popupBox article .tit {
-      font-size: 18px;
-      text-align: center;
+  .popupBox .tit {
+    font-size: 18px;
+    text-align: center;
+    position: relative;
+    z-index: 999;
+    overflow: hidden; }
+    .popupBox .tit span {
+      border-bottom: 1px solid #dddddd;
+      line-height: 30px;
+      float: left;
+      padding-bottom: 10px;
+      width: 50%;
+      cursor: pointer; }
+      .popupBox .tit span.on {
+        color: #48BED8;
+        border-bottom-color: #48BED8; }
+  .popupBox .touchslider-viewport {
+    overflow: hidden; }
+  .popupBox .bd ul {
+    width: 300px;
+    overflow: hidden; }
+    .popupBox .bd ul li {
+      margin: 20px 0;
+      position: relative; }
+      .popupBox .bd ul li input[type='text'], .popupBox .bd ul li input[type='password'] {
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        padding: 0 5px;
+        box-sizing: border-box; }
+    .popupBox .bd ul p span {
       position: relative;
-      z-index: 999;
-      overflow: hidden; }
-      .popupBox article .tit span {
-        border-bottom: 1px solid #dddddd;
-        line-height: 30px;
-        float: left;
-        padding-bottom: 10px;
-        width: 50%;
-        cursor: pointer; }
-        .popupBox article .tit span.on {
-          color: #48BED8;
-          border-bottom-color: #48BED8; }
-    .popupBox article .touchslider-viewport {
-      overflow: hidden; }
-    .popupBox article .bd ul {
-      width: 300px;
-      overflow: hidden; }
-      .popupBox article .bd ul li {
-        margin: 20px 0;
-        position: relative; }
-        .popupBox article .bd ul li input[type='text'], .popupBox article .bd ul li input[type='password'] {
-          width: 100%;
-          height: 36px;
-          line-height: 36px;
-          padding: 0 5px;
-          box-sizing: border-box; }
-      .popupBox article .bd ul p span {
-        position: relative;
-        top: 3px;
-        margin-right: 5px; }
-      .popupBox article .bd ul p a {
-        color: #48BED8; }
+      top: 3px;
+      margin-right: 5px; }
+    .popupBox .bd ul p a {
+      color: #48BED8; }
   .popupBox .submitBox {
     height: 33px;
     line-height: 32px;
-    margin: 10px 20px 0;
+    margin: 5px 20px 0;
     font-size: 16px;
     text-align: center; }
     .popupBox .submitBox .ok {
@@ -899,9 +901,9 @@ select {
     background-position: -51px -94px;
     margin: 4px 10px 0 0; }
 
-.loginBox {
+.loginPopupCom {
   width: 360px; }
-  .loginBox .getCode {
+  .loginPopupCom .getCode {
     position: absolute;
     right: 0px;
     top: 0px;
@@ -912,19 +914,30 @@ select {
     border: 1px solid #48BED8;
     color: #48BED8;
     background-color: #e5faff; }
-  .loginBox .disable {
+  .loginPopupCom .disable {
     background-color: #F2F6F7;
     border-color: #c9c9c9;
     outline: none;
     cursor: default; }
-  .loginBox .prompt {
+  .loginPopupCom .prompt {
     color: #ED9E9A;
     position: absolute;
     left: 0px;
     bottom: -24px;
     display: none; }
-    .loginBox .prompt i {
+    .loginPopupCom .prompt i {
       background-position: -178px -22px; }
+
+.loginBox .operate {
+  text-align: left;
+  padding: 10px 0 0 20px; }
+  .loginBox .operate a {
+    color: #48BED8; }
+    .loginBox .operate a:hover {
+      color: #f1292b; }
+  .loginBox .operate i {
+    color: #48BED8;
+    padding: 0 8px; }
 
 .loginCom {
   width: 300px;
@@ -982,7 +995,7 @@ select {
         line-height: 36px;
         padding: 0 5px;
         box-sizing: border-box;
-        font-size: 16px;
+        font-size: 15px;
         font-family: 'Arial','微软雅黑'; }
     .loginCom .bd ul p span {
       position: relative;
