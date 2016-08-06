@@ -9,6 +9,7 @@ block content
         |您的位置为：个人中心<em>#{sep}</em>我的报告
     section.wrapper.userBox.clearfix
         -var serviceTypeJSON = {'0':'未选择','1':'门诊取样','2':'上门取样','3':'快递取样'};
+        -var addressNameJSON = {'0':'未选择','1':'门诊地址','2':'取样地址','3':'收件地址'};
         include ../includes/usersNav
         .box-right.reservation.fr
            if !data.length
@@ -43,7 +44,7 @@ block content
                             p 取样方式:#{serviceTypeJSON[item.serviceType]}
                             if item.reservations && item.reservations.length && item.reservations[0] && item.reservations[0].goodsInfo
                                 p.text-sec 服务门诊: #{JSON.parse(item.reservations[0].goodsInfo.hospital).hospitalName}
-                            p.text-sec 取样地址: #{item.address}
+                            p.text-sec #{addressNameJSON[item.serviceType]}: #{item.address}
 
                         -var resStatus = item.status;
                         .col.order-state.text-sec

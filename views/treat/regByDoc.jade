@@ -13,19 +13,14 @@ block content
                 h2 按医生预约
             .regbox
                 #regByDocForm
-                    -var doctorDTO = timeSlot.doctorDTO;
-                    //-hosname = '';
-                    //each h in doctorDTO.hospitalReDepartments
-                    //    -var name = h.hospitalName;
-                    //    -hosname += name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
                     ul.clearfix
                         li
                             label 就诊医生
-                            h4 #{doctorDTO.doctorName}
-                                mark #{doctorDTO.title}
+                            h4 #{docName}
+                            mark #{docTitle}
                         li
                             label 就诊时间
-                            span #{timeSlot.date}
+                            span #{date}
                         li
                             label 就诊时段
                             input#scheduleId(name="scheduleId",type="hidden",value="")
@@ -35,24 +30,19 @@ block content
                                         span.text-sec 请选择就诊时段
                                     i.icon.pull-down
                                 ul.options
-                                    each value,index in timeSlot.timeWithIdMap
-                                        -var time = value.time;
-                                        -var timeDetail = value.timeDetail;
-                                        li.option(data-value="#{timeDetail.scheduleId}",data-cost="#{timeDetail.cost}") #{time}(#{timeDetail.capacity - timeDetail.unConsume}/#{timeDetail.capacity})
+                                    if timeSlot && timeSlot.scheduleItems
+                                        each value,index in timeSlot.scheduleItems
+                                            li.option(data-value="#{value.scheduleId}",data-cost="#{value.cost}") #{moment(value.start).format('HH:mm')}-#{moment(value.end).format('HH:mm')}(#{value.consume}/#{value.capacity})
 
-
-                        if doctorDTO.needPay
+                        if need === 'true'
                             li
                                 label 挂号费
                                 span#cost.text-stress
-                            li
-                                label 支付说明
-                                span #{doctorDTO.payInstruction}
 
 
                         button#commit-reg.submitBtn.disabled 确认提交
                         input#hasBind(type="hidden",value="#{hasBind}")
-                        input#needPay(type="hidden",value="#{doctorDTO.needPay}")
+                        //input#needPay(type="hidden",value="#{doctorDTO.needPay}")
 
     include ../includes/footer
     script.

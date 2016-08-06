@@ -175,7 +175,9 @@ button.disabled, .btn.disabled {
     top: 100%;
     left: 0;
     min-width: 100%;
-    overflow: hidden;
+    max-height: 500%;
+    overflow: scroll;
+    overflow-x: hidden;
     display: none;
     list-style: none;
     background: #fff;

@@ -517,7 +517,7 @@ define(function(require,exports,module) {
                 //window.location.href = "/treat/regsource/list";
                 var referrer = document.referrer;
                 referrer = referrer?pathname=='/searchs/report'?'/':referrer:'/';
-                if(obj&&obj.back&&obj.back){
+                if(obj && obj.back&&obj.back){
                     window.location.href=referrer;
                 }
             },

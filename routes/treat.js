@@ -10,7 +10,7 @@ var users = require('../requests/users.request.js');
 var authority = require('../handlers/authority.handler');
 
 router.get('/regsource/list', function (req, res, next) {
-    request.GetRegsourceList(req,res,function (err,data) {
+    request.GetRegsourceList(req, res, function (err, data) {
         var json = JSON.parse(data);
         json.data.data = _tidyRegSourceList(json.data.data);
         res.render('treat/regList', {
@@ -20,16 +20,16 @@ router.get('/regsource/list', function (req, res, next) {
     });
 });
 
-function _tidyRegSourceList(docListSchedule){
+function _tidyRegSourceList(docListSchedule) {
     var scheduleForDays = _initScheduleForDays();
-    for(var i = 0; i < docListSchedule.length; i++){
+    for (var i = 0; i < docListSchedule.length; i++) {
         var docSchedule = docListSchedule[i];
         docSchedule.scheduleForDays = JSON.parse(JSON.stringify(scheduleForDays));
         var slotList = docSchedule.scheduleList;
-        for(var j = 0; j < slotList.length; j++){
+        for (var j = 0; j < slotList.length; j++) {
             var slot = slotList[j];
             var date = moment(slot.start).format("MM/DD");
-            if(docSchedule.scheduleForDays[date]){
+            if (docSchedule.scheduleForDays[date]) {
                 docSchedule.scheduleForDays[date].capacity += slot.capacity;
                 docSchedule.scheduleForDays[date].consume += slot.consume;
             }
@@ -39,42 +39,47 @@ function _tidyRegSourceList(docListSchedule){
 }
 
 //得到需要的日期及初始值:这里默认为一周
-function _initScheduleForDays(){
+function _initScheduleForDays() {
     var needDaysNum = 7;
     var today = moment(new Date());//得到当前日期,如08/04
     var scheduleForDays = {};
-    for(var i = 1; i <= needDaysNum; i++){
-        var day = today.add({days:1}).format("MM/DD");
-        var dayOfWeek = today.format('d');
+    for (var i = 1; i <= needDaysNum; i++) {
+        var day = today.add({days: 1}).format("MM/DD");
         scheduleForDays[day] = {
-            capacity:0,
-            consume:0,
-            dayOfWeek:dayOfWeek
+            capacity: 0,
+            consume: 0,
+            dayOfWeek: today.format('d'),
+            date: today.format('YYYY-MM-DD')
         };
     }
     return scheduleForDays;
 }
 
 
-router.get('/reg/doctorView',authority.loginRequired, function (req, res, next) {
+router.get('/reg/doctorView', authority.loginRequired, function (req, res, next) {
     var hasBindHISJson = null;
     var timeSlotJson = null;
+    var query = req.query;
     async.parallel([function (callback) {
-        request.GetRegTimeSlot(req,res,function (err,data) {
+        request.GetRegTimeSlot(req, res, function (err, data) {
             timeSlotJson = JSON.parse(data);
-            timeSlotJson.data.timeWithIdMap = tidyTimeMap(timeSlotJson.data.timeWithIdMap);
+            timeSlotJson.data.scheduleItems = _tidyTimeMap(timeSlotJson.data.scheduleItems);
             callback(null, data);
         });
-    }, function(callback){
-        users.HasBindHis(req,res,function (err,data) {
+    }, function (callback) {
+        users.HasBindHis(req, res, function (err, data) {
             hasBindHISJson = JSON.parse(data);
             callback(null, data);
         });
-    }],function (err, results) {
+    }], function (err, results) {
         res.render('treat/regByDoc', {
             title: '诊疗服务',
             timeSlot: timeSlotJson.data,
-            hasBind: hasBindHISJson.data
+            hasBind: hasBindHISJson.data,
+            docName: query.docName,
+            docTitle: query.docTitle,
+            date: query.date,
+            need:query.need
         });
     });
     // request.GetRegTimeSlot(req,res,function (err,data) {
@@ -94,13 +99,13 @@ router.get('/reg/doctorView',authority.loginRequired, function (req, res, next) 
 
 
 router.post('/reg/byDoc', function (req, res, next) {
-    request.AddRegByDoc(req,res,function (err,data) {
+    request.AddRegByDoc(req, res, function (err, data) {
         res.send(data);
     });
 });
 
 router.get('/reg/topay', function (req, res, next) {
-    request.GetOrderDetail(req,res,function (err,data) {
+    request.GetOrderDetail(req, res, function (err, data) {
         var json = JSON.parse(data);
         res.render('treat/regOrderSuccess', {
             title: '支付页面',
@@ -110,7 +115,7 @@ router.get('/reg/topay', function (req, res, next) {
 });
 
 router.get('/order/state', function (req, res, next) {
-    request.GetOrderDetail(req,res,function (err,data) {
+    request.GetOrderDetail(req, res, function (err, data) {
         var resJson = {"code": "200", msg: "", data: {}, "success": true};
         var json = JSON.parse(data);
         resJson.data.reservationStatus = json.data.reservationStatus;
@@ -119,24 +124,40 @@ router.get('/order/state', function (req, res, next) {
     });
 });
 
-function tidyTimeMap(timeObjJson){
-    var timeArr = [];
-    var timeObjArr = [];
-    for(var time in timeObjJson){
-        var timeObj = timeObjJson[time];
-        if(timeObj.unConsume > 0){
-            timeArr.push(time);
+function _tidyTimeMap(timeObjArr) {
+    // var newArr = [];
+    for (var i = 0; i < timeObjArr.length; i++) {
+        if (i < timeObjArr.length) {
+            var timeObj = timeObjArr[i];
+            if (timeObj.capacity == 0 || timeObj.capacity <= timeObj.consume) {
+                timeObjArr.splice(i, 1);
+                i--;
+            }
+        } else {
+            break;
         }
     }
+    return _bubble(timeObjArr, 'start');
+}
 
-    timeArr.sort();
-
-    for(var i = 0; i < timeArr.length; i++){
-        var time = timeArr[i];
-        timeObjArr.push({time:time,timeDetail:timeObjJson[time]});
+function _bubble(arr, attr) {
+    var temp;
+    for (var i = 0; i < arr.length; i++) { //比较多少趟，从第一趟开始
+        for (var j = 0; j < arr.length - i - 1; j++) { //每一趟比较多少次数
+            var flag = false;
+            if (attr) {
+                flag = arr[j][attr] > arr[j + 1][attr];//从小到大排序
+            } else {
+                flag = arr[j] > arr[j + 1];
+            }
+            if (flag) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
     }
-
-    return timeObjArr;
+    return arr;
 }
 
 module.exports = router;
