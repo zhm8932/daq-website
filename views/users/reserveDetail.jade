@@ -44,9 +44,12 @@ block content
                             tr
                                 each item,i in data.reservations
                                     td.goods
+                                      if item.goodsInfo
                                         a(href="/screenings/goods/detail/#{item.goodsInfo.goodsId}")
                                             img(src="#{item.goodsInfo.imageUrls[0]}")
                                             span #{item.goodsInfo.goodsName}
+                                      else
+                                          p 暂无商品
                                     td.text-stress #{item.password}
                                 td #{data.id}
 
@@ -55,7 +58,7 @@ block content
                                     if data.reservations && data.reservations.length && data.reservations[0] && data.reservations[0].goodsInfo
                                         p.text-sec 服务门诊: #{JSON.parse(data.reservations[0].goodsInfo.hospital).hospitalName}
                                     p.text-sec #{addressNameJSON[data.serviceType]}: #{data.address}
-                                    if data.serviceType
+                                    if data.serviceType!=3
                                         p.text-sec 预约时间: #{moment(data.time).format('YYYY-MM-DD HH:mm:ss')}
                 else
                     .detail-wap
@@ -68,6 +71,7 @@ block content
                         each item,i in data.reservations
                             dl.clearfix
                                 dt
+                                  if item.goodsInfo
                                     a(href="/screenings/goods/detail/#{item.goodsInfo.goodsId}")
                                         img(src="#{item.goodsInfo.imageUrls[0]}")
                                         span #{item.goodsInfo.goodsName}
@@ -77,7 +81,8 @@ block content
                                 if data.reservations && data.reservations.length && data.reservations[0] && data.reservations[0].goodsInfo
                                     p.text-sec 服务门诊: #{JSON.parse(data.reservations[0].goodsInfo.hospital).hospitalName}
                                 p.text-sec #{addressNameJSON[data.serviceType]}: #{data.address}
-                                p.text-sec 预约时间: #{moment(data.time).format('YYYY-MM-DD HH:mm:ss')}
+                                if data.serviceType != 3
+                                    p.text-sec 预约时间: #{moment(data.time).format('YYYY-MM-DD HH:mm:ss')}
                             .area
                                 p 下单时间：
                                     |#{moment(data.createdAt).format('YYYY-MM-DD HH:mm:ss')}

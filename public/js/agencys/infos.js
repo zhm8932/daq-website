@@ -1,1 +1,65 @@
-define(function(require){require("jquery"),$(function(){function e(){var e=new n.Map("allmap"),o=new n.Point(113.94212,22.546162);e.centerAndZoom(o,20),e.enableScrollWheelZoom(),e.enableContinuousZoom();var r=new n.ScaleControl({anchor:BMAP_ANCHOR_TOP_LEFT});new n.NavigationControl({anchor:BMAP_ANCHOR_TOP_RIGHT,type:BMAP_NAVIGATION_CONTROL_SMALL});e.addControl(r);var a={renderOptions:{map:e,panel:"r-result"},onSearchComplete:function(e){if(t.getStatus()==BMAP_STATUS_SUCCESS)for(var n=[],o=0;o<e.getCurrentNumPois();o++)n.push(e.getPoi(o).title+", "+e.getPoi(o).address)}},t=new n.LocalSearch(e,a);t.search("广州市越秀区环市东路422号2楼")}var n=require("../libs/BMap.js");e();var o=$(".wrapper").width();$(window).resize(function(){var n=$(".wrapper").width();n==o&&(o=n,e())})})});
+define(function(require){
+    require('jquery');
+    $(function () {
+        var BMap = require('../libs/BMap.js');
+        // console.log(BMap);
+        
+        
+        function initBMap() {
+            var map = new BMap.Map("allmap"); // 创建地图实例
+
+            // var point = new BMap.Point(116.404, 39.915);  // 创建点坐标
+            var point = new BMap.Point(113.94212, 22.546162);  // 创建点坐标
+            map.centerAndZoom(point,20);                 // 初始化地图，设置中心点坐标和地图级别
+
+            map.enableScrollWheelZoom();   //启用滚轮放大缩小，默认禁用
+            map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+
+
+            var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
+            // var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+            var top_right_navigation = new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL}); //右上角，仅包含平移和缩放按钮
+            map.addControl(top_left_control);
+            // map.addControl(top_left_navigation);
+
+            var options = {
+                renderOptions:{map: map, panel:"r-result"},
+                onSearchComplete: function(results){
+                    // console.log(results);
+                    //document.getElementById("log").innerHTML = JSON.stringify(results)
+                    if (local.getStatus() == BMAP_STATUS_SUCCESS){
+                        // 判断状态是否正确
+                        var s = [];
+                        for (var i = 0; i < results.getCurrentNumPois(); i ++){
+                            s.push(results.getPoi(i).title + ", " + results.getPoi(i).address);
+                        }
+                        // console.log(s);
+                        //document.getElementById("log").innerHTML = s.join("<br>");
+
+                    }
+                }
+            };
+            var local = new BMap.LocalSearch(map, options);
+            // local.search('大族激光科技中心');
+            local.search('广州市越秀区环市东路422号2楼');
+        }
+
+        initBMap();
+
+        var winWidth = $('.wrapper').width();
+        $(window).resize(function () {
+            var wrapperWidth = $('.wrapper').width();
+            if(wrapperWidth==winWidth){
+                winWidth=wrapperWidth;
+                // console.log(winWidth);
+                initBMap();
+            }
+
+        })
+
+    })
+
+
+
+
+})

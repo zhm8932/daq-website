@@ -1,1 +1,169 @@
-define(function(require,exports,module){function a(a,t){var i=window.location.href,n=i.substr(0,i.indexOf("/",i.indexOf("/",i.indexOf("/")+1)+1));console.log(n),r.CheckLogin(function(){o.SendAjax({url:"/trade/order/pay",param:{id:a,payWay:t,ext:n+"/users/register/list"},method:"POST",tipText:"前往支付页面",callback:function(a){window.location.href=a.data.credentia.order_info},errorFun:function(a){}})})}function t(a,t){r.CheckLogin(function(){o.SendAjax({url:"/trade/order/pay",param:{id:a,payWay:t},method:"POST",tipText:"前往支付页面",callback:function(a){var t="true"===$("#isMobile").val();t?i(a):n(a)},errorFun:function(a){}})})}function i(a){var t=null;new o.Popup({msg:'<div class="wechat-pay-dialog"><div class="left-box"><img src="data:image/png;base64,'+a.data.credentia.orderInfo+'"/><div class="wechat-tip"><i class="icon scan"></i><span class="scan-tip">请使用微信"扫一扫"扫描二维码支付</span></div><div class="price text-stress">￥'+a.data.tradeDTO.amount/100+"</div></div><div>",otherMsg:"",bOhterMsg:!0,callback:function(){t=setInterval(function(){e(function(a){0!=a.data.reservationStatus&&(window.location.href="/users/register/list")})},3e3)},okText:"登录",width:"300",otherBox:"wechat-box",isHide:!1,okCallback:function(){},cancelFun:function(){clearInterval(t)}})}function n(a){var t=null;new o.Popup({msg:'<div class="wechat-pay-dialog"><div class="left-box"><img src="data:image/png;base64,'+a.data.credentia.orderInfo+'"/><div class="wechat-tip"><i class="icon scan"></i><span class="scan-tip">请使用微信"扫一扫"扫描二维码支付</span></div><div class="price text-stress">￥'+a.data.tradeDTO.amount/100+'</div></div><div class="right-box"><img src="/images/wxsm_img.png"/></div><div>',otherMsg:"",bOhterMsg:!0,callback:function(){t=setInterval(function(){e(function(a){0!=a.data.reservationStatus&&(window.location.href="/users/register/list")})},3e3)},okText:"登录",width:"730",otherBox:"wechat-box",isHide:!1,okCallback:function(){},cancelFun:function(){clearInterval(t)}})}function e(a){var t=$("#orderId").val();o.SendAjax({url:"/treats/order/state",param:{reservationId:t},method:"GET",tipText:"查询订单状态",callback:function(t){a&&a(t)},errorFun:function(a){}})}var o=require("../libs/utils.js"),r=require("../login.js"),s=require("../libs/timer.js"),c=$("#payId").val();$(function(){s.updateTime({totalTime:18e5,outdatedFun:function(){window.location.href="/users/register/list"}})}),$(".alipay").on("click",function(){var t=$(this);e(function(i){if(0==i.data.reservationStatus){var n=t.attr("data-paynum");a(c,n)}else o.ShowComfirmDialog({tipText:"不是未支付状态的订单不允许支付！",noConfirmBtn:!0})})}),$(".wechat-pay").on("click",function(){e(function(a){0==a.data.reservationStatus?t(c,6):o.ShowComfirmDialog({tipText:"不是未支付状态的订单不允许支付！",noConfirmBtn:!0})})})});
+define(function (require, exports, module) {
+    var utils = require('../libs/utils.js');
+    var login = require('../login.js');
+    var timer = require('../libs/timer.js');
+
+    var payId = $('#payId').val();
+
+
+    // var a = new Date(payTime).toLocaleTimeString();
+    // var b = new Date(now).toLocaleTimeString();
+    //
+    // console.log('==='+ a + '==' + b);
+    // console.log(now-payTime);
+    // console.log(restTime);
+
+    $(function(){
+        timer.updateTime({
+            totalTime:30*60*1000,
+            outdatedFun:function(){
+                window.location.href = '/users/register/list';
+            }
+        });
+    });
+
+
+    $('.alipay').on('click',function(){
+        var $this = $(this);
+        queryOrderState(function(result){
+            if (result.data.reservationStatus == 0) {
+                var paynum = $this.attr('data-paynum');
+                alipay(payId,paynum);
+            }else{
+                utils.ShowComfirmDialog({tipText:'不是未支付状态的订单不允许支付！',noConfirmBtn:true});
+            }
+        });
+
+    });
+
+    $('.wechat-pay').on('click',function(){
+        queryOrderState(function(result) {
+            if (result.data.reservationStatus == 0) {
+                wechatPay(payId, 6);
+            } else {
+                utils.ShowComfirmDialog({tipText: '不是未支付状态的订单不允许支付！', noConfirmBtn: true});
+            }
+        });
+    });
+
+    function alipay(id,payWay){
+        var href = window.location.href;
+        var domain = href.substr(0,href.indexOf('/',href.indexOf('/',href.indexOf('/')+1)+1));
+        console.log(domain);
+        login.CheckLogin(function() {
+            utils.SendAjax({
+                url: '/trade/order/pay',
+                param: {id: id, payWay: payWay,ext:domain+'/users/register/list'},
+                method: 'POST',
+                tipText: '前往支付页面',
+                callback: function (result) {
+                    window.location.href = result.data.credentia.order_info;
+                },
+                errorFun: function (result) {
+
+                }
+            });
+        });
+    }
+
+    function wechatPay(id,payWay){
+        login.CheckLogin(function() {
+            utils.SendAjax({
+                url: '/trade/order/pay',
+                param: {id: id, payWay: payWay},
+                method: 'POST',
+                tipText: '前往支付页面',
+                callback: function (result) {
+                    var isMobile = $('#isMobile').val() === 'true';
+                    if(isMobile){
+                        showMobileDialog(result);
+                    }else{
+                        showDialog(result);
+                    }
+                },
+                errorFun: function (result) {
+
+                }
+            });
+        });
+    }
+
+    function showMobileDialog(result) {
+        var stateTimer = null;
+        var popup = new utils.Popup({
+            msg: '<div class="wechat-pay-dialog"><div class="left-box"><img src="data:image/png;base64,'+result.data.credentia.orderInfo+'"/><div class="wechat-tip"><i class="icon scan"></i>'+
+            '<span class="scan-tip">请使用微信"扫一扫"扫描二维码支付</span></div><div class="price text-stress">￥'+result.data.tradeDTO.amount/100+'</div></div>'+
+            '<div>',
+            otherMsg:'',
+            bOhterMsg:true,
+            callback:function () {
+                stateTimer = setInterval(function(){
+                    queryOrderState(function(result){
+                        if (result.data.reservationStatus != 0) {
+                            window.location.href = '/users/register/list';
+                        }
+                    });
+                },3000);
+            },
+            okText:'登录',
+            width:'300',
+            otherBox:'wechat-box',
+            isHide:false,
+            okCallback:function(){
+
+            },
+            cancelFun:function(){
+                clearInterval(stateTimer);
+            }
+        })
+
+    }
+
+
+    function showDialog(result) {
+        var stateTimer = null;
+        var popup = new utils.Popup({
+            msg: '<div class="wechat-pay-dialog"><div class="left-box"><img src="data:image/png;base64,'+result.data.credentia.orderInfo+'"/><div class="wechat-tip"><i class="icon scan"></i>'+
+            '<span class="scan-tip">请使用微信"扫一扫"扫描二维码支付</span></div><div class="price text-stress">￥'+result.data.tradeDTO.amount/100+'</div></div>'+
+            '<div class="right-box"><img src="/images/wxsm_img.png"/></div><div>',
+            otherMsg:'',
+            bOhterMsg:true,
+            callback:function () {
+                stateTimer = setInterval(function(){
+                    queryOrderState(function(result){
+                        if (result.data.reservationStatus != 0) {
+                            window.location.href = '/users/register/list';
+                        }
+                    });
+                },3000);
+            },
+            okText:'登录',
+            width:'730',
+            otherBox:'wechat-box',
+            isHide:false,
+            okCallback:function(){
+
+            },
+            cancelFun:function(){
+                clearInterval(stateTimer);
+            }
+        })
+
+    }
+
+    function queryOrderState(fun){
+        var orderId = $('#orderId').val();
+        utils.SendAjax({
+            url: '/treats/order/state',
+            param: {reservationId: orderId},
+            method: 'GET',
+            tipText: '查询订单状态',
+            callback: function (result) {
+                fun && fun(result);
+            },
+            errorFun: function (result) {
+
+            }
+        });
+    }
+});

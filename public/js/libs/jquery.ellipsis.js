@@ -1,1 +1,117 @@
-!function(e){"function"==typeof define&&define.amd&&define(["jquery"],e),"function"==typeof define?define(["jquery"],function(){return e(window.jQuery,window,document,void 0)}):e(window.jQuery||window.Zepto)}(function($){$.fn.ellipsis=function(e){var t={row:1,onlyFullWords:!1,"char":"...",callback:function(){},position:"tail"};return e=$.extend(t,e),this.each(function(){var t=$(this),i=t.text(),o=i,l=o.length,a=t.height();t.text("a");var n=parseFloat(t.css("lineHeight"),10),c=t.height(),r=n>c?n-c:0,h=r*(e.row-1)+c*e.row;if(h>=a)return t.text(i),void e.callback.call(this);var f=1,u=0,s=i.length;if("tail"===e.position){for(;s>f;)u=Math.ceil((f+s)/2),t.text(i.slice(0,u)+e["char"]),t.height()<=h?f=u:s=u-1;i=i.slice(0,f),e.onlyFullWords&&(i=i.replace(/[\u00AD\w\uac00-\ud7af]+$/,"")),i+=e["char"]}else if("middle"===e.position){for(var d=0;s>f;)u=Math.ceil((f+s)/2),d=Math.max(l-u,0),t.text(o.slice(0,Math.floor((l-d)/2))+e["char"]+o.slice(Math.floor((l+d)/2),l)),t.height()<=h?f=u:s=u-1;d=Math.max(l-f,0);var w=o.slice(0,Math.floor((l-d)/2)),p=o.slice(Math.floor((l+d)/2),l);e.onlyFullWords&&(w=w.replace(/[\u00AD\w\uac00-\ud7af]+$/,"")),i=w+e["char"]+p}t.text(i),e.callback.call(this)}),this}});
+/*! jQuery ellipsis - v1.1.1 - 2014-02-23
+* https://github.com/STAR-ZERO/jquery-ellipsis
+* Copyright (c) 2014 Kenji Abe; Licensed MIT */
+(function (factory) {
+    if(typeof define === 'function' && define.amd){ // AMD
+        // you may need to change `define([------>'jquery'<------], factory)`
+        // if you use zepto, change it rely name, such as `define(['zepto'], factory)`
+        define(['jquery'], factory)
+        // define(['zepto'], factory)
+    }if (typeof define === 'function') {
+        // 如果define已被定义，模块化代码
+        define(['jquery'], function(){
+            // 返回构造函数 CommonJS
+            // console.log('CommonJS')
+            return factory(window.jQuery,window, document, undefined);
+        });
+    }  else{ // Global
+        factory(window.jQuery || window.Zepto)
+    }
+})(function($) {
+    $.fn.ellipsis = function(options) {
+
+        // default option
+        var defaults = {
+            'row' : 1, // show rows
+            'onlyFullWords': false, // set to true to avoid cutting the text in the middle of a word
+            'char' : '...', // ellipsis
+            'callback': function() {},
+            'position': 'tail' // middle, tail
+        };
+
+        options = $.extend(defaults, options);
+
+        this.each(function() {
+            // get element text
+            var $this = $(this);
+            var text = $this.text();
+            var origText = text;
+            var origLength = origText.length;
+            var origHeight = $this.height();
+
+            // get height
+            $this.text('a');
+            var lineHeight =  parseFloat($this.css("lineHeight"), 10);
+            var rowHeight = $this.height();
+            var gapHeight = lineHeight > rowHeight ? (lineHeight - rowHeight) : 0;
+            var targetHeight = gapHeight * (options.row - 1) + rowHeight * options.row;
+
+            if (origHeight <= targetHeight) {
+                $this.text(text);
+                options.callback.call(this);
+                return;
+            }
+
+            var start = 1, length = 0;
+            var end = text.length;
+
+            if(options.position === 'tail') {
+                while (start < end) { // Binary search for max length
+                    length = Math.ceil((start + end) / 2);
+
+                    $this.text(text.slice(0, length) + options['char']);
+
+                    if ($this.height() <= targetHeight) {
+                        start = length;
+                    } else {
+                        end = length - 1;
+                    }
+                }
+
+                text = text.slice(0, start);
+
+                if (options.onlyFullWords) {
+                    text = text.replace(/[\u00AD\w\uac00-\ud7af]+$/, ''); // remove fragment of the last word together with possible soft-hyphen characters
+                }
+                text += options['char'];
+
+            }else if(options.position === 'middle') {
+
+                var sliceLength = 0;
+                while (start < end) { // Binary search for max length
+                    length = Math.ceil((start + end) / 2);
+                    sliceLength = Math.max(origLength - length, 0);
+
+                    $this.text(
+                        origText.slice(0, Math.floor((origLength - sliceLength) / 2)) +
+                        options['char'] +
+                        origText.slice(Math.floor((origLength + sliceLength) / 2), origLength)
+                    );
+
+                    if ($this.height() <= targetHeight) {
+                        start = length;
+                    } else {
+                        end = length - 1;
+                    }
+                }
+
+                sliceLength = Math.max(origLength - start, 0);
+                var head = origText.slice(0, Math.floor((origLength - sliceLength) / 2));
+                var tail = origText.slice(Math.floor((origLength + sliceLength) / 2), origLength);
+
+                if (options.onlyFullWords) {
+                    // remove fragment of the last or first word together with possible soft-hyphen characters
+                    head = head.replace(/[\u00AD\w\uac00-\ud7af]+$/, '');
+                }
+
+                text = head + options['char'] + tail;
+            }
+
+            $this.text(text);
+
+            options.callback.call(this);
+        });
+
+        return this;
+    };
+});

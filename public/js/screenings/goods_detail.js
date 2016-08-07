@@ -1,1 +1,312 @@
-define(function(require){function t(){o(function(){var t=[],a=$("#goods"),e={},o=$("#transmit-type .type.on");e.transmitType=o.attr("data-transmitType");var i=o.attr("data-favPrice"),s=parseInt(a.attr("data-discountPrice"))+parseInt(i);e.favPrice=i,e.subTotal=s;var r=JSON.parse($("#locals_address").val());if("sampling_home"==o.attr("data-transmitType")){var n=$("#area .option.active").data("area");r.push(n)}e.address=JSON.stringify(r),e.goodsId=a.attr("data-id"),e.imgUrl=a.attr("data-imgUrl"),e.goodsName=a.attr("data-goodsName"),e.discountPrice=a.attr("data-discountPrice"),e.hospital=$("#hospital").val(),t.push(e),$("#submitForm input[name=items]").val(JSON.stringify(t)),$("#submitForm input[name=totalPrice]").val(s),$("#submitForm").submit()})}function a(t){r.SendAjax({url:t.url,param:t.param,method:"GET",tipText:"获取地址",callback:function(a){for(var e=a.data,o=[],i=0;i<e.length;i++){var s={};s.id=e[i].id,s.name=e[i].name,s.level=e[i].level,0==i?o.push('<li class="option active" data-area='+JSON.stringify(s)+">"+s.name+"</li>"):o.push('<li class="option" data-area='+JSON.stringify(s)+">"+s.name+"</li>")}$("#"+t.id+" .options").html(o.join("")),e.length<=0?$("#"+t.id+" .selected .text").html("暂无区域"):$("#"+t.id+" .selected .text").html(e[0].name),t.fun&&t.fun()}})}function e(){o(function(){var t=$("#transmit-type .type.on"),a=t.attr("data-value"),e=JSON.parse($("#locals_address").val());if("sampling_home"==t.attr("data-transmitType")){var o=$("#area .option.active").data("area");e.push(o)}var i=$("#goods").attr("data-id"),n={address:JSON.stringify(e),transmit_type:a,goodsId:i,hospital:$("#hospital").val()};r.SendAjax({url:"/trade/cart/addItem",param:n,method:"POST",tipText:"加入购物车",callback:function(t){new r.MsgShow({delayTime:2e3,title:'<i class="icon"></i>加入购物车成功!',otherBox:"successBox"}).hideMsg();s.cartCoutAddOne()}})})}function o(t){s.CheckLogin(function(){if(!i())return!1;var a=$("#transmit-type .type.on");return 0==a.length?($(".type-box").addClass("unchoose"),!1):void(t&&t())})}function i(){var t,a;try{t=JSON.parse($("#locals_address").val()),a=JSON.parse($("#fit_hospital").val())}catch(e){return!1}for(var o=t[1].categoryId,i=0;i<a.length;i++){var s=a[i];if(s.city==o){$("#hospitalName").text(s.hospitalName);var r={hospitalCode:s.hospitalCode,hospitalName:s.hospitalName};return $("#hospital").val(JSON.stringify(r)),!0}}return $(".submitBox button").addClass("disabled"),$(".hospital-tip").removeClass("none"),!1}var s=(require("../config"),require("../login")),r=require("../libs/utils.js");require("touchslider"),$(function(){require("../imgAuto"),i()&&($("#addCartBtn").on("click",function(){e()}),$("#toOrder").on("click",function(){t()}));var o=$(".service_type span"),s=o.length,r=o.parents(".service_type_wrapper");1==s?r.addClass("service_type_one"):2==s?r.addClass("service_type_two"):r.addClass("service_type_three"),$(".goods_detail .tab span").on("click",function(){var t=0,a=$(".topBar").height(),e=$(".goods_detail .tab"),o=e.height(),i=a+o,s=$(this),r=s.data("href-id");t=$("#"+r).offset().top-i,"content-detail"==r&&(t=$("#"+r).offset().top-i),$("html,body").animate({scrollTop:t},1e3)});var n=JSON.parse($("#locals_address").val()),d=$("#transmit-type .type"),l=!0;d.each(function(t,e){var o=$(e);o.on("click",function(){d.removeClass("on"),o.addClass("on"),$(".type-box").removeClass("unchoose");var t=o.attr("data-transmitType");if("sampling_home"==t){if($("#area").removeClass("none"),l){var e=n[1].categoryId;a({id:"area",url:"/dic/list/parentId",param:{activeState:1,parentId:e}}),l=!1}}else $("#area").addClass("none")})}),$(".type-box .box-header .close").on("click",function(){$(".type-box").removeClass("unchoose")}),$(".slideBox").touchSlider({container:this,duration:350,delay:3e3,margin:5,mouseTouch:!0,namespace:"touchslider",next:".next",pagination:".tit span",heightType:!0,currentClass:"on",prev:".prev",autoplay:!1,viewport:".touchslider-viewport"})}),window.onload=function(){var t=$(".goods_detail #tab");t.attr("data-orign-top",t.offset().top);var a=t.closest(".wrapper").width();$(document).scroll(function(){var t=$(".topBar").height(),e=$(".goods_detail #tab");$(document).scrollTop()+t>e.attr("data-orign-top")?(e.css("position","fixed").css({top:t+"px",width:a}),$("#tab-copy").removeClass("none")):(e.css("position","static").css("width",a+"px"),$("#tab-copy").addClass("none"))})}});
+define(function(require){
+    var config = require('../config');
+    var login = require('../login');
+    var utils = require('../libs/utils.js');
+
+    require('touchslider');
+
+    // //console.log("login:",login)
+    $(function(){
+        require('../imgAuto');
+        if(checkArea()){
+            $('#addCartBtn').on('click',function(){
+                addToCart();
+            });
+
+            $('#toOrder').on('click',function(){
+                toOrder();
+            });
+        }
+        //取样方式
+        var $span = $('.service_type span');
+        var len = $span.length;
+        var $serviceParent = $span.parents('.service_type_wrapper');
+        //console.log("len:",len)
+        //console.log("$serviceParent:",$serviceParent);
+        if(len==1){
+            $serviceParent.addClass('service_type_one')
+        }else if(len==2){
+            $serviceParent.addClass('service_type_two')
+        }else{
+            $serviceParent.addClass('service_type_three')
+        }
+
+        //锚点作用
+        $('.goods_detail .tab span').on('click',function(){
+            var anchorTop = 0;
+            var topBarHeight = $('.topBar').height();
+            var tab = $('.goods_detail .tab');
+            var tabHeight = tab.height();
+            var top = topBarHeight + tabHeight;
+            var $this = $(this);
+            var id = $this.data('href-id');
+            anchorTop = $('#'+id).offset().top - top;
+            if(id == 'content-detail'){
+                anchorTop = $('#'+id).offset().top - top ;
+            }
+            //console.log('top:'+top+'----offsetTop:'+$('#'+id).offset().top+'---height:'+anchorTop);
+            $('html,body').animate({scrollTop:anchorTop}, 1000);
+        });
+
+
+
+        //选择服务方式
+        var address = JSON.parse($('#locals_address').val());
+        var oTypes = $('#transmit-type .type');
+        var isNeedArea = true;
+        oTypes.each(function(index,ele){
+            var $this = $(ele);
+            $this.on('click',function(){
+                oTypes.removeClass('on');
+                $this.addClass('on');
+                $('.type-box').removeClass('unchoose');
+                var transmitType = $this.attr('data-transmitType');
+                if(transmitType == 'sampling_home'){
+                    $('#area').removeClass('none');
+                    if(isNeedArea){
+                        //获取区域
+                        var parentId = address[1].categoryId;
+                        getAddress({
+                            id:'area',
+                            url:'/dic/list/parentId',
+                            param:{activeState:1,parentId:parentId}
+                        });
+                        isNeedArea = false;
+                    }
+                }else{
+                    $('#area').addClass('none');
+                }
+            });
+        });
+        //叉掉提示
+        $('.type-box .box-header .close').on('click',function(){
+            $('.type-box').removeClass('unchoose');
+        });
+        
+
+
+        // getAddress({
+        //     id:'province',
+        //     url:'/dic/list/typeAndLevel',
+        //     param:{activeState:1,type:'district',level:'1'},
+        //     fun:function(){
+        //         $('#province').trigger('change');
+        //     }
+        // });
+        //
+        //
+        // $('#province').on('change',function(){
+        //     var proId = JSON.parse($('#province').val()).id;
+        //     getAddress({
+        //         id:'city',
+        //         url:'/dic/list/parentId',
+        //         param:{activeState:1,parentId:proId},
+        //         fun:function(){
+        //             $('#city').trigger('change');
+        //         }
+        //     });
+        // });
+        //
+        // $('#city').on('change',function(){
+        //     var parentId = JSON.parse($('#city').val()).id;
+        //     getAddress({
+        //         id:'area',
+        //         url:'/dic/list/parentId',
+        //         param:{activeState:1,parentId:parentId}
+        //     });
+        // });
+
+
+
+        $(".slideBox").touchSlider({
+            container: this,
+            duration: 350, // 动画速度
+            delay: 3000, // 动画时间间隔
+            margin: 5,
+            mouseTouch: true,
+            namespace: "touchslider",
+            next: ".next", // next 样式指定
+            pagination: ".tit span",
+            heightType:true,
+            currentClass: "on", // current 样式指定
+            prev: ".prev", // prev 样式指定
+            // scroller: viewport.children(),
+            autoplay: false, // 自动播放
+            viewport: ".touchslider-viewport"  //内容区域
+        });
+
+    });
+
+    window.onload = function(){
+        //滚动时导航锁定在顶部
+        var tab = $('.goods_detail #tab');
+        tab.attr('data-orign-top',tab.offset().top);//得到初始高度
+        // var wrapperWidth = $('.wrapper').width();
+        var width = tab.closest('.wrapper').width();
+        //console.log('width:'+width);
+        $(document).scroll(function(){
+            var topBarHeight = $('.topBar').height();
+            var tab = $('.goods_detail #tab');
+
+            if($(document).scrollTop() + topBarHeight > tab.attr('data-orign-top') ){
+                tab.css('position','fixed').css({'top':topBarHeight+'px','width':width});
+                $('#tab-copy').removeClass('none');
+            }else{
+                tab.css('position','static').css('width',width+'px');
+                $('#tab-copy').addClass('none');
+            }
+        });
+    };
+
+
+    function toOrder() {
+        checkCondition(function() {
+            var items = [];
+            var goods = $('#goods');
+            var item = {};
+
+            var OTransmitType = $('#transmit-type .type.on');
+            item.transmitType = OTransmitType.attr('data-transmitType');
+            var favPrice = OTransmitType.attr('data-favPrice');
+            var subTotal = parseInt(goods.attr('data-discountPrice')) + parseInt(favPrice);
+            item.favPrice = favPrice;
+            item.subTotal = subTotal;
+
+            var address = JSON.parse($('#locals_address').val());
+            if (OTransmitType.attr('data-transmitType') == 'sampling_home') {
+                var area = $('#area .option.active').data('area');
+                address.push(area);
+            }
+            item.address = JSON.stringify(address);
+
+            item.goodsId = goods.attr('data-id');
+            item.imgUrl = goods.attr('data-imgUrl');
+            item.goodsName = goods.attr('data-goodsName');
+            item.discountPrice = goods.attr('data-discountPrice');
+            item.hospital = $('#hospital').val();
+            items.push(item);
+
+            $('#submitForm input[name=items]').val(JSON.stringify(items));
+            $('#submitForm input[name=totalPrice]').val(subTotal);
+            $('#submitForm').submit();
+        });
+    }
+
+    function getAddress(options){
+        utils.SendAjax({
+            url: options.url,
+            param: options.param,
+            method: 'GET',
+            tipText: '获取地址',
+            callback: function (result) {
+                var data = result.data;
+                var optionArr = [];
+                for(var i = 0; i < data.length; i++){
+                    var category = {};
+                    category.id = data[i].id;
+                    category.name = data[i].name;
+                    category.level = data[i].level;
+                    if(i == 0){
+                        optionArr.push('<li class="option active" data-area='+JSON.stringify(category)+'>'+category.name+'</li>');
+                    }else{
+                        optionArr.push('<li class="option" data-area='+JSON.stringify(category)+'>'+category.name+'</li>');
+                    }
+                }
+                $('#'+options.id+' .options').html(optionArr.join(''));
+                if(data.length <= 0){
+                    $('#'+options.id+' .selected .text').html('暂无区域');
+                }else{
+                    $('#'+options.id+' .selected .text').html(data[0].name);
+                }
+                options.fun && options.fun();
+            }
+        });
+    }
+
+    function addToCart(){
+        checkCondition(function(){
+            var OTransmitType =  $('#transmit-type .type.on');
+
+            var transmitValue = OTransmitType.attr('data-value');
+            var address = JSON.parse($('#locals_address').val());
+            if(OTransmitType.attr('data-transmitType') == 'sampling_home'){
+                var area = $('#area .option.active').data('area');
+                address.push(area);
+            }
+
+            // var hospital = {
+            //     "hospitalCode": "H1001",
+            //     "hospitalName": "都安全健康产业（深圳市南山区门诊部)"
+            // };
+
+            var goodsId = $('#goods').attr('data-id');
+            var param = {
+                "address":JSON.stringify(address),
+                "transmit_type":transmitValue,
+                "goodsId": goodsId,
+                "hospital":$('#hospital').val()
+            };
+
+            utils.SendAjax({
+                url: '/trade/cart/addItem',
+                param: param,
+                method: 'POST',
+                tipText: '加入购物车',
+                callback: function (result) {
+                    var myMsg = new utils.MsgShow({
+                        delayTime:2000,
+                        title:'<i class="icon"></i>加入购物车成功!',
+                        otherBox:'successBox'
+                    }).hideMsg();
+                    //-login.getCartCount();
+                    login.cartCoutAddOne()
+                    
+                }
+            });
+        });
+
+    }
+
+    function checkCondition(callBack){
+        //CheckLogin传入两个函数,第一个函数为检查登录为true时执行的方法
+        login.CheckLogin(function() {
+            if (!checkArea()) {
+                return false;
+            }
+            var OTransmitType = $('#transmit-type .type.on');
+            if (OTransmitType.length == 0) {
+                $('.type-box').addClass('unchoose');
+                return false;
+            }
+            callBack && callBack();
+        });
+    }
+
+    function checkArea(){
+        var locals_address,fit_hospital;
+        try{
+            locals_address = JSON.parse($('#locals_address').val());
+            fit_hospital = JSON.parse($('#fit_hospital').val());
+        }catch(e){
+            //console.log(e);
+            return false;
+        }
+        var currentCityId = locals_address[1].categoryId;
+        for(var i = 0; i < fit_hospital.length; i++){
+            var item = fit_hospital[i];
+            if(item.city == currentCityId){
+                $('#hospitalName').text(item.hospitalName);
+                var hospital = {
+                    hospitalCode:item.hospitalCode,
+                    hospitalName:item.hospitalName
+                };
+                $('#hospital').val(JSON.stringify(hospital));
+                return true;
+            }
+        }
+        $('.submitBox button').addClass('disabled');
+        $('.hospital-tip').removeClass('none');
+        return false;
+    }
+
+});
