@@ -151,9 +151,9 @@ define(function (require, exports, module) {
                 callback: function (result) {
                     //订单状态,UNPAID(1,"未支付"),PAID(2,"已支付"),CANCELED(3,"已取消"),REFUNDING(4,"退款中"),REFUND(5,"已退款")
                     var orderState = result.data.orderState;
-                    if (result.data.orderState == 2) {
+                    if (orderState == 2) {
                         window.location.href = '/trade/order/paySuccess?order_no=' + id;
-                    }else{
+                    }else if(orderState!=1){
                         window.location.href ='/trade/order/list';
                     }
                 },
