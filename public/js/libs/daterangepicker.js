@@ -13,9 +13,9 @@
             root.daterangepicker = factory(root, exports, momentjs, $);
         });
 
-        console.log('amd')
+        // console.log('amd')
     } else if (typeof exports !== 'undefined') {
-        console.log('cmd')
+        // console.log('cmd')
         var momentjs = require('moment');
         var jQuery = (typeof window != 'undefined') ? window.jQuery : undefined;  //isomorphic issue
         if (!jQuery) {

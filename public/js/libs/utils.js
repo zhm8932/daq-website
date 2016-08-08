@@ -402,25 +402,10 @@ define(function(require,exports,module) {
             // okText:'保存并新增',
             // bOhterMsg:true,
             callback:function () {
-                //TouchSlide({ slideCell:"#slideLogin",titCell:".tit span", mainCell:".bd"});
-                $("#slideLogin").touchSlider({
-                    container: this,
-                    duration: 350, // 动画速度
-                    delay: 3000, // 动画时间间隔
-                    margin: 5,
-                    mouseTouch: true,
-                    namespace: "touchslider",
-                    next: ".touchslider-next", // next 样式指定
-                    pagination: ".tit span",
-                    currentClass: "on", // current 样式指定
-                    prev: ".touchslider-prev", // prev 样式指定
-                    // scroller: viewport.children(),
-                    autoplay: false, // 自动播放
-                    viewport: ".touchslider-viewport"  //内容区域
-                });
+                options.callback&&options.callback()
             },
             // okText:'登录',
-            width:'324',
+            // width:'324',
             otherBox:'confirm-box',
             okCallback:function(){
                 options.okCallback && options.okCallback();

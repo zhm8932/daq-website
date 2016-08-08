@@ -50,7 +50,8 @@ var redisClient = redis.createClient(6379,config.options.host, {});
 // console.log("options:",options);
 
 redisClient.on("error", function (err) {
-  console.log('Redis链接失败');
+  var err = new Error('redis错误');
+  errorHandler.handleError(res, '500', 'html', err);
 });
 
 redisClient.on('ready',function(err){

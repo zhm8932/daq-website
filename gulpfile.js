@@ -16,6 +16,7 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-ruby-sass');     // sass编译
+//var sass = require('gulp-sass');     // sass编译
 var minifycss = require('gulp-minify-css');  //缩小化(minify)CSS
 var uglify = require('gulp-uglify');    //gulp-uglify压缩javascript文件，减小文件大小
 var livereload = require('gulp-livereload');

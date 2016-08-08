@@ -19,9 +19,9 @@ global.util= util = require('../utils/ajax');
 router.use(function(req, res, next) {
     console.log('now:' + Date.now());
     console.log('req.body',req.body);
-    console.log('req.session',req.session);
+    // console.log('req.session',req.session);
     console.log('req.url',req.url);
-    console.log('req.host',req.host);
+    // console.log('req.host',req.host);
     // var host = req.host;
     // if(host=='localhost'){
     //     config.options.host=host
@@ -79,6 +79,13 @@ router.get('/checkLogin',Requests.checkLogin);
 router.post('/hasBindHis',UsersRequests.HasBindHis);
 
 router.get('/login',Requests.loginView);
+
+router.get('/register',Handlers.render_register);
+
+router.post('/register',Requests.register);
+
+router.get('/rPassword',Handlers.render_retrieve_password);
+router.put('/rPassword',Requests.retrieve_password);
 
 router.get('/changeCity',Requests.changeCity);
 

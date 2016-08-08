@@ -813,46 +813,46 @@ select {
     text-align: left;
     padding: 20px 20px 0;
     position: relative; }
-    .popupBox article .tit {
-      font-size: 18px;
-      text-align: center;
+  .popupBox .tit {
+    font-size: 18px;
+    text-align: center;
+    position: relative;
+    z-index: 999;
+    overflow: hidden; }
+    .popupBox .tit span {
+      border-bottom: 1px solid #dddddd;
+      line-height: 30px;
+      float: left;
+      padding-bottom: 10px;
+      width: 50%;
+      cursor: pointer; }
+      .popupBox .tit span.on {
+        color: #48BED8;
+        border-bottom-color: #48BED8; }
+  .popupBox .touchslider-viewport {
+    overflow: hidden; }
+  .popupBox .bd ul {
+    width: 300px;
+    overflow: hidden; }
+    .popupBox .bd ul li {
+      margin: 20px 0;
+      position: relative; }
+      .popupBox .bd ul li input[type='text'], .popupBox .bd ul li input[type='password'] {
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        padding: 0 5px;
+        box-sizing: border-box; }
+    .popupBox .bd ul p span {
       position: relative;
-      z-index: 999;
-      overflow: hidden; }
-      .popupBox article .tit span {
-        border-bottom: 1px solid #dddddd;
-        line-height: 30px;
-        float: left;
-        padding-bottom: 10px;
-        width: 50%;
-        cursor: pointer; }
-        .popupBox article .tit span.on {
-          color: #48BED8;
-          border-bottom-color: #48BED8; }
-    .popupBox article .touchslider-viewport {
-      overflow: hidden; }
-    .popupBox article .bd ul {
-      width: 300px;
-      overflow: hidden; }
-      .popupBox article .bd ul li {
-        margin: 20px 0;
-        position: relative; }
-        .popupBox article .bd ul li input[type='text'], .popupBox article .bd ul li input[type='password'] {
-          width: 100%;
-          height: 36px;
-          line-height: 36px;
-          padding: 0 5px;
-          box-sizing: border-box; }
-      .popupBox article .bd ul p span {
-        position: relative;
-        top: 3px;
-        margin-right: 5px; }
-      .popupBox article .bd ul p a {
-        color: #48BED8; }
+      top: 3px;
+      margin-right: 5px; }
+    .popupBox .bd ul p a {
+      color: #48BED8; }
   .popupBox .submitBox {
     height: 33px;
     line-height: 32px;
-    margin: 10px 20px 0;
+    margin: 5px 20px 0;
     font-size: 16px;
     text-align: center; }
     .popupBox .submitBox .ok {
@@ -901,9 +901,9 @@ select {
     background-position: -51px -94px;
     margin: 4px 10px 0 0; }
 
-.loginBox {
+.loginPopupCom {
   width: 360px; }
-  .loginBox .getCode {
+  .loginPopupCom .getCode {
     position: absolute;
     right: 0px;
     top: 0px;
@@ -914,21 +914,32 @@ select {
     border: 1px solid #48BED8;
     color: #48BED8;
     background-color: #e5faff; }
-  .loginBox .disable {
+  .loginPopupCom .disable {
     background-color: #F2F6F7;
     border-color: #c9c9c9;
     outline: none;
     cursor: default; }
-  .loginBox .prompt {
+  .loginPopupCom .prompt {
     color: #ED9E9A;
     position: absolute;
     left: 0px;
     bottom: -24px;
     display: none; }
-    .loginBox .prompt i {
+    .loginPopupCom .prompt i {
       background-position: -178px -22px; }
 
-.loginBox2 {
+.loginBox .operate {
+  text-align: left;
+  padding: 10px 0 0 20px; }
+  .loginBox .operate a {
+    color: #48BED8; }
+    .loginBox .operate a:hover {
+      color: #f1292b; }
+  .loginBox .operate i {
+    color: #48BED8;
+    padding: 0 8px; }
+
+.loginCom {
   width: 300px;
   float: right;
   position: relative;
@@ -937,7 +948,7 @@ select {
   background-color: rgba(255, 255, 255, 0.7);
   padding: 30px;
   border: 1px solid #dddddd; }
-  .loginBox2 .getCode {
+  .loginCom .getCode {
     position: absolute;
     right: 0px;
     top: 0px;
@@ -948,63 +959,63 @@ select {
     border: 1px solid #48BED8;
     color: #48BED8;
     background-color: #e5faff; }
-  .loginBox2 .disable {
+  .loginCom .disable {
     background-color: #F2F6F7;
     border-color: #c9c9c9;
     outline: none;
     cursor: default; }
-  .loginBox2 .tit {
+  .loginCom .tit {
     font-size: 18px;
     text-align: center;
     position: relative;
     z-index: 999;
     overflow: hidden; }
-    .loginBox2 .tit span {
+    .loginCom .tit span {
       border-bottom: 1px solid #dddddd;
       line-height: 30px;
       float: left;
       padding-bottom: 10px;
       width: 50%;
       cursor: pointer; }
-      .loginBox2 .tit span.on {
+      .loginCom .tit span.on {
         color: #48BED8;
         border-bottom-color: #48BED8; }
-  .loginBox2 .touchslider-viewport {
+  .loginCom .touchslider-viewport {
     overflow: hidden;
     height: 152px; }
-  .loginBox2 .bd ul {
+  .loginCom .bd ul {
     width: 300px;
     overflow: hidden; }
-    .loginBox2 .bd ul li {
+    .loginCom .bd ul li {
       margin: 20px 0;
       position: relative; }
-      .loginBox2 .bd ul li input {
+      .loginCom .bd ul li input {
         width: 100%;
         height: 36px;
         line-height: 36px;
         padding: 0 5px;
         box-sizing: border-box;
-        font-size: 16px;
+        font-size: 15px;
         font-family: 'Arial','微软雅黑'; }
-    .loginBox2 .bd ul p span {
+    .loginCom .bd ul p span {
       position: relative;
       top: 3px;
       margin-right: 5px; }
-    .loginBox2 .bd ul p a {
+    .loginCom .bd ul p a {
       color: #48BED8; }
-  .loginBox2 .bd .prompt {
+  .loginCom .bd .prompt {
     color: #ED9E9A;
     margin-top: -20px;
     display: none; }
-    .loginBox2 .bd .prompt i {
+    .loginCom .bd .prompt i {
       background-position: -178px -22px; }
-  .loginBox2 .submitBox {
+  .loginCom .submitBox {
     height: 36px;
     line-height: 36px;
     font-size: 16px;
-    margin-top: 10px;
+    margin-top: 5px;
     text-align: center; }
-    .loginBox2 .submitBox .ok {
+    .loginCom .submitBox .ok {
       display: block;
       text-align: center;
       cursor: pointer;
@@ -1016,16 +1027,25 @@ select {
       line-height: 32px;
       width: 100%;
       outline: none; }
-      .loginBox2 .submitBox .ok:hover {
+      .loginCom .submitBox .ok:hover {
         background-color: #3DAAC2; }
-    .loginBox2 .submitBox .disabled {
+    .loginCom .submitBox .disabled {
       background-color: #cccccc;
       cursor: default; }
-  .loginBox2 .otherMsg {
+  .loginCom .otherMsg {
     text-align: center;
     padding-top: 10px;
     color: #9B9B9B; }
-  .loginBox2 .lgbg {
+  .loginCom .operate {
+    padding: 10px  0; }
+    .loginCom .operate a {
+      color: #48BED8; }
+      .loginCom .operate a:hover {
+        color: #f1292b; }
+    .loginCom .operate i {
+      padding: 0 8px;
+      color: #48BED8; }
+  .loginCom .lgbg {
     width: 42px;
     height: 42px;
     display: inline-block;
@@ -1033,10 +1053,19 @@ select {
     left: -6px;
     bottom: -6px;
     background: url("../images/lg_l.png") no-repeat; }
-  .loginBox2 .lgrt {
+  .loginCom .lgrt {
     left: auto;
     right: -6px;
     background: url("../images/lg_r.png") no-repeat; }
+
+.registerBox, .rPasswordBox {
+  margin-top: 40px; }
+  .registerBox .tit span, .rPasswordBox .tit span {
+    width: 100%;
+    cursor: default; }
+
+.rPasswordBox {
+  margin-top: 60px; }
 
 .ads {
   margin-bottom: 10px; }

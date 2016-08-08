@@ -99,5 +99,16 @@ exports.get_wap_tit = function (req,res,next) {
         res.locals.curTit = curTit;
     }
     next();
-}
+};
 
+exports.render_register = function (req,res,next) {
+    res.render('register',{
+        title:'都安全新用户注册'
+    });
+};
+
+exports.render_retrieve_password = function (req,res,next) {
+    res.render('retrieve_password',{
+        title:'都安全用户找回密码'
+    });
+};

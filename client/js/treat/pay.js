@@ -20,6 +20,15 @@ define(function (require, exports, module) {
                 window.location.href = '/users/register/list';
             }
         });
+        //预约订单状态。0：未支付、1:待就诊(未登记)、2:已完成(已登记)、3:已过期、4:已取消、5：退款中、6：已退款
+
+        queryOrderState(function (result) {
+            console.log("result:",result);
+            if (result.data.reservationStatus != 0) {
+                window.location.href = '/users/register/list';
+            }
+        });
+
     });
 
 
@@ -150,6 +159,7 @@ define(function (require, exports, module) {
         })
 
     }
+
 
     function queryOrderState(fun){
         var orderId = $('#orderId').val();

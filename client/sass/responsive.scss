@@ -195,7 +195,8 @@ $conWidth:1600px;
 }
 //最大为768px
 @media only screen and (max-width: $win_768){
-  *{font-family: 'HanHei SC', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif,"微软雅黑";}
+  //*{font-family: 'HanHei SC', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif,"微软雅黑";}
+  //*{font-family:'HanHei SC','Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif,"微软雅黑";}
   body{font-size: 16px;}
   .userAgreement{font-size: 16px;
     h3{font-size: 18px;}
@@ -514,11 +515,11 @@ $conWidth:1600px;
       a,a.on{color: $white;font-size:22px;}
       h2{height: 50px;display: block;padding-left: 10px;color: $white; font-size: 18px;
         i{
-          background-color: $white;border-radius: 100%;height: 36px;width: 36px;margin:-8px 5px 0 0;vertical-align: middle;background-size: 800px;
-          &.t1{background-position:-28px -42px;}
-          &.t2{background-position:-63px -41px;}
-          &.t3{background-position:-95px -42px;}
-          &.t4{background-position:-128px -38px;}
+          background-color: $white;border-radius: 100%;height: 30px;width: 30px;margin:-6px 5px 0 0;vertical-align: middle;background-size: 720px;
+          &.t1{background-position:-27px -40px;}
+          &.t2{background-position:-58px -37px;}
+          &.t3{background-position:-87px -39px;}
+          &.t4{background-position:-117px -34px;}
         }
 
       }
@@ -604,6 +605,9 @@ $conWidth:1600px;
     .order-state{position: absolute;right:0px;top: 5px;width: auto;border: none;
       p{display: block;margin: 0px;float: right;}
 
+    }
+    dt{
+      span{display: block}
     }
   }
   .order-success .order-box .box-right{background: none;margin-left: 120px;}
@@ -730,7 +734,7 @@ $conWidth:1600px;
       border-color: $bgc_F7;line-height: 30px;
       .check-report{
         @include btn(#fff, #ddd, #4A4A4A, #4A4A4A,#ddd);
-        font-size: 14px;border-radius: 5px;float: right;margin: 0px;
+        font-size: 14px;border-radius: 5px;float: right;margin: 0px;padding:0 5px;
       }
     }
     .totalCost{padding: 0 10px 10px 0}
@@ -1241,6 +1245,7 @@ $conWidth:1600px;
 
 }
 @media only screen and (width: 320px){
+  body{font-size: 14px;}
   .footer{
     padding-bottom: 30px;
     dl{

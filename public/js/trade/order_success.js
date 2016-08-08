@@ -149,8 +149,12 @@ define(function (require, exports, module) {
                 method: 'GET',
                 tipText: '前往支付页面',
                 callback: function (result) {
-                    if (result.data.orderState != 1) {
+                    //订单状态,UNPAID(1,"未支付"),PAID(2,"已支付"),CANCELED(3,"已取消"),REFUNDING(4,"退款中"),REFUND(5,"已退款")
+                    var orderState = result.data.orderState;
+                    if (orderState == 2) {
                         window.location.href = '/trade/order/paySuccess?order_no=' + id;
+                    }else if(orderState!=1){
+                        window.location.href ='/trade/order/list';
                     }
                 },
                 errorFun: function (result) {

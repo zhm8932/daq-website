@@ -67,7 +67,7 @@ block content
                                     td
                                         p #{item.id}
                                         p.text-sec 下单时间:&nbsp;
-                                            span #{moment(item.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
+                                            span #{moment(item.updatedAt).format('YYYY-MM-DD HH:mm')}
                                     td
                                         if item.doctorDTO
                                             p #{item.doctorDTO.doctorName}&nbsp;#{item.doctorDTO.title}
@@ -75,9 +75,9 @@ block content
                                     td
                                         p #{moment(item.start).format('YYYY-MM-DD')}
                                         p
-                                            span.start #{moment(item.start).format('HH:mm:ss')}
+                                            span.start #{moment(item.start).format('HH:mm')}
                                             |-
-                                            span.end #{moment(item.end).format('HH:mm:ss')}
+                                            span.end #{moment(item.end).format('HH:mm')}
 
                                     if item.reservationStatus == 0
                                         td.status.text-stress 未支付

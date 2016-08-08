@@ -901,60 +901,61 @@ select {
     text-align: left;
     padding: 20px 20px 0;
     position: relative;
-    .tit {
-      font-size: 18px;
-      text-align: center;
-      position: relative;
-      z-index: 999;
-      overflow: hidden;
-      //height:60px;
-      //background-color: #222;
-      span {
-        border-bottom: 1px solid $bdrc_ddd;
-        line-height: 30px;
-        float: left;
-        padding-bottom: 10px;
-        width: 50%;
-        cursor: pointer;
-        &.on {
-          color: $textc_48B;
-          border-bottom-color: $bdrc_48B;
-        }
+
+  }
+  .tit {
+    font-size: 18px;
+    text-align: center;
+    position: relative;
+    z-index: 999;
+    overflow: hidden;
+    //height:60px;
+    //background-color: #222;
+    span {
+      border-bottom: 1px solid $bdrc_ddd;
+      line-height: 30px;
+      float: left;
+      padding-bottom: 10px;
+      width: 50%;
+      cursor: pointer;
+      &.on {
+        color: $textc_48B;
+        border-bottom-color: $bdrc_48B;
       }
     }
-    .touchslider-viewport {
-      overflow: hidden
-    }
-    .bd {
-      ul {
-        //padding: 10px;background: #000;height: 100px; width: 100%;
-        width: 300px;
-        overflow: hidden;
-        //background-color: #FF0000;
-        li {
-          margin: 20px 0;
-          position: relative;
-          input[type='text'],input[type='password'] {
-            width: 100%;
-            height: 36px;
-            line-height: 36px;
-            padding: 0 5px;
-            box-sizing: border-box;
-          }
+  }
+  .touchslider-viewport {
+    overflow: hidden
+  }
+  .bd {
+    ul {
+      //padding: 10px;background: #000;height: 100px; width: 100%;
+      width: 300px;
+      overflow: hidden;
+      //background-color: #FF0000;
+      li {
+        margin: 20px 0;
+        position: relative;
+        input[type='text'],input[type='password'] {
+          width: 100%;
+          height: 36px;
+          line-height: 36px;
+          padding: 0 5px;
+          box-sizing: border-box;
+        }
 
-        }
-        p{
-          span{
+      }
+      p{
+        span{
           position: relative;top:3px;margin-right: 5px;}
-          a{color: $textOnColor;}
-        }
+        a{color: $textOnColor;}
       }
     }
   }
   .submitBox {
     height: 33px;
     line-height: 32px;
-    margin: 10px 20px 0;
+    margin: 5px 20px 0;
     font-size: 16px;
     text-align: center;
     .ok {
@@ -986,7 +987,7 @@ select {
 .successBox{width: 100%;left: 0px;top:0px;margin: 0px;background-color:#48B363;line-height: 40px;color: $white;border-radius: 0px;
   i{background-position: -51px -94px;margin: 4px 10px 0 0;}
 }
-.loginBox{
+.loginPopupCom{
   width: 360px;
   .getCode {
     position: absolute;
@@ -1010,7 +1011,19 @@ select {
     }
   }
 }
-.loginBox2{
+.loginBox{
+  .operate{
+    text-align: left;padding:10px 0 0 20px;
+    a{color: $textc_48B;
+      &:hover{
+        color:$text_red_F1;
+      }
+    }
+    i{color: $textc_48B;padding:0 8px;}
+
+  }
+}
+.loginCom{
   width: 300px;float: right;position: relative;z-index: 2;margin-top:80px;background-color:rgba(255, 255, 255, 0.7);padding:30px;border: 1px solid $bdrc_ddd;
   .getCode {
     position: absolute;
@@ -1059,7 +1072,7 @@ select {
           line-height: 36px;
           padding: 0 5px;
           box-sizing: border-box;
-          font-size: 16px;
+          font-size: 15px;
           font-family:'Arial','微软雅黑';
         }
       }
@@ -1079,7 +1092,7 @@ select {
   .submitBox {
     height: 36px;
     line-height: 36px;
-    font-size: 16px;margin-top: 10px;
+    font-size: 16px;margin-top:5px;
     text-align: center;
     .ok {
         display: block;
@@ -1098,8 +1111,26 @@ select {
   }
 
   .otherMsg{text-align: center;padding-top: 10px;color: $gray9B;}
+  .operate{
+    padding: 10px  0;
+    a{color: $textc_48B;
+      &:hover{
+        color: $text_red_F1;
+      }
+    }
+    i{padding:0 8px;color: $textc_48B;}
+  }
   .lgbg{width: 42px;height: 42px;display: inline-block;position: absolute;left:-6px;bottom:-6px;background: url("../images/lg_l.png") no-repeat}
   .lgrt{left:auto;right: -6px;background: url("../images/lg_r.png") no-repeat}
+}
+.registerBox,.rPasswordBox{
+  margin-top: 40px;
+  .tit{
+    span{width: 100%;cursor:default;}
+  }
+}
+.rPasswordBox{
+  margin-top: 60px;
 }
 .ads {
   margin-bottom: 10px;

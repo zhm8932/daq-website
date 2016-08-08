@@ -7,7 +7,7 @@ define(function (require, exports, module) {
 
         //购物车为空时居中
         var emptyCart = $('.empty-cart-box');
-        if(emptyCart){
+        if(emptyCart&&minHeight>=0){
             emptyCart.css('margin-top',(minHeight - emptyCart.height()) / 2+'px');
         }
         
