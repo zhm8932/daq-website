@@ -50,9 +50,10 @@ exports.login = function (req,res,next) {
 };
 exports.logout = function (req,res,next) {
     // res.cookie('userInfo','null',{maxAge:0});
-    req.session.destroy(function(){
-        console.log('退出登录');
-    });
+    // req.session.destroy(function(){
+    //     console.log('退出登录');
+    // });
+    req.session.userInfo = null;
     res.cookie('accountId','null',{maxAge:0});
     res.send('{"code":"200","success":"true"}');
 };
