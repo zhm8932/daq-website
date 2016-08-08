@@ -1,5 +1,4 @@
 define(function (require, exports, module) {
-    require('jquery');
     console.log('进入了');
     var utils = require('../libs/utils.js');
     console.log('引入1');
