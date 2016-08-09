@@ -322,6 +322,7 @@ define(function(require, exports, module){
         });
 
     }
+
     // $nav_toggle.hover(
     //     function () {
     //         $left_nav.slideDown();

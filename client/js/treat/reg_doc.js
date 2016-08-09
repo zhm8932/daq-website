@@ -1,18 +1,26 @@
-define(function (require, exports, module) {
-    console.log('进入了');
+define(function(require){
+    console.log('开始引入js');
+    require('jquery');
     var utils = require('../libs/utils.js');
-    console.log('引入1');
     var login = require('../login.js');
-    console.log('引入2');
     require("moment");
-    console.log('引入3');
+
     require("daterangepicker");
 
-    console.log('DOM加载完成执行了');
+    console.log('引入完成');
+    $(function () {
+        console.log('DOM加载完成执行了');
+    })
+    $('#scheduleId-select').click(function () {
+        console.log("点击了父级---scheduleId-select")
+    })
     $('#scheduleId-select .option').click(function () {
+        console.log('就诊时段')
         var $this = $(this);
+        console.log("$this:",$this)
         $('#scheduleId').val($this.data('value'));
         var cost = parseFloat($this.data('cost'));
+        console.log("cost:",cost)
         $('#cost').html((cost / 100).toFixed(2) + '元');
         var scheduleSelect = $("#scheduleId-select");
         if(scheduleSelect.attr('data-load') == 'first'){

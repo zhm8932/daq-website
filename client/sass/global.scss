@@ -867,6 +867,7 @@ select {
   background: #FFF;
   margin: 8px;
   padding-bottom: 20px;
+  //cursor: move;
 }
 
 .popupBox {
@@ -910,6 +911,7 @@ select {
     position: relative;
     z-index: 999;
     overflow: hidden;
+
     //height:60px;
     //background-color: #222;
     span {
