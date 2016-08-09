@@ -74,7 +74,7 @@ define(function (require, exports, module) {
         // $('#submitForm input[name=ids]').val(JSON.stringify(ids));
         // $('#submitForm').submit();
 
-        $this.off('click');
+        $this.addClass('disabled').off('click');
         var orderToken = $('#orderToken').val();
 
         utils.SendAjax({
@@ -83,11 +83,10 @@ define(function (require, exports, module) {
             method: 'POST',
             tipText: '提交订单',
             callback: function (result) {
-                checkSubmitFlg = true;
                 window.location.href = '/trade/order/orderSuccess?id='+result.id;
             },
             errorFun: function () {
-                $this.on('click', function () {
+                $this.removeClass('disabled').on('click', function () {
                     submitOrder($this);
                 });
             }

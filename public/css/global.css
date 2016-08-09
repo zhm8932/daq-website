@@ -157,7 +157,8 @@ button.disabled, .btn.disabled {
 .select-box {
   position: relative;
   display: inline-block;
-  vertical-align: middle; }
+  vertical-align: middle;
+  cursor: pointer; }
   .select-box .selected {
     display: inline-block;
     width: 100%;

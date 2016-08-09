@@ -1,59 +1,52 @@
 define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
-    var login = require('../login.js');
+    var login = require('../login');
+    queryOrderState(function (result) {
+        if (result.data.reservationStatus != 0) {
+            window.location.href = '/treat/regsource/list';
+        }
+    });
     var timer = require('../libs/timer.js');
 
     var payId = $('#payId').val();
 
-
-    // var a = new Date(payTime).toLocaleTimeString();
-    // var b = new Date(now).toLocaleTimeString();
-    //
-    // console.log('==='+ a + '==' + b);
-    // console.log(now-payTime);
-    // console.log(restTime);
-
     $(function(){
+        //预约订单状态。0：未支付、1:待就诊(未登记)、2:已完成(已登记)、3:已过期、4:已取消、5：退款中、6：已退款
         timer.updateTime({
             totalTime:30*60*1000,
             outdatedFun:function(){
                 window.location.href = '/users/register/list';
             }
         });
-        //预约订单状态。0：未支付、1:待就诊(未登记)、2:已完成(已登记)、3:已过期、4:已取消、5：退款中、6：已退款
 
-        queryOrderState(function (result) {
-            console.log("result:",result);
-            if (result.data.reservationStatus != 0) {
-                window.location.href = '/users/register/list';
-            }
+        $('.alipay').on('click',function(){
+            var $this = $(this);
+            queryOrderState(function(result){
+                if (result.data.reservationStatus == 0) {
+                    var paynum = $this.attr('data-paynum');
+                    alipay(payId,paynum);
+                }else{
+                    utils.ShowComfirmDialog({tipText:'不是未支付状态的订单不允许支付！',noConfirmBtn:true});
+                }
+            });
+
         });
+
+        $('.wechat-pay').on('click',function(){
+            queryOrderState(function(result) {
+                if (result.data.reservationStatus == 0) {
+                    wechatPay(payId, 6);
+                } else {
+                    utils.ShowComfirmDialog({tipText: '不是未支付状态的订单不允许支付！', noConfirmBtn: true});
+                }
+            });
+        });
+
 
     });
 
 
-    $('.alipay').on('click',function(){
-        var $this = $(this);
-        queryOrderState(function(result){
-            if (result.data.reservationStatus == 0) {
-                var paynum = $this.attr('data-paynum');
-                alipay(payId,paynum);
-            }else{
-                utils.ShowComfirmDialog({tipText:'不是未支付状态的订单不允许支付！',noConfirmBtn:true});
-            }
-        });
 
-    });
-
-    $('.wechat-pay').on('click',function(){
-        queryOrderState(function(result) {
-            if (result.data.reservationStatus == 0) {
-                wechatPay(payId, 6);
-            } else {
-                utils.ShowComfirmDialog({tipText: '不是未支付状态的订单不允许支付！', noConfirmBtn: true});
-            }
-        });
-    });
 
     function alipay(id,payWay){
         var href = window.location.href;
