@@ -66,7 +66,7 @@ app.use(session({
   name:"douanquan.sid",
   store: new redisStore(config.options),
   secret: config.sessionSecret,
-  cookie:{maxAge:12*60*60*1000,httpOnly:true}
+  cookie:{httpOnly:true}
 
   // store: new redisStore(options),
   // secret: config.sessionSecret,
