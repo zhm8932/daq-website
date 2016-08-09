@@ -330,7 +330,8 @@ $conWidth:1600px;
       color:$textc_48B;
   }
   .login-view{margin-bottom:-40px;}
-  .loginBox2{
+  .loginCom{
+    padding-bottom: 30px;
     .bd .prompt i{vertical-align: top;}
     .submitBox .ok{font-size: 18px;}
   }
@@ -380,7 +381,8 @@ $conWidth:1600px;
     .pic_list{
       ul{margin-left: -3%;
         //li{width: 47%;margin:20px 0 0 3%;height: auto;
-        li{width:auto;margin:20px 0 0 3%;height: auto;border: 1px solid $bdrc_ddd;
+
+        li{width:auto;margin:20px 0 0 3%;height: auto;border: 1px solid $bdrc_ddd;float:none;
           a{
             h4{line-height:50px;height:50px;position: relative;margin-bottom:-30px;font-size: 20px;background: none;color: $textc_48B;overflow: hidden;background-color: rgba(255, 255, 255, 0.75);text-align: right;padding-right: 10px;width: auto;box-sizing: border-box;}
           }
@@ -491,7 +493,7 @@ $conWidth:1600px;
     .swiper-button-prev, .swiper-button-next{display: block}
   }
   .login-view .wrapper{background-size: 100%;height: auto;background: none;}
-  .loginBox2{float: none;margin:10px auto 0;padding-top: 0px;}
+  .loginCom{float: none;margin:10px auto 0;padding-top: 0px;}
   .copyright{height: auto; line-height: 30px;margin-bottom: 60px;
     a{display: inline-block;}
   }
@@ -1121,7 +1123,7 @@ $conWidth:1600px;
   }
 }
 @media only screen and (max-width: 600px){
-  .loginBox2{border: none;box-sizing: border-box;width: 100%;padding: 0 10px 0}
+  .loginCom{border: none;box-sizing: border-box;width: 100%;padding: 0 10px 30px}
   .loginBox{width: 100%;}
 
   .left-nav-tit{
@@ -1132,7 +1134,11 @@ $conWidth:1600px;
   .order-success .order-box .order-detail, .pay-success .order-box .order-detail{top: 90px;}
   .goods_basic dl dd {
     .type-box{
-      width: 100%;
+      width: 100%;box-sizing: border-box;margin: 0px;padding-left: 0px;
+      &.unchoose{
+        padding-left: 5px;
+        .box-header{height: 28px;line-height: 24px;box-sizing: border-box;width: 100%;box-shadow: 0 0 0 2px #ED9E9A;left:0px; }
+      }
       .service_type_wrapper{
         width: auto;overflow: hidden;
       }
@@ -1240,7 +1246,7 @@ $conWidth:1600px;
       a,span{margin:0px;}
     }
   }
-  .loginBox2 .bd ul li input{font-size: 14px;}
+  .loginCom .bd ul li input{font-size: 14px;}
   .copyright{font-size: 14px;}
 
 }

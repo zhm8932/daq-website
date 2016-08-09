@@ -394,10 +394,12 @@
   .login-view {
     margin-bottom: -40px; }
 
-  .loginBox2 .bd .prompt i {
-    vertical-align: top; }
-  .loginBox2 .submitBox .ok {
-    font-size: 18px; }
+  .loginCom {
+    padding-bottom: 30px; }
+    .loginCom .bd .prompt i {
+      vertical-align: top; }
+    .loginCom .submitBox .ok {
+      font-size: 18px; }
 
   .positon {
     margin-bottom: 10px;
@@ -481,7 +483,8 @@
         width: auto;
         margin: 20px 0 0 3%;
         height: auto;
-        border: 1px solid #dddddd; }
+        border: 1px solid #dddddd;
+        float: none; }
         .item_list .pic_list ul li a h4 {
           line-height: 50px;
           height: 50px;
@@ -650,7 +653,7 @@
     height: auto;
     background: none; }
 
-  .loginBox2 {
+  .loginCom {
     float: none;
     margin: 10px auto 0;
     padding-top: 0px; }
@@ -1535,11 +1538,11 @@
       .wechat-box .wechat-pay-dialog .left-box img {
         width: 250px; } }
 @media only screen and (max-width: 600px) {
-  .loginBox2 {
+  .loginCom {
     border: none;
     box-sizing: border-box;
     width: 100%;
-    padding: 0 10px 0; }
+    padding: 0 10px 30px; }
 
   .loginBox {
     width: 100%; }
@@ -1556,7 +1559,19 @@
     top: 90px; }
 
   .goods_basic dl dd .type-box {
-    width: 100%; }
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0px;
+    padding-left: 0px; }
+    .goods_basic dl dd .type-box.unchoose {
+      padding-left: 5px; }
+      .goods_basic dl dd .type-box.unchoose .box-header {
+        height: 28px;
+        line-height: 24px;
+        box-sizing: border-box;
+        width: 100%;
+        box-shadow: 0 0 0 2px #ED9E9A;
+        left: 0px; }
     .goods_basic dl dd .type-box .service_type_wrapper {
       width: auto;
       overflow: hidden; }
@@ -1662,7 +1677,7 @@
     .userBox .pagination a, .userBox .pagination span {
       margin: 0px; }
 
-  .loginBox2 .bd ul li input {
+  .loginCom .bd ul li input {
     font-size: 14px; }
 
   .copyright {
