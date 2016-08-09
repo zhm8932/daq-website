@@ -32,15 +32,17 @@ router.use(function(req, res, next) {
     // global.config.options = config.options
     // console.log("config.options:",config.options)
     //城市
+    if(!req.session){
+        return next(new Error('no session')) ;// handle error
+    }
+
     if(req.session&&req.session.locals_address){
         res.locals.locals_address = JSON.stringify(req.session.locals_address);
     }else{
         req.session.locals_address = config.addressJSON;
         res.locals.locals_address = JSON.stringify(config.addressJSON);
     }
-    if(!req.session){
-        return next(new Error('no session')) // handle error
-    }
+
     if(req.session.userInfo){
         //每次请求首页都会动态从session获取值，保存在本地变量中
         req.accountId = req.session.userInfo.userAllInfo.accountCommon.id;

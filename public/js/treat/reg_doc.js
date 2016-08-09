@@ -43,7 +43,7 @@ define(function (require, exports, module) {
     }
 
     function commitReg($this) {
-        $this.off('click');
+        $this.addClass('disabled').off('click');
         login.CheckLogin(function () {
             var scheduleId = $('#scheduleId').val();
             var param = {scheduleId:scheduleId};
@@ -61,7 +61,7 @@ define(function (require, exports, module) {
                     }
                 },
                 errorFun: function (result) {
-                    $this.on('click', function () {
+                    $this.removeClass('disabled').on('click', function () {
                         commitReg($(this));
                     });
                 }

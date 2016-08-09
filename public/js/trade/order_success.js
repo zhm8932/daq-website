@@ -1,7 +1,18 @@
 define(function (require, exports, module) {
     var utils = require('../libs/utils.js');
-    var timer = require('../libs/timer.js');
     var login = require('../login');
+
+    queryOrderState(function(result) {
+        //订单状态,UNPAID(1,"未支付"),PAID(2,"已支付"),CANCELED(3,"已取消"),REFUNDING(4,"退款中"),REFUND(5,"已退款")
+        var orderState = result.data.orderState;
+        if (orderState != 1) {
+            window.location.href = '/screenings/goods';
+        }
+    });
+
+
+
+    var timer = require('../libs/timer.js');
 
     var href = window.location.href;
     var domain = href.substr(0,href.indexOf('/',href.indexOf('/',href.indexOf('/')+1)+1));
@@ -13,17 +24,19 @@ define(function (require, exports, module) {
                 window.location.href = '/trade/order/list';
             }
         });
+
+        $('.alipay').on('click',function(){
+            var paynum = $(this).attr('data-paynum');
+            getPayId(alipay,paynum);
+        });
+
+        $('.wechat-pay').on('click',function(){
+            getPayId(wechatPay,6);
+        });
     });
 
 
-    $('.alipay').on('click',function(){
-        var paynum = $(this).attr('data-paynum');
-        getPayId(alipay,paynum);
-    });
 
-    $('.wechat-pay').on('click',function(){
-        getPayId(wechatPay,6);
-    });
 
     function getPayId(fun,payWay){
         login.CheckLogin(function() {
@@ -96,7 +109,16 @@ define(function (require, exports, module) {
             bOhterMsg:true,
             callback:function () {
                 stateTimer = setInterval(function(){
-                    queryOrderState();
+                    queryOrderState(function(result){
+                        var id = $('#order-detail').data('id');
+                        //订单状态,UNPAID(1,"未支付"),PAID(2,"已支付"),CANCELED(3,"已取消"),REFUNDING(4,"退款中"),REFUND(5,"已退款")
+                        var orderState = result.data.orderState;
+                        if (orderState == 2) {
+                            window.location.href = '/trade/order/paySuccess?order_no=' + id;
+                        }else if(orderState!=1){
+                            window.location.href ='/trade/order/list';
+                        }
+                    });
                 },3000);
             },
             okText:'登录',
@@ -123,7 +145,16 @@ define(function (require, exports, module) {
             bOhterMsg:true,
             callback:function () {
                 stateTimer = setInterval(function(){
-                    queryOrderState();
+                    queryOrderState(function(result){
+                        var id = $('#order-detail').data('id');
+                        //订单状态,UNPAID(1,"未支付"),PAID(2,"已支付"),CANCELED(3,"已取消"),REFUNDING(4,"退款中"),REFUND(5,"已退款")
+                        var orderState = result.data.orderState;
+                        if (orderState == 2) {
+                            window.location.href = '/trade/order/paySuccess?order_no=' + id;
+                        }else if(orderState!=1){
+                            window.location.href ='/trade/order/list';
+                        }
+                    });
                 },3000);
             },
             okText:'登录',
@@ -140,27 +171,19 @@ define(function (require, exports, module) {
 
     }
 
-    function queryOrderState(){
-        login.CheckLogin(function() {
-            var id = $('#order-detail').data('id');
-            utils.SendAjax({
-                url: '/trade/order/state',
-                param: {id: id},
-                method: 'GET',
-                tipText: '前往支付页面',
-                callback: function (result) {
-                    //订单状态,UNPAID(1,"未支付"),PAID(2,"已支付"),CANCELED(3,"已取消"),REFUNDING(4,"退款中"),REFUND(5,"已退款")
-                    var orderState = result.data.orderState;
-                    if (orderState == 2) {
-                        window.location.href = '/trade/order/paySuccess?order_no=' + id;
-                    }else if(orderState!=1){
-                        window.location.href ='/trade/order/list';
-                    }
-                },
-                errorFun: function (result) {
+    function queryOrderState(fun){
+        var id = $('#order-detail').data('id');
+        utils.SendAjax({
+            url: '/trade/order/state',
+            param: {id: id},
+            method: 'GET',
+            tipText: '查询订单状态',
+            callback: function (result) {
+                fun && fun(result);
+            },
+            errorFun: function (result) {
 
-                }
-            });
+            }
         });
     }
 });
