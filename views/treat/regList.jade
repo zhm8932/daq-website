@@ -9,7 +9,7 @@ block content
 
     .wrapper
         h2.treat-name 深圳南山区都安全门诊部
-    -var week = ['周一','周二','周三','周四','周五','周六','周日'];
+    -var week = ['周日','周一','周二','周三','周四','周五','周六'];
     section.boxBg
         .wrapper.outpatient.clearfix
             img(src="/images/outpatient.png")
@@ -100,11 +100,11 @@ block content
                             if schedule.capacity > 0
                                 if schedule.consume < schedule.capacity
                                     li
-                                        span #{schedule.date} #{week[parseInt(schedule.dayOfWeek) - 1]}(#{schedule.consume}/#{schedule.capacity})
+                                        span #{schedule.date} #{week[parseInt(schedule.dayOfWeek)]}(#{schedule.consume}/#{schedule.capacity})
                                         button.btn.fr.register(data-date="#{schedule.date}") 预约
                                 else if schedule.consume === schedule.capacity
                                     li.disabled
-                                        span #{schedule.date} #{week[parseInt(schedule.dayOfWeek) - 1]}(#{schedule.consume}/#{schedule.capacity})
+                                        span #{schedule.date} #{week[parseInt(schedule.dayOfWeek)]}(#{schedule.consume}/#{schedule.capacity})
                                         button.btn.fr 约满
                             //else
                                 li.disabled
