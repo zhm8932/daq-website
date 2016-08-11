@@ -447,7 +447,8 @@ select {
       height: 32px;
       margin-right: 10px;
       top: 30px;
-      position: relative; }
+      position: relative;
+      vertical-align: top; }
     .header .tel img {
       vertical-align: middle; }
 

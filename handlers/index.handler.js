@@ -64,7 +64,8 @@ exports.get_cart_num = function (req,res,next) {
 }
 
 exports.get_wap_tit = function (req,res,next) {
-    if(browser.mobile){
+    // if(browser.mobile){
+    if(true){
         var url = req.url;
         var curTit = '';
         console.log("url:",url);
