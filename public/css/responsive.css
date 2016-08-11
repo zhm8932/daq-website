@@ -484,7 +484,8 @@
         margin: 20px 0 0 3%;
         height: auto;
         border: 1px solid #dddddd;
-        float: none; }
+        float: none;
+        display: block; }
         .item_list .pic_list ul li a h4 {
           line-height: 50px;
           height: 50px;
@@ -661,7 +662,7 @@
   .copyright {
     height: auto;
     line-height: 30px;
-    margin-bottom: 60px; }
+    margin-bottom: 50px; }
     .copyright a {
       display: inline-block; }
 

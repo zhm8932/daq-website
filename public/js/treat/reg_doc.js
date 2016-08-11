@@ -3,17 +3,17 @@ define(function(require){
     require('jquery');
     var utils = require('../libs/utils.js');
     var login = require('../login.js');
-    require("moment");
 
-    require("daterangepicker");
+    require('./reg_yuyue');
+    // require("moment");
+    //
+    // require("daterangepicker");
 
     console.log('引入完成');
     $(function () {
         console.log('DOM加载完成执行了');
     })
-    $('#scheduleId-select').click(function () {
-        console.log("点击了父级---scheduleId-select")
-    })
+
     $('#scheduleId-select .option').click(function () {
         console.log('就诊时段')
         var $this = $(this);

@@ -21,9 +21,9 @@ exports.get_article_list = function(req,res) {
         get_article_list_diseases = get_article_list_diseases.data.data;
     }
     res.render('healths/list', {
-        title: '筛查服务_'+CONST.GLOBAL_TITLE,
-        keywords: '筛查服务,'+CONST.GLOBAL_TITLE,
-        description: '筛查服务,'+CONST.GLOBAL_TITLE,
+        title: '健康常识'+CONST.GLOBAL_TITLE,
+        keywords: '健康常识,'+CONST.GLOBAL_TITLE,
+        description: '健康常识,'+CONST.GLOBAL_TITLE,
         get_article_list:get_article_list,
         get_article_list_ask:get_article_list_ask,
         get_article_list_diseases:get_article_list_diseases

@@ -30,12 +30,21 @@ define(function(require){
                     // console.log($(this).text());
                 }
             });
+        }else if(utils.browser.ios){
+            console.log('IOS')
+            $('.ellips').ellipsis({
+                row:2,
+                char:'…',
+                callback: function() {
+                    console.log($(this).text());
+                }
+            });
         }else{
             $('.ellips').ellipsis({
                 row:1,
                 char:'……',
                 callback: function() {
-                    // console.log($(this).text());
+                    console.log($(this).text());
                 }
             });
         }

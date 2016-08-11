@@ -382,7 +382,7 @@ $conWidth:1600px;
       ul{margin-left: -3%;
         //li{width: 47%;margin:20px 0 0 3%;height: auto;
 
-        li{width:auto;margin:20px 0 0 3%;height: auto;border: 1px solid $bdrc_ddd;float:none;
+        li{width:auto;margin:20px 0 0 3%;height: auto;border: 1px solid $bdrc_ddd;float:none;display: block;
           a{
             h4{line-height:50px;height:50px;position: relative;margin-bottom:-30px;font-size: 20px;background: none;color: $textc_48B;overflow: hidden;background-color: rgba(255, 255, 255, 0.75);text-align: right;padding-right: 10px;width: auto;box-sizing: border-box;}
           }
@@ -494,7 +494,7 @@ $conWidth:1600px;
   }
   .login-view .wrapper{background-size: 100%;height: auto;background: none;}
   .loginCom{float: none;margin:10px auto 0;padding-top: 0px;}
-  .copyright{height: auto; line-height: 30px;margin-bottom: 60px;
+  .copyright{height: auto; line-height: 30px;margin-bottom: 50px;
     a{display: inline-block;}
   }
   .rightNav{display: none;}
