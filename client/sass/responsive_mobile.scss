@@ -18,7 +18,7 @@
 
   .positon{margin-bottom: 10px;display: none;}
   .nav{
-    height: 80px;line-height: inherit;
+    height: 80px;line-height: inherit;width: auto;
     ul {
       li{
         &.on{background-color:inherit  }
@@ -57,7 +57,7 @@
   .header{
     .wrapper{width: auto;}
   }
-  .banner,.wrapper{width: auto;}
+  .banner, .nav, .footer, .copyright,.wrapper{width: auto;}
 
   .topBar{
     height: 0px;position: relative;margin-left:$loginW+20px;width: auto;

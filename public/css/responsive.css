@@ -129,6 +129,9 @@
     left: auto;
     right: 0px; }
 
+  .nav .wrapper {
+    margin: 0 auto; }
+
   .banner dl p {
     font-size: 14px; }
 
@@ -232,6 +235,12 @@
   .header .wrapper {
     width: 768px; }
 
+  .banner, .nav, .footer, .copyright {
+    width: 768px; }
+
+  .nav .wrapper {
+    margin: 0 auto; }
+
   .home .wrapper {
     width: auto; }
 
@@ -241,9 +250,6 @@
     overflow: hidden;
     width: 768px;
     box-sizing: border-box; }
-
-  .banner {
-    width: 768px; }
 
   .item_list header {
     padding-top: 20px; }

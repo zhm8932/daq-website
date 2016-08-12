@@ -43,7 +43,8 @@
 
   .nav {
     height: 80px;
-    line-height: inherit; }
+    line-height: inherit;
+    width: auto; }
     .nav ul li.on {
       background-color: inherit; }
     .nav ul li.index {
@@ -102,7 +103,7 @@
   .header .wrapper {
     width: auto; }
 
-  .banner, .wrapper {
+  .banner, .nav, .footer, .copyright, .wrapper {
     width: auto; }
 
   .topBar {

@@ -118,6 +118,9 @@ $conWidth:1600px;
     //.nav{left: 10px;top:140px;}
   }
 
+  .nav{
+    .wrapper{ margin: 0 auto;}
+  }
   .banner dl p{font-size: 14px;}
   .item_list{
     .pic_list{
@@ -215,9 +218,12 @@ $conWidth:1600px;
   .header{
     .wrapper{width: $win_768}
   }
-  .home .wrapper{width: auto;}
+  .banner,.nav,.footer,.copyright{width:$win_768;}
+  .nav .wrapper{margin: 0 auto}
+  .home{
+    .wrapper{width: auto;}
+  }
   .wrapper{width: auto;margin:0 10px;overflow: hidden;width:$win_768;box-sizing: border-box; }
-  .banner{width:$win_768;}
   .item_list header{
     padding-top: 20px;
     h2{
