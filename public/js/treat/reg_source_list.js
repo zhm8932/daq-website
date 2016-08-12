@@ -1,4 +1,5 @@
 define(function (require, exports, module) {
+    require('jquery');
     var utils = require('../libs/utils.js');
     var login = require('../login.js');
 

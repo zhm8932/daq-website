@@ -45,5 +45,7 @@ block content
                         //input#needPay(type="hidden",value="#{doctorDTO.needPay}")
 
     include ../includes/footer
-    script.
+    script(src="/js/libs/1.8.3/jquery.js")
+    script(src="/js/treat_reg_doc.bundle.js")
+    //-script.
         seajs.use('/js/treat/reg_doc.js')

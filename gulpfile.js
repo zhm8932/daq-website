@@ -22,6 +22,10 @@ var uglify = require('gulp-uglify');    //gulp-uglify压缩javascript文件，�
 var livereload = require('gulp-livereload');
 // var nodemon = require('gulp-nodemon');
 
+var gulp = require("gulp");
+var gutil = require("gulp-util");
+var webpack = require("webpack");
+
 //sass编译  自动刷新
 gulp.task('sass', function () {
     livereload.listen();
@@ -112,6 +116,9 @@ gulp.task('sass:watch', function () {
 gulp.task('cssmin:watch', function () {
     gulp.watch('./client/sass/**/*.scss', ['cssmin']);
 });
+
+
+
 //监听
 gulp.task('watch', function () {
     livereload.listen();
@@ -121,6 +128,13 @@ gulp.task('watch', function () {
     gulp.watch(['./client/js/**/*.js', './client/sass/**/*.scss', './dist/css/**/*.css'], function (file) {
         livereload.changed(file.path);
     });
+});
+
+gulp.task("webpack", function(callback) {
+    var webpackConfig = require('./webpack.config');
+    webpack(webpackConfig, function (err, stats) {
+        console.log(stats.toString());
+    })
 });
 
 

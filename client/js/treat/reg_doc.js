@@ -1,8 +1,7 @@
 define(function(require){
-    console.log('开始引入js');
-    require('jquery');
     var utils = require('../libs/utils.js');
     var login = require('../login.js');
+    var common = require('../common.js');
     require("moment");
 
     require("daterangepicker");
