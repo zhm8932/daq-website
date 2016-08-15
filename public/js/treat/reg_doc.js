@@ -33,8 +33,11 @@ define(function(require){
 
     var hasBind = $('#hasBind').val();
     if (hasBind != 'true') {
-        showAccountDialog({});
-
+        if(utils.browser.mobile){
+            window.location.href = "/users/account/info/";
+        }else{
+            showAccountDialog({});
+        }
         $('#birthday').daterangepicker({
             singleDatePicker: true,
             showDropdowns: true,

@@ -441,12 +441,13 @@
   }
   .account{
     .info-box > li{
-      label{width: 80px;}
+      label{width: 80px;margin-right: 10px;}
       input{width: 60%;font-size: 16px;-webkit-appearance: none;}
     }
     .btn-box{
-      margin-left: 98px;width: 60%;
+      margin-left: 94px;width: 60%;
     }
+    .prompt{top:-15px;}
   }
   .table tbody td{padding: 10px;}
   //-我的订单
@@ -866,6 +867,7 @@
       }
     }
   }
+  .daterangepicker{width: 220px;}
 }
 @media only screen and (max-width: 600px){
   .loginCom{border: none;box-sizing: border-box;width: 100%;padding: 0 10px 30px}

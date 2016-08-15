@@ -172,12 +172,10 @@
     display: none; }
     .complete-dialog .box-body .prompt i {
       background-position: -178px -22px; }
-.complete-dialog .submitBox {
-  margin-left: 98px; }
-  .complete-dialog .submitBox span.ok.disabled {
-    background: #C4C4C4;
-    border: 1px solid #C4C4C4;
-    color: #fff; }
+.complete-dialog .submitBox span.ok.disabled {
+  background: #C4C4C4;
+  border: 1px solid #C4C4C4;
+  color: #fff; }
 .complete-dialog span.ok {
   width: 280px; }
 

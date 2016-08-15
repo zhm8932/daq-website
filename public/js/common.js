@@ -303,7 +303,8 @@ define(function(require, exports, module){
                 //设置输入框位置使其紧贴输入框
                 // $(_this).css({'position':'absolute', 'top':inputTopPos });
                 // $footerWap.css({'position':'absolute', 'top':inputTopPos });
-                $footerWap.css({'position':'absolute', 'top':noInputViewHeight });
+                // $footerWap.css({'position':'absolute', 'top':noInputViewHeight });
+                $footerWap.css({'display':'none' });
                 //给窗口对象绑定滚动事件，保证页面滚动时div能吸附软键盘
                 $(window).bind('scroll', function(){
                     //表示此时有软键盘存在，输入框浮在页面上了
@@ -323,6 +324,7 @@ define(function(require, exports, module){
         }).blur(function(){//输入框失焦后还原初始状态
             $(".div-input").removeAttr('style');
             $(window).unbind('scroll');
+            $footerWap.css({'display':'block' });
         });
 
     }
