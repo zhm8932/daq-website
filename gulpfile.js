@@ -49,4 +49,29 @@ gulp.task('watch', function () {
     gulp.watch(srcPaths.bundledJS, ['js']);
 });
 
+
+//js压缩
+gulp.task('jsmin', function () {
+    return gulp.src(srcPaths.bundledJS)
+        .pipe(babel())
+        .pipe(uglify())
+        // .pipe(rename({
+        //     suffix: '.min'
+        // }))
+        .pipe(gulp.dest('public/js'));
+});
+
+//sass编译 并压缩css  //css文件压缩
+gulp.task('cssmin', function () {
+    sass(srcPaths.sass)
+        .on('err', sass.logError)
+        .pipe(gulp.dest('public/css'))
+        .pipe(cleanCSS())
+        // .pipe(rename({
+        //     suffix: '.min'
+        // }))
+        .pipe(gulp.dest('public/css'));
+});
+
 gulp.task('default', ['sass', 'webpack', 'js', 'watch']);
+gulp.task('prod', ['webpack', 'cssmin','jsmin']);

@@ -1,5 +1,4 @@
 define(function(require){
-    console.log('进入了');
     var utils = require('../libs/utils.js');
     var login = require('../login.js');
     require("moment");

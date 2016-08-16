@@ -13,7 +13,6 @@ webpackJsonp([16],{
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require){
-	    console.log('进入了');
 	    var utils = __webpack_require__(4);
 	    var login = __webpack_require__(9);
 	    __webpack_require__(10);
