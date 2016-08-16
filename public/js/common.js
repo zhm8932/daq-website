@@ -136,6 +136,7 @@ define(function(require, exports, module){
 
         $(window).scroll(function () {
             var scrollTop = $(window).scrollTop();
+            console.log("scrollTop:",scrollTop)
             if(scrollTop>winHeight/2){
                 $gotoTop.show()
             }else{
@@ -280,7 +281,7 @@ define(function(require, exports, module){
         // })
 
         //只作用于输入框获得焦点时
-        $('input').focus(function(){
+        $('input,button').focus(function(){
             var _this = this;
             //无键盘时输入框到浏览器窗口顶部距离
             var noInputViewHeight = $(window).height() - $footerWap.height();
@@ -317,28 +318,17 @@ define(function(require, exports, module){
                         afterScrollTopPos = noInputViewHeight + offset;
                         //设置输入框位置使其紧贴输入框
                         // $(_this).css({'position':'absolute', 'top':afterScrollTopPos });
-                        $footerWap.css({'position':'absolute', 'top':afterScrollTopPos });
+                        // $footerWap.css({'position':'absolute', 'top':afterScrollTopPos });
+                        // $footerWap.css({'display':'none' });
                     }
                 });
             }, 100);
         }).blur(function(){//输入框失焦后还原初始状态
             $(".div-input").removeAttr('style');
-            $(window).unbind('scroll');
+            // $(window).unbind('scroll');
             $footerWap.css({'display':'block' });
         });
 
     }
-
-    // $nav_toggle.hover(
-    //     function () {
-    //         $left_nav.slideDown();
-    //         $(this).parents('aside').addClass('active');
-    //     },
-    //     function () {
-    //         // $left_nav.slideUp()
-    //     }
-    // )
-
-
 
 });

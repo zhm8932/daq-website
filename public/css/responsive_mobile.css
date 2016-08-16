@@ -733,7 +733,7 @@
     font-size: 16px;
     -webkit-appearance: none; }
   .account .btn-box {
-    margin-left: 94px;
+    margin-left: 92px;
     width: 60%; }
   .account .prompt {
     top: -15px; }
@@ -998,8 +998,7 @@
     border-top: 10px solid #dddddd;
     padding-top: 5px; }
     .confirm-buy .coupon-trigger .icon {
-      position: relative;
-      top: 5px; }
+      position: relative; }
   .confirm-buy .table-div .tfoot {
     background-color: #FFF;
     color: #4A4A4A;
@@ -1197,7 +1196,7 @@
       text-align: center;
       display: none; }
       .footerWap .gotoTop i {
-        background-position: -210px 0;
+        background-position: -209px 8px;
         width: 34px;
         margin: 0 0 -16px 0;
         background-size: 600px; }

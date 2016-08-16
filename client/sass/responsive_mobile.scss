@@ -445,7 +445,7 @@
       input{width: 60%;font-size: 16px;-webkit-appearance: none;}
     }
     .btn-box{
-      margin-left: 94px;width: 60%;
+      margin-left: 92px;width: 60%;
     }
     .prompt{top:-15px;}
   }
@@ -658,7 +658,7 @@
     }
     .coupon-trigger{
       border-top: 10px solid $bdrc_ddd;padding-top: 5px;
-      .icon{position: relative;top: 5px;}
+      .icon{position: relative;}
     }
     .table-div{
       .tfoot{background-color: $white;color: $textColor;margin-top: 20px;
@@ -782,7 +782,7 @@
       i{background-position:-35px -422px;width: 40px;height: 35px;position: relative;top: 10px;margin-right: 5px;background-size: 700px;}
     }
     .gotoTop{width: 100px;float: right;background-color: $bgc_gray_4A;line-height: 20px;text-align: center;display: none;
-      i{background-position:-210px 0;width: 34px;margin:0 0 -16px 0;background-size: 600px;}
+      i{background-position:-209px 8px;width: 34px;margin:0 0 -16px 0;background-size: 600px;}
       em{display: block;height: 30px;}
     }
   }
