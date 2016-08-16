@@ -30,7 +30,7 @@
 /******/ 	// "0" means "already loaded"
 /******/ 	// Array means "loading", array contains callbacks
 /******/ 	var installedChunks = {
-/******/ 		25:0
+/******/ 		26:0
 /******/ 	};
 
 /******/ 	// The require function
@@ -76,7 +76,7 @@
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
 
-/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"abouts","1":"agencys/infos","2":"common","3":"config","4":"imgAuto","5":"index","6":"login","7":"screenings/goods","8":"screenings/goods_detail","9":"seajs.config","10":"searchs/search_report","11":"trade/cart","12":"trade/order_confirm","13":"trade/order_list","14":"trade/order_success","15":"treat/pay","16":"treat/reg_doc","17":"treat/reg_doc2","18":"treat/reg_source_list","19":"users/account","20":"users/coupons","21":"users/order_detail","22":"users/orders","23":"users/patients","24":"users/registerings"}[chunkId]||chunkId) + ".bundle.js";
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"abouts","1":"agencys/infos","2":"common","3":"config","4":"imgAuto","5":"index","6":"login","7":"screenings/goods","8":"screenings/goods_detail","9":"seajs.config","10":"searchs/search_report","11":"trade/cart","12":"trade/order_confirm","13":"trade/order_list","14":"trade/order_success","15":"treat/pay","16":"treat/reg_doc","17":"treat/reg_doc2","18":"treat/reg_source_list","19":"treat/reg_yuyue","20":"users/account","21":"users/coupons","22":"users/order_detail","23":"users/orders","24":"users/patients","25":"users/registerings"}[chunkId]||chunkId) + ".bundle.js";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};
@@ -523,7 +523,7 @@
 	        objs.each(function(index,ele){
 	            var $this = $(ele);
 	            $this.on('click',function(e){
-	                e.stopPropagation();
+	                // e.stopPropagation();
 	                $('.select-box').not($(this)).removeClass('open');
 	                if($this.hasClass('open')){
 	                    $this.removeClass('open');
@@ -1672,6 +1672,7 @@
 
 	        $(window).scroll(function () {
 	            var scrollTop = $(window).scrollTop();
+	            console.log("scrollTop:",scrollTop)
 	            if(scrollTop>winHeight/2){
 	                $gotoTop.show()
 	            }else{
@@ -1681,22 +1682,7 @@
 	        
 	        var winWidth = $(window).width();
 	        var $nav = $('.nav').find('.wrapper');
-	        if(winWidth<768){
-	            //导航滑动
-	            $nav.addClass('swiper-container');
-	            var swiper = new Swiper('.swiper-container', {
-	                nextButton: '.swiper-button-next',
-	                prevButton: '.swiper-button-prev',
-	                slidesPerView: 4
-	                // spaceBetween: 30
-	            });
-	        }else{
-	            $nav.removeClass().addClass('wrapper');
-	            $nav.find('li').removeAttr("style");
-	        }
-	        $(window).resize(function () {
-	            winWidth = $(window).width();
-	            //console.log("winWidth:",winWidth)
+	        if(utils.browser.mobile){
 	            if(winWidth<768){
 	                //导航滑动
 	                $nav.addClass('swiper-container');
@@ -1706,13 +1692,32 @@
 	                    slidesPerView: 4
 	                    // spaceBetween: 30
 	                });
-	                //console.log("111")
 	            }else{
-	                //console.log("222:",swiper)
 	                $nav.removeClass().addClass('wrapper');
-	                $nav.find('.swiper-slide').addClass('3333333333333').removeAttr("style")
+	                $nav.find('li').removeAttr("style");
 	            }
-	        })
+	            $(window).resize(function () {
+	                winWidth = $(window).width();
+	                //console.log("winWidth:",winWidth)
+	                if(winWidth<768){
+	                    //导航滑动
+	                    $nav.addClass('swiper-container');
+	                    var swiper = new Swiper('.swiper-container', {
+	                        nextButton: '.swiper-button-next',
+	                        prevButton: '.swiper-button-prev',
+	                        slidesPerView: 4
+	                        // spaceBetween: 30
+	                    });
+	                    //console.log("111")
+	                }else{
+	                    //console.log("222:",swiper)
+	                    $nav.removeClass().addClass('wrapper');
+	                    $nav.find('.swiper-slide').addClass('3333333333333').removeAttr("style")
+	                }
+	            })
+	        }
+
+
 	    })
 
 	    var curCityArr = '';
@@ -1812,7 +1817,7 @@
 	        // })
 
 	        //只作用于输入框获得焦点时
-	        $('input').focus(function(){
+	        $('input,button').focus(function(){
 	            var _this = this;
 	            //无键盘时输入框到浏览器窗口顶部距离
 	            var noInputViewHeight = $(window).height() - $footerWap.height();
@@ -1835,7 +1840,8 @@
 	                //设置输入框位置使其紧贴输入框
 	                // $(_this).css({'position':'absolute', 'top':inputTopPos });
 	                // $footerWap.css({'position':'absolute', 'top':inputTopPos });
-	                $footerWap.css({'position':'absolute', 'top':noInputViewHeight });
+	                // $footerWap.css({'position':'absolute', 'top':noInputViewHeight });
+	                $footerWap.css({'display':'none' });
 	                //给窗口对象绑定滚动事件，保证页面滚动时div能吸附软键盘
 	                $(window).bind('scroll', function(){
 	                    //表示此时有软键盘存在，输入框浮在页面上了
@@ -1848,28 +1854,18 @@
 	                        afterScrollTopPos = noInputViewHeight + offset;
 	                        //设置输入框位置使其紧贴输入框
 	                        // $(_this).css({'position':'absolute', 'top':afterScrollTopPos });
-	                        $footerWap.css({'position':'absolute', 'top':afterScrollTopPos });
+	                        // $footerWap.css({'position':'absolute', 'top':afterScrollTopPos });
+	                        // $footerWap.css({'display':'none' });
 	                    }
 	                });
 	            }, 100);
 	        }).blur(function(){//输入框失焦后还原初始状态
 	            $(".div-input").removeAttr('style');
-	            $(window).unbind('scroll');
+	            // $(window).unbind('scroll');
+	            $footerWap.css({'display':'block' });
 	        });
 
 	    }
-
-	    // $nav_toggle.hover(
-	    //     function () {
-	    //         $left_nav.slideDown();
-	    //         $(this).parents('aside').addClass('active');
-	    //     },
-	    //     function () {
-	    //         // $left_nav.slideUp()
-	    //     }
-	    // )
-
-
 
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 

@@ -13,20 +13,12 @@ webpackJsonp([16],{
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require){
+	    console.log('进入了');
 	    var utils = __webpack_require__(4);
 	    var login = __webpack_require__(9);
-	    var common = __webpack_require__(7);
 	    __webpack_require__(10);
-
 	    __webpack_require__(12);
 
-	    console.log('引入完成');
-	    $(function () {
-	        console.log('DOM加载完成执行了');
-	    })
-	    $('#scheduleId-select').click(function () {
-	        console.log("点击了父级---scheduleId-select")
-	    })
 	    $('#scheduleId-select .option').click(function () {
 	        console.log('就诊时段')
 	        var $this = $(this);
@@ -46,8 +38,11 @@ webpackJsonp([16],{
 
 	    var hasBind = $('#hasBind').val();
 	    if (hasBind != 'true') {
-	        showAccountDialog({});
-
+	        if(utils.browser.mobile){
+	            window.location.href = "/users/account/info/";
+	        }else{
+	            showAccountDialog({});
+	        }
 	        $('#birthday').daterangepicker({
 	            singleDatePicker: true,
 	            showDropdowns: true,
