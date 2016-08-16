@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    link(href='/css/healths/health_article.css',rel='styleSheet')
+    link(href='/public/css/healths/health_article.css',rel='styleSheet')
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
@@ -29,5 +29,4 @@ block content
             //-科普推荐
             include  list_recommend
     include ../includes/footer
-    script.
-        seajs.use('/js/screenings/goods.js')
+    script(src="/public/js/screenings/goods.bundle.js",type="text/javascript",charset="UTF-8")

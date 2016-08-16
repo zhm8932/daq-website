@@ -8,11 +8,8 @@ block content
       |您的位置为：404
     section.wrapper
       .error404
-        img(src='/images/404.png')
+        img(src='/public/images/404.png')
         .msg= message
         a.btn(href='/') 返回首页
 
-    script(src='/js/libs/sea.js')
-    script(src='/js/seajs.config.js')
-    script.
-        seajs.use('/js/common.js');
+    include ./includes/footer

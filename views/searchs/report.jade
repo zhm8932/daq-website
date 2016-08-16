@@ -1,8 +1,8 @@
 extends ../layout
 
 block content
-    //-link(href="/css/daterangepicker.css",rel="stylesheet")
-    link(href='/css/searchs/search_report.css',rel='styleSheet')
+    //-link(href="/public/css/daterangepicker.css",rel="stylesheet")
+    link(href='/public/css/searchs/search_report.css',rel='styleSheet')
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
@@ -46,5 +46,4 @@ block content
 
                     button(class='submitBtn') 提交
     include ../includes/footer
-    script.
-        seajs.use('/js/searchs/search_report.js')
+    script(src="/public/js/searchs/search_report.bundle.js",type="text/javascript",charset="UTF-8")

@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    link(href='/css/trade/trade.css',rel='styleSheet')
+    link(href='/public/css/trade/trade.css',rel='styleSheet')
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
@@ -54,5 +54,4 @@ block content
 
 
     include ../includes/footer
-    script.
-        seajs.use('/js/trade/order_success.js')
+    script(src="/public/js/trade/order_success.bundle.js",type="text/javascript",charset="UTF-8")

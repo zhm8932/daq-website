@@ -1,18 +1,9 @@
 define(function(require){
-    console.log('开始引入js');
-    require('jquery');
+    console.log('进入了');
     var utils = require('../libs/utils.js');
     var login = require('../login.js');
-
-    require('./reg_yuyue');
-    // require("moment");
-    //
-    // require("daterangepicker");
-
-    console.log('引入完成');
-    $(function () {
-        console.log('DOM加载完成执行了');
-    })
+    require("moment");
+    require("daterangepicker");
 
     $('#scheduleId-select .option').click(function () {
         console.log('就诊时段')

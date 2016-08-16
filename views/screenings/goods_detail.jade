@@ -1,125 +1,124 @@
 extends ../layout
 block content
-            link(href='/css/screenings/goods_detail.css',rel='styleSheet')
-            include ../includes/responsive
-            include ../includes/nav
-            .positon.wrapper
-                |您的位置为：首页 <em>#{sep}</em> 筛查服务 <em>#{sep}</em> #{title}
-            if get_goods_detail_success
-                include goods_mixin
-                section.goods_basic.clearfix
-                    .wrapper
-                        dl
+    link(href='/public/css/screenings/goods_detail.css',rel='styleSheet')
+    include ../includes/responsive
+    include ../includes/nav
+    .positon.wrapper
+        |您的位置为：首页 <em>#{sep}</em> 筛查服务 <em>#{sep}</em> #{title}
+    if get_goods_detail_success
+        include goods_mixin
+        section.goods_basic.clearfix
+            .wrapper
+                dl
 
-                          if goods_detail
-                            dt.slideBox
-                                .touchslider-viewport
-                                    .bd
-                                      each item in goods_detail.goodsImages
-                                        p: img(src='#{item.imageUrl}',alt=goods_detail.goodsName)
-                                .switch
-                                    .prev
-                                        i.icon
-                                    .next
-                                        i.icon
-                                .tit
-                                    div
-                                      each item in goods_detail.goodsImages
-                                        span: img(src='#{item.imageUrl}',alt=goods_detail.goodsName)
-
-
-                            dd
-                                h1= goods_detail.goodsName
-                                .price
-                                    span.new
-                                        em ￥
-                                        +transferUnit(goods_detail.discountPrice)
-                                    span.old
-                                        | 原价
-                                        +transferUnit(goods_detail.price)
-                                p
-                                    label.text-sec 检查目的：
-                                    | #{fitPeople}
-                                p
-                                    label.text-sec 样品种类：
-                                    each item,index in transmitItems
-                                        | #{item.name}
-                                        if(index != transmitItems.length-1&&transmitItems.length!=1)
-                                            |、
-                                .type-box
-                                    .box-header
-                                        span.tip 请选择所需服务方式
-                                        i.icon.close
-                                    div.service_type_wrapper
-                                        label.text-sec 服务方式：
-                                        -var json = JSON.parse(locals_sample);
-                                        aside#transmit-type.service_type
-                                            each value,key in transmitType
-                                                span.type(data-transmitType='#{key}',data-favPrice='#{value}',data-value='{"#{key}":"#{value}"}')
-                                                    | #{json[key]}
-                                                    mark 服务费￥
-                                                        +transferUnit(value)
-
-                                    div#hospital
-                                        label.text-sec 服务门诊：
-                                        span#hospitalName
-                                        span.hospital-tip.text-sec.small-text.none （该城市暂不提供此套餐服务）
-                                    div#district
-                                        label.text-sec 服务区域：
-                                        -var address = JSON.parse(locals_address)
-                                        span#province #{address[0].name}
-                                        span#city #{address[1].name}
-                                        #area.select-box.none
-                                            .selected
-                                                span.text
-                                                i.icon.pull-down
-                                            ul.options
-
-                                .submitBox
-                                    button#toOrder.submitBtn 立即购买
-                                    button#addCartBtn.addCartBtn.submitBtn 加入购物车
-                                form(action="/trade/cart/addItem",method="POST")
-                                    input(type="hidden",id="address",value="#{addressJSON}")
+                  if goods_detail
+                    dt.slideBox
+                        .touchslider-viewport
+                            .bd
+                              each item in goods_detail.goodsImages
+                                p: img(src='#{item.imageUrl}',alt=goods_detail.goodsName)
+                        .switch
+                            .prev
+                                i.icon
+                            .next
+                                i.icon
+                        .tit
+                            div
+                              each item in goods_detail.goodsImages
+                                span: img(src='#{item.imageUrl}',alt=goods_detail.goodsName)
 
 
+                    dd
+                        h1= goods_detail.goodsName
+                        .price
+                            span.new
+                                em ￥
+                                +transferUnit(goods_detail.discountPrice)
+                            span.old
+                                | 原价
+                                +transferUnit(goods_detail.price)
+                        p
+                            label.text-sec 检查目的：
+                            | #{fitPeople}
+                        p
+                            label.text-sec 样品种类：
+                            each item,index in transmitItems
+                                | #{item.name}
+                                if(index != transmitItems.length-1&&transmitItems.length!=1)
+                                    |、
+                        .type-box
+                            .box-header
+                                span.tip 请选择所需服务方式
+                                i.icon.close
+                            div.service_type_wrapper
+                                label.text-sec 服务方式：
+                                -var json = JSON.parse(locals_sample);
+                                aside#transmit-type.service_type
+                                    each value,key in transmitType
+                                        span.type(data-transmitType='#{key}',data-favPrice='#{value}',data-value='{"#{key}":"#{value}"}')
+                                            | #{json[key]}
+                                            mark 服务费￥
+                                                +transferUnit(value)
+
+                            div#hospital
+                                label.text-sec 服务门诊：
+                                span#hospitalName
+                                span.hospital-tip.text-sec.small-text.none （该城市暂不提供此套餐服务）
+                            div#district
+                                label.text-sec 服务区域：
+                                -var address = JSON.parse(locals_address)
+                                span#province #{address[0].name}
+                                span#city #{address[1].name}
+                                #area.select-box.none
+                                    .selected
+                                        span.text
+                                        i.icon.pull-down
+                                    ul.options
+
+                        .submitBox
+                            button#toOrder.submitBtn 立即购买
+                            button#addCartBtn.addCartBtn.submitBtn 加入购物车
+                        form(action="/trade/cart/addItem",method="POST")
+                            input(type="hidden",id="address",value="#{addressJSON}")
 
 
-                section.goods_detail.wrapper
-                    #tab.tab
-                        span(data-href-id='content-detail') 套餐详情
-                        span(data-href-id='content-detection') 检测须知
-                        span(data-href-id='content-faq') 相关问题
-                    #tab-copy.tab.none
-                        span(data-href-id='content-detail') 套餐详情
-                        span(data-href-id='content-detection') 检测须知
-                        span(data-href-id='content-faq') 相关问题
-                    article#content-detail
-                        h3
-                         i.icon
-                         |套餐详情
-                        div!= goods_detail.detail
-                    article#content-detection
-                        h3
-                            i.icon
-                            | 检测须知
-                        div!= goods_detail.summary
-                    article#content-faq
-                        h3
-                            i.icon
-                            | 相关问题
-                        div!= goods_detail.commonQa
 
 
-            //if  goods_detail.saleAttributes
-            //    each attr,index in goods_detail.saleAttributes
-            //        if(attr.attributeName === 'fit_hospital')
-            input#fit_hospital(type="hidden",value="#{goods_detail.fitHospital}")
-            input#locals_address(type="hidden",value="#{locals_address}")
-            input#hospital(type="hidden",value="")
-            input#goods(type="hidden",data-id="#{goods_detail.id}",data-goodsName="#{goods_detail.goodsName}",data-imgUrl="#{goods_detail.goodsImages[0].imageUrl}",data-discountPrice="#{goods_detail.discountPrice}",data-address="#{locals_address}",data-city="#{JSON.parse(locals_address)[1].name}")
-            form#submitForm(action = "/trade/order/comfirmView",method="POST")
-                input(type="hidden",name="items")
-                input(type="hidden",name="totalPrice")
-            include ../includes/footer
-            script.
-                seajs.use('/js/screenings/goods_detail.js')
+        section.goods_detail.wrapper
+            #tab.tab
+                span(data-href-id='content-detail') 套餐详情
+                span(data-href-id='content-detection') 检测须知
+                span(data-href-id='content-faq') 相关问题
+            #tab-copy.tab.none
+                span(data-href-id='content-detail') 套餐详情
+                span(data-href-id='content-detection') 检测须知
+                span(data-href-id='content-faq') 相关问题
+            article#content-detail
+                h3
+                 i.icon
+                 |套餐详情
+                div!= goods_detail.detail
+            article#content-detection
+                h3
+                    i.icon
+                    | 检测须知
+                div!= goods_detail.summary
+            article#content-faq
+                h3
+                    i.icon
+                    | 相关问题
+                div!= goods_detail.commonQa
+
+
+    //if  goods_detail.saleAttributes
+    //    each attr,index in goods_detail.saleAttributes
+    //        if(attr.attributeName === 'fit_hospital')
+    input#fit_hospital(type="hidden",value="#{goods_detail.fitHospital}")
+    input#locals_address(type="hidden",value="#{locals_address}")
+    input#hospital(type="hidden",value="")
+    input#goods(type="hidden",data-id="#{goods_detail.id}",data-goodsName="#{goods_detail.goodsName}",data-imgUrl="#{goods_detail.goodsImages[0].imageUrl}",data-discountPrice="#{goods_detail.discountPrice}",data-address="#{locals_address}",data-city="#{JSON.parse(locals_address)[1].name}")
+    form#submitForm(action = "/trade/order/comfirmView",method="POST")
+        input(type="hidden",name="items")
+        input(type="hidden",name="totalPrice")
+    include ../includes/footer
+    script(src="/public/js/screenings/goods_detail.bundle.js")

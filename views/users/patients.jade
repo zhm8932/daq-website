@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    link(href='/css/users/user.css',rel='styleSheet')
+    link(href='/public/css/users/user.css',rel='styleSheet')
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
@@ -9,7 +9,7 @@ block content
     section.wrapper.userBox.clearfix
         aside.fl
             div.user-main.text-center
-                img(src='/images/user.png')
+                img(src='/public/images/user.png')
                 span.tel.text-sec #{account}
             ul.left-nav
                 li: a(href='/trade/order/list') 我的订单
@@ -47,5 +47,4 @@ block content
 
 
     include ../includes/footer
-    script.
-        seajs.use('/js/users/patients.js')
+    script(src="/public/js/users/patients.bundle.js",type="text/javascript",charset="UTF-8")

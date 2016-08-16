@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    link(href='/css/trade/trade.css',rel='styleSheet')
+    link(href='/public/css/trade/trade.css',rel='styleSheet')
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
@@ -40,5 +40,4 @@ block content
             //input#payTime(type="hidden",value="#{data.payTime}")
 
     include ../includes/footer
-    script.
-        seajs.use('/js/treat/pay.js')
+    script(src="/public/js/treat/pay.bundle.js",type="text/javascript",charset="UTF-8")

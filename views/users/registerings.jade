@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    link(href='/css/users/user.css',rel='styleSheet')
+    link(href='/public/css/users/user.css',rel='styleSheet')
     include ../includes/responsive
     .users
         include ../includes/nav
@@ -164,5 +164,4 @@ block content
 
     input#browser-mobile(type="hidden",value="#{browser.mobile}")
     include ../includes/footer
-    script.
-        seajs.use('/js/users/registerings.js')
+    script(src="/public/js/users/registerings.bundle.js",type="text/javascript",charset="UTF-8")

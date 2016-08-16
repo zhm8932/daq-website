@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    link(href='/css/users/user.css',rel='styleSheet')
+    link(href='/public/css/users/user.css',rel='styleSheet')
     include ../includes/responsive
     .users
         include ../includes/nav
@@ -64,5 +64,4 @@ block content
 
 
     include ../includes/footer
-    script.
-        seajs.use('/js/trade/order_list.js')
+    script(src="/public/js/trade/order_list.bundle.js",type="text/javascript",charset="UTF-8")
