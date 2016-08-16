@@ -254,3 +254,6 @@ function binl2b64(binarray)
   }
   return str;
 }
+
+
+exports.hex_md5 = hex_md5;
