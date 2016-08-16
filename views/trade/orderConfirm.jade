@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    link(href='/css/trade/trade.css',rel='styleSheet')
+    link(href='/public/css/trade/trade.css',rel='styleSheet')
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
@@ -104,5 +104,4 @@ block content
                 input(type="hidden",name="orderPlaceDTO")
                 input(type="hidden",name="ids")
     include ../includes/footer
-    script.
-        seajs.use('/js/trade/order_confirm.js')
+    script(src="/public/js/trade/order_confirm.bundle.js",type="text/javascript",charset="UTF-8")

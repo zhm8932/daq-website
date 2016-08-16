@@ -1,8 +1,8 @@
 extends ../layout
 
 block content
-    link(href='/css/users/user.css',rel='styleSheet')
-    link(href='/css/trade/trade.css',rel='styleSheet')
+    link(href='/public/css/users/user.css',rel='styleSheet')
+    link(href='/public/css/trade/trade.css',rel='styleSheet')
     include ../includes/responsive
     .users
         include ../includes/nav
@@ -160,5 +160,4 @@ block content
 
 
     include ../includes/footer
-    script.
-        seajs.use('/js/users/order_detail.js')
+    script(src="/public/js/users/order_detail.bundle.js",type="text/javascript",charset="UTF-8")

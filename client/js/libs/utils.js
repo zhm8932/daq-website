@@ -3,10 +3,10 @@ define(function(require,exports,module) {
     //弹出框
     require('jquery');
     require('touchslider');
-    require('./md5');
+    var md5lib = require('./md5');
 
     function md5(str) {
-        return hex_md5(str).toUpperCase();
+        return md5lib.hex_md5(str).toUpperCase();
     }
     function Popup(options){
         var defaults = {

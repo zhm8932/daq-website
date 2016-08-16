@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    link(href='/css/trade/trade.css',rel='styleSheet')
+    link(href='/public/css/trade/trade.css',rel='styleSheet')
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
@@ -102,12 +102,11 @@ block content
             else
                 .empty-cart
                     .empty-cart-box
-                        img.cart(src="/images/cart-empty.png")
+                        img.cart(src="/public/images/cart-empty.png")
                         .text
                             p.cart-tip 购物车空空如也
                             p.to-buy.text-main: a.text-main(href="javascript:void(0)") 马上去购买
             div.
 
     include ../includes/footer
-    script.
-        seajs.use('/js/trade/cart.js')
+    script(src="/public/js/trade/cart.bundle.js",type="text/javascript",charset="UTF-8")

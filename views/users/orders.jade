@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    link(href='/css/users/user.css',rel='styleSheet')
+    link(href='/public/css/users/user.css',rel='styleSheet')
     include ../includes/responsive
     .users
         include ../includes/nav
@@ -100,5 +100,4 @@ block content
 
 
     include ../includes/footer
-    script.
-        seajs.use('/js/users/orders.js')
+    script(src="/public/js/users/orders.bundle.js",type="text/javascript",charset="UTF-8")

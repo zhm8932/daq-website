@@ -1,14 +1,15 @@
-webpackJsonp([4,25],{
+webpackJsonp([4],{
 
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(19);
+	__webpack_require__(18);
+	module.exports = __webpack_require__(7);
 
 
 /***/ },
 
-/***/ 19:
+/***/ 18:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require) {

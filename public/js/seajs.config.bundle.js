@@ -1,14 +1,15 @@
-webpackJsonp([9,25],{
+webpackJsonp([9],{
 
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(26);
+	__webpack_require__(25);
+	module.exports = __webpack_require__(7);
 
 
 /***/ },
 
-/***/ 26:
+/***/ 25:
 /***/ function(module, exports) {
 
 	seajs.config({

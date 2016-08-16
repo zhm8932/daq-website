@@ -45,7 +45,7 @@ gulp.task('js', function () {
 gulp.task('watch', function () {
     gulp.watch(srcPaths.sass, ['sass']);
     gulp.watch(srcPaths.js, ['webpack']);
-    gulp.watch(srcPaths.jsx, ['webpack']);
+    // gulp.watch(srcPaths.jsx, ['webpack']);
     gulp.watch(srcPaths.bundledJS, ['js']);
 });
 

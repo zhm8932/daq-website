@@ -19,7 +19,7 @@ function getEntry(srcPath,files) {
             } else {
                 matches = (srcPath + '/' + item).match(/\/(.+)\.js/);
                 if (matches){
-                    files[matches[1]] = [absolutePath + '/' + item , absolutePath + '/common.js'];
+                    files[matches[1]] = [absolutePath + '/' + item , path.join(__dirname, rootPath,  'common.js')];
                 }
             }
         }
@@ -28,7 +28,6 @@ function getEntry(srcPath,files) {
 }
 
 getEntry('', files);
-console.log(JSON.stringify(files));
 
 module.exports = {
     // devtool: "source-map",
@@ -37,23 +36,15 @@ module.exports = {
         path: __dirname + '/public/js',
         filename: "[name].bundle.js"
     },
+    externals: {
+        // require("jquery") is external and available
+        //  on the global var jQuery
+        "jquery": "jQuery"
+    },
     resolve: {
         root: __dirname + '/client/js',
         extensions: ['', '.js', '.json'],
         alias: {
-            // 'jquery': path.resolve(__dirname, './client/js/libs/1.8.3/jquery.js'),
-            // //'lazyload':'/client/libs/lazyload.js',
-            // 'lazyload': path.resolve(__dirname, './client/libs/jquery.lazyload.js'),
-            // // 'touchslider':'/client/libs/jquery.touchslider.js',
-            // 'touchslider': path.resolve(__dirname, './client/js/libs/jquery.touchslider.js'),
-            // 'daterangepicker': path.resolve(__dirname, './client/js/libs/daterangepicker.js'),
-            // 'utils': path.resolve(__dirname, './client/libs/utils.js'),
-            // 'swipebox':path.resolve(__dirname, './client/js/libs/jquery.swipebox'),
-            // 'cookie':path.resolve(__dirname, './client/js/libs/jquery.cookie'),
-            // 'swiper':path.resolve(__dirname, './client/js/libs/swiper.jquery.umd'),
-            // 'ellipsis':path.resolve(__dirname, './client/js/libs/jquery.ellipsis')
-
-
             'jquery': 'libs/1.8.3/jquery.js',
             'lazyload':'libs/jquery.lazyload.js',
             'touchslider':'libs/jquery.touchslider.js',
@@ -67,7 +58,7 @@ module.exports = {
         }
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin('vender.js')
+        new webpack.optimize.CommonsChunkPlugin('vendor.js')
     ],
     module: {
         loaders: [
