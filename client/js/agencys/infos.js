@@ -1,7 +1,7 @@
 define(function(require){
     require('jquery');
     $(function () {
-        var BMap = require('../libs/BMap.js');
+        // var BMap = require('../libs/BMap.js');
         // console.log(BMap);
         
         

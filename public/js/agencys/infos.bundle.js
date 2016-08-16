@@ -15,7 +15,7 @@ webpackJsonp([1],{
 	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require){
 	    __webpack_require__(3);
 	    $(function () {
-	        var BMap = __webpack_require__(16);
+	        // var BMap = require('../libs/BMap.js');
 	        // console.log(BMap);
 	        
 	        
@@ -76,16 +76,6 @@ webpackJsonp([1],{
 
 
 
-	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
-
-/***/ },
-
-/***/ 16:
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require,exports,module){
-	    // var BMap = require('http://api.map.baidu.com/getscript?v=2.0&ak=Xxl3KBGneiWgAPS3jIN8Zar5qTpGqDMF&services=&t=20160401164342');
-	    // module.exports = window.BMap
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
 
 /***/ }
