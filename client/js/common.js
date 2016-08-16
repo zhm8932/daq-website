@@ -5,7 +5,6 @@ define(function(require, exports, module){
     var utils = require('./libs/utils.js');
     var Swiper = require('swiper');
     // var Swiper = require('./libs/swiper.jquery.umd');
-    var BMap = require('./libs/BMap.js');
     require('cookie');
     // //console.log(BMap)
 

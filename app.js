@@ -43,7 +43,7 @@ app.use(favicon(path.join(__dirname, 'public','images', 'favicon.png')));
 app.use(bodyParser.json());  //处理content-type=json的请求体
 app.use(bodyParser.urlencoded({ extended: false }));  //处理content-type=urlencoded的请求体 extended为true表示使用querystring来将请求体的字符串转成对象
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));  //静态文件服务中间件 指定一个绝对目录 的路径作为静态文件的根目录
+app.use('/public',express.static(path.join(__dirname, 'public')));  //静态文件服务中间件 指定一个绝对目录 的路径作为静态文件的根目录
 
 var redisClient = redis.createClient(6379,config.options.host, {});
 // redisClient.auth(options.pass);
