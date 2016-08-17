@@ -1382,7 +1382,8 @@ select {
 .complete-dialog {
   width: 475px; }
   .complete-dialog article {
-    padding: 0; }
+    padding: 0;
+    padding-bottom: 22px; }
   .complete-dialog .cancel {
     display: none; }
   .complete-dialog span.closePopup {

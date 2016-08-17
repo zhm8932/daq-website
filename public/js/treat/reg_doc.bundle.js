@@ -124,27 +124,41 @@ webpackJsonp([16],{
 	        var $this = $('.complete-dialog span.ok');
 	        $this.addClass('disabled').off('click');
 	        var param = $('form[name=accInfoForm]').serialize()+'&gender='+gender;
-	        utils.SendAjax({
-	            url: '/users/account/complete',
-	            param: param,
-	            method: 'POST',
-	            tipText: '完善信息',
-	            callback: function (result) {
-	                var myMsg = new utils.MsgShow({
-	                    delayTime: 2000,
-	                    title: '<i class="icon"></i>完善成功!',
-	                    otherBox: 'successBox'
-	                });
-	                popup.hideBox();
-	                myMsg.hideMsg(1000);
-	            },
-	            errorFun: function (result) {
-	                if(result.data){
-	                    completeDialog.find('.prompt em').html('客户编码有误');
+	        $.ajax({
+	            url:'/users/account/complete',
+	            type:'POST',
+	            data:param,
+	            dataType:'json',
+	            success:function(result){
+	                if (result.success) {
+	                    var myMsg = new utils.MsgShow({
+	                        delayTime: 2000,
+	                        title: '<i class="icon"></i>完善成功!',
+	                        otherBox: 'successBox'
+	                    });
+	                    popup.hideBox();
+	                    myMsg.hideMsg(1000);
+	                } else {
+	                    completeDialog.find('.prompt em').html(result.msg);
 	                    completeDialog.find('.prompt').show();
+	                    $this.removeClass('disabled').on('click', function () {
+	                        completeInfo($this);
+	                        return false;
+	                    });
 	                }
+	            },
+	            error:function(data){
+	                if (data.status == '404') {
+	                    completeDialog.find('.prompt em').html('页面丢失，请稍后再试');
+	                } else if (data.status == '500') {
+	                    completeDialog.find('.prompt em').html('系统忙，请稍后再试');
+	                } else {
+	                    completeDialog.find('.prompt em').html('网络错误');
+	                }
+	                completeDialog.find('.prompt').show();
 	                $this.removeClass('disabled').on('click', function () {
-	                    completeInfo(popup);
+	                    completeInfo($this);
+	                    return false;
 	                });
 	            }
 	        });
