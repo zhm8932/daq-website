@@ -17,18 +17,26 @@ define(function(require, exports, module){
             map.centerAndZoom(point,12);
 
             function myFun(result){
-                // //console.log("result:",result)
                 cityName = result.name;
                 map.setCenter(cityName);
-                // //console.log("当前定位城市:"+cityName);
                 if(!$.cookie('locals_city')){
                     getCityList(cityName,function (newArr) {
-                        // //console.log("newArr:",newArr)
                         var is_locals_city= $.cookie('locals_city');
-                        // //console.log("is_locals_city:",is_locals_city)
                         if(!is_locals_city&&newArr.length){
-                            // //console.log("初始化定位城市:",newArr[0]);
-                            changeCity(newArr[0])
+                            // changeCity(newArr[0])
+                            utils.SendAjax({
+                                url: '/changeCity',
+                                param: {city:newArr[0]},
+                                method: 'GET',
+                                tipText: '切换城市',
+                                callback: function (result) {
+                                    $('.city-name em').html(cityName);
+                                    $('#choosed-city-id').val(newArr[0].id);
+                                },
+                                errorFun: function (result) {
+
+                                }
+                            });
                         }
                         if(newArr.length){
                             $.cookie('locals_city', newArr[0].parentId,{path:"/"}); // 存储 cookie
