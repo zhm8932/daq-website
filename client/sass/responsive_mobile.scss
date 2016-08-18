@@ -12,7 +12,10 @@
   .login-view{margin-bottom:-40px;}
   .loginCom{
     padding-bottom: 30px;
-    .bd .prompt i{vertical-align: top;}
+    .bd{
+      ul{width:auto;}
+      .prompt i{vertical-align: top;}
+    }
     .submitBox .ok{font-size: 18px;}
   }
 

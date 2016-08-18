@@ -32,6 +32,8 @@
 
   .loginCom {
     padding-bottom: 30px; }
+    .loginCom .bd ul {
+      width: auto; }
     .loginCom .bd .prompt i {
       vertical-align: top; }
     .loginCom .submitBox .ok {
