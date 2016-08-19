@@ -80,3 +80,46 @@
   width: 100%;
   height: 325px;
   border: 5px solid #f2f2f2; }
+
+.agency_box {
+  padding-top: 20px; }
+  .agency_box .lr_list {
+    width: 80%;
+    float: right;
+    border-left: 1px solid #48BED8;
+    padding-left: 5%;
+    box-sizing: border-box;
+    min-height: 300px; }
+    .agency_box .lr_list figure h4 {
+      padding: 0 0 10px;
+      margin-bottom: 10px; }
+      .agency_box .lr_list figure h4 a {
+        font-size: 20px;
+        color: #333333; }
+    .agency_box .lr_list figure img {
+      width: 30%;
+      border: none; }
+    .agency_box .lr_list figure figcaption {
+      width: 68%; }
+    .agency_box .lr_list figure .more {
+      padding: 0px 20px;
+      border: 1px solid #48BED8;
+      color: #48BED8;
+      border-radius: 5px;
+      margin-top: 5px;
+      display: inline-block; }
+
+.agency_nav {
+  width: 20%;
+  float: left; }
+  .agency_nav a {
+    display: inline-block;
+    width: 90px;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    margin-bottom: 1px;
+    font-size: 18px; }
+    .agency_nav a.on, .agency_nav a:hover {
+      background-color: #48BED8;
+      color: #FFF; }

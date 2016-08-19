@@ -14,15 +14,204 @@
   margin-bottom: -82px;
 }
 
+//.standard_wrapper{
+//  header{
+//    border: 2px solid $bdrc_48B;
+//    h2{
+//      //background-color: $white;
+//      margin: -15px 0;display: inline-block;position: relative;top: -8px;
+//    }
+//    p{
+//      //background-color: $white;
+//      display: inline-block;position: relative;bottom: -14px;padding: 0 10px;
+//    }
+//  }
+//}
 .item_list{
-  .standard{
+  .standard_header{
     border: 2px solid $bdrc_48B;
     h2{
-      background-color: $white;margin: -15px 0;display: inline-block;position: relative;top: -8px;
+      background-color: $bgc_gray_F5;
+      margin: -15px 0;display: inline-block;position: relative;top: -8px;
     }
     p{
-      background-color: $white;display: inline-block;position: relative;bottom: -14px;padding: 0 10px;
+      background-color: $bgc_gray_F5;
+      display: inline-block;position: relative;bottom: -14px;padding: 0 10px;
     }
 
   }
+
+  .feature {
+    margin-left: -4%;
+    padding-top: 40px;
+    figure {
+      float: left;
+      width: 16%;
+      text-align: center;
+      margin-left: 4%;
+
+      span{
+        width: 90px;height: 90px;display:inline-block;background: url("../images/featuresIcons.png") no-repeat 0 0;@include transition(all 0.3s linear);
+        &.s01{
+          background-position: 0px 0px;
+          &:hover{background-position: 0px -112px;}
+        }
+        &.s02{
+          background-position: -112px 0px;
+          &:hover{background-position: -112px -112px;}
+        }
+        &.s03{
+          background-position: -231px 0px;
+          &:hover{background-position: -231px -112px;}
+        }
+        &.s04{
+          background-position: -344px 0px;
+          &:hover{background-position: -344px -112px;}
+        }
+        &.s05{
+          background-position: -448px 0px;
+          &:hover{background-position: -448px -112px;}
+        }
+      }
+      a{display: block;}
+      p{text-align: left;}
+    }
+  }
+
+  .department_list {
+    //width: 1024px;
+    margin-top: 70px;
+    ul{
+      margin: 0px;;
+    }
+    li {
+      //height: 300px;
+      width: 310px;
+      margin-top: 0px;margin-left: 0px;
+      //padding-left: 8px;
+      //padding: 0 10px;
+      margin: 0 10px;
+      h4 {
+        display: inline-block;
+        //padding: 0 30px 0 20px;
+        border-radius: 0 100px 100px 0;
+        height: 46px;
+        line-height: 46px;
+        width: 100%;
+        top: auto;position: static;
+        background: none;text-align: center;color: $textColor;
+        //margin-top: -47px;
+      }
+    }
+
+    .mb-controls{display: none;}
+    .movingBoxes{
+      .mb-wrapper{margin:0 auto 20px;position:relative;left:0;top:0}
+      .mb-scroll{overflow:hidden;margin:0 auto;padding:0;position:relative;left:0;top:0}
+      .mb-left,.mb-right{
+        width: 50px;height: 50px;display: block;cursor: pointer;position: absolute;top: 50%;margin-top:-25px;z-index: 99;
+        background: url("../images/icon.png") no-repeat 0 0;
+      }
+      .mb-left{
+        background-position: -45px -477px;left: -50px;
+      }
+      .mb-right{
+        left: auto;right: -50px;background-position: -90px -477px;
+      }
+    }
+  }
+
 }
+
+.banner {
+  text-align: center;
+  //background-color: #bec0bf;
+  position: relative;
+  .wrapper {
+    position: relative;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    //margin-bottom: -7px;
+  }
+  .bd{
+    overflow: hidden;
+    a{display: block;}
+  }
+  .tit,.slidesjs-pagination{
+    width:100%;position: absolute;bottom: 15px ; z-index: 10;
+    li{display:inline-block;}
+
+    span,a{background-color: $white;width: 12px;height: 12px;border-radius: 100%; display: inline-block;margin: 0 10px;text-indent: -9999px; cursor: pointer;
+      &.on,&.active{
+        background-color:$bgc_48B;
+      }
+    }
+  }
+
+
+
+
+  dl {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    text-align: left;
+    color: #FFFFFF;
+    h3, p {
+      padding: 0 0 10px 50px;
+    }
+    h3 {
+      font-size: 20px;
+      font-weight: normal;
+      padding-top: 20px;
+    }
+    p {
+      font-size: 16px;
+      i {
+        background-position: -157px 0px;
+        vertical-align: top;
+        position: relative;
+        top: 3px;
+      }
+    }
+    dt {
+      width: 55%;
+      float: left;
+      background-color: #F39E98;
+    }
+    dd {
+      width: 45%;
+      float: right;
+      background-color: #EA9089;
+    }
+  }
+}
+
+
+//#focus{width:1200px}
+
+.mb-slider,.mb-scroll{width:100%;height:380px;overflow:hidden;margin:0 auto;padding:0;position:relative;left:0;top:0}
+.mb-active-slider{border-color:#333}
+.mb-slider .mb-panel{margin-top:100px;display:block;cursor:pointer;float:left;list-style:none}
+.mb-panel a{outline:0}
+.mb-slider .mb-panel.current{cursor:auto}
+.mb-inside *{max-width:100%}
+a.mb-scrollButtons{display:block;width:45px;height:58px;background:transparent url(../images/arrows.png) no-repeat;position:absolute;top:40%;margin-top:-29px;cursor:pointer;text-decoration:none;outline:0;border:0;_background:transparent url(../images/arrows.gif) no-repeat}
+a.mb-scrollButtons.mb-left{background-position:left top;left:-45px}
+a.mb-scrollButtons.mb-right{background-position:right top;right:-45px}
+a.mb-scrollButtons.mb-left:hover{background-position:left bottom}
+a.mb-scrollButtons.mb-right:hover{background-position:right bottom}
+a.mb-scrollButtons.disabled{display:none}
+.mb-controls{margin:0 auto;text-align:center;position:absolute; top:350px; left:560px;z-index:100}
+.mb-controls a{color:#666;font:18px/2.2 Georgia, Serif;display:inline-block;text-decoration:none;padding:2px;margin:0 5px 0 0;text-align:center;outline:0}
+.mb-panel{margin-top:90px}
+.mb-controls a:hover{color:black}
+.mb-controls a.current{color:#900}
+.main-nav{display:block; text-align:center; border-bottom:2px solid #a71700;margin:0 0 20px 0;padding:0 0 10px 0}
+.main-nav a{text-decoration:none;color:#3e63ec;font-size:18px;margin:0 8px}
+.main-nav a:hover{color:black;border-bottom:2px solid black}
+.mb-inside img{width:100%}

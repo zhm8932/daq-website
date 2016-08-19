@@ -25,6 +25,8 @@ function getEntry(srcPath,files) {
         }
 
     });
+
+    console.log("files:",files)
 }
 
 getEntry('', files);
@@ -48,7 +50,9 @@ module.exports = {
             'jquery': 'libs/1.8.3/jquery.js',
             'lazyload':'libs/jquery.lazyload.js',
             'touchslider':'libs/jquery.touchslider.js',
-            'moment':'libs/moment.js',
+            'slides':'libs/jquery.slides.js',
+            'movingBoxes':'libs/jquery.movingBoxes.js',
+            // 'moment':'libs/moment.js',
             'daterangepicker':'libs/daterangepicker.js',
             'swipebox':'libs/jquery.swipebox',
             'cookie':'libs/jquery.cookie',

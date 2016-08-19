@@ -494,7 +494,7 @@ select {
   margin: 0 auto;
   position: absolute;
   left: 50%;
-  top: 0px;
+  top: 0px;z-index: 10;
   margin-left: -$wrapperWidth/2;
   .nav {
     width: 726px;
@@ -509,59 +509,10 @@ select {
   }
 }
 
-.banner {
-  text-align: center;
-  background-color: #bec0bf;
-  position: relative;
-  .wrapper {
-    position: relative;
-  }
-
-  img {
-    width: 100%;
-    height: auto;margin-bottom: -7px;
-  }
-  dl {
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    text-align: left;
-    color: #FFFFFF;
-    h3, p {
-      padding: 0 0 10px 50px;
-    }
-    h3 {
-      font-size: 20px;
-      font-weight: normal;
-      padding-top: 20px;
-    }
-    p {
-      font-size: 16px;
-      i {
-        background-position: -157px 0px;
-        vertical-align: top;
-        position: relative;
-        top: 3px;
-      }
-    }
-    dt {
-      width: 55%;
-      float: left;
-      background-color: #F39E98;
-    }
-    dd {
-      width: 45%;
-      float: right;
-      background-color: #EA9089;
-    }
-  }
-}
-
 .item_list {
   padding-bottom: 50px;
   header {
-    padding-top: 50px;
+    padding-top: 50px;text-align: center;
     h2 {
       font-size: 28px;
       padding-bottom: 20px;
@@ -654,9 +605,10 @@ select {
     }
 
     .more {
-      float: right;
-      margin-top: 20px;color: $textOnColor;
+      //float: right;
+      margin-top: 20px ;color: $white;background-color: $bgc_48B;padding: 8px 20px;border-radius: 10px;position: relative;top: 20px;font-size: 18px;
       i {
+        display: none;
         background-position: -114px 0px;
         vertical-align: top;
         position: relative;
@@ -664,7 +616,7 @@ select {
         margin-left: 5px;
       }
       &:hover {
-        color: $textColor;
+        //color: $textColor;
         i {
           background-position: -91px 0px;
         }
@@ -672,21 +624,7 @@ select {
 
     }
   }
-  .department_list {
-    li {
-      height: 310px;
-      h4 {
-        display: inline-block;
-        padding: 0 30px 0 20px;
-        border-radius: 0 100px 100px 0;
-        height: 46px;
-        line-height: 46px;
-        width: auto;
-        top: auto;
-        margin-top: -47px;
-      }
-    }
-  }
+
   .goods_list {
     ul {
       position: relative;
@@ -718,7 +656,7 @@ select {
       }
     }
   }
-  .feature {
+  .standard {
     ul {
       margin-left: -4%;
       padding-top: 40px;
@@ -1264,7 +1202,7 @@ select {
   background-color: #3B3B3A;
   padding: 50px 0;overflow: hidden;
   color: $f2;
-  margin-top: 50px;
+  //margin-top: 50px;
   dl {
     width: 80%;
     float: left;
@@ -1378,7 +1316,7 @@ select {
 $rightNavLI: 50px;
 .rightNav {
   position: fixed;
-  z-index: 2;
+  z-index: 999;
   box-sizing: content-box;
   right: 50%;
   top: 50%;

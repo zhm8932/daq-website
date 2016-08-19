@@ -5,7 +5,7 @@ block content
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
-        |您的位置为：首页<em>#{sep}</em>机构网络
+        |您的位置为：首页<em>#{sep}</em>机构网络#{sep}#{get_agency_detail.title}
     section.boxBg
         .wrapper.info_tel.clearfix
             h2 都安全健康产业投资有限公司
@@ -20,7 +20,7 @@ block content
                 | 周一至周日 9:00-21:00
     section.info_detail.clearfix
         .wrapper
-            h3 广州都安全门诊
+            h3 #{get_agency_detail.title}
             hgroup
                 h4
                     i.icon.jieshao
@@ -34,9 +34,6 @@ block content
                 p 广州市越秀区环市东路422号2楼201室
 
             #mymap
-    section
-        .wrapper
-            #allmap
     section.info_list.clearfix
         .wrapper
             .lr_list
@@ -96,5 +93,8 @@ block content
                                             | #{item.description.substring(0, 60)}……
                                         //-else
                                             | #{item.description}
+    section
+        .wrapper
+            #allmap
     include ../includes/footer
-    script(src="/public/js/agencys/infos.bundle.js",type="text/javascript",charset="UTF-8")
+    script(src="/public/js/agencys/detail.bundle.js",type="text/javascript",charset="UTF-8")

@@ -1,0 +1,62 @@
+extends ../layout
+
+block content
+    link(href='/public/css/agencys/agency_infos.css',rel='styleSheet')
+    include ../includes/responsive
+    include ../includes/nav
+    .positon.wrapper
+        |您的位置为：首页<em>#{sep}</em>机构网络
+    section.agency_box.clearfix
+        .wrapper
+            .agency_nav
+
+                p: a(href='/agencys') 全部
+                p: a(href='/agencys/shenzhen') 深圳
+                p: a(href='/agencys/guangzhou') 广州
+                p: a(href='/agencys/beijing') 北京
+                p: a(href='/agencys/qingdao') 青岛
+                p: a(href='/agencys/nanjing') 南京
+                p: a(href='/agencys/xian') 西安
+            .lr_list
+                if get_agency_list
+                    each item in get_agency_list
+                        figure
+                            a(href='/agencys/detail/#{item.id}')
+                                if browser.ie
+                                    img(src=item.imgUrl,alt='#{item.title}')
+                                else
+                                    img(data-original=item.imgUrl,alt='#{item.title}')
+                            figcaption
+                                h4: a(href='/agencys/detail/#{item.id}') #{item.title}
+                                p  服务项目：#{item.serviceType}
+                                p  地址：#{item.address}
+                                p  上门区域：#{item.serviceArea}
+                                a.more(href='/agencys/detail/#{item.id}') 更多
+                else
+                    aside 暂无数据
+                //-figure
+                    a(href='javascript:void(0)')
+                        img(src='/public/images/agencys/ny_img1.png')
+                    figcaption
+                        h4: a(href='javascript:void(0)') 妇科
+                        //-time 发表于：#{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')
+                        p   服务项目：普通内科及全科、妇产科、儿科、个性化体检、皮肤科；
+                        p   地址：广州市越秀区环市东路422号2楼201室；
+                        p   上门区域：福田区、南山区
+
+                //-if get_department_success
+                       each item in get_department
+                            figure
+                                a(href='javascript:void(0)')
+                                    img(data-original='/images/product1.png')
+                                figcaption
+                                    h4: a(href='javascript:void(0)') #{item.deptName}
+                                    //-time 发表于：#{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')
+                                    p
+                                        | #{item.description}
+                                        //-if item.description.length > 60
+                                            | #{item.description.substring(0, 60)}……
+                                        //-else
+                                            | #{item.description}
+    include ../includes/footer
+    script(src="/public/js/agencys/list.bundle.js",type="text/javascript",charset="UTF-8")

@@ -1,0 +1,10 @@
+{
+  "data": [
+    {"id":"1","area":"shenzhen","title":"深圳都安全医疗","serviceType":"普通内科及全科、妇产科、儿科、个性化体检、皮肤科","address":"广州市越秀区环市东路422号2楼201室","serviceArea":"福田区、南山区","imgUrl":"/public/images/agencys/ny_img1.png"},
+    {"id":"2","area":"guangzhou","title":"广州都安全医疗","serviceType":"普通内科及全科、妇产科、儿科、个性化体检、皮肤科","address":"广州市越秀区环市东路422号2楼201室","serviceArea":"福田区、南山区","imgUrl":"/public/images/agencys/ny_img2.png"},
+    {"id":"3","area":"beijing","title":"北京都安全医疗","serviceType":"普通内科及全科、妇产科、儿科、个性化体检、皮肤科","address":"广州市越秀区环市东路422号2楼201室","serviceArea":"福田区、南山区","imgUrl":"/public/images/agencys/ny_img3.png"},
+    {"id":"4","area":"qingdao","title":"青岛都安全医疗","serviceType":"普通内科及全科、妇产科、儿科、个性化体检、皮肤科","address":"广州市越秀区环市东路422号2楼201室","serviceArea":"福田区、南山区","imgUrl":"/public/images/agencys/ny_img4.png"},
+    {"id":"5","area":"nanjing","title":"南京都安全医疗","serviceType":"普通内科及全科、妇产科、儿科、个性化体检、皮肤科","address":"广州市越秀区环市东路422号2楼201室","serviceArea":"福田区、南山区","imgUrl":"/public/images/agencys/ny_img5.png"},
+    {"id":"6","area":"xian","title":"西安都安全医疗","serviceType":"普通内科及全科、妇产科、儿科、个性化体检、皮肤科","address":"广州市越秀区环市东路422号2楼201室","serviceArea":"福田区、南山区","imgUrl":"/public/images/agencys/ny_img6.png"}
+  ]
+}

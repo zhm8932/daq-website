@@ -276,31 +276,31 @@
         position: static;
         background: none;
         color: #FFF; }
-    .item_list .feature ul {
+    .item_list .standard ul {
       text-align: center; }
-      .item_list .feature ul li {
+      .item_list .standard ul li {
         width: 32%;
         float: none;
         display: inline-block;
         margin: 0; }
-        .item_list .feature ul li p {
+        .item_list .standard ul li p {
           display: none; }
-        .item_list .feature ul li figure {
+        .item_list .standard ul li figure {
           padding: 0 30px; }
-          .item_list .feature ul li figure img {
+          .item_list .standard ul li figure img {
             width: 100%;
             height: auto; }
-          .item_list .feature ul li figure figcaption {
+          .item_list .standard ul li figure figcaption {
             padding-top: 0px;
             font-size: 20px;
             margin-top: -5px; }
-          .item_list .feature ul li figure em {
+          .item_list .standard ul li figure em {
             padding: 5px 0 10px;
             color: #FFF;
             font-size: 14px; }
 
   .treat_list {
-    background-color: #f5f5f5;
+    background-color: #f8fafb;
     margin-top: -10px; }
     .treat_list ul li {
       background-color: #FFF; }

@@ -298,7 +298,7 @@ select {
   font-size: 12px; }
 
 .boxBg {
-  background-color: #f5f5f5; }
+  background-color: #f8fafb; }
 
 .topBar {
   background-color: #F2F2F2;
@@ -501,6 +501,7 @@ select {
   position: absolute;
   left: 50%;
   top: 0px;
+  z-index: 10;
   margin-left: -512px; }
   .home .nav {
     width: 726px;
@@ -512,49 +513,11 @@ select {
   .home .wrapper {
     width: 100%; }
 
-.banner {
-  text-align: center;
-  background-color: #bec0bf;
-  position: relative; }
-  .banner .wrapper {
-    position: relative; }
-  .banner img {
-    width: 100%;
-    height: auto;
-    margin-bottom: -7px; }
-  .banner dl {
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    text-align: left;
-    color: #FFFFFF; }
-    .banner dl h3, .banner dl p {
-      padding: 0 0 10px 50px; }
-    .banner dl h3 {
-      font-size: 20px;
-      font-weight: normal;
-      padding-top: 20px; }
-    .banner dl p {
-      font-size: 16px; }
-      .banner dl p i {
-        background-position: -157px 0px;
-        vertical-align: top;
-        position: relative;
-        top: 3px; }
-    .banner dl dt {
-      width: 55%;
-      float: left;
-      background-color: #F39E98; }
-    .banner dl dd {
-      width: 45%;
-      float: right;
-      background-color: #EA9089; }
-
 .item_list {
   padding-bottom: 50px; }
   .item_list header {
-    padding-top: 50px; }
+    padding-top: 50px;
+    text-align: center; }
     .item_list header h2 {
       font-size: 28px;
       padding-bottom: 20px;
@@ -630,30 +593,23 @@ select {
         color: #9B9B9B;
         text-decoration: line-through; }
   .item_list .pic_list .more {
-    float: right;
     margin-top: 20px;
-    color: #48BED8; }
+    color: #FFF;
+    background-color: #48BED8;
+    padding: 8px 20px;
+    border-radius: 10px;
+    position: relative;
+    top: 20px;
+    font-size: 18px; }
     .item_list .pic_list .more i {
+      display: none;
       background-position: -114px 0px;
       vertical-align: top;
       position: relative;
       top: 4px;
       margin-left: 5px; }
-    .item_list .pic_list .more:hover {
-      color: #4A4A4A; }
-      .item_list .pic_list .more:hover i {
-        background-position: -91px 0px; }
-  .item_list .department_list li {
-    height: 310px; }
-    .item_list .department_list li h4 {
-      display: inline-block;
-      padding: 0 30px 0 20px;
-      border-radius: 0 100px 100px 0;
-      height: 46px;
-      line-height: 46px;
-      width: auto;
-      top: auto;
-      margin-top: -47px; }
+    .item_list .pic_list .more:hover i {
+      background-position: -91px 0px; }
   .item_list .goods_list ul {
     position: relative; }
     .item_list .goods_list ul li {
@@ -672,22 +628,22 @@ select {
         text-align: left; }
       .item_list .goods_list ul li a:hover h4 {
         color: #48BED8; }
-  .item_list .feature ul {
+  .item_list .standard ul {
     margin-left: -4%;
     padding-top: 40px; }
-    .item_list .feature ul li {
+    .item_list .standard ul li {
       float: left;
       width: 16%;
       text-align: center;
       margin-left: 4%; }
-      .item_list .feature ul li figure figcaption {
+      .item_list .standard ul li figure figcaption {
         font-size: 24px;
         padding-top: 35px; }
-      .item_list .feature ul li figure em {
+      .item_list .standard ul li figure em {
         color: #9B9B9B;
         display: block;
         padding: 10px 0; }
-      .item_list .feature ul li p {
+      .item_list .standard ul li p {
         text-align: left; }
 
 .health aside {
@@ -1162,8 +1118,7 @@ select {
   background-color: #3B3B3A;
   padding: 50px 0;
   overflow: hidden;
-  color: #F2F2F2;
-  margin-top: 50px; }
+  color: #F2F2F2; }
   .footer dl {
     width: 80%;
     float: left; }
@@ -1251,7 +1206,7 @@ select {
 
 .rightNav {
   position: fixed;
-  z-index: 2;
+  z-index: 999;
   box-sizing: content-box;
   right: 50%;
   top: 50%;

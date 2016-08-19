@@ -143,7 +143,7 @@ define(function(require, exports, module){
 
         $(window).scroll(function () {
             var scrollTop = $(window).scrollTop();
-            console.log("scrollTop:",scrollTop)
+            // console.log("scrollTop:",scrollTop)
             if(scrollTop>winHeight/2){
                 $gotoTop.show()
             }else{
