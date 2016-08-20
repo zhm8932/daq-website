@@ -1,5 +1,6 @@
 @import "settings.scss";
 @media only screen and (max-width:$win_768 - 1px){
+
   .btn{
     display: inline-block;line-height:25px;background-color:#fff;border: 1px solid;border-radius: 5px;padding:0 10px;
   }
@@ -9,7 +10,7 @@
   .btn.btn-primary{
     color:$textc_48B;
   }
-  .login-view{margin-bottom:-40px;}
+  .login-view{margin-bottom:0;}
   .loginCom{
     padding-bottom: 30px;
     .bd{
@@ -121,18 +122,24 @@
     font-size: 16px;
   }
   .standard_wrapper{
-    background-color: $bgc_48B;color: $white;margin-bottom: -50px;padding: 30px 0 ;
+    background-color: $bgc_48B;color: $white;
+    //margin-bottom: -50px;
+    padding: 30px 0 ;
   }
   .cart .empty-cart .empty-cart-box{height: 160px;}
+
   .item_list {
+
     padding-bottom: 20px;
+    .standard_header{
+      h2,p{background:none;color: $white;}
+    }
     .pic_list{
       ul{margin-left: -3%;
         //li{width: 47%;margin:20px 0 0 3%;height: auto;
-
         li{width:auto;margin:20px 0 0 3%;height: auto;border: 1px solid $bdrc_ddd;float:none;display: block;
           a{
-            h4{line-height:50px;height:50px;position: relative;margin-bottom:-30px;font-size: 20px;background: none;color: $textc_48B;overflow: hidden;background-color: rgba(255, 255, 255, 0.75);text-align: right;padding-right: 10px;width: auto;box-sizing: border-box;}
+            h4{line-height:50px;height:50px;top:-50px;position: relative;margin-bottom:-30px;font-size: 20px;background: none;color: $textc_48B;overflow: hidden;background-color: rgba(255, 255, 255, 0.75);text-align: right;padding-right: 10px;width: auto;box-sizing: border-box;}
           }
           p{color: $textc_333;padding: 0 10px;margin: 0px; font-size: 16px;height: 48px;overflow: hidden;}
           .price{padding-top: 0px;position: absolute;bottom:80px; left: 10px;
@@ -151,7 +158,17 @@
         }
       }
     }
+    .feature{
+      margin: 0px;text-align: center;
+      figure{
+        width: 32.5%;margin: 0 auto;float: none;display: inline-block;
+        figcaption{
+          height: 48px;
+        }
+      }
+    }
     .department_list{
+      margin: 0px;
       ul{
         li{
           border: none;padding-bottom: 10px;
@@ -182,14 +199,17 @@
       }
     }
   }
-  .treat_list{background-color: $bgc_gray_F5;margin-top: -10px;
+
+  .treat_list{
+    //background-color: $bgc_gray_F5;
+    margin-top: -10px;
     ul{
       li{
         background-color: $white;
       }
     }
   }
-  .boxBg{background: none;}
+  //.boxBg{background: none;}
   .goods_basic{
     .wrapper{overflow: visible;}
   }
@@ -217,6 +237,24 @@
   .health aside{width: 100%}
   .health_detail{width: 100%;
     article,p{font-size: 18px;}}
+
+  .agency_box{
+    padding: 0 0 20px ;
+    .agency_nav{
+      float: none;;width: auto;
+      span{display: inline-block;}
+    }
+    .lr_list{
+      width: auto;float: none;border: none;font-size: 100px;
+      border-top: 1px solid $bdrc_48B;padding:0;margin-top: 10px;
+      figure{
+        padding-top: 10px;
+        h4{padding: 0px;margin: 0px;}
+        p{font-size: 14px;}
+      }
+    }
+  }
+
   .footer{
     dl{
       width: 100%;
@@ -904,7 +942,7 @@
   .info_list .lr_list{
     figure{
       padding-bottom: 20px;
-      img{width: 100%;float: none;margin-bottom: 10px;}
+      img{width: 100%;float: none;margin-bottom: 10px;box-sizing: border-box;}
       figcaption{width: auto;float: none;}
     }
   }

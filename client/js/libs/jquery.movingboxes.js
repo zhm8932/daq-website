@@ -6,7 +6,6 @@
 /*jshint browser:true, jquery:true */
 ;(function($){
 	"use strict";
-
 	$.movingBoxes = function(el, options){
 		// To avoid scope issues, use 'base' instead of 'this'
 		// to reference this class from internal events and functions.
@@ -40,16 +39,9 @@
 			base.curPanel = (o.initAnimation) ? 1 : base.getHash() || o.startPanel;
 			// save original slider width
 			base.width = (o.width) ? parseInt(o.width,10) : base.$el.width();
-
-			// base.width = (o.width) ? parseInt(o.width,10) : base.$el.parent().width();
-
-			// console.log("o.width：",o.width)
-			// console.log("base.$el.width()：",base.$el.width())
-			// console.log("初始宽度：",base.width)
 			// save panel width, o.panelWidth originally a fraction (0.5 of o.width) if defined, or get first panel width
 			// now can be set after initialization to resize using fraction (value <= 2) or px (all values > 2)
-			// base.pWidth = (o.panelWidth) ? (o.panelWidth <=2 ? o.panelWidth * base.width : o.panelWidth) : base.$panels.eq(0).width();
-			base.pWidth = (o.panelWidth) ? (o.panelWidth <=2 ? o.panelWidth * base.width : o.panelWidth) : base.$panels.eq(0).outerWidth(true);
+			base.pWidth = (o.panelWidth) ? (o.panelWidth <=2 ? o.panelWidth * base.width : o.panelWidth) : base.$panels.eq(0).width();
 
 			// Set up click on left/right arrows
 			base.$left = base.$wrap.find('.mb-left').click(function(){
@@ -93,10 +85,10 @@
 				if (e.target.tagName.match('TEXTAREA|INPUT|SELECT')) { return; }
 				switch (e.which) {
 					case 39: case 32: // right arrow & space
-						if (base.$wrap.is('.mb-active-slider')){
-							base.goForward();
-						}
-						break;
+					if (base.$wrap.is('.mb-active-slider')){
+						base.goForward();
+					}
+					break;
 					case 37: // left arrow
 						if (base.$wrap.is('.mb-active-slider')){
 							base.goBack();
@@ -124,11 +116,7 @@
 			base.$panels = base.$el.children();
 			base.adj = (o.wrap && base.$panels.length > 1) ? 0 : 1; // count adjustment for infinite panels
 
-
 			base.width = (o.width) ? parseInt(o.width,10) : base.width;
-
-			// console.log("宽度：",base.width)
-
 			base.$wrap.css('width', base.width); // set wrapper width
 
 			if (o.wrap && base.$panels.length > 1) {
@@ -199,9 +187,6 @@
 			base.updateArrows(base.curPanel);
 
 			// make base container wide enough to contain all the panels
-			// console.log("base.width:",base.width)
-			// console.log("base.curWidth:",base.curWidth)
-			// console.log("base.width - base.curWidth:",(base.width - base.curWidth)/2)
 			base.$el.css({
 				position : 'absolute',
 				// add a bit more width to each box (base.padding *2; then add 1/2 overall width in case only one panel exists)
@@ -238,15 +223,15 @@
 						$a.html(j);
 					}
 					$a
-					.appendTo(base.$nav.find('.mb-links'))
-					.addClass('mb-link mb-panel' + j)
-					.data('index', j);
+						.appendTo(base.$nav.find('.mb-links'))
+						.addClass('mb-link mb-panel' + j)
+						.data('index', j);
 				});
 				base.$nav
 					.find('a.mb-link').bind('click', function() {
-						base.change( $(this).data('index') );
-						return false;
-					});
+					base.change( $(this).data('index') );
+					return false;
+				});
 			}
 		};
 
@@ -537,6 +522,7 @@
 
 	};
 
+	
 	$.fn.movingBoxes = function(options, callback, flag){
 		var mb;
 		return this.each(function(){

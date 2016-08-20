@@ -10,13 +10,13 @@ block content
         .wrapper
             .agency_nav
 
-                p: a(href='/agencys') 全部
-                p: a(href='/agencys/shenzhen') 深圳
-                p: a(href='/agencys/guangzhou') 广州
-                p: a(href='/agencys/beijing') 北京
-                p: a(href='/agencys/qingdao') 青岛
-                p: a(href='/agencys/nanjing') 南京
-                p: a(href='/agencys/xian') 西安
+                span: a(href='/agencys') 全部
+                span: a(href='/agencys/shenzhen') 深圳
+                span: a(href='/agencys/guangzhou') 广州
+                span: a(href='/agencys/beijing') 北京
+                span: a(href='/agencys/qingdao') 青岛
+                span: a(href='/agencys/nanjing') 南京
+                span: a(href='/agencys/xian') 西安
             .lr_list
                 if get_agency_list
                     each item in get_agency_list

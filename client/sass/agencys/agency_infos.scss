@@ -21,7 +21,6 @@
   address{font-size:18px; line-height:40px; padding:20px 0;font-family:"PingHei 200","PingHei","Helvetica Neue","Helvetica","STHeitiSC-Light","Arial",sans-serif}
 
 }
-.info_list{padding-top:40px;}
 .lr_list{
   figure{
     clear: both;
@@ -56,6 +55,7 @@
 }
 .agency_nav{
   width: 20%;float: left;
+  span{display: block;}
   a{
     display: inline-block;width: 90px;text-align: center;line-height: 40px;height: 40px;margin-bottom: 1px;font-size: 18px;
     &.on,&:hover{background-color: $textc_48B;color: $white;}

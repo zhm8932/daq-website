@@ -1,19 +1,16 @@
 (function () {
-
-    console.log('111111111');
-// require('lazyload');
-//     require('touchslider');
+    // require('lazyload');
+    //     require('touchslider');
     var utils = require('./libs/utils')
     require('slides');
     require('movingBoxes');
 
-    $('#slider-two').movingBoxes({
-
-        startPanel   : 1,       // 从第一个li开始
+    $('#sliderBox').movingBoxes({
+        startPanel   : 2,       // 从第一个li开始
         reducedSize  : .6,      // 缩小到原图50%的尺寸
         wrap         : true,   // 无缝循环
-        // buildNav     : true,	// 显示指示器效果
-        navFormatter : function(){ return "&#9679;"; } // 指示器格式，为空即会显示123
+        buildNav     : true,	// 显示指示器效果
+        navFormatter : function(){ return "&#9679;"; }  // 指示器格式，为空即会显示123
 
     });
 
@@ -37,17 +34,22 @@
         //     viewport: ".bd"  //内容区域
         // });
 
-
         $('.slideBox').slidesjs({
             width: obj.width,
             height: obj.height,
             navigation: false,
             play: {
                 active: false,
-                auto: false,
-                interval: 4000,
+                auto: true,
+                interval: 6000,
                 swap: true
+            },
+            effect: {
+                slide: {
+                    speed: 1000
+                }
             }
+
         });
     }
 

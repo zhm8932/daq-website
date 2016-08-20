@@ -28,7 +28,7 @@
     color: #48BED8; }
 
   .login-view {
-    margin-bottom: -40px; }
+    margin-bottom: 0; }
 
   .loginCom {
     padding-bottom: 30px; }
@@ -200,7 +200,6 @@
   .standard_wrapper {
     background-color: #48BED8;
     color: #FFF;
-    margin-bottom: -50px;
     padding: 30px 0; }
 
   .cart .empty-cart .empty-cart-box {
@@ -208,6 +207,9 @@
 
   .item_list {
     padding-bottom: 20px; }
+    .item_list .standard_header h2, .item_list .standard_header p {
+      background: none;
+      color: #FFF; }
     .item_list .pic_list ul {
       margin-left: -3%; }
       .item_list .pic_list ul li {
@@ -220,6 +222,7 @@
         .item_list .pic_list ul li a h4 {
           line-height: 50px;
           height: 50px;
+          top: -50px;
           position: relative;
           margin-bottom: -30px;
           font-size: 20px;
@@ -251,21 +254,33 @@
       margin-top: 20px; }
     .item_list .goods_list ul li a h4 {
       top: -50px; }
-    .item_list .department_list ul li {
-      border: none;
-      padding-bottom: 10px; }
-      .item_list .department_list ul li h4 {
-        margin: 0px;
-        background: none;
-        display: block;
-        position: static;
-        color: #48BED8;
-        font-size: 22px;
-        font-weight: normal;
-        text-align: left;
-        padding-left: 20px; }
-      .item_list .department_list ul li p {
-        padding-left: 20px; }
+    .item_list .feature {
+      margin: 0px;
+      text-align: center; }
+      .item_list .feature figure {
+        width: 32.5%;
+        margin: 0 auto;
+        float: none;
+        display: inline-block; }
+        .item_list .feature figure figcaption {
+          height: 48px; }
+    .item_list .department_list {
+      margin: 0px; }
+      .item_list .department_list ul li {
+        border: none;
+        padding-bottom: 10px; }
+        .item_list .department_list ul li h4 {
+          margin: 0px;
+          background: none;
+          display: block;
+          position: static;
+          color: #48BED8;
+          font-size: 22px;
+          font-weight: normal;
+          text-align: left;
+          padding-left: 20px; }
+        .item_list .department_list ul li p {
+          padding-left: 20px; }
     .item_list .standard {
       border: none; }
       .item_list .standard h2 {
@@ -300,13 +315,9 @@
             font-size: 14px; }
 
   .treat_list {
-    background-color: #f8fafb;
     margin-top: -10px; }
     .treat_list ul li {
       background-color: #FFF; }
-
-  .boxBg {
-    background: none; }
 
   .goods_basic .wrapper {
     overflow: visible; }
@@ -342,6 +353,29 @@
     width: 100%; }
     .health_detail article, .health_detail p {
       font-size: 18px; }
+
+  .agency_box {
+    padding: 0 0 20px; }
+    .agency_box .agency_nav {
+      float: none;
+      width: auto; }
+      .agency_box .agency_nav span {
+        display: inline-block; }
+    .agency_box .lr_list {
+      width: auto;
+      float: none;
+      border: none;
+      font-size: 100px;
+      border-top: 1px solid #48BED8;
+      padding: 0;
+      margin-top: 10px; }
+      .agency_box .lr_list figure {
+        padding-top: 10px; }
+        .agency_box .lr_list figure h4 {
+          padding: 0px;
+          margin: 0px; }
+        .agency_box .lr_list figure p {
+          font-size: 14px; }
 
   .footer dl {
     width: 100%; }
@@ -1330,7 +1364,8 @@
     .info_list .lr_list figure img {
       width: 100%;
       float: none;
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      box-sizing: border-box; }
     .info_list .lr_list figure figcaption {
       width: auto;
       float: none; }

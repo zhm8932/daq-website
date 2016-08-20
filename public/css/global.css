@@ -571,8 +571,6 @@ select {
       line-height: 50px;
       height: 50px;
       color: #FFF;
-      position: absolute;
-      top: -50px;
       left: 0px;
       text-align: center;
       background-color: #48BED8;
@@ -593,14 +591,14 @@ select {
         color: #9B9B9B;
         text-decoration: line-through; }
   .item_list .pic_list .more {
-    margin-top: 20px;
+    margin-top: 30px;
     color: #FFF;
     background-color: #48BED8;
     padding: 8px 20px;
     border-radius: 10px;
     position: relative;
-    top: 20px;
-    font-size: 18px; }
+    font-size: 18px;
+    display: inline-block; }
     .item_list .pic_list .more i {
       display: none;
       background-position: -114px 0px;

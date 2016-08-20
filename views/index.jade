@@ -49,34 +49,41 @@ block content
         p 自聘知名三甲医院专家及各地名医工作室、医生集团深度战略合作，全程依据国际诊疗指南操作治疗，为您提供精准、规范、安心的诊疗服务。
       .pic_list.department_list
         if get_department_success
-          ul#slider-two
-            li
-              a(href='/agencys')
+            mixin agencys_list()
+              li
+                a(href='/agencys')
                   img(src='/public/images/department/jzzl_img1.png')
-              h4 妇科
-              //-p
-                |预防保健是家庭医学的基础。都安全医疗预防保健科将个人及家庭的健康需求纳入全流程健...
-            li
-              a(href='/agencys')
-                img(src='/public/images/department/jzzl_img3.png')
-              h4 皮肤科
-              //-p
-                |都安全医疗皮肤科具备专业的医护团队及人性化的护理流程系统，提供全面、专业的常见皮...
-            li
-              a(href='/agencys')
-                img(src='/public/images/department/jzzl_img4.png')
-              h4 泌尿科
-              //-p
-                |泌尿外科是都安全医疗基于精准检查与诊疗的重点科室之一，由国内外知名资深外科专家领...
-            li
-              a(href='/agencys')
-                img(data-original='/public/images/department/jzzl_img3.png')
+                h4 妇科
+                //-p
+                  |预防保健是家庭医学的基础。都安全医疗预防保健科将个人及家庭的健康需求纳入全流程健...
+              li
+                a(href='/agencys')
+                  img(src='/public/images/department/jzzl_img3.png')
+                h4 皮肤科
+                //-p
+                  |都安全医疗皮肤科具备专业的医护团队及人性化的护理流程系统，提供全面、专业的常见皮...
+              li
+                a(href='/agencys')
+                  img(src='/public/images/department/jzzl_img4.png')
+                h4 泌尿科
+                //-p
+                  |泌尿外科是都安全医疗基于精准检查与诊疗的重点科室之一，由国内外知名资深外科专家领...
+              li
+                a(href='/agencys')
+                  img(src='/public/images/department/jzzl_img3.png')
 
-              h4 检验科
-            li
-              a(href='/agencys')
-                img(data-original='/public/images/department/jzzl_img2.png')
-              h4 预防保健科
+                h4 检验科
+              li
+                a(href='/agencys')
+                  img(src='/public/images/department/jzzl_img2.png')
+                h4 预防保健科
+          if browser.mobile
+            ul
+              +agencys_list()
+          else
+            ul#sliderBox
+              +agencys_list()
+
 
         //-div
           ul#focus
@@ -130,7 +137,6 @@ block content
             span.s05
             figcaption 分子诊断中心
   section.item_list.clearfix
-    //div #{JSON.stringify(get_goods_list)}
     .wrapper
       header
         h2
@@ -153,7 +159,7 @@ block content
             each item in get_goods_list
               li
                 a(href='/screenings/goods/detail/#{item.id}',target='_blank')
-                  //img(data-original='images/product1.png')
+                  //-img(data-original='images/product1.png')
                   if item.goodsImages
                     if browser.ie
                       img(src='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}',title='#{item.goodsName}')

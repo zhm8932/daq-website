@@ -13,21 +13,18 @@ webpackJsonp([7],{
 /***/ function(module, exports, __webpack_require__) {
 
 	(function () {
-
-	    console.log('111111111');
-	// require('lazyload');
-	//     require('touchslider');
+	    // require('lazyload');
+	    //     require('touchslider');
 	    var utils = __webpack_require__(4)
 	    __webpack_require__(123);
 	    __webpack_require__(124);
 
-	    $('#slider-two').movingBoxes({
-
-	        startPanel   : 1,       // 从第一个li开始
+	    $('#sliderBox').movingBoxes({
+	        startPanel   : 2,       // 从第一个li开始
 	        reducedSize  : .6,      // 缩小到原图50%的尺寸
 	        wrap         : true,   // 无缝循环
-	        // buildNav     : true,	// 显示指示器效果
-	        navFormatter : function(){ return "&#9679;"; } // 指示器格式，为空即会显示123
+	        buildNav     : true,	// 显示指示器效果
+	        navFormatter : function(){ return "&#9679;"; }  // 指示器格式，为空即会显示123
 
 	    });
 
@@ -51,17 +48,22 @@ webpackJsonp([7],{
 	        //     viewport: ".bd"  //内容区域
 	        // });
 
-
 	        $('.slideBox').slidesjs({
 	            width: obj.width,
 	            height: obj.height,
 	            navigation: false,
 	            play: {
 	                active: false,
-	                auto: false,
-	                interval: 4000,
+	                auto: true,
+	                interval: 6000,
 	                swap: true
+	            },
+	            effect: {
+	                slide: {
+	                    speed: 1000
+	                }
 	            }
+
 	        });
 	    }
 
@@ -303,7 +305,7 @@ webpackJsonp([7],{
 	      width = $element.width();
 	      height = (this.options.height / this.options.width) * width;
 
-	      console.log("height:",height)
+	      // console.log("height:",height)
 	      this.options.width = width;
 	      this.options.height = height;
 	      return $(".slidesjs-control, .slidesjs-container", $element).css({
@@ -702,7 +704,6 @@ webpackJsonp([7],{
 	/*jshint browser:true, jquery:true */
 	;(function($){
 		"use strict";
-
 		$.movingBoxes = function(el, options){
 			// To avoid scope issues, use 'base' instead of 'this'
 			// to reference this class from internal events and functions.
@@ -736,16 +737,9 @@ webpackJsonp([7],{
 				base.curPanel = (o.initAnimation) ? 1 : base.getHash() || o.startPanel;
 				// save original slider width
 				base.width = (o.width) ? parseInt(o.width,10) : base.$el.width();
-
-				// base.width = (o.width) ? parseInt(o.width,10) : base.$el.parent().width();
-
-				// console.log("o.width：",o.width)
-				// console.log("base.$el.width()：",base.$el.width())
-				// console.log("初始宽度：",base.width)
 				// save panel width, o.panelWidth originally a fraction (0.5 of o.width) if defined, or get first panel width
 				// now can be set after initialization to resize using fraction (value <= 2) or px (all values > 2)
-				// base.pWidth = (o.panelWidth) ? (o.panelWidth <=2 ? o.panelWidth * base.width : o.panelWidth) : base.$panels.eq(0).width();
-				base.pWidth = (o.panelWidth) ? (o.panelWidth <=2 ? o.panelWidth * base.width : o.panelWidth) : base.$panels.eq(0).outerWidth(true);
+				base.pWidth = (o.panelWidth) ? (o.panelWidth <=2 ? o.panelWidth * base.width : o.panelWidth) : base.$panels.eq(0).width();
 
 				// Set up click on left/right arrows
 				base.$left = base.$wrap.find('.mb-left').click(function(){
@@ -789,10 +783,10 @@ webpackJsonp([7],{
 					if (e.target.tagName.match('TEXTAREA|INPUT|SELECT')) { return; }
 					switch (e.which) {
 						case 39: case 32: // right arrow & space
-							if (base.$wrap.is('.mb-active-slider')){
-								base.goForward();
-							}
-							break;
+						if (base.$wrap.is('.mb-active-slider')){
+							base.goForward();
+						}
+						break;
 						case 37: // left arrow
 							if (base.$wrap.is('.mb-active-slider')){
 								base.goBack();
@@ -820,11 +814,7 @@ webpackJsonp([7],{
 				base.$panels = base.$el.children();
 				base.adj = (o.wrap && base.$panels.length > 1) ? 0 : 1; // count adjustment for infinite panels
 
-
 				base.width = (o.width) ? parseInt(o.width,10) : base.width;
-
-				// console.log("宽度：",base.width)
-
 				base.$wrap.css('width', base.width); // set wrapper width
 
 				if (o.wrap && base.$panels.length > 1) {
@@ -895,9 +885,6 @@ webpackJsonp([7],{
 				base.updateArrows(base.curPanel);
 
 				// make base container wide enough to contain all the panels
-				// console.log("base.width:",base.width)
-				// console.log("base.curWidth:",base.curWidth)
-				// console.log("base.width - base.curWidth:",(base.width - base.curWidth)/2)
 				base.$el.css({
 					position : 'absolute',
 					// add a bit more width to each box (base.padding *2; then add 1/2 overall width in case only one panel exists)
@@ -934,15 +921,15 @@ webpackJsonp([7],{
 							$a.html(j);
 						}
 						$a
-						.appendTo(base.$nav.find('.mb-links'))
-						.addClass('mb-link mb-panel' + j)
-						.data('index', j);
+							.appendTo(base.$nav.find('.mb-links'))
+							.addClass('mb-link mb-panel' + j)
+							.data('index', j);
 					});
 					base.$nav
 						.find('a.mb-link').bind('click', function() {
-							base.change( $(this).data('index') );
-							return false;
-						});
+						base.change( $(this).data('index') );
+						return false;
+					});
 				}
 			};
 
@@ -1233,6 +1220,7 @@ webpackJsonp([7],{
 
 		};
 
+		
 		$.fn.movingBoxes = function(options, callback, flag){
 			var mb;
 			return this.each(function(){

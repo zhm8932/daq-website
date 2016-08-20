@@ -531,6 +531,7 @@ select {
       font-size: 16px;
     }
   }
+
   .pic_list {
     ul {
       margin-left: -17px;
@@ -575,8 +576,8 @@ select {
         line-height: 50px;
         height: 50px;
         color: $white;
-        position: absolute;
-        top: -50px;
+        //position: absolute;
+        //top: -50px;
         left: 0px;
         text-align: center;
         background-color: $bgc_48B;
@@ -606,7 +607,9 @@ select {
 
     .more {
       //float: right;
-      margin-top: 20px ;color: $white;background-color: $bgc_48B;padding: 8px 20px;border-radius: 10px;position: relative;top: 20px;font-size: 18px;
+      margin-top: 30px ;color: $white;background-color: $bgc_48B;padding: 8px 20px;border-radius: 10px;position: relative;
+      //top: 20px;
+      font-size: 18px;display: inline-block;
       i {
         display: none;
         background-position: -114px 0px;

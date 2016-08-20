@@ -214,7 +214,7 @@
       width = $element.width();
       height = (this.options.height / this.options.width) * width;
 
-      console.log("height:",height)
+      // console.log("height:",height)
       this.options.width = width;
       this.options.height = height;
       return $(".slidesjs-control, .slidesjs-container", $element).css({

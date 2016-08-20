@@ -56,9 +56,6 @@
     padding: 20px 0;
     font-family: "PingHei 200","PingHei","Helvetica Neue","Helvetica","STHeitiSC-Light","Arial",sans-serif; }
 
-.info_list {
-  padding-top: 40px; }
-
 .lr_list figure {
   clear: both; }
   .lr_list figure img {
@@ -112,6 +109,8 @@
 .agency_nav {
   width: 20%;
   float: left; }
+  .agency_nav span {
+    display: block; }
   .agency_nav a {
     display: inline-block;
     width: 90px;
