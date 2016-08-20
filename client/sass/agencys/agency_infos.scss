@@ -30,6 +30,7 @@
 
     }
     h4{font-size: 24px;border-bottom: 1px solid $bdrc_ddd;padding:15px 0; margin-bottom: 15px;}
+    .more{padding: 0px 20px; border: 1px solid $bdrc_48B;color: $textc_48B;border-radius: 5px;margin: 5px 0 10px;display: inline-block;}
   }
 
 
@@ -42,13 +43,15 @@
     figure{
       h4{
         padding: 0 0 10px; margin-bottom: 10px;
-        a{font-size:20px;color: $textc_333; }
+        a{font-size:20px;color: $textc_333;
+          &:hover{color: $textc_48B;}
+        }
       }
       img{
        width: 30%;border: none;
       }
       figcaption{width: 68%;}
-      .more{padding: 0px 20px; border: 1px solid $bdrc_48B;color: $textc_48B;border-radius: 5px;margin-top: 5px;display: inline-block;}
+      .more{padding: 0px 20px; border: 1px solid $bdrc_48B;color: $textc_48B;border-radius: 5px;margin: 5px 0 10px;display: inline-block;}
     }
   }
 

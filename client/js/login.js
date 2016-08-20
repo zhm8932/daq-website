@@ -2,7 +2,7 @@ define(function(require,exports,module) {
     var utils = require('./libs/utils');
     require("moment");
     require("daterangepicker");
-    // require('cookie');
+    require('cookie');
 
     // var TouchSlide = require('./libs/TouchSlide.1.1.source')
     var pathname = window.location.pathname;
@@ -747,10 +747,12 @@ define(function(require,exports,module) {
     }
     function cartCoutAddOne() {
         var cartNum = parseInt($cartNum.text())+1;
+        $.cookie('cartNum', cartNum,{path:"/"})
         $cartNum.text(cartNum);
     }
     function cartCoutDelOne() {
         var cartNum = parseInt($cartNum.text())-1;
+        $.cookie('cartNum', cartNum,{path:"/"})
         $cartNum.text(cartNum);
     }
 

@@ -72,6 +72,13 @@
     border-bottom: 1px solid #dddddd;
     padding: 15px 0;
     margin-bottom: 15px; }
+  .lr_list figure .more {
+    padding: 0px 20px;
+    border: 1px solid #48BED8;
+    color: #48BED8;
+    border-radius: 5px;
+    margin: 5px 0 10px;
+    display: inline-block; }
 
 #allmap {
   width: 100%;
@@ -93,6 +100,8 @@
       .agency_box .lr_list figure h4 a {
         font-size: 20px;
         color: #333333; }
+        .agency_box .lr_list figure h4 a:hover {
+          color: #48BED8; }
     .agency_box .lr_list figure img {
       width: 30%;
       border: none; }
@@ -103,7 +112,7 @@
       border: 1px solid #48BED8;
       color: #48BED8;
       border-radius: 5px;
-      margin-top: 5px;
+      margin: 5px 0 10px;
       display: inline-block; }
 
 .agency_nav {

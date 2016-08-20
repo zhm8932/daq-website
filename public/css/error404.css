@@ -13,9 +13,11 @@
 
 */
 .error404 {
-  text-align: center; }
+  text-align: center;
+  padding-bottom: 40px; }
   .error404 img {
-    margin: 50px auto; }
+    margin: 50px auto;
+    width: 100%; }
   .error404 .msg {
     padding: 0 0 20px 0; }
   .error404 a {

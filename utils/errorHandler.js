@@ -101,7 +101,7 @@ function _getErrorMsg(error,code,isServerError){
         }else{
             error.externalMsg = error.message + '.\n' + error.stack;
         }
-    } else {
+    }else {
         if (code === '200') {
             error.externalMsg = error.message;
         } else if (code == '404') {

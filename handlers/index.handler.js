@@ -38,25 +38,31 @@ exports.index = function(req,res) {
 
 exports.get_cart_num = function (req,res,next) {
     console.log("req::url:",req.url);
-    console.log("browser:",browser);
-
+    // console.log("browser:",browser);
     var accountId = req.accountId?req.accountId:req.body.accountId;
     console.log("accountId:",accountId);
     if(accountId){
-        TradeRequest.GetCartCount(req,res,function (err,data) {
-            var query = req.query;
-            var json = JSON.parse(data);
-            if(json.success){
-                console.log("json.data.length:",json);
-                // res.locals.cartNum=json.data.length||'0';
-                var cartNum = json.data;
-                res.locals.cartNum=cartNum;
-            }else{
-                res.locals.cartNum='0';
-            }
-            next()
+        if(req.cookies&&req.cookies.cartNum){
+            res.locals.cartNum=req.cookies.cartNum;
+            next();
+        }
+        else{
+            TradeRequest.GetCartCount(req,res,function (err,data) {
+                var query = req.query;
+                var json = JSON.parse(data);
+                if(json.success){
+                    // res.locals.cartNum=json.data.length||'0';
+                    var cartNum = json.data;
+                    res.locals.cartNum=cartNum;
+                    res.cookie('cartNum',cartNum)
+                }else{
+                    res.locals.cartNum='0';
+                }
+                next()
 
-        })
+            })
+        }
+
     }else{
         res.locals.cartNum='0';
         next()
