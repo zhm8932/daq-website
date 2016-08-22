@@ -1535,7 +1535,7 @@
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module){
+	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
 	    __webpack_require__(3);
 	    __webpack_require__(8);
 	    __webpack_require__(9);
@@ -1550,20 +1550,20 @@
 	        // 百度地图API功能
 	        function getLocalCity() {
 	            var map = new BMap.Map('choosed-city-id');
-	            var point = new BMap.Point(116.331398,39.897445);
-	            map.centerAndZoom(point,12);
+	            var point = new BMap.Point(116.331398, 39.897445);
+	            map.centerAndZoom(point, 12);
 
-	            function myFun(result){
+	            function myFun(result) {
 	                cityName = result.name;
 	                map.setCenter(cityName);
-	                if(!$.cookie('locals_city')){
-	                    getCityList(cityName,function (newArr) {
-	                        var is_locals_city= $.cookie('locals_city');
-	                        if(!is_locals_city&&newArr.length){
+	                if (!$.cookie('locals_city')) {
+	                    getCityList(cityName, function (newArr) {
+	                        var is_locals_city = $.cookie('locals_city');
+	                        if (!is_locals_city && newArr.length) {
 	                            // changeCity(newArr[0])
 	                            utils.SendAjax({
 	                                url: '/changeCity',
-	                                param: {city:newArr[0]},
+	                                param: {city: newArr[0]},
 	                                method: 'GET',
 	                                tipText: '切换城市',
 	                                callback: function (result) {
@@ -1575,8 +1575,8 @@
 	                                }
 	                            });
 	                        }
-	                        if(newArr.length){
-	                            $.cookie('locals_city', newArr[0].parentId,{path:"/"}); // 存储 cookie
+	                        if (newArr.length) {
+	                            $.cookie('locals_city', newArr[0].parentId, {path: "/"}); // 存储 cookie
 	                        }
 
 	                    })
@@ -1585,12 +1585,14 @@
 	                // changeCity(cityName)
 	                return cityName
 	            }
+
 	            var myCity = new BMap.LocalCity();
 	            var cityName = myCity.get(myFun);
 	        }
-	        if(!$.cookie('locals_city')&&!utils.browser.ie){
+
+	        if (!$.cookie('locals_city') && !utils.browser.ie) {
 	            getLocalCity();
-	        }else if(utils.browser.ie){
+	        } else if (utils.browser.ie) {
 	            alert('IE')
 	        }
 
@@ -1603,12 +1605,12 @@
 	        //下拉框的构造
 	        utils.BuildSelect($('.select-box'));
 
-	        $.each($nav_A,function (index,arr) {
+	        $.each($nav_A, function (index, arr) {
 	            href = $(arr).attr('href');
-	            if(curPathname.search(href)!=-1){
+	            if (curPathname.search(href) != -1) {
 	                $(arr).parent().addClass('on').siblings().removeClass('on')
 	            }
-	            if(href=='/treat/regsource/list'&&curPathname=='/treat/reg/doctorView'){
+	            if (href == '/treat/regsource/list' && curPathname == '/treat/reg/doctorView') {
 	                $(arr).parent().addClass('on').siblings().removeClass('on')
 	            }
 
@@ -1633,19 +1635,19 @@
 	            // e.stopPropagation();
 	            var $this = $(this);
 	            var OChooseCity = $this.find('.choose-city');
-	            OChooseCity.stop(false,true).slideDown();
+	            OChooseCity.stop(false, true).slideDown();
 	            // OChooseCity.stop(false,true).fadeIn();
 	            var data = OChooseCity.data('load');
-	            if(data === 'first'){
+	            if (data === 'first') {
 	                getCityList();
-	                OChooseCity.data('load','non-first');
+	                OChooseCity.data('load', 'non-first');
 	            }
 
-	        },function (e) {
+	        }, function (e) {
 	            e.stopPropagation();
 	            var $this = $(this);
 	            var OChooseCity = $this.find('.choose-city');
-	            OChooseCity.stop(false,true).slideUp();
+	            OChooseCity.stop(false, true).slideUp();
 	            // OChooseCity.stop(false,true).fadeOut();
 	        });
 	        // $(window).on('click',function(){
@@ -1657,13 +1659,13 @@
 
 
 	        $("section img").lazyload({
-	            effect : "fadeIn"
+	            effect: "fadeIn"
 	        });
 	        var winHeight = $(window).height();
 	        $gotoTop = $('.gotoTop');
 
 	        $gotoTop.click(function () {
-	            $('body,html').animate({scrollTop:0},600)
+	            $('body,html').animate({scrollTop: 0}, 600)
 	        })
 	        // $body.on('click','.gotoTop',function () {
 	        //     // $(window).scrollTop(0);
@@ -1681,17 +1683,17 @@
 	        $(window).scroll(function () {
 	            var scrollTop = $(window).scrollTop();
 	            // console.log("scrollTop:",scrollTop)
-	            if(scrollTop>winHeight/2){
+	            if (scrollTop > winHeight / 2) {
 	                $gotoTop.show()
-	            }else{
+	            } else {
 	                $gotoTop.fadeOut(700)
 	            }
 	        });
-	        
+
 	        var winWidth = $(window).width();
 	        var $nav = $('.nav').find('.wrapper');
-	        if(utils.browser.mobile){
-	            if(winWidth<768){
+	        if (utils.browser.mobile) {
+	            if (winWidth < 768) {
 	                //导航滑动
 	                $nav.addClass('swiper-container');
 	                var swiper = new Swiper('.swiper-container', {
@@ -1700,14 +1702,14 @@
 	                    slidesPerView: 4
 	                    // spaceBetween: 30
 	                });
-	            }else{
+	            } else {
 	                $nav.removeClass().addClass('wrapper');
 	                $nav.find('li').removeAttr("style");
 	            }
 	            $(window).resize(function () {
 	                winWidth = $(window).width();
 	                //console.log("winWidth:",winWidth)
-	                if(winWidth<768){
+	                if (winWidth < 768) {
 	                    //导航滑动
 	                    $nav.addClass('swiper-container');
 	                    var swiper = new Swiper('.swiper-container', {
@@ -1717,7 +1719,7 @@
 	                        // spaceBetween: 30
 	                    });
 	                    //console.log("111")
-	                }else{
+	                } else {
 	                    //console.log("222:",swiper)
 	                    $nav.removeClass().addClass('wrapper');
 	                    $nav.find('.swiper-slide').addClass('3333333333333').removeAttr("style")
@@ -1729,40 +1731,42 @@
 	    })
 
 	    var curCityArr = '';
-	    function getCityList(cityName,callback){
-	        var cityName = cityName||'';
+
+	    function getCityList(cityName, callback) {
+	        var cityName = cityName || '';
 	        utils.SendAjax({
 	            url: '/dic/list/typeAndLevel',
-	            param: {type:"district",level:"2",activeState:'1'},
+	            param: {type: "district", level: "2", activeState: '1'},
 	            method: 'GET',
 	            tipText: '获取城市',
 	            callback: function (result) {
 	                var data = result.data;
 	                var cityHtml = '';
 	                var choosedCityId = $('#choosed-city-id').val();
-	                for(var i = 0; i < data.length; i++){
+	                for (var i = 0; i < data.length; i++) {
 	                    var city = data[i];
-	                    if(data[i].id == choosedCityId){
-	                        cityHtml += '<a href="javascript:;" class="city on">'+city.name+'</a>';
-	                    }else{
-	                        cityHtml += '<a href="javascript:;" class="city">'+city.name+'</a>';
+	                    var offlineClass = parseInt(data[i].isOnline) === 1 ? '' : 'offline';//给下线的城市添加class
+	                    if (data[i].id == choosedCityId) {
+	                        cityHtml += '<a href="javascript:;" class="city on '+offlineClass+'">' + city.name + '</a>';
+	                    } else {
+	                        cityHtml += '<a href="javascript:;" class="city '+offlineClass+'">' + city.name + '</a>';
 	                    }
 	                }
 	                $('.city-list').html(cityHtml);
-	                var citys = $('.city-list .city');
-	                for(var i = 0; i < data.length; i++){
-	                    citys.eq(i).data('city',data[i]).on('click',function(){
+	                var citys = $('.city-list .city').not('.offline');
+	                for (var i = 0; i < data.length; i++) {
+	                    citys.eq(i).data('city', data[i]).on('click', function () {
 	                        changeCity($(this));
 	                    });
 	                }
 
-	                if(callback){
-	                    newArr= data.filter(function (item) {
+	                if (callback) {
+	                    newArr = data.filter(function (item) {
 	                        // return item.name == '南京'
 	                        return item.name == cityName
 	                    })
 	                    // //console.log("过滤后的data：",newArr)
-	                    callback&&callback(newArr)
+	                    callback && callback(newArr)
 	                }
 
 	            },
@@ -1772,13 +1776,13 @@
 	        });
 	    }
 
-	    function changeCity($this){
+	    function changeCity($this) {
 	        // var city = $this=='string'? $this: $this.data&&$this.data('city');
-	        var city =$this.hasClass&&$this.hasClass('city')&&$this.data('city')||$this;
+	        var city = $this.hasClass && $this.hasClass('city') && $this.data('city') || $this;
 	        // //console.log('city:',city)
 	        utils.SendAjax({
 	            url: '/changeCity',
-	            param: {city:city},
+	            param: {city: city},
 	            method: 'GET',
 	            tipText: '切换城市',
 	            callback: function (result) {
@@ -1794,7 +1798,7 @@
 	    }
 
 	    //移动端
-	    
+
 	    var $nav_toggle = $('.nav_toggle');
 	    var $left_nav = $('.left-nav');
 	    $nav_toggle.click(function () {
@@ -1802,19 +1806,19 @@
 	        $(this).parents('aside').toggleClass('active');
 	    })
 
-	    var $topBar_info_aside=$('.topBar_info aside');
+	    var $topBar_info_aside = $('.topBar_info aside');
 	    $('.wapUser').click(function () {
 	        var accountId = $.cookie('accountId');
 	        // //console.log("accountId:",accountId)
-	        if(accountId){
+	        if (accountId) {
 	            $topBar_info_aside.slideToggle();
-	        }else{
+	        } else {
 	            window.location.href = '/login';
 	        }
 
 
 	    })
-	    if(utils.browser.ios){
+	    if (utils.browser.ios) {
 	        var $footerWap = $('.footerWap');
 	        // $('input').focus(function () {
 	        //     $footerWap.addClass('footer_fixed');
@@ -1825,7 +1829,7 @@
 	        // })
 
 	        //只作用于输入框获得焦点时
-	        $('input,button').focus(function(){
+	        $('input,button').focus(function () {
 	            var _this = this;
 	            //无键盘时输入框到浏览器窗口顶部距离
 	            var noInputViewHeight = $(window).height() - $footerWap.height();
@@ -1835,7 +1839,7 @@
 	            //控制正文内容高度大于一屏，保证输入框固定底部
 	            contentHeight = contentHeight > noInputViewHeight ? contentHeight : noInputViewHeight;
 	            //因为弹出输入法需要时间，需延时处理
-	            setTimeout(function(){
+	            setTimeout(function () {
 	                //弹出输入法时滚动条的起始滚动距离
 	                var startScrollY = $(window).scrollTop();
 	                // //console.log("startScrollY:",startScrollY)
@@ -1849,9 +1853,9 @@
 	                // $(_this).css({'position':'absolute', 'top':inputTopPos });
 	                // $footerWap.css({'position':'absolute', 'top':inputTopPos });
 	                // $footerWap.css({'position':'absolute', 'top':noInputViewHeight });
-	                $footerWap.css({'display':'none' });
+	                $footerWap.css({'display': 'none'});
 	                //给窗口对象绑定滚动事件，保证页面滚动时div能吸附软键盘
-	                $(window).bind('scroll', function(){
+	                $(window).bind('scroll', function () {
 	                    //表示此时有软键盘存在，输入框浮在页面上了
 	                    if (inputTopHeight != noInputViewHeight) {
 	                        //页面滑动后，输入框需跟随移动的距离
@@ -1867,10 +1871,10 @@
 	                    }
 	                });
 	            }, 100);
-	        }).blur(function(){//输入框失焦后还原初始状态
+	        }).blur(function () {//输入框失焦后还原初始状态
 	            $(".div-input").removeAttr('style');
 	            // $(window).unbind('scroll');
-	            $footerWap.css({'display':'block' });
+	            $footerWap.css({'display': 'block'});
 	        });
 
 	    }
