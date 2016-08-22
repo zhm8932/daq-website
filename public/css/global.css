@@ -55,7 +55,7 @@
 .text-success {
   color: #7CBA37; }
 
-.text-info {
+.text-info, .topBar_info .city-name .choose-city .city.offline {
   color: #C4C4C4; }
 
 .back-primary {

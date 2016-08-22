@@ -387,6 +387,9 @@ select {
           color:#48BED8;
         }
       }
+      .city.offline{
+        @extend .text-info;
+      }
     }
   }
   .cartBtn i {
