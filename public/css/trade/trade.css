@@ -227,6 +227,8 @@ header {
   background-position: -75px -397px; }
 .order-success .trade-step .commit i {
   background-position: -163px -271px; }
+.order-success .pay-way {
+  margin-bottom: 50px; }
 .order-success .pay-box {
   display: inline-block;
   width: 150px;
@@ -256,7 +258,7 @@ header {
     position: absolute;
     top: 34px;
     left: 57px;
-    width: 70px;
+    width: 55px;
     height: 70px;
     background-position: 0 -463px; }
   .order-success .order-box .order-box-right, .pay-success .order-box .order-box-right {
