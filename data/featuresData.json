@@ -1,0 +1,55 @@
+{
+  "data": [
+    {
+      "id":"1",
+      "name":"fuke",
+      "title":"宫颈疾病（一体化）门诊",
+      "des":"重视常见妇科疾病的临床诊断与诊疗，专注于帮助女性解决妇科疾病的预防保健、精准检查及科学治疗，全程参照国际诊疗指南推荐的诊疗方法和技术，同时联合国内外顶级妇科专家，解决各种疑难问题，根据女性不同生理阶段特点提供私密、受尊重的“一站式”健康管理服务。",
+      "clinics":["女性生殖道感染的规范化筛查和治疗","宫颈病变一体化门诊","异常子宫出血、子宫内膜异位症和子宫腺肌病的中西医结合治疗。","生殖健康门诊，提供女性生殖健康咨询和保健，以及不孕症筛查与中西医结合治疗。"],
+      "imgIndex":"/public/images/department/zljg_img1.png",
+      "doctors":[{"doctorName":"孙蒂","doctorTitle":"代理医疗总监、医学检验科主任","imgUrl":"/public/images/department/fuke_02.jpg"},{"doctorName":"乔理斯","doctorTitle":"代理医疗总监、医学检验科主任","imgUrl":"/public/images/department/fuke_03.jpg"},{"doctorName":"玛丽","doctorTitle":"代理医疗总监、医学检验科主任","imgUrl":"/public/images/department/fuke_01.jpg"}]
+    },
+    {
+      "id":"2",
+      "name":"nanke",
+      "title":"前列腺专业门诊",
+      "des":"泌尿外科是都安全医疗基于精准检查与诊疗的重点科室之一，由国内外知名资深外科专家领衔，配备经验丰富的护理团队，提供符合国际标准的常见泌尿系统疾病的诊疗服务，基于与国际一流水平同步的精准检测设备，践行“明确病因，个性诊疗”的诊疗理念，在前列腺炎、男性不育、性功能障碍等泌尿外科疾病方面提供个性化的诊疗方案及全程的健康管理服务。",
+      "clinics":["男性泌尿生殖道感染的规范化筛查与治疗。","前列腺疾病专业门诊，提供前列腺炎和前列腺增生的综合治疗、前列腺癌的早期筛查。","性功能障碍、早泄、ED的综合治疗。","男性不育症的筛查与中西医结合治疗。"],
+      "imgIndex":"/public/images/department/zljg_img5.png",
+      "doctors":[{"doctorName":"孙蒂","doctorTitle":"代理医疗总监、医学检验科主任","imgUrl":"/public/images/department/fuke_02.jpg"},{"doctorName":"乔理斯","doctorTitle":"代理医疗总监、医学检验科主任","imgUrl":"/public/images/department/fuke_03.jpg"},{"doctorName":"玛丽","doctorTitle":"代理医疗总监、医学检验科主任","imgUrl":"/public/images/department/fuke_01.jpg"}]
+
+    },
+    {
+      "id":"3",
+      "name":"pifu",
+      "title":"生殖健康门诊",
+      "des":"具备专业的医护团队及人性化的护理流程系统，提供全面、专业的常见皮肤病诊疗与护理，开展各种激光疗法、冷冻疗法、光动力疗法，解决不同皮肤问题及皮肤性病问题。",
+      "clinics":["常见皮肤疾病：过敏性皮炎、湿疹、荨麻疹、痤疮。","真菌性皮肤病：手足癣、体癣、股癣、甲癣、深部真菌病。","病毒性及其他感染性疾病：带状疱疹、生殖器疱疹、梅毒、丹毒、疣、水痘。","过敏源血液检测/斑贴试验。"],
+      "imgIndex":"/public/images/department/zljg_img2.png",
+      "doctors":[{"doctorName":"孙蒂","doctorTitle":"代理医疗总监、医学检验科主任","imgUrl":"/public/images/department/fuke_02.jpg"},{"doctorName":"乔理斯","doctorTitle":"代理医疗总监、医学检验科主任","imgUrl":"/public/images/department/fuke_03.jpg"},{"doctorName":"玛丽","doctorTitle":"代理医疗总监、医学检验科主任","imgUrl":"/public/images/department/fuke_01.jpg"}]
+
+    },
+    {
+      "id":"4",
+      "name":"yufang",
+      "title":"中医特色门诊",
+      "des":"预防保健是家庭医学的基础。都安全医疗预防保健科将个人及家庭的健康需求纳入全流程健康管理范畴，为个人及家庭提供一系列专业的健康教育、健康咨询及预防保健计划，并通过早期干预等措施，达到预防疾病，促进健康和提高生命质量的健康需求，避免出现健康隐患。",
+      "clinics":["男性健康计划","女性健康计划","癌症预防计划","家庭保健项目及疫苗接种"],
+      "imgIndex":"/public/images/department/zljg_img4.png",
+      "doctors":[{"doctorName":"孙蒂","doctorTitle":"代理医疗总监、医学检验科主任","imgUrl":"/public/images/department/fuke_02.jpg"},{"doctorName":"乔理斯","doctorTitle":"代理医疗总监、医学检验科主任","imgUrl":"/public/images/department/fuke_03.jpg"},{"doctorName":"玛丽","doctorTitle":"代理医疗总监、医学检验科主任","imgUrl":"/public/images/department/fuke_01.jpg"}]
+
+    },
+    {
+      "id":"5",
+      "name":"zhongyi",
+      "title":"分子诊断中心",
+      "des":"由国内知名的中医临床专家牵头，配备专业的医疗团队，践行“养治结合、整体治疗”和“治未病”的理念，专注于妇科疾病、女性不孕、男性不育的中西医结合治疗。",
+      "clinics":["北京中医药大学名医工作室","广州中医药大学名医工作室","南京中医药大学名医工作室"],
+      "imgIndex":"/public/images/department/zljg_img1.png",
+      "doctors":[{"doctorName":"孙蒂","doctorTitle":"代理医疗总监、医学检验科主任","imgUrl":"/public/images/department/fuke_02.jpg"},{"doctorName":"乔理斯","doctorTitle":"代理医疗总监、医学检验科主任","imgUrl":"/public/images/department/fuke_03.jpg"},{"doctorName":"玛丽","doctorTitle":"代理医疗总监、医学检验科主任","imgUrl":"/public/images/department/fuke_01.jpg"}]
+
+    }
+
+
+  ]
+}

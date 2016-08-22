@@ -1,0 +1,38 @@
+extends ../layout
+//--科室门诊详情页
+block content
+    link(href='/public/css/agencys/agency_infos.css',rel='styleSheet')
+    include ../includes/responsive
+    include ../includes/nav
+    - var data = get_feature_detail
+    .positon.wrapper
+        if get_feature_detail
+            |您的位置为：首页<em>#{sep}</em>机构网络<em>#{sep}</em>#{get_feature_detail.title}
+        else
+            |您的位置为：首页<em>#{sep}</em>机构网络
+    section
+        .wrapper.agencys_com.clearfix
+            if !get_feature_detail
+                aside 暂无内容
+            else
+                h2 #{get_feature_detail.title}
+                a.history(href='javascript:;') 返回上一级
+                p #{get_feature_detail.des}
+                strong 诊疗范围：
+                ul
+                    if get_feature_detail.clinics
+                        each item in get_feature_detail.clinics
+                            li #{item}
+                .img_list
+                    if get_feature_detail.clinics
+                        each item in get_feature_detail.doctors
+                            figure
+                                img(src=item.imgUrl,alt="#{item.doctorName}专家",title="#{item.doctorName}专家")
+                                figcaption
+                                    h4 #{item.doctorName}
+                                    p #{item.doctorTitle}
+
+
+    include ../includes/standard_list
+    include ../includes/footer
+    script(src="/public/js/agencys/department_detail.bundle.js",type="text/javascript",charset="UTF-8")

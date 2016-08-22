@@ -83,26 +83,6 @@ block content
           else
             ul#sliderBox
               +agencys_list()
-
-
-        //-div
-          ul#focus
-              li
-                  a(href='/agencys')
-                    <img src="/public/images/department/laboratory_01.jpg">
-              li
-                a(href='/agencys')
-                  <img src="/public/images/department/laboratory_01.jpg">
-              li
-                a(href='/agencys')
-                  <img src="/public/images/department/laboratory_01.jpg">
-              li
-                a(href='/agencys')
-                  <img src="/public/images/department/laboratory_01.jpg">
-              li
-                a(href='/agencys')
-                  <img src="/public/images/department/laboratory_01.jpg">
-
         div.tc.clear
           a.more(href='/agencys',target='_blank')
             |更多
@@ -117,23 +97,23 @@ block content
         p 提供宫颈病变、前列腺、生殖健康、中医特色、分子诊断等特色医疗服务。。
       .feature
         figure
-          a(href='')
+          a(href='/agencys/feature/detail/1')
             span.s01
             figcaption 宫颈病变一体化门诊
         figure
-          a(href='')
+          a(href='/agencys/feature/detail/2')
             span.s02
             figcaption 前列腺专业门诊
         figure
-          a(href='')
+          a(href='/agencys/feature/detail/3')
             span.s03
             figcaption 生殖健康门诊
         figure
-          a(href='')
+          a(href='/agencys/feature/detail/4')
             span.s04
             figcaption 中医特色门诊
         figure
-          a(href='')
+          a(href='/agencys/feature/detail/5')
             span.s05
             figcaption 分子诊断中心
   section.item_list.clearfix
@@ -185,7 +165,8 @@ block content
             a.more(href='/screenings/goods')
               | 更多
               i.icon
-  section.item_list.standard_wrapper.boxBg.clearfix
+  include ./includes/standard_list
+  //-section.item_list.standard_wrapper.boxBg.clearfix
     .wrapper
         header.tc
           .standard_header

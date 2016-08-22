@@ -11,8 +11,12 @@ $conWidth:1600px;
 
 }
 @media only  screen and (max-width: $winW_1440 - 1px){
-  .health aside,.info_list .lr_list figure img{width: 30%;}
-  .health_detail,.health_list,.info_list .lr_list figure figcaption{width: 68%;}
+  .health aside{width: 30%;}
+  .health_detail,.health_list{width: 68%;}
+
+  .info_list .lr_list figure{
+    h4{padding: 0 0 8px 0;margin-bottom: 8px;}
+  }
 
   .item_list{
     .department_list{
