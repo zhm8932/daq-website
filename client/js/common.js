@@ -208,19 +208,21 @@ define(function (require, exports, module) {
                 var choosedCityId = $('#choosed-city-id').val();
                 for (var i = 0; i < data.length; i++) {
                     var city = data[i];
-                    var offlineClass = parseInt(data[i].isOnline) === 1 ? '' : 'offline';//给下线的城市添加class
-                    if (data[i].id == choosedCityId) {
-                        cityHtml += '<a href="javascript:;" class="city on '+offlineClass+'">' + city.name + '</a>';
-                    } else {
-                        cityHtml += '<a href="javascript:;" class="city '+offlineClass+'">' + city.name + '</a>';
-                    }
+                    var offlineClass = parseInt(data[i].isOnline) === 1 ? ' ' : ' offline ';//给下线的城市添加class
+                    var currentCityClass = data[i].id == choosedCityId ? ' on ' : ' ';//给当前城市添加class
+                    cityHtml += '<a href="javascript:;" data-city="" class="city '+currentCityClass+' '+offlineClass+'">' + city.name + '</a>';
                 }
                 $('.city-list').html(cityHtml);
-                var citys = $('.city-list .city').not('.offline');
-                for (var i = 0; i < data.length; i++) {
-                    citys.eq(i).data('city', data[i]).on('click', function () {
-                        changeCity($(this));
-                    });
+
+                var citys = $('.city-list .city');
+                for (var i = 0; i < citys.length; i++) {
+                    var city = citys.eq(i);
+                    city.data('city', data[i]);
+                    if(!city.hasClass('offline')){
+                        city.on('click', function () {
+                            changeCity($(this));
+                        });
+                    }
                 }
 
                 if (callback) {
