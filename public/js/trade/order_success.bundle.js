@@ -1,15 +1,15 @@
-webpackJsonp([16],{
+webpackJsonp([17],{
 
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(135);
+	__webpack_require__(137);
 	module.exports = __webpack_require__(7);
 
 
 /***/ },
 
-/***/ 135:
+/***/ 137:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
@@ -26,7 +26,7 @@ webpackJsonp([16],{
 
 
 
-	    var timer = __webpack_require__(136);
+	    var timer = __webpack_require__(138);
 
 	    var href = window.location.href;
 	    var domain = href.substr(0,href.indexOf('/',href.indexOf('/',href.indexOf('/')+1)+1));
@@ -154,7 +154,7 @@ webpackJsonp([16],{
 	        var popup = new utils.Popup({
 	            msg: '<div class="wechat-pay-dialog"><div class="left-box"><img src="data:image/png;base64,'+result.data.credentia.orderInfo+'"/><div class="wechat-tip"><i class="icon scan"></i>'+
 	            '<span class="scan-tip">请使用微信"扫一扫"扫描二维码支付</span></div><div class="price text-stress">￥'+(result.data.tradeDTO.amount/100).toFixed(2)+'</div></div>'+
-	            '<div class="right-box"><img src="/public/images/wxsm_img.png"/></div><div>',
+	            '<div class="right-box"><img src="/images/wxsm_img.png"/></div><div>',
 	            otherMsg:'',
 	            bOhterMsg:true,
 	            callback:function () {
@@ -204,7 +204,7 @@ webpackJsonp([16],{
 
 /***/ },
 
-/***/ 136:
+/***/ 138:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**

@@ -24,11 +24,15 @@
     left: 50%;
     margin-left: -800px; } }
 @media only screen and (max-width: 1439px) {
-  .health aside, .info_list .lr_list figure img {
+  .health aside {
     width: 30%; }
 
-  .health_detail, .health_list, .info_list .lr_list figure figcaption {
+  .health_detail, .health_list {
     width: 68%; }
+
+  .info_list .lr_list figure h4 {
+    padding: 0 0 8px 0;
+    margin-bottom: 8px; }
 
   .item_list .department_list li {
     height: auto; } }

@@ -1,5 +1,8 @@
 define(function(require){
     require('jquery');
+    require('../libs/jquery.ellipsis');
+    var utils = require('../libs/utils');
+    
     $(function () {
         // var BMap = require('../libs/BMap.js');
         // console.log(BMap);
@@ -56,6 +59,33 @@ define(function(require){
             }
 
         })
+
+        if(utils.browser.ie){
+            $('.ellips').ellipsis({
+                row:2,
+                char:'……',
+                callback: function() {
+                    // console.log($(this).text());
+                }
+            });
+        }else if(utils.browser.ios){
+            console.log('IOS')
+            $('.ellips').ellipsis({
+                row:2,
+                char:'…',
+                callback: function() {
+                    console.log($(this).text());
+                }
+            });
+        }else{
+            $('.ellips').ellipsis({
+                row:3,
+                char:'……',
+                callback: function() {
+                    console.log($(this).text());
+                }
+            });
+        }
 
     })
 
