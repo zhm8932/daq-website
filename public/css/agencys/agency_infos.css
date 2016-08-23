@@ -35,6 +35,17 @@
     top: 30px; }
     .agencys_com .history:hover {
       color: #f1292b; }
+  .agencys_com h3 {
+    display: inline-block;
+    font-size: 18px;
+    color: #FFF;
+    padding: 0 30px 0 20px;
+    margin: 20px 0;
+    border-radius: 0 100px 100px 0;
+    height: 46px;
+    line-height: 46px;
+    width: auto;
+    background-color: #48BED8; }
 
 .img_list {
   margin: 20px 0 0 -1.3%; }

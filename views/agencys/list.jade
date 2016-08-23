@@ -21,17 +21,20 @@ block content
                 if get_agency_list
                     each item in get_agency_list
                         figure
-                            a(href='/agencys/detail/#{item.id}')
+                            -var href = 'javascript:;'
+                            if item.isOnline
+                                -href = "/agencys/detail/"+item.id
+                            a(href=href,target='_blank',title=item.title)
                                 if browser.ie
                                     img(src=item.imgUrl,alt='#{item.title}')
                                 else
                                     img(data-original=item.imgUrl,alt='#{item.title}')
                             figcaption
-                                h4: a(href='/agencys/detail/#{item.id}') #{item.title}
+                                h4: a(href=href,target='_blank',title=item.title) #{item.title}
                                 p  服务项目：#{item.serviceType}
                                 p  地址：#{item.address}
                                 p  上门区域：#{item.serviceArea}
-                                a.more(href='/agencys/detail/#{item.id}') 更多
+                                a.more(href=href,target='_blank') 更多
                 else
                     aside 暂无数据
                 //-figure

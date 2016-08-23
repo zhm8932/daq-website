@@ -41,25 +41,7 @@ exports.get_agency_detail = function (req,res,next) {
     })
 }
 
-exports.get_department_list = function (req,res,next) {
-    var dataPath = path.resolve(__dirname,'../data','departmentData.json');
-    var id = req.params.id;
-    console.log("dataPath:",dataPath)
-    console.log("id:",id)
-    fs.readFile(dataPath,function (err,data) {
-        var json = JSON.parse(data.toString());
-        var data = json.data;
-        // console.log("data:",json)
-        console.log("data:",typeof  json);
-        // if(id){
-        //     data = data.filter(function (item,index) {
-        //         return item.id==id
-        //     })
-        // }
-        res.locals.get_department_list = data;
-        next();
-    })
-}
+
 exports.get_department_detail = function (req,res,next) {
     var dataPath = path.resolve(__dirname,'../data','departmentData.json');
     var id = req.params.id;

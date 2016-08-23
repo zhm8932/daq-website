@@ -26,6 +26,7 @@
       "clinics":["常见皮肤疾病：过敏性皮炎、湿疹、荨麻疹、痤疮。","真菌性皮肤病：手足癣、体癣、股癣、甲癣、深部真菌病。","病毒性及其他感染性疾病：带状疱疹、生殖器疱疹、梅毒、丹毒、疣、水痘。","过敏源血液检测/斑贴试验。"],
       "imgIndex":"/public/images/department/zljg_img2.png",
       "imgUrl":["/public/images/department/pifu_01.jpg","/public/images/department/pifu_02.jpg","/public/images/department/pifu_03.jpg"]
+
     },
     {
       "id":"4",

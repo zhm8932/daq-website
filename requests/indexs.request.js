@@ -42,6 +42,7 @@ exports.login = function (req,res,next) {
         var json = JSON.parse(data);
         if(json.success){
             req.session.userInfo = json.data;
+            res.cookie('cartNum','null',{maxAge:0});
             res.cookie('accountId',json.data.userAllInfo.accountCommon.id);
         }
         res.send(data);
@@ -55,6 +56,7 @@ exports.logout = function (req,res,next) {
     // });
     req.session.userInfo = null;
     res.cookie('accountId','null',{maxAge:0});
+    res.cookie('cartNum','null',{maxAge:0});
     res.send('{"code":"200","success":"true"}');
 };
 
