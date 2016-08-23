@@ -118,7 +118,13 @@
   .footer dl dd {
     width: 25%; }
     .footer dl dd p {
-      width: 80%; } }
+      width: 80%; }
+
+  .agency_box .agency_nav {
+    width: 13%; }
+  .agency_box .lr_list {
+    width: 86%;
+    padding-left: 3%; } }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   .wrapper {
     width: auto;
@@ -213,7 +219,16 @@
     width: 310px;
     display: inline-block; }
     .header .slogan img {
-      width: 100%; } }
+      width: 100%; }
+
+  .agency_box .agency_nav {
+    width: 13%; }
+  .agency_box .lr_list {
+    width: 86%;
+    padding-left: 3%; }
+    .agency_box .lr_list figure h4 {
+      padding-bottom: 6px;
+      margin-bottom: 6px; } }
 @media only screen and (max-width: 768px) {
   * {
     font-family: 'HanHei SC', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif,"微软雅黑"; }
@@ -225,6 +240,12 @@
     font-size: 16px; }
     .userAgreement h3 {
       font-size: 18px; }
+
+  .agency_box .agency_nav {
+    width: 13%; }
+  .agency_box .lr_list {
+    width: 86%;
+    padding-left: 3%; }
 
   .pagination {
     padding: 0px; }
