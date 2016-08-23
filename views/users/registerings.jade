@@ -58,60 +58,60 @@ block content
                                 td(colspan='6').tc 暂无挂号
 
                             else
-                            each item in data
-                                tr.item(data-id="#{item.id}",data-payid="#{item.payId}",data-cost="#{item.cost}")
-                                    -var hosname = '';
-                                    each h in item.doctorDTO.hospitalReDepartments
-                                        -var name = h.hospitalName;
-                                        -hosname = name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
-                                    td
-                                        p #{item.id}
-                                        p.text-sec 下单时间:&nbsp;
-                                            span #{moment(item.updatedAt).format('YYYY-MM-DD HH:mm')}
-                                    td
-                                        if item.doctorDTO
-                                            p #{item.doctorDTO.doctorName}&nbsp;#{item.doctorDTO.title}
-                                            p.text-sec #{hosname}
-                                    td
-                                        p #{moment(item.start).format('YYYY-MM-DD')}
-                                        p
-                                            span.start #{moment(item.start).format('HH:mm')}
-                                            |-
-                                            span.end #{moment(item.end).format('HH:mm')}
+                                each item in data
+                                    tr.item(data-id="#{item.id}",data-payid="#{item.payId}",data-cost="#{item.cost}")
+                                        -var hosname = '';
+                                        each h in item.doctorDTO.hospitalReDepartments
+                                            -var name = h.hospitalName;
+                                            -hosname = name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
+                                        td
+                                            p #{item.id}
+                                            p.text-sec 下单时间:&nbsp;
+                                                span #{moment(item.updatedAt).format('YYYY-MM-DD HH:mm')}
+                                        td
+                                            if item.doctorDTO
+                                                p #{item.doctorDTO.doctorName}&nbsp;#{item.doctorDTO.title}
+                                                p.text-sec #{hosname}
+                                        td
+                                            p #{moment(item.start).format('YYYY-MM-DD')}
+                                            p
+                                                span.start #{moment(item.start).format('HH:mm')}
+                                                |-
+                                                span.end #{moment(item.end).format('HH:mm')}
 
-                                    if item.reservationStatus == 0
-                                        td.status.text-stress 未支付
-                                        //+payway(item)
-                                        td
-                                            p 支付剩余时间
-                                            p.timer.text-stress(data-paytime="#{item.updatedAt}",data-currenttime="#{item.currentTime}") 00分00秒
-                                        td
-                                            p: a(href="/treats/reg/topay?reservationId=#{item.id}") 继续支付
-                                            p: a(href="javascript:void(0)").cancel-reg 取消
-                                    else if item.reservationStatus == 1
-                                        td.status.text-stress 待就诊
-                                        +payway(item)
-                                        td: a(href="javascript:void(0)").cancel-reg 取消
-                                    else if item.reservationStatus == 2
-                                        td.status 已完成
-                                        +payway(item)
-                                        td
-                                    else if item.reservationStatus == 3
-                                        td.status.text-sec 已过期
-                                        +payway(item)
-                                        td: a(href="javascript:void(0)").del-reg 删除
-                                    else if item.reservationStatus == 4 || item.reservationStatus == 5 || item.reservationStatus == 6
-                                        td.status.text-sec 已取消
-                                        +payway(item)
-                                        td: a(href="javascript:void(0)").del-reg 删除
-                                    //else if item.reservationStatus == 5
-                                    //    td.text-sec 退款中
-                                    //    +payway
-                                    //    td
-                                    //else if item.reservationStatus == 6
-                                    //    td.text-sec 已退款
-                                    //    +payway
-                                    //    td: a(href="javascript:void(0)").del-reg 删除
+                                        if item.reservationStatus == 0
+                                            td.status.text-stress 未支付
+                                            //+payway(item)
+                                            td
+                                                p 支付剩余时间
+                                                p.timer.text-stress(data-paytime="#{item.updatedAt}",data-currenttime="#{item.currentTime}") 00分00秒
+                                            td
+                                                p: a(href="/treats/reg/topay?reservationId=#{item.id}") 继续支付
+                                                p: a(href="javascript:void(0)").cancel-reg 取消
+                                        else if item.reservationStatus == 1
+                                            td.status.text-stress 待就诊
+                                            +payway(item)
+                                            td: a(href="javascript:void(0)").cancel-reg 取消
+                                        else if item.reservationStatus == 2
+                                            td.status 已完成
+                                            +payway(item)
+                                            td
+                                        else if item.reservationStatus == 3
+                                            td.status.text-sec 已过期
+                                            +payway(item)
+                                            td: a(href="javascript:void(0)").del-reg 删除
+                                        else if item.reservationStatus == 4 || item.reservationStatus == 5 || item.reservationStatus == 6
+                                            td.status.text-sec 已取消
+                                            +payway(item)
+                                            td: a(href="javascript:void(0)").del-reg 删除
+                                        //else if item.reservationStatus == 5
+                                        //    td.text-sec 退款中
+                                        //    +payway
+                                        //    td
+                                        //else if item.reservationStatus == 6
+                                        //    td.text-sec 已退款
+                                        //    +payway
+                                        //    td: a(href="javascript:void(0)").del-reg 删除
                 else
                     .registerings
                         each item in data
