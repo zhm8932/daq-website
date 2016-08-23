@@ -2899,12 +2899,12 @@
 	    }
 	    function cartCoutAddOne() {
 	        var cartNum = parseInt($cartNum.text())+1;
-	        $.cookie('cartNum', cartNum,{path:"/"})
+	        $.cookie('cartNum', cartNum,{path:"/"});
 	        $cartNum.text(cartNum);
 	    }
 	    function cartCoutDelOne() {
 	        var cartNum = parseInt($cartNum.text())-1;
-	        $.cookie('cartNum', cartNum,{path:"/"})
+	        $.cookie('cartNum', cartNum,{path:"/"});
 	        $cartNum.text(cartNum);
 	    }
 

@@ -1,9 +1,11 @@
 /*
  * 公共请求中间件
  * */
-var config = require('../config')
-var api = require('../utils/api')
-var util = require('../utils/ajax')
+var config = require('../config');
+var api = require('../utils/api');
+var util = require('../utils/ajax');
+const path = require('path');
+const fs = require('fs');
 
 exports.get_city = function(req,res,next){
     var bizParam = {
@@ -14,9 +16,7 @@ exports.get_city = function(req,res,next){
 
     util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,req,res,bizParam,function (err,data) {
         var json = JSON.parse(data);
-        console.log("get_city:",json)
         if(!err) {
-            console.log("333333333:")
             req.get_city = json.data;
         }
         next()
@@ -118,6 +118,25 @@ exports.get_department =function(req,res,next){
         next()
         //callback && callback(json,success);
     });
+}
+exports.get_department_list = function (req,res,next) {
+    var dataPath = path.resolve(__dirname,'../data','departmentData.json');
+    var id = req.params.id;
+    console.log("dataPath:",dataPath)
+    console.log("id:",id)
+    fs.readFile(dataPath,function (err,data) {
+        var json = JSON.parse(data.toString());
+        var data = json.data;
+        // console.log("data:",json)
+        console.log("data:",typeof  json);
+        // if(id){
+        //     data = data.filter(function (item,index) {
+        //         return item.id==id
+        //     })
+        // }
+        res.locals.get_department_list = data;
+        next();
+    })
 }
 
 

@@ -15,6 +15,9 @@
       color:$text_red_F1;
     }
   }
+  h3{
+    display: inline-block; font-size: 18px;color: $white; padding: 0 30px 0 20px;margin: 20px 0; border-radius: 0 100px 100px 0;height:46px;line-height:46px;width: auto;background-color: $bgc_48B;
+  }
 }
 
 .img_list{
@@ -59,7 +62,7 @@
         &:hover{color: $text_red_F1}
       }
     }
-    .more{padding: 0px 20px; border: 1px solid $bdrc_48B;color: $textc_48B;border-radius: 5px;margin: 5px 0 10px;display: inline-block;}
+    .more{padding: 0px 20px; border: 1px solid $bdrc_48B;color: $textc_48B;border-radius: 5px;margin: 10px 0 10px;display: inline-block;}
   }
 
 
