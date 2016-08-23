@@ -1,15 +1,15 @@
-webpackJsonp([18],{
+webpackJsonp([17],{
 
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(139);
+	__webpack_require__(137);
 	module.exports = __webpack_require__(7);
 
 
 /***/ },
 
-/***/ 138:
+/***/ 136:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -70,7 +70,7 @@ webpackJsonp([18],{
 
 /***/ },
 
-/***/ 139:
+/***/ 137:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
@@ -81,7 +81,7 @@ webpackJsonp([18],{
 	            window.location.href = '/treat/regsource/list';
 	        }
 	    });
-	    var timer = __webpack_require__(138);
+	    var timer = __webpack_require__(136);
 
 	    var payId = $('#payId').val();
 
@@ -202,7 +202,7 @@ webpackJsonp([18],{
 	        var popup = new utils.Popup({
 	            msg: '<div class="wechat-pay-dialog"><div class="left-box"><img src="data:image/png;base64,'+result.data.credentia.orderInfo+'"/><div class="wechat-tip"><i class="icon scan"></i>'+
 	            '<span class="scan-tip">请使用微信"扫一扫"扫描二维码支付</span></div><div class="price text-stress">￥'+result.data.tradeDTO.amount/100+'</div></div>'+
-	            '<div class="right-box"><img src="/images/wxsm_img.png"/></div><div>',
+	            '<div class="right-box"><img src="/public/images/wxsm_img.png"/></div><div>',
 	            otherMsg:'',
 	            bOhterMsg:true,
 	            callback:function () {
