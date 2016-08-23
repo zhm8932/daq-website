@@ -721,7 +721,7 @@ define(function(require,exports,module) {
                     completeDialog.find('.prompt em').html(result.msg);
                     completeDialog.find('.prompt').show();
                     $this.removeClass('disabled').on('click', function () {
-                        completeInfo($this);
+                        completeInfo(popup);
                         return false;
                     });
                 }
@@ -736,7 +736,7 @@ define(function(require,exports,module) {
                 }
                 completeDialog.find('.prompt').show();
                 $this.removeClass('disabled').on('click', function () {
-                    completeInfo($this);
+                    completeInfo(popup);
                     return false;
                 });
             }

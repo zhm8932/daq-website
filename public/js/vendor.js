@@ -2892,7 +2892,7 @@
 	                }
 	                completeDialog.find('.prompt').show();
 	                $this.removeClass('disabled').on('click', function () {
-	                    completeInfo($this);
+	                    completeInfo(popup);
 	                    return false;
 	                });
 	            }
