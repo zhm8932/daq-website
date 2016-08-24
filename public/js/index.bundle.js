@@ -54,7 +54,7 @@ webpackJsonp([8],{
 	            navigation: false,
 	            play: {
 	                active: false,
-	                auto: true,
+	                auto: false,
 	                interval: 6000,
 	                swap: true
 	            },
@@ -178,10 +178,25 @@ webpackJsonp([8],{
 	        display: "none",
 	        webkitBackfaceVisibility: "hidden"
 	      });
+	      var winW = $(window).width();
+	      console.log("winW:",winW)
 	      $.each($(".slidesjs-control", $element).children(), function(i) {
 	        var $slide;
 	        $slide = $(this);
-	        return $slide.attr("slidesjs-index", i);
+	        var width = $slide.children().width();
+
+
+	        console.log("$slide:",$slide)
+	        console.log("$slide.children():",$slide.children())
+	        console.log("$slide.width():",$slide.width())
+	        console.log("$slide.children().width():",$slide.children().width())
+	        if(width>winW){
+	          $slide.children().css({
+	            "margin-left":(winW-width)/2
+	          })
+	        }
+
+	        return $slide.attr("slidesjs-index", i).addClass('slide_'+i);
 	      });
 	      if (this.data.touch) {
 	        $(".slidesjs-control", $element).on("touchstart", function(e) {
@@ -297,16 +312,43 @@ webpackJsonp([8],{
 	      var $element, height, width;
 	      $element = $(this.element);
 	      this.data = $.data(this);
+
+	      var winW = $(window).width();
+	      console.log("winW:",winW)
+	      $.each($(".slidesjs-control", $element).children(), function(i) {
+	        var $slide;
+	        $slide = $(this);
+	        var width = $slide.children().width();
+
+
+	        console.log("$slide:",$slide)
+	        console.log("$slide.children():",$slide.children())
+	        console.log("$slide.width():",$slide.width())
+	        console.log("$slide.children().width():",$slide.children().width())
+	        if(width>winW){
+	          $slide.children().css({
+	            "margin-left":(winW-width)/2
+	          })
+	        }
+
+	        return $slide.attr("slidesjs-index", i);
+	      });
+
 	      $(".slidesjs-control", $element).children(":not(:eq(" + this.data.current + "))").css({
 	        display: "none",
 	        left: 0,
 	        zIndex: 0
 	      });
 	      width = $element.width();
-	      height = (this.options.height / this.options.width) * width;
+	      height = $element.find('.slidesjs-slide').height();
 
+	      // height = (this.options.height / this.options.width) * width;
+
+	      // console.log("width:",width)
 	      // console.log("height:",height)
+	      // console.log("height:",$element)
 	      this.options.width = width;
+	      this.options.height = height;
 	      this.options.height = height;
 	      return $(".slidesjs-control, .slidesjs-container", $element).css({
 	        width: width,

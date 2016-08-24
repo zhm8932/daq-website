@@ -345,7 +345,7 @@ select {
     .choose-city{
       position:absolute;
       top:40px;
-      left:-48px;
+      left:-36px;
       display:none;
       width:160px;
       padding:10px 10px;
@@ -388,7 +388,7 @@ select {
         }
       }
       .city.offline{
-        @extend .text-info;
+        @extend .text-info;cursor: not-allowed;
       }
     }
   }
@@ -404,20 +404,20 @@ select {
   padding: 5px 0;
   margin-top: $topBarHeight;
   .logo {
-    width: 173px;
-    height: 90px;
+    width: 185px;
+    height: 65px;
     background: url("../images/logo.png") no-repeat;
     background-size: 100%;
     text-indent: -9999px;
     display: block;
-    float: left;
+    float: left;margin-top:4px;
   }
   .slogan {
     height: 30px;
-    margin-left: 10px;
+    margin-left: 20px;display: inline-block;width: 325px;
     img {
       vertical-align: middle;
-      width:52%;
+      width:100%;
     }
   }
   .tel {
@@ -1220,7 +1220,7 @@ select {
       overflow: hidden;
       margin-right: -2px;
       img {
-        float: left;margin: 0 40px 20px 0;
+        float: left;margin: 0 40px 20px 0;width: 170px;
       }
       p {
         padding: 10px 0 0 0;

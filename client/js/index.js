@@ -40,7 +40,7 @@
             navigation: false,
             play: {
                 active: false,
-                auto: true,
+                auto: false,
                 interval: 6000,
                 swap: true
             },

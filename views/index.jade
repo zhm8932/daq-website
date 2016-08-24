@@ -6,7 +6,7 @@ block content
 
   .banner
     if !browser.mobile
-       .touchslider-viewport
+        //-.touchslider-viewport
         .slideBox
           p: img(src='/public/images/banner1.jpg')
           p: img(src='/public/images/banner2.jpg')
@@ -77,7 +77,7 @@ block content
                 a(href='/agencys/department/detail/4',target='_blank')
                   img(src='/public/images/department/jzzl_img5.png')
                 h4 预防保健科
-          if browser.mobile
+          if browser.mobile&&!browser.iPad
             ul
               +agencys_list()
           else
@@ -161,7 +161,7 @@ block content
                   span.old
                     | 原价￥
                     +transferUnit(item.price)
-          div.tc
+          div.tc.clear
             a.more(href='/screenings/goods')
               | 更多
               i.icon

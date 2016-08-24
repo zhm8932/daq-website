@@ -376,7 +376,7 @@ select {
     .topBar_info .city-name .choose-city {
       position: absolute;
       top: 40px;
-      left: -48px;
+      left: -36px;
       display: none;
       width: 160px;
       padding: 10px 10px;
@@ -414,6 +414,8 @@ select {
         text-align: center; }
         .topBar_info .city-name .choose-city .city.on, .topBar_info .city-name .choose-city .city.hover {
           color: #48BED8; }
+      .topBar_info .city-name .choose-city .city.offline {
+        cursor: not-allowed; }
   .topBar_info .cartBtn i {
     background-position: -38px 2px;
     width: 24px; }
@@ -424,19 +426,22 @@ select {
   padding: 5px 0;
   margin-top: 40px; }
   .header .logo {
-    width: 173px;
-    height: 90px;
+    width: 185px;
+    height: 65px;
     background: url("../images/logo.png") no-repeat;
     background-size: 100%;
     text-indent: -9999px;
     display: block;
-    float: left; }
+    float: left;
+    margin-top: 4px; }
   .header .slogan {
     height: 30px;
-    margin-left: 10px; }
+    margin-left: 20px;
+    display: inline-block;
+    width: 325px; }
     .header .slogan img {
       vertical-align: middle;
-      width: 52%; }
+      width: 100%; }
   .header .tel {
     float: right;
     position: absolute;
@@ -1128,7 +1133,8 @@ select {
       margin-right: -2px; }
       .footer dl dt img {
         float: left;
-        margin: 0 40px 20px 0; }
+        margin: 0 40px 20px 0;
+        width: 170px; }
       .footer dl dt p {
         padding: 10px 0 0 0; }
       .footer dl dt a {

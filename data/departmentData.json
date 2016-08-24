@@ -44,7 +44,7 @@
       "des":"由国内知名的中医临床专家牵头，配备专业的医疗团队，践行“养治结合、整体治疗”和“治未病”的理念，专注于妇科疾病、女性不孕、男性不育的中西医结合治疗。",
       "clinics":["北京中医药大学名医工作室","广州中医药大学名医工作室","南京中医药大学名医工作室"],
       "imgIndex":"/public/images/department/zljg_img1.png",
-      "imgUrl":["/public/images/department/nanke_01.jpg","/public/images/department/nanke_02.jpg","/public/images/department/nanke_03.jpg"]
+      "imgUrl":["/public/images/department/zhongyi_01.jpg","/public/images/department/zhongyi_02.jpg","/public/images/department/zhongyi_03.jpg"]
     },
     {
       "id":"6",
@@ -62,7 +62,7 @@
       "des":"资深的超声专业医师，配备先进的GE四维彩超，配套全面的腹部、腔内、浅表探头，为患者提供清晰的超声影像和精准的诊断建议。",
       "clinics":["腹部常规筛查","妇科专业超声","泌尿系统超声","乳腺、甲状腺等浅表超声"],
       "imgIndex":"/public/images/department/zljg_img1.png",
-      "imgUrl":["/public/images/department/nanke_01.jpg","/public/images/department/nanke_02.jpg","/public/images/department/nanke_03.jpg"]
+      "imgUrl":["/public/images/department/yinxiang_01.jpg","/public/images/department/yinxiang_02.jpg","/public/images/department/yinxiang_03.jpg"]
     }
 
 

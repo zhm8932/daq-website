@@ -23,6 +23,11 @@ $conWidth:1600px;
       li{height: auto;}
     }
   }
+  .agency_box{
+    .lr_list{width: 83%;padding-left: 3%;
+      figure h4{padding-bottom: 6px;margin-bottom: 6px;}
+    }
+  }
 }
 //@media only  screen and (min-width: $winW_1366) and (max-width: 1439px){
 @media only  screen and (min-width: $winW_1366) and (max-width: $winW_1440 - 1px){
@@ -39,7 +44,7 @@ $conWidth:1600px;
   .health_detail,.health_list{width: 68%;}
 }
 
-@media only screen and (min-width: 1280px) and (max-width: 1365px){
+@media only screen and (min-width: $winW_1280) and (max-width: $winW_1366 - 1px){
   $wrapperWidth:900px;
   .wrapper{width:$wrapperWidth}
   .home{margin-left:-$wrapperWidth/2 }
@@ -89,7 +94,7 @@ $conWidth:1600px;
   //.rightNav{margin-right: -610px;}
 
   .rightNav{
-    width:120px;margin-right: -530px;
+    width:110px;margin-right: -510px;
     ul{
       .lineBg{
         height: 11px;
@@ -113,8 +118,11 @@ $conWidth:1600px;
     }
   }
   .agency_box{
-    .agency_nav{width: 13%;}
-    .lr_list{width: 86%;padding-left: 3%;}
+    .lr_list{width: 86%;padding-left: 3%;
+      figure figcaption{
+        width: 68%;
+      }
+    }
   }
 
 }
@@ -214,13 +222,16 @@ $conWidth:1600px;
     img{width: 100%;}
   }
   .agency_box{
-    .agency_nav{width: 13%;}
     .lr_list{width: 86%;padding-left: 3%;
-
-      figure h4{padding-bottom: 6px;margin-bottom: 6px;}
+      figure{
+        h4{padding-bottom: 6px;margin-bottom: 6px;}
+        figcaption{width: 68%}
+      }
     }
   }
 }
+
+
 //最大为768px
 @media only screen and (max-width: $win_768){
   *{font-family: 'HanHei SC', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif,"微软雅黑";}
@@ -231,7 +242,6 @@ $conWidth:1600px;
   }
   //.icon{vertical-align: inherit;}
   .agency_box{
-    .agency_nav{width: 13%;}
     .lr_list{width: 86%;padding-left: 3%;}
   }
   .pagination{
@@ -296,8 +306,15 @@ $conWidth:1600px;
 
 @media only screen and (width: $win_768){
 
+  .header .wrapper,.wrapper{width: 748px;}
   .home{width: auto;left: 0px;
     .nav{left: 10px;top:140px;}
+  }
+  .item_list .department_list .movingBoxes{
+    .mb-left{
+        left: -12px;
+    }
+    .mb-right{right: -12px;}
   }
 
 }

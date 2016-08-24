@@ -50,12 +50,7 @@
       width: 90px;
       height: 90px;
       display: inline-block;
-      background: url("../images/featuresIcons.png") no-repeat 0 0;
-      -webkit-transition: all 0.3s linear;
-      -moz-transition: all 0.3s linear;
-      -ms-transition: all 0.3s linear;
-      -o-transition: all 0.3s linear;
-      transition: all 0.3s linear; }
+      background: url("../images/featuresIcons.png") no-repeat 0 0; }
       .item_list .feature figure span.s01 {
         background-position: 0px 0px; }
         .item_list .feature figure span.s01:hover {
@@ -137,9 +132,14 @@
   position: relative; }
   .banner .wrapper {
     position: relative; }
+  .banner .slideBox .slide_0 {
+    background: url("../images/banner1Bg.png") repeat-x; }
+  .banner .slideBox .slide_1 {
+    background: url("../images/banner2Bg.png") repeat-x; }
   .banner img {
-    width: 100%;
-    height: auto; }
+    width: 1600px;
+    height: auto;
+    margin: 0 auto; }
   .banner .bd {
     overflow: hidden; }
     .banner .bd a {
@@ -190,6 +190,9 @@
       width: 45%;
       float: right;
       background-color: #EA9089; }
+
+.treat_list {
+  overflow: hidden; }
 
 .mb-slider, .mb-scroll {
   width: 100%;
