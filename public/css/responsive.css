@@ -355,4 +355,7 @@
     width: 320px;
     display: inline-block; }
     .header .slogan img {
-      width: 100%; } }
+      width: 100%; }
+
+  .wechat-pay-dialog {
+    height: auto; } }

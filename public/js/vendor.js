@@ -30,7 +30,7 @@
 /******/ 	// "0" means "already loaded"
 /******/ 	// Array means "loading", array contains callbacks
 /******/ 	var installedChunks = {
-/******/ 		27:0
+/******/ 		26:0
 /******/ 	};
 
 /******/ 	// The require function
@@ -76,7 +76,7 @@
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
 
-/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"abouts","1":"agencys/department_detail","2":"agencys/detail","3":"agencys/infos","4":"agencys/list","5":"common","6":"config","7":"imgAuto","8":"index","9":"login","10":"screenings/goods","11":"screenings/goods_detail","12":"seajs.config","13":"searchs/search_report","14":"trade/cart","15":"trade/order_confirm","16":"trade/order_list","17":"trade/order_success","18":"treat/pay","19":"treat/reg_doc","20":"treat/reg_source_list","21":"users/account","22":"users/coupons","23":"users/order_detail","24":"users/orders","25":"users/patients","26":"users/registerings"}[chunkId]||chunkId) + ".bundle.js";
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"abouts","1":"agencys/detail","2":"agencys/infos","3":"agencys/list","4":"common","5":"config","6":"imgAuto","7":"index","8":"login","9":"screenings/goods","10":"screenings/goods_detail","11":"seajs.config","12":"searchs/search_report","13":"trade/cart","14":"trade/order_confirm","15":"trade/order_list","16":"trade/order_success","17":"treat/pay","18":"treat/reg_doc","19":"treat/reg_source_list","20":"users/account","21":"users/coupons","22":"users/order_detail","23":"users/orders","24":"users/patients","25":"users/registerings"}[chunkId]||chunkId) + ".bundle.js";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};
@@ -491,14 +491,18 @@
 
 	    //确认弹框:showComfirmDialog({tipText:"确定删除吗?",noConfirmBtn:true)
 	    function showComfirmDialog(options){
+	        var confirmBtnText = options.confirmBtnText || '确定';
+	        var cancelBtnText = options.cancelBtnText || '取消';
+
 	        var msg = '';
 	        if(options.noConfirmBtn){
 	            msg = '<div class="box-header">提示<i class="icon close closePopup"></i></div><div class="box-body">'+
-	                '<p class="confim-tip">'+options.tipText+'</p><div class="btn-box"><button class="cancelBtn closePopup">确定</button></div></div>';
+	                '<p class="confim-tip">'+options.tipText+'</p><div class="btn-box"><button class="cancelBtn closePopup">'+confirmBtnText+'</button></div></div>';
 	        }else{
 	            msg = '<div class="box-header">提示<i class="icon close closePopup"></i></div><div class="box-body">'+
-	            '<p class="confim-tip">'+options.tipText+'</p><div class="btn-box"><button class="submitBtn confirm-btn">确定</button><button class="cancelBtn closePopup">取消</button></div></div>';
+	                '<p class="confim-tip">'+options.tipText+'</p><div class="btn-box"><button class="cancelBtn closePopup">'+cancelBtnText+'</button><button class="submitBtn confirm-btn">'+confirmBtnText+'</button></div></div>';
 	        }
+
 	        var popup = new Popup({
 	            msg:msg,
 	            otherMsg:'confirm-btn',
@@ -2855,28 +2859,41 @@
 	        var $this = $('.complete-dialog span.ok');
 	        $this.addClass('disabled').off('click');
 	        var param = $('form[name=accInfoForm]').serialize()+'&gender='+gender;
-	        utils.SendAjax({
-	            url: '/users/account/complete',
-	            param: param,
-	            method: 'POST',
-	            tipText: '完善信息',
-	            callback: function (result) {
-	                //console.log("result:",result);
-	                var myMsg = new utils.MsgShow({
-	                    delayTime: 2000,
-	                    title: '<i class="icon"></i>完善成功!',
-	                    otherBox: 'successBox'
-	                });
-	                popup.hideBox();
-	                myMsg.hideMsg(1000);
-	            },
-	            errorFun: function (result) {
-	                if(result.data){
-	                    completeDialog.find('.prompt em').html('客户编码有误');
+	        $.ajax({
+	            url:'/users/account/complete',
+	            type:'POST',
+	            data:param,
+	            dataType:'json',
+	            success:function(result){
+	                if (result.success) {
+	                    var myMsg = new utils.MsgShow({
+	                        delayTime: 2000,
+	                        title: '<i class="icon"></i>完善成功!',
+	                        otherBox: 'successBox'
+	                    });
+	                    popup.hideBox();
+	                    myMsg.hideMsg(1000);
+	                } else {
+	                    completeDialog.find('.prompt em').html(result.msg);
 	                    completeDialog.find('.prompt').show();
+	                    $this.removeClass('disabled').on('click', function () {
+	                        completeInfo($this);
+	                        return false;
+	                    });
 	                }
+	            },
+	            error:function(data){
+	                if (data.status == '404') {
+	                    completeDialog.find('.prompt em').html('页面丢失，请稍后再试');
+	                } else if (data.status == '500') {
+	                    completeDialog.find('.prompt em').html('系统忙，请稍后再试');
+	                } else {
+	                    completeDialog.find('.prompt em').html('网络错误');
+	                }
+	                completeDialog.find('.prompt').show();
 	                $this.removeClass('disabled').on('click', function () {
 	                    completeInfo(popup);
+	                    return false;
 	                });
 	            }
 	        });

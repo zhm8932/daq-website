@@ -331,7 +331,6 @@ header {
   .wechat-pay-dialog .left-box {
     display: inline-block;
     width: 350px;
-    height: 445px;
     vertical-align: top; }
     .wechat-pay-dialog .left-box .wechat-tip {
       display: inline-block;
