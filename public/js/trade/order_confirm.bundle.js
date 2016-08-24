@@ -97,6 +97,7 @@ webpackJsonp([15],{
 	            method: 'POST',
 	            tipText: '提交订单',
 	            callback: function (result) {
+	                login.getCartCount();
 	                window.location.href = '/trade/order/orderSuccess?id='+result.id;
 	            },
 	            errorFun: function () {

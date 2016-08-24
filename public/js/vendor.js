@@ -30,7 +30,7 @@
 /******/ 	// "0" means "already loaded"
 /******/ 	// Array means "loading", array contains callbacks
 /******/ 	var installedChunks = {
-/******/ 		26:0
+/******/ 		27:0
 /******/ 	};
 
 /******/ 	// The require function
@@ -76,7 +76,7 @@
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
 
-/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"abouts","1":"agencys/detail","2":"agencys/infos","3":"agencys/list","4":"common","5":"config","6":"imgAuto","7":"index","8":"login","9":"screenings/goods","10":"screenings/goods_detail","11":"seajs.config","12":"searchs/search_report","13":"trade/cart","14":"trade/order_confirm","15":"trade/order_list","16":"trade/order_success","17":"treat/pay","18":"treat/reg_doc","19":"treat/reg_source_list","20":"users/account","21":"users/coupons","22":"users/order_detail","23":"users/orders","24":"users/patients","25":"users/registerings"}[chunkId]||chunkId) + ".bundle.js";
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"abouts","1":"agencys/department_detail","2":"agencys/detail","3":"agencys/infos","4":"agencys/list","5":"common","6":"config","7":"imgAuto","8":"index","9":"login","10":"screenings/goods","11":"screenings/goods_detail","12":"seajs.config","13":"searchs/search_report","14":"trade/cart","15":"trade/order_confirm","16":"trade/order_list","17":"trade/order_success","18":"treat/pay","19":"treat/reg_doc","20":"treat/reg_source_list","21":"users/account","22":"users/coupons","23":"users/order_detail","24":"users/orders","25":"users/patients","26":"users/registerings"}[chunkId]||chunkId) + ".bundle.js";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};
@@ -2877,7 +2877,7 @@
 	                    completeDialog.find('.prompt em').html(result.msg);
 	                    completeDialog.find('.prompt').show();
 	                    $this.removeClass('disabled').on('click', function () {
-	                        completeInfo($this);
+	                        completeInfo(popup);
 	                        return false;
 	                    });
 	                }
@@ -2908,8 +2908,9 @@
 	            tipText: '获取购物车数量',
 	            callback: function (result) {
 	                if(result.success){
-	                    var cartCout = result.data||'0';
-	                    $cartNum.html(cartCout)
+	                    var cartNum = result.data||'0';
+	                    $cartNum.html(cartNum)
+	                    $.cookie('cartNum', cartNum,{path:"/"});
 	                }
 	            }
 	        });

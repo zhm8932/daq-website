@@ -752,8 +752,9 @@ define(function(require,exports,module) {
             tipText: '获取购物车数量',
             callback: function (result) {
                 if(result.success){
-                    var cartCout = result.data||'0';
-                    $cartNum.html(cartCout)
+                    var cartNum = result.data||'0';
+                    $cartNum.html(cartNum)
+                    $.cookie('cartNum', cartNum,{path:"/"});
                 }
             }
         });
