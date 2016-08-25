@@ -540,7 +540,7 @@
 	                e.stopPropagation();
 	                var $this = $(this);
 	                var target = $(e.target);
-	                if($(target).is('li')){
+	                if(target.is('li')){
 	                    target.siblings().removeClass('active');
 	                    target.addClass('active');
 	                    var selectBox = $this.closest('.select-box');
