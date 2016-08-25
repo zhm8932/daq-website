@@ -5,6 +5,7 @@ var express = require('express');
 var router = express.Router();
 var request = require('../requests/trade.request');
 var authority = require('../handlers/authority.handler');
+var Handlers = require('../handlers/index.handler');
 
 router.get('/cart/list', authority.loginRequired,function (req, res, next) {
     request.GetCartList(req,res,function (err,data) {
@@ -37,7 +38,7 @@ router.post('/cart/delItem',function (req, res, next) {
 });
 
 
-router.post('/order/comfirmView', authority.loginRequired,function (req, res, next) {
+router.post('/order/comfirmView', authority.loginRequired,Handlers.get_cart_num,function (req, res, next) {
     var orderToken = Math.random().toString(36).substr(2);
     req.session.orderToken = orderToken;
     res.render('trade/orderConfirm', {
