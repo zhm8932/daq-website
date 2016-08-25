@@ -539,13 +539,15 @@
 	            $this.find('.options').on('click',function(e){
 	                e.stopPropagation();
 	                var $this = $(this);
-	                var t = $(e.target);
-	                t.siblings().removeClass('active');
-	                t.addClass('active');
-	                var selectBox = $this.closest('.select-box');
-	                var selectedText = selectBox.find('.selected .text');
-	                selectedText.html(t.html());
-	                selectBox.removeClass('open');
+	                var target = $(e.target);
+	                if($(target).is('li')){
+	                    target.siblings().removeClass('active');
+	                    target.addClass('active');
+	                    var selectBox = $this.closest('.select-box');
+	                    var selectedText = selectBox.find('.selected .text');
+	                    selectedText.html(target.html());
+	                    selectBox.removeClass('open');
+	                }
 	                // return false;
 	            });
 	        });
