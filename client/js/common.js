@@ -56,7 +56,7 @@ define(function (require, exports, module) {
         if (!$.cookie('locals_city') && !utils.browser.ie) {
             getLocalCity();
         } else if (utils.browser.ie) {
-            alert('IE')
+            // alert('IE')
         }
 
 

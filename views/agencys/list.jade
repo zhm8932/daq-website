@@ -30,11 +30,11 @@ block content
                                 else
                                     img(data-original=item.imgUrl,alt='#{item.title}')
                             figcaption
-                                h4: a(href=href,target='_blank',title=item.title) #{item.title}
+                                h4: a(href=href,title=item.title) #{item.title}
                                 p  服务项目：#{item.serviceType}
                                 p  地址：#{item.address}
                                 p  上门区域：#{item.serviceArea}
-                                a.more(href=href,target='_blank') 更多
+                                a.more(href=href,) 更多
                 else
                     aside 暂无数据
                 //-figure

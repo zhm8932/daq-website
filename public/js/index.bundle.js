@@ -186,10 +186,10 @@ webpackJsonp([8],{
 	        var width = $slide.children().width();
 
 
-	        console.log("$slide:",$slide)
-	        console.log("$slide.children():",$slide.children())
-	        console.log("$slide.width():",$slide.width())
-	        console.log("$slide.children().width():",$slide.children().width())
+	        // console.log("$slide:",$slide)
+	        // console.log("$slide.children():",$slide.children())
+	        // console.log("$slide.width():",$slide.width())
+	        // console.log("$slide.children().width():",$slide.children().width())
 	        if(width>winW){
 	          $slide.children().css({
 	            "margin-left":(winW-width)/2
@@ -321,10 +321,10 @@ webpackJsonp([8],{
 	        var width = $slide.children().width();
 
 
-	        console.log("$slide:",$slide)
-	        console.log("$slide.children():",$slide.children())
-	        console.log("$slide.width():",$slide.width())
-	        console.log("$slide.children().width():",$slide.children().width())
+	        // console.log("$slide:",$slide)
+	        // console.log("$slide.children():",$slide.children())
+	        // console.log("$slide.width():",$slide.width())
+	        // console.log("$slide.children().width():",$slide.children().width())
 	        if(width>winW){
 	          $slide.children().css({
 	            "margin-left":(winW-width)/2
@@ -340,12 +340,13 @@ webpackJsonp([8],{
 	        zIndex: 0
 	      });
 	      width = $element.width();
-	      height = $element.find('.slidesjs-slide').height();
+	      // height = $element.find('.slidesjs-slide').height();
+	      height = this.options.height;
 
 	      // height = (this.options.height / this.options.width) * width;
 
 	      // console.log("width:",width)
-	      // console.log("height:",height)
+	      console.log("height:",height)
 	      // console.log("height:",$element)
 	      this.options.width = width;
 	      this.options.height = height;

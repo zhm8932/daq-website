@@ -24,20 +24,6 @@
     height: 494px;
     background: url(../images/lg_img.png) 0 0 no-repeat; }
 
-.item_list .standard_header {
-  border: 2px solid #48BED8; }
-  .item_list .standard_header h2 {
-    background-color: #f8fafb;
-    margin: -15px 0;
-    display: inline-block;
-    position: relative;
-    top: -8px; }
-  .item_list .standard_header p {
-    background-color: #f8fafb;
-    display: inline-block;
-    position: relative;
-    bottom: -14px;
-    padding: 0 10px; }
 .item_list .feature {
   margin-left: -4%;
   padding-top: 40px; }

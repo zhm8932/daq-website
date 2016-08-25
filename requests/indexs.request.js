@@ -49,6 +49,7 @@ exports.login = function (req,res,next) {
     });
 
 };
+
 exports.logout = function (req,res,next) {
     // res.cookie('userInfo','null',{maxAge:0});
     // req.session.destroy(function(){

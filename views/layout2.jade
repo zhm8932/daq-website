@@ -1,0 +1,27 @@
+doctype
+html
+  head
+    title= title
+    meta(name='keywords',content= keywords)
+    meta(name='description',content= description)
+    //-meta(name='viewport',content='width=device-width,initial-scale=1')
+    meta(name='viewport',content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no")
+    meta(http-equiv="X-UA-Compatible",content="IE=edge")
+    meta(name='renderer',content='webkit')
+    include includes/head
+
+    <!--[if lt IE 9]>
+    script(src="/public/js/libs/html5shiv.min.js")
+    script(src="/public/js/libs/respond.min.js")
+    <![endif]-->
+    <!--[if IE 6]>
+    <script src="/public/js/libs/DD_belatedPNG-min.js"></script>
+    <script type="text/javascript">
+    DD_belatedPNG.fix('img,.icon')
+    </script>
+    <![endif]-->
+
+  body
+    //-include includes/header
+    block content
+

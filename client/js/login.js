@@ -744,7 +744,7 @@ define(function(require,exports,module) {
     }
     var $cartNum = $('.cartNum');
     //获取购物车数量
-    function getCartCount(accountId) {
+    function getCartCount(cb) {
         utils.SendAjax({
             url: '/trade/cart/GetCartCount',
             param: {},
@@ -755,6 +755,7 @@ define(function(require,exports,module) {
                     var cartNum = result.data||'0';
                     $cartNum.html(cartNum)
                     $.cookie('cartNum', cartNum,{path:"/"});
+                    cb&&cb();
                 }
             }
         });

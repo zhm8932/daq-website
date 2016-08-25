@@ -1597,7 +1597,7 @@
 	        if (!$.cookie('locals_city') && !utils.browser.ie) {
 	            getLocalCity();
 	        } else if (utils.browser.ie) {
-	            alert('IE')
+	            // alert('IE')
 	        }
 
 
@@ -2900,7 +2900,7 @@
 	    }
 	    var $cartNum = $('.cartNum');
 	    //获取购物车数量
-	    function getCartCount(accountId) {
+	    function getCartCount(cb) {
 	        utils.SendAjax({
 	            url: '/trade/cart/GetCartCount',
 	            param: {},
@@ -2911,6 +2911,7 @@
 	                    var cartNum = result.data||'0';
 	                    $cartNum.html(cartNum)
 	                    $.cookie('cartNum', cartNum,{path:"/"});
+	                    cb&&cb();
 	                }
 	            }
 	        });

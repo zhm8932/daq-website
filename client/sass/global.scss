@@ -535,6 +535,18 @@ select {
     }
   }
 
+  .standard_header{
+    border: 2px solid $bdrc_48B;
+    h2{
+      background-color: $bgc_gray_F5;
+      margin: -15px 0;display: inline-block;position: relative;top: -8px;
+    }
+    p{
+      background-color: $bgc_gray_F5;
+      display: inline-block;position: relative;bottom: -14px;padding: 0 10px;
+    }
+
+  }
   .pic_list {
     ul {
       margin-left: -17px;
