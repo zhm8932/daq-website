@@ -42,7 +42,7 @@ block content
                     each item in get_department_list
                         figure
                             a(href='javascript:void(0)',title=item.title)
-                                img(data-original=item.imgIndex)
+                                img(data-original=item.imgList)
                             figcaption
                                 h4: a(href='/agencys/department/detail/#{item.id}',alt=item.title) #{item.title}
                                 p.ellips #{item.des}

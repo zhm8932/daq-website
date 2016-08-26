@@ -48,35 +48,15 @@ block content
           |精准诊疗
         p 自聘知名三甲医院专家及各地名医工作室、医生集团深度战略合作，全程依据国际诊疗指南操作治疗，为您提供精准、规范、安心的诊疗服务。
       .pic_list.department_list
-        if get_department_success
+        if !get_department_list
+          aside 暂无内容
+        else
             mixin agencys_list()
-              li
-                a(href='/agencys/department/detail/1',target='_blank')
-                  img(src='/public/images/department/jzzl_img1.png')
-                h4 妇科
-                //-p
-                  |预防保健是家庭医学的基础。都安全医疗预防保健科将个人及家庭的健康需求纳入全流程健...
-              li
-                a(href='/agencys/department/detail/3',target='_blank')
-                  img(src='/public/images/department/jzzl_img2.png')
-                h4 皮肤科
-                //-p
-                  |都安全医疗皮肤科具备专业的医护团队及人性化的护理流程系统，提供全面、专业的常见皮...
-              li
-                a(href='/agencys/department/detail/2',target='_blank')
-                  img(src='/public/images/department/jzzl_img4.png')
-                h4 泌尿科
-                //-p
-                  |泌尿外科是都安全医疗基于精准检查与诊疗的重点科室之一，由国内外知名资深外科专家领...
-              li
-                a(href='/agencys/department/detail/6',target='_blank')
-                  img(src='/public/images/department/jzzl_img3.png')
-
-                h4 检验科
-              li
-                a(href='/agencys/department/detail/4',target='_blank')
-                  img(src='/public/images/department/jzzl_img5.png')
-                h4 预防保健科
+              each item in get_department_list
+                li
+                  a(href='/agencys/department/detail/#{item.id}',target='_blank')
+                    img(src=item.imgIndex)
+                  h4 #{item.title}
           if browser.mobile&&!browser.iPad
             ul
               +agencys_list()

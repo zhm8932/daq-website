@@ -3,6 +3,7 @@
 
   (function($, window, document) {
     var Plugin, defaults, pluginName;
+    var mobile= !!navigator.userAgent.match(/AppleWebKit.*Mobile.*/); //是否为移动终端
     pluginName = "slidesjs";
     defaults = {
       width: 940,
@@ -250,15 +251,20 @@
       });
       width = $element.width();
       // height = $element.find('.slidesjs-slide').height();
-      height = this.options.height;
 
+
+
+      if(mobile){
+        height = (this.options.height / this.options.width) * width;
+      }else{
+        height = this.options.height;
+      }
       // height = (this.options.height / this.options.width) * width;
 
       // console.log("width:",width)
       console.log("height:",height)
       // console.log("height:",$element)
       this.options.width = width;
-      this.options.height = height;
       this.options.height = height;
       return $(".slidesjs-control, .slidesjs-container", $element).css({
         width: width,

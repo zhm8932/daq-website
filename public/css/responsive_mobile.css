@@ -108,6 +108,9 @@
   .banner, .nav, .footer, .copyright, .wrapper {
     width: auto; }
 
+  .banner img {
+    width: 100%; }
+
   .topBar {
     height: 0px;
     position: relative;
@@ -261,7 +264,8 @@
         width: 32.5%;
         margin: 0 auto;
         float: none;
-        display: inline-block; }
+        display: inline-block;
+        vertical-align: middle; }
         .item_list .feature figure figcaption {
           height: 48px; }
     .item_list .department_list {
@@ -336,9 +340,10 @@
 
   .goods_detail .tab a, .goods_detail .tab span {
     font-size: 18px;
-    width: 33.3%;
+    width: 30%;
     text-align: center;
-    padding: 0px; }
+    padding: 0px;
+    margin: 0 0 0 2.3%; }
 
   .health_list {
     width: 100%; }
@@ -360,7 +365,11 @@
       float: none;
       width: auto; }
       .agency_box .agency_nav span {
-        display: inline-block; }
+        display: inline-block;
+        width: 14.28%; }
+        .agency_box .agency_nav span a {
+          width: auto;
+          display: block; }
     .agency_box .lr_list {
       width: auto;
       float: none;
@@ -1396,6 +1405,8 @@
   .item_list .standard h2 {
     font-size: 20px;
     height: 32px; }
+  .item_list .standard ul li figure {
+    padding: 0 20px; }
 
   .health_list .lr_list figure img {
     width: 120px; }

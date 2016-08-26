@@ -62,6 +62,7 @@
     .wrapper{width: auto;}
   }
   .banner, .nav, .footer, .copyright,.wrapper{width: auto;}
+  .banner img{width: 100%}
 
   .topBar{
     height: 0px;position: relative;margin-left:$loginW+20px;width: auto;
@@ -161,7 +162,7 @@
     .feature{
       margin: 0px;text-align: center;
       figure{
-        width: 32.5%;margin: 0 auto;float: none;display: inline-block;
+        width: 32.5%;margin: 0 auto;float: none;display: inline-block;vertical-align: middle;
         figcaption{
           height: 48px;
         }
@@ -226,7 +227,7 @@
     }
   }
   .goods_detail .tab{
-    a,span{font-size: 18px;width: 33.3%;text-align: center;padding: 0px;}
+    a,span{font-size: 18px;width: 30%;text-align: center;padding: 0px;margin: 0 0 0 2.3%}
   }
   .health_list{
     width: 100%;
@@ -242,7 +243,9 @@
     padding: 0 0 20px ;
     .agency_nav{
       float: none;;width: auto;
-      span{display: inline-block;}
+      span{display: inline-block;width: 14.28%;
+        a{width:auto;display: block;}
+      }
     }
     .lr_list{
       width: auto;float: none;border: none;font-size: 100px;
@@ -987,9 +990,12 @@
   //  .swiper-button-next {top:24%}
   //}
   .item_list{
-    .standard h2{
-      font-size: 20px;
-      height: 32px;
+    .standard{
+      h2{
+        font-size: 20px;
+        height: 32px;
+      }
+      ul li figure{padding: 0 20px;}
     }
   }
   .health_list .lr_list figure{

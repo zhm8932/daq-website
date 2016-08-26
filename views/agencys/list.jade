@@ -24,7 +24,7 @@ block content
                             -var href = 'javascript:;'
                             if item.isOnline
                                 -href = "/agencys/detail/"+item.id
-                            a(href=href,target='_blank',title=item.title)
+                            a(href=href,title=item.title)
                                 if browser.ie
                                     img(src=item.imgUrl,alt='#{item.title}')
                                 else

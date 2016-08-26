@@ -70,7 +70,8 @@ router.use(function(req, res, next) {
 
 router.get('*',Handlers.get_wap_tit,Handlers.get_cart_num);
 /* GET home page. */
-router.get('/',Requests.get_goods_list,Middlewares.get_department,Handlers.index);
+// router.get('/',Requests.get_goods_list,Middlewares.get_department,Handlers.index);
+router.get('/',Requests.get_goods_list,Middlewares.get_department_list,Handlers.index);
 
 router.post('/login',Requests.login);
 
