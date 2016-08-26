@@ -19,7 +19,7 @@ block content
         if get_goods_category_success
             each item in get_goods_category
                 if item.others
-                    img(src=JSON.parse(item.others)[0].imageUrl ,alt=item.name,title=item.name,data-id=item.id)
+                    img(data-original=JSON.parse(item.others)[0].imageUrl ,alt=item.name,title=item.name,data-id=item.id)
               //img(src='/images/goods_ban01.png')
     include goods_mixin
     section.item_list.clearfix
@@ -39,7 +39,7 @@ block content
                                             if browser.ie
                                                 img(src='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
                                             else
-                                                img(src='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
+                                                img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
                                                 //-img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
                                         h4 #{item.goodsName}
                                     if item.productKeyAttributeList

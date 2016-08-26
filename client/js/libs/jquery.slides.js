@@ -89,17 +89,17 @@
         webkitBackfaceVisibility: "hidden"
       });
       var winW = $(window).width();
-      console.log("winW:",winW)
+      //console.log("winW:",winW)
       $.each($(".slidesjs-control", $element).children(), function(i) {
         var $slide;
         $slide = $(this);
         var width = $slide.children().width();
 
 
-        // console.log("$slide:",$slide)
-        // console.log("$slide.children():",$slide.children())
-        // console.log("$slide.width():",$slide.width())
-        // console.log("$slide.children().width():",$slide.children().width())
+        // //console.log("$slide:",$slide)
+        // //console.log("$slide.children():",$slide.children())
+        // //console.log("$slide.width():",$slide.width())
+        // //console.log("$slide.children().width():",$slide.children().width())
         if(width>winW){
           $slide.children().css({
             "margin-left":(winW-width)/2
@@ -224,17 +224,17 @@
       this.data = $.data(this);
 
       var winW = $(window).width();
-      console.log("winW:",winW)
+      //console.log("winW:",winW)
       $.each($(".slidesjs-control", $element).children(), function(i) {
         var $slide;
         $slide = $(this);
         var width = $slide.children().width();
 
 
-        // console.log("$slide:",$slide)
-        // console.log("$slide.children():",$slide.children())
-        // console.log("$slide.width():",$slide.width())
-        // console.log("$slide.children().width():",$slide.children().width())
+        // //console.log("$slide:",$slide)
+        // //console.log("$slide.children():",$slide.children())
+        // //console.log("$slide.width():",$slide.width())
+        // //console.log("$slide.children().width():",$slide.children().width())
         if(width>winW){
           $slide.children().css({
             "margin-left":(winW-width)/2
@@ -261,9 +261,9 @@
       }
       // height = (this.options.height / this.options.width) * width;
 
-      // console.log("width:",width)
-      console.log("height:",height)
-      // console.log("height:",$element)
+      // //console.log("width:",width)
+      //console.log("height:",height)
+      // //console.log("height:",$element)
       this.options.width = width;
       this.options.height = height;
       return $(".slidesjs-control, .slidesjs-container", $element).css({

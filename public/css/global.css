@@ -426,14 +426,16 @@ select {
   padding: 5px 0;
   margin-top: 40px; }
   .header .logo {
-    width: 185px;
-    height: 65px;
-    background: url("../images/logo.png") no-repeat;
+    width: 160px;
+    height: 74px;
+    background: url("/public/images/logo.png") no-repeat 0 0;
     background-size: 100%;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/public/images/logo.png',sizingMethod='scale');
+    /*兼容ie8以下*/
     text-indent: -9999px;
     display: block;
-    float: left;
-    margin-top: 4px; }
+    margin-top: 5px;
+    float: left; }
   .header .slogan {
     height: 30px;
     margin-left: 20px;
@@ -509,7 +511,6 @@ select {
   z-index: 10;
   margin-left: -512px; }
   .home .nav {
-    width: 726px;
     position: absolute;
     top: 190px;
     right: 0px;

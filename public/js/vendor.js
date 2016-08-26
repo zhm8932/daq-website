@@ -561,10 +561,10 @@
 	        var windowHeight = $(window).height();
 	        var domHeight = $('body>.topBar').outerHeight(true) + $('body>.header').outerHeight(true) + $('body>.nav').outerHeight(true) + $('body>.positon').outerHeight(true) + $('body>.footer').outerHeight(true) + $('body>.copyright').outerHeight(true);
 
-	        console.log($('body>.topBar').outerHeight(true)+'----'+$('body>.header').outerHeight(true)+'----'+$('body>.nav').outerHeight(true)+'----'+$('body>.positon').outerHeight(true)+'----'+$('body>.footer').outerHeight(true)+'----'+$('body>.copyright').outerHeight(true));
+	        // console.log($('body>.topBar').outerHeight(true)+'----'+$('body>.header').outerHeight(true)+'----'+$('body>.nav').outerHeight(true)+'----'+$('body>.positon').outerHeight(true)+'----'+$('body>.footer').outerHeight(true)+'----'+$('body>.copyright').outerHeight(true));
 	        var minHeight = windowHeight - domHeight + $('body>.topBar').outerHeight(true);
 	        $('.main-box').css('min-Height',minHeight + 'px');
-	        console.log(windowHeight+'----'+domHeight+'----'+minHeight);
+	        // console.log(windowHeight+'----'+domHeight+'----'+minHeight);
 	        return minHeight;
 	    }
 	    module.exports={
@@ -1600,8 +1600,8 @@
 	            getLocalCity();
 	        } else if (utils.browser.ie) {
 	            // alert('IE')
+	            
 	        }
-
 
 	        var location = window.location;
 	        var curPathname = location.pathname;
@@ -1886,6 +1886,13 @@
 	        });
 
 	    }
+	    var _hmt = _hmt || [];
+	    (function() {
+	        var hm = document.createElement("script");
+	        hm.src = "//hm.baidu.com/hm.js?4f75a7ce9238ce942af56eece56e108a";
+	        var s = document.getElementsByTagName("script")[0];
+	        s.parentNode.insertBefore(hm, s);
+	    })();
 
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -2331,7 +2338,7 @@
 
 	    $('body').on('click','.loginBox2 .ok',function () {
 	        var data = validateLogin();
-	        console.log("data:",data)
+	        // console.log("data:",data)
 	        var redirectUrl = $('#redirectUrl').val()||'/';
 	        if(data) login(data,null,redirectUrl,function (userAllInfo) {
 	            //console.log("单页登录成功")
@@ -2383,7 +2390,6 @@
 	                            }
 	                        })
 	                    }else{
-	                        console.log('json.msg:',json.msg)
 	                        $('.prompt').show().find('em').html(json.msg)
 	                    }
 
@@ -2422,7 +2428,6 @@
 	    $('body').on('click','.rPasswordBox .ok',function () {
 	        var data = validateLogin(true);
 	        var $self = $(this);
-	        // console.log("找回密码：",data)
 	        if(!data){
 	            return
 	        }
@@ -2485,7 +2490,6 @@
 	                    prev: ".touchslider-prev", // prev 样式指定
 	                    // scroller: viewport.children(),
 	                    complete:function () {
-	                        //console.log("hahahh")
 	                    },
 	                    autoplay: false, // 自动播放
 	                    viewport: ".touchslider-viewport"  //内容区域
@@ -2497,7 +2501,6 @@
 	            isHide:false,
 	            okCallback:function(){
 	                var data = validateLogin();
-	                // //console.log('data::',data);
 	                if(data){
 	                    if(options && options.afterLoginFun){
 	                        // login(data,popup,'',options.afterLoginFun);
@@ -2555,7 +2558,6 @@
 	            isHide:false,
 	            okCallback:function(){
 	                var data = validateLogin();
-	                console.log('data::',data);
 	                if(data){
 
 	                }
@@ -2594,7 +2596,6 @@
 	        $loginWrap = getLoginWrap();
 	        index = $loginWrap.find('.tit span.on').index()||0;
 	        $prompt = $loginWrap.find('ul').eq(index).find('.prompt');
-	        //console.log('index::',index);
 	        var data = {
 	            // "password":utils.md5($loginWrap.find('ul').eq(index).find(".password").val()),
 	            "password":$loginWrap.find('ul').eq(index).find(".password").val(),
@@ -2609,7 +2610,6 @@
 	        var data = getLoginData();
 	        var requestData = {};
 	        if(index==0){
-	            // //console.log('密码')
 	            requestData.loginType=1;
 
 	            if(!data.account){

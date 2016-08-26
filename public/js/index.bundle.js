@@ -19,6 +19,15 @@ webpackJsonp([8],{
 	    __webpack_require__(125);
 	    __webpack_require__(126);
 
+
+	    if(utils.browser.ie){
+	        var winWidth = $(window).width();
+	        var $wrapperW = $('.item_list .wrapper').width();
+	        if(winWidth<=1366){
+	            $('.rightNav').css({"margin-right":'-670px'})
+	        }
+	    }
+
 	    $('#sliderBox').movingBoxes({
 	        startPanel   : 2,       // 从第一个li开始
 	        reducedSize  : .6,      // 缩小到原图50%的尺寸
@@ -180,17 +189,17 @@ webpackJsonp([8],{
 	        webkitBackfaceVisibility: "hidden"
 	      });
 	      var winW = $(window).width();
-	      console.log("winW:",winW)
+	      //console.log("winW:",winW)
 	      $.each($(".slidesjs-control", $element).children(), function(i) {
 	        var $slide;
 	        $slide = $(this);
 	        var width = $slide.children().width();
 
 
-	        // console.log("$slide:",$slide)
-	        // console.log("$slide.children():",$slide.children())
-	        // console.log("$slide.width():",$slide.width())
-	        // console.log("$slide.children().width():",$slide.children().width())
+	        // //console.log("$slide:",$slide)
+	        // //console.log("$slide.children():",$slide.children())
+	        // //console.log("$slide.width():",$slide.width())
+	        // //console.log("$slide.children().width():",$slide.children().width())
 	        if(width>winW){
 	          $slide.children().css({
 	            "margin-left":(winW-width)/2
@@ -315,17 +324,17 @@ webpackJsonp([8],{
 	      this.data = $.data(this);
 
 	      var winW = $(window).width();
-	      console.log("winW:",winW)
+	      //console.log("winW:",winW)
 	      $.each($(".slidesjs-control", $element).children(), function(i) {
 	        var $slide;
 	        $slide = $(this);
 	        var width = $slide.children().width();
 
 
-	        // console.log("$slide:",$slide)
-	        // console.log("$slide.children():",$slide.children())
-	        // console.log("$slide.width():",$slide.width())
-	        // console.log("$slide.children().width():",$slide.children().width())
+	        // //console.log("$slide:",$slide)
+	        // //console.log("$slide.children():",$slide.children())
+	        // //console.log("$slide.width():",$slide.width())
+	        // //console.log("$slide.children().width():",$slide.children().width())
 	        if(width>winW){
 	          $slide.children().css({
 	            "margin-left":(winW-width)/2
@@ -352,9 +361,9 @@ webpackJsonp([8],{
 	      }
 	      // height = (this.options.height / this.options.width) * width;
 
-	      // console.log("width:",width)
-	      console.log("height:",height)
-	      // console.log("height:",$element)
+	      // //console.log("width:",width)
+	      //console.log("height:",height)
+	      // //console.log("height:",$element)
 	      this.options.width = width;
 	      this.options.height = height;
 	      return $(".slidesjs-control, .slidesjs-container", $element).css({

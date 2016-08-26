@@ -20,17 +20,18 @@ block content
                 div!= get_feature_detail.des
                 h3 专家团队
                 .img_list
-                    if get_feature_detail.clinics
+                    if get_feature_detail.doctors
                         each item in get_feature_detail.doctors
                             figure
                                 img(src=item.imgUrl,alt="#{item.doctorName}专家",title="#{item.doctorName}专家")
                                 figcaption
                                     h4 #{item.doctorName}
                                     p #{item.doctorTitle}
-                h3 技术设备
-                p 我们还与中国内地、香港、美国以及其他国家实验室保持联系，使我们能提供更多检验服务，比如基因测试和罕见疾病诊断的检查。
-                p 我们的检验科也可以接收其他诊所的委托检测样本。如有必要，我们可以安排从签约合作诊所收取您需要测试的样品。
-                p 都安全与地方血液中心紧密合作，经常举办社区献血活动。为应对紧急救治需要，我们还拥有一批稀有血型捐助者名单，可以为患者组织专门的献血活动，采集急需的罕见类型血液，确保患者得到及时安全的医治或手术。
+                h3 诊疗范围
+                if get_feature_detail.clinics
+                    ol
+                        each item in get_feature_detail.clinics
+                            li #{item}
 
 
 

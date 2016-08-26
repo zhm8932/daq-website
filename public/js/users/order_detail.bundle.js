@@ -3,13 +3,13 @@ webpackJsonp([23],{
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(143);
+	__webpack_require__(144);
 	module.exports = __webpack_require__(7);
 
 
 /***/ },
 
-/***/ 137:
+/***/ 138:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -70,11 +70,11 @@ webpackJsonp([23],{
 
 /***/ },
 
-/***/ 143:
+/***/ 144:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
-	    var timer = __webpack_require__(137);
+	    var timer = __webpack_require__(138);
 	    __webpack_require__(3);
 	    timer.updateTime({
 	        totalTime:30*60*1000,

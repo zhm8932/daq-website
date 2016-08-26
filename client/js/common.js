@@ -57,8 +57,8 @@ define(function (require, exports, module) {
             getLocalCity();
         } else if (utils.browser.ie) {
             // alert('IE')
+            
         }
-
 
         var location = window.location;
         var curPathname = location.pathname;
@@ -343,5 +343,12 @@ define(function (require, exports, module) {
         });
 
     }
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?4f75a7ce9238ce942af56eece56e108a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
 
 });

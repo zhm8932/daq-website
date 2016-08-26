@@ -5,6 +5,15 @@
     require('slides');
     require('movingBoxes');
 
+
+    if(utils.browser.ie){
+        var winWidth = $(window).width();
+        var $wrapperW = $('.item_list .wrapper').width();
+        if(winWidth<=1366){
+            $('.rightNav').css({"margin-right":'-670px'})
+        }
+    }
+
     $('#sliderBox').movingBoxes({
         startPanel   : 2,       // 从第一个li开始
         reducedSize  : .6,      // 缩小到原图50%的尺寸

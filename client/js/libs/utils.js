@@ -455,10 +455,10 @@ define(function(require,exports,module) {
         var windowHeight = $(window).height();
         var domHeight = $('body>.topBar').outerHeight(true) + $('body>.header').outerHeight(true) + $('body>.nav').outerHeight(true) + $('body>.positon').outerHeight(true) + $('body>.footer').outerHeight(true) + $('body>.copyright').outerHeight(true);
 
-        console.log($('body>.topBar').outerHeight(true)+'----'+$('body>.header').outerHeight(true)+'----'+$('body>.nav').outerHeight(true)+'----'+$('body>.positon').outerHeight(true)+'----'+$('body>.footer').outerHeight(true)+'----'+$('body>.copyright').outerHeight(true));
+        // console.log($('body>.topBar').outerHeight(true)+'----'+$('body>.header').outerHeight(true)+'----'+$('body>.nav').outerHeight(true)+'----'+$('body>.positon').outerHeight(true)+'----'+$('body>.footer').outerHeight(true)+'----'+$('body>.copyright').outerHeight(true));
         var minHeight = windowHeight - domHeight + $('body>.topBar').outerHeight(true);
         $('.main-box').css('min-Height',minHeight + 'px');
-        console.log(windowHeight+'----'+domHeight+'----'+minHeight);
+        // console.log(windowHeight+'----'+domHeight+'----'+minHeight);
         return minHeight;
     }
     module.exports={

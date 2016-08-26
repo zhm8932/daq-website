@@ -18,7 +18,7 @@ block content
                     a.history(href='javascript:;') 返回上一级
                 p #{get_department_detail.des}
                 strong 诊疗范围：
-                ul
+                ol
                     if get_department_detail.clinics
                         each item in get_department_detail.clinics
                             li #{item}

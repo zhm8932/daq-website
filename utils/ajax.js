@@ -108,7 +108,8 @@ module.exports.ajax = function (method,apiName,browserReq,browserRes,bizParam,ca
         method : method,
         headers:{
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8;',
-            'enctype':'application/x-www-form-urlencoded'
+            'enctype':'application/x-www-form-urlencoded',
+            'accept-encoding':'gzip'
         }
     };
 

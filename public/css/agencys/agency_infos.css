@@ -38,6 +38,10 @@
     font-size: 14px; }
     .agencys_com .history:hover {
       color: #f1292b; }
+  .agencys_com ol {
+    padding-left: 15px; }
+    .agencys_com ol li {
+      list-style: decimal; }
   .agencys_com h3 {
     display: inline-block;
     font-size: 18px;

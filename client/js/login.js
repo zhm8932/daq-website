@@ -173,7 +173,7 @@ define(function(require,exports,module) {
 
     $('body').on('click','.loginBox2 .ok',function () {
         var data = validateLogin();
-        console.log("data:",data)
+        // console.log("data:",data)
         var redirectUrl = $('#redirectUrl').val()||'/';
         if(data) login(data,null,redirectUrl,function (userAllInfo) {
             //console.log("单页登录成功")
@@ -225,7 +225,6 @@ define(function(require,exports,module) {
                             }
                         })
                     }else{
-                        console.log('json.msg:',json.msg)
                         $('.prompt').show().find('em').html(json.msg)
                     }
 
@@ -264,7 +263,6 @@ define(function(require,exports,module) {
     $('body').on('click','.rPasswordBox .ok',function () {
         var data = validateLogin(true);
         var $self = $(this);
-        // console.log("找回密码：",data)
         if(!data){
             return
         }
@@ -327,7 +325,6 @@ define(function(require,exports,module) {
                     prev: ".touchslider-prev", // prev 样式指定
                     // scroller: viewport.children(),
                     complete:function () {
-                        //console.log("hahahh")
                     },
                     autoplay: false, // 自动播放
                     viewport: ".touchslider-viewport"  //内容区域
@@ -339,7 +336,6 @@ define(function(require,exports,module) {
             isHide:false,
             okCallback:function(){
                 var data = validateLogin();
-                // //console.log('data::',data);
                 if(data){
                     if(options && options.afterLoginFun){
                         // login(data,popup,'',options.afterLoginFun);
@@ -397,7 +393,6 @@ define(function(require,exports,module) {
             isHide:false,
             okCallback:function(){
                 var data = validateLogin();
-                console.log('data::',data);
                 if(data){
 
                 }
@@ -436,7 +431,6 @@ define(function(require,exports,module) {
         $loginWrap = getLoginWrap();
         index = $loginWrap.find('.tit span.on').index()||0;
         $prompt = $loginWrap.find('ul').eq(index).find('.prompt');
-        //console.log('index::',index);
         var data = {
             // "password":utils.md5($loginWrap.find('ul').eq(index).find(".password").val()),
             "password":$loginWrap.find('ul').eq(index).find(".password").val(),
@@ -451,7 +445,6 @@ define(function(require,exports,module) {
         var data = getLoginData();
         var requestData = {};
         if(index==0){
-            // //console.log('密码')
             requestData.loginType=1;
 
             if(!data.account){

@@ -9,7 +9,28 @@ webpackJsonp([16],{
 
 /***/ },
 
-/***/ 119:
+/***/ 135:
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
+	    var utils = __webpack_require__(4);
+	    __webpack_require__(136);
+
+	    $(function () {
+	        $('.goods-detail h5').ellipsis({
+	            row:2,
+	            char:'……',
+	            callback: function() {
+	                console.log($(this).text());
+	            }
+	        })
+	    })
+
+	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ },
+
+/***/ 136:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery ellipsis - v1.1.1 - 2014-02-23
@@ -130,27 +151,6 @@ webpackJsonp([16],{
 	    };
 	});
 
-
-/***/ },
-
-/***/ 135:
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
-	    var utils = __webpack_require__(4);
-	    __webpack_require__(119);
-
-	    $(function () {
-	        $('.goods-detail h5').ellipsis({
-	            row:2,
-	            char:'……',
-	            callback: function() {
-	                console.log($(this).text());
-	            }
-	        })
-	    })
-
-	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ }
 
