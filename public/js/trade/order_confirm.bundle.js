@@ -236,8 +236,6 @@ webpackJsonp([15],{
 	        var hospitalCodeList = [];
 	        var isfit = false;//是否可使用
 	        var nowTime = new Date().getTime();
-	        console.log('===nowTime:'+nowTime+'---beginTime:'+data.beginTime+'----endTime:'+data.endTime);
-	        console.log(data.beginTime<=nowTime);
 	        for (j = 0; j < fitAreaArr.length; j++) {
 	            hospitalNameList.push(fitAreaArr[j].hospitalName);
 	            hospitalCodeList.push(fitAreaArr[j].hospitalCode);

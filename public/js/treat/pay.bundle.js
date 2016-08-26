@@ -3,13 +3,13 @@ webpackJsonp([18],{
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(139);
+	__webpack_require__(138);
 	module.exports = __webpack_require__(7);
 
 
 /***/ },
 
-/***/ 138:
+/***/ 137:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -70,7 +70,7 @@ webpackJsonp([18],{
 
 /***/ },
 
-/***/ 139:
+/***/ 138:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
@@ -81,7 +81,7 @@ webpackJsonp([18],{
 	            window.location.href = '/treat/regsource/list';
 	        }
 	    });
-	    var timer = __webpack_require__(138);
+	    var timer = __webpack_require__(137);
 
 	    var payId = $('#payId').val();
 
@@ -126,7 +126,6 @@ webpackJsonp([18],{
 	    function alipay(id,payWay){
 	        var href = window.location.href;
 	        var domain = href.substr(0,href.indexOf('/',href.indexOf('/',href.indexOf('/')+1)+1));
-	        console.log(domain);
 	        login.CheckLogin(function() {
 	            utils.SendAjax({
 	                url: '/trade/order/pay',

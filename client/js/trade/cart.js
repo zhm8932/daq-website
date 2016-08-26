@@ -67,7 +67,6 @@ define(function (require, exports, module) {
     }
 
     function delCartItem($this) {
-        console.log($this);
         login.CheckLogin(function() {
             utils.ShowComfirmDialog({
                 tipText:'确定删除吗?',
@@ -179,7 +178,6 @@ define(function (require, exports, module) {
     $('body').on('mousedown','.table-tr',function () {
         var $self = $(this).find('.del-cart-item')
         timeout = setTimeout(function() {
-            console.log("mousedown")
             delCartItem($self);
         },2000);
     });

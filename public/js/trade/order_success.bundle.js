@@ -3,13 +3,13 @@ webpackJsonp([17],{
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(137);
+	__webpack_require__(136);
 	module.exports = __webpack_require__(7);
 
 
 /***/ },
 
-/***/ 137:
+/***/ 136:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
@@ -26,11 +26,10 @@ webpackJsonp([17],{
 
 
 
-	    var timer = __webpack_require__(138);
+	    var timer = __webpack_require__(137);
 
 	    var href = window.location.href;
 	    var domain = href.substr(0,href.indexOf('/',href.indexOf('/',href.indexOf('/')+1)+1));
-	    console.log(domain);
 	    $(function(){
 	        timer.updateTime({
 	            totalTime:30*60*1000,
@@ -74,7 +73,6 @@ webpackJsonp([17],{
 	        var order_no = $('#order-detail').data('id');
 	        var href = window.location.href;
 	        var domain = href.substr(0,href.indexOf('/',href.indexOf('/',href.indexOf('/')+1)+1));
-	        console.log(domain);
 	        login.CheckLogin(function() {
 	            utils.SendAjax({
 	                url: '/trade/order/pay',
@@ -204,7 +202,7 @@ webpackJsonp([17],{
 
 /***/ },
 
-/***/ 138:
+/***/ 137:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**

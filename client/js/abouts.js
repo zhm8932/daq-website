@@ -11,7 +11,6 @@ define(function (require) {
             imgsArr.push({href:original});
         });
         $('body').on('click','.abouts img',function () {
-            console.log("关于都安全");
             if(imgsArr.length&&utils.browser.mobile){
                 $.swipebox(imgsArr)
             }

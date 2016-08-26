@@ -2397,12 +2397,10 @@
 	                }else{
 	                    // console.log('页面级注册')
 	                    if(json.success){
-	                        console.log(json.msg)
 	                        utils.ShowComfirmDialog({
 	                            tipText:json.msg+'<p>即将跳转登录……</p>',
 	                            noConfirmBtn:true,
 	                            callback:function () {
-	                                console.log("弹框开始渲染")
 	                                setTimeout(function () {
 	                                    window.location.href = '/login'
 	                                },2000)

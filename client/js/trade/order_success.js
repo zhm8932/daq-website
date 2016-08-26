@@ -16,7 +16,6 @@ define(function (require, exports, module) {
 
     var href = window.location.href;
     var domain = href.substr(0,href.indexOf('/',href.indexOf('/',href.indexOf('/')+1)+1));
-    console.log(domain);
     $(function(){
         timer.updateTime({
             totalTime:30*60*1000,
@@ -60,7 +59,6 @@ define(function (require, exports, module) {
         var order_no = $('#order-detail').data('id');
         var href = window.location.href;
         var domain = href.substr(0,href.indexOf('/',href.indexOf('/',href.indexOf('/')+1)+1));
-        console.log(domain);
         login.CheckLogin(function() {
             utils.SendAjax({
                 url: '/trade/order/pay',

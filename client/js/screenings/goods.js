@@ -31,12 +31,11 @@ define(function(require){
                 }
             });
         }else if(utils.browser.ios){
-            console.log('IOS')
             $('.ellips').ellipsis({
                 row:2,
                 char:'…',
                 callback: function() {
-                    console.log($(this).text());
+                    // console.log($(this).text());
                 }
             });
         }else{
@@ -44,7 +43,7 @@ define(function(require){
                 row:1,
                 char:'……',
                 callback: function() {
-                    console.log($(this).text());
+                    // console.log($(this).text());
                 }
             });
         }
@@ -75,7 +74,7 @@ define(function(require){
                     tipText: '请求问答数据',
                     callback: function (result) {
                         var json = result;
-                        console.log("json:",json)
+                        // console.log("json:",json)
                         var $list = $('#list_ask ul');
                         if(json.success){
                             var data = json.data.data,
@@ -254,7 +253,7 @@ define(function(require){
                         "categoryId":$('.tab ul li.on').attr('data-id')
                     }
                     var listData = '';
-                    console.log("pageIndex:",pageIndex+'--pageCount:',pageCount)
+                    // console.log("pageIndex:",pageIndex+'--pageCount:',pageCount)
                     if(!pageCount){
                         listData = getListData(data)
                     }else if(pageIndex<=pageCount){

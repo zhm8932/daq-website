@@ -81,7 +81,6 @@ webpackJsonp([14],{
 	    }
 
 	    function delCartItem($this) {
-	        console.log($this);
 	        login.CheckLogin(function() {
 	            utils.ShowComfirmDialog({
 	                tipText:'确定删除吗?',
@@ -193,7 +192,6 @@ webpackJsonp([14],{
 	    $('body').on('mousedown','.table-tr',function () {
 	        var $self = $(this).find('.del-cart-item')
 	        timeout = setTimeout(function() {
-	            console.log("mousedown")
 	            delCartItem($self);
 	        },2000);
 	    });

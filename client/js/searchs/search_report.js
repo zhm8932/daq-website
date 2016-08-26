@@ -19,8 +19,7 @@ define(function(require){
         }, function(start, end, label) {
             $('.time').val(start.format('YYYY-MM-DD'));
         });
-
-        console.log(config);
+        
 
         // var code = document.querySelector('#code');
         // console.log("code:",code);
@@ -35,7 +34,6 @@ define(function(require){
 
         var hasBind = $('#hasBind').val();
         if (hasBind != 'true') {
-            console.log("未完善");
             if(utils.browser.mobile){
                 window.location.href='/users/account/info';
             }else{

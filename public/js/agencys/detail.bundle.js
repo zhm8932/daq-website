@@ -83,12 +83,12 @@ webpackJsonp([2],{
 	                }
 	            });
 	        }else if(utils.browser.ios){
-	            console.log('IOS')
+	            // console.log('IOS')
 	            $('.ellips').ellipsis({
 	                row:2,
 	                char:'…',
 	                callback: function() {
-	                    console.log($(this).text());
+	                    // console.log($(this).text());
 	                }
 	            });
 	        }else{
@@ -96,7 +96,7 @@ webpackJsonp([2],{
 	                row:3,
 	                char:'……',
 	                callback: function() {
-	                    console.log($(this).text());
+	                    // console.log($(this).text());
 	                }
 	            });
 	        }

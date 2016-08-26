@@ -5,12 +5,9 @@ define(function(require){
     require("daterangepicker");
 
     $('#scheduleId-select .option').click(function () {
-        console.log('就诊时段')
         var $this = $(this);
-        console.log("$this:",$this)
         $('#scheduleId').val($this.data('value'));
         var cost = parseFloat($this.data('cost'));
-        console.log("cost:",cost)
         $('#cost').html((cost / 100).toFixed(2) + '元');
         var scheduleSelect = $("#scheduleId-select");
         if(scheduleSelect.attr('data-load') == 'first'){
