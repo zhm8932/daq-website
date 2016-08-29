@@ -56,7 +56,7 @@ webpackJsonp([22],{
 	                    $('#coupon-table tbody').html('<tr class="text-center"><td colspan="5">暂无优惠券记录</td></tr>');
 	                } else {
 	                    for (var i = 0; i < data.length; i++) {
-	                        tableArr = tableArr.concat(buildCouponTableTr(data[i]));
+	                        tableArr = tableArr.push(buildCouponTableTr(data[i]));
 	                    }
 	                    $('#coupon-table tbody').html(tableArr.join(''));
 	                }
@@ -85,7 +85,7 @@ webpackJsonp([22],{
 	            callback: function (result) {
 	                utils.ShowComfirmDialog({tipText:'领取成功!',noConfirmBtn:true});
 	                $('#coupon-code').val('');
-	                var tr = $(buildCouponTableTr(result.data).join(''));
+	                var tr = $(buildCouponTableTr(result.data));
 	                $('#coupon-table tbody tr').eq(0).before(tr);
 	                $('#coupon-table tbody tr.no-record').remove();
 
@@ -134,7 +134,7 @@ webpackJsonp([22],{
 
 	        trArr.push('<td >' + utils.GetLoacalDateString(data.beginTime) + ' 至 ' + utils.GetLoacalDateString(data.endTime) + '</td></tr>');
 
-	        return trArr;
+	        return trArr.join('');
 
 	    }
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
