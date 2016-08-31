@@ -111,7 +111,8 @@ a.disabled {
     height: 40px; }
     .table thead th {
       padding: 10px;
-      font-weight: normal; }
+      font-weight: normal;
+      text-align: left; }
   .table tbody tr {
     border-bottom: 1px solid #DDDDDD; }
   .table tbody td {

@@ -39,7 +39,8 @@ block content
                                                 p 暂无商品
                             else
                                 .row
-                                    |暂无商品
+                                    span.row-col.goods-detail
+                                        p 暂无商品
                         .col.detail.text-sec
                             p 取样方式:#{serviceTypeJSON[item.serviceType]}
                             if item.reservations && item.reservations.length && item.reservations[0] && item.reservations[0].goodsInfo
