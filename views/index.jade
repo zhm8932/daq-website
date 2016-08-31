@@ -52,11 +52,12 @@ block content
           aside 暂无内容
         else
             mixin agencys_list()
-              each item in get_department_list
-                li
-                  a(href='/agencys/department/detail/#{item.id}',target='_blank')
-                    img(src=item.imgIndex)
-                  h4 #{item.title}
+              if get_department_list
+                each item in get_department_list
+                  li
+                    a(href='/agencys/department/detail/#{item.id}',target='_blank')
+                      img(src=item.imgIndex)
+                    h4 #{item.title}
           if browser.mobile&&!browser.iPad
             ul
               +agencys_list()

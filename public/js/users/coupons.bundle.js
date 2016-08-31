@@ -56,7 +56,7 @@ webpackJsonp([22],{
 	                    $('#coupon-table tbody').html('<tr class="text-center"><td colspan="5">暂无优惠券记录</td></tr>');
 	                } else {
 	                    for (var i = 0; i < data.length; i++) {
-	                        tableArr = tableArr.push(buildCouponTableTr(data[i]));
+	                        tableArr.push(buildCouponTableTr(data[i]));
 	                    }
 	                    $('#coupon-table tbody').html(tableArr.join(''));
 	                }
