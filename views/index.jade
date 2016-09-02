@@ -40,7 +40,7 @@ block content
     include includes/nav
 
   section.item_list.treat_list.clearfix
-    .wrapper
+    .wrapper.noMP
       //-div #{JSON.stringify(get_department)}
       header
         h2
@@ -52,11 +52,23 @@ block content
           aside 暂无内容
         else
             mixin agencys_list()
-              each item in get_department_list
+              each item,index in get_department_list
                 li
-                  a(href='/agencys/department/detail/#{item.id}',target='_blank')
-                    img(src=item.imgIndex)
-                  h4 #{item.title}
+                  if !browser.mobile
+                    a(href='/agencys/department/detail/#{item.id}',target='_blank',index=index)
+                      img(src=item.imgIndex)
+                    h4 #{item.title}
+                  else
+                    if (index+1)%2==1
+                      a(href='/agencys/department/detail/#{item.id}',target='_blank',index=index)
+                        img(src=item.imgIndex)
+                      h4.bgGray #{item.title}
+                    else
+                      h4 #{item.title}
+                      a(href='/agencys/department/detail/#{item.id}',target='_blank',index=index)
+                        img(src=item.imgIndex)
+
+
           if browser.mobile&&!browser.iPad
             ul
               +agencys_list()

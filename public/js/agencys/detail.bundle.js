@@ -82,8 +82,8 @@ webpackJsonp([2],{
 	                    // console.log($(this).text());
 	                }
 	            });
-	        }else if(utils.browser.ios){
-	            console.log('IOS')
+	        }else if(utils.browser.mobile){
+	            console.log('mobile')
 	            $('.ellips').ellipsis({
 	                row:2,
 	                char:'…',

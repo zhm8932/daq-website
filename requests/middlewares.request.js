@@ -32,9 +32,10 @@ exports.get_goods_category = function(req,res,next){
     }
 
     util.ajax('GET',api.QueryDictionaryListByTypeAndLevel,req,res,bizParam,function (err,data) {
+        console.log("goods_category:",err)
         var json = JSON.parse(data);
         if(json) {
-            // console.log("goods_category:",json)
+            console.log("goods_category:",err)
             req.get_goods_category = json
             res.locals.get_goods_category_success = req.get_goods_category_success= !err
         }

@@ -20,20 +20,23 @@ block content
             .lr_list
                 if get_agency_list
                     each item in get_agency_list
-                        figure
+                        figure.clearfix
                             -var href = 'javascript:;'
                             if item.isOnline
                                 -href = "/agencys/detail/"+item.id
-                            a(href=href,title=item.title)
+                            a.pic(href=href,title=item.title)
                                 if browser.ie
                                     img(src=item.imgUrl,alt='#{item.title}')
                                 else
                                     img(data-original=item.imgUrl,alt='#{item.title}')
+                                if browser.mobile
+                                    h4 #{item.title}
                             figcaption
-                                h4: a(href=href,title=item.title) #{item.title}
+                                if !browser.mobile
+                                    h4: a(href=href,title=item.title) #{item.title}
                                 p  服务项目：#{item.serviceType}
                                 p  地址：#{item.address}
-                                p  上门区域：#{item.serviceArea}
+                                aside 上门区域：#{item.serviceArea}
                                 a.more(href=href,) 更多
                 else
                     aside 暂无数据

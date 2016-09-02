@@ -67,7 +67,7 @@ exports.get_article_list_ask = function (req,res,next) {
     get_article_list(req,res,next,{
         category_name:'问答',
         data_name:'get_article_list_ask',
-        // pageSize:2
+        pageSize:2
     })
 }
 exports.get_list_ask_web = function (req,res,next) {
@@ -75,7 +75,7 @@ exports.get_list_ask_web = function (req,res,next) {
     get_article_list(req,res,next,{
         category_name:'问答',
         data_name:'get_article_list_ask',
-        // pageSize:2,
+        pageSize:2,
         send:true
     })
 }

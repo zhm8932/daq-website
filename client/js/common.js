@@ -20,7 +20,9 @@ define(function (require, exports, module) {
                 cityName = result.name;
                 map.setCenter(cityName);
                 if (!$.cookie('locals_city')) {
-                    getCityList(cityName, function (newArr) {
+                    getAllCity(cityName, function (newArr) {
+                        // console.log("newArr:",newArr)
+                        // console.log("cityName:",cityName)
                         var is_locals_city = $.cookie('locals_city');
                         if (!is_locals_city && newArr.length) {
                             // changeCity(newArr[0])
@@ -79,21 +81,6 @@ define(function (require, exports, module) {
 
 
         });
-
-        // $('.city-name').on('click',function(e){
-        //     e.stopPropagation();
-        //     var $this = $(this);
-        //     var OChooseCity = $this.find('.choose-city');
-        //     if(OChooseCity.css('display') == 'none'){
-        //         OChooseCity.fadeIn();
-        //         //console.log(OChooseCity.data('load'));
-        //         var data = OChooseCity.data('load')
-        //         if(data === 'first'){
-        //             getCityList();
-        //             OChooseCity.data('load','non-first');
-        //         }
-        //     }
-        // });
         $('.city-name').hover(function (e) {
             // e.stopPropagation();
             var $this = $(this);
@@ -155,13 +142,24 @@ define(function (require, exports, module) {
 
         var winWidth = $(window).width();
         var $nav = $('.nav').find('.wrapper');
+
+
+
         if (utils.browser.mobile) {
+            var index=6;
+            if(sessionStorage.getItem("index")){
+                index=sessionStorage.getItem("index");
+            }
+            console.log('sessionStorage:',sessionStorage)
+
             if (winWidth < 768) {
                 //导航滑动
                 $nav.addClass('swiper-container');
+                console.log('index:',index)
                 var swiper = new Swiper('.swiper-container', {
                     nextButton: '.swiper-button-next',
                     prevButton: '.swiper-button-prev',
+                    initialSlide:index,  //设定初始化时slide的索引
                     slidesPerView: 4
                     // spaceBetween: 30
                 });
@@ -178,6 +176,7 @@ define(function (require, exports, module) {
                     var swiper = new Swiper('.swiper-container', {
                         nextButton: '.swiper-button-next',
                         prevButton: '.swiper-button-prev',
+                        initialSlide:index,
                         slidesPerView: 4
                         // spaceBetween: 30
                     });
@@ -188,12 +187,38 @@ define(function (require, exports, module) {
                     $nav.find('.swiper-slide').addClass('3333333333333').removeAttr("style")
                 }
             })
+
+            $body.on('click','.nav ul li',function () {
+                var i= $(this).index();
+                sessionStorage.setItem("index",i);
+            })
+
         }
 
 
     })
 
     var curCityArr = '';
+
+    function getAllCity(cityName,callback) {
+        $.ajax({
+            url: '/dic/list/typeAndLevel',
+            data: {type: "district", level: "2", activeState: '1'},
+            success: function (result) {
+                var json = JSON.parse(result);
+                var data = json.data;
+                if (callback) {
+                    newArr = data.filter(function (item) {
+                        // return item.name == '南京'
+                        //过滤出上线的城市，并且所在城市为开通服务的城市
+                        return item.isOnline==1&&item.name == cityName
+                    })
+                    callback && callback(newArr)
+                }
+
+            },
+        });
+    }
 
     function getCityList(cityName, callback) {
         var cityName = cityName || '';
@@ -228,9 +253,9 @@ define(function (require, exports, module) {
                 if (callback) {
                     newArr = data.filter(function (item) {
                         // return item.name == '南京'
-                        return item.name == cityName
+                        //过滤出上线的城市，并且所在城市为开通服务的城市
+                        return item.isOnline==1&&item.name == cityName
                     })
-                    // //console.log("过滤后的data：",newArr)
                     callback && callback(newArr)
                 }
 
@@ -283,6 +308,15 @@ define(function (require, exports, module) {
 
 
     })
+
+    if(utils.browser.ie){
+        var winWidth = $(window).width();
+        var $wrapperW = $('.item_list .wrapper').width();
+        if(winWidth<=1366){
+            $('.rightNav').css({"margin-right":'-670px'})
+        }
+    }
+
     if (utils.browser.ios) {
         var $footerWap = $('.footerWap');
         // $('input').focus(function () {

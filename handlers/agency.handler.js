@@ -26,15 +26,10 @@ exports.render_agency_detail = function(req,res) {
             get_department = get_department.data;
         }
     }
-
-
-
-
-
     res.render('agencys/detail', {
-        title: '筛查服务',
-        keywords: '筛查服务',
-        description: '筛查服务',
+        title: '机构网络',
+        keywords: '机构网络',
+        description: '机构网络',
         get_department:get_department
     });
 }
