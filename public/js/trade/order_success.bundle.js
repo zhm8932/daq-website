@@ -1,4 +1,4 @@
-webpackJsonp([21],{
+webpackJsonp([22],{
 
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
@@ -30,7 +30,6 @@ webpackJsonp([21],{
 
 	    var href = window.location.href;
 	    var domain = href.substr(0,href.indexOf('/',href.indexOf('/',href.indexOf('/')+1)+1));
-	    console.log(domain);
 	    $(function(){
 	        timer.updateTime({
 	            totalTime:30*60*1000,
@@ -74,7 +73,6 @@ webpackJsonp([21],{
 	        var order_no = $('#order-detail').data('id');
 	        var href = window.location.href;
 	        var domain = href.substr(0,href.indexOf('/',href.indexOf('/',href.indexOf('/')+1)+1));
-	        console.log(domain);
 	        login.CheckLogin(function() {
 	            utils.SendAjax({
 	                url: '/trade/order/pay',

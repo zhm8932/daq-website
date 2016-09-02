@@ -1,4 +1,4 @@
-webpackJsonp([22],{
+webpackJsonp([23],{
 
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
@@ -126,7 +126,6 @@ webpackJsonp([22],{
 	    function alipay(id,payWay){
 	        var href = window.location.href;
 	        var domain = href.substr(0,href.indexOf('/',href.indexOf('/',href.indexOf('/')+1)+1));
-	        console.log(domain);
 	        login.CheckLogin(function() {
 	            utils.SendAjax({
 	                url: '/trade/order/pay',

@@ -1,4 +1,4 @@
-webpackJsonp([20],{
+webpackJsonp([21],{
 
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
@@ -21,7 +21,7 @@ webpackJsonp([20],{
 	            row:2,
 	            char:'……',
 	            callback: function() {
-	                console.log($(this).text());
+	                // console.log($(this).text());
 	            }
 	        })
 	    })
