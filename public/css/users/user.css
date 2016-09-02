@@ -64,7 +64,7 @@
         padding-bottom: 999px;
         margin-bottom: -999px; }
       .box-right .order dd .col *:last-child:not(.row) {
-        margin-bottom: 15px; }
+        padding-bottom: 15px; }
       .box-right .order dd .col + .col {
         border-left: 1px solid #ddd; }
       .box-right .order dd .row-col {

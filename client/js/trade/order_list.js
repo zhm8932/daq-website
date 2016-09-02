@@ -7,7 +7,7 @@ define(function (require, exports, module) {
             row:2,
             char:'……',
             callback: function() {
-                console.log($(this).text());
+                // console.log($(this).text());
             }
         })
     })

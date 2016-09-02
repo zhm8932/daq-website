@@ -140,20 +140,18 @@ define(function(require){
     window.onload = function(){
         //滚动时导航锁定在顶部
         var tab = $('.goods_detail #tab');
-        tab.attr('data-orign-top',tab.offset().top);//得到初始高度
-        // var wrapperWidth = $('.wrapper').width();
+        var topBarHeight = $('.topBar').height();
+        var orignTop = tab.offset().top;
         var width = tab.closest('.wrapper').width();
-        //console.log('width:'+width);
-        $(document).scroll(function(){
-            var topBarHeight = $('.topBar').height();
-            var tab = $('.goods_detail #tab');
-
-            if($(document).scrollTop() + topBarHeight > tab.attr('data-orign-top') ){
+        $(window).scroll(function(){
+            if($(document).scrollTop() + topBarHeight > orignTop){
                 tab.css('position','fixed').css({'top':topBarHeight+'px','width':width});
                 $('#tab-copy').removeClass('none');
+                console.log('悬浮');
             }else{
                 tab.css('position','static').css('width',width+'px');
                 $('#tab-copy').addClass('none');
+                console.log('原始');
             }
         });
     };

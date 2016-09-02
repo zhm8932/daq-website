@@ -115,7 +115,7 @@ define(function (require, exports, module) {
                     $('#coupon-code').val('');
                     var trs = $('#coupon-table tbody tr');
                     var json = buildCouponTableTr(result.data);
-                    var tr = $(json.trArr.join(''));
+                    var tr = $(json.trStr);
                     //给优惠券排序.如果可用就排在第一位,不可用就排在不可用的第一位
                     if(json.isfit){
                         trs.eq(0).before(tr);
@@ -191,9 +191,9 @@ define(function (require, exports, module) {
                         for (var i = 0; i < data.length; i++) {
                             var json = buildCouponTableTr(data[i]);
                             if(json.isfit){
-                                fitTableArr.push(json.trArr);
+                                fitTableArr.push(json.trStr);
                             }else{
-                                unfitTableArr.push(json.trArr);
+                                unfitTableArr.push(json.trStr);
                             }
                         }
 
@@ -222,8 +222,6 @@ define(function (require, exports, module) {
         var hospitalCodeList = [];
         var isfit = false;//是否可使用
         var nowTime = new Date().getTime();
-        console.log('===nowTime:'+nowTime+'---beginTime:'+data.beginTime+'----endTime:'+data.endTime);
-        console.log(data.beginTime<=nowTime);
         for (j = 0; j < fitAreaArr.length; j++) {
             hospitalNameList.push(fitAreaArr[j].hospitalName);
             hospitalCodeList.push(fitAreaArr[j].hospitalCode);
@@ -267,7 +265,7 @@ define(function (require, exports, module) {
         isfit ? fitCouponNum++ : unfitCouponNum++;//计算可用优惠券和不可用的数量
 
         return {
-            trArr:trArr,
+            trStr:trArr.join(''),
             isfit:isfit
         };
 

@@ -91,7 +91,9 @@ block content
                                         else if item.reservationStatus == 1
                                             td.status.text-stress 待就诊
                                             +payway(item)
-                                            td: a(href="javascript:void(0)").cancel-reg 取消
+                                            td
+                                                if moment(item.start).dayOfYear() - moment(item.currentTime).dayOfYear() >= 1
+                                                    a(href="javascript:void(0)").cancel-reg 取消
                                         else if item.reservationStatus == 2
                                             td.status 已完成
                                             +payway(item)
@@ -153,7 +155,7 @@ block content
                                                 a(href="/treats/reg/topay?reservationId=#{item.id}").text-stress 支付
                                                     span.timer.text-stress(data-paytime="#{item.updatedAt}",data-currenttime="#{item.currentTime}") 00 : 00
                                             td: a(href="javascript:void(0)").cancel-reg 取消
-                                        else if item.reservationStatus == 1
+                                        else if item.reservationStatus == 1 && moment(item.start).dayOfYear() - moment(item.currentTime).dayOfYear() >= 1
                                             td: a(href="javascript:void(0)").cancel-reg 取消
                                         else if item.reservationStatus == 3
                                             td: a(href="javascript:void(0)").del-reg 删除
