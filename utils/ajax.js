@@ -188,7 +188,7 @@ module.exports.ajax = function (method,apiName,browserReq,browserRes,bizParam,ca
 
         }).on('error', function (err) {
             // console.log('problem with request: ',err);
-            errorJson.msg = e.message;
+            errorJson.msg = err.message;
             return handleError('500',err,JSON.stringify(errorJson));
         });
 
