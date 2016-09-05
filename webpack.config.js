@@ -26,7 +26,7 @@ function getEntry(srcPath,files) {
 
     });
 
-    console.log("files:",files)
+    // console.log("files:",files)
 }
 
 getEntry('', files);
@@ -66,7 +66,7 @@ module.exports = {
     ],
     module: {
         loaders: [
-            {test: /\.jsx$/,loader: 'babel-loader!jsx-loader?harmony',exclude: /node_modules/}
+            {test: /\.jsx$/,loader: 'babel-loader!jsx-loader?harmony',exclude: /node_modules/,include:__dirname}
             // {test: /\.js?$/, loaders: ['babel-loader']}
         ]
     }

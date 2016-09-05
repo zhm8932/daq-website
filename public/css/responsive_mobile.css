@@ -1454,9 +1454,9 @@
       float: none;
       box-sizing: border-box;
       float: left;
-      width: 54%; }
+      width: 48%; }
     .info_list .lr_list figure figcaption {
-      width: 43%;
+      width: 50%;
       float: right; }
     .info_list .lr_list figure .more {
       margin: 0px 0 10px 0; }
@@ -1534,9 +1534,6 @@
     left: 140px;
     top: 90px; }
 
-  .tab ul li a {
-    padding: 0 10px; }
-
   .footer dl dd p {
     width: 100%; }
 
@@ -1555,6 +1552,15 @@
 
   .loginCom .bd ul li input {
     font-size: 14px; }
+
+  .info_list .lr_list figure img {
+    width: 40%;
+    margin-bottom: 10px; }
+  .info_list .lr_list figure figcaption {
+    width: 58%;
+    float: right; }
+  .info_list .lr_list figure .more {
+    display: none; }
 
   .copyright {
     font-size: 14px; } }
@@ -1577,4 +1583,7 @@
   .agency_box .lr_list figure figcaption {
     width: 54%; }
   .agency_box .lr_list figure .pic {
-    width: 42%; } }
+    width: 42%; }
+
+  .tab ul li {
+    margin-right: 15px; } }
