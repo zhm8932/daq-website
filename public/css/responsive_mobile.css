@@ -264,7 +264,10 @@
         line-height: 30px; }
       .item_list .goods_list ul li p {
         height: 24px;
-        margin: 0px; }
+        margin: 0px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-right: 5px; }
     .item_list .feature {
       margin: 0px;
       text-align: center; }

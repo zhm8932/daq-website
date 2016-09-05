@@ -175,7 +175,7 @@
             color: $textc_48B;
           }
           h4{display: inline-block;background: none;width: auto;height:30px;line-height: 30px;}
-          p{height: 24px;margin: 0px;}
+          p{height: 24px;margin: 0px;white-space: nowrap; text-overflow: ellipsis;margin-right: 5px; }
         }
       }
     }

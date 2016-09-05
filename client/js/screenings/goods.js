@@ -30,22 +30,15 @@ define(function(require){
                     // console.log($(this).text());
                 }
             });
-        }else if(utils.browser.ios){
-            $('.ellips').ellipsis({
-                row:2,
-                char:'…',
-                callback: function() {
-                    // console.log($(this).text());
-                }
-            });
-        }else{
-            $('.ellips').ellipsis({
-                row:1,
-                char:'……',
-                callback: function() {
-                    // console.log($(this).text());
-                }
-            });
+        }else if(utils.browser.mobile){
+            console.log("手机端")
+            // $('.ellips').ellipsis({
+            //     row:1,
+            //     char:'…',
+            //     callback: function() {
+            //         console.log($(this).text());
+            //     }
+            // });
         }
 
         // $.each($('.ellips'),function (index,item) {
