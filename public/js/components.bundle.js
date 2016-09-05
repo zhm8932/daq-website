@@ -201,10 +201,6 @@ webpackJsonp([6],[
 	                }
 	            }
 	        });
-
-	        // request({method: 'GET', url: url, json: data}, function(error, response, body) {
-	        //     console.log("body:",body)
-	        // })
 	    },
 	    render: function () {
 	        // console.log("renderthis.state:",this.state);
@@ -214,7 +210,11 @@ webpackJsonp([6],[
 	        if (!data || !data.length > 0) {
 	            return React.createElement("p", null, "暂无数据");
 	        }
-	        return React.createElement("div", null, React.createElement(AskList, { data: this.state.data }), React.createElement(Pager, { getData: this.getData, data: this.state.data, pageCount: this.props.pageCount, currentPage: this.state.currentPage }));
+
+	        if (this.props.pageCount == 1) {
+	            return React.createElement("div", null, React.createElement(AskList, { data: this.state.data }));
+	        }
+	        return React.createElement("div", null, React.createElement(AskList, { data: this.state.data }), React.createElement("h5", null, this.props.pageCount), React.createElement(Pager, { getData: this.getData, data: this.state.data, pageCount: this.props.pageCount, currentPage: this.state.currentPage }));
 	    }
 	});
 	module.exports = AskBox;

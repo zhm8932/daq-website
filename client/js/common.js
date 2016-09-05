@@ -117,6 +117,7 @@ define(function (require, exports, module) {
         $gotoTop.click(function () {
             $('body,html').animate({scrollTop: 0}, 600)
         })
+        
         // $body.on('click','.gotoTop',function () {
         //     // $(window).scrollTop(0);
         //     alert("返回顶部")

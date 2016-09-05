@@ -1,4 +1,4 @@
-webpackJsonp([14],{
+webpackJsonp([15],{
 
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
@@ -12,7 +12,7 @@ webpackJsonp([14],{
 /***/ 119:
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery ellipsis - v1.1.1 - 2014-02-23
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery ellipsis - v1.1.1 - 2014-02-23
 	* https://github.com/STAR-ZERO/jquery-ellipsis
 	* Copyright (c) 2014 Kenji Abe; Licensed MIT */
 	(function (factory) {
@@ -219,22 +219,15 @@ webpackJsonp([14],{
 	                    // console.log($(this).text());
 	                }
 	            });
-	        }else if(utils.browser.ios){
-	            $('.ellips').ellipsis({
-	                row:2,
-	                char:'…',
-	                callback: function() {
-	                    // console.log($(this).text());
-	                }
-	            });
-	        }else{
-	            $('.ellips').ellipsis({
-	                row:1,
-	                char:'……',
-	                callback: function() {
-	                    // console.log($(this).text());
-	                }
-	            });
+	        }else if(utils.browser.mobile){
+	            console.log("手机端")
+	            // $('.ellips').ellipsis({
+	            //     row:1,
+	            //     char:'…',
+	            //     callback: function() {
+	            //         console.log($(this).text());
+	            //     }
+	            // });
 	        }
 
 	        // $.each($('.ellips'),function (index,item) {

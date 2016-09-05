@@ -175,7 +175,7 @@
             color: $textc_48B;
           }
           h4{display: inline-block;background: none;width: auto;height:30px;line-height: 30px;}
-          p{height: 24px;margin: 0px;}
+          p{height: 24px;margin: 0px;white-space: nowrap; text-overflow: ellipsis;margin-right: 5px; }
         }
       }
     }
@@ -1018,8 +1018,8 @@
     figure{
       padding-bottom: 20px;
       h4{margin: 0px;padding: 0px;}
-      img{float: none;box-sizing: border-box;float: left;width: 54%;}
-      figcaption{width: 43%;float: right;}
+      img{float: none;box-sizing: border-box;float: left;width: 48%;}
+      figcaption{width: 50%;float: right;}
       .more{margin: 0px 0 10px 0;}
     }
   }
@@ -1102,7 +1102,6 @@
   .order-success .order-box i.success, .pay-success .order-box i.success{left: 30px;}
   .order-success .order-box .price-box, .pay-success .order-box .price-box{left: 140px;top: 48px;}
   .order-success .order-box .order-detail, .pay-success .order-box .order-detail{left:140px;top: 90px;}
-  .tab ul li a{padding: 0 10px;}
   .footer dl dd p{width: 100%;}
   .footerWap{
     a{font-size: 24px;}
@@ -1124,6 +1123,13 @@
     }
   }
   .loginCom .bd ul li input{font-size: 14px;}
+  .info_list .lr_list{
+    figure{
+      img{width: 40%;margin-bottom: 10px;}
+      figcaption{width: 58%;float: right;}
+      .more{display: none;}
+    }
+  }
   .copyright{font-size: 14px;}
 
 }
@@ -1147,4 +1153,5 @@
     figcaption{width: 54%;}
     .pic{width: 42%;}
   }
+  .tab ul li{margin-right: 15px;}
 }

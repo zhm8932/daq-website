@@ -52,7 +52,7 @@ block content
                                     if item.productKeyAttributeList
                                         each arr in item.productKeyAttributeList
                                             if arr.attributeName == 'slogan'
-                                                p
+                                                p.ellips
                                                     if arr.value.length > 50
                                                         | #{arr.value.substring(0, 50)}……
                                                     else

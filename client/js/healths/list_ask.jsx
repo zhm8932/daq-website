@@ -73,10 +73,6 @@ var AskBox = React.createClass({
 
             }
         })
-
-        // request({method: 'GET', url: url, json: data}, function(error, response, body) {
-        //     console.log("body:",body)
-        // })
     },
     render:function () {
         // console.log("renderthis.state:",this.state);
@@ -86,11 +82,19 @@ var AskBox = React.createClass({
         if(!data||!data.length>0){
             return <p>暂无数据</p>
         }
+
+        if(this.props.pageCount==1){
+            return (
+                <div>
+                    <AskList data={this.state.data}/>
+                </div>
+            )
+        }
         return (
             <div>
                 <AskList data={this.state.data}/>
+                <h5>{this.props.pageCount}</h5>
                 <Pager getData={this.getData} data={this.state.data} pageCount={this.props.pageCount} currentPage={this.state.currentPage}/>
-
             </div>
         )
     }

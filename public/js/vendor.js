@@ -30,7 +30,7 @@
 /******/ 	// "0" means "already loaded"
 /******/ 	// Array means "loading", array contains callbacks
 /******/ 	var installedChunks = {
-/******/ 		31:0
+/******/ 		32:0
 /******/ 	};
 
 /******/ 	// The require function
@@ -76,7 +76,7 @@
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
 
-/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"abouts","1":"agencys/department_detail","2":"agencys/detail","3":"agencys/infos","4":"agencys/list","5":"common","6":"components","7":"config","8":"healths","9":"healths/list","10":"healths/list_ask","11":"imgAuto","12":"index","13":"login","14":"screenings/goods","15":"screenings/goods_detail","16":"seajs.config","17":"searchs/search_report","18":"trade/cart","19":"trade/order_confirm","20":"trade/order_list","21":"trade/order_success","22":"treat/pay","23":"treat/reg_doc","24":"treat/reg_source_list","25":"users/account","26":"users/coupons","27":"users/order_detail","28":"users/orders","29":"users/patients","30":"users/registerings"}[chunkId]||chunkId) + ".bundle.js";
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"abouts","1":"agencys/department_detail","2":"agencys/detail","3":"agencys/infos","4":"agencys/list","5":"common","6":"components","7":"config","8":"healths","9":"healths/list","10":"healths/list_ask","11":"imgAuto","12":"index","13":"login","14":"pager","15":"screenings/goods","16":"screenings/goods_detail","17":"seajs.config","18":"searchs/search_report","19":"trade/cart","20":"trade/order_confirm","21":"trade/order_list","22":"trade/order_success","23":"treat/pay","24":"treat/reg_doc","25":"treat/reg_source_list","26":"users/account","27":"users/coupons","28":"users/order_detail","29":"users/orders","30":"users/patients","31":"users/registerings"}[chunkId]||chunkId) + ".bundle.js";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};
@@ -1660,6 +1660,7 @@
 	        $gotoTop.click(function () {
 	            $('body,html').animate({scrollTop: 0}, 600)
 	        })
+	        
 	        // $body.on('click','.gotoTop',function () {
 	        //     // $(window).scrollTop(0);
 	        //     alert("返回顶部")
@@ -2431,12 +2432,10 @@
 	                }else{
 	                    // console.log('页面级注册')
 	                    if(json.success){
-	                        console.log(json.msg)
 	                        utils.ShowComfirmDialog({
 	                            tipText:json.msg+'<p>即将跳转登录……</p>',
 	                            noConfirmBtn:true,
 	                            callback:function () {
-	                                console.log("弹框开始渲染")
 	                                setTimeout(function () {
 	                                    window.location.href = '/login'
 	                                },2000)
