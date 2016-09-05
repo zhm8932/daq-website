@@ -121,7 +121,6 @@
   .wrapper {
     position: relative;
   }
-
   .slideBox{
     //width: 1600px;margin: 0 auto;
     .slide_0{
@@ -129,6 +128,10 @@
     }
     .slide_1{
       background:url("../images/banner2Bg.png") repeat-x;
+    }
+    p{
+      display: none;
+      &:first-child{display: block;}
     }
   }
 

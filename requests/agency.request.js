@@ -37,6 +37,7 @@ exports.get_agency_detail = function (req,res,next) {
             })
         }
         res.locals.get_agency_detail = data[0];
+        req.get_agency_detail = data[0];
         next();
     })
 }

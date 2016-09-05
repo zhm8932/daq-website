@@ -20,6 +20,7 @@
     .submitBox .ok{font-size: 18px;}
   }
 
+  #allmap{display: none;}
   .positon{margin-bottom: 10px;display: none;}
   .nav{
     height: 80px;line-height: inherit;width: auto;
@@ -63,7 +64,9 @@
     .wrapper{width: auto;}
   }
   .banner, .nav, .footer, .copyright,.wrapper{width: auto;}
-  .banner img{width: 100%}
+  .banner{
+    img{width: 100%}
+  }
 
   .topBar{
     height: 0px;position: relative;margin-left:$loginW+20px;width: auto;
@@ -268,6 +271,7 @@
       width: 160px;margin-right: 10px;
     }
   }
+  .agencys_com ol{padding-left: 22px;}
   .health aside{width: 100%}
   .health_detail{width: 100%;
     article,p{font-size: 18px;}}

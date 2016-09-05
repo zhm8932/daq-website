@@ -39,6 +39,9 @@
     .loginCom .submitBox .ok {
       font-size: 18px; }
 
+  #allmap {
+    display: none; }
+
   .positon {
     margin-bottom: 10px;
     display: none; }
@@ -373,6 +376,9 @@
     .health_list .lr_list figure img {
       width: 160px;
       margin-right: 10px; }
+
+  .agencys_com ol {
+    padding-left: 22px; }
 
   .health aside {
     width: 100%; }

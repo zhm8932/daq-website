@@ -1561,20 +1561,22 @@
 
 	            function myFun(result) {
 	                cityName = result.name;
+	                // console.log("cityName:",cityName)
 	                map.setCenter(cityName);
 	                if (!$.cookie('locals_city')) {
 	                    getAllCity(cityName, function (newArr) {
-	                        // console.log("newArr:",newArr)
-	                        // console.log("cityName:",cityName)
+	                        // console.log("cityName1:",cityName)
 	                        var is_locals_city = $.cookie('locals_city');
 	                        if (!is_locals_city && newArr.length) {
 	                            // changeCity(newArr[0])
+	                            // console.log("newArr1:",newArr)
 	                            utils.SendAjax({
 	                                url: '/changeCity',
 	                                param: {city: newArr[0]},
 	                                method: 'GET',
 	                                tipText: '切换城市',
 	                                callback: function (result) {
+	                                    console.log("执行吗")
 	                                    $('.city-name em').html(cityName);
 	                                    $('#choosed-city-id').val(newArr[0].id);
 	                                },
@@ -1690,15 +1692,15 @@
 
 
 	        if (utils.browser.mobile) {
-	            var index=6;
+	            var index=0;
 	            if(sessionStorage.getItem("index")){
 	                index=sessionStorage.getItem("index");
 	            }
-	            console.log('sessionStorage:',sessionStorage)
+	            // console.log('sessionStorage:',sessionStorage)
 
 	            if (winWidth < 768) {
 	                //导航滑动
-	                $nav.addClass('swiper-container');
+	                // $nav.addClass('swiper-container');
 	                console.log('index:',index)
 	                var swiper = new Swiper('.swiper-container', {
 	                    nextButton: '.swiper-button-next',
@@ -1716,7 +1718,7 @@
 	                //console.log("winWidth:",winWidth)
 	                if (winWidth < 768) {
 	                    //导航滑动
-	                    $nav.addClass('swiper-container');
+	                    // $nav.addClass('swiper-container');
 	                    var swiper = new Swiper('.swiper-container', {
 	                        nextButton: '.swiper-button-next',
 	                        prevButton: '.swiper-button-prev',

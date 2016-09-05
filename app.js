@@ -51,7 +51,7 @@ var redisClient = redis.createClient(6379,config.options.host, {});
 // redisClient.auth(options.pass);
 // console.log("options:",options);
 
-redisClient.on("error", function (err) {
+redisClient.on("error", function (res, code, err) {
   var err = new Error('redis错误');
   errorHandler.handleError(res, '500', 'html', err);
 });

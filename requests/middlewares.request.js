@@ -136,6 +136,7 @@ exports.get_department_list = function (req,res,next) {
         //     })
         // }
         res.locals.get_department_list = data;
+        req.get_department_list = data;
         next();
     })
 }
