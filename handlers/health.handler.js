@@ -1,10 +1,16 @@
 var markdown=  require( "markdown" ).markdown;
+var React = require('react');
+var ReactDOM = require('react-dom');
+var ReactDOMServer = require('react-dom/server');
+// require('../public/js/vendor');
+var components = require('../server/js/components');
+var AskBox = React.createFactory(components.AskBox);
 
 exports.get_article_list = function(req,res) {
     var get_article_list = req.get_article_list;
     var get_article_list_ask = req.get_article_list_ask;
     var get_article_list_diseases = req.get_article_list_diseases,
-        ask_pageCount = '',
+        pageCount = '',
         ask_currentPage=''
 
     // console.log('res.locals:',res.locals)
@@ -13,7 +19,7 @@ exports.get_article_list = function(req,res) {
         get_article_list=get_article_list.data.data;
     }
     if(get_article_list_ask.success){
-        res.locals.ask_pageCount = get_article_list_ask.data.pageCount;
+        res.locals.ask_pageCount = pageCount = get_article_list_ask.data.pageCount;
         res.locals.ask_currentPage = get_article_list_ask.data.currentPage;
         get_article_list_ask = get_article_list_ask.data.data;
     }
@@ -26,7 +32,9 @@ exports.get_article_list = function(req,res) {
         description: '健康常识,'+CONST.GLOBAL_TITLE,
         get_article_list:get_article_list,
         get_article_list_ask:get_article_list_ask,
-        get_article_list_diseases:get_article_list_diseases
+        get_article_list_ask_react:ReactDOMServer.renderToString(AskBox({data:get_article_list_ask,pageCount:pageCount})),
+        get_article_list_diseases:get_article_list_diseases,
+        props: '<script type="text/javascript">var data='+JSON.stringify(get_article_list_ask)+';var pageCount ='+pageCount+' </script>'
 
     });
 }

@@ -30,7 +30,7 @@
 /******/ 	// "0" means "already loaded"
 /******/ 	// Array means "loading", array contains callbacks
 /******/ 	var installedChunks = {
-/******/ 		27:0
+/******/ 		31:0
 /******/ 	};
 
 /******/ 	// The require function
@@ -76,7 +76,7 @@
 /******/ 			script.charset = 'utf-8';
 /******/ 			script.async = true;
 
-/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"abouts","1":"agencys/department_detail","2":"agencys/detail","3":"agencys/infos","4":"agencys/list","5":"common","6":"config","7":"imgAuto","8":"index","9":"login","10":"screenings/goods","11":"screenings/goods_detail","12":"seajs.config","13":"searchs/search_report","14":"trade/cart","15":"trade/order_confirm","16":"trade/order_list","17":"trade/order_success","18":"treat/pay","19":"treat/reg_doc","20":"treat/reg_source_list","21":"users/account","22":"users/coupons","23":"users/order_detail","24":"users/orders","25":"users/patients","26":"users/registerings"}[chunkId]||chunkId) + ".bundle.js";
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({"0":"abouts","1":"agencys/department_detail","2":"agencys/detail","3":"agencys/infos","4":"agencys/list","5":"common","6":"components","7":"config","8":"healths","9":"healths/list","10":"healths/list_ask","11":"imgAuto","12":"index","13":"login","14":"screenings/goods","15":"screenings/goods_detail","16":"seajs.config","17":"searchs/search_report","18":"trade/cart","19":"trade/order_confirm","20":"trade/order_list","21":"trade/order_success","22":"treat/pay","23":"treat/reg_doc","24":"treat/reg_source_list","25":"users/account","26":"users/coupons","27":"users/order_detail","28":"users/orders","29":"users/patients","30":"users/registerings"}[chunkId]||chunkId) + ".bundle.js";
 /******/ 			head.appendChild(script);
 /******/ 		}
 /******/ 	};
@@ -1563,7 +1563,9 @@
 	                cityName = result.name;
 	                map.setCenter(cityName);
 	                if (!$.cookie('locals_city')) {
-	                    getCityList(cityName, function (newArr) {
+	                    getAllCity(cityName, function (newArr) {
+	                        // console.log("newArr:",newArr)
+	                        // console.log("cityName:",cityName)
 	                        var is_locals_city = $.cookie('locals_city');
 	                        if (!is_locals_city && newArr.length) {
 	                            // changeCity(newArr[0])
@@ -1622,21 +1624,6 @@
 
 
 	        });
-
-	        // $('.city-name').on('click',function(e){
-	        //     e.stopPropagation();
-	        //     var $this = $(this);
-	        //     var OChooseCity = $this.find('.choose-city');
-	        //     if(OChooseCity.css('display') == 'none'){
-	        //         OChooseCity.fadeIn();
-	        //         //console.log(OChooseCity.data('load'));
-	        //         var data = OChooseCity.data('load')
-	        //         if(data === 'first'){
-	        //             getCityList();
-	        //             OChooseCity.data('load','non-first');
-	        //         }
-	        //     }
-	        // });
 	        $('.city-name').hover(function (e) {
 	            // e.stopPropagation();
 	            var $this = $(this);
@@ -1698,13 +1685,24 @@
 
 	        var winWidth = $(window).width();
 	        var $nav = $('.nav').find('.wrapper');
+
+
+
 	        if (utils.browser.mobile) {
+	            var index=6;
+	            if(sessionStorage.getItem("index")){
+	                index=sessionStorage.getItem("index");
+	            }
+	            console.log('sessionStorage:',sessionStorage)
+
 	            if (winWidth < 768) {
 	                //导航滑动
 	                $nav.addClass('swiper-container');
+	                console.log('index:',index)
 	                var swiper = new Swiper('.swiper-container', {
 	                    nextButton: '.swiper-button-next',
 	                    prevButton: '.swiper-button-prev',
+	                    initialSlide:index,  //设定初始化时slide的索引
 	                    slidesPerView: 4
 	                    // spaceBetween: 30
 	                });
@@ -1721,6 +1719,7 @@
 	                    var swiper = new Swiper('.swiper-container', {
 	                        nextButton: '.swiper-button-next',
 	                        prevButton: '.swiper-button-prev',
+	                        initialSlide:index,
 	                        slidesPerView: 4
 	                        // spaceBetween: 30
 	                    });
@@ -1731,12 +1730,38 @@
 	                    $nav.find('.swiper-slide').addClass('3333333333333').removeAttr("style")
 	                }
 	            })
+
+	            $body.on('click','.nav ul li',function () {
+	                var i= $(this).index();
+	                sessionStorage.setItem("index",i);
+	            })
+
 	        }
 
 
 	    })
 
 	    var curCityArr = '';
+
+	    function getAllCity(cityName,callback) {
+	        $.ajax({
+	            url: '/dic/list/typeAndLevel',
+	            data: {type: "district", level: "2", activeState: '1'},
+	            success: function (result) {
+	                var json = JSON.parse(result);
+	                var data = json.data;
+	                if (callback) {
+	                    newArr = data.filter(function (item) {
+	                        // return item.name == '南京'
+	                        //过滤出上线的城市，并且所在城市为开通服务的城市
+	                        return item.isOnline==1&&item.name == cityName
+	                    })
+	                    callback && callback(newArr)
+	                }
+
+	            },
+	        });
+	    }
 
 	    function getCityList(cityName, callback) {
 	        var cityName = cityName || '';
@@ -1771,9 +1796,9 @@
 	                if (callback) {
 	                    newArr = data.filter(function (item) {
 	                        // return item.name == '南京'
-	                        return item.name == cityName
+	                        //过滤出上线的城市，并且所在城市为开通服务的城市
+	                        return item.isOnline==1&&item.name == cityName
 	                    })
-	                    // //console.log("过滤后的data：",newArr)
 	                    callback && callback(newArr)
 	                }
 
@@ -1826,6 +1851,15 @@
 
 
 	    })
+
+	    if(utils.browser.ie){
+	        var winWidth = $(window).width();
+	        var $wrapperW = $('.item_list .wrapper').width();
+	        if(winWidth<=1366){
+	            $('.rightNav').css({"margin-right":'-670px'})
+	        }
+	    }
+
 	    if (utils.browser.ios) {
 	        var $footerWap = $('.footerWap');
 	        // $('input').focus(function () {
@@ -2397,10 +2431,12 @@
 	                }else{
 	                    // console.log('页面级注册')
 	                    if(json.success){
+	                        console.log(json.msg)
 	                        utils.ShowComfirmDialog({
 	                            tipText:json.msg+'<p>即将跳转登录……</p>',
 	                            noConfirmBtn:true,
 	                            callback:function () {
+	                                console.log("弹框开始渲染")
 	                                setTimeout(function () {
 	                                    window.location.href = '/login'
 	                                },2000)

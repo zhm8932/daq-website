@@ -45,7 +45,7 @@ module.exports = {
     },
     resolve: {
         root: __dirname + '/client/js',
-        extensions: ['', '.js', '.json'],
+        extensions: ['', '.js','.jsx','.json'],
         alias: {
             'jquery': 'libs/1.8.3/jquery.js',
             'lazyload':'libs/jquery.lazyload.js',
@@ -66,7 +66,7 @@ module.exports = {
     ],
     module: {
         loaders: [
-            {test: /\.jsx?$/, loaders: ['jsx-loader']},
+            {test: /\.jsx$/,loader: 'babel-loader!jsx-loader?harmony',exclude: /node_modules/}
             // {test: /\.js?$/, loaders: ['babel-loader']}
         ]
     }

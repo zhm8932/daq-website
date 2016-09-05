@@ -25,7 +25,7 @@
     height: 80px;line-height: inherit;width: auto;
     ul {
       li{
-        &.on{background-color:inherit  }
+        &.on{background-color:$navBgWapOnColor; }
         &.index{display: none;}
         &:last-child{
           i{display: inline-block;}
@@ -34,17 +34,18 @@
           padding:50px 0px 0;position: relative;
         }
         p{display: block;margin: 5px 0 -3px;}
-        i{display: inline-block;width: 45px;height:45px;float: none;position: static;border: none;background:url('../images/icon.png');background-size: 600px;margin: 0px;
+        i{display: inline-block;width: 45px;height:45px;float: none;position: static;border: none;background:url('../images/icon.png');background-size: 660px;margin: 0px;
           position: absolute;left: 50%;top: 4px;margin-left: -22px;
-          &.n01{background-position:0px -1041px}
-          &.n02{background-position:-54px -1041px}
-          &.n03{background-position:-110px -1041px}
-          &.n04{background-position:-166px -1041px}
-          &.n05{background-position:-222px -1041px}
-          &.n06{background-position:-276px -1041px}
+          &.n01{background-position:2px -1142px}
+          &.n02{background-position:-62px -1142px}
+          &.n03{background-position:-118px -1142px}
+          &.n04{background-position:-184px -1142px}
+          &.n05{background-position:-244px -1142px }
+          &.n06{background-position:-302px -1142px}
+          &.n07{background-position:-366px -1142px}
         }
         &:hover{
-          i{background-image:url('../images/icon.png');background-size: 600px;}
+          //i{background-image:url('../images/icon.png');background-size: 600px;}
         }
       }
       i{display: none;}
@@ -68,6 +69,7 @@
     height: 0px;position: relative;margin-left:$loginW+20px;width: auto;
     .wrapper{overflow: inherit;width: auto;}
   }
+  .noMP{padding: 0px;margin: 0px;}
   .topBar_info{
     .city-name{position: absolute;left:0px;top: 15px;}
     .devidel,.loginBtn{display: none;}
@@ -128,7 +130,16 @@
     padding: 30px 0 ;
   }
   .cart .empty-cart .empty-cart-box{height: 160px;}
-
+  .tab{
+    img{margin-top: 15px;}
+    ul li{
+      margin-right: 20px;
+      a{padding: 0px 2px;border: none;border-radius: 0px; line-height: 32px;font-size: 18px;}
+      &.on{
+        a{border-bottom: 2px solid $bdrc_48B;}
+      }
+    }
+  }
   .item_list {
 
     padding-bottom: 20px;
@@ -137,15 +148,18 @@
     }
     .pic_list{
       ul{margin-left: -3%;
-        //li{width: 47%;margin:20px 0 0 3%;height: auto;
-        li{width:auto;margin:20px 0 0 3%;height: auto;border: 1px solid $bdrc_ddd;float:none;display: block;
+        li{width: 47%;margin:20px 0 0 3%;height: auto;
+        //li{width:auto;margin:20px 0 0 3%;height: auto;border: 1px solid $bdrc_ddd;float:none;display: block;
           a{
-            h4{line-height:50px;height:50px;top:-50px;position: relative;margin-bottom:-30px;font-size: 20px;background: none;color: $textc_48B;overflow: hidden;background-color: rgba(255, 255, 255, 0.75);text-align: right;padding-right: 10px;width: auto;box-sizing: border-box;}
+            h4{
+              height: 44px;line-height: 44px;
+            }
           }
-          p{color: $textc_333;padding: 0 10px;margin: 0px; font-size: 16px;height: 48px;overflow: hidden;}
-          .price{padding-top: 0px;position: absolute;bottom:80px; left: 10px;
-            .new{font-size: 18px;}
-            .old{display: none;}
+          p{color: $textc_333;margin:5px 0 0; font-size: 16px;height: 48px;overflow: hidden;}
+          .price{
+             padding-top: 5px;
+            .new{}
+            .old{}
           }
         }
       }
@@ -155,7 +169,13 @@
     .goods_list{
       ul{
         li{
-          a h4{top: -50px;}
+          width: 100%;
+          img{width: 30%;float: left;margin-right: 10px;}
+          a{
+            color: $textc_48B;
+          }
+          h4{display: inline-block;background: none;width: auto;height:30px;line-height: 30px;}
+          p{height: 24px;margin: 0px;}
         }
       }
     }
@@ -169,12 +189,17 @@
       }
     }
     .department_list{
-      margin: 0px;
+      margin: 30px 0 0;
       ul{
         li{
-          border: none;padding-bottom: 10px;
-          h4{margin: 0px;background: none;display: block;position: static;color: $textc_48B;font-size: 22px;font-weight: normal;text-align:left;padding-left: 20px;}
-          p{padding-left: 20px;}
+          width: 100%;margin: 0px;
+          //border: none;padding-bottom: 10px;
+          //h4{margin: 0px;background: none;display: block;position: static;color: $textc_48B;font-size: 22px;font-weight: normal;text-align:left;padding-left: 20px;}
+          //p{padding-left: 20px;}
+          img{width: 50%;float: left}
+          h4{width: 50%;float: left; display: block;border-radius: 0;color: $bgc_48B;font-size: 24px;
+            &.bgGray{background:$bgc_gray_F3;}
+          }
         }
       }
     }
@@ -185,17 +210,19 @@
     }
     .standard ul {
 
-      text-align: center;
+      text-align: center;margin: 0px;
       li{
-        width: 32%;float: none;display: inline-block;margin: 0;
+        width: 20%;float: none;margin: 0;
+        //display: inline-block;
+        float: left;
         p{display: none;}
         figure {
-          padding: 0 30px;
+          padding: 0 13px;
           img{width: 100%;height: auto;}
           figcaption{
-            padding-top: 0px;font-size: 20px;margin-top: -5px;
+            padding-top: 15px;font-size: 20px;margin-top: -5px;
           }
-          em{padding:5px 0 10px;color: $white;font-size: 14px;}
+          em{padding:5px 0 10px;color: $white;font-size: 14px; display: none;}
         }
       }
     }
@@ -231,6 +258,12 @@
   }
   .health_list{
     width: 100%;
+    header{
+      padding: 0px;
+      h2{background: none;padding: 0px;border-bottom: 2px solid $bdrc_48B;color: $textc_48B;font-size: 24px;
+        i{display: none;}
+      }
+    }
     .lr_list figure img{
       width: 160px;margin-right: 10px;
     }
@@ -242,39 +275,78 @@
   .agency_box{
     padding: 0 0 20px ;
     .agency_nav{
-      float: none;;width: auto;
-      span{display: inline-block;width: 14.28%;
-        a{width:auto;display: block;}
+      float: none;;width: auto;height: 42px;overflow: hidden;
+      span{display: inline-block;width: 14.28%;float: left;display: block;position: relative;
+        a{width:auto;display: block;
+          &.on{background: none;border-bottom: 2px solid $bdrc_48B;color: $textc_48B;}
+        }
+      }
+      .swiper-wrapper{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-transition-property: -webkit-transform;
+        -moz-transition-property: -moz-transform;
+        -o-transition-property: -o-transform;
+        -ms-transition-property: -ms-transform;
+        transition-property: transform;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        .swiper-slide {
+          -webkit-flex-shrink: 0;
+          -ms-flex: 0 0 auto;
+          flex-shrink: 0;
+          width: 100%;
+          height: 100%;
+          position: relative;
+          text-align: center;
+        }
       }
     }
     .lr_list{
       width: auto;float: none;border: none;font-size: 100px;
-      border-top: 1px solid $bdrc_48B;padding:0;margin-top: 10px;
+      //border-top: 1px solid $bdrc_48B;
+      padding:0;
       figure{
         padding-top: 10px;
-        h4{padding: 0px;margin: 0px;}
-        p{font-size: 14px;}
+        h4{padding: 0px;margin: 0px;height: 30px;line-height:30px;background-color:$bgc_48B;color: $white;text-align: center;}
+        .pic{
+          float: left;width: 30%;
+          img{float: none;width: 100%;margin: 0px;}
+        }
+        p{font-size: 15px;line-height: 22px;height: 44px;overflow: hidden;}
+        aside{display: none;}
+        .more{margin-top:4px;}
       }
     }
   }
 
   .footer{
+    padding-bottom: 20px;
     dl{
       width: 100%;
       dt,dd{width: 100%}
       dt{
-        img{float: left;padding-right:20px;margin-right: 20px;width: 120px;background-color: $bgc_fbg;position: relative;}
+        img{float: left;padding-right:20px;margin:0 0 10px;background-color: $bgc_fbg;position: relative;}
         //.area{padding-bottom: 20px;margin-left:-25px;display: inline-block;}
-        .area{padding-bottom: 20px;}
+        .area{padding-bottom: 20px; display: none;}
       }
-      dd{padding: 0px;border-top:1px solid $bdrc_2b;padding-top: 10px;border-left: none;
+      dd{padding: 0px;border-top:1px solid $bdrc_2b;padding-top: 10px;border-left: none;display: none;
         h4{font-size: 22px;}
         p i{position: relative;top: 5px;}
       }
 
     }
-    .qrcode{width: 100%;padding-top: 20px;text-align: left;
+    .qrcode{width: 100%; padding-top: 20px;text-align: center;
       .weixin{display: inline-block;}
+      h4,strong{display: none;}
       figure{width:auto;margin: 0px 4%;overflow: hidden;}
     }
   }
@@ -945,8 +1017,10 @@
   .info_list .lr_list{
     figure{
       padding-bottom: 20px;
-      img{width: 100%;float: none;margin-bottom: 10px;box-sizing: border-box;}
-      figcaption{width: auto;float: none;}
+      h4{margin: 0px;padding: 0px;}
+      img{float: none;box-sizing: border-box;float: left;width: 54%;}
+      figcaption{width: 43%;float: right;}
+      .more{margin: 0px 0 10px 0;}
     }
   }
   .registerings{
@@ -958,6 +1032,10 @@
   }
   .detail-wap{
     h3{font-size: 14px;}
+  }
+  .agency_box .lr_list figure{
+    .pic{width: 37%;}
+    figcaption{width: 60%}
   }
 }
 
@@ -976,7 +1054,12 @@
     }
   }
 }
-
+@media only screen and (min-width: 376px) and (max-width: 414px){
+  .agency_box .lr_list figure{
+    .figcaption{}
+    p{height: 48px;line-height: 24px;margin-bottom: 3px;font-size: 16px;}
+  }
+}
 @media only screen and (min-width: 320px) and (max-width: 360px){
 
   .topBar{margin-left: 110px;}
@@ -995,7 +1078,7 @@
         font-size: 20px;
         height: 32px;
       }
-      ul li figure{padding: 0 20px;}
+      ul li figure{padding: 0 10px;}
     }
   }
   .health_list .lr_list figure{
@@ -1059,5 +1142,9 @@
     .qrcode figure{width: 40%;
       img{width: 100%}
     }
+  }
+  .agency_box .lr_list figure{
+    figcaption{width: 54%;}
+    .pic{width: 42%;}
   }
 }

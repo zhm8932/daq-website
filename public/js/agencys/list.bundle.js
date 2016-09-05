@@ -12,8 +12,10 @@ webpackJsonp([4],{
 /***/ 121:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(3)
+	__webpack_require__(3);
+	var utils = __webpack_require__(4)
 
+	var Swiper = __webpack_require__(116);
 	$(function () {
 
 	    var location = window.location;
@@ -25,7 +27,44 @@ webpackJsonp([4],{
 	        if($(item).attr('href')==curPathname){
 	            $(item).addClass('on').siblings().removeClass('on');
 	        }
-	    })
+	    });
+
+	    if(utils.browser.mobile){
+	        var winW = $(window).width();
+
+	        $agency_nav.find('span').addClass('swiper-slide');
+	        $agency_nav.wrapInner("<div class='swiper-wrapper'></div>");
+	        var i=0;
+
+	        if(sessionStorage.getItem('i')){
+	            i=sessionStorage&&sessionStorage.getItem('i')
+	        }
+	        $('body').on('click','.agency_nav span',function () {
+	            i = $(this).index()
+	            sessionStorage&&sessionStorage.setItem('i',i)
+	        })
+	        function navCity(obj) {
+	            var mySwiper = new Swiper ('.agency_nav', {
+	                nextButton: '.swiper-button-next',
+	                prevButton: '.swiper-button-prev',
+	                initialSlide:obj&&obj.i||i,  //设定初始化时slide的索引
+	                slidesPerView: obj&&obj.num||6
+	            })
+	        }
+	        if(winW>=360){
+	            navCity()
+	        }else{
+	            navCity({
+	                num:5
+	            })
+	        }
+
+
+	    }
+
+
+
+
 	})
 
 /***/ }

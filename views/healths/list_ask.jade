@@ -1,5 +1,5 @@
 if get_article_list_ask_success
-    .list#list_ask
+    //-.list#list_ask
         h3
             | 有问有答
         ul
@@ -15,7 +15,11 @@ if get_article_list_ask_success
                if ask_currentPage==1
                    a.prev.disable(href='javascript:;'): i.icon
                    a.next(href='javascript:;',data-page=parseInt(ask_currentPage)+1): i.icon
+               else if ask_currentPage==pageCount
+                   a 最后一页
                 //a.prev(href='javascript:;'): i.icon
                 //a.prev(href='javascript:;'): i.icon.disable
                 //a.next(href='javascript:;'): i.icon.disable
                 //a.next(href='javascript:;'): i.icon
+    div!= props
+    .list#ask_test!= get_article_list_ask_react

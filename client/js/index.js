@@ -6,13 +6,7 @@
     require('movingBoxes');
 
 
-    if(utils.browser.ie){
-        var winWidth = $(window).width();
-        var $wrapperW = $('.item_list .wrapper').width();
-        if(winWidth<=1366){
-            $('.rightNav').css({"margin-right":'-670px'})
-        }
-    }
+    
 
     $('#sliderBox').movingBoxes({
         startPanel   : 2,       // 从第一个li开始
@@ -22,6 +16,11 @@
         navFormatter : function(){ return "&#9679;"; }  // 指示器格式，为空即会显示123
 
     });
+
+    var $department_list_li=$('.department_list ul li')
+    var height = $department_list_li.height();
+    console.log("height:",height)
+    $department_list_li.find('h4').css({"height":height,"line-height":height+'px'});
 
     function initTouchSlider(obj) {
         // $(".slideBox").touchSlider({

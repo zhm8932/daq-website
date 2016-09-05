@@ -18,8 +18,13 @@ block content
                 li(data-id=item.id): a(href='/screenings/goods/#{item.id}') #{item.name}
         if get_goods_category_success
             each item in get_goods_category
-                if item.others
-                    img(data-original=JSON.parse(item.others)[0].imageUrl ,alt=item.name,title=item.name,data-id=item.id)
+                if item.others&&item.id==categoryId
+                    -var others = JSON.parse(item.others)
+                    if browser.mobile
+                        img(data-original=others.mobileImage[0].imageUrl ,alt=item.name,title=item.name,data-id=item.id)
+                    else
+                        img(data-original=others.pcImage[0].imageUrl ,alt=item.name,title=item.name,data-id=item.id)
+                        //img(data-original=JSON.parse(item.others)[0].imageUrl ,alt=item.name,title=item.name,data-id=item.id)
               //img(src='/images/goods_ban01.png')
     include goods_mixin
     section.item_list.clearfix
@@ -41,7 +46,9 @@ block content
                                             else
                                                 img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
                                                 //-img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
-                                        h4 #{item.goodsName}
+
+                                    h4
+                                        a(href='/screenings/goods/detail/#{item.id}' target='_blank') #{item.goodsName}
                                     if item.productKeyAttributeList
                                         each arr in item.productKeyAttributeList
                                             if arr.attributeName == 'slogan'

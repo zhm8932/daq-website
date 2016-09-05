@@ -4,6 +4,7 @@ var uglify = require('gulp-uglify');
 var webpack = require('webpack');
 var babel = require('gulp-babel');
 var sass = require('gulp-ruby-sass');
+var react = require('gulp-react');
 var rename = require('gulp-rename');
 var cleanCSS = require('gulp-clean-css');
 
@@ -41,11 +42,15 @@ gulp.task('js', function () {
         // }))
         .pipe(gulp.dest('public/js'));
 });
-
+gulp.task('jsx',function () {
+    return gulp.src(srcPaths.jsx)
+        .pipe(react())
+        .pipe(gulp.dest('server/js'))
+})
 gulp.task('watch', function () {
     gulp.watch(srcPaths.sass, ['sass']);
     gulp.watch(srcPaths.js, ['webpack']);
-    gulp.watch(srcPaths.jsx, ['webpack']);
+    gulp.watch(srcPaths.jsx, ['jsx','webpack']);
     gulp.watch(srcPaths.bundledJS, ['js']);
 });
 
@@ -73,5 +78,5 @@ gulp.task('cssmin', function () {
         .pipe(gulp.dest('public/css'));
 });
 
-gulp.task('default', ['sass', 'webpack', 'js', 'watch']);
+gulp.task('default', ['sass', 'webpack', 'js','jsx','watch']);
 gulp.task('prod', ['webpack', 'cssmin','jsmin']);

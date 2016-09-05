@@ -615,8 +615,8 @@ select {
     margin-top: 30px;
     color: #FFF;
     background-color: #48BED8;
-    padding: 8px 20px;
-    border-radius: 10px;
+    padding: 5px 20px;
+    border-radius: 6px;
     position: relative;
     font-size: 18px;
     display: inline-block; }
@@ -1127,8 +1127,8 @@ select {
         background-position: 0px -202px; }
     .pages a.next i, .pages button.next i {
       background-position: -24px -202px; }
-      .pages a.next i.disable, .pages button.next i.disable {
-        background-position: -24px -202px; }
+    .pages a.next:hover.disable i, .pages button.next:hover.disable i {
+      background-position: -24px -202px; }
     .pages a.next:hover i, .pages button.next:hover i {
       background-position: -24px -230px; }
 

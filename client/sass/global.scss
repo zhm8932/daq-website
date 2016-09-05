@@ -624,7 +624,7 @@ select {
 
     .more {
       //float: right;
-      margin-top: 30px ;color: $white;background-color: $bgc_48B;padding: 8px 20px;border-radius: 10px;position: relative;
+      margin-top: 30px ;color: $white;background-color: $bgc_48B;padding:5px 20px;border-radius:6px;position: relative;
       //top: 20px;
       font-size: 18px;display: inline-block;
       i {
@@ -1203,11 +1203,12 @@ select {
     &.next {
       i {
         background-position: -24px -202px;
-        &.disable {
-          background-position: -24px -202px;
-        }
+
       }
       &:hover {
+        &.disable {
+          i{background-position: -24px -202px;  }
+        }
         i {
           background-position: -24px -230px;
         }
