@@ -151,8 +151,8 @@ module.exports = {
 
 
     //预约
-    GetReservationList: "service.reservation.byuser",
-    GetReserveDetail: "service.reservation.byid",
+    GetReservationList: "service.reservation.get.byaccount",
+    GetReserveDetail: "service.reservation.code.get.byid",
 
     //就诊人
     GetPatientList: "daq.contactPerson.list",
