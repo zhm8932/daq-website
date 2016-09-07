@@ -53,7 +53,12 @@ block content
 
                                     h4
                                         a(href='/screenings/goods/detail/#{item.id}' target='_blank') #{item.goodsName}
-                                    if item.productKeyAttributeList
+                                    p.ellips
+                                        if item.slogan.length > 50
+                                            | #{item.slogan.substring(0, 50)}……
+                                        else
+                                            | #{item.slogan}
+                                    //-if item.productKeyAttributeList
                                         each arr in item.productKeyAttributeList
                                             if arr.attributeName == 'slogan'
                                                 p.ellips
