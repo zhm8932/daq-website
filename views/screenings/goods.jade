@@ -49,7 +49,7 @@ block content
                                             if browser.ie
                                                 img(src='#{goodsImg}',alt='#{item.goodsName}')
                                             else
-                                                -img(data-original='#{goodsImg}',alt='#{item.goodsName}')
+                                                img(data-original='#{goodsImg}',alt='#{item.goodsName}')
 
                                     h4
                                         a(href='/screenings/goods/detail/#{item.id}' target='_blank') #{item.goodsName}

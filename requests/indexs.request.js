@@ -13,6 +13,7 @@ exports.get_goods_list = function (req,res,next) {
         "pageIndex": currentPage,
         "pageSize": 6,
         "categoryId": '',
+        "cityId": '',
         "goodsState": goodsState
     };
 

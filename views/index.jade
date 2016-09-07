@@ -132,11 +132,14 @@ block content
               li
                 a(href='/screenings/goods/detail/#{item.id}',target='_blank')
                   //-img(data-original='images/product1.png')
-                  if item.goodsImages
+                  if !browser.mobile&&item.pcCoverImages&&item.pcCoverImages.length
+                    - var images = item.pcCoverImages[0];
                     if browser.ie
-                      img(src='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}',title='#{item.goodsName}')
+                      img(src='#{images}',alt='#{item.goodsName}',title='#{item.goodsName}')
                     else
-                      img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}',title='#{item.goodsName}')
+                      img(data-original='#{images}',alt='#{item.goodsName}',title='#{item.goodsName}')
+                  if browser.mobile&&item.mobileCoverImages&&item.mobileCoverImages.length
+                    img(data-original='#{item.mobileCoverImages[0]}',alt='#{item.goodsName}',title='#{item.goodsName}')
                   h4 #{item.goodsName}
                 if item.productKeyAttributeList
                   each arr in item.productKeyAttributeList

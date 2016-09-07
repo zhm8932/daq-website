@@ -239,7 +239,8 @@
         margin: 20px 0 0 3%;
         height: auto; }
         .item_list .pic_list ul li a h4 {
-          line-height: 44px; }
+          line-height: 44px;
+          height: 44px; }
         .item_list .pic_list ul li p {
           color: #333333;
           margin: 5px 0 0;

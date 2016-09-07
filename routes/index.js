@@ -3,6 +3,7 @@ var router = express.Router();
 var Handlers = require('../handlers/index.handler');
 var Requests = require('../requests/indexs.request');
 var UsersRequests = require('../requests/users.request');
+var ScreeningsRequests = require('../requests/screenings.request');
 var Middlewares = require('../requests/middlewares.request.js');
 var authority = require('../handlers/authority.handler');
 var Tools = require('../utils/tools'); //判断浏览器
@@ -72,7 +73,7 @@ router.use(function(req, res, next) {
 router.get('*',Handlers.get_wap_tit,Handlers.get_cart_num);
 /* GET home page. */
 // router.get('/',Requests.get_goods_list,Middlewares.get_department,Handlers.index);
-router.get('/',Requests.get_goods_list,Middlewares.get_department_list,Handlers.index);
+router.get('/',Middlewares.get_goods_category,ScreeningsRequests.get_goods_list,Middlewares.get_department_list,Handlers.index);
 
 router.post('/login',Requests.login);
 

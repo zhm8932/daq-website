@@ -9,13 +9,13 @@
   margin-bottom:20px;
   dl{
     dt{
-      width: 45%;float: left;overflow: hidden;
+      width: 45%;float: left;overflow: hidden;padding-bottom: 20px;
 
       .bd{
         max-height: 305px;overflow: hidden;
       }
       .tit{
-        padding: 20px 20px 0;height: 90px;overflow:hidden;z-index: 2;
+        padding: 20px 20px 0;height: 70px;overflow:hidden;z-index: 2;
         div{width: 1000px;}
         span{
           margin: 0 5px 10px; float: left;display: inline;cursor: pointer;

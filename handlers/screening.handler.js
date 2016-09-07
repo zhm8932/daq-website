@@ -60,8 +60,6 @@ exports.get_goods_detail = function (req,res) {
         res.locals.slogan = get_goods_detail.slogan
 
     }
-
-    console.log("get_goods_detail:",get_goods_detail)
     res.render('screenings/goods_detail', {
         title: '筛查服务_'+get_goods_detail.goodsName,
         keywords: '筛查服务_'+keywords+','+CONST.GLOBAL_TITLE,

@@ -21,13 +21,14 @@
   .goods_basic dl dt {
     width: 45%;
     float: left;
-    overflow: hidden; }
+    overflow: hidden;
+    padding-bottom: 20px; }
     .goods_basic dl dt .bd {
       max-height: 305px;
       overflow: hidden; }
     .goods_basic dl dt .tit {
       padding: 20px 20px 0;
-      height: 90px;
+      height: 70px;
       overflow: hidden;
       z-index: 2; }
       .goods_basic dl dt .tit div {

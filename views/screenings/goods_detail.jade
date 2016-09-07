@@ -9,28 +9,33 @@ block content
         include goods_mixin
         -var coverImages;
         if browser.mobile
-            -coverImages = goods_detail.mobileCoverImages;
+            -coverImages = goods_detail.mobileDetailImages;
         else
-            -coverImages = goods_detail.pcCoverImages;
+            -coverImages = goods_detail.pcDetailImages;
         section.goods_basic.clearfix
             .wrapper
                 dl
 
                   if goods_detail
                     dt.slideBox
-                        .touchslider-viewport
-                            .bd
-                              each item in coverImages
-                                p: img(src='#{item}',alt=goods_detail.goodsName)
-                        .switch
-                            .prev
-                                i.icon
-                            .next
-                                i.icon
-                        .tit
-                            div
-                              each item in coverImages
-                                span: img(src='#{item}',alt=goods_detail.goodsName)
+                        if coverImages
+                            if !browser.mobile
+                                .touchslider-viewport
+                                    .bd
+                                      each item in coverImages
+                                        p: img(src='#{item}',alt=goods_detail.goodsName)
+                                .switch
+                                    .prev
+                                        i.icon
+                                    .next
+                                        i.icon
+                                .tit
+                                    div
+                                      each item in coverImages
+                                        span: img(src='#{item}',alt=goods_detail.goodsName)
+                            else
+                                .bd
+                                    img(src='#{coverImages[0]}',alt=goods_detail.goodsName)
 
 
                     dd
