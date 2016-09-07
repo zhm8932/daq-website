@@ -60,11 +60,12 @@ function _handleError(res, code, error,isServerError){
         html:function(){
             var errorPage = errorPageJson[code] || 'error_tip';//根据不同的响应码渲染不同的错误页面,默认渲染error_tip页面
             res.render(errorPage, {
-                message: error.externalMsg
+                message: error.externalMsg,
+                serverCode:error.serverCode || ''
             });
         },
         json:function(){
-            var errorJson = {code: code, msg: error.externalMsg, success: false};
+            var errorJson = {code: code, msg: error.externalMsg, success: false,serverCode:error.serverCode || ''};//服务端错误码:用来判断服务端的错误
             res.send(errorJson);
         }
     });

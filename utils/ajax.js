@@ -10,7 +10,7 @@ var errorHandler = require('./errorHandler');//处理buffer接收问题
 // const logUtil = require('./logFactory');
 // const routerLog = logUtil.getLogger('router');
 
-var errorJson = {"code":"111","data":null,"msg":"json parse exception","success":false};
+var errorJson = {"code":"111","data":null,"msg":"json parse exception","serverCode":"","success":false};
 
 function signParam(sysParam,bizParam) {
     var params = {};//把bizParam和sysParam一起存放到params里
@@ -145,6 +145,7 @@ module.exports.ajax = function (method,apiName,browserReq,browserRes,bizParam,ca
                     resObj = JSON.parse(body);
                     if(!resObj.success){
                         var err = new Error(resObj.msg);
+                        err.serverCode = resObj.code;
                         handleError(resObj.code,err,body,true);
                     }else{
                         callback && callback(null,body);
@@ -176,6 +177,7 @@ module.exports.ajax = function (method,apiName,browserReq,browserRes,bizParam,ca
                     resObj = JSON.parse(body);
                     if(!resObj.success){
                         var err = new Error(resObj.msg);
+                        err.serverCode = resObj.code;
                         handleError(resObj.code,err,body,true);
                     }else{
                         callback && callback(null,body);
@@ -201,7 +203,6 @@ module.exports.ajax = function (method,apiName,browserReq,browserRes,bizParam,ca
 
     function handleError(code,err,data,serverError){
         browserReq.autoHandleError = browserReq.autoHandleError != false;//不为false时都赋值为true
-        console.log("browserReq.autoHandleError:",browserReq.autoHandleError)
         if(browserReq.autoHandleError){
             if(serverError){
                return  errorHandler.handleServerError(browserRes,code,err);

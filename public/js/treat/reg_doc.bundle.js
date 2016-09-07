@@ -136,7 +136,6 @@ webpackJsonp([24],{
 	            return false;
 	        }
 
-	        var isCancel = false;
 	        if(!patientCode){
 	            new utils.Popup({
 	                msg: '<aside>如果你已有客户编号，请绑定已有的客户编号，未绑定将不能查看以前的就诊报告。<div class="text-stress">您也可继续添加拥有新的客户编号</div></aside>',
@@ -146,15 +145,14 @@ webpackJsonp([24],{
 	                otherBox: 'complete-reOk',
 	                okText:'继续保存',
 	                cancelFun:function () {
-	                    isCancel = true;
-	                    console.log("取消事情")
+
 	                },
 	                okCallback:function(){
 	                    commitInfo();
 	                }
 	            })
 	        }else{
-	            !isCancel && commitInfo();
+	            commitInfo();
 	        }
 
 
@@ -175,10 +173,10 @@ webpackJsonp([24],{
 	                            title: '<i class="icon"></i>完善成功!',
 	                            otherBox: 'successBox'
 	                        });
-	                        popup.hideBox();
+	                        popup.closeCallback();
 	                        myMsg.hideMsg(1000);
 	                    } else {
-	                        if(result.code === '1001'){
+	                        if(result.serverCode === '1001'){
 	                            new utils.Popup({
 	                                msg: '<aside>该客户编号不存在,您可取消重新输入!<div class="text-stress">或继续保存拥有新的客户编号</div></aside>',
 	                                otherMsg: 'confirm-btn',

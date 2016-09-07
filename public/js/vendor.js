@@ -152,6 +152,8 @@
 	            self.$body.off('click','.'+self.opts.cancel);
 	            self.$body.on('click','.'+self.opts.ok,function(){
 	                self.opts.okCallback();
+	                self.$body.off('click','.'+self.opts.ok);
+	                self.$body.off('click','.'+self.opts.cancel);
 	                if(self.opts.isHide){
 	                    self.hideBox()
 	                }
