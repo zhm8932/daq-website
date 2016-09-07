@@ -20,11 +20,15 @@ exports.get_goods_list = function (req,res,next) {
         "pageIndex": currentPage,
         "pageSize": 6,
         "categoryId": categoryId,
-        "goodsState": goodsState
-
+        "goodsState": goodsState,
+        "cityId":""
     };
+    var apiName = api.GoodsQueryByPc;
+    if(browser.mobile){
+        apiName = api.GoodsQueryByMobile;
+    }
 
-    util.ajax('GET',api.GoodsQuery,req,res,bizParam,function (err,data) {
+    util.ajax('GET',apiName,req,res,bizParam,function (err,data) {
         if(query.send){
             res.send(data)
         }else{

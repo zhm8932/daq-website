@@ -47,10 +47,15 @@ block content
                             -var transmitType='',favPrice='';
                             -var sampleJson = JSON.parse(locals_sample);
                             each item,i in data.goodsItemDTOs
+                                -var coverImage = '';
+                                if browser.mobile
+                                    -coverImage = item.mobileCoverImages[0];
+                                else
+                                    -coverImage = item.pcCoverImages[0];
                                 tr(data-address="#{item.address}",data-transmitType="#{item.transmitType}",data-goodsId="#{item.goodsId}")
                                     td
                                         a(href='/screenings/goods/detail/#{item.goodsId}')
-                                            img(src="#{item.imageUrls[0]}")
+                                            img(src="#{coverImage}")
                                             span #{item.goodsName}
                                     td.text-stress #{item.reservationPwd}
 
@@ -106,13 +111,18 @@ block content
                         span.text-sec 订单编号:#{data.id}
                         span.orderState #{orderStateJSON[data.orderState]}
                     each item,i in data.goodsItemDTOs
+                        -var coverImage = '';
+                        if browser.mobile
+                            -coverImage = item.mobileCoverImages[0];
+                        else
+                            -coverImage = item.pcCoverImages[0];
                         dl.clearfix
                             each value,key in JSON.parse(item.transmitType)
                                 -transmitType = key;
                                 -favPrice = parseFloat(value);
                             dt
                                 a(href='/screenings/goods/detail/#{item.goodsId}')
-                                    img(src="#{item.imageUrls[0]}")
+                                    img(src="#{coverImage}")
                                     p #{item.goodsName}
                                     if data.orderState == 2
                                         if item.reservationState == 0

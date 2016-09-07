@@ -39,7 +39,12 @@ block content
                         .operation 操作
                     each item in data
                         .table-tr.clearfix
-                            -var imgUrl = item.goodsImageDTOs[0].imageUrl;
+                            -var imgUrl = '';
+                            if browser.mobile
+                                -imgUrl = item.mobileCoverImages[0];
+                            else
+                                -imgUrl = item.pcCoverImages[0];
+
                             -var discountPrice = parseFloat(item.discountPrice);
                             -var favPrice = 0;
                             -var address = '',area = '';

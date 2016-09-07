@@ -39,7 +39,8 @@ module.exports = {
 
     GoodsStateChange: "domain.goods.changeGoodsState",
     GoodsPriorityChange: "domain.goods.changeGoodsPriority",
-    GoodsQuery: "domain.goods.goodsQueryFacade",
+    GoodsQueryByPc: "domain.goods.pageQueryGoodsToPC",
+    GoodsQueryByMobile: "domain.goods.pageQueryGoodsToMobile",
     GoodsDetail: "domain.goods.findGoodsById",
     GoodsFindGoodsByIdToPC: "domain.goods.findGoodsByIdToPC",
     GoodsFindGoodsByIdToMobile: "domain.goods.findGoodsByIdToMobile",

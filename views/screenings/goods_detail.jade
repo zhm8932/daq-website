@@ -7,6 +7,11 @@ block content
         |您的位置为：首页 <em>#{sep}</em> 筛查服务 <em>#{sep}</em> #{title}
     if get_goods_detail_success
         include goods_mixin
+        -var coverImages;
+        if browser.mobile
+            -coverImages = goods_detail.mobileCoverImages;
+        else
+            -coverImages = goods_detail.pcCoverImages;
         section.goods_basic.clearfix
             .wrapper
                 dl
@@ -15,8 +20,8 @@ block content
                     dt.slideBox
                         .touchslider-viewport
                             .bd
-                              each item in goods_detail.goodsImages
-                                p: img(src='#{item.imageUrl}',alt=goods_detail.goodsName)
+                              each item in coverImages
+                                p: img(src='#{item}',alt=goods_detail.goodsName)
                         .switch
                             .prev
                                 i.icon
@@ -24,8 +29,8 @@ block content
                                 i.icon
                         .tit
                             div
-                              each item in goods_detail.goodsImages
-                                span: img(src='#{item.imageUrl}',alt=goods_detail.goodsName)
+                              each item in coverImages
+                                span: img(src='#{item}',alt=goods_detail.goodsName)
 
 
                     dd
@@ -116,7 +121,7 @@ block content
     input#fit_hospital(type="hidden",value="#{goods_detail.fitHospital}")
     input#locals_address(type="hidden",value="#{locals_address}")
     input#hospital(type="hidden",value="")
-    input#goods(type="hidden",data-id="#{goods_detail.id}",data-goodsName="#{goods_detail.goodsName}",data-imgUrl="#{goods_detail.goodsImages[0].imageUrl}",data-discountPrice="#{goods_detail.discountPrice}",data-address="#{locals_address}",data-city="#{JSON.parse(locals_address)[1].name}")
+    input#goods(type="hidden",data-id="#{goods_detail.id}",data-goodsName="#{goods_detail.goodsName}",data-imgUrl="#{coverImages[0]}",data-discountPrice="#{goods_detail.discountPrice}",data-address="#{locals_address}",data-city="#{JSON.parse(locals_address)[1].name}")
     form#submitForm(action = "/trade/order/comfirmView",method="POST")
         input(type="hidden",name="items")
         input(type="hidden",name="totalPrice")

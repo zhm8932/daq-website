@@ -40,12 +40,16 @@ block content
                                 li.box
                                     a(href='/screenings/goods/detail/#{item.id}' target='_blank')
                                         //-img(data-original='images/product1.png')
-                                        if item.goodsImages
+                                        -var goodsImg;
+                                        if browser.mobile
+                                            -goodsImg = item.mobileCoverImages[0];
+                                        else
+                                            -goodsImg = item.pcCoverImages[0];
+                                        if goodsImg
                                             if browser.ie
-                                                img(src='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
+                                                img(src='#{goodsImg}',alt='#{item.goodsName}')
                                             else
-                                                img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
-                                                //-img(data-original='#{item.goodsImages[0].imageUrl}',alt='#{item.goodsName}')
+                                                -img(data-original='#{goodsImg}',alt='#{item.goodsName}')
 
                                     h4
                                         a(href='/screenings/goods/detail/#{item.id}' target='_blank') #{item.goodsName}

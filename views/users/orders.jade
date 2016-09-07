@@ -25,11 +25,16 @@ block content
                         .col.goods
                             -var transmitType = '';
                             each goods,index in item.goodsItemDTOs
+                                -var coverImage = '';
+                                if browser.mobile
+                                    -coverImage = goods.mobileCoverImages[0];
+                                else
+                                    -coverImage = goods.pcCoverImages[0];
                                 each value,key in JSON.parse(goods.transmitType)
                                     -transmitType = sampleJson[key];
                                 .row
                                     span.row-col.goods-detail
-                                        img.fl(src='#{goods.imageUrls[0]}')
+                                        img.fl(src='#{coverImage}')
                                         h5.fr: a(href='/screenings/goods/detail/#{goods.goodsId}') #{goods.goodsName}
                                     if goods.reservationState == 0
                                         span.row-col.goods-others.text-sec
