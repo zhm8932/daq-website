@@ -439,6 +439,7 @@ define(function(require,exports,module) {
     function showComfirmDialog(options){
         var confirmBtnText = options.confirmBtnText || '确定';
         var cancelBtnText = options.cancelBtnText || '取消';
+        var okBtn = 'okBtn';
 
         var msg = '';
         if(options.noConfirmBtn){
@@ -446,7 +447,7 @@ define(function(require,exports,module) {
                 '<p class="confim-tip">'+options.tipText+'</p><div class="btn-box"><button class="cancelBtn closePopup">'+confirmBtnText+'</button></div></div>';
         }else{
             msg = '<div class="box-header">提示<i class="icon close closePopup"></i></div><div class="box-body">'+
-                '<p class="confim-tip">'+options.tipText+'</p><div class="btn-box"><button class="cancelBtn closePopup">'+cancelBtnText+'</button><button class="submitBtn confirm-btn">'+confirmBtnText+'</button></div></div>';
+                '<p class="confim-tip">'+options.tipText+'</p><div class="btn-box"><button class="cancelBtn closePopup">'+cancelBtnText+'</button><button class="submitBtn confirm-btn '+okBtn+'">'+confirmBtnText+'</button></div></div>';
         }
 
         var popup = new Popup({
@@ -455,6 +456,7 @@ define(function(require,exports,module) {
             popupBox:'popupBox',
             ok:'confirm-btn',
             close:'closePopup',
+            okOther:okBtn,
             // okText:'保存并新增',
             // bOhterMsg:true,
             callback:function () {
