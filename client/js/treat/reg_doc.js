@@ -70,7 +70,7 @@ define(function(require){
     function showAccountDialog() {
         var popup = new utils.Popup({
             msg: '<div class="box-header">完善信息<i class="icon close closePopup"></i></div><div class="box-body">' +
-            '<ul class="tip-box"><li>为了能正常使用预约挂号服务,请及时补充以下材料。</li><li>以下信息为预约时所需项,一经填写不可更改,提交前请检查核对。</li><li>绑定已有客户编号,您可在病例中心中查看历史报告。</li></ul>' +
+            '<ul class="tip-box"><li>为了能正常使用预约挂号服务，请及时补充以下材料。</li><li>以下信息为预约时所需项，一经填写不可更改，提交前请检查核对。</li><li>绑定已有客户编号，您可在病例中心中查看历史报告。</li></ul>' +
             '<form name="accInfoForm"><ul class="info-box"><li><label><i class="text-stress">* </i>姓名</label><input name="name"/></li>'+
             '<li><label><i class="text-stress">* </i>性别</label><div id="gender" class="select-box none"><div class="selected"><span class="text"><span class="text-sec">请选择</span></span><i class="icon pull-down"></i></div>'+
             '<ul class="options"><li class="option" data-value="1">男</li><li class="option" data-value="2">女</li></ul></div></li>'+
@@ -78,6 +78,7 @@ define(function(require){
             '</ul></form></div>',
             otherMsg: 'confirm-btn',
             okText: '提交',
+            isMore:true,
             close: 'closePopup',
             otherBox: 'complete-dialog',
             width: '475',
@@ -100,7 +101,6 @@ define(function(require){
                 })
             },
             closeFun: function () {
-                console.log("关闭11111111")
                 window.location.href = "/treat/regsource/list";
             },
             okCallback: function () {
@@ -114,6 +114,7 @@ define(function(require){
         var completeDialog = $('.complete-dialog');
         var name = completeDialog.find('[name=name]').val().trim();
         var birthday = completeDialog.find('[name=birthday]').val().trim();
+        var patientCode = completeDialog.find('[name=patientCode]').val().trim();
         var gender = completeDialog.find('#gender .option.active').attr('data-value');
         if(!(name && birthday && gender)){
             completeDialog.find('.prompt em').html('必输项不能为空');
@@ -121,47 +122,90 @@ define(function(require){
             return false;
         }
 
-        var $this = $('.complete-dialog span.ok');
-        $this.addClass('disabled').off('click');
-        var param = $('form[name=accInfoForm]').serialize()+'&gender='+gender;
-        $.ajax({
-            url:'/users/account/complete',
-            type:'POST',
-            data:param,
-            dataType:'json',
-            success:function(result){
-                if (result.success) {
-                    var myMsg = new utils.MsgShow({
-                        delayTime: 2000,
-                        title: '<i class="icon"></i>完善成功!',
-                        otherBox: 'successBox'
-                    });
-                    popup.hideBox();
-                    myMsg.hideMsg(1000);
-                } else {
-                    completeDialog.find('.prompt em').html(result.msg);
+        var isCancel = false;
+        if(!patientCode){
+            new utils.Popup({
+                msg: '<aside>如果你已有客户编号，请绑定已有的客户编号，未绑定将不能查看以前的就诊报告。<div class="text-stress">您也可继续添加拥有新的客户编号</div></aside>',
+                otherMsg: 'confirm-btn',
+                isMore:true,
+                isCancelBtn:true,
+                otherBox: 'complete-reOk',
+                okText:'继续保存',
+                cancelFun:function () {
+                    isCancel = true;
+                    console.log("取消事情")
+                },
+                okCallback:function(){
+                    commitInfo();
+                }
+            })
+        }else{
+            !isCancel && commitInfo();
+        }
+
+
+
+        function commitInfo(){
+            var $this = $('.complete-dialog span.ok');
+            $this.addClass('disabled').off('click');
+            var param = $('form[name=accInfoForm]').serialize()+'&gender='+gender;
+            $.ajax({
+                url:'/users/account/complete',
+                type:'POST',
+                data:param,
+                dataType:'json',
+                success:function(result){
+                    if (result.success) {
+                        var myMsg = new utils.MsgShow({
+                            delayTime: 2000,
+                            title: '<i class="icon"></i>完善成功!',
+                            otherBox: 'successBox'
+                        });
+                        popup.hideBox();
+                        myMsg.hideMsg(1000);
+                    } else {
+                        if(result.code === '1001'){
+                            new utils.Popup({
+                                msg: '<aside>该客户编号不存在,您可取消重新输入!<div class="text-stress">或继续保存拥有新的客户编号</div></aside>',
+                                otherMsg: 'confirm-btn',
+                                isMore:true,
+                                isCancelBtn:true,
+                                otherBox: 'complete-reOk',
+                                okText:'继续保存',
+                                cancelFun:function () {
+
+                                },
+                                okCallback:function(){
+                                    //把客户编号置为空,继续保存,拥有新的客户编号
+                                    completeDialog.find('[name=patientCode]').val('');
+                                    commitInfo();
+                                }
+                            })
+                        }
+                        completeDialog.find('.prompt em').html(result.msg);
+                        completeDialog.find('.prompt').show();
+                        $this.removeClass('disabled').on('click', function () {
+                            completeInfo($this);
+                            return false;
+                        });
+                    }
+                },
+                error:function(data){
+                    if (data.status == '404') {
+                        completeDialog.find('.prompt em').html('页面丢失，请稍后再试');
+                    } else if (data.status == '500') {
+                        completeDialog.find('.prompt em').html('系统忙，请稍后再试');
+                    } else {
+                        completeDialog.find('.prompt em').html('网络错误');
+                    }
                     completeDialog.find('.prompt').show();
                     $this.removeClass('disabled').on('click', function () {
                         completeInfo($this);
                         return false;
                     });
                 }
-            },
-            error:function(data){
-                if (data.status == '404') {
-                    completeDialog.find('.prompt em').html('页面丢失，请稍后再试');
-                } else if (data.status == '500') {
-                    completeDialog.find('.prompt em').html('系统忙，请稍后再试');
-                } else {
-                    completeDialog.find('.prompt em').html('网络错误');
-                }
-                completeDialog.find('.prompt').show();
-                $this.removeClass('disabled').on('click', function () {
-                    completeInfo($this);
-                    return false;
-                });
-            }
-        });
+            });
+        }
     }
 
 });
