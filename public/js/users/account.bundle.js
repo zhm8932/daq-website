@@ -3,13 +3,13 @@ webpackJsonp([26],{
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(318);
+	__webpack_require__(317);
 	module.exports = __webpack_require__(7);
 
 
 /***/ },
 
-/***/ 318:
+/***/ 317:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
@@ -52,80 +52,75 @@ webpackJsonp([26],{
 	            form.find('.prompt').show();
 	            return false;
 	        }
-	        $this.addClass('disabled').off('click');
-	        var param = {
-	            name:name,
-	            birthday:birthday,
-	            gender:gender,
-	            patientCode:patientCode
-	        };
-	        $.ajax({
-	            url:'/users/account/complete',
-	            type:'POST',
-	            data:param,
-	            dataType:'json',
-	            success:function(result){
-	                if (result.success) {
-	                    var myMsg = new utils.MsgShow({
-	                        delayTime: 2000,
-	                        title: '<i class="icon"></i>完善成功!',
-	                        otherBox: 'successBox'
-	                    });
-	                    myMsg.hideMsg(1000);
-	                } else {
-	                    form.find('.prompt em').html(result.msg);
+	        if(!patientCode){
+	            utils.ShowComfirmDialog({
+	                tipText:'如果你已有客户编号，请绑定已有的客户编号，未绑定将不能查看以前的就诊报告。<div class="text-stress">您也可继续添加拥有新的客户编号</div>',
+	                okCallback:function(){
+	                    commitInfo();
+	                }
+	            });
+	        }else{
+	            commitInfo();
+	        }
+
+	        function commitInfo(){
+	            $this.addClass('disabled').off('click');
+	            var param = {
+	                name:name,
+	                birthday:birthday,
+	                gender:gender,
+	                patientCode:form.find('[name=patientCode]').val().trim()
+	            };
+	            $.ajax({
+	                url:'/users/account/complete',
+	                type:'POST',
+	                data:param,
+	                dataType:'json',
+	                success:function(result){
+	                    if (result.success) {
+	                        var myMsg = new utils.MsgShow({
+	                            delayTime: 2000,
+	                            title: '<i class="icon"></i>完善成功!',
+	                            otherBox: 'successBox'
+	                        });
+	                        myMsg.hideMsg(1000);
+	                        window.location.reload();
+	                    } else {
+	                        if(result.serverCode === '1001') {
+	                            utils.ShowComfirmDialog({
+	                                tipText:'该客户编号不存在,您可取消重新输入!<div class="text-stress">您也可继续添加拥有新的客户编号</div>',
+	                                okCallback:function(){
+	                                    form.find('[name=patientCode]').val('');
+	                                    commitInfo();
+	                                }
+	                            });
+	                        }else{
+	                            form.find('.prompt em').html(result.msg);
+	                            form.find('.prompt').show();
+	                        }
+	                        $this.removeClass('disabled').on('click', function () {
+	                            completeInfo($this);
+	                            return false;
+	                        });
+	                    }
+	                },
+	                error:function(data){
+	                    if (data.status == '404') {
+	                        form.find('.prompt em').html('页面丢失，请稍后再试');
+	                    } else if (data.status == '500') {
+	                        form.find('.prompt em').html('系统忙，请稍后再试');
+	                    } else {
+	                        form.find('.prompt em').html('网络错误');
+	                    }
 	                    form.find('.prompt').show();
 	                    $this.removeClass('disabled').on('click', function () {
 	                        completeInfo($this);
 	                        return false;
 	                    });
 	                }
-	            },
-	            error:function(data){
-	                if (data.status == '404') {
-	                    form.find('.prompt em').html('页面丢失，请稍后再试');
-	                } else if (data.status == '500') {
-	                    form.find('.prompt em').html('系统忙，请稍后再试');
-	                } else {
-	                    form.find('.prompt em').html('网络错误');
-	                }
-	                form.find('.prompt').show();
-	                $this.removeClass('disabled').on('click', function () {
-	                    completeInfo($this);
-	                    return false;
-	                });
-	            }
-	        });
-	        
-	        
-	        
-	        
-	        // utils.SendAjax({
-	        //     url: '/users/account/complete',
-	        //     param: param,
-	        //     method: 'POST',
-	        //     tipText: '完善信息',
-	        //     callback: function (result) {
-	        //         var myMsg = new utils.MsgShow({
-	        //             delayTime: 1000,
-	        //             title: '<i class="icon"></i>完善成功!',
-	        //             otherBox: 'successBox'
-	        //         });
-	        //         myMsg.hideMsg(function(){
-	        //             window.location.reload();
-	        //         });
-	        //     },
-	        //     errorFun: function (result) {
-	        //         if(result && result.msg){
-	        //             form.find('.prompt em').html(result.msg);
-	        //             form.find('.prompt').show();
-	        //         }
-	        //         $this.removeClass('disabled').on('click', function () {
-	        //             completeInfo($this);
-	        //             return false;
-	        //         });
-	        //     }
-	        // });
+	            });
+	        }
+
 	    }
 
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));

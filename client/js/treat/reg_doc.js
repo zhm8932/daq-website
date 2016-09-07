@@ -83,23 +83,6 @@ define(function(require){
             otherBox: 'complete-dialog',
             width: '475',
             isHide:false,
-            completeRenderFun:function () {
-                $('body').on('click','.tip-box',function () {
-                        new utils.Popup({
-                            msg: '<aside>如果你已有客户编号，请绑定已有的客户编号</aside>',
-                            otherMsg: 'confirm-btn',
-                            isMore:true,
-                            isCancelBtn:true,
-                            otherBox: 'complete-reOk',
-                            cancelFun:function () {
-                                console.log("取消事情")
-                            },
-                            okCallback:function(){
-                                console.log("确定事情")
-                            }
-                        })
-                })
-            },
             closeFun: function () {
                 window.location.href = "/treat/regsource/list";
             },
@@ -126,19 +109,18 @@ define(function(require){
         }
 
         if(!patientCode){
-            var reOk = new utils.Popup({
+            var blankOkBtn = new utils.Popup({
                 msg: '<aside>如果你已有客户编号，请绑定已有的客户编号，未绑定将不能查看以前的就诊报告。<div class="text-stress">您也可继续添加拥有新的客户编号</div></aside>',
                 otherMsg: 'confirm-btn',
                 isMore:true,
                 isCancelBtn:true,
-                okOther:'reOkBtn',
+                okOther:'blankOkBtn',
                 otherBox: 'complete-reOk',
                 okText:'继续保存',
                 cancelFun:function () {
 
                 },
                 okCallback:function(){
-                    console.log("继续保存:",reOk)
                     commitInfo();
                 }
             })
@@ -153,62 +135,64 @@ define(function(require){
             $this.addClass('disabled').off('click');
             var param = $('form[name=accInfoForm]').serialize()+'&gender='+gender;
             console.log("param:",param)
-            // $.ajax({
-            //     url:'/users/account/complete',
-            //     type:'POST',
-            //     data:param,
-            //     dataType:'json',
-            //     success:function(result){
-            //         if (result.success) {
-            //             var myMsg = new utils.MsgShow({
-            //                 delayTime: 2000,
-            //                 title: '<i class="icon"></i>完善成功!',
-            //                 otherBox: 'successBox'
-            //             });
-            //             popup.closeCallback();
-            //             myMsg.hideMsg(1000);
-            //         } else {
-            //             if(result.serverCode === '1001'){
-            //                 new utils.Popup({
-            //                     msg: '<aside>该客户编号不存在,您可取消重新输入!<div class="text-stress">或继续保存拥有新的客户编号</div></aside>',
-            //                     otherMsg: 'confirm-btn',
-            //                     isMore:true,
-            //                     isCancelBtn:true,
-            //                     otherBox: 'complete-reOk',
-            //                     okText:'继续保存',
-            //                     cancelFun:function () {
-            //
-            //                     },
-            //                     okCallback:function(){
-            //                         //把客户编号置为空,继续保存,拥有新的客户编号
-            //                         completeDialog.find('[name=patientCode]').val('');
-            //                         commitInfo();
-            //                     }
-            //                 })
-            //             }
-            //             completeDialog.find('.prompt em').html(result.msg);
-            //             completeDialog.find('.prompt').show();
-            //             $this.removeClass('disabled').on('click', function () {
-            //                 completeInfo($this);
-            //                 return false;
-            //             });
-            //         }
-            //     },
-            //     error:function(data){
-            //         if (data.status == '404') {
-            //             completeDialog.find('.prompt em').html('页面丢失，请稍后再试');
-            //         } else if (data.status == '500') {
-            //             completeDialog.find('.prompt em').html('系统忙，请稍后再试');
-            //         } else {
-            //             completeDialog.find('.prompt em').html('网络错误');
-            //         }
-            //         completeDialog.find('.prompt').show();
-            //         $this.removeClass('disabled').on('click', function () {
-            //             completeInfo($this);
-            //             return false;
-            //         });
-            //     }
-            // });
+            $.ajax({
+                url:'/users/account/complete',
+                type:'POST',
+                data:param,
+                dataType:'json',
+                success:function(result){
+                    if (result.success) {
+                        var myMsg = new utils.MsgShow({
+                            delayTime: 2000,
+                            title: '<i class="icon"></i>完善成功!',
+                            otherBox: 'successBox'
+                        });
+                        popup.closeCallback();
+                        myMsg.hideMsg(1000);
+                    } else {
+                        if(result.serverCode === '1001'){
+                            new utils.Popup({
+                                msg: '<aside>该客户编号不存在,您可取消重新输入!<div class="text-stress">或继续保存拥有新的客户编号</div></aside>',
+                                otherMsg: 'confirm-btn',
+                                isMore:true,
+                                okOther:'noneOkBtn',
+                                isCancelBtn:true,
+                                otherBox: 'complete-reOk',
+                                okText:'继续保存',
+                                cancelFun:function () {
+
+                                },
+                                okCallback:function(){
+                                    //把客户编号置为空,继续保存,拥有新的客户编号
+                                    completeDialog.find('[name=patientCode]').val('');
+                                    commitInfo();
+                                }
+                            })
+                        }else{
+                            completeDialog.find('.prompt em').html(result.msg);
+                            completeDialog.find('.prompt').show();
+                        }
+                        $this.removeClass('disabled').on('click', function () {
+                            completeInfo($this);
+                            return false;
+                        });
+                    }
+                },
+                error:function(data){
+                    if (data.status == '404') {
+                        completeDialog.find('.prompt em').html('页面丢失，请稍后再试');
+                    } else if (data.status == '500') {
+                        completeDialog.find('.prompt em').html('系统忙，请稍后再试');
+                    } else {
+                        completeDialog.find('.prompt em').html('网络错误');
+                    }
+                    completeDialog.find('.prompt').show();
+                    $this.removeClass('disabled').on('click', function () {
+                        completeInfo($this);
+                        return false;
+                    });
+                }
+            });
         }
     }
 
