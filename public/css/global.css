@@ -774,17 +774,17 @@ select {
   overflow: hidden;
   background: rgba(2, 2, 2, 0.11);
   text-align: center; }
-  .popupBox .cancel, .popupBox .close {
+  .popupBox .close, .popupBox .closeBtn {
     position: absolute;
     right: -10px;
     top: -5px;
     cursor: pointer;
     padding: 5px 10px;
     z-index: 2; }
-    .popupBox .cancel i, .popupBox .close i {
+    .popupBox .close i, .popupBox .closeBtn i {
       background-position: -143px -26px;
       width: 24px; }
-    .popupBox .cancel:hover, .popupBox .close:hover {
+    .popupBox .close:hover, .popupBox .closeBtn:hover {
       color: #48BED8; }
   .popupBox article {
     text-align: left;
@@ -832,7 +832,7 @@ select {
     margin: 5px 20px 0;
     font-size: 16px;
     text-align: center; }
-    .popupBox .submitBox .ok {
+    .popupBox .submitBox button {
       display: block;
       text-align: center;
       cursor: pointer;
@@ -844,7 +844,7 @@ select {
       line-height: 32px;
       width: 100%;
       outline: none; }
-      .popupBox .submitBox .ok:hover {
+      .popupBox .submitBox button:hover {
         background-color: #3DAAC2; }
     .popupBox .submitBox .disabled {
       background-color: #cccccc;
@@ -852,6 +852,21 @@ select {
   .popupBox .otherMsg {
     margin-top: 10px;
     color: #9B9B9B; }
+
+.complete-reOk {
+  width: 300px; }
+  .complete-reOk i {
+    display: none; }
+  .complete-reOk .innerBg {
+    padding: 0px;
+    margin: 1px; }
+  .complete-reOk .submitBox {
+    margin: 5px 0 0; }
+    .complete-reOk .submitBox button {
+      width: 50%;
+      float: left; }
+      .complete-reOk .submitBox button.cancel {
+        background-color: #cccccc; }
 
 .msgBox {
   position: fixed;

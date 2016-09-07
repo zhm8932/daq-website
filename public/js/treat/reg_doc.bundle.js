@@ -91,13 +91,30 @@ webpackJsonp([24],{
 	            '<li><label><i class="text-stress">* </i>出生年月</label><input id="birthday" name="birthday" readonly/></li><li><label>绑定已有客户编码</label><input name="patientCode" placeholder="请输入已有客户编码"/></li><span class="prompt"><i class="icon"></i><em>客户编码有误</em></span>' +
 	            '</ul></form></div>',
 	            otherMsg: 'confirm-btn',
-	            popupBox: 'popupBox',
 	            okText: '提交',
-	            cancel: 'closePopup',
+	            close: 'closePopup',
 	            otherBox: 'complete-dialog',
 	            width: '475',
 	            isHide:false,
-	            cancelFun: function () {
+	            completeRenderFun:function () {
+	                $('body').on('click','.tip-box',function () {
+	                        new utils.Popup({
+	                            msg: '<aside>如果你已有客户编号，请绑定已有的客户编号</aside>',
+	                            otherMsg: 'confirm-btn',
+	                            isMore:true,
+	                            isCancelBtn:true,
+	                            otherBox: 'complete-reOk',
+	                            cancelFun:function () {
+	                                console.log("取消事情")
+	                            },
+	                            okCallback:function(){
+	                                console.log("确定事情")
+	                            }
+	                        })
+	                })
+	            },
+	            closeFun: function () {
+	                console.log("关闭11111111")
 	                window.location.href = "/treat/regsource/list";
 	            },
 	            okCallback: function () {

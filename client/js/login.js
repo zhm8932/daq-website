@@ -661,10 +661,16 @@ define(function(require,exports,module) {
             otherMsg: 'confirm-btn',
             popupBox: 'popupBox',
             okText: '提交',
-            cancel: 'closePopup',
+            close: 'closePopup',
             otherBox: 'complete-dialog',
             isHide:false,
-            cancelFun: function () {
+            completeFun:function () {
+                console.log('222222222222222')
+                $('body').on('click','.tip-box',function () {
+                    console.log("渲染完成执行")
+                })
+            },
+            closeFun: function () {
                 //window.location.href = "/treat/regsource/list";
                 var referrer = document.referrer;
                 referrer = referrer?pathname=='/searchs/report'?'/':referrer:'/';

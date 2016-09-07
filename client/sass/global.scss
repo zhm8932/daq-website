@@ -842,7 +842,7 @@ select {
   overflow: hidden;
   background: rgba(2, 2, 2, 0.11);
   text-align: center;
-  .cancel, .close {
+  .close,.closeBtn {
     position: absolute;
     right: -10px;
     top: -5px;
@@ -919,7 +919,7 @@ select {
     margin: 5px 20px 0;
     font-size: 16px;
     text-align: center;
-    .ok {
+    button {
       display: block;
       text-align: center;
       cursor: pointer;
@@ -938,6 +938,17 @@ select {
   }
   .otherMsg {
     margin-top: 10px; color: $gray9B;
+  }
+
+}
+.complete-reOk{width: 300px;
+  i{display: none;}
+  .innerBg{padding: 0px;margin: 1px;}
+  .submitBox{
+    margin: 5px 0 0;
+      button{width: 50%;float: left;
+        &.cancel{background-color: $bgc_ccc;}
+      }
   }
 
 }

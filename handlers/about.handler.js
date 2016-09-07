@@ -9,9 +9,9 @@ exports.render_abouts = function(req,res) {
     }
 
     res.render('abouts/abouts', {
-        title: '筛查服务',
-        keywords: '筛查服务',
-        description: '筛查服务',
+        title: '关于都安全',
+        keywords: '关于都安全',
+        description: '关于都安全',
         get_department:get_department
     });
 }

@@ -118,18 +118,24 @@
 	        var defaults = {
 	            ok:'ok',
 	            cancel:'cancel',
+	            close:'close',
 	            globalBg:'globalBg',
 	            popupBox:'popupBox',
 	            otherBox:'',
-	            isHide:true,
+	            isHide:true,     //是否自动隐藏弹框
+	            isMore:false,   //是否同时出现多个弹框
+	            isCancelBtn:false,  //是否有取消按钮
 	            otherMsg:'其他提示信息',
 	            bOhterMsg:false,
 	            msg:'请输入内容',
 	            delayTime:2000,
 	            okText:'确定',
-	            okCallback:null,
-	            cancelFun:null,
-	            callback:null
+	            cancelText:'取消',
+	            okCallback:null,        //确定
+	            cancelFun:null,         //取消
+	            closeFun:null,          //关闭
+	            callback:null,          //页面渲染需要的js执行完后执行，此处为计算弹框宽和高
+	            completeRenderFun:null  //渲染完成执行
 	        };
 	        this.opts = $.extend({},defaults,options);
 	        this.popupBox = this.opts.popupBox;
@@ -143,6 +149,7 @@
 	            $('.'+self.popupBox).show();
 	            //事件解绑
 	            self.$body.off('click','.'+self.opts.ok);
+	            self.$body.off('click','.'+self.opts.cancel);
 	            self.$body.on('click','.'+self.opts.ok,function(){
 	                self.opts.okCallback();
 	                if(self.opts.isHide){
@@ -158,9 +165,16 @@
 	                }
 	            });
 
-	            var cancel = '.'+this.opts.cancel;
+	            var close = '.'+this.opts.close;
+	            //点击关闭
+	            this.$body.on('click',close,function(){
+	                // self.cancelCallback();
+	                self.closeCallback();
+	            })
+
+	            var cancelBtn = '.'+self.opts.cancel;
 	            //点击取消
-	            this.$body.on('click',cancel,function(){
+	            this.$body.on('click',cancelBtn,function(){
 	                self.cancelCallback();
 	            })
 
@@ -168,9 +182,11 @@
 	        hideBox:function(cb){
 	            var self = this;
 	            setTimeout(function(){
-	                $('.'+self.popupBox).hide();
+	                $('.'+self.getPopupBox()).hide();
 	                //console.log(self.opts)
-	                $('.'+self.opts.globalBg).hide();
+	                if(!self.opts.isMore){
+	                    $('.'+self.opts.globalBg).hide();
+	                }
 	                cb&&cb()
 	            },self.opts.delayTime)
 	        },
@@ -182,37 +198,72 @@
 	                this.$body.append(globalBgHtml)
 	            }
 	        },
-	        render:function(){
+	        getPopupBox:function () {
+	            var popupBox = this.popupBox;
+	            if(this.opts.isMore){
+	                popupBox = this.opts.otherBox;
+	            }
+	            return popupBox;
+	        },
+	        render:function(completeFun){
 	            var self = this;
 	            self.globalBgFn();
-	            if($('.'+self.popupBox).length){
-	                $('.'+self.popupBox).remove();
-	                self.$body.append(this.popupHtml())
+	            if(!self.opts.isMore){
+	                if($('.'+self.popupBox).length){
+	                    $('.'+self.popupBox).remove();
+	                    self.$body.append(self.popupHtml())
 
+	                }else{
+	                    self.$body.append(self.popupHtml())
+	                }
 	            }else{
-	                this.$body.append(this.popupHtml())
+	                self.$body.append(self.popupHtml())
 	            }
 
 	            self.opts.callback && self.opts.callback();
-	            var height = $('.'+this.opts.popupBox).height();
 	            var width = $('.'+this.opts.popupBox).outerWidth();
-	            $('.'+self.popupBox).css({'height':height,'margin-top':-height/2,'margin-left':-width/2});
+	            var height = $('.'+this.opts.popupBox).height();
+
+	            if(self.opts.isMore){
+	                height = $('.'+this.opts.otherBox).height();
+	                width = $('.'+this.opts.otherBox).outerWidth();
+	                $('.'+this.opts.otherBox).css({'height':height,'margin-top':-height/2,'margin-left':-width/2});
+	            }else{
+	                $('.'+this.opts.popupBox).css({'height':height,'margin-top':-height/2,'margin-left':-width/2});
+	            }
+	            this.opts.completeRenderFun&&this.opts.completeRenderFun();
 	            
 	        },
 	        popupHtml:function(){
 	            var opts = this.opts;
 	            var ConfimHtml = '<div class="'+this.popupBox+' '+this.opts.otherBox+'" style="width: '+opts.width+'px;margin-left:-'+opts.width/2+'px">' +
-	                '<div class="innerBg"><span class="'+this.opts.cancel+'"><i class="icon"></i></span><article>'+this.opts.msg+'</article>' +
-	                '<div class="submitBox"><button class="'+this.opts.ok+'">'+this.opts.okText+'</button></div>';
+	                '<div class="innerBg"><span class="'+this.opts.close+'"><i class="icon"></i></span><article>'+this.opts.msg+'</article>' +
+	                '<div class="submitBox">';
+
+	            if(opts.isCancelBtn){
+	                ConfimHtml+='<button class="'+this.opts.cancel+'">'+this.opts.cancelText+'</button>';
+	            }
+	            ConfimHtml+='<button class="'+this.opts.ok+'">'+this.opts.okText+'</button></div>';
 	            if(opts.bOhterMsg){
 	                ConfimHtml+='<div class="otherMsg">'+opts.otherMsg+'</div>'
 	            }
 	            ConfimHtml+='</div></div>';
 	            return ConfimHtml
 	        },
-	        cancelCallback:function(){   //关闭弹窗
+	        closeCallback:function(){   //关闭弹窗
 	            $('.globalBg').hide();
 	            $('.'+this.popupBox).remove();
+	            this.opts.closeFun && this.opts.closeFun();
+	        },
+	        cancelCallback:function(){   //取消
+	            var popupBox = '';
+	            if(!this.opts.isMore){
+	                $('.globalBg').hide();
+	                popupBox = this.popupBox;
+	            }else{
+	                popupBox = this.opts.otherBox;
+	            }
+	            $('.'+popupBox).remove();
 	            this.opts.cancelFun && this.opts.cancelFun();
 	        }
 	    };
@@ -508,7 +559,7 @@
 	            otherMsg:'confirm-btn',
 	            popupBox:'popupBox',
 	            ok:'confirm-btn',
-	            cancel:'closePopup',
+	            close:'closePopup',
 	            // okText:'保存并新增',
 	            // bOhterMsg:true,
 	            callback:function () {
@@ -1923,6 +1974,15 @@
 	        });
 
 	    }
+
+	    var _hmt = _hmt || [];
+	    (function() {
+	        var hm = document.createElement("script");
+	        hm.src = "//hm.baidu.com/hm.js?69e663a638b780bb691f5753d29f2cec";
+	        var s = document.getElementsByTagName("script")[0];
+	        s.parentNode.insertBefore(hm, s);
+	    })();
+	    
 	    var _hmt = _hmt || [];
 	    (function() {
 	        var hm = document.createElement("script");
@@ -1930,6 +1990,8 @@
 	        var s = document.getElementsByTagName("script")[0];
 	        s.parentNode.insertBefore(hm, s);
 	    })();
+
+
 
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -2863,10 +2925,16 @@
 	            otherMsg: 'confirm-btn',
 	            popupBox: 'popupBox',
 	            okText: '提交',
-	            cancel: 'closePopup',
+	            close: 'closePopup',
 	            otherBox: 'complete-dialog',
 	            isHide:false,
-	            cancelFun: function () {
+	            completeFun:function () {
+	                console.log('222222222222222')
+	                $('body').on('click','.tip-box',function () {
+	                    console.log("渲染完成执行")
+	                })
+	            },
+	            closeFun: function () {
 	                //window.location.href = "/treat/regsource/list";
 	                var referrer = document.referrer;
 	                referrer = referrer?pathname=='/searchs/report'?'/':referrer:'/';

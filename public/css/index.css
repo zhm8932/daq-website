@@ -123,6 +123,7 @@
   .banner .slideBox .slide_1 {
     background: url("../images/banner2Bg.png") repeat-x; }
   .banner .slideBox p {
+    background: url("../images/banner1Bg.png") repeat-x;
     display: none; }
     .banner .slideBox p:first-child {
       display: block; }
