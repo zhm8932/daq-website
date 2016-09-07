@@ -144,7 +144,6 @@
     }
   }
   .item_list {
-
     padding-bottom: 20px;
     .standard_header{
       h2,p{background:none;color: $white;}
@@ -155,7 +154,7 @@
         //li{width:auto;margin:20px 0 0 3%;height: auto;border: 1px solid $bdrc_ddd;float:none;display: block;
           a{
             h4{
-              height: 44px;line-height: 44px;
+              line-height: 44px;
             }
           }
           p{color: $textc_333;margin:5px 0 0; font-size: 16px;height: 48px;overflow: hidden;}
@@ -233,7 +232,7 @@
 
   .treat_list{
     //background-color: $bgc_gray_F5;
-    margin-top: -10px;
+    margin: -10px 10px 0 10px;
     ul{
       li{
         background-color: $white;
@@ -351,7 +350,7 @@
     .qrcode{width: 100%; padding-top: 20px;text-align: center;
       .weixin{display: inline-block;}
       h4,strong{display: none;}
-      figure{width:auto;margin: 0px 4%;overflow: hidden;}
+      figure{width:auto;margin: 0px 4%;overflow: hidden;vertical-align: top;}
     }
   }
   .swiper-container{

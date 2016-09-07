@@ -380,6 +380,15 @@ define(function (require, exports, module) {
         });
 
     }
+
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?69e663a638b780bb691f5753d29f2cec";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    
     var _hmt = _hmt || [];
     (function() {
         var hm = document.createElement("script");
@@ -387,5 +396,7 @@ define(function (require, exports, module) {
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
     })();
+
+
 
 });

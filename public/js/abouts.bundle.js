@@ -45,19 +45,20 @@ webpackJsonp([0],[
 			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(3)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else if(typeof define === 'function') {
 			// Node/CommonJS
-			// console.log('CommonJS')
+			console.log('CommonJS')
 			define(['jquery'], function(){
-				return factory(window.jQuery,window, document, undefined);
+				return factory(window.jQuery, undefined);
 			})
 
 		} else {
 			// Browser globals
 			factory(jQuery);
 		}
-	})( function ( $,window,document, undefined ) {
+	})( function ( $, undefined ) {
 
 		$.swipebox = function( elem, options ) {
 
+			console.log("document:",document)
 			// Default options
 			var ui,
 				defaults = {

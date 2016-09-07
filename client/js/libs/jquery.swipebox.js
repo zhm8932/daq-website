@@ -6,19 +6,20 @@
 		define(['jquery'], factory);
 	} else if(typeof define === 'function') {
 		// Node/CommonJS
-		// console.log('CommonJS')
+		console.log('CommonJS')
 		define(['jquery'], function(){
-			return factory(window.jQuery,window, document, undefined);
+			return factory(window.jQuery, undefined);
 		})
 
 	} else {
 		// Browser globals
 		factory(jQuery);
 	}
-})( function ( $,window,document, undefined ) {
+})( function ( $, undefined ) {
 
 	$.swipebox = function( elem, options ) {
 
+		console.log("document:",document)
 		// Default options
 		var ui,
 			defaults = {

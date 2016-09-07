@@ -59,6 +59,7 @@ exports.get_department_detail = function (req,res,next) {
             })
         }
         res.locals.get_department_detail = data[0];
+        req.get_department_detail = data[0];
         next();
     })
 }

@@ -31,10 +31,12 @@ webpackJsonp([12],{
 
 	    });
 
-	    var $department_list_li=$('.department_list ul li')
-	    var height = $department_list_li.height();
-	    console.log("height:",height)
-	    $department_list_li.find('h4').css({"height":height,"line-height":height+'px'});
+	    if(utils.browser.mobile){
+	        var $department_list_li=$('.department_list ul li')
+	        var height = $department_list_li.height();
+	        console.log("height:",height)
+	        $department_list_li.find('h4').css({"height":height,"line-height":height+'px'});
+	    }
 
 	    function initTouchSlider(obj) {
 	        // $(".slideBox").touchSlider({
