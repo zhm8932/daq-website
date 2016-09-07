@@ -27,9 +27,9 @@ exports.get_article_list = function(req,res) {
         get_article_list_diseases = get_article_list_diseases.data.data;
     }
     res.render('healths/list', {
-        title: '健康常识'+CONST.GLOBAL_TITLE,
-        keywords: '健康常识,'+CONST.GLOBAL_TITLE,
-        description: '健康常识,'+CONST.GLOBAL_TITLE,
+        title: '健康常识_性健康常识_'+CONST.GLOBAL_TITLE,
+        keywords: '健康常识,性健康,生理健康常识,'+CONST.GLOBAL_TITLE,
+        description: CONST.GLOBAL_TITLE+'(douanquan.com)为您提供最全面的健康,性健康相关知识和指导',
         get_article_list:get_article_list,
         get_article_list_ask:get_article_list_ask,
         get_article_list_ask_react:ReactDOMServer.renderToString(AskBox({data:get_article_list_ask,pageCount:pageCount})),

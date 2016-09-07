@@ -10,8 +10,8 @@ exports.render_agency_list = function(req,res) {
 
     res.render('agencys/list', {
         title: '机构网络',
-        keywords: CONST.GLOBAL_TITLE+'_机构网络',
-        description:CONST.GLOBAL_TITLE+'_机构网络',
+        keywords: CONST.GLOBAL_TITLE+',机构网络',
+        description:CONST.GLOBAL_TITLE+',机构网络',
         // get_department:get_department
     });
 }
@@ -31,8 +31,8 @@ exports.render_agency_detail = function(req,res) {
     }
     res.render('agencys/detail', {
         title: '机构网络_'+get_agency_detail.title,
-        keywords: '机构网络_'+get_agency_detail.title,
-        description: '机构网络_'+get_agency_detail.title,
+        keywords: '机构网络,'+get_agency_detail.title,
+        description: '机构网络,'+get_agency_detail.title,
         get_department:get_department
     });
 }
@@ -51,16 +51,17 @@ exports.render_department_detail = function(req,res) {
     var get_department_detail = req.get_department_detail;
     res.render('agencys/department_detail', {
         title: get_department_detail.title,
-        keywords: '机构网络_'+get_department_detail.title,
-        description: '机构网络_'+get_department_detail.title,
+        keywords: '机构网络,'+get_department_detail.title,
+        description: get_department_detail.des,
         get_department:get_department
     });
 }
 
 exports.render_feature_detail = function(req,res) {
+    var get_feature_detail = req.get_feature_detail;
     res.render('agencys/features_detail', {
-        title: '机构网络',
-        keywords: '机构网络',
-        description: '机构网络'
+        title: '机构网络_'+get_feature_detail.title,
+        keywords: '机构网络,'+get_feature_detail.title,
+        description: get_feature_detail.des
     });
 }

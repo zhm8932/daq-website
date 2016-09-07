@@ -11,6 +11,7 @@ define(function(require,exports,module) {
     function Popup(options){
         var defaults = {
             ok:'ok',
+            okOther:'okBtn',
             cancel:'cancel',
             close:'close',
             globalBg:'globalBg',
@@ -42,12 +43,10 @@ define(function(require,exports,module) {
             self.render();
             $('.'+self.popupBox).show();
             //事件解绑
-            self.$body.off('click','.'+self.opts.ok);
+            self.$body.off('click','.'+self.opts.okOther);
             self.$body.off('click','.'+self.opts.cancel);
-            self.$body.on('click','.'+self.opts.ok,function(){
+            self.$body.on('click','.'+self.opts.okOther,function(){
                 self.opts.okCallback();
-                self.$body.off('click','.'+self.opts.ok);
-                self.$body.off('click','.'+self.opts.cancel);
                 if(self.opts.isHide){
                     self.hideBox()
                 }
@@ -128,7 +127,7 @@ define(function(require,exports,module) {
                 $('.'+this.opts.popupBox).css({'height':height,'margin-top':-height/2,'margin-left':-width/2});
             }
             this.opts.completeRenderFun&&this.opts.completeRenderFun();
-            
+
         },
         popupHtml:function(){
             var opts = this.opts;
@@ -139,7 +138,7 @@ define(function(require,exports,module) {
             if(opts.isCancelBtn){
                 ConfimHtml+='<button class="'+this.opts.cancel+'">'+this.opts.cancelText+'</button>';
             }
-            ConfimHtml+='<button class="'+this.opts.ok+'">'+this.opts.okText+'</button></div>';
+            ConfimHtml+='<button class="'+this.opts.ok+' '+this.opts.okOther+'">'+this.opts.okText+'</button></div>';
             if(opts.bOhterMsg){
                 ConfimHtml+='<div class="otherMsg">'+opts.otherMsg+'</div>'
             }

@@ -77,6 +77,7 @@ exports.get_feature_detail = function (req,res,next) {
             })
         }
         res.locals.get_feature_detail = data[0];
+        req.get_feature_detail = data[0];
         next();
     })
 }

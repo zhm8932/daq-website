@@ -6,9 +6,9 @@ exports.get_goods_list = function(req,res) {
     }
     var get_goods_category = req.get_goods_category
     res.render('screenings/goods', {
-        title: '筛查服务',
-        keywords: '筛查服务,'+CONST.GLOBAL_TITLE,
-        description: '筛查服务,'+CONST.GLOBAL_TITLE,
+        title: '筛查服务_宫颈癌筛查_宫颈癌治疗_女性生殖_男性生殖',
+        keywords: CONST.GLOBAL_TITLE+',筛查服务,宫颈癌筛查,女性生殖检查,男性生殖检查',
+        description: CONST.GLOBAL_TITLE+'提供两性生殖感染、宫颈癌筛查和女性阴道微生态等筛查诊疗一站式全流程医疗服务',
         get_goods_list:get_goods_list,
         get_goods_category:get_goods_category.data
     });

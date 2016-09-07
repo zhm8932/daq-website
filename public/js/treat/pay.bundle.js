@@ -3,13 +3,13 @@ webpackJsonp([23],{
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(314);
+	__webpack_require__(315);
 	module.exports = __webpack_require__(7);
 
 
 /***/ },
 
-/***/ 313:
+/***/ 314:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -70,7 +70,7 @@ webpackJsonp([23],{
 
 /***/ },
 
-/***/ 314:
+/***/ 315:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
@@ -81,7 +81,7 @@ webpackJsonp([23],{
 	            window.location.href = '/treat/regsource/list';
 	        }
 	    });
-	    var timer = __webpack_require__(313);
+	    var timer = __webpack_require__(314);
 
 	    var payId = $('#payId').val();
 
