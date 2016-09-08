@@ -154,7 +154,6 @@ define(function (require, exports, module) {
                 index=sessionStorage.getItem("index");
             }
             // console.log('sessionStorage:',sessionStorage)
-
             if (winWidth < 768) {
                 //导航滑动
                 // $nav.addClass('swiper-container');
@@ -191,6 +190,12 @@ define(function (require, exports, module) {
                 }
             })
 
+            $body.on('click','.logo',function () {
+                if(sessionStorage.getItem('index')){
+                    sessionStorage.setItem('index',0);
+                }
+
+            })
             $body.on('click','.nav ul li',function () {
                 var i= $(this).index();
                 sessionStorage.setItem("index",i);

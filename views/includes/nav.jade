@@ -1,32 +1,32 @@
 nav.nav
-    if !browser.mobile
-        .wrapper
-            ul.swiper-wrapper
-                li.swiper-slide.index
-                    a(href='/',title='首页') 首页
-                        i.icon.n07
-                li.swiper-slide
-                    a(href='/treat/regsource/list') 诊疗服务
-                        i.icon.n02
-                li.swiper-slide
-                    a(href='/screenings/goods',title='筛查服务') 筛查服务
-                        i.icon.n01
-                li.swiper-slide
-                    //-a(href='/searchs/report',title='查询报告') 查询报告
-                    a(href='/users/reservation/list',title='查询报告') 查询报告
-                        i.icon.n03
-                li.swiper-slide
-                    a(href='/healths/list',title='健康科普') 健康科普
-                        i.icon.n04
-                li.swiper-slide
-                    a(href='/agencys',title='机构网络') 机构网络
-                        i.icon.n05
-                li.swiper-slide
-                    a(href='/abouts',title='关于都安全') 关于都安全
-                        i.icon.n06
-            .swiper-button-next
-            .swiper-button-prev
-    else
+    //-if !browser.mobile
+    .wrapper.swiper-container
+        ul.swiper-wrapper
+            li.swiper-slide
+                a(href='/',title='首页') 首页
+                    i.icon.n07
+            li.swiper-slide
+                a(href='/treat/regsource/list') 诊疗服务
+                    i.icon.n02
+            li.swiper-slide
+                a(href='/screenings/goods',title='筛查服务') 筛查服务
+                    i.icon.n01
+            li.swiper-slide
+                //-a(href='/searchs/report',title='查询报告') 查询报告
+                a(href='/users/reservation/list',title='查询报告') 查询报告
+                    i.icon.n03
+            li.swiper-slide
+                a(href='/healths/list',title='健康科普') 健康科普
+                    i.icon.n04
+            li.swiper-slide
+                a(href='/agencys',title='机构网络') 机构网络
+                    i.icon.n05
+            li.swiper-slide
+                a(href='/abouts',title='关于都安全') 关于都安全
+                    i.icon.n06
+        .swiper-button-next
+        .swiper-button-prev
+    //-else
         .wrapper.swiper-container
             ul.swiper-wrapper
                 li.swiper-slide

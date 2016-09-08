@@ -26,6 +26,9 @@ exports.get_goods_list = function (req,res,next) {
     var apiName = api.GoodsQueryByPc;
     if(browser.mobile){
         apiName = api.GoodsQueryByMobile;
+        if(req.url=='/'){
+            bizParam.pageSize=4;
+        }
     }
 
     util.ajax('GET',apiName,req,res,bizParam,function (err,data) {
@@ -34,7 +37,7 @@ exports.get_goods_list = function (req,res,next) {
         }else{
             var json = JSON.parse(data);
             // console.log(JSON.stringify(data))
-            console.log('json:::',json)
+            // console.log('json:::',json)
             req.get_goods_list = json
             next()
         }
