@@ -2947,13 +2947,13 @@
 	            },
 	            okCallback: function () {
 	                //console.log("提交用户完善信息");
-	                completeInfo(popup);
+	                completeInfo(popup,obj);
 	            }
 	        })
 	    }
 
 
-	    function completeInfo(popup){
+	    function completeInfo(popup,obj){
 	        var completeDialog = $('.complete-dialog');
 	        var name = completeDialog.find('[name=name]').val().trim();
 	        var birthday = completeDialog.find('[name=birthday]').val().trim();
@@ -3003,6 +3003,9 @@
 	                        });
 	                        popup.hideBox();
 	                        myMsg.hideMsg(1000);
+	                        if(obj.reload){
+	                            window.location.reload();
+	                        }
 	                    } else {
 	                        if(result.serverCode === '1001'){
 	                            new utils.Popup({
