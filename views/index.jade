@@ -141,14 +141,8 @@ block content
                   if browser.mobile&&item.mobileCoverImages&&item.mobileCoverImages.length
                     img(data-original='#{item.mobileCoverImages[0]}',alt='#{item.goodsName}',title='#{item.goodsName}')
                   h4 #{item.goodsName}
-                if item.productKeyAttributeList
-                  each arr in item.productKeyAttributeList
-                    if arr.attributeName == 'fit_people'
-                      p
-                        if arr.value.length > 50
-                          | #{arr.value.substring(0, 50)}……
-                        else
-                          | #{arr.value}
+                if item.slogan
+                  p #{item.slogan}
                 .price
                   span.new
                     em ￥
