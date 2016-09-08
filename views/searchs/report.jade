@@ -10,21 +10,21 @@ block content
     section.wrapper
         input#hasBind(type="hidden",value="#{hasBind}")
         .report_list
-            h2
-                i
-                |报告列表
-            ul
-                li
-                    a(href='javasctipt:;')
-                        i.icon
-                        |JK9026212酒精代谢能力基因检测.pdf
-                li
-                    a(href='javasctipt:;')
-                        i.icon
-                        | JK9026212酒精代谢能力基因检测.pdf
-                //li
-                    .noData
-                        p 暂无数据
+            if hasBind
+                h2
+                    i
+                    |报告列表
+                ul
+                    if data && data.length > 0
+                        each item in data
+                            li
+                                a(href='#{item.url}')
+                                    i.icon
+                                    |#{item.id}
+                    else
+                        .noData
+                            p 暂无数据
+
 
         //-.report
             //-header

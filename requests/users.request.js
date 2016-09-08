@@ -28,6 +28,16 @@ exports.GetReservationList = function (req,res,callback) {
     });
 };
 
+exports.CheckReport = function (req,res,callback) {
+    var bizParam = {
+        reservationId: req.query.reservationId
+    };
+
+    util.ajax('GET', api.CheckReport,req,res,bizParam, function (err,data) {
+        callback && callback(err,data);
+    });
+};
+
 exports.GetRegisterList = function (req,res,callback) {
     var bizParam = {
         role:1,

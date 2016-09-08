@@ -97,7 +97,7 @@ app.use('/healths', healths);
 app.use('/helps', helps);
 
 app.use('/screenings', screenings);
-app.use('/searchs', searchs);
+// app.use('/searchs', searchs);
 app.use('/treats', treats);
 app.use('/users', users);
 app.use('/trade', trades);

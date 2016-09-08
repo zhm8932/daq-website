@@ -154,6 +154,7 @@ module.exports = {
     //预约
     GetReservationList: "service.reservation.get.byaccount",
     GetReserveDetail: "service.reservation.get",
+    CheckReport: "service.reservation.report.get",
 
     //就诊人
     GetPatientList: "daq.contactPerson.list",
