@@ -106,7 +106,7 @@
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;//define(['jquery'],function(require,exports,module) {
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require,exports,module) {
-	    //弹出框1
+	    //弹出框
 	    __webpack_require__(3);
 	    __webpack_require__(5);
 	    var md5lib = __webpack_require__(6);
