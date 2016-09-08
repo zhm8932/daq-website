@@ -1751,7 +1751,6 @@
 	                index=sessionStorage.getItem("index");
 	            }
 	            // console.log('sessionStorage:',sessionStorage)
-
 	            if (winWidth < 768) {
 	                //导航滑动
 	                // $nav.addClass('swiper-container');
@@ -1788,6 +1787,12 @@
 	                }
 	            })
 
+	            $body.on('click','.logo',function () {
+	                if(sessionStorage.getItem('index')){
+	                    sessionStorage.setItem('index',0);
+	                }
+
+	            })
 	            $body.on('click','.nav ul li',function () {
 	                var i= $(this).index();
 	                sessionStorage.setItem("index",i);
@@ -2440,10 +2445,12 @@
 
 	    $('body').on('click','.loginBox2 .ok',function () {
 	        var data = validateLogin();
-	        // console.log("data:",data)
-	        var redirectUrl = $('#redirectUrl').val()||'/';
+	        console.log("data:",data)
+	        var referrer = document.referrer;
+	        referrer = referrer?referrer:'/';
+	        var redirectUrl = $('#redirectUrl').val()||referrer;
 	        if(data) login(data,null,redirectUrl,function (userAllInfo) {
-	            //console.log("单页登录成功")
+	            // console.log("单页登录成功")
 	            hasBindHis({
 	                accountId:userAllInfo.accountCommon.id,
 	                callback:function (json) {
@@ -2903,9 +2910,13 @@
 	            tipText: '检查是否登录',
 	            callback: function (result) {
 	                if(!result.login){
-	                    showLogin({
-	                        afterLoginFun:callBack
-	                    });
+	                    if(utils.browser.mobile){
+	                        window.location.href = '/login'
+	                    }else{
+	                        showLogin({
+	                            afterLoginFun:callBack
+	                        });
+	                    }
 	                    return false;
 	                }else{
 	                    callBack && callBack();
