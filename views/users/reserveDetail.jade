@@ -38,7 +38,7 @@ block content
                             span.text-sec.date-time #{moment(data.createdAt).format('YYYY-MM-DD HH:mm:ss')}
                         if data.reservationStatus == 1900 || data.reservationStatus == 2900 || data.reservationStatus == 3900
                             sapn.info
-                                a.check-report(href="/searchs/report") 查看报告
+                                a.check-report(href='/users/search/report?reservationId=#{data.id}') 查看报告
                     .list-info 商品列表
                     table.table.goods-list
                         thead
@@ -93,7 +93,7 @@ block content
                                 |#{moment(data.createdAt).format('YYYY-MM-DD HH:mm:ss')}
                                 if data.reservationStatus == 1900 || data.reservationStatus == 2900 || data.reservationStatus == 3900
                                     sapn.info
-                                        span.check-report: a(href='/searchs/report') 查看报告
+                                        span.check-report: a(href='/users/search/report?reservationId=#{data.id}') 查看报告
 
 
 
