@@ -327,26 +327,31 @@
           padding-top: 5px; }
     .item_list .pic_list .more {
       margin-top: 20px; }
-    .item_list .goods_list ul li {
-      width: 100%; }
-      .item_list .goods_list ul li img {
-        width: 30%;
-        float: left;
-        margin-right: 10px; }
-      .item_list .goods_list ul li a {
-        color: #48BED8; }
-      .item_list .goods_list ul li h4 {
-        display: inline-block;
-        background: none;
-        width: auto;
-        height: 30px;
-        line-height: 30px; }
-      .item_list .goods_list ul li p {
-        height: 24px;
-        margin: 0px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        margin-right: 5px; }
+    .item_list .goods_list ul {
+      margin: 0px; }
+      .item_list .goods_list ul li {
+        width: 100%;
+        margin-left: 0px; }
+        .item_list .goods_list ul li img {
+          width: 30%;
+          float: left;
+          margin-right: 10px; }
+        .item_list .goods_list ul li a {
+          color: #48BED8; }
+        .item_list .goods_list ul li h4 {
+          display: inline-block;
+          background: none;
+          width: auto;
+          height: 30px;
+          line-height: 30px; }
+        .item_list .goods_list ul li p {
+          height: 24px;
+          margin: 0px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          margin-right: 5px; }
+        .item_list .goods_list ul li .price span.old {
+          position: static; }
     .item_list .feature {
       margin: 0px;
       text-align: center; }

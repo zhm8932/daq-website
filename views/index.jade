@@ -128,28 +128,28 @@ block content
             | #{parseFloat(arr) / 100}.00
         if get_goods_list_success
           ul
-            each item in get_goods_list
-              li
-                a(href='/screenings/goods/detail/#{item.id}',target='_blank')
-                  //-img(data-original='images/product1.png')
-                  if !browser.mobile&&item.pcCoverImages&&item.pcCoverImages.length
-                    - var images = item.pcCoverImages[0];
-                    if browser.ie
-                      img(src='#{images}',alt='#{item.goodsName}',title='#{item.goodsName}')
-                    else
-                      img(data-original='#{images}',alt='#{item.goodsName}',title='#{item.goodsName}')
-                  if browser.mobile&&item.mobileCoverImages&&item.mobileCoverImages.length
-                    img(data-original='#{item.mobileCoverImages[0]}',alt='#{item.goodsName}',title='#{item.goodsName}')
-                  h4 #{item.goodsName}
-                if item.slogan
-                  p #{item.slogan}
-                .price
-                  span.new
-                    em ￥
-                    +transferUnit(item.discountPrice)
-                  span.old
-                    | 原价￥
-                    +transferUnit(item.price)
+            each item,index in get_goods_list
+                li
+                  a(href='/screenings/goods/detail/#{item.id}',target='_blank')
+                    //-img(data-original='images/product1.png')
+                    if !browser.mobile&&item.pcCoverImages&&item.pcCoverImages.length
+                      - var images = item.pcCoverImages[0];
+                      if browser.ie
+                        img(src='#{images}',alt='#{item.goodsName}',title='#{item.goodsName}')
+                      else
+                        img(data-original='#{images}',alt='#{item.goodsName}',title='#{item.goodsName}')
+                    if browser.mobile&&item.mobileCoverImages&&item.mobileCoverImages.length
+                      img(data-original='#{item.mobileCoverImages[0]}',alt='#{item.goodsName}',title='#{item.goodsName}')
+                    h4 #{item.goodsName}
+                  if item.slogan
+                    p #{item.slogan}
+                  .price
+                    span.new
+                      em ￥
+                      +transferUnit(item.discountPrice)
+                    span.old
+                      | 原价￥
+                      +transferUnit(item.price)
           div.tc.clear
             a.more(href='/screenings/goods')
               | 更多
