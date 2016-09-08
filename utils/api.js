@@ -109,14 +109,14 @@ module.exports = {
     SelectCouponById: 'promotion.selectCouponById',
     UpdateCouponById: 'promotion.updateCouponById',
 
-    //预约查询
-    ReservationGroupInfo: 'pagingQuerReservationGroupInfo',
-    updapteReservationGroupStorage: 'updapteReservationGroupStorage',
-    getReservationInfo: 'selectReservationGroupIdInfo',
-    selectTracesByReservationId: 'selectTracesByReservationId',
-    UpdateReservationGroupStatus: 'updateReservationGroupStatus',
-    PagingQuerNurseDtoInfo: 'pagingQuerNurseDtoInfo',
-    cancelReservationGroup: 'cancelReservationGroup',
+    // //预约查询
+    // ReservationGroupInfo: 'pagingQuerReservationGroupInfo',
+    // updapteReservationGroupStorage: 'updapteReservationGroupStorage',
+    // getReservationInfo: 'selectReservationGroupIdInfo',
+    // selectTracesByReservationId: 'selectTracesByReservationId',
+    // UpdateReservationGroupStatus: 'updateReservationGroupStatus',
+    // PagingQuerNurseDtoInfo: 'pagingQuerNurseDtoInfo',
+    // cancelReservationGroup: 'cancelReservationGroup',
 
     //webIM
     MessageHistory: "pagingQueryMessageHistory",
@@ -153,7 +153,7 @@ module.exports = {
 
     //预约
     GetReservationList: "service.reservation.get.byaccount",
-    GetReserveDetail: "service.reservation.code.get.byid",
+    GetReserveDetail: "service.reservation.get",
 
     //就诊人
     GetPatientList: "daq.contactPerson.list",

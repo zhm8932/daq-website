@@ -10,23 +10,29 @@ block content
     section.wrapper.userBox
         .reservation-detail
             -var serviceTypeJSON = {'0':'未选择','1':'门诊取样','2':'上门取样','3':'快递取样'};
-            -var statusJSON = [{'1000':'选择产品','1100':'预约成功','1150':'门诊登记','1200':'收到样本','1900':'报告生成'},{'2000':'选择产品','2100':'预约成功','2150':'已安排护士取样','2200':'护士取样','2300':'收到样本','2900':'报告生成'},{'3000':'选择产品','3100':'预约成功','3200':'物料寄出','3300':'回寄样本','3400':'收到样本','3900':'报告生成'}];
+            -var statusJSON = {'1000':'选择产品','1100':'预约成功','1150':'门诊登记','1200':'收到样本','1900':'报告生成','2000':'选择产品','2100':'预约成功','2150':'已安排护士取样','2200':'护士取样','2300':'收到样本','2900':'报告生成','3000':'选择产品','3100':'预约成功','3200':'物料寄出','3300':'回寄样本','3400':'收到样本','3900':'报告生成'};
             -var addressNameJSON = {'0':'未选择','1':'门诊地址','2':'取样地址','3':'收件地址'};
             if !data || !data.id
                 .noData
                     p 订单不存在或已被删除
             else
+                -var coverImage = '';
+                if browser.mobile && data.goodsInfo.mobileCoverImages
+                    -coverImage = data.goodsInfo.mobileCoverImages[0];
+                else if data.goodsInfo.pcCoverImages
+                    -coverImage = data.goodsInfo.pcCoverImages[0];
+
                 if browser.mobile
                     include ../includes/usersNav
                 if !browser.mobile
                     div.overview
                         span.info
                             span.text-sec 订单编号:
-                            if data.reservations && data.reservations.length && data.reservations[0] && data.reservations[0].goodsInfo
-                                span #{data.reservations[0].goodsInfo.orderId}
+                            if data.goodsInfo
+                                span #{data.goodsInfo.orderId}
                         span.info
                             span.text-sec 状态:
-                            span.text-stress #{statusJSON[parseInt(data.serviceType)-1][data.reservationStatus]}
+                            span.text-stress #{statusJSON[data.reservationStatus]}
                         span.info
                             span.text-sec 下单时间:
                             span.text-sec.date-time #{moment(data.createdAt).format('YYYY-MM-DD HH:mm:ss')}
@@ -42,21 +48,20 @@ block content
                             th(width="30%") 取样方式
                         tbody
                             tr
-                                each item,i in data.reservations
-                                    td.goods
-                                      if item.goodsInfo
-                                        a(href="/screenings/goods/detail/#{item.goodsInfo.goodsId}")
-                                            img(src="#{item.goodsInfo.imageUrls[0]}")
-                                            span #{item.goodsInfo.goodsName}
-                                      else
-                                          p 暂无商品
-                                    td.text-stress #{item.password}
+                                td.goods
+                                  if data.goodsInfo
+                                    a(href="/screenings/goods/detail/#{data.goodsInfo.goodsId}")
+                                        img(src="#{coverImage}")
+                                        span #{data.goodsInfo.goodsName}
+                                  else
+                                      p 暂无商品
+                                td.text-stress #{data.password}
                                 td #{data.id}
 
                                 td.bd-l(rowspan="#{goodsLength}")
                                     p 取样方式:#{serviceTypeJSON[data.serviceType]}
-                                    if data.reservations && data.reservations.length && data.reservations[0] && data.reservations[0].goodsInfo
-                                        p.text-sec 服务门诊: #{JSON.parse(data.reservations[0].goodsInfo.hospital).hospitalName}
+                                    if data.goodsInfo && data.goodsInfo.hospital
+                                        p.text-sec 服务门诊: #{JSON.parse(data.goodsInfo.hospital).hospitalName}
                                     p.text-sec #{addressNameJSON[data.serviceType]}: #{data.address}
                                     if data.serviceType!=3
                                         p.text-sec 预约时间: #{moment(data.time).format('YYYY-MM-DD HH:mm:ss')}
@@ -64,35 +69,34 @@ block content
                     .detail-wap
                         h3
                             p.text-sec 订单编号:
-                                if data.reservations && data.reservations.length && data.reservations[0] && data.reservations[0].goodsInfo
-                                    |#{data.reservations[0].goodsInfo.orderId}
+                                if data.goodsInfo
+                                    | #{data.goodsInfo.orderId}
                             p.text-sec 预约编号:#{data.id}
-                            p.orderState #{statusJSON[parseInt(data.serviceType)-1][data.reservationStatus]}
-                        each item,i in data.reservations
-                            dl.clearfix
-                                dt
-                                  if item.goodsInfo
-                                    a(href="/screenings/goods/detail/#{item.goodsInfo.goodsId}")
-                                        img(src="#{item.goodsInfo.imageUrls[0]}")
-                                        span #{item.goodsInfo.goodsName}
-                                        p 使用密码： #{item.password}
-                            .price-text
-                                p 取样方式:#{serviceTypeJSON[data.serviceType]}
-                                if data.reservations && data.reservations.length && data.reservations[0] && data.reservations[0].goodsInfo
-                                    p.text-sec 服务门诊: #{JSON.parse(data.reservations[0].goodsInfo.hospital).hospitalName}
-                                p.text-sec #{addressNameJSON[data.serviceType]}: #{data.address}
-                                if data.serviceType != 3
-                                    p.text-sec 预约时间: #{moment(data.time).format('YYYY-MM-DD HH:mm:ss')}
-                            .area
-                                p 下单时间：
-                                    |#{moment(data.createdAt).format('YYYY-MM-DD HH:mm:ss')}
-                                    if data.reservationStatus == 1900 || data.reservationStatus == 2900 || data.reservationStatus == 3900
-                                        sapn.info
-                                            span.check-report: a(href='/searchs/report') 查看报告
+                            p.orderState #{statusJSON[data.reservationStatus]}
+
+                        dl.clearfix
+                            dt
+                              if data.goodsInfo
+                                a(href="/screenings/goods/detail/#{data.goodsInfo.goodsId}")
+                                    img(src="#{coverImage}")
+                                    span #{data.goodsInfo.goodsName}
+                                    p 使用密码： #{data.password}
+                        .price-text
+                            p 取样方式:#{serviceTypeJSON[data.serviceType]}
+                            if data.goodsInfo && data.goodsInfo.hospital
+                                p.text-sec 服务门诊: #{JSON.parse(data.goodsInfo.hospital).hospitalName}
+                            p.text-sec #{addressNameJSON[data.serviceType]}: #{data.address}
+                            if data.serviceType != 3
+                                p.text-sec 预约时间: #{moment(data.time).format('YYYY-MM-DD HH:mm:ss')}
+                        .area
+                            p 下单时间：
+                                |#{moment(data.createdAt).format('YYYY-MM-DD HH:mm:ss')}
+                                if data.reservationStatus == 1900 || data.reservationStatus == 2900 || data.reservationStatus == 3900
+                                    sapn.info
+                                        span.check-report: a(href='/searchs/report') 查看报告
 
 
 
 
 
     include ../includes/footer
-    script(src="/public/js/users/user_detail.bundle.js",type="text/javascript",charset="UTF-8")
