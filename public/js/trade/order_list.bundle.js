@@ -9,10 +9,31 @@ webpackJsonp([21],{
 
 /***/ },
 
-/***/ 119:
+/***/ 311:
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery ellipsis - v1.1.1 - 2014-02-23
+	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
+	    var utils = __webpack_require__(4);
+	    __webpack_require__(312);
+
+	    $(function () {
+	        $('.goods-detail h5').ellipsis({
+	            row:2,
+	            char:'……',
+	            callback: function() {
+	                // console.log($(this).text());
+	            }
+	        })
+	    })
+
+	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ },
+
+/***/ 312:
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery ellipsis - v1.1.1 - 2014-02-23
 	* https://github.com/STAR-ZERO/jquery-ellipsis
 	* Copyright (c) 2014 Kenji Abe; Licensed MIT */
 	(function (factory) {
@@ -130,27 +151,6 @@ webpackJsonp([21],{
 	    };
 	});
 
-
-/***/ },
-
-/***/ 311:
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
-	    var utils = __webpack_require__(4);
-	    __webpack_require__(119);
-
-	    $(function () {
-	        $('.goods-detail h5').ellipsis({
-	            row:2,
-	            char:'……',
-	            callback: function() {
-	                // console.log($(this).text());
-	            }
-	        })
-	    })
-
-	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ }
 

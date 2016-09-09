@@ -6,7 +6,7 @@
 		define(['jquery'], factory);
 	} else if(typeof define === 'function') {
 		// Node/CommonJS
-		console.log('CommonJS')
+		// console.log('CommonJS')
 		define(['jquery'], function(){
 			return factory(window.jQuery, undefined);
 		})
@@ -19,7 +19,7 @@
 
 	$.swipebox = function( elem, options ) {
 
-		console.log("document:",document)
+		// console.log("document:",document)
 		// Default options
 		var ui,
 			defaults = {

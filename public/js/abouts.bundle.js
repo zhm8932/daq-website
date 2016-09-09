@@ -23,10 +23,17 @@ webpackJsonp([0],[
 	            imgsArr.push({href:original});
 	        });
 	        $('body').on('click','.abouts img',function () {
-	            if(imgsArr.length&&utils.browser.mobile){
-	                $.swipebox(imgsArr)
+	            // if(imgsArr.length&&utils.browser.mobile){
+	            //     // $.swipebox(imgsArr)
+	            //    
+	            // }
+	            if(utils.browser.mobile){
+	                $('.swipebox').swipebox()
 	            }
+
 	        })
+
+	        // $('.abouts figure img').swipebox()
 
 
 
@@ -45,7 +52,7 @@ webpackJsonp([0],[
 			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(3)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else if(typeof define === 'function') {
 			// Node/CommonJS
-			console.log('CommonJS')
+			// console.log('CommonJS')
 			define(['jquery'], function(){
 				return factory(window.jQuery, undefined);
 			})
@@ -58,7 +65,7 @@ webpackJsonp([0],[
 
 		$.swipebox = function( elem, options ) {
 
-			console.log("document:",document)
+			// console.log("document:",document)
 			// Default options
 			var ui,
 				defaults = {
