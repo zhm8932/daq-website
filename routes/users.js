@@ -32,6 +32,30 @@ router.get('/reservation/detail',authority.loginRequired,function(req,res,next){
     });
 });
 
+
+router.get('/search/report',authority.loginRequired,function (req,res,next) {
+    request.HasBindHis(req,res,function (err,data) {
+        var hasBindHISJson = JSON.parse(data);
+        res.locals.hasBind = hasBindHISJson.data;
+        if(hasBindHISJson.data){
+            request.CheckReport(req,res,function (err,data) {
+                res.render('searchs/report', {
+                    title: '都安全查询报告',
+                    keywords: '都安全查询报告',
+                    description: '都安全查询报告',
+                    data:JSON.parse(data).data
+                });
+            });
+        }else{
+            res.render('searchs/report', {
+                title: '都安全查询报告',
+                keywords: '都安全查询报告',
+                description: '都安全查询报告'
+            });
+        }
+    });
+});
+
 //挂号列表
 router.get('/register/list',authority.loginRequired,function(req,res,next){
     request.GetRegisterList(req,res,function(err,data) {

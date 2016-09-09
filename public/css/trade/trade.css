@@ -324,6 +324,7 @@ header {
 
 .wechat-pay-dialog {
   width: 730px;
+  height: 445px;
   box-sizing: border-box;
   text-align: center; }
   .wechat-pay-dialog div {
