@@ -11,10 +11,17 @@ define(function (require) {
             imgsArr.push({href:original});
         });
         $('body').on('click','.abouts img',function () {
-            if(imgsArr.length&&utils.browser.mobile){
-                $.swipebox(imgsArr)
+            // if(imgsArr.length&&utils.browser.mobile){
+            //     // $.swipebox(imgsArr)
+            //    
+            // }
+            if(utils.browser.mobile){
+                $('.swipebox').swipebox()
             }
+
         })
+
+        // $('.abouts figure img').swipebox()
 
 
 

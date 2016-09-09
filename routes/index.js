@@ -33,11 +33,15 @@ router.use(function(req, res, next) {
     // global.config.options = config.options
     // console.log("config.options:",config.options)
     //城市
+
+
     if(!req.session){
         return next(new Error('no session')) ;// handle error
     }
 
+    // req.session.locals_address = null;
     if(req.session&&req.session.locals_address){
+        console.log('session:address')
         res.locals.locals_address = JSON.stringify(req.session.locals_address);
     }else{
         req.session.locals_address = config.addressJSON;
