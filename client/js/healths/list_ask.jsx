@@ -80,7 +80,7 @@ var AskBox = React.createClass({
         var data = this.props.data;
 
         if(!data||!data.length>0){
-            return <p>暂无数据</p>
+            return <p></p>
         }
 
         if(this.props.pageCount==1){

@@ -600,8 +600,8 @@ select {
     .item_list .pic_list li p {
       color: #333333;
       margin-top: 10px;
-      height: 48px;
-      overflow: hidden; }
+      overflow: hidden;
+      height: 48px; }
     .item_list .pic_list li .price {
       padding-top: 20px; }
       .item_list .pic_list li .price .new {
@@ -648,9 +648,8 @@ select {
       .item_list .goods_list ul li a:hover h4 {
         color: #48BED8; }
       .item_list .goods_list ul li h4 {
-        background: none; }
-        .item_list .goods_list ul li h4 a {
-          color: #48BED8; }
+        background: none;
+        text-align: left; }
   .item_list .standard ul {
     margin-left: -4%;
     padding-top: 40px; }
@@ -777,6 +776,8 @@ select {
   border-radius: 1px;
   overflow: hidden;
   background: rgba(2, 2, 2, 0.11);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#22000000,endColorstr=#22000000);
+  /*IE*/
   text-align: center; }
   .popupBox .close, .popupBox .closeBtn {
     position: absolute;

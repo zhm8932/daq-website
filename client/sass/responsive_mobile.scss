@@ -270,7 +270,10 @@
           }
           h4{display: inline-block;background: none;width: auto;height:30px;line-height: 30px;}
           p{height: 24px;margin: 0px;white-space: nowrap; text-overflow: ellipsis;margin-right: 5px; }
-          .price span.old{position: static;}
+          .price{
+            padding-top: 20px;
+            span.old{position: static;}
+          }
         }
       }
     }
@@ -363,7 +366,10 @@
       width: 160px;margin-right: 10px;
     }
   }
-  .agencys_com ol{padding-left: 22px;}
+  .agencys_com{
+    *{font-size: 14px;font-family:'微软雅黑';}
+    ol{padding-left: 22px;}
+  }
   .health aside{width: 100%}
   .health_detail{width: 100%;
     article,p{font-size: 18px;}}
@@ -417,7 +423,8 @@
           float: left;width: 30%;
           img{float: none;width: 100%;margin: 0px;}
         }
-        p{font-size: 15px;line-height: 22px;height: 44px;overflow: hidden;}
+
+        p{font-size:15px;line-height: 22px;height: 44px;overflow: hidden; font-family: 'Arial', '微软雅黑';}
         aside{display: none;}
         .more{margin-top:4px;}
       }
@@ -1168,7 +1175,7 @@
 @media only screen and (min-width: 376px) and (max-width: 414px){
   .agency_box .lr_list figure{
     .figcaption{}
-    p{height: 48px;line-height: 24px;margin-bottom: 3px;font-size: 16px;}
+    p{height: 48px;line-height: 24px;margin-bottom: 3px;font-size: 14px;}
   }
 }
 @media only screen and (min-width: 320px) and (max-width: 360px){

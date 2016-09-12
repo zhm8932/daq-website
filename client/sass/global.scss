@@ -603,7 +603,8 @@ select {
       }
       p {
         color: $textc_333;
-        margin-top: 10px;height: 48px;overflow: hidden;
+        margin-top: 10px;overflow: hidden;height: 48px;
+        //-max-height: 48px;_height:expression((document.documentElement.clientHeight||document.body.clientHeight)<40?"40px":"")
       }
       //&:hover{
       //  h4{color:$textOnColor; cursor: pointer;}
@@ -673,8 +674,9 @@ select {
           //border: 1px solid $bdrc2;
           //box-shadow:0px 0px 3px 0px $bgc_D2;
         }
-        h4{background: none;
-          a{color: $textc_48B;}
+        h4{background: none;text-align: left;
+          //height: 40px;
+          //a{color: $textc_48B;}
         }
       }
     }
@@ -844,6 +846,7 @@ select {
   border-radius: 1px;
   overflow: hidden;
   background: rgba(2, 2, 2, 0.11);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#22000000,endColorstr=#22000000);  /*IE*/
   text-align: center;
   .close,.closeBtn {
     position: absolute;

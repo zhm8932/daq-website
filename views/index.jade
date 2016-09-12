@@ -8,15 +8,15 @@ block content
     if !browser.mobile
         //-.touchslider-viewport
         .slideBox
-          p: img(src='/public/images/banner1.jpg')
-          p: img(src='/public/images/banner2.jpg')
+          p: img(src='/public/images/banner1.jpg',alt='都安全医疗精英团队')
+          p: img(src='/public/images/banner2.jpg',alt='都安全医疗')
         //-.tit
             span 1
             span 2
     else
       .slideBox
-        p: img(src='/public/images/mBanner1.jpg')
-        p: img(src='/public/images/mBanner2.jpg')
+        p: img(src='/public/images/mBanner1.jpg',alt='都安全医疗精英团队')
+        p: img(src='/public/images/mBanner2.jpg',alt='都安全医疗')
       //-img(src='/public/images/BG_small.png')
     //-.wrapper
       dl
@@ -56,17 +56,17 @@ block content
                 li
                   if !browser.mobile
                     a(href='/agencys/department/detail/#{item.id}',target='_blank',index=index)
-                      img(src=item.imgIndex)
+                      img(src=item.imgIndex,alt=item.title)
                     h4 #{item.title}
                   else
                     if (index+1)%2==1
                       a(href='/agencys/department/detail/#{item.id}',target='_blank',index=index)
-                        img(src=item.imgIndex)
+                        img(src=item.imgIndex,alt=item.title)
                       h4.bgGray #{item.title}
                     else
                       h4 #{item.title}
                       a(href='/agencys/department/detail/#{item.id}',target='_blank',index=index)
-                        img(src=item.imgIndex)
+                        img(src=item.imgIndex,alt=item.title)
 
 
           if browser.mobile&&!browser.iPad

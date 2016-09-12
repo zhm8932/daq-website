@@ -350,8 +350,10 @@
           white-space: nowrap;
           text-overflow: ellipsis;
           margin-right: 5px; }
-        .item_list .goods_list ul li .price span.old {
-          position: static; }
+        .item_list .goods_list ul li .price {
+          padding-top: 20px; }
+          .item_list .goods_list ul li .price span.old {
+            position: static; }
     .item_list .feature {
       margin: 0px;
       text-align: center; }
@@ -460,6 +462,9 @@
       width: 160px;
       margin-right: 10px; }
 
+  .agencys_com * {
+    font-size: 14px;
+    font-family: '微软雅黑'; }
   .agencys_com ol {
     padding-left: 22px; }
 
@@ -544,7 +549,8 @@
           font-size: 15px;
           line-height: 22px;
           height: 44px;
-          overflow: hidden; }
+          overflow: hidden;
+          font-family: 'Arial', '微软雅黑'; }
         .agency_box .lr_list figure aside {
           display: none; }
         .agency_box .lr_list figure .more {
@@ -1587,7 +1593,7 @@
     height: 48px;
     line-height: 24px;
     margin-bottom: 3px;
-    font-size: 16px; } }
+    font-size: 14px; } }
 @media only screen and (min-width: 320px) and (max-width: 360px) {
   .topBar {
     margin-left: 110px; }

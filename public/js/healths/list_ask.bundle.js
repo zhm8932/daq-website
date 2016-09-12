@@ -201,7 +201,7 @@ webpackJsonp([10],[
 	        var data = this.props.data;
 
 	        if (!data || !data.length > 0) {
-	            return React.createElement("p", null, "暂无数据");
+	            return React.createElement("p", null);
 	        }
 
 	        if (this.props.pageCount == 1) {

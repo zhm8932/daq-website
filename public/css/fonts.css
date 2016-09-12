@@ -150,7 +150,7 @@
   font-family: 'PingFang SC';
   font-style: normal;
   font-weight: 200;
-  src: local("☺︎"), url("../fonts/PingFang Regular.ttf") format("truetype");
+  src: local("☺︎"), url("../fonts/PingFang-Regular.ttf") format("truetype");
   /* Copyright (c) 2000-2008, Changzhou SinoType Technology Co., Ltd.  All rights reserved. */ }
 @font-face {
   font-family: 'HanHei SC';
