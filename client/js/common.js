@@ -295,6 +295,9 @@ define(function (require, exports, module) {
         });
     }
 
+
+    
+
     //移动端
 
     var $nav_toggle = $('.nav_toggle');

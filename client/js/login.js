@@ -153,6 +153,7 @@ define(function(require,exports,module) {
     })
 
     if($(".loginBox2").length){
+        $('input[placeholder]').placeholder()
         $(".loginBox2").touchSlider({
             container: this,
             duration: 350, // 动画速度
@@ -329,6 +330,8 @@ define(function(require,exports,module) {
                     autoplay: false, // 自动播放
                     viewport: ".touchslider-viewport"  //内容区域
                 });
+
+                $('input[placeholder]').placeholder()
             },
             okText:'登录',
             // width:'360',
@@ -361,7 +364,7 @@ define(function(require,exports,module) {
             otherMsg:'手机号码用来获取预约码和报告服务码',
             bOhterMsg:true,
             callback:function () {
-
+                $('input[placeholder]').placeholder()
             },
             okText:'注册',
             // width:'360',
@@ -391,6 +394,9 @@ define(function(require,exports,module) {
             // width:'360',
             otherBox:'loginPopupCom rPasswordBox',
             isHide:false,
+            callback:function () {
+                $('input[placeholder]').placeholder()
+            },
             okCallback:function(){
                 var data = validateLogin();
                 if(data){

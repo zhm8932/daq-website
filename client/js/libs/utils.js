@@ -308,6 +308,46 @@ define(function(require,exports,module) {
         });
     }
 
+    $.fn.placeholder = function (config) {
+        //判断浏览器是否支持placeholder属性
+        var supportPlaceholder='placeholder'in document.createElement('input');
+        if(!supportPlaceholder){
+            return this.each(function () {
+                // console.log($(item).attr('placeholder'),index)
+                var input = $(this);
+                var text = input.attr('placeholder');
+                if(this.type=='password'){
+                    var wrap = input.wrap('<div class="placeholder" style="width:' + input.outerWidth(true) + 'px;height:' + input.outerHeight(true) + 'px"></div>').parent();
+                    var note = wrap.append('<div class="note phcolor" style="line-height:' + input.outerHeight(true) + 'px;top: 0px;left:5px; position: absolute;">' + text + '</div>')
+                        .click(function () {
+                            wrap.find('div.note').hide();
+                            input.focus();
+                        }).find('div.note');
+                    input.blur(function () {
+                        if (input.val() == '')
+                            note.show();
+                    }).focus(function () {
+                        wrap.find('div.note').hide();
+                    });
+                }else{
+                    input.val(text).addClass("phcolor");
+                    input.focus(function(){
+                        if(input.val() == text){
+                            input.val("");
+                        }
+                    }).blur(function(){
+                        if(input.val() == ""){
+                            $(this).val(text).addClass("phcolor");
+                        }
+                    }).keydown(function(){  //输入的字符不为灰色
+                        $(this).removeClass("phcolor");
+                    });
+                }
+            })
+        }
+
+    }
+
     jQuery.fn.center = function () {
         this.css('position', 'absolute');
         this.css('top', ( $(window).height() - this.height() ) / 2 + $(window).scrollTop() + 'px');

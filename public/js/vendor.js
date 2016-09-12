@@ -414,6 +414,46 @@
 	        });
 	    }
 
+	    $.fn.placeholder = function (config) {
+	        //判断浏览器是否支持placeholder属性
+	        var supportPlaceholder='placeholder'in document.createElement('input');
+	        if(!supportPlaceholder){
+	            return this.each(function () {
+	                // console.log($(item).attr('placeholder'),index)
+	                var input = $(this);
+	                var text = input.attr('placeholder');
+	                if(this.type=='password'){
+	                    var wrap = input.wrap('<div class="placeholder" style="width:' + input.outerWidth(true) + 'px;height:' + input.outerHeight(true) + 'px"></div>').parent();
+	                    var note = wrap.append('<div class="note phcolor" style="line-height:' + input.outerHeight(true) + 'px;top: 0px;left:5px; position: absolute;">' + text + '</div>')
+	                        .click(function () {
+	                            wrap.find('div.note').hide();
+	                            input.focus();
+	                        }).find('div.note');
+	                    input.blur(function () {
+	                        if (input.val() == '')
+	                            note.show();
+	                    }).focus(function () {
+	                        wrap.find('div.note').hide();
+	                    });
+	                }else{
+	                    input.val(text).addClass("phcolor");
+	                    input.focus(function(){
+	                        if(input.val() == text){
+	                            input.val("");
+	                        }
+	                    }).blur(function(){
+	                        if(input.val() == ""){
+	                            $(this).val(text).addClass("phcolor");
+	                        }
+	                    }).keydown(function(){  //输入的字符不为灰色
+	                        $(this).removeClass("phcolor");
+	                    });
+	                }
+	            })
+	        }
+
+	    }
+
 	    jQuery.fn.center = function () {
 	        this.css('position', 'absolute');
 	        this.css('top', ( $(window).height() - this.height() ) / 2 + $(window).scrollTop() + 'px');
@@ -1892,6 +1932,9 @@
 	        });
 	    }
 
+
+	    
+
 	    //移动端
 
 	    var $nav_toggle = $('.nav_toggle');
@@ -2425,6 +2468,7 @@
 	    })
 
 	    if($(".loginBox2").length){
+	        $('input[placeholder]').placeholder()
 	        $(".loginBox2").touchSlider({
 	            container: this,
 	            duration: 350, // 动画速度
@@ -2601,6 +2645,8 @@
 	                    autoplay: false, // 自动播放
 	                    viewport: ".touchslider-viewport"  //内容区域
 	                });
+
+	                $('input[placeholder]').placeholder()
 	            },
 	            okText:'登录',
 	            // width:'360',
@@ -2633,7 +2679,7 @@
 	            otherMsg:'手机号码用来获取预约码和报告服务码',
 	            bOhterMsg:true,
 	            callback:function () {
-
+	                $('input[placeholder]').placeholder()
 	            },
 	            okText:'注册',
 	            // width:'360',
@@ -2663,6 +2709,9 @@
 	            // width:'360',
 	            otherBox:'loginPopupCom rPasswordBox',
 	            isHide:false,
+	            callback:function () {
+	                $('input[placeholder]').placeholder()
+	            },
 	            okCallback:function(){
 	                var data = validateLogin();
 	                if(data){

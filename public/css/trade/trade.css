@@ -376,4 +376,5 @@ header {
 .popupBox.wechat-box .otherMsg {
   display: none; }
 .popupBox.wechat-box .innerBg {
+  height: 445px;
   padding-bottom: 0; }
