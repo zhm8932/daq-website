@@ -274,6 +274,10 @@ $conWidth:1600px;
     .nav{position: static;width: 100%;border-radius:0px;}
   }
 
+  .box-right .order dd .col *:last-child:not(.row){
+    padding-bottom:0;
+  }
+
 
   .nav ul li{
     font-size: 17px;margin-left: 0px;
