@@ -174,7 +174,7 @@ define(function(require,exports,module) {
             interTime:1500,
             width:300,
             height:50,
-            effect:'fade',
+            effect:'fade'
         };
 
 

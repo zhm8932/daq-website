@@ -30,7 +30,8 @@ define(function(require,exports,module) {
         var $self = $(this);
         //console.log("data:",data);
         if(!data.account){
-            //console.log('输入手机号');
+            //
+            // g('输入手机号');
             $prompt.show().find('em').html('手机号码不能为空');
             return
         }
@@ -174,7 +175,7 @@ define(function(require,exports,module) {
 
     $('body').on('click','.loginBox2 .ok',function () {
         var data = validateLogin();
-        console.log("data:",data)
+        // console.log("data:",data)
         var referrer = document.referrer;
         referrer = referrer?referrer:'/';
         var redirectUrl = $('#redirectUrl').val()||referrer;
@@ -431,6 +432,7 @@ define(function(require,exports,module) {
             }
         })
     }
+    $('input[placeholder]').placeholder();
 
     //获取数据
     function getLoginData(bType) {
@@ -606,14 +608,22 @@ define(function(require,exports,module) {
             callback: function (result) {
                 if(result.success){
                     $cartNum.html('0');
-                    loginRequiredArr.forEach(function (item) {
-                        if(pathname.search(item)!=-1){
+                    for(var i=0,len=loginRequiredArr.length;i<len;i++){
+                        if(pathname.search(loginRequiredArr[i])!=-1){
                             //console.log('页面跳转');
                             window.location.href='/';
                         }else{
                             $topBarAside.html(loginHtml);
                         }
-                    })
+                    }
+                    // loginRequiredArr.forEach(function (item) {   //IE8不支持 forEach
+                    //     if(pathname.search(item)!=-1){
+                    //         //console.log('页面跳转');
+                    //         window.location.href='/';
+                    //     }else{
+                    //         $topBarAside.html(loginHtml);
+                    //     }
+                    // })
 
                 }
             }
@@ -677,9 +687,9 @@ define(function(require,exports,module) {
             otherBox: 'complete-dialog',
             isHide:false,
             completeFun:function () {
-                console.log('222222222222222')
+                // console.log('222222222222222')
                 $('body').on('click','.tip-box',function () {
-                    console.log("渲染完成执行")
+                    // console.log("渲染完成执行")
                 })
             },
             closeFun: function () {
