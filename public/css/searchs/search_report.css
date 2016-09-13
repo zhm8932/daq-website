@@ -79,6 +79,7 @@
     position: relative;
     top: 3px; }
 .report_list ul {
+  margin-bottom: 50px;
   border: 1px solid #dddddd; }
   .report_list ul li {
     padding: 10px;
