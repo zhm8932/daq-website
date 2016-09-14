@@ -2499,7 +2499,7 @@
 	                        if(!json.data){
 	                            window.location.href = "/users/account/info";
 	                        }else{
-	                            // //console.log("用户信息已完善")
+	                            //console.log("用户信息已完善")
 	                            window.location.href = redirectUrl
 	                        }
 
