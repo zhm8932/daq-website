@@ -7,22 +7,24 @@ block content
         |您的位置为：首页 <em>#{sep}</em> 筛查服务 <em>#{sep}</em> #{title}
     if get_goods_detail_success
         include goods_mixin
-        -var coverImages;
+        -var coverImages,detailImages;
         if browser.mobile
-            -coverImages = goods_detail.mobileDetailImages;
+            -detailImages = goods_detail.mobileDetailImages;
+            -coverImages = goods_detail.mobileCoverImages;
         else
-            -coverImages = goods_detail.pcDetailImages;
+            -detailImages = goods_detail.pcDetailImages;
+            -coverImages = goods_detail.pcCoverImages;
         section.goods_basic.clearfix
             .wrapper
                 dl
 
                   if goods_detail
                     dt.slideBox
-                        if coverImages
+                        if detailImages
                             if !browser.mobile
                                 .touchslider-viewport
                                     .bd
-                                      each item in coverImages
+                                      each item in detailImages
                                         p: img(src='#{item}',alt=goods_detail.goodsName)
                                 .switch
                                     .prev
@@ -31,11 +33,11 @@ block content
                                         i.icon
                                 .tit
                                     div
-                                      each item in coverImages
+                                      each item in detailImages
                                         span: img(src='#{item}',alt=goods_detail.goodsName)
                             else
                                 .bd
-                                    img(src='#{coverImages[0]}',alt=goods_detail.goodsName)
+                                    img(src='#{detailImages[0]}',alt=goods_detail.goodsName)
 
 
                     dd

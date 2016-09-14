@@ -58,9 +58,10 @@ block content
                                 p 已取消
 
                         .col.operation.clearfix
-                            p: a(href='/users/reservation/detail?id=#{item.id}') 预约详情
+                            if resStatus != 4
+                                p: a(href='/users/reservation/detail?id=#{item.id}') 预约详情
                             if resStatus == 2
-                                p: a(href='/searchs/report') 查看报告
+                                p: a(href='/users/search/report?reservationId=#{item.id}') 查看报告
 
 
 
