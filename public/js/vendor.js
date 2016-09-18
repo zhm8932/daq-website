@@ -2763,6 +2763,7 @@
 	    function validateLogin(bType) {
 	        var data = getLoginData();
 	        var requestData = {};
+	        var reg = /^[0-9a-zA-Z]{6,16}$/;
 	        if(index==0){
 	            requestData.loginType=1;
 
@@ -2783,6 +2784,9 @@
 	            }
 	            if(!data.password){
 	                $prompt.show().find('em').html('密码不能为空');
+	                return
+	            }else if(!reg.test(data.password)){
+	                $prompt.show().find('em').html('密码为6-16位的数字,字母');
 	                return
 	            }
 

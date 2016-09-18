@@ -114,15 +114,16 @@
   .lr_list figure figcaption {
     width: 58%;
     float: right; }
+  .lr_list figure a {
+    color: #48BED8; }
   .lr_list figure h4 {
     font-size: 24px;
     border-bottom: 1px solid #dddddd;
     padding: 15px 0;
-    margin-bottom: 15px; }
-    .lr_list figure h4 a {
-      color: #48BED8; }
-      .lr_list figure h4 a:hover {
-        color: #f1292b; }
+    margin-bottom: 15px;
+    color: #48BED8; }
+  .lr_list figure p {
+    color: #4A4A4A; }
   .lr_list figure .more {
     padding: 0px 20px;
     border: 1px solid #48BED8;

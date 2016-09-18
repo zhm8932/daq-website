@@ -62,11 +62,16 @@
 
 
     }
-    h4{font-size: 24px;border-bottom: 1px solid $bdrc_ddd;padding:15px 0; margin-bottom: 15px;
-      a{color: $textc_48B;
-        &:hover{color: $text_red_F1}
-      }
+    a{color: $textc_48B;
+      //&:hover{color: $text_red_F1}
     }
+    h4{font-size: 24px;border-bottom: 1px solid $bdrc_ddd;padding:15px 0; margin-bottom: 15px;
+      color: $textc_48B;
+      //a{color: $textc_48B;
+      //  &:hover{color: $text_red_F1}
+      //}
+    }
+    p{color: $textColor;}
     .more{padding: 0px 20px; border: 1px solid $bdrc_48B;color: $textc_48B;border-radius: 5px;margin: 10px 0 10px;display: inline-block;}
   }
 

@@ -39,7 +39,7 @@
       background: url("../images/featuresIcons.png") no-repeat 0 0; }
       .item_list .feature figure span.s01 {
         background-position: 0px 0px; }
-        .item_list .feature figure span.s01:hover {
+        .item_list .feature figure span.s01:first-of-type, .item_list .feature figure span.s01:hover {
           background-position: 0px -112px; }
       .item_list .feature figure span.s02 {
         background-position: -112px 0px; }

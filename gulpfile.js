@@ -85,7 +85,6 @@ gulp.task('jsmin', function () {
         // }))
         .pipe(gulp.dest('public/js'));
 });
-
 //sass编译 并压缩css  //css文件压缩
 gulp.task('cssmin', function () {
     sass(srcPaths.sass)
