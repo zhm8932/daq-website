@@ -25,10 +25,10 @@ block content
                         .col.goods
                             -var transmitType = '';
                             each goods,index in item.goodsItemDTOs
-                                -var coverImage = '';
-                                if browser.mobile
+                                -var coverImage;
+                                if browser.mobile && goods.mobileCoverImages
                                     -coverImage = goods.mobileCoverImages[0];
-                                else
+                                else if goods.pcCoverImages
                                     -coverImage = goods.pcCoverImages[0];
                                 each value,key in JSON.parse(goods.transmitType)
                                     -transmitType = sampleJson[key];

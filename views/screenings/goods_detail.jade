@@ -10,10 +10,12 @@ block content
         -var coverImages,detailImages;
         if browser.mobile
             -detailImages = goods_detail.mobileDetailImages;
-            -coverImages = goods_detail.mobileCoverImages;
+            if goods_detail.mobileCoverImages
+                -coverImages = goods_detail.mobileCoverImages[0];
         else
             -detailImages = goods_detail.pcDetailImages;
-            -coverImages = goods_detail.pcCoverImages;
+            if goods_detail.pcCoverImages
+                -coverImages = goods_detail.pcCoverImages[0];
         section.goods_basic.clearfix
             .wrapper
                 dl
@@ -128,7 +130,7 @@ block content
     input#fit_hospital(type="hidden",value="#{goods_detail.fitHospital}")
     input#locals_address(type="hidden",value="#{locals_address}")
     input#hospital(type="hidden",value="")
-    input#goods(type="hidden",data-id="#{goods_detail.id}",data-goodsName="#{goods_detail.goodsName}",data-imgUrl="#{coverImages[0]}",data-discountPrice="#{goods_detail.discountPrice}",data-address="#{locals_address}",data-city="#{JSON.parse(locals_address)[1].name}")
+    input#goods(type="hidden",data-id="#{goods_detail.id}",data-goodsName="#{goods_detail.goodsName}",data-imgUrl="#{coverImages}",data-discountPrice="#{goods_detail.discountPrice}",data-address="#{locals_address}",data-city="#{JSON.parse(locals_address)[1].name}")
     form#submitForm(action = "/trade/order/comfirmView",method="POST")
         input(type="hidden",name="items")
         input(type="hidden",name="totalPrice")

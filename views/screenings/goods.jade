@@ -41,9 +41,9 @@ block content
                                     a(href='/screenings/goods/detail/#{item.id}' target='_blank')
                                         //-img(data-original='images/product1.png')
                                         -var goodsImg;
-                                        if browser.mobile
+                                        if browser.mobile && item.mobileCoverImages
                                             -goodsImg = item.mobileCoverImages[0];
-                                        else
+                                        else if item.pcCoverImages
                                             -goodsImg = item.pcCoverImages[0];
                                         if goodsImg
                                             if browser.ie

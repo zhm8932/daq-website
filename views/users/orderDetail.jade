@@ -47,10 +47,10 @@ block content
                             -var transmitType='',favPrice='';
                             -var sampleJson = JSON.parse(locals_sample);
                             each item,i in data.goodsItemDTOs
-                                -var coverImage = '';
-                                if browser.mobile
+                                -var coverImage;
+                                if browser.mobile && item.mobileCoverImages
                                     -coverImage = item.mobileCoverImages[0];
-                                else
+                                else if item.pcCoverImages
                                     -coverImage = item.pcCoverImages[0];
                                 tr(data-address="#{item.address}",data-transmitType="#{item.transmitType}",data-goodsId="#{item.goodsId}")
                                     td
