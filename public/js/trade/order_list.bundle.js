@@ -3,18 +3,18 @@ webpackJsonp([21],{
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(311);
+	__webpack_require__(208);
 	module.exports = __webpack_require__(7);
 
 
 /***/ },
 
-/***/ 311:
+/***/ 208:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
 	    var utils = __webpack_require__(4);
-	    __webpack_require__(312);
+	    __webpack_require__(209);
 
 	    $(function () {
 	        $('.goods-detail h5').ellipsis({
@@ -30,7 +30,7 @@ webpackJsonp([21],{
 
 /***/ },
 
-/***/ 312:
+/***/ 209:
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery ellipsis - v1.1.1 - 2014-02-23

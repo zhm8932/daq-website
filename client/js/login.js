@@ -172,12 +172,12 @@ define(function(require,exports,module) {
         });
 
     }
-
     $('body').on('click','.loginBox2 .ok',function () {
+        var origin = window.location.origin;
         var data = validateLogin();
         // console.log("data:",data)
         var referrer = document.referrer;
-        referrer = referrer?referrer:'/';
+        referrer = referrer?(referrer==origin+'/register'||referrer==origin+'/rPassword'?'/':referrer):'/';
         var redirectUrl = $('#redirectUrl').val()||referrer;
         if(data) login(data,null,redirectUrl,function (userAllInfo) {
             // console.log("单页登录成功")
@@ -217,7 +217,7 @@ define(function(require,exports,module) {
                 var json = JSON.parse(json);
                 var $parents =$self.parents('.registerBox');
                 if(!$parents.hasClass('loginCom')){
-                    // console.log('弹窗级注册')
+                    console.log('弹窗级注册')
                     if(json.success){
                         utils.ShowComfirmDialog({
                             tipText:json.msg,
@@ -234,7 +234,7 @@ define(function(require,exports,module) {
 
 
                 }else{
-                    // console.log('页面级注册')
+                    console.log('页面级注册:',json)
                     if(json.success){
                         utils.ShowComfirmDialog({
                             tipText:json.msg+'<p>即将跳转登录……</p>',
@@ -245,7 +245,7 @@ define(function(require,exports,module) {
                                 },2000)
                             }
                         })
-                    }else if(json.msg=='账号已注册，请直接登录'||json.code=='99999999'){
+                    }else if(json.msg=='账号已经注册'&&json.code=='1003'){
                         setTimeout(function () {
                             window.location.href = '/login'
                         },2000)

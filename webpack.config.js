@@ -53,6 +53,7 @@ module.exports = {
             'slides':'libs/jquery.slides.js',
             'movingBoxes':'libs/jquery.movingBoxes.js',
             // 'moment':'libs/moment.js',
+            'moment':'moment/min/moment-with-locales.min.js',
             'daterangepicker':'libs/daterangepicker.js',
             'swipebox':'libs/jquery.swipebox',
             'cookie':'libs/jquery.cookie',
@@ -65,6 +66,7 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin('vendor.js')
     ],
     module: {
+        noParse: [/moment-with-locales/],
         loaders: [
             {test: /\.jsx$/,loader: 'babel-loader!jsx-loader?harmony',exclude: /node_modules/,include:__dirname}
             // {test: /\.js?$/, loaders: ['babel-loader']}
