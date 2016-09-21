@@ -1,13 +1,13 @@
 extends layout
 
 block content
-    link(href='/css/error404.css',rel='styleSheet')
+    link(href='/public/css/error404.css',rel='styleSheet')
     include includes/responsive
     include includes/nav
     .positon.wrapper
       |您的位置为：500
     section.wrapper
-      .error404
+      .errorPage
         img(src='/public/images/500.png')
         .msg= message
         a.btn(href='/') 返回首页

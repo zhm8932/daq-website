@@ -6,7 +6,7 @@ var config = require('../config');
 var md5 = require("blueimp-md5");
 var request = require("request");
 var BufferHelper = require('./bufferhelper');//处理buffer接收问题
-var errorHandler = require('./errorHandler');//处理buffer接收问题
+var errorHandler = require('./errorHandler');//处理错误
 // const logUtil = require('./logFactory');
 // const routerLog = logUtil.getLogger('router');
 
