@@ -50,7 +50,7 @@
     height: 80px;
     line-height: inherit;
     width: auto; }
-    .nav ul li.on {
+    .nav ul li.on, .nav ul li:hover {
       background-color: #7FD1E3; }
     .nav ul li.index {
       display: none; }
@@ -205,13 +205,13 @@
   .topBar_info .city-name {
     position: absolute;
     left: 0px;
-    top: 15px; }
+    top: 12px; }
   .topBar_info .devidel, .topBar_info .loginBtn {
     display: none; }
   .topBar_info .cartBtn {
     margin-right: 10px;
     position: relative;
-    top: 5px; }
+    top: 8px; }
     .topBar_info .cartBtn i {
       background: url("../images/top_car.png") no-repeat 0 0;
       width: 26px;
@@ -222,7 +222,7 @@
   .topBar_info .wapUser {
     width: 18px;
     position: relative;
-    top: 15px;
+    top: 17px;
     margin-right: 10px;
     display: inline-block; }
     .topBar_info .wapUser img {
@@ -379,9 +379,10 @@
           display: block;
           border-radius: 0;
           color: #48BED8;
-          font-size: 24px;
+          font-size: 22px;
           min-height: 104px;
-          line-height: 104px; }
+          line-height: 104px;
+          font-family: "微软雅黑"; }
           .item_list .department_list ul li h4.bgGray {
             background: #f3f3f3; }
     .item_list .standard {
@@ -1573,6 +1574,12 @@
     width: 37%; }
   .agency_box .lr_list figure figcaption {
     width: 60%; } }
+@media only screen and (width: 375px) {
+  .item_list .department_list ul li h4 {
+    min-height: 123px; }
+  .item_list .feature figure figcaption {
+    width: 90px;
+    margin: 0 auto; } }
 @media only screen and (min-width: 360px) and (max-width: 599px) {
   .footer dl dt img {
     float: none; }
@@ -1671,6 +1678,9 @@
   .info_list .lr_list figure .more {
     display: none; }
 
+  .item_list .standard_header h2 {
+    font-size: 24px; }
+
   .copyright {
     font-size: 14px; } }
 @media only screen and (width: 320px) {
@@ -1700,6 +1710,11 @@
     position: absolute;
     right: 0px;
     font-size: 14px; }
+  .item_list .feature figure figcaption {
+    width: 90px;
+    margin: 0 auto; }
+  .item_list .standard_header h2 {
+    font-size: 22px; }
 
   .tab ul li {
     margin-right: 15px; } }

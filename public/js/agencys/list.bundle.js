@@ -3,19 +3,19 @@ webpackJsonp([4],{
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(121);
+	__webpack_require__(18);
 	module.exports = __webpack_require__(7);
 
 
 /***/ },
 
-/***/ 121:
+/***/ 18:
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(3);
 	var utils = __webpack_require__(4)
 
-	var Swiper = __webpack_require__(116);
+	var Swiper = __webpack_require__(13);
 	$(function () {
 
 	    var location = window.location;

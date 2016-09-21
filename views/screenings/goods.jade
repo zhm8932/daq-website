@@ -21,11 +21,11 @@ block content
                 if item.others&&item.id==categoryId
                     -var others = JSON.parse(item.others)
                     if browser.mobile
-                        img(data-original=others.mobileImage[0].imageUrl ,alt=item.name,title=item.name,data-id=item.id)
+                        img(src=others.mobileImage[0].imageUrl ,alt=item.name,title=item.name,data-id=item.id)
                     else
-                        img(data-original=others.pcImage[0].imageUrl ,alt=item.name,title=item.name,data-id=item.id)
-                        //img(data-original=JSON.parse(item.others)[0].imageUrl ,alt=item.name,title=item.name,data-id=item.id)
-              //img(src='/images/goods_ban01.png')
+                        img(src=others.pcImage[0].imageUrl ,alt=item.name,title=item.name,data-id=item.id)
+                        //-img(data-original=JSON.parse(item.others)[0].imageUrl ,alt=item.name,title=item.name,data-id=item.id)
+              //-img(src='/images/goods_ban01.png')
     include goods_mixin
     section.item_list.clearfix
         .wrapper
@@ -49,7 +49,10 @@ block content
                                             if browser.ie
                                                 img(src='#{goodsImg}',alt='#{item.goodsName}')
                                             else
-                                                img(data-original='#{goodsImg}',alt='#{item.goodsName}')
+                                                if browser.iPhone
+                                                    img(src='#{item.mobileCoverImages[0]}',alt='#{item.goodsName}',title='#{item.goodsName}')
+                                                else
+                                                    img(data-original='#{goodsImg}',alt='#{item.goodsName}')
 
                                     h4
                                         a(href='/screenings/goods/detail/#{item.id}' target='_blank') #{item.goodsName}

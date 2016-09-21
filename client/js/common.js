@@ -33,7 +33,6 @@ define(function (require, exports, module) {
                                 method: 'GET',
                                 tipText: '切换城市',
                                 callback: function (result) {
-                                    console.log("执行吗")
                                     $('.city-name em').html(cityName);
                                     $('#choosed-city-id').val(newArr[0].id);
                                 },
@@ -157,7 +156,6 @@ define(function (require, exports, module) {
             if (winWidth < 768) {
                 //导航滑动
                 // $nav.addClass('swiper-container');
-                console.log('index:',index)
                 var swiper = new Swiper('.swiper-container', {
                     nextButton: '.swiper-button-next',
                     prevButton: '.swiper-button-prev',
@@ -182,11 +180,9 @@ define(function (require, exports, module) {
                         slidesPerView: 4
                         // spaceBetween: 30
                     });
-                    //console.log("111")
                 } else {
-                    //console.log("222:",swiper)
                     $nav.removeClass().addClass('wrapper');
-                    $nav.find('.swiper-slide').addClass('3333333333333').removeAttr("style")
+                    $nav.find('.swiper-slide').removeAttr("style")
                 }
             })
 

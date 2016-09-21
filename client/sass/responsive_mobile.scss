@@ -26,7 +26,7 @@
     height: 80px;line-height: inherit;width: auto;
     ul {
       li{
-        &.on{background-color:$navBgWapOnColor; }
+        &.on,&:hover{background-color:$navBgWapOnColor; }
         &.index{display: none;}
         &:last-child{
           i{display: inline-block;}
@@ -165,14 +165,14 @@
   }
   .noMP{padding: 0px;margin: 0px;}
   .topBar_info{
-    .city-name{position: absolute;left:0px;top: 15px;}
+    .city-name{position: absolute;left:0px;top: 12px;}
     .devidel,.loginBtn{display: none;}
     .cartBtn{
-      margin-right: 10px;position: relative;top: 5px;
+      margin-right: 10px;position: relative;top:8px;
       i{background:url("../images/top_car.png") no-repeat 0 0;width: 26px;height: 25px;background-size: 100%;}
     }
     .accountInfo{display: block;}
-    .wapUser{width:18px;position: relative;top:15px;margin-right: 10px;display: inline-block;
+    .wapUser{width:18px;position: relative;top:17px;margin-right: 10px;display: inline-block;
       img{width: 100%}
     }
     aside{display: none;position: absolute;right:48px;border: 1px solid $bdrc_ddd;padding:0 10px;background-color: $white;margin-top:16px;border-radius: 3px;
@@ -295,7 +295,8 @@
           //h4{margin: 0px;background: none;display: block;position: static;color: $textc_48B;font-size: 22px;font-weight: normal;text-align:left;padding-left: 20px;}
           //p{padding-left: 20px;}
           img{width: 50%;float: left}
-          h4{width: 50%;float: left; display: block;border-radius: 0;color: $bgc_48B;font-size: 24px;min-height: 104px;line-height: 104px;
+          h4{width: 50%;float: left; display: block;border-radius: 0;color: $bgc_48B;font-size: 22px;min-height: 104px;line-height: 104px;
+            font-family: "微软雅黑";
             &.bgGray{background:$bgc_gray_F3;}
           }
         }
@@ -1142,6 +1143,12 @@
   }
 }
 
+@media only screen and (width: 375px) {
+  .item_list {
+    .department_list ul li h4{min-height: 123px;}
+    .feature figure figcaption{width: 90px;margin: 0 auto}
+  }
+}
 @media only screen and (min-width: 360px) and (max-width: 599px){
   .footer{
     dl{
@@ -1248,6 +1255,7 @@
       .more{display: none;}
     }
   }
+  .item_list .standard_header h2{font-size: 24px;}
   .copyright{font-size: 14px;}
 
 }
@@ -1283,6 +1291,8 @@
       }
 
     }
+    .feature figure figcaption{width: 90px;margin:0 auto}
+    .standard_header h2{font-size: 22px;}
   }
   .tab ul li{margin-right: 15px;}
 }

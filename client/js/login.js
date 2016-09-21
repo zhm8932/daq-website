@@ -30,7 +30,8 @@ define(function(require,exports,module) {
         var $self = $(this);
         //console.log("data:",data);
         if(!data.account){
-            //console.log('输入手机号');
+            //
+            // g('输入手机号');
             $prompt.show().find('em').html('手机号码不能为空');
             return
         }
@@ -171,12 +172,12 @@ define(function(require,exports,module) {
         });
 
     }
-
     $('body').on('click','.loginBox2 .ok',function () {
+        var origin = window.location.origin;
         var data = validateLogin();
-        console.log("data:",data)
+        // console.log("data:",data)
         var referrer = document.referrer;
-        referrer = referrer?referrer:'/';
+        referrer = referrer?(referrer==origin+'/register'||referrer==origin+'/rPassword'?'/':referrer):'/';
         var redirectUrl = $('#redirectUrl').val()||referrer;
         if(data) login(data,null,redirectUrl,function (userAllInfo) {
             // console.log("单页登录成功")
@@ -187,7 +188,7 @@ define(function(require,exports,module) {
                         if(!json.data){
                             window.location.href = "/users/account/info";
                         }else{
-                            // //console.log("用户信息已完善")
+                            //console.log("用户信息已完善")
                             window.location.href = redirectUrl
                         }
 
@@ -216,7 +217,7 @@ define(function(require,exports,module) {
                 var json = JSON.parse(json);
                 var $parents =$self.parents('.registerBox');
                 if(!$parents.hasClass('loginCom')){
-                    // console.log('弹窗级注册')
+                    console.log('弹窗级注册')
                     if(json.success){
                         utils.ShowComfirmDialog({
                             tipText:json.msg,
@@ -233,7 +234,7 @@ define(function(require,exports,module) {
 
 
                 }else{
-                    // console.log('页面级注册')
+                    console.log('页面级注册:',json)
                     if(json.success){
                         utils.ShowComfirmDialog({
                             tipText:json.msg+'<p>即将跳转登录……</p>',
@@ -244,7 +245,7 @@ define(function(require,exports,module) {
                                 },2000)
                             }
                         })
-                    }else if(json.msg=='账号已注册，请直接登录'||json.code=='99999999'){
+                    }else if(json.msg=='账号已经注册'&&json.code=='1003'){
                         setTimeout(function () {
                             window.location.href = '/login'
                         },2000)
@@ -431,6 +432,7 @@ define(function(require,exports,module) {
             }
         })
     }
+    $('input[placeholder]').placeholder();
 
     //获取数据
     function getLoginData(bType) {
@@ -450,6 +452,7 @@ define(function(require,exports,module) {
     function validateLogin(bType) {
         var data = getLoginData();
         var requestData = {};
+        var reg = /^[0-9a-zA-Z]{6,16}$/;
         if(index==0){
             requestData.loginType=1;
 
@@ -470,6 +473,9 @@ define(function(require,exports,module) {
             }
             if(!data.password){
                 $prompt.show().find('em').html('密码不能为空');
+                return
+            }else if(!reg.test(data.password)){
+                $prompt.show().find('em').html('密码为6-16位的数字,字母');
                 return
             }
 
@@ -606,14 +612,22 @@ define(function(require,exports,module) {
             callback: function (result) {
                 if(result.success){
                     $cartNum.html('0');
-                    loginRequiredArr.forEach(function (item) {
-                        if(pathname.search(item)!=-1){
+                    for(var i=0,len=loginRequiredArr.length;i<len;i++){
+                        if(pathname.search(loginRequiredArr[i])!=-1){
                             //console.log('页面跳转');
                             window.location.href='/';
                         }else{
                             $topBarAside.html(loginHtml);
                         }
-                    })
+                    }
+                    // loginRequiredArr.forEach(function (item) {   //IE8不支持 forEach
+                    //     if(pathname.search(item)!=-1){
+                    //         //console.log('页面跳转');
+                    //         window.location.href='/';
+                    //     }else{
+                    //         $topBarAside.html(loginHtml);
+                    //     }
+                    // })
 
                 }
             }
@@ -677,9 +691,9 @@ define(function(require,exports,module) {
             otherBox: 'complete-dialog',
             isHide:false,
             completeFun:function () {
-                console.log('222222222222222')
+                // console.log('222222222222222')
                 $('body').on('click','.tip-box',function () {
-                    console.log("渲染完成执行")
+                    // console.log("渲染完成执行")
                 })
             },
             closeFun: function () {
