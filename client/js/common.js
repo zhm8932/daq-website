@@ -160,9 +160,21 @@ define(function (require, exports, module) {
                     nextButton: '.swiper-button-next',
                     prevButton: '.swiper-button-prev',
                     initialSlide:index,  //设定初始化时slide的索引
-                    slidesPerView: 4
+                    slidesPerView: 4,
+                    // continuousScroll:true,
+                    // autoSwipe : false,
+                    // slidesOffsetBefore:20,
+                    // slidesOffsetAfter :20
                     // spaceBetween: 30
                 });
+
+                console.log("swiper:",swiper)
+                // $('.swiper-button-prev').on('click',function(i){
+                //     swiper.goTo('prev');
+                // });
+                // $('.swiper-button-nex').on('click',function(i){
+                //     swiper.goTo('next');
+                // });
             } else {
                 $nav.removeClass().addClass('wrapper');
                 $nav.find('li').removeAttr("style");

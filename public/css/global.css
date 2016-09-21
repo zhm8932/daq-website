@@ -539,8 +539,7 @@ select {
         background-color: #48BED8;
         border-radius: 100px; }
     .item_list header p {
-      color: #9B9B9B;
-      font-size: 16px; }
+      color: #9B9B9B; }
   .item_list .standard_header {
     border: 2px solid #48BED8; }
     .item_list .standard_header h2 {
