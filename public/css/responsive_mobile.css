@@ -597,11 +597,11 @@
             width: 100%;
             margin: 0px; }
         .agency_box .lr_list figure p {
-          font-size: 15px;
           line-height: 22px;
           height: 44px;
           overflow: hidden;
-          font-family: 'Arial', '微软雅黑'; }
+          font-family: 'Arial', '微软雅黑';
+          font-size: 13px; }
         .agency_box .lr_list figure aside {
           display: none; }
         .agency_box .lr_list figure .more {

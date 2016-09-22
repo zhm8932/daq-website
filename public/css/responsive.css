@@ -299,9 +299,10 @@
     left: auto;
     margin: 0 auto; }
     .home .nav {
-      position: static;
+      position: relative;
       width: 100%;
-      border-radius: 0px; }
+      border-radius: 0px;
+      top: 0px; }
 
   .box-right .order dd .col *:last-child:not(.row) {
     padding-bottom: 0; }
