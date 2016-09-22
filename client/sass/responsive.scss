@@ -237,7 +237,7 @@ $conWidth:1600px;
 @media only screen and (max-width: $win_768){
   *{font-family: 'HanHei SC', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif,"微软雅黑";}
   //*{font-family:'HanHei SC','Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif,"微软雅黑";}
-  body{font-size: 16px;}
+  body{font-size: 14px;}
   .userAgreement{font-size: 16px;
     h3{font-size: 18px;}
   }
@@ -259,19 +259,19 @@ $conWidth:1600px;
   }
   .wrapper{width: auto;margin:0 10px;overflow: hidden;width:$win_768;box-sizing: border-box; }
   .item_list header{
-    padding-top: 20px;
+    padding-top: 35px;
     h2{
       //font-size: 24px;
       line-height: 40px;padding-bottom: 0px;font-weight:500;
       i{top: auto;height: 18px;}
 
     }
-    p{font-size: 15px;color: $textc_333;font-weight: 300;}
+    p{color: $textc_333;font-weight: 300; line-height: 20px;}
   }
   .banner dl{display: none;}
   .home{
     position: static;top: auto;left: auto;margin:0 auto ;
-    .nav{position: static;width: 100%;border-radius:0px;}
+    .nav{position: relative;width: 100%;border-radius:0px;top:0px;}
   }
 
   .box-right .order dd .col *:last-child:not(.row){
