@@ -407,7 +407,7 @@
 	                } else if (data.status == '500') {
 	                    showComfirmDialog({tipText:'系统忙，请稍后再试',noConfirmBtn:true});
 	                } else {
-	                    showComfirmDialog({tipText:'出错了,响应码是' + data.status + ',请联系管理员',noConfirmBtn:true});
+	                    showComfirmDialog({tipText:options.tipText + '出错了,响应码是' + data.status + ',请联系管理员',noConfirmBtn:true});
 	                }
 	                options.errorFun && options.errorFun();
 	            }
@@ -2525,7 +2525,7 @@
 	        register({
 	            data:data,
 	            callback:function (json) {
-	                var json = JSON.parse(json);
+	                // var json = JSON.parse(json);
 	                var $parents =$self.parents('.registerBox');
 	                if(!$parents.hasClass('loginCom')){
 	                    console.log('弹窗级注册')
@@ -2582,7 +2582,7 @@
 	        rPassword({
 	            data:data,
 	            callback:function (json) {
-	                var json = JSON.parse(json);
+	                // var json = JSON.parse(json);
 	                var $parents =$self.parents('.rPasswordBox');
 	                if(json.success){
 	                    utils.ShowComfirmDialog({
@@ -2723,6 +2723,7 @@
 	            type:'post',
 	            url:'/register',
 	            data:obj.data,
+	            dataType:'json',
 	            beforeSend:function () {
 	                $(this).html('正在提交注册……')
 	            },
@@ -2738,6 +2739,7 @@
 	            type:'put',
 	            url:'/rPassword',
 	            data:obj.data,
+	            dataType:'json',
 	            success:function(json){
 	                obj.callback&&obj.callback(json,obj.type)
 	            }
@@ -2831,13 +2833,14 @@
 	            type:'post',
 	            url:'/getVerCode',
 	            data:requestData,
+	            dataType:'json',
 	            beforeSend:function () {
 	                $self.html('正在获取验证码……')
 	            },
 	            success:function(json){
 	                // console.log(json);
 	                // console.log(typeof json);
-	                var json = JSON.parse(json);
+	                // var json = JSON.parse(json);
 	                if(json.success){
 	                    // console.log('验证码获取成功')
 	                    timer($self,time)
@@ -2875,8 +2878,9 @@
 	            type:'post',
 	            url:'/login',
 	            data:data,
+	            dataType:'json',
 	            success:function(json){
-	                var json = JSON.parse(json);
+	                // var json = JSON.parse(json);
 	                if(json.success){
 	                    getCartCount();
 	                    var myMsg = new utils.MsgShow({

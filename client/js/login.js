@@ -214,7 +214,7 @@ define(function(require,exports,module) {
         register({
             data:data,
             callback:function (json) {
-                var json = JSON.parse(json);
+                // var json = JSON.parse(json);
                 var $parents =$self.parents('.registerBox');
                 if(!$parents.hasClass('loginCom')){
                     console.log('弹窗级注册')
@@ -271,7 +271,7 @@ define(function(require,exports,module) {
         rPassword({
             data:data,
             callback:function (json) {
-                var json = JSON.parse(json);
+                // var json = JSON.parse(json);
                 var $parents =$self.parents('.rPasswordBox');
                 if(json.success){
                     utils.ShowComfirmDialog({
@@ -412,6 +412,7 @@ define(function(require,exports,module) {
             type:'post',
             url:'/register',
             data:obj.data,
+            dataType:'json',
             beforeSend:function () {
                 $(this).html('正在提交注册……')
             },
@@ -427,6 +428,7 @@ define(function(require,exports,module) {
             type:'put',
             url:'/rPassword',
             data:obj.data,
+            dataType:'json',
             success:function(json){
                 obj.callback&&obj.callback(json,obj.type)
             }
@@ -520,13 +522,14 @@ define(function(require,exports,module) {
             type:'post',
             url:'/getVerCode',
             data:requestData,
+            dataType:'json',
             beforeSend:function () {
                 $self.html('正在获取验证码……')
             },
             success:function(json){
                 // console.log(json);
                 // console.log(typeof json);
-                var json = JSON.parse(json);
+                // var json = JSON.parse(json);
                 if(json.success){
                     // console.log('验证码获取成功')
                     timer($self,time)
@@ -564,8 +567,9 @@ define(function(require,exports,module) {
             type:'post',
             url:'/login',
             data:data,
+            dataType:'json',
             success:function(json){
-                var json = JSON.parse(json);
+                // var json = JSON.parse(json);
                 if(json.success){
                     getCartCount();
                     var myMsg = new utils.MsgShow({
