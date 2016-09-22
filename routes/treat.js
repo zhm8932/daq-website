@@ -8,6 +8,7 @@ var router = express.Router();
 var request = require('../requests/treat.request.js');
 var users = require('../requests/users.request.js');
 var authority = require('../handlers/authority.handler');
+var errorHandler = require('../utils/errorHandler');//处理错误
 
 router.get('/regsource/list', function (req, res, next) {
     request.GetRegsourceList(req, res, function (err, data) {
@@ -63,8 +64,13 @@ router.get('/reg/doctorView', authority.loginRequired, function (req, res, next)
     async.parallel([function (callback) {
         request.GetRegTimeSlot(req, res, function (err, data) {
             timeSlotJson = JSON.parse(data);
-            timeSlotJson.data.scheduleItems = _tidyTimeMap(timeSlotJson.data.scheduleItems);
-            callback(null, data);
+            if(timeSlotJson.data){
+                timeSlotJson.data.scheduleItems = _tidyTimeMap(timeSlotJson.data.scheduleItems);
+                callback(null, data);
+            }else{
+                var err = new Error('未查询到相关数据');
+                errorHandler.handleError(res,'500',err);
+            }
         });
     }, function (callback) {
         users.HasBindHis(req, res, function (err, data) {
@@ -82,19 +88,6 @@ router.get('/reg/doctorView', authority.loginRequired, function (req, res, next)
             need:query.need
         });
     });
-    // request.GetRegTimeSlot(req,res,function (err,data) {
-    //     var timeSlotJson = JSON.parse(data);
-    //     timeSlotJson.data.timeWithIdMap = tidyTimeMap(timeSlotJson.data.timeWithIdMap);
-    //
-    //     users.HasBindHis(req,res,function (err,data) {
-    //         var hasBindHISJson = JSON.parse(data);
-    //         res.render('treat/regByDoc', {
-    //             title: '诊疗服务',
-    //             timeSlot: timeSlotJson.data,
-    //             hasBind: hasBindHISJson.data
-    //         });
-    //     });
-    // });
 });
 
 

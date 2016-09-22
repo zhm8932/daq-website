@@ -12,17 +12,18 @@
 480 ， 600 ， 720 ， 768 ， 800 ， 854 ， 960 ， 1024 ， 1080 ， 1136 ， 1280 ， 1536 ， 1920 ， 2048 ， 2560
 
 */
-.error404 {
+.errorPage {
+  margin-bottom: 50px;
   text-align: center;
   padding-bottom: 40px; }
-  .error404 img {
+  .errorPage img {
     margin: 50px auto;
     width: 100%; }
-  .error404 .msg {
+  .errorPage .msg {
     padding: 0 0 20px 0; }
-  .error404 a {
+  .errorPage a {
     color: #48BED8; }
-    .error404 a:hover {
+    .errorPage a:hover {
       background-color: #48BED8;
       color: #FFF;
       -webkit-transition: all 0.3s;
