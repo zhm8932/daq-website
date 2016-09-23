@@ -27,7 +27,7 @@ block content
                         .col.goods
                             -var transmitType = '';
                             if item.goodsInfo
-                                -var coverImage = '';
+                                -var coverImage;
                                 if browser.mobile && item.goodsInfo.mobileCoverImages
                                     -coverImage = item.goodsInfo.mobileCoverImages[0];
                                 else if item.goodsInfo.pcCoverImages

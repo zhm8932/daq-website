@@ -53,9 +53,12 @@ exports.get_goods_detail = function (req,res) {
         keywords = get_goods_detail.keyword;
         description = get_goods_detail.pageDescription;
 
-
-        res.locals.transmitType = JSON.parse(get_goods_detail.transmitType);
-        res.locals.transmitItems = JSON.parse(get_goods_detail.transmitItems);
+        if(get_goods_detail.transmitType){
+            res.locals.transmitType = JSON.parse(get_goods_detail.transmitType);
+        }
+        if(get_goods_detail.transmitItems){
+            res.locals.transmitItems = JSON.parse(get_goods_detail.transmitItems);
+        }
         res.locals.fitPeople = get_goods_detail.fitPeople;
         res.locals.slogan = get_goods_detail.slogan
 
