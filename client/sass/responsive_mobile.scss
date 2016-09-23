@@ -257,8 +257,8 @@
   .tab{
     img{margin-top: 15px;}
     ul li{
-      margin-right: 20px;
-      a{padding: 0px 2px;border: none;border-radius: 0px; line-height: 32px;font-size: 18px;}
+      margin-right: 25px;
+      a{padding: 0px 2px;border: none;border-radius: 0px; line-height: 32px;font-size: 16px;}
       &.on{
         a{border-bottom: 2px solid $bdrc_48B;}
       }
@@ -274,8 +274,8 @@
       p{position: static;}
     }
     .pic_list{
-      ul{margin-left: -3%;
-        li{width: 47%;margin:20px 0 0 3%;height: auto;
+      ul{margin-left: -3%;margin-top: -10px;
+        li{width: 47%;margin:30px 0 0 3%;height: auto;
         //li{width:auto;margin:20px 0 0 3%;height: auto;border: 1px solid $bdrc_ddd;float:none;display: block;
           a{
             h4{
@@ -294,10 +294,11 @@
       .more{margin-top: 30px; font-size: 16px; padding: 4px 20px; }
     }
     .goods_list{
+      margin-bottom: -40px;
       ul{
         margin: 0px;
         li{
-          width: 100%;margin-left: 0px;
+          width: 100%;margin-left: 0px;margin-top: 10px;
           img{width: 30%;float: left;margin-right: 10px;}
           a{
             color: $textc_48B;
@@ -305,7 +306,7 @@
           h4{display: inline-block;background: none;width: auto;height:30px;line-height: 30px;}
           p{height: 24px;margin: 0px;white-space: nowrap; text-overflow: ellipsis;margin-right: 5px; }
           .price{
-            padding-top: 20px;
+            //padding-top: 20px;
             span.old{position: static;}
           }
         }
@@ -381,6 +382,7 @@
       }
     }
   }
+  .goods_list_wrapper{padding-bottom: 20px;}
   .standard_wrapper{
     background-color: $bgc_48B;color: $white;
     //margin-bottom: -50px;
@@ -397,22 +399,46 @@
   }
   //.boxBg{background: none;}
   .goods_basic{
+    margin: 10px 0 20px;padding-bottom: 30px;border-bottom: 1px solid $bdrc_ddd;
     .wrapper{overflow: visible;}
   }
   .goods_basic dl {
     dt,dd{
       width: 100%;
     }
+    dt{padding-bottom: 10px;}
     dd{
-      .service_type{margin: 0px;}
+      h1{font-size: 20px;}
+      .service_type{margin: 0px;
+        mark{padding: 0 5px;}
+      }
+      .price{
+        padding: 10px 0;
+        //.new{font-size: 20px;}
+      }
+
+      //p{line-height: 24px;}
+      #district{height: 30px;}
+      .type-box{line-height: 30px;
+        .select-box{
+          height: 30px;
+          .selected{height: 28px;line-height: 28px;}
+          i.icon{background-position: 12px 11px;}
+        }
+      }
     }
     .submitBox{padding-top: 10px;
       margin-left: -10px;
-      .submitBtn{margin:0 0 0 3%;width: 46%;padding: 0px;}
+      .submitBtn{margin:0 0 0 3%;width: 46%;padding: 0px;font-size: 16px;height: 40px;line-height: 40px;}
     }
   }
-  .goods_detail .tab{
-    a,span{font-size: 18px;width: 30%;text-align: center;padding: 0px;margin: 0 0 0 2.3%}
+  .goods_detail{
+    .tab{
+      //margin-right: -2%;
+      a,span{font-size: 16px;width: 32%;text-align: center;padding: 0px;margin: 0 2% 0 0;line-height: 36px;height:36px;
+        &:last-of-type{margin-right: 0px;}
+      }
+    }
   }
   .health_list{
     width: 100%;
@@ -575,7 +601,7 @@
   }
   .login-view .wrapper{background-size: 100%;height: auto;background: none;}
   .loginCom{float: none;margin:10px auto 0;padding-top: 0px;}
-  .copyright{height: auto; line-height: 30px;margin-bottom: 50px;
+  .copyright{height: auto; line-height:18px;padding:10px 0;margin-bottom: 50px;
     a{display: inline-block;}
   }
   .rightNav{display: none;}
@@ -1126,12 +1152,16 @@
     position: absolute;
   }
   /*诊疗服务列表*/
-  .treat-name{font-size:18px;}
+  .treat-name{font-size:18px;margin-top: 10px;}
   .outpatient{
     img{width:100%;}
     .outpatient-info{
       width:auto;
       margin-top:20px;
+      .hgroup{
+        h4{padding-bottom: 5px;}
+        p{line-height: 18px;}
+      }
     }
   }
   .reg-doc-list{
@@ -1146,9 +1176,9 @@
     }
     .title{
       margin:20px;
-      .vertical{vertical-align: middle;}
+      .vertical{vertical-align: middle;height: 18px;border-radius: 10px;}
       span{
-        vertical-align: middle;}
+        vertical-align: middle;font-size: 18px;}
     }
     .doctor-info{
       padding:10px 20px;
@@ -1161,12 +1191,12 @@
     }
     .reg-list{
       text-align:left;
-      margin-bottom:10px;
+      margin:10px 0;
       li{
         line-height:30px;
         padding:8px 20px;
         .btn{
-          color:$textc_48B;
+          color:$textc_48B;font-size: 14px;margin-top: 3px;
         }
         &.disabled{
           color:$bdrc1;

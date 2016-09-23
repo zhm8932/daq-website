@@ -142,7 +142,8 @@ define(function(require){
         var tab = $('.goods_detail #tab');
         var topBarHeight = $('.topBar').height();
         var orignTop = tab.offset().top;
-        var width = tab.closest('.wrapper').width();
+        // var width = tab.closest('.wrapper').width();
+        var width = $('.tab').width();
         $(window).scroll(function(){
             if($(document).scrollTop() + topBarHeight > orignTop){
                 tab.css('position','fixed').css({'top':topBarHeight+'px','width':width});
