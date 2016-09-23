@@ -301,7 +301,7 @@ define(function(require,exports,module) {
                 } else if (data.status == '500') {
                     showComfirmDialog({tipText:'系统忙，请稍后再试',noConfirmBtn:true});
                 } else {
-                    showComfirmDialog({tipText:'出错了,响应码是' + data.status + ',请联系管理员',noConfirmBtn:true});
+                    showComfirmDialog({tipText:options.tipText + '出错了,响应码是' + data.status + ',请联系管理员',noConfirmBtn:true});
                 }
                 options.errorFun && options.errorFun();
             }
