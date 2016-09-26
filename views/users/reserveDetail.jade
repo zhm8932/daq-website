@@ -16,7 +16,7 @@ block content
                 .noData
                     p 订单不存在或已被删除
             else
-                -var coverImage = '';
+                -var coverImage;
                 if browser.mobile && data.goodsInfo.mobileCoverImages
                     -coverImage = data.goodsInfo.mobileCoverImages[0];
                 else if data.goodsInfo.pcCoverImages

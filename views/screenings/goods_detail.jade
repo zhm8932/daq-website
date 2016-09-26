@@ -56,10 +56,11 @@ block content
                             | #{fitPeople}
                         p
                             label.text-sec 样品种类：
-                            each item,index in transmitItems
-                                | #{item.name}
-                                if(index != transmitItems.length-1&&transmitItems.length!=1)
-                                    |、
+                            if transmitItems
+                                each item,index in transmitItems
+                                    | #{item.name}
+                                    if(index != transmitItems.length-1&&transmitItems.length!=1)
+                                        |、
                         .type-box
                             .box-header
                                 span.tip 请选择所需服务方式
@@ -68,11 +69,12 @@ block content
                                 label.text-sec 服务方式：
                                 -var json = JSON.parse(locals_sample);
                                 aside#transmit-type.service_type
-                                    each value,key in transmitType
-                                        span.type(data-transmitType='#{key}',data-favPrice='#{value}',data-value='{"#{key}":"#{value}"}')
-                                            | #{json[key]}
-                                            mark 服务费￥
-                                                +transferUnit(value)
+                                    if transmitType
+                                        each value,key in transmitType
+                                            span.type(data-transmitType='#{key}',data-favPrice='#{value}',data-value='{"#{key}":"#{value}"}')
+                                                | #{json[key]}
+                                                mark 服务费￥
+                                                    +transferUnit(value)
 
                             div#hospital
                                 label.text-sec 服务门诊：
