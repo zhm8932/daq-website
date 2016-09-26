@@ -69,10 +69,6 @@ app.use(session({
   store: new redisStore(config.options),
   secret: config.sessionSecret,
   cookie:{httpOnly:true}
-
-  // store: new redisStore(options),
-  // secret: config.sessionSecret,
-  //
 }));
 
 app.locals.moment = require('moment'); //本地模板中引入moment方法

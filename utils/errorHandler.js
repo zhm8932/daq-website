@@ -56,7 +56,9 @@ function _handleError(res, code, error,isServerError){
     console.log(error);
     error = _getErrorMsg(error,code,isServerError);//根据情况构造错误提示信息
 
-    res.status(code).format({
+    res.status(code);
+
+    res.format({
         html:function(){
             var errorPage = errorPageJson[code] || 'error_tip';//根据不同的响应码渲染不同的错误页面,默认渲染error_tip页面
             res.render(errorPage, {

@@ -43,6 +43,7 @@ var config = {
         "pass":'1ac256e68d824785:JihuiduoRedis88',
         // "password":'1ac256e68d824785:JihuiduoRedis88',
         "port": "6379",
+        "db":31,     //beta Web端用31号库 
         "ttl": 60 * 60 * 24 * 1   //Session的有效期为1天
     }
 }

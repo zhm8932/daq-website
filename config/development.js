@@ -42,9 +42,9 @@ var config = {
         "host":"127.0.0.1",
         // "pass":'1ac256e68d824785:JihuiduoRedis88',
         // "password":'1ac256e68d824785:JihuiduoRedis88',
-        "port": "6379",
-        "ttl": 60 * 60 * 24 * 1   //Session的有效期为1天
+        "port": "6379"
+        // "ttl": 60 * 60 * 1000   //Session的有效期为1天
     }
 }
 
-module.exports = config
+module.exports = config;
