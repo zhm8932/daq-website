@@ -303,7 +303,7 @@
           a{
             color: $textc_48B;
           }
-          h4{display: inline-block;background: none;width: auto;height:30px;line-height: 30px;}
+          h4{background: none;width: auto;height:30px;line-height: 30px;max-width: 65%;}
           p{height: 24px;margin: 0px;white-space: nowrap; text-overflow: ellipsis;margin-right: 5px; }
           .price{
             //padding-top: 20px;
@@ -1430,6 +1430,7 @@
       ul{
         li{
           .price{
+            padding: 0px;
             .new{font-size: 18px}
             .old{ position: absolute;right: 0px;font-size: 14px;}
           }

@@ -2,7 +2,7 @@ define(function(require){
     require('jquery');
     var config = require('../config');
     var utils = require('../libs/utils');
-    require('../libs/jquery.waterfall');
+    // require('../libs/jquery.waterfall');
     require('../libs/jquery.ellipsis');
     var tabFn = require('../libs/tab');
     $(document).ready(function() {
@@ -31,7 +31,7 @@ define(function(require){
                 }
             });
         }else if(utils.browser.mobile){
-            console.log("手机端")
+            // console.log("手机端")
             // $('.ellips').ellipsis({
             //     row:1,
             //     char:'…',
@@ -41,16 +41,6 @@ define(function(require){
             // });
         }
 
-        // $.each($('.ellips'),function (index,item) {
-        //     // console.log(item)
-        //     $(item).ellipsis({
-        //         row:1,
-        //         char:'……',
-        //         callback: function() {
-        //             console.log($(this).text());
-        //         }
-        //     })
-        // })
 
         $('.pages').on('click','.prev,.next',function () {
             var page = $(this).attr('data-page'),
@@ -125,44 +115,43 @@ define(function(require){
         }
         //获取数据
         function getListData(data) {
-            utils.SendAjax({
+            console.log("看你执行几次")
+            $.ajax({
                 url: '/screenings/goods',
-                param: data,
-                tipText: '获取套餐列表',
-                callback: function (result) {
+                data: data,
+                success: function (result) {
                     // console.log(json)
-                    var json = result;
+                    var json = JSON.parse(result);
                     var html = '';
-                    // console.log('data:',json)
+                    console.log('data:', typeof json)
                     if(json.success){
                         var data = json.data.data;
+                        var imgUrl = '';
                         pageCount = json.data.pageCount;
-
                         $.each(data,function (index,arr) {
                             var fit_people_html = '';
                             var discountPrice='';
                             var price='';
-                            if(arr.productKeyAttributeList){
-                                arr.productKeyAttributeList.forEach(function (item,index) {
-                                    // console.log('item:',item)
-                                    if(item.attributeName=='fit_people'){
-                                        fit_people_html =item.value;
-                                    }
-                                })
-                            }
                             discountPrice=transferUnit(arr.discountPrice);
                             price=transferUnit(arr.price);
-
-                            html += '<li class="box" style="opacity:0;filter:alpha(opacity=0);"><a href="/screenings/goods/detail/'+arr.id+'"><img src="'+arr.goodsImages[0].imageUrl+'"/><h4>'+arr.goodsName+'</h4></a><p>'+fit_people_html+'</p>' +
+                            if(utils.browser.mobile){
+                                imgUrl = arr.mobileCoverImages[0]
+                            }else{
+                                imgUrl = arr.pcCoverImages[0]
+                            }
+                            html += '<li class="box"><a href="/screenings/goods/detail/'+arr.id+'"><img data-original="'+imgUrl+'"/><h4><a href="/screenings/goods/detail/'+arr.id+'">'+arr.goodsName+'</a></h4><p>'+arr.fitPeople+'</p>' +
                                 '<div class="price"><span class="new"><em>￥</em>'+discountPrice+'</span><span class="old">原价'+price+'</span></div></div></li>'
-                        })
-                        if(pageIndex<=pageCount){
-                            pageIndex +=1;
-                            $(html).appendTo($("#waterfal"));
-                        }else{
-                            // console.log('没有下一页了')
-                        }
-                        // console.log("数据请求渲染完成:",pageIndex)
+                        });
+                        $(html).appendTo($("#waterfal"));
+                        $(".goods_list img").lazyload({
+                            effect: "fadeIn"
+                        });
+                        // if(pageIndex<=pageCount){
+                        //     // pageIndex +=1;
+                        //
+                        // }else{
+                        //     console.log('没有下一页了')
+                        // }
 
                     }
                 }
@@ -173,8 +162,9 @@ define(function(require){
                 data:data
             }
         }
-        var pageIndex = 2;
-        var pageCount = '';
+        var pageIndex = 1;
+        var pageCount = $("#waterfal").attr('data-pageCount')||'';
+
         // console.log("初始化的pageCount：",pageCount)
 
         // waterfall();
@@ -197,33 +187,40 @@ define(function(require){
         }
 
         function initData() {
-            var html = '';
+
+            pageIndex +=1;
             var data = {
                 pageIndex:pageIndex,
                 send:true,
-                // "categoryId":2140010959154488028,
                 "categoryId":$('.tab ul li.on').attr('data-id')
             }
-            var listData = '';
-            // console.log("pageIndex:",pageIndex+'--pageCount:',pageCount)
-            if(!pageCount){
-                listData = getListData(data)
-            }else if(pageIndex<=pageCount){
+            console.log("pageIndex:",pageIndex+'--pageCount:',pageCount)
+            console.log("pageCount:",pageCount)
+            if(pageCount&&pageIndex<=pageCount){
+
+
                 getListData(data)
             }else{
-                // console.log('不再加载')
+                console.log('没有下一页了')
             }
         }
 
-        initData();
+        // initData();
 
-        var winHeight = $(document).height();
+        var winHeight = $(window).height();
         var footerHeight = $('.footer').outerHeight()+$('.copyright').outerHeight();
-        // console.log("winHeight:",winHeight)
-        // console.log("footerHeight:",footerHeight);
+        console.log("winHeight:",winHeight);
+        console.log("footerHeight:",footerHeight);
+        if(utils.browser.mobile){
+            footerHeight+=$('.footerWap').height()
+        }
+        console.log("footerHeight:",footerHeight);
         $(window).scroll(function () {
             var scrollTop = $(document).scrollTop();
-            if(scrollTop>=winHeight-footerHeight){
+            console.log("scrollTop:",scrollTop);
+            console.log("scrollTop-(winHeight-footerHeight):",scrollTop-(winHeight-footerHeight));
+            if(scrollTop>=winHeight-footerHeight-50){
+                winHeight = $(document).height();
                 initData();
             }
         })

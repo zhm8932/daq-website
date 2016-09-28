@@ -2,9 +2,11 @@ exports.get_goods_list = function(req,res) {
     var get_goods_list = req.get_goods_list;
     res.locals.get_goods_list_success = get_goods_list.success;
     if(get_goods_list.success){
-        get_goods_list=get_goods_list.data.data
+        res.locals.pageCount = get_goods_list.data.pageCount;
+        get_goods_list=get_goods_list.data.data;
+
     }
-    var get_goods_category = req.get_goods_category
+    var get_goods_category = req.get_goods_category;
     res.render('screenings/goods', {
         title: '筛查服务_宫颈癌筛查_宫颈癌治疗_女性生殖_男性生殖',
         keywords: CONST.GLOBAL_TITLE+',筛查服务,宫颈癌筛查,女性生殖检查,男性生殖检查',

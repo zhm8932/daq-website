@@ -111,11 +111,17 @@ $conWidth:1600px;
 
   .health aside{width: 30%;}
   .health_detail{width: 65%;}
-  .footer dl{
-    dt{width: 70%;}
-    dd{width: 25%;
-      p{width: 80%;}
+  .footer{
+    dl{
+      dt{width: 70%;
+        p{font-size: 13px;}
+        img{margin-right: 25px;}
+      }
+      dd{width: 25%;
+        p{width: 80%;}
+      }
     }
+    .qrcode figure figcaption{font-size: 13px;}
   }
   .agency_box{
     .lr_list{width: 86%;padding-left: 3%;

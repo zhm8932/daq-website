@@ -35,7 +35,7 @@ block content
                     if !get_goods_list.length
                         aside 暂无套餐
                     else
-                        ul#waterfal
+                        ul#waterfal(data-pageCount=pageCount)
                             each item in get_goods_list
                                 li.box
                                     a(href='/screenings/goods/detail/#{item.id}' target='_blank')
@@ -50,7 +50,7 @@ block content
                                                 img(src='#{goodsImg}',alt='#{item.goodsName}')
                                             else
                                                 if browser.iPhone
-                                                    img(src='#{item.mobileCoverImages[0]}',alt='#{item.goodsName}',title='#{item.goodsName}')
+                                                    img(src=goodsImg,alt='#{item.goodsName}',title='#{item.goodsName}')
                                                 else
                                                     img(data-original='#{goodsImg}',alt='#{item.goodsName}')
 

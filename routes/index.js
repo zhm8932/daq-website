@@ -19,10 +19,6 @@ global.util= util = require('../utils/ajax');
 
 router.use(function(req, res, next) {
 
-    console.log("req.session.id:",req.session.id)
-    console.log("req.session:",req.session)
-
-
     console.log('now:' + Date.now());
     console.log('req.body',req.body);
     // console.log('req.session',req.session);

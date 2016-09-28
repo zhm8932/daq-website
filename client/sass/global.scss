@@ -1316,7 +1316,7 @@ select {
       display: inline-block;
       text-align: center;
       img {
-        margin-bottom: -10px;
+        margin-bottom: -10px;width: 90px;
       }
       figcaption{padding:10px 0;display: block;}
     }
@@ -1391,7 +1391,7 @@ $rightNavLI: 50px;
       &.weixinRight {
         border: 2px solid $bdrc_48B;
         background-color: #FFF;
-        img{width: 90%;height: auto;}
+        img{width: 100%;height: auto; display: block;}
       }
       &.gotoTop {
         background-color: $gray_D8;

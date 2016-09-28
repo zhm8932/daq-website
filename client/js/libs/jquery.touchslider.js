@@ -72,7 +72,7 @@ http://touchslider.com
 		if (scroller.css("position") !== "absolute") {
 			var viewportHeight = viewport.children().children().height();
 			if(options.heightType){
-				viewportHeight = viewport.height();
+				// viewportHeight = viewport.height();
 			}
 
 			// console.log(viewport)

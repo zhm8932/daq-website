@@ -8,6 +8,26 @@ define(function(require){
     // //console.log("login:",login)
     $(function(){
         require('../imgAuto');
+
+
+        $(".slideBox").touchSlider({
+            container: this,
+            duration: 350, // 动画速度
+            delay: 3000, // 动画时间间隔
+            margin: 5,
+            mouseTouch: true,
+            namespace: "touchslider",
+            next: ".next", // next 样式指定
+            pagination: ".tit span",
+            heightType:true,
+            currentClass: "on", // current 样式指定
+            prev: ".prev", // prev 样式指定
+            // scroller: viewport.children(),
+            autoplay: false, // 自动播放
+            viewport: ".touchslider-viewport"  //内容区域
+        });
+
+
         if(checkArea()){
             $('#addCartBtn').on('click',function(){
                 addToCart();
@@ -118,22 +138,6 @@ define(function(require){
 
 
 
-        $(".slideBox").touchSlider({
-            container: this,
-            duration: 350, // 动画速度
-            delay: 3000, // 动画时间间隔
-            margin: 5,
-            mouseTouch: true,
-            namespace: "touchslider",
-            next: ".next", // next 样式指定
-            pagination: ".tit span",
-            heightType:true,
-            currentClass: "on", // current 样式指定
-            prev: ".prev", // prev 样式指定
-            // scroller: viewport.children(),
-            autoplay: false, // 自动播放
-            viewport: ".touchslider-viewport"  //内容区域
-        });
 
     });
 
@@ -152,7 +156,7 @@ define(function(require){
             }else{
                 tab.css('position','static').css('width',width+'px');
                 $('#tab-copy').addClass('none');
-                console.log('原始');
+                // console.log('原始');
             }
         });
     };
