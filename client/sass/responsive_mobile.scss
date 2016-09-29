@@ -171,7 +171,9 @@
   .header{
     height: 60px;line-height:60px;margin: 0px;float: left;
     .slogan,.tel{display: none;}
-    .logo{width: $loginW;height: auto;}
+    .logo{width: $loginW;height: auto; margin-top: 0px;
+      p{display:none}
+    }
   }
 
   .header{
@@ -403,6 +405,7 @@
     .wrapper{overflow: visible;}
   }
   .goods_basic dl {
+    .slideBox .bd{height: auto;}
     dt,dd{
       width: 100%;
     }

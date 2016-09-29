@@ -38,7 +38,8 @@ block content
                         ul#waterfal(data-pageCount=pageCount)
                             each item in get_goods_list
                                 li.box
-                                    a(href='/screenings/goods/detail/#{item.id}' target='_blank')
+                                    //a(href='/screenings/goods/detail/#{item.id}' target='_blank')
+                                    a(href='/screenings/goods/detail/#{item.id}')
                                         //-img(data-original='images/product1.png')
                                         -var goodsImg;
                                         if browser.mobile && item.mobileCoverImages

@@ -9,9 +9,12 @@
   margin-bottom:20px;
   dl{
     dt{
-      width: 43%;float: left;overflow: hidden;padding-bottom: 20px;
+      width: 43%;float: left;
+      overflow: hidden;
+      padding-bottom: 20px;
       .touchslider-viewport{
-        margin-bottom: -5px;min-height: 330px;
+        margin-bottom: -5px;
+        //min-height: 330px;
       }
       .bd{
 
@@ -57,7 +60,8 @@
     }
     .slideBox{
       .bd{
-        img{width: 100%;height: auto;}
+        height: 380px;
+        img{width: 100%;height:auto;}
       }
     }
     dd{
@@ -133,7 +137,9 @@
   .tab{
     background-color:$white;
     border-bottom:2px solid $bdrc_48B ;z-index: 2;
-    span{padding: 0 30px;display: inline-block;line-height: 50px;font-size: 16px;background-color: $bdrc_48B;color: $white;margin: 0 0 0 30px;border-radius: 6px 6px 0 0}
+    span{padding: 0 30px;display: inline-block;line-height: 50px;font-size: 16px;background-color: $bdrc_48B;color: $white;margin: 0 0 0 30px;border-radius: 6px 6px 0 0;
+      &.on{background-color: $bgc_red_ED9;}
+    }
 
   }
   article{

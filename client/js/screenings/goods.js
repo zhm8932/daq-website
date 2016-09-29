@@ -115,7 +115,6 @@ define(function(require){
         }
         //获取数据
         function getListData(data) {
-            console.log("看你执行几次")
             $.ajax({
                 url: '/screenings/goods',
                 data: data,
@@ -123,7 +122,7 @@ define(function(require){
                     // console.log(json)
                     var json = JSON.parse(result);
                     var html = '';
-                    console.log('data:', typeof json)
+                    // console.log('data:', typeof json)
                     if(json.success){
                         var data = json.data.data;
                         var imgUrl = '';
@@ -194,14 +193,14 @@ define(function(require){
                 send:true,
                 "categoryId":$('.tab ul li.on').attr('data-id')
             }
-            console.log("pageIndex:",pageIndex+'--pageCount:',pageCount)
-            console.log("pageCount:",pageCount)
+            // console.log("pageIndex:",pageIndex+'--pageCount:',pageCount)
+            // console.log("pageCount:",pageCount)
             if(pageCount&&pageIndex<=pageCount){
 
 
                 getListData(data)
             }else{
-                console.log('没有下一页了')
+                // console.log('没有下一页了')
             }
         }
 
@@ -209,16 +208,14 @@ define(function(require){
 
         var winHeight = $(window).height();
         var footerHeight = $('.footer').outerHeight()+$('.copyright').outerHeight();
-        console.log("winHeight:",winHeight);
-        console.log("footerHeight:",footerHeight);
+        // console.log("winHeight:",winHeight);
+        // console.log("footerHeight:",footerHeight);
         if(utils.browser.mobile){
             footerHeight+=$('.footerWap').height()
         }
-        console.log("footerHeight:",footerHeight);
+        // console.log("footerHeight:",footerHeight);
         $(window).scroll(function () {
             var scrollTop = $(document).scrollTop();
-            console.log("scrollTop:",scrollTop);
-            console.log("scrollTop-(winHeight-footerHeight):",scrollTop-(winHeight-footerHeight));
             if(scrollTop>=winHeight-footerHeight-50){
                 winHeight = $(document).height();
                 initData();

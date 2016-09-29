@@ -1,8 +1,8 @@
 /*
- TouchSlider 0.95
- Licensed under the MIT license.
- http://touchslider.com
- */
+TouchSlider 0.95
+Licensed under the MIT license.
+http://touchslider.com
+*/
 /*jslint browser: true, undef: true, sloppy: true, vars: true, white: true, nomen: true, plusplus: true, maxerr: 50, indent: 4 */
 /*global WebKitCSSMatrix: false, jQuery: false, getComputedStyle: false */
 
@@ -35,7 +35,7 @@
 			return;
 		}
 		var mobile= !!navigator.userAgent.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-			options = $.extend({
+		options = $.extend({
 				autoplay: false,
 				delay: 3000,
 				margin: 5,
@@ -74,13 +74,13 @@
 
 			if(options.heightType){
 				// viewportHeight = viewport.children().height();
-				// viewportHeight = viewportHeight==0?viewport.children().height():viewportHeight;
+				viewportHeight = viewportHeight==0?viewport.children().height():viewportHeight;
 			}
 
-			// console.log(viewport)
-			// console.log("viewport.children().height():",viewport.children().height())
-			// console.log("viewport.height():",viewport.height())
-			// console.log(viewportHeight)
+			console.log(viewport)
+			console.log("viewport.children().height():",viewport.children().height())
+			console.log("viewport.height():",viewport.height())
+			console.log(viewportHeight)
 			viewport.css({
 				height: viewportHeight,
 				position: "relative"
@@ -105,25 +105,25 @@
 		// crossLeft( element, pixels, [duration] )
 		// crossLeft( element, function(index), [duration] )
 		var crossLeft = isTouchWebkit
-			? function(elem, px, duration) {
-			if (px === undefined) {
-				return new WebKitCSSMatrix(getComputedStyle(elem.jquery ? elem[0] : elem).webkitTransform).e;
-			}
-			elem.css({
-				webkitTransitionDuration: duration ? duration + "ms" : "0",
-				// http://jsperf.com/typeof-function-vs-instanceof/3
-				webkitTransform: function(i){
-					return "translate3d(" + (typeof px === "number" ? px : px.call(this, i)) + "px,0,0)";
+				? function(elem, px, duration) {
+					if (px === undefined) {
+						return new WebKitCSSMatrix(getComputedStyle(elem.jquery ? elem[0] : elem).webkitTransform).e;
+					}
+					elem.css({
+						webkitTransitionDuration: duration ? duration + "ms" : "0",
+						// http://jsperf.com/typeof-function-vs-instanceof/3
+						webkitTransform: function(i){
+							return "translate3d(" + (typeof px === "number" ? px : px.call(this, i)) + "px,0,0)";
+						}
+					});
 				}
-			});
-		}
-			: function(elem, px) {
-			if (px === undefined) {
-				return parseInt((elem.jquery ? elem[0] : elem).style.left, 10);
-			}
+				: function(elem, px) {
+					if (px === undefined) {
+						return parseInt((elem.jquery ? elem[0] : elem).style.left, 10);
+					}
 
-			elem.css("left", px);
-		};
+					elem.css("left", px);
+				};
 
 		if (isTouchWebkit) {
 			slides
@@ -167,7 +167,7 @@
 
 					if (indexInViewport !== -1) {
 						nodeLeft = endCoords[indexInViewport];
-						// add node if not exist
+					// add node if not exist
 					} else {
 						var i, nodeIndex = slides.index(node);
 						// set position in viewport
@@ -222,7 +222,7 @@
 
 							// right calc, [3,4]
 							var leftInR = nodeLeft;
-
+							
 							for (i = indexInViewport + 1; i < l; i++) {
 								leftInR += slides.eq(inViewport[i]).outerWidth() + options.margin;
 								endCoords[i] = leftInR;
@@ -267,7 +267,7 @@
 								duration: duration,
 								queue: false,
 								complete: toComplete
-							});
+						});
 					} else {
 						crossLeft(scroller, - nodeLeft, duration);
 					}
@@ -331,8 +331,8 @@
 					}
 					// deceleration in left
 					if ((
-							(diffX > 0 && scrollerLeft + endCoords[0] + diffX > 0)
-							|| (diffX < 0 && scrollerLeft + endCoords[0] > 0)
+						    (diffX > 0 && scrollerLeft + endCoords[0] + diffX > 0)
+						 || (diffX < 0 && scrollerLeft + endCoords[0] > 0)
 						) && inViewport[0] === 0
 					) {
 						deceleration = Math.min(Math.round((switching.leftCount + endCoords[0]) / 4), viewport.innerWidth() / 2);
@@ -352,8 +352,8 @@
 					}
 					// deceleration in right
 					if ((
-							(diffX > 0 && scrollerLeft + endCoords[lastIndex] < 0)
-							|| (diffX < 0 && scrollerLeft + endCoords[lastIndex] + diffX < 0)
+						    (diffX > 0 && scrollerLeft + endCoords[lastIndex] < 0)
+						 || (diffX < 0 && scrollerLeft + endCoords[lastIndex] + diffX < 0)
 						) && last.is(slides.last())
 					) {
 						deceleration = Math.max(Math.round((switching.leftCount + endCoords[lastIndex]) / 4), - viewport.innerWidth() / 2);
@@ -456,11 +456,11 @@
 			autoPlayTimeout;
 
 		viewport.hover(function() {
-			clearTimeout(autoPlayTimeout);
-			mouseInViewport = true;
-		}, function() {
-			mouseInViewport = false;
-			autoPlay();
+				clearTimeout(autoPlayTimeout);
+				mouseInViewport = true;
+			}, function() {
+				mouseInViewport = false;
+				autoPlay();
 		});
 
 		function autoPlay() {
@@ -520,7 +520,7 @@
 
 					moving = true;
 					defaultPrevented = false,
-						startTime = e.timeStamp;
+					startTime = e.timeStamp;
 					distX = distY = 0;
 
 					times = [0, 0, 0, startTime];

@@ -51,21 +51,27 @@ block content
         if !get_department_list
           aside 暂无内容
         else
-            mixin agencys_list()
-              each item,index in get_department_list
-                li
-                  if !browser.mobile
+          mixin agencys_list()
+            each item,index in get_department_list
+              li
+                if !browser.mobile
+                  a(href='/agencys/department/detail/#{item.id}',target='_blank',index=index)
+                    img(src=item.imgIndex,alt=item.title)
+                    h4 #{item.title}
+                else
+                  if (index+1)%2==1
                     a(href='/agencys/department/detail/#{item.id}',target='_blank',index=index)
-                      img(src=item.imgIndex,alt=item.title)
-                      h4 #{item.title}
-                  else
-                    if (index+1)%2==1
-                      a(href='/agencys/department/detail/#{item.id}',target='_blank',index=index)
+                      if browser.mobile
+                        img(src=item.imgWapIndex,alt=item.title)
+                      else
                         img(src=item.imgIndex,alt=item.title)
-                        h4.bgGray #{item.title}
-                    else
-                      a(href='/agencys/department/detail/#{item.id}',target='_blank',index=index)
-                        h4 #{item.title}
+                      h4.bgGray #{item.title}
+                  else
+                    a(href='/agencys/department/detail/#{item.id}',target='_blank',index=index)
+                      h4 #{item.title}
+                      if browser.mobile
+                        img(src=item.imgWapIndex,alt=item.title)
+                      else
                         img(src=item.imgIndex,alt=item.title)
 
 

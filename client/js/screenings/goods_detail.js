@@ -102,7 +102,7 @@ define(function(require){
         $('.type-box .box-header .close').on('click',function(){
             $('.type-box').removeClass('unchoose');
         });
-        
+
 
 
         // getAddress({
@@ -263,7 +263,7 @@ define(function(require){
                     }).hideMsg();
                     //-login.getCartCount();
                     login.cartCoutAddOne()
-                    
+
                 }
             });
         });

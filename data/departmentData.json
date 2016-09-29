@@ -7,6 +7,7 @@
       "des":"重视常见妇科疾病的临床诊断与诊疗，专注于帮助女性解决妇科疾病的预防保健、精准检查及科学治疗，全程参照国际诊疗指南推荐的诊疗方法和技术，同时联合国内外顶级妇科专家，解决各种疑难问题，根据女性不同生理阶段特点提供私密、受尊重的“一站式”健康管理服务。",
       "clinics":["女性生殖道感染的规范化筛查和治疗","宫颈病变一体化门诊","异常子宫出血、子宫内膜异位症和子宫腺肌病的中西医结合治疗。","生殖健康门诊，提供女性生殖健康咨询和保健，以及不孕症筛查与中西医结合治疗。"],
       "imgIndex":"/public/images/department/jzzl_img1.png",
+      "imgWapIndex":"/public/images/department/jzzl_img1.jpg",
       "imgList":"/public/images/department/zljg_img1.png",
       "imgUrl":["/public/images/department/fuke_01.jpg","/public/images/department/fuke_02.jpg","/public/images/department/fuke_03.jpg"]
     },
@@ -17,7 +18,8 @@
       "des":"由国内知名的中医临床专家领衔牵头，配备专业资深的医疗团队，践行“养治结合、整体治疗”和“治未病”的理念，基于“预防与干预并举、治疗和康复结合”的疾病管理手段，专注于前列腺疾病、男性不育、性功能障碍等泌尿男科疾病的个性化诊疗及健康解决方案。",
       "clinics":["男性泌尿生殖道感染的规范化筛查与治疗。","前列腺疾病专业门诊，提供前列腺炎和前列腺增生的综合治疗、前列腺癌的早期筛查。","性功能障碍、早泄、ED的综合治疗。","男性不育症的筛查与中西医结合治疗。"],
       "imgIndex":"/public/images/department/jzzl_img5.png",
-      "imgList":"/public/images/department/zljg_img5.png",
+      "imgWapIndex":"/public/images/department/jzzl_img5.jpg",
+      "imgList":"/public/images/department/zljg_img5.jpg",
       "imgUrl":["/public/images/department/nanke_01.jpg","/public/images/department/nanke_02.jpg","/public/images/department/nanke_03.jpg"]
     },
     {
@@ -27,6 +29,7 @@
       "des":"专业的皮肤科医护人员，为患者提供全面、个性化的常见皮肤病诊疗与护理服务，开展各种激光疗法、冷冻疗法、光动力疗法，解决不同皮肤问题，帮助您尽显健康魅力。",
       "clinics":["常见皮肤疾病：过敏性皮炎、湿疹、荨麻疹、痤疮。","真菌性皮肤病：手足癣、体癣、股癣、甲癣、深部真菌病。","病毒性及其他感染性疾病：带状疱疹、生殖器疱疹、梅毒、丹毒、疣、水痘。","过敏源血液检测/斑贴试验。"],
       "imgIndex":"/public/images/department/jzzl_img2.png",
+      "imgWapIndex":"/public/images/department/jzzl_img2.jpg",
       "imgList":"/public/images/department/zljg_img2.png",
       "imgUrl":["/public/images/department/pifu_01.jpg","/public/images/department/pifu_02.jpg","/public/images/department/pifu_03.jpg"]
 
@@ -38,6 +41,7 @@
       "des":"预防保健是家庭医学的基础，将个人及家庭的健康需求纳入全流程健康管理范畴，为个人及家庭提供一系列专业的健康教育、健康咨询及预防保健计划，并通过早期干预等措施，达到预防疾病，促进健康和提高生命质量的目标。",
       "clinics":["男性健康计划","女性健康计划","癌症预防计划","家庭保健项目及疫苗接种"],
       "imgIndex":"/public/images/department/jzzl_img4.png",
+      "imgWapIndex":"/public/images/department/jzzl_img4.jpg",
       "imgList":"/public/images/department/zljg_img4.png",
       "imgUrl":["/public/images/department/yufang_01.jpg","/public/images/department/yufang_02.jpg","/public/images/department/yufang_03.jpg"]
     },
@@ -48,6 +52,7 @@
       "des":"由国内知名的中医临床专家牵头，配备专业的医疗团队，践行“养治结合、整体治疗”和“治未病”的理念，专注于妇科疾病、女性不孕、男性不育的中西医结合治疗。",
       "clinics":["北京中医药大学名医工作室","广州中医药大学名医工作室","南京中医药大学名医工作室"],
       "imgIndex":"/public/images/department/jzzl_img7.png",
+      "imgWapIndex":"/public/images/department/jzzl_img7.jpg",
       "imgList":"/public/images/department/zljg_img7.png",
       "imgUrl":["/public/images/department/zhongyi_01.jpg","/public/images/department/zhongyi_02.jpg","/public/images/department/zhongyi_03.jpg"]
     },
@@ -58,6 +63,7 @@
       "des":"整合全新的服务理念、采样方式和进口产品，与罗氏诊断、碧迪医疗等世界医疗巨头深度合作，共建符合国际认证的标准化实验室和PCR实验室，开展基因检测、分子探针、微流控芯片、质谱等先进技术。基于精准检测的个性化解决方案，专业经历丰富的医学检验专家团队，为您提供便捷、快速、精准、及时的检验服务。",
       "clinics":["分子诊断（PCR）实验室服务","妇科实验室服务","生殖实验室服务"],
       "imgIndex":"/public/images/department/jzzl_img3.png",
+      "imgWapIndex":"/public/images/department/jzzl_img3.jpg",
       "imgList":"/public/images/department/zljg_img3.png",
       "imgUrl":["/public/images/department/jiancha_01.jpg","/public/images/department/jiancha_02.jpg","/public/images/department/jiancha_03.jpg"]
     },
@@ -68,6 +74,7 @@
       "des":"资深的超声专业医师，配备先进的GE四维彩超，配套全面的腹部、腔内、浅表探头，为患者提供清晰的超声影像和精准的诊断建议。",
       "clinics":["腹部常规筛查","妇科专业超声","泌尿系统超声","乳腺、甲状腺等浅表超声"],
       "imgIndex":"/public/images/department/jzzl_img6.png",
+      "imgWapIndex":"/public/images/department/jzzl_img6.jpg",
       "imgList":"/public/images/department/zljg_img6.png",
       "imgUrl":["/public/images/department/yinxiang_01.jpg","/public/images/department/yinxiang_02.jpg","/public/images/department/yinxiang_03.jpg"]
     }
