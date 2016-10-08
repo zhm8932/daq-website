@@ -45,7 +45,7 @@
         //@include transition(all 0.3s linear);
         &.s01{
           background-position: 0px 0px;
-          &:first-of-type,&:hover{background-position: 0px -112px;}
+          &:hover{background-position: 0px -112px;}
         }
         &.s02{
           background-position: -112px 0px;
@@ -62,6 +62,9 @@
         &.s05{
           background-position: -448px 0px;
           &:hover{background-position: -448px -112px;}
+        }
+        &.on{
+          background-position: -231px -112px;
         }
       }
       a{display: block;}

@@ -1,1 +1,206 @@
-webpackJsonp([19],{0:function(t,a,e){e(205),t.exports=e(7)},205:function(t,a,e){var o;o=function(t,a,o){function c(t,a){var e=t.closest(".table-tr").find(".operation"),o=e.attr("data-city"),c=$(".table-tr .checkbox.checked").length,n=null;a&&1==c?(n=$(".table-tr .checkbox").not(".deleted"),n.each(function(t,a){var e=$(a).closest(".table-tr"),c=e.find(".operation").attr("data-city");c!=o&&($(a).addClass("not-in-area"),e.find(".mask").removeClass("none"))})):a||0!=c||(n=$(".table-tr .checkbox.not-in-area").not(".deleted"),n.each(function(t,a){var e=$(a).closest(".table-tr");e.find(".operation").attr("data-city");$(a).removeClass("not-in-area"),e.find(".mask").addClass("none")}))}function n(t){u.CheckLogin(function(){l.ShowComfirmDialog({tipText:"确定删除吗?",okCallback:function(){t.off("click");var a=$(t).closest(".operation").attr("data-id");l.SendAjax({url:"/trade/cart/delItem",param:{id:a},method:"POST",tipText:"删除",callback:function(a){t.closest(".table-tr").hide(500),t.closest(".table-tr").find(".checkbox").addClass("deleted").removeClass("checked"),u.cartCoutDelOne(),r()},errorFun:function(a){t.on("click",function(){n(t)})}})}})})}function i(t){var a=$(".tfoot .check-all");t.hasClass("checked")?(t.removeClass("checked"),a.hasClass("checked")&&a.removeClass("checked")):t.addClass("checked"),r()}function s(t){var a=$(".table-tr .checkbox").not(".deleted").not(".not-in-area");t.hasClass("checked")?(a.each(function(t,a){$(a).removeClass("checked"),c($(a),!1)}),$(t).removeClass("checked")):(a.each(function(t,a){$(a).hasClass("not-in-area")||($(a).addClass("checked"),c($(a),!0))}),$(t).addClass("checked")),r()}function r(){var t=$(".table-tr .checkbox.checked"),a=t.length,e=0;t.each(function(t,a){var o=parseFloat($(a).closest(".table-tr").find(".operation").attr("data-subTotal"));e+=o}),$(".tfoot .price").html("￥"+(e/100).toFixed(2)),$(".tfoot .num").html(a),a>0?$(".submit-btn").addClass("back-stress").off("click").on("click",function(){d(t,e)}):$(".submit-btn").removeClass("back-stress").off("click")}function d(t,a){var e=[];t.each(function(t,a){var o=$(a).closest(".table-tr").find(".operation"),c={};c.id=o.attr("data-id"),c.goodsId=o.attr("data-goodsId"),c.imgUrl=o.attr("data-imgUrl"),c.goodsName=o.attr("data-goodsName"),c.discountPrice=o.attr("data-discountPrice"),c.transmitType=o.attr("data-transmitType"),c.address=o.attr("data-address"),c.hospital=o.attr("data-hospital"),c.subTotal=o.attr("data-subTotal"),c.favPrice=o.attr("data-favPrice"),e.push(c)}),$("#submitForm input[name=items]").val(JSON.stringify(e)),$("#submitForm input[name=totalPrice]").val(a),$("#submitForm").submit()}var l=e(4),u=e(9);$(function(){var t=l.SetMinHeight(),a=$(".empty-cart-box");a&&t>=0&&a.css("margin-top",(t-a.height())/2+"px"),$(".del-cart-item").on("click",function(){n($(this))}),$(".table-tr .checkbox").on("click",function(){i($(this),$(this))}),$(".tfoot .check-all").on("click",function(){s($(this))}),$(".submit-btn").on("click",function(){}),$(".empty-cart .to-buy").on("click",function(){window.location.href="/screenings/goods"})});var f;$("body").on("mousedown",".table-tr",function(){var t=$(this).find(".del-cart-item");f=setTimeout(function(){n(t)},2e3)}),$("body").bind("mouseup",function(){clearTimeout(f)})}.call(a,e,a,t),!(void 0!==o&&(t.exports=o))}});
+webpackJsonp([19],{
+
+/***/ 0:
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(205);
+	module.exports = __webpack_require__(7);
+
+
+/***/ },
+
+/***/ 205:
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
+	    var utils = __webpack_require__(4);
+	    var login = __webpack_require__(9);
+
+	    $(function () {
+	        var minHeight = utils.SetMinHeight();
+
+	        //购物车为空时居中
+	        var emptyCart = $('.empty-cart-box');
+	        if(emptyCart&&minHeight>=0){
+	            emptyCart.css('margin-top',(minHeight - emptyCart.height()) / 2+'px');
+	        }
+	        
+	        
+	        $(".del-cart-item").on('click', function () {
+	            delCartItem($(this));
+	        });
+
+	        $('.table-tr .checkbox').on('click', function () {
+	            toggleCheck($(this), $(this));
+	        });
+
+	        $('.tfoot .check-all').on('click', function () {
+	            checkAll($(this));
+	        });
+
+	        $('.submit-btn').on('click', function () {
+
+	        });
+
+	        $('.empty-cart .to-buy').on('click',function(){
+	            window.location.href = '/screenings/goods';
+	        })
+	    });
+
+
+	    //删除在checkbox上加类deleted,tr用hide
+	    //遮罩在checkbox上加类not-in-area,.mask去除类none
+	    //所有数据绑定在tr的.operation上
+	    function excludeOtherArea(triggerEle, isChecked) {
+	        var operation = triggerEle.closest('.table-tr').find('.operation');
+	        var checkedCity = operation.attr('data-city');
+	        var checkedNums = $('.table-tr .checkbox.checked').length;//被选中的个数
+	        var checkboxs = null;
+
+	        //选中的只有一个,即第一次选中,给其他城市加上mask
+	        if (isChecked && checkedNums == 1) {
+	            checkboxs = $('.table-tr .checkbox').not('.deleted');//所有未被删除的checkbox
+	            checkboxs.each(function (index, ele) {
+	                var tr = $(ele).closest('.table-tr');
+	                var city = tr.find('.operation').attr('data-city');
+	                if (city != checkedCity) {
+	                    $(ele).addClass('not-in-area');
+	                    tr.find('.mask').removeClass('none');
+	                }
+	            });
+	        } else if (!isChecked && checkedNums == 0) {//没有选中的,即取消选中最后一个,把mask去掉
+	            checkboxs = $('.table-tr .checkbox.not-in-area').not('.deleted');//所有未被删除的有遮罩的checkbox
+	            checkboxs.each(function (index, ele) {
+	                var tr = $(ele).closest('.table-tr');
+	                var city = tr.find('.operation').attr('data-city');
+	                $(ele).removeClass('not-in-area');
+	                tr.find('.mask').addClass('none');
+	            });
+	        }
+
+	    }
+
+	    function delCartItem($this) {
+	        login.CheckLogin(function() {
+	            utils.ShowComfirmDialog({
+	                tipText:'确定删除吗?',
+	                okCallback:function(){
+	                    $this.off('click');
+	                    var id = $($this).closest('.operation').attr('data-id');
+	                    utils.SendAjax({
+	                        url: '/trade/cart/delItem',
+	                        param: {id: id},
+	                        method: 'POST',
+	                        tipText: '删除',
+	                        callback: function (result) {
+	                            $this.closest('.table-tr').hide(500);
+	                            $this.closest('.table-tr').find('.checkbox').addClass('deleted').removeClass('checked');
+	                            // login.getCartCount();
+	                            login.cartCoutDelOne();
+	                            updateTotalView();
+	                        },
+	                        errorFun: function (result) {
+	                            $this.on('click', function () {
+	                                delCartItem($this);
+	                            });
+	                        }
+	                    });
+	                }
+	            });
+
+	        });
+	    }
+
+	    function toggleCheck(ele) {
+	        var checkAllBox = $('.tfoot .check-all');
+	        if (ele.hasClass('checked')) {
+	            ele.removeClass('checked');
+	            if (checkAllBox.hasClass('checked')) {
+	                checkAllBox.removeClass('checked');
+	            }
+	            // excludeOtherArea(ele, false);
+	        } else {
+	            ele.addClass('checked');
+	            // excludeOtherArea(ele, true);
+	        }
+	        updateTotalView();
+	    }
+
+	    function checkAll($this) {
+	        var checkboxs = $('.table-tr .checkbox').not('.deleted').not('.not-in-area');
+	        if ($this.hasClass('checked')) {
+	            checkboxs.each(function (index, ele) {
+	                $(ele).removeClass('checked');
+	                excludeOtherArea($(ele), false);
+	            });
+	            $($this).removeClass('checked');
+	        } else {
+	            checkboxs.each(function (index, ele) {
+	                if (!$(ele).hasClass('not-in-area')) {
+	                    $(ele).addClass('checked');
+	                    excludeOtherArea($(ele), true);
+	                }
+	            });
+	            $($this).addClass('checked');
+	        }
+	        updateTotalView();
+	    }
+
+	    function updateTotalView() {
+	        var checkboxs = $('.table-tr .checkbox.checked');
+	        var num = checkboxs.length;
+	        var totalPrice = 0;
+	        checkboxs.each(function (index, ele) {
+	            var subTotal = parseFloat($(ele).closest('.table-tr').find('.operation').attr('data-subTotal'));
+	            totalPrice += subTotal;
+	        });
+	        $('.tfoot .price').html('￥' + (totalPrice/100).toFixed(2));
+	        $('.tfoot .num').html(num);
+	        if (num > 0) {
+	            $('.submit-btn').addClass('back-stress').off('click').on('click', function () {
+	                submitToOrder(checkboxs, totalPrice);
+	            });
+	        } else {
+	            $('.submit-btn').removeClass('back-stress').off('click');
+	        }
+	    }
+
+	    function submitToOrder(checkboxs, totalPrice) {
+	        var items = [];
+	        checkboxs.each(function (index, ele) {
+	            var operation = $(ele).closest('.table-tr').find('.operation');
+	            var item = {};
+	            item.id = operation.attr('data-id');
+	            item.goodsId = operation.attr('data-goodsId');
+	            item.imgUrl = operation.attr('data-imgUrl');
+	            item.goodsName = operation.attr('data-goodsName');
+	            item.discountPrice = operation.attr('data-discountPrice');
+	            item.transmitType = operation.attr('data-transmitType');
+	            item.address = operation.attr('data-address');
+	            item.hospital = operation.attr('data-hospital');
+	            item.subTotal = operation.attr('data-subTotal');
+	            item.favPrice = operation.attr('data-favPrice');
+	            items.push(item);
+	        });
+
+	        $('#submitForm input[name=items]').val(JSON.stringify(items));
+	        $('#submitForm input[name=totalPrice]').val(totalPrice);
+	        $('#submitForm').submit();
+	    }
+
+	    var timeout ;
+	    $('body').on('mousedown','.table-tr',function () {
+	        var $self = $(this).find('.del-cart-item')
+	        timeout = setTimeout(function() {
+	            delCartItem($self);
+	        },2000);
+	    });
+	    $("body").bind("mouseup", function() {
+	        clearTimeout(timeout);
+	    });
+	    
+	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ }
+
+});

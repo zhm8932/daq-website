@@ -5,7 +5,19 @@ define(function(require){
 
     require('touchslider');
 
-    // //console.log("login:",login)
+    console.log("login:")
+
+    var masterImg = $('.master_img');
+
+
+    masterImg.load(function(){
+        console.log(1111);
+        $('.touchslider-viewport').css('height',masterImg.height());
+
+        console.log(masterImg.height());
+        console.log($('.touchslider-viewport').height());
+    });
+
     $(function(){
         require('../imgAuto');
 
@@ -152,11 +164,9 @@ define(function(require){
             if($(document).scrollTop() + topBarHeight > orignTop){
                 tab.css('position','fixed').css({'top':topBarHeight+'px','width':width});
                 $('#tab-copy').removeClass('none');
-                console.log('悬浮');
             }else{
                 tab.css('position','static').css('width',width+'px');
                 $('#tab-copy').addClass('none');
-                // console.log('原始');
             }
         });
     };

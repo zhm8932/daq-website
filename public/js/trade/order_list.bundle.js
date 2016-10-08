@@ -1,1 +1,157 @@
-webpackJsonp([21],{0:function(t,i,o){o(207),t.exports=o(7)},207:function(t,i,o){var l;l=function(t,i,l){o(4);o(208),$(function(){$(".goods-detail h5").ellipsis({row:2,"char":"……",callback:function(){}})})}.call(i,o,i,t),!(void 0!==l&&(t.exports=l))},208:function(t,i,o){var l,a,e,a,e;!function(c){a=[o(3)],l=c,e="function"==typeof l?l.apply(i,a):l,!(void 0!==e&&(t.exports=e)),a=[o(3)],e=function(){return c(window.jQuery,window,document,void 0)}.apply(i,a),!(void 0!==e&&(t.exports=e))}(function(t){t.fn.ellipsis=function(i){var o={row:1,onlyFullWords:!1,"char":"...",callback:function(){},position:"tail"};return i=t.extend(o,i),this.each(function(){var o=t(this),l=o.text(),a=l,e=a.length,c=o.height();o.text("a");var n=parseFloat(o.css("lineHeight"),10),r=o.height(),h=n>r?n-r:0,s=h*(i.row-1)+r*i.row;if(c<=s)return o.text(l),void i.callback.call(this);var u=1,f=0,p=l.length;if("tail"===i.position){for(;u<p;)f=Math.ceil((u+p)/2),o.text(l.slice(0,f)+i["char"]),o.height()<=s?u=f:p=f-1;l=l.slice(0,u),i.onlyFullWords&&(l=l.replace(/[\u00AD\w\uac00-\ud7af]+$/,"")),l+=i["char"]}else if("middle"===i.position){for(var d=0;u<p;)f=Math.ceil((u+p)/2),d=Math.max(e-f,0),o.text(a.slice(0,Math.floor((e-d)/2))+i["char"]+a.slice(Math.floor((e+d)/2),e)),o.height()<=s?u=f:p=f-1;d=Math.max(e-u,0);var v=a.slice(0,Math.floor((e-d)/2)),x=a.slice(Math.floor((e+d)/2),e);i.onlyFullWords&&(v=v.replace(/[\u00AD\w\uac00-\ud7af]+$/,"")),l=v+i["char"]+x}o.text(l),i.callback.call(this)}),this}})}});
+webpackJsonp([21],{
+
+/***/ 0:
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(207);
+	module.exports = __webpack_require__(7);
+
+
+/***/ },
+
+/***/ 16:
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery ellipsis - v1.1.1 - 2014-02-23
+	* https://github.com/STAR-ZERO/jquery-ellipsis
+	* Copyright (c) 2014 Kenji Abe; Licensed MIT */
+	(function (factory) {
+	    if(true){ // AMD
+	        // you may need to change `define([------>'jquery'<------], factory)`
+	        // if you use zepto, change it rely name, such as `define(['zepto'], factory)`
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(3)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
+	        // define(['zepto'], factory)
+	    }if (true) {
+	        // 如果define已被定义，模块化代码
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(3)], __WEBPACK_AMD_DEFINE_RESULT__ = function(){
+	            // 返回构造函数 CommonJS
+	            // console.log('CommonJS')
+	            return factory(window.jQuery,window, document, undefined);
+	        }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    }  else{ // Global
+	        factory(window.jQuery || window.Zepto)
+	    }
+	})(function($) {
+	    $.fn.ellipsis = function(options) {
+
+	        // default option
+	        var defaults = {
+	            'row' : 1, // show rows
+	            'onlyFullWords': false, // set to true to avoid cutting the text in the middle of a word
+	            'char' : '...', // ellipsis
+	            'callback': function() {},
+	            'position': 'tail' // middle, tail
+	        };
+
+	        options = $.extend(defaults, options);
+
+	        this.each(function() {
+	            // get element text
+	            var $this = $(this);
+	            var text = $this.text();
+	            var origText = text;
+	            var origLength = origText.length;
+	            var origHeight = $this.height();
+
+	            // get height
+	            $this.text('a');
+	            var lineHeight =  parseFloat($this.css("lineHeight"), 10);
+	            var rowHeight = $this.height();
+	            var gapHeight = lineHeight > rowHeight ? (lineHeight - rowHeight) : 0;
+	            var targetHeight = gapHeight * (options.row - 1) + rowHeight * options.row;
+
+	            if (origHeight <= targetHeight) {
+	                $this.text(text);
+	                options.callback.call(this);
+	                return;
+	            }
+
+	            var start = 1, length = 0;
+	            var end = text.length;
+
+	            if(options.position === 'tail') {
+	                while (start < end) { // Binary search for max length
+	                    length = Math.ceil((start + end) / 2);
+
+	                    $this.text(text.slice(0, length) + options['char']);
+
+	                    if ($this.height() <= targetHeight) {
+	                        start = length;
+	                    } else {
+	                        end = length - 1;
+	                    }
+	                }
+
+	                text = text.slice(0, start);
+
+	                if (options.onlyFullWords) {
+	                    text = text.replace(/[\u00AD\w\uac00-\ud7af]+$/, ''); // remove fragment of the last word together with possible soft-hyphen characters
+	                }
+	                text += options['char'];
+
+	            }else if(options.position === 'middle') {
+
+	                var sliceLength = 0;
+	                while (start < end) { // Binary search for max length
+	                    length = Math.ceil((start + end) / 2);
+	                    sliceLength = Math.max(origLength - length, 0);
+
+	                    $this.text(
+	                        origText.slice(0, Math.floor((origLength - sliceLength) / 2)) +
+	                        options['char'] +
+	                        origText.slice(Math.floor((origLength + sliceLength) / 2), origLength)
+	                    );
+
+	                    if ($this.height() <= targetHeight) {
+	                        start = length;
+	                    } else {
+	                        end = length - 1;
+	                    }
+	                }
+
+	                sliceLength = Math.max(origLength - start, 0);
+	                var head = origText.slice(0, Math.floor((origLength - sliceLength) / 2));
+	                var tail = origText.slice(Math.floor((origLength + sliceLength) / 2), origLength);
+
+	                if (options.onlyFullWords) {
+	                    // remove fragment of the last or first word together with possible soft-hyphen characters
+	                    head = head.replace(/[\u00AD\w\uac00-\ud7af]+$/, '');
+	                }
+
+	                text = head + options['char'] + tail;
+	            }
+
+	            $this.text(text);
+
+	            options.callback.call(this);
+	        });
+
+	        return this;
+	    };
+	});
+
+
+/***/ },
+
+/***/ 207:
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
+	    var utils = __webpack_require__(4);
+	    __webpack_require__(16);
+
+	    $(function () {
+	        $('.goods-detail h5').ellipsis({
+	            row:2,
+	            char:'……',
+	            callback: function() {
+	                // console.log($(this).text());
+	            }
+	        })
+	    })
+
+	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ }
+
+});

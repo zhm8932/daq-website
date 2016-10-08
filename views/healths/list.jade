@@ -5,7 +5,7 @@ block content
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
-        |您的位置为：首页<em>#{sep}</em>健康常识
+        |您的位置为：首页<em>#{sep}</em>健康科普
         if get_goods_category_success
                 each item in get_goods_category
                     if item.id==categoryId

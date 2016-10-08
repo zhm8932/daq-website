@@ -1,1 +1,91 @@
-webpackJsonp([28],{0:function(t,n,e){e(216),t.exports=e(7)},210:function(t,n,e){var a;a=function(t,n,a){function i(t){function n(e,a){if(e<0)return t.outdatedFun&&t.outdatedFun(),!1;a.attr("data-restTime",1e3*e);var i=parseInt(e/60)<10?"0"+parseInt(e/60):parseInt(e/60),o=parseInt(e%60)<10?"0"+parseInt(e%60):parseInt(e%60);a.html(i+t.minuteUnit+o+t.secondUnit),e--,setTimeout(function(){n(e,a)},1e3)}var e={minuteUnit:"分",secondUnit:"秒",outdatedFun:function(){window.location.reload()}},a="true"===$("#browser-mobile").val();a&&(e.minuteUnit=" : ",e.secondUnit=""),t=$.extend({},e,t);var i=$(".timer");i.each(function(e,a){var i=$(a),o=parseInt(i.attr("data-paytime")),r=parseInt(i.attr("data-currenttime")),u=parseInt((t.totalTime-(r-o))/1e3);n(u,i)})}e(3),n.updateTime=i}.call(n,e,n,t),!(void 0!==a&&(t.exports=a))},216:function(t,n,e){var a;a=function(t,n,a){var i=e(210);e(3),i.updateTime({totalTime:18e5,minuteUnit:" : ",secondUnit:"",outdatedFun:function(){window.location.reload()}})}.call(n,e,n,t),!(void 0!==a&&(t.exports=a))}});
+webpackJsonp([28],{
+
+/***/ 0:
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(215);
+	module.exports = __webpack_require__(7);
+
+
+/***/ },
+
+/***/ 209:
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;/**
+	 * Created by chenlu on 16/7/12.
+	 */
+	!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
+	    __webpack_require__(3);
+	    function updateTime(options) {
+	        var defaults = {
+	            minuteUnit: '分',
+	            secondUnit: '秒',
+	            outdatedFun: function () {
+	                window.location.reload();
+	            }
+	        };
+	        var isMobile = $('#browser-mobile').val() === 'true';
+	        if(isMobile){
+	            defaults.minuteUnit = ' : ';
+	            defaults.secondUnit = '';
+	        }
+	        options = $.extend({}, defaults, options);
+
+	        var timerList = $('.timer');
+	        timerList.each(function (index, ele) {
+	            var $this = $(ele);
+	            var payTime = parseInt($this.attr('data-paytime'));
+	            var currentTime = parseInt($this.attr('data-currenttime'));
+	            //剩余支付时间 = 总共支付时间 - (当前时间 - 下单时间),单位:秒
+	            var restTime = parseInt((options.totalTime - (currentTime - payTime)) / 1000);
+
+	            // var a = new Date(payTime).toLocaleTimeString();
+	            // var b = new Date(now).toLocaleTimeString();
+	            //
+	            // console.log('==='+ a + '==' + b);
+	            // console.log(now-payTime);
+	            // console.log(restTime);
+	            countTime(restTime, $this);
+	        });
+
+	        function countTime(restTime, $this) {
+	            if (restTime < 0) {
+	                options.outdatedFun && options.outdatedFun();
+	                return false;
+	            }
+	            $this.attr('data-restTime',restTime*1000);
+	            var minutes = parseInt(restTime / 60) < 10 ? '0' + parseInt(restTime / 60) : parseInt(restTime / 60);
+	            var seconds = parseInt(restTime % 60) < 10 ? '0' + parseInt(restTime % 60) : parseInt(restTime % 60);
+	            $this.html(minutes + options.minuteUnit + seconds + options.secondUnit);
+	            restTime--;
+	            setTimeout(function () {
+	                countTime(restTime, $this);
+	            }, 1000);
+	        }
+	    }
+
+	    exports.updateTime = updateTime;
+	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ },
+
+/***/ 215:
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
+	    var timer = __webpack_require__(209);
+	    __webpack_require__(3);
+	    timer.updateTime({
+	        totalTime:30*60*1000,
+	        minuteUnit:' : ',
+	        secondUnit:'',
+	        outdatedFun:function(){
+	            window.location.reload();
+	        }
+	    });
+	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ }
+
+});

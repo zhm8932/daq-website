@@ -27,7 +27,7 @@ block content
                                 .touchslider-viewport
                                     .bd
                                       each item in detailImages
-                                        p: img(src='#{item}',alt=goods_detail.goodsName)
+                                        p: img.master_img(src='#{item}',alt=goods_detail.goodsName)
                                         //img(src='#{item}',alt=goods_detail.goodsName)
                                 .switch
                                     .prev
