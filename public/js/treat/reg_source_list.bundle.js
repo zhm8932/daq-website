@@ -1,1 +1,37 @@
-webpackJsonp([24],{0:function(t,a,n){n(211),t.exports=n(7)},211:function(t,a,n){var i;i=function(t,a,i){n(3);n(4),n(9);$(function(){$(".register").on("click",function(){var t=$(this),a=t.closest(".doctor-info-detail"),n=$("#regByDocForm");n.find("input[name=date]").val(t.data("date")),n.find("input[name=doctorId]").val(a.attr("data-accountid")),n.find("input[name=docName]").val(a.attr("data-docName")),n.find("input[name=docTitle]").val(a.attr("data-docTitle")),n.find("input[name=need]").val(a.attr("data-need")),n.submit()})})}.call(a,n,a,t),!(void 0!==i&&(t.exports=i))}});
+webpackJsonp([24],{
+
+/***/ 0:
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(211);
+	module.exports = __webpack_require__(7);
+
+
+/***/ },
+
+/***/ 211:
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
+	    __webpack_require__(3);
+	    var utils = __webpack_require__(4);
+	    var login = __webpack_require__(9);
+
+	    $(function(){
+	        $('.register').on('click',function(){
+	            var $this = $(this);
+	            var doctorInfo = $this.closest('.doctor-info-detail');
+	            var form = $('#regByDocForm');
+	            form.find('input[name=date]').val($this.data('date'));
+	            form.find('input[name=doctorId]').val(doctorInfo.attr('data-accountid'));
+	            form.find('input[name=docName]').val(doctorInfo.attr('data-docName'));
+	            form.find('input[name=docTitle]').val(doctorInfo.attr('data-docTitle'));
+	            form.find('input[name=need]').val(doctorInfo.attr('data-need'));
+	            form.submit();
+	        });
+	    });
+	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ }
+
+});

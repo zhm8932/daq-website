@@ -1,1 +1,370 @@
-@charset "UTF-8";@media only screen and (min-width:1920px){.container,.header ul,.item{width:1600px;margin:0 auto}.container{margin-top:60px}.leftMenu nav{left:50%;margin-left:-800px}}@media only screen and (max-width:1439px){.health aside{width:30%}.health_detail,.health_list{width:68%}.info_list .lr_list figure h4{padding:0 0 8px;margin-bottom:8px}.item_list .department_list li{height:auto}.agency_box .lr_list{width:83%;padding-left:3%}.agency_box .lr_list figure h4{padding-bottom:6px;margin-bottom:6px}}@media only screen and (min-width:1366px) and (max-width:1439px){.wrapper{width:980px}.home{margin-left:-490px}.item_list .pic_list li{width:315px}.rightNav{margin-right:-660px}.health aside{width:30%}.health_detail,.health_list{width:68%}}@media only screen and (min-width:1280px) and (max-width:1365px){.wrapper{width:900px}.home{margin-left:-450px}.item_list .pic_list li{width:288px}.item_list .department_list li{height:auto}.rightNav{margin-right:-610px}.health aside{width:30%}.health_detail{width:65%}}@media only screen and (min-width:1024px) and (max-width:1279px){.banner dl h3{padding-top:5px;font-size:18px}.footer .qrcode figure figcaption,.footer dl dt p{font-size:13px}.banner dl p{padding:0 0 5px 50px}.wrapper{width:800px}.home{margin-left:-400px}.item_list .pic_list li{width:255px}.item_list .standard p{bottom:-25px}.rightNav{width:110px;margin-right:-510px}.rightNav ul .lineBg{height:11px}.rightNav ul li img{width:100%}.header .slogan{margin-left:20px;width:320px;display:inline-block}.header .slogan img{width:100%}.health aside{width:30%}.health_detail{width:65%}.footer dl dt{width:70%}.footer dl dt img{margin-right:25px}.footer dl dd{width:25%}.footer dl dd p{width:80%}.agency_box .lr_list{width:86%;padding-left:3%}.agency_box .lr_list figure figcaption{width:68%}}@media only screen and (min-width:768px) and (max-width:1023px){.wrapper{width:auto;margin:0 20px}.positon{margin-bottom:10px}.home{width:100%;left:auto;right:0}.nav .wrapper{margin:0 auto}.banner dl p{font-size:14px}.item_list .pic_list ul{margin-left:-1.3%}.item_list .pic_list ul li{width:32%;margin-left:1.3%}.item_list .standard p{bottom:-25px}.rightNav{display:none}.health aside{width:30%}.health_detail{width:65%}.footer dl dt{width:70%}.footer dl dd{width:25%}.footer dl dd p{width:80%}.treat-name{font-size:18px}.outpatient img{width:50%}.outpatient .outpatient-info{width:46%}.reg-doc-list .btn{display:inline-block;line-height:25px;background-color:#fff;border:1px solid;border-radius:5px;padding:0 10px}.reg-doc-list .btn.btn-disabled{color:#c9c9c9}.reg-doc-list .btn.btn-primary{color:#48BED8}.reg-doc-list .title{margin:20px}.reg-doc-list .title .vertical,.reg-doc-list .title span{vertical-align:middle}.reg-doc-list .doctor-info{padding:10px 20px;color:#fff;background-color:#48BED8}.reg-doc-list .doctor-info .doctor-name{font-size:18px;margin-right:10px}.reg-doc-list .reg-list{text-align:left;margin-bottom:10px}.reg-doc-list .reg-list li{line-height:30px;padding:8px 20px}.reg-doc-list .reg-list li .btn{color:#48BED8}.reg-doc-list .reg-list li.disabled,.reg-doc-list .reg-list li.disabled .btn{color:#c9c9c9}.header .slogan{margin-left:20px;width:310px;display:inline-block}.header .slogan img{width:100%}.agency_box .lr_list{width:86%;padding-left:3%}.agency_box .lr_list figure h4{padding-bottom:6px;margin-bottom:6px}.agency_box .lr_list figure figcaption{width:68%}}@media only screen and (max-width:768px){.box-right .order dd .col :last-child:not(.row),.report header{padding-bottom:0}*{font-family:'HanHei SC','PingFang SC','Helvetica Neue',Helvetica,STHeitiSC-Light,Arial,sans-serif,"微软雅黑"}body{font-size:14px}.userAgreement{font-size:16px}.userAgreement h3{font-size:18px}.agency_box .lr_list{width:86%;padding-left:3%}.pagination{padding:0}.pagination i{vertical-align:top}.banner,.copyright,.footer,.header .wrapper,.nav{width:768px}.nav .wrapper{margin:0 auto}.home .wrapper{width:auto}.wrapper{margin:0 10px;overflow:hidden;width:768px;box-sizing:border-box}.item_list header{padding-top:35px}.item_list header h2{line-height:40px;padding-bottom:0;font-weight:500}.item_list header h2 i{top:auto;height:18px}.item_list header p{color:#333;font-weight:300;line-height:20px}.banner dl{display:none}.home{position:static;top:auto;left:auto;margin:0 auto}.home .nav{position:relative;width:100%;border-radius:0;top:0}.nav ul li{font-size:17px;margin-left:0}.report{margin-top:20px}.report ul label{padding:10px 0 0}.report ul li{width:100%}.report ul li input{width:100%;box-sizing:border-box}.report ul .submitBtn{position:static;width:100%;box-sizing:border-box;margin-top:20px}.report ul .getCode{right:0;height:36px;line-height:36px}.item_list .pic_list ul{margin-left:-1.3%}.item_list .pic_list ul li{width:32%;margin-left:1.3%}}@media only screen and (width:768px){.header .wrapper,.wrapper{width:748px}.home{width:auto;left:0}.home .nav{left:10px;top:140px}.item_list .department_list .movingBoxes .mb-left{left:-12px}.item_list .department_list .movingBoxes .mb-right{right:-12px}}@media only screen and (max-width:767px){.header .slogan{margin-left:20px;width:320px;display:inline-block}.header .slogan img{width:100%}.wechat-pay-dialog{height:400px}}
+@charset "UTF-8";
+/*
+
+
+设备像素\宽度：17种
+
+320 ， 480 ， 540 ， 600 ， 640 ， 720 ， 768 ， 800 ， 1024 ， 1080 ， 1200 ， 1280 ， 1366 ， 1536 ， 1600 ， 1920 ， 2048  2560
+
+
+设备像素\高度：15种
+
+480 ， 600 ， 720 ， 768 ， 800 ， 854 ， 960 ， 1024 ， 1080 ， 1136 ， 1280 ， 1536 ， 1920 ， 2048 ， 2560
+
+*/
+@media only screen and (min-width: 1920px) {
+  .header ul, .container, .item {
+    width: 1600px;
+    margin: 0 auto; }
+
+  .container {
+    margin-top: 60px; }
+
+  .leftMenu nav {
+    left: 50%;
+    margin-left: -800px; } }
+@media only screen and (max-width: 1439px) {
+  .health aside {
+    width: 30%; }
+
+  .health_detail, .health_list {
+    width: 68%; }
+
+  .info_list .lr_list figure h4 {
+    padding: 0 0 8px 0;
+    margin-bottom: 8px; }
+
+  .item_list .department_list li {
+    height: auto; }
+
+  .agency_box .lr_list {
+    width: 83%;
+    padding-left: 3%; }
+    .agency_box .lr_list figure h4 {
+      padding-bottom: 6px;
+      margin-bottom: 6px; } }
+@media only screen and (min-width: 1366px) and (max-width: 1439px) {
+  .wrapper {
+    width: 980px; }
+
+  .home {
+    margin-left: -490px; }
+
+  .item_list .pic_list li {
+    width: 315px; }
+
+  .rightNav {
+    margin-right: -660px; }
+
+  .health aside {
+    width: 30%; }
+
+  .health_detail, .health_list {
+    width: 68%; } }
+@media only screen and (min-width: 1280px) and (max-width: 1365px) {
+  .wrapper {
+    width: 900px; }
+
+  .home {
+    margin-left: -450px; }
+
+  .item_list .pic_list li {
+    width: 288px; }
+  .item_list .department_list li {
+    height: auto; }
+
+  .rightNav {
+    margin-right: -610px; }
+
+  .health aside {
+    width: 30%; }
+
+  .health_detail {
+    width: 65%; } }
+@media only screen and (min-width: 1024px) and (max-width: 1279px) {
+  .banner dl h3 {
+    padding-top: 5px;
+    font-size: 18px; }
+  .banner dl p {
+    padding: 0 0 5px 50px; }
+
+  .wrapper {
+    width: 800px; }
+
+  .home {
+    margin-left: -400px; }
+
+  .item_list .pic_list li {
+    width: 255px; }
+  .item_list .standard p {
+    bottom: -25px; }
+
+  .rightNav {
+    width: 110px;
+    margin-right: -510px; }
+    .rightNav ul .lineBg {
+      height: 11px; }
+    .rightNav ul li img {
+      width: 100%; }
+
+  .header .slogan {
+    margin-left: 20px;
+    width: 320px;
+    display: inline-block; }
+    .header .slogan img {
+      width: 100%; }
+
+  .health aside {
+    width: 30%; }
+
+  .health_detail {
+    width: 65%; }
+
+  .footer dl dt {
+    width: 70%; }
+    .footer dl dt p {
+      font-size: 13px; }
+    .footer dl dt img {
+      margin-right: 25px; }
+  .footer dl dd {
+    width: 25%; }
+    .footer dl dd p {
+      width: 80%; }
+  .footer .qrcode figure figcaption {
+    font-size: 13px; }
+
+  .agency_box .lr_list {
+    width: 86%;
+    padding-left: 3%; }
+    .agency_box .lr_list figure figcaption {
+      width: 68%; } }
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .wrapper {
+    width: auto;
+    margin: 0 20px; }
+
+  .positon {
+    margin-bottom: 10px; }
+
+  .home {
+    width: 100%;
+    left: auto;
+    right: 0px; }
+
+  .nav .wrapper {
+    margin: 0 auto; }
+
+  .banner dl p {
+    font-size: 14px; }
+
+  .item_list .pic_list ul {
+    margin-left: -1.3%; }
+    .item_list .pic_list ul li {
+      width: 32%;
+      margin-left: 1.3%; }
+  .item_list .standard p {
+    bottom: -25px; }
+
+  .rightNav {
+    display: none; }
+
+  .health aside {
+    width: 30%; }
+
+  .health_detail {
+    width: 65%; }
+
+  .footer dl dt {
+    width: 70%; }
+  .footer dl dd {
+    width: 25%; }
+    .footer dl dd p {
+      width: 80%; }
+
+  /*诊疗服务列表*/
+  .treat-name {
+    font-size: 18px; }
+
+  .outpatient img {
+    width: 50%; }
+  .outpatient .outpatient-info {
+    width: 46%; }
+
+  .reg-doc-list .btn {
+    display: inline-block;
+    line-height: 25px;
+    background-color: #fff;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 0 10px; }
+  .reg-doc-list .btn.btn-disabled {
+    color: #c9c9c9; }
+  .reg-doc-list .btn.btn-primary {
+    color: #48BED8; }
+  .reg-doc-list .title {
+    margin: 20px; }
+    .reg-doc-list .title .vertical {
+      vertical-align: middle; }
+    .reg-doc-list .title span {
+      vertical-align: middle; }
+  .reg-doc-list .doctor-info {
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #48BED8; }
+    .reg-doc-list .doctor-info .doctor-name {
+      font-size: 18px;
+      margin-right: 10px; }
+  .reg-doc-list .reg-list {
+    text-align: left;
+    margin-bottom: 10px; }
+    .reg-doc-list .reg-list li {
+      line-height: 30px;
+      padding: 8px 20px; }
+      .reg-doc-list .reg-list li .btn {
+        color: #48BED8; }
+      .reg-doc-list .reg-list li.disabled {
+        color: #c9c9c9; }
+        .reg-doc-list .reg-list li.disabled .btn {
+          color: #c9c9c9; }
+
+  .header .slogan {
+    margin-left: 20px;
+    width: 310px;
+    display: inline-block; }
+    .header .slogan img {
+      width: 100%; }
+
+  .agency_box .lr_list {
+    width: 86%;
+    padding-left: 3%; }
+    .agency_box .lr_list figure h4 {
+      padding-bottom: 6px;
+      margin-bottom: 6px; }
+    .agency_box .lr_list figure figcaption {
+      width: 68%; } }
+@media only screen and (max-width: 768px) {
+  * {
+    font-family: 'HanHei SC', 'PingFang SC', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial', sans-serif,"微软雅黑"; }
+
+  body {
+    font-size: 14px; }
+
+  .userAgreement {
+    font-size: 16px; }
+    .userAgreement h3 {
+      font-size: 18px; }
+
+  .agency_box .lr_list {
+    width: 86%;
+    padding-left: 3%; }
+
+  .pagination {
+    padding: 0px; }
+    .pagination i {
+      vertical-align: top; }
+
+  .header .wrapper {
+    width: 768px; }
+
+  .banner, .nav, .footer, .copyright {
+    width: 768px; }
+
+  .nav .wrapper {
+    margin: 0 auto; }
+
+  .home .wrapper {
+    width: auto; }
+
+  .wrapper {
+    width: auto;
+    margin: 0 10px;
+    overflow: hidden;
+    width: 768px;
+    box-sizing: border-box; }
+
+  .item_list header {
+    padding-top: 35px; }
+    .item_list header h2 {
+      line-height: 40px;
+      padding-bottom: 0px;
+      font-weight: 500; }
+      .item_list header h2 i {
+        top: auto;
+        height: 18px; }
+    .item_list header p {
+      color: #333333;
+      font-weight: 300;
+      line-height: 20px; }
+
+  .banner dl {
+    display: none; }
+
+  .home {
+    position: static;
+    top: auto;
+    left: auto;
+    margin: 0 auto; }
+    .home .nav {
+      position: relative;
+      width: 100%;
+      border-radius: 0px;
+      top: 0px; }
+
+  .box-right .order dd .col *:last-child:not(.row) {
+    padding-bottom: 0; }
+
+  .nav ul li {
+    font-size: 17px;
+    margin-left: 0px; }
+
+  .report {
+    margin-top: 20px; }
+    .report header {
+      padding-bottom: 0px; }
+    .report ul label {
+      padding: 10px 0 0 0; }
+    .report ul li {
+      width: 100%; }
+      .report ul li input {
+        width: 100%;
+        box-sizing: border-box; }
+    .report ul .submitBtn {
+      position: static;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 20px; }
+    .report ul .getCode {
+      right: 0px;
+      height: 36px;
+      line-height: 36px; }
+
+  .item_list .pic_list ul {
+    margin-left: -1.3%; }
+    .item_list .pic_list ul li {
+      width: 32%;
+      margin-left: 1.3%; } }
+@media only screen and (width: 768px) {
+  .header .wrapper, .wrapper {
+    width: 748px; }
+
+  .home {
+    width: auto;
+    left: 0px; }
+    .home .nav {
+      left: 10px;
+      top: 140px; }
+
+  .item_list .department_list .movingBoxes .mb-left {
+    left: -12px; }
+  .item_list .department_list .movingBoxes .mb-right {
+    right: -12px; } }
+@media only screen and (max-width: 767px) {
+  .header .slogan {
+    margin-left: 20px;
+    width: 320px;
+    display: inline-block; }
+    .header .slogan img {
+      width: 100%; }
+
+  .wechat-pay-dialog {
+    height: 400px; } }

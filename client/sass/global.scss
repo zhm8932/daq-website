@@ -747,7 +747,7 @@ select {
       border:1px solid #f2f2f2;
       margin-bottom: 20px;
       ul {
-        padding: 10px 19px;
+        padding: 10px 10px;
         font-size: 16px;
         i {
           width: 6px;
@@ -758,7 +758,8 @@ select {
           margin-right: 10px;
         }
         li {
-          width: 50%;
+          width: 40%;
+          margin:0 5%;
           float: left;
           line-height: 40px;
           height: 40px;
@@ -781,13 +782,13 @@ select {
         color: $white;
       }
       ul {
-
+        margin:0 10px;
         li {
           line-height: 50px;
           height: 50px;
           overflow: hidden;
           border-bottom: 1px solid $bdrc_f2;
-          padding: 0 19px;
+          padding: 0 5%;
         }
         i {
           background-position: -174px -99px;
@@ -1267,10 +1268,10 @@ select {
       overflow: hidden;
       margin-right: -2px;
       img {
-        float: left;margin: 0 40px 20px 0;width: 170px;
+        float: left;margin: 0 30px 20px 0;width: 170px;
       }
       p {
-        padding: 10px 0 0 0;
+        padding: 10px 5px 0 0;
       }
       a {
         color: $f2;
