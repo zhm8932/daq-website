@@ -7,16 +7,15 @@ define(function(require){
 
     console.log("login:")
 
-    var masterImg = $('.master_img');
 
+    console.log(1111);
 
-    masterImg.load(function(){
-        console.log(1111);
-        $('.touchslider-viewport').css('height',masterImg.height());
-
-        console.log(masterImg.height());
-        console.log($('.touchslider-viewport').height());
-    });
+    //
+    //
+    // function changeHeight(obj){
+    //     console.log(masterImg.height());
+    //     $('.touchslider-viewport').css('height',masterImg.height());
+    // }
 
     $(function(){
         require('../imgAuto');
@@ -40,6 +39,7 @@ define(function(require){
         });
 
 
+        $('.goods_basic .bd').css('height','0px');
         if(checkArea()){
             $('#addCartBtn').on('click',function(){
                 addToCart();
@@ -259,7 +259,7 @@ define(function(require){
                 "goodsId": goodsId,
                 "hospital":$('#hospital').val()
             };
-
+            $('#addCartBtn').addClass('disabled').off('click');
             utils.SendAjax({
                 url: '/trade/cart/addItem',
                 param: param,
@@ -273,8 +273,12 @@ define(function(require){
                     }).hideMsg();
                     //-login.getCartCount();
                     login.cartCoutAddOne()
-
+                    $('#addCartBtn').removeClass('disabled').on('click',addToCart);
+                },
+                errorFun:function(){
+                    $('#addCartBtn').removeClass('disabled').on('click',addToCart);
                 }
+
             });
         });
 

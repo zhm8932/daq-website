@@ -64,7 +64,9 @@
       }
     }
     dd{
-      width: 53%;float: right;
+      //position:absolute;right:0;
+      float:right;
+      width: 53%;
       #area.none{display:none;}
       h1{font-size: 24px;}
       .price{

@@ -5,6 +5,8 @@ block content
     include ../includes/nav
     .positon.wrapper
         |您的位置为：首页 <em>#{sep}</em> 筛查服务 <em>#{sep}</em> #{title}
+    script(src="/public/js/libs/1.8.3/jquery.js")
+
     if get_goods_detail_success
         include goods_mixin
         -var coverImages,detailImages;
@@ -41,7 +43,13 @@ block content
                             else
                                 .bd
                                     img(src='#{detailImages[0]}',alt=goods_detail.goodsName)
-
+                    script.
+                        var masterImg = $('.master_img').eq(0);
+                        masterImg.on('load', function () {
+                            console.log(222);
+                            console.log(masterImg.height());
+                            $('.touchslider-viewport').css('height', masterImg.height());
+                        });
 
                     dd
                         h1= goods_detail.goodsName
@@ -137,5 +145,6 @@ block content
     form#submitForm(action = "/trade/order/comfirmView",method="POST")
         input(type="hidden",name="items")
         input(type="hidden",name="totalPrice")
+
     include ../includes/footer
     script(src="/public/js/screenings/goods_detail.bundle.js")

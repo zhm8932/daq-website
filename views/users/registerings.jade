@@ -61,9 +61,10 @@ block content
                                 each item in data
                                     tr.item(data-id="#{item.id}",data-payid="#{item.payId}",data-cost="#{item.cost}")
                                         -var hosname = '';
-                                        each h in item.doctorDTO.hospitalReDepartments
-                                            -var name = h.hospitalName;
-                                            -hosname = name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
+                                        if item.doctorDTO
+                                            each h in item.doctorDTO.hospitalReDepartments
+                                                -var name = h.hospitalName;
+                                                -hosname = name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
                                         td
                                             p #{item.id}
                                             p.text-sec 下单时间:&nbsp;
@@ -133,10 +134,10 @@ block content
                                             em.text-sec 已取消
                                 dt
                                     -var hosname = '';
-                                    each h in item.doctorDTO.hospitalReDepartments
-                                        -var name = h.hospitalName;
-                                        -hosname = name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
                                     if item.doctorDTO
+                                        each h in item.doctorDTO.hospitalReDepartments
+                                            -var name = h.hospitalName;
+                                            -hosname = name.substring(name.indexOf('（')+1,name.indexOf('）')) || name;
                                         p #{item.doctorDTO.doctorName}&nbsp;#{item.doctorDTO.title}
                                         p.text-sec #{hosname}
 

@@ -4,7 +4,9 @@
 .red {
   color: #FF0000
 }
-
+a:hover{
+  cursor:pointer;
+}
 .container .redBg {
   background-color: #FF0000;
   color: #fff;
@@ -457,7 +459,8 @@ select {
       width: 1px;
       height: 12px;
       background-color: #399CB2;
-      border-right: 1px solid #5dc5dc;
+      background-position:0 -5px;
+      //border-right: 1px solid #5dc5dc;
       float: right;
       position: absolute;
       right: 0px;
@@ -538,16 +541,19 @@ select {
       }
     }
     p {
-      width:95%;
       margin:0 auto;
       color: $gray9B;
       //font-size: 16px;
+      &.short{
+        width:95%;
+      }
     }
   }
 
   .standard_header{
     border: 2px solid $bdrc_48B;
     h2{
+      padding: 0 8px;
       background-color: $bgc_gray_F5;
       margin: -15px 0;display: inline-block;position: relative;top: -8px;
     }
@@ -738,10 +744,10 @@ select {
     }
 
     .category, .recommend {
-      @include bdr($bdrc_ddd);
+      border:1px solid #f2f2f2;
       margin-bottom: 20px;
       ul {
-        padding: 10px;
+        padding: 10px 19px;
         font-size: 16px;
         i {
           width: 6px;
@@ -781,7 +787,7 @@ select {
           height: 50px;
           overflow: hidden;
           border-bottom: 1px solid $bdrc_f2;
-          padding: 0 10px;
+          padding: 0 19px;
         }
         i {
           background-position: -174px -99px;
