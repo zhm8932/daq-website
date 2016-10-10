@@ -418,7 +418,7 @@ select {
     float: left;
     background-size: 100%;position:relative;
     img{width: 100%}
-    p{position: absolute;width:80%;left: 50%;bottom:-1px;text-indent: 0;text-align: center;color:$textColor;background:$white;letter-spacing: 3px;font-size:12px;margin-left: -40%;-webkit-transform:scale(0.7);height:24px;line-height:24px;z-index:10}
+    p{position: absolute;width:80%;left: 50%;bottom:-1px;text-indent: 0;text-align: center;color:#727171;background:$white;letter-spacing: 3px;font-size:12px;margin-left: -40%;-webkit-transform:scale(0.75);height:24px;line-height:24px;z-index:10}
   }
   .slogan {
     height: 30px;
@@ -1105,8 +1105,8 @@ select {
     }
     i{padding:0 8px;color: $textc_48B;}
   }
-  .lgbg{width: 42px;height: 42px;display: inline-block;position: absolute;left:-6px;bottom:-6px;background: url("../images/lg_l.png") no-repeat}
-  .lgrt{left:auto;right: -6px;background: url("../images/lg_r.png") no-repeat}
+  //.lgbg{width: 42px;height: 42px;display: inline-block;position: absolute;left:-6px;bottom:-6px;background: url("../images/lg_l.png") no-repeat}
+  //.lgrt{left:auto;right: -6px;background: url("../images/lg_r.png") no-repeat}
 }
 .registerBox,.rPasswordBox{
   margin-top: 40px;
