@@ -5,11 +5,6 @@ define(function(require){
 
     require('touchslider');
 
-    console.log("login:")
-
-
-    console.log(1111);
-
     //
     //
     // function changeHeight(obj){

@@ -76,7 +76,6 @@
 				// viewportHeight = viewport.children().height();
 				// viewportHeight = viewportHeight==0?viewport.children().height():viewportHeight;
 			}
-
 			// console.log(viewport)
 			// console.log("viewport.children().height():",viewport.children().height())
 			// console.log("viewport.height():",viewport.height())

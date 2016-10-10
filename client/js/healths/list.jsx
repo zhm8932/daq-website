@@ -6,7 +6,7 @@ $('.ellips').ellipsis({
     row:1,
     char:'…',
     callback: function() {
-        console.log($(this).text());
+        // console.log($(this).text());
     }
 });
 // ReactDOM.render(<AskBox data='' pageCount=''/>,document.querySelector('#ask_test'));
