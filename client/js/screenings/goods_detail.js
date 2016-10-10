@@ -5,7 +5,18 @@ define(function(require){
 
     require('touchslider');
 
-    // //console.log("login:",login)
+    console.log("login:")
+
+
+    console.log(1111);
+
+    //
+    //
+    // function changeHeight(obj){
+    //     console.log(masterImg.height());
+    //     $('.touchslider-viewport').css('height',masterImg.height());
+    // }
+
     $(function(){
         require('../imgAuto');
 
@@ -28,6 +39,7 @@ define(function(require){
         });
 
 
+        $('.goods_basic .bd').css('height','0px');
         if(checkArea()){
             $('#addCartBtn').on('click',function(){
                 addToCart();
@@ -152,11 +164,9 @@ define(function(require){
             if($(document).scrollTop() + topBarHeight > orignTop){
                 tab.css('position','fixed').css({'top':topBarHeight+'px','width':width});
                 $('#tab-copy').removeClass('none');
-                console.log('悬浮');
             }else{
                 tab.css('position','static').css('width',width+'px');
                 $('#tab-copy').addClass('none');
-                // console.log('原始');
             }
         });
     };
@@ -249,7 +259,7 @@ define(function(require){
                 "goodsId": goodsId,
                 "hospital":$('#hospital').val()
             };
-
+            $('#addCartBtn').addClass('disabled').off('click');
             utils.SendAjax({
                 url: '/trade/cart/addItem',
                 param: param,
@@ -263,8 +273,12 @@ define(function(require){
                     }).hideMsg();
                     //-login.getCartCount();
                     login.cartCoutAddOne()
-
+                    $('#addCartBtn').removeClass('disabled').on('click',addToCart);
+                },
+                errorFun:function(){
+                    $('#addCartBtn').removeClass('disabled').on('click',addToCart);
                 }
+
             });
         });
 

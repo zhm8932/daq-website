@@ -1,1 +1,1 @@
-define(function(a,n,e){function o(a){for(var n=location.pathname,e=$(a),o=($(".nav ul li.on a").attr("href"),0),r=e.length;o<r;o++){var s=$(e[o]).find("a").attr("href");s.search(n)!=-1&&"/screenings/goods"!=n?$(e[o]).addClass("on"):s.search(n)!=-1&&$(e[0]).addClass("on")}}e.exports=o});
+define(function(a,n,e){function o(a){for(var n=location.pathname,e=$(a),o=($(".nav ul li.on a").attr("href"),0),r=e.length;r>o;o++){var s=$(e[o]).find("a").attr("href");-1!=s.search(n)&&"/screenings/goods"!=n?$(e[o]).addClass("on"):-1!=s.search(n)&&$(e[0]).addClass("on")}}e.exports=o});

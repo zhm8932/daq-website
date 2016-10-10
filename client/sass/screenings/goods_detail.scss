@@ -10,7 +10,6 @@
   dl{
     dt{
       width: 43%;float: left;
-      overflow: hidden;
       padding-bottom: 20px;
       .touchslider-viewport{
         margin-bottom: -5px;
@@ -65,7 +64,9 @@
       }
     }
     dd{
-      width: 53%;float: right;
+      //position:absolute;right:0;
+      float:right;
+      width: 53%;
       #area.none{display:none;}
       h1{font-size: 24px;}
       .price{

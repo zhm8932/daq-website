@@ -1,1 +1,144 @@
-webpackJsonp([27],{0:function(t,o,n){n(215),t.exports=n(7)},215:function(t,o,n){var e;e=function(t,o,e){function a(t,o){var n={pageSize:100,useState:o,pageIndex:1};u.SendAjax({url:"/users/coupon/list",param:n,method:"GET",tipText:"获取优惠券",callback:function(o){var n=o.data,e=[];if(n.length<=0)$("#coupon-table tbody").html('<tr class="text-center"><td colspan="5">暂无优惠券记录</td></tr>');else{for(var a=0;a<n.length;a++)e.push(c(n[a]));$("#coupon-table tbody").html(e.join(""))}$(".coupon-state li.on").removeClass("on"),t.addClass("on")},errorFun:function(t){}})}function i(t){var o=$("#coupon-code").val().trim();return o?(t.addClass("disabled").off("click"),void u.SendAjax({url:"/users/coupon/addByInvite",param:{inviteCode:o},method:"POST",tipText:"添加优惠券",callback:function(o){u.ShowComfirmDialog({tipText:"领取成功!",noConfirmBtn:!0}),$("#coupon-code").val("");var n=$(c(o.data));$("#coupon-table tbody tr").eq(0).before(n),$("#coupon-table tbody tr.no-record").remove(),t.removeClass("disabled").on("click",function(){i(t)})},errorFun:function(){t.removeClass("disabled").on("click",function(){i(t)})}})):(u.ShowComfirmDialog({tipText:"请输入优惠码",noConfirmBtn:!0}),!1)}function c(t){var o,n,e=[],a=JSON.parse(t.fitArea),i=[],c=[];for(n=0;n<a.length;n++)i.push(a[n].hospitalName),c.push(a[n].hospitalCode);return"cash"==t.ftype?(o=parseInt(t.enoughMoney),e.push("<tr>"),e.push("<td>"+(parseFloat(t.faceValue)/100).toFixed(2)+"元</td>"),0==o?e.push("<td>无门槛</td>"):e.push("<td>满"+(o/100).toFixed(2)+"元使用</td>")):"discount"==t.ftype&&(e.push("<tr>"),e.push("<td>"+t.discount+"折</td>"),e.push("<td>最多可抵"+(parseFloat(t.mostDeduction)/100).toFixed(2)+"元</td>")),e.push("<td>限"+i.join("、")+"</td>"),e.push("<td >"+u.GetLoacalDateString(t.beginTime)+" 至 "+u.GetLoacalDateString(t.endTime)+"</td></tr>"),e.join("")}var u=n(4);n(9);$(".date").each(function(t,o){var n=$(o),e=parseInt(n.html()),a=u.GetLoacalDateString(e);n.html(a)}),$(".add-coupon").on("click",function(){i($(this))}),$(".coupon-state .unuse").on("click",function(){a($(this),"1")}),$(".coupon-state .used").on("click",function(){a($(this),"2")}),$(".coupon-state .overdue").on("click",function(){a($(this),"3")})}.call(o,n,o,t),!(void 0!==e&&(t.exports=e))}});
+webpackJsonp([26],{
+
+/***/ 0:
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(213);
+	module.exports = __webpack_require__(7);
+
+
+/***/ },
+
+/***/ 213:
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, module) {
+	    var utils = __webpack_require__(4);
+	    var login = __webpack_require__(9);
+
+	    $('.date').each(function(index,ele){
+	        var $this = $(ele);
+	        var timestamp = parseInt($this.html());
+	        var time = utils.GetLoacalDateString(timestamp);
+	        $this.html(time);
+	    });
+
+	    $('.add-coupon').on('click',function(){
+	        addCoupon($(this));
+	    });
+
+
+	    $('.coupon-state .unuse').on('click',function(){
+	        getCouponList($(this),'1');
+	    });
+	    $('.coupon-state .used').on('click',function(){
+	        getCouponList($(this),'2');
+	    });
+	    $('.coupon-state .overdue').on('click',function(){
+	        getCouponList($(this),'3');
+	    });
+
+	    function getCouponList($this,useState){
+	        var param = {
+	            pageSize: 100,
+	            useState: useState,
+	            pageIndex: 1
+	        };
+	        utils.SendAjax({
+	            url: '/users/coupon/list',
+	            param: param,
+	            method: 'GET',
+	            tipText: '获取优惠券',
+	            callback: function (result) {
+	                var data = result.data;
+	                var tableArr = [];
+	                if (data.length <= 0) {
+	                    $('#coupon-table tbody').html('<tr class="text-center"><td colspan="5">暂无优惠券记录</td></tr>');
+	                } else {
+	                    for (var i = 0; i < data.length; i++) {
+	                        tableArr.push(buildCouponTableTr(data[i]));
+	                    }
+	                    $('#coupon-table tbody').html(tableArr.join(''));
+	                }
+	                $('.coupon-state li.on').removeClass('on');
+	                $this.addClass('on');
+	            },
+	            errorFun: function (result) {
+
+	            }
+	        });
+
+	    }
+
+	    function addCoupon($this) {
+	        var inviteCode = $('#coupon-code').val().trim();
+	        if(!inviteCode){
+	            utils.ShowComfirmDialog({tipText:'请输入优惠码',noConfirmBtn:true});
+	            return false;
+	        }
+	        $this.addClass('disabled').off('click');
+	        utils.SendAjax({
+	            url: '/users/coupon/addByInvite',
+	            param: {inviteCode: inviteCode},
+	            method: 'POST',
+	            tipText: '添加优惠券',
+	            callback: function (result) {
+	                utils.ShowComfirmDialog({tipText:'领取成功!',noConfirmBtn:true});
+	                $('#coupon-code').val('');
+	                var tr = $(buildCouponTableTr(result.data));
+	                $('#coupon-table tbody tr').eq(0).before(tr);
+	                $('#coupon-table tbody tr.no-record').remove();
+
+	                $this.removeClass('disabled').on('click', function () {
+	                    addCoupon($this);
+	                });
+	            },
+	            errorFun: function () {
+	                $this.removeClass('disabled').on('click', function () {
+	                    addCoupon($this);
+	                });
+	            }
+	        });
+	    }
+
+
+	    function buildCouponTableTr(data) {
+	        var trArr = [];
+	        var enoughMoney;
+	        var fitAreaArr = JSON.parse(data.fitArea);
+	        var j;
+	        var hospitalNameList = [];
+	        var hospitalCodeList = [];
+	        for (j = 0; j < fitAreaArr.length; j++) {
+	            hospitalNameList.push(fitAreaArr[j].hospitalName);
+	            hospitalCodeList.push(fitAreaArr[j].hospitalCode);
+	        }
+
+	        if (data.ftype == 'cash') {
+	            enoughMoney = parseInt(data.enoughMoney);
+	            trArr.push('<tr>');
+	            trArr.push('<td>' + (parseFloat(data.faceValue) / 100).toFixed(2) + '元</td>');
+
+	            if (enoughMoney == 0) {
+	                trArr.push('<td>无门槛</td>');
+	            } else {
+	                trArr.push('<td>满' + (enoughMoney / 100).toFixed(2) + '元使用</td>');
+	            }
+	        } else if (data.ftype == 'discount') {
+	            trArr.push('<tr>');
+	            trArr.push('<td>' + data.discount + '折</td>');
+	            trArr.push('<td>最多可抵' + (parseFloat(data.mostDeduction) / 100).toFixed(2) + '元</td>');
+	        }
+
+	        trArr.push('<td>限' + hospitalNameList.join('、') + '</td>');
+
+	        trArr.push('<td >' + utils.GetLoacalDateString(data.beginTime) + ' 至 ' + utils.GetLoacalDateString(data.endTime) + '</td></tr>');
+
+	        return trArr.join('');
+
+	    }
+	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ }
+
+});
