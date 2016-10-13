@@ -459,6 +459,13 @@
     *{font-size: 14px;font-family:'微软雅黑';}
     ol{padding-left: 22px;}
   }
+  .img_list{
+    margin-right: -5%;
+    figure{width: 44.5%;margin-right:5%;
+      figcaption{padding-bottom: 15px;}
+    }
+
+  }
   .health aside{width: 100%}
   .health_detail{width: 100%;
     article,p{font-size: 18px;}}

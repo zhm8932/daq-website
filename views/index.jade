@@ -132,6 +132,8 @@ block content
             | #{parseFloat(arr) / 100}
           else
             | #{parseFloat(arr) / 100}.00
+        mixin transferUnit2(arr)
+          |#{(parseFloat(arr) / 100)}
         if get_goods_list_success
           ul
             each item,index in get_goods_list
@@ -155,7 +157,10 @@ block content
                   .price
                     span.new
                       em ￥
-                      +transferUnit(item.discountPrice)
+                      if !browser.mobile
+                        +transferUnit(item.discountPrice)
+                      else
+                        +transferUnit2(item.discountPrice)
                     span.old
                       | 原价￥
                       +transferUnit(item.price)
