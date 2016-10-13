@@ -19,9 +19,6 @@ webpackJsonp([12],{
 	    __webpack_require__(198);
 	    __webpack_require__(199);
 
-
-	    
-
 	    $('#sliderBox').movingBoxes({
 	        startPanel   : 2,       // 从第一个li开始
 	        reducedSize  : .6,      // 缩小到原图50%的尺寸
@@ -34,7 +31,6 @@ webpackJsonp([12],{
 	    if(utils.browser.mobile){
 	        var $department_list_li=$('.department_list ul li')
 	        var height = $department_list_li.height();
-	        console.log("height:",height)
 	        $department_list_li.find('h4').css({"height":height,"line-height":height+'px'});
 	    }
 
@@ -303,7 +299,11 @@ webpackJsonp([12],{
 	        });
 	      }
 	      $(window).bind("resize", function() {
-	        return _this.update();
+	        if(!mobile){
+	          console.log("mobile")
+	          return _this.update();
+	        }
+
 	      });
 	      this._setActive();
 	      if (this.options.play.auto) {

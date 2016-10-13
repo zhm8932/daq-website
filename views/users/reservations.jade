@@ -20,7 +20,9 @@ block content
                 -var orderState = item.orderState;
                 dl.order(data-id="#{item.id}")
                     dt
-                        span 订单编号：#{item.goodsInfo.orderId}
+                        span 订单编号：
+                            if item.goodsInfo
+                                |#{item.goodsInfo.orderId}
                         span 预约编号：#{item.id}
                         time.fr.date-time.text-sec #{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')}
                     dd

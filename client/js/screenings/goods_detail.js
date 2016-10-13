@@ -33,8 +33,7 @@ define(function(require){
             viewport: ".touchslider-viewport"  //内容区域
         });
 
-
-        $('.goods_basic .bd').css('height','0px');
+        // $('.goods_basic .bd').css('height','0px');
         if(checkArea()){
             $('#addCartBtn').on('click',function(){
                 addToCart();

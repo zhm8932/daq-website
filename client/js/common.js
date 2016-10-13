@@ -299,6 +299,7 @@ define(function (require, exports, module) {
 
     var $nav_toggle = $('.nav_toggle');
     var $left_nav = $('.left-nav');
+
     $nav_toggle.click(function () {
         $left_nav.slideToggle();
         $(this).parents('aside').toggleClass('active');

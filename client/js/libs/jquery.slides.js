@@ -202,7 +202,11 @@
         });
       }
       $(window).bind("resize", function() {
-        return _this.update();
+        if(!mobile){
+          console.log("mobile")
+          return _this.update();
+        }
+
       });
       this._setActive();
       if (this.options.play.auto) {
