@@ -1,10 +1,10 @@
 {
   "data": [
-    {"id":"2","area":"guangzhou","title":"广州都安全医疗","isOnline":true,"serviceType":"提供妇科、男科、不孕不育科、皮肤性病科的筛查和诊疗服务","address":"广州市越秀区环市东路422号2楼201室","serviceArea":"越秀区、天河区、荔湾区、海珠区","imgUrl":"/public/images/agencys/ny_img2.jpg"},
-    {"id":"1","area":"shenzhen","title":"深圳都安全医疗","isOnline":false,"serviceType":"提供妇科、男科、不孕不育科、皮肤性病科的筛查和诊疗服务","address":"深圳市福田区车公庙深业泰然大厦B座2-12","serviceArea":"福田区、南山区","imgUrl":"/public/images/agencys/ny_img1.jpg"},
-    {"id":"3","area":"beijing","title":"北京都安全医疗","isOnline":false,"serviceType":"提供妇科、男科、不孕不育科、皮肤性病科的筛查和诊疗服务","address":"北京市朝阳区朝外大街18号丰联广场三层","serviceArea":"朝阳区、东城区","imgUrl":"/public/images/agencys/ny_img3.jpg"},
-    {"id":"4","area":"qingdao","title":"青岛都安全医疗","isOnline":false,"serviceType":"提供妇科、男科、不孕不育科、皮肤性病科的筛查和诊疗服务","address":"青岛市市南区福州南路45号","serviceArea":"市南区、市北区","imgUrl":"/public/images/agencys/ny_img4.jpg"},
-    {"id":"5","area":"nanjing","title":"南京都安全医疗","isOnline":false,"serviceType":"提供妇科、男科、不孕不育科、皮肤性病科的筛查和诊疗服务","address":"南京市建邺区江东中路289号5楼","serviceArea":"建邺区、雨花区","imgUrl":"/public/images/agencys/ny_img5.jpg"},
-    {"id":"6","area":"xian","title":"西安都安全医疗","isOnline":false,"serviceType":"提供妇科、男科、不孕不育科、皮肤性病科的筛查和诊疗服务","address":"西安市碑林区南大街39号","serviceArea":"碑林区、莲湖区、新城区、未央区","imgUrl":"/public/images/agencys/ny_img6.jpg"}
+    {"id":"2","area":"guangzhou","title":"都安全医疗广州区庄诊所","isOnline":true,"serviceType":"提供妇科、男科、不孕不育科、皮肤性病科的筛查和诊疗服务","address":"广州市越秀区环市东路422号星程酒店2楼","serviceArea":"越秀区、天河区、荔湾区、海珠区","imgUrl":"/public/images/agencys/ny_img2.jpg","des":"都安全高端连锁门诊服务于对就诊环境、服务、隐私、便捷、快速、专业要求较高，自我健康管理意识强的中高端人群。设置有妇科、不孕不育科、皮肤性病科、预防保健等临床科室，以及检验科等辅助科室。提供符合国际标准的常见疾病及专科病种的诊疗服务，包括健康咨询、快速精准筛查、检测、个性化治疗、预防保健计划等持续性医疗保健服务。"},
+    {"id":"1","area":"shenzhen","title":"都安全医疗深圳泰然诊所","isOnline":false,"serviceType":"提供妇科、男科、不孕不育科、皮肤性病科的筛查和诊疗服务","address":"深圳市福田区车公庙泰然金谷2-12","serviceArea":"福田区、南山区","imgUrl":"/public/images/agencys/ny_img1.jpg"},
+    {"id":"3","area":"beijing","title":"都安全医疗北京丰联诊所","isOnline":false,"serviceType":"提供妇科、男科、不孕不育科、皮肤性病科的筛查和诊疗服务","address":"北京市朝阳区朝外大街18号丰联广场3楼","serviceArea":"朝阳区、东城区","imgUrl":"/public/images/agencys/ny_img3.jpg"},
+    {"id":"4","area":"qingdao","title":"都安全医疗青岛福州南路诊所","isOnline":false,"serviceType":"提供妇科、男科、不孕不育科、皮肤性病科的筛查和诊疗服务","address":"青岛市市南区福州南路45号首层及2楼","serviceArea":"市南区、市北区","imgUrl":"/public/images/agencys/ny_img4.jpg"},
+    {"id":"5","area":"nanjing","title":"都安全医疗南京奥体诊所","isOnline":false,"serviceType":"提供妇科、男科、不孕不育科、皮肤性病科的筛查和诊疗服务","address":"南京市建邺区江东中路289号联强大厦5楼","serviceArea":"建邺区、雨花区","imgUrl":"/public/images/agencys/ny_img5.jpg"},
+    {"id":"6","area":"xian","title":"都安全医疗西安碑林南大街诊所","isOnline":false,"serviceType":"提供妇科、男科、不孕不育科、皮肤性病科的筛查和诊疗服务","address":"西安市碑林区南大街39号世纪金花大厦6楼","serviceArea":"碑林区、莲湖区、新城区、未央区","imgUrl":"/public/images/agencys/ny_img6.jpg"}
   ]
 }

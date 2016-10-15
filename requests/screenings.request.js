@@ -50,7 +50,9 @@ exports.get_goods_list = function (req,res,next) {
 };
 
 exports.get_goods_detail = function (req,res,next) {
+
     var goodsId = req.params.goodsId;
+    console.log("goodsId:",goodsId)
 
     var bizParam = {"goodsId":goodsId};
 

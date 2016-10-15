@@ -11,6 +11,6 @@ var Middlewares = require('../requests/middlewares.request.js')
 
 /* GET users listing. */
 router.get('/goods(/:id)?', Middlewares.get_goods_category,Requests.get_goods_list,Handlers.get_goods_list);
-router.get('/goods/detail/:goodsId',Requests.get_goods_detail,Handlers.get_goods_detail);
+router.get('/goods/detail/:goodsId',Middlewares.get_service_area,Requests.get_goods_detail,Handlers.get_goods_detail);
 
 module.exports = router;

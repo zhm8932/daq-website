@@ -23,14 +23,14 @@ block content
                         figure.clearfix
                             -var href = 'javascript:;'
                             if item.isOnline
-                                -href = "/agencys/detail/"+item.id
+                                -href = "/agencys/detail/"+item.id+'.html'
                             a.pic(href=href,title=item.title)
                                 if browser.ie
                                     img(src=item.imgUrl,alt='#{item.title}')
                                 else
                                     img(data-original=item.imgUrl,alt='#{item.title}')
                                 if browser.mobile
-                                    h4 #{item.title}
+                                    h4 #{item.title.replace('都安全医疗','')}
                             figcaption
                                 if !browser.mobile
                                     h4: a(href=href,title=item.title) #{item.title}

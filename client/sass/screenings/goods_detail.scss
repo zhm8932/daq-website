@@ -153,5 +153,11 @@
     }
     img{display:block;margin: 10px auto;}
     table{margin: 0 auto;}
+    h6{background-color: $bgc_48B;line-height: 50px; border-radius: 10px 10px 0 0;padding: 0 20px;font-size:24px;color: $white;letter-spacing:2px;}
+    .area{
+      border: 1px solid $bdrc_ddd;padding: 20px;font-size: 18px;margin-bottom: 20px;border-radius:0 0 10px 10px;
+      strong{padding-bottom: 10px;display: block;}
+
+    }
   }
 }

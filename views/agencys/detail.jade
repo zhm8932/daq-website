@@ -24,14 +24,13 @@ block content
             hgroup
                 h4
                     i.icon.jieshao
-                    |门诊介绍
-                p 都安全高端连锁门诊服务服务于对就诊环境、服务、隐私、便捷、快速、专业要求较高，自我健康管理意识强的中高端人群。设置有妇科、不孕不育科、皮肤性病科、预防保健等临床科室，以及检验科等辅助科室。提供符合国际标准的常见疾病及专科病种的诊疗服务，包括健康咨询、快速精准筛查、检测、个性化治疗、预防保健计划等持续性医疗保健服务。
-
+                    |诊所介绍
+                p #{get_agency_detail.des}
             hgroup
                 h4
                     i.icon.address
-                    |门诊地址
-                p 广州市越秀区环市东路422号2楼201室
+                    |诊所地址
+                p #{get_agency_detail.address}
     section.info_list.clearfix
         .wrapper
             //-div= JSON.stringify(get_department_list)

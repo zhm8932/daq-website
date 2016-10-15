@@ -125,6 +125,24 @@ block content
                 h3
                     i.icon
                     | 检测须知
+                h6 服务区域
+                aside.area
+                    if !get_service_area_success
+                        |服务区域获取失败
+                    else
+                        -var address = JSON.parse(locals_address)[1];
+                        strong #{address.name}已开通服务
+                            -var area = ''
+                            -var mark=''
+                            -for(var i=0,len=get_service_area.length;i<len;i++){
+                                if(i<len-1)
+                                    -mark='、'
+                                else
+                                    -mark='，'
+                                - area += get_service_area[i].name+mark
+                            -}
+                        p #{address.name}仅限 #{area}其他区域暂不提供服务
+
                 div!= goods_detail.summary
             article#content-faq
                 h3

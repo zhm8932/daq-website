@@ -13,16 +13,14 @@ global.config=config = require('../config');
 global.api = require('../utils/api')
 global.util= util = require('../utils/ajax');
 
-
-// console.log(global)
 //index.js首先会被加载
 
 router.use(function(req, res, next) {
 
     console.log('now:' + Date.now());
-    console.log('req.body',req.body);
+    // console.log('req.body',req.body);
     // console.log('req.session',req.session);
-    console.log('req.url',req.url);
+    // console.log('req.url',req.url);
     // console.log('req.host',req.host);
     // var host = req.host;
     // if(host=='localhost'){
@@ -42,14 +40,13 @@ router.use(function(req, res, next) {
 
     // req.session.locals_address = null;
     if(req.session&&req.session.locals_address){
-        console.log('session:address')
         res.locals.locals_address = JSON.stringify(req.session.locals_address);
     }else{
         req.session.locals_address = config.addressJSON;
         res.locals.locals_address = JSON.stringify(config.addressJSON);
     }
 
-    console.log("req.session.locals_address:",req.session.locals_address)
+    // console.log("req.session.locals_address:",req.session.locals_address)
     if(req.session.userInfo){
         //每次请求首页都会动态从session获取值，保存在本地变量中
         req.accountId = req.session.userInfo.userAllInfo.accountCommon.id;
@@ -60,18 +57,6 @@ router.use(function(req, res, next) {
     var browser = Tools.browser(req);
     global.browser = browser;
     res.locals.browser = browser;  //判断浏览器版本，模板调用
-
-
-
-
-    // //购物车数量:暂时不做
-    // if(req.session.cart_num){
-    //     res.locals.cart_num = req.session.cart_num;
-    // }else{
-    //     res.locals.cart_num = 0;
-    // }
-
-    // console.log('看你执行了几次');
     next();
 });
 

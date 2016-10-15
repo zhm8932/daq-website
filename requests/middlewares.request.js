@@ -7,6 +7,22 @@ var util = require('../utils/ajax');
 const path = require('path');
 const fs = require('fs');
 
+exports.get_service_area = function (req,res,next) {
+    var bizParam = {
+        activeState:1,
+        parentId:'2140010948244539022'
+    }
+
+    util.ajax('GET', api.GetListByParentId,req,res,bizParam, function (err,data) {
+        var json = JSON.parse(data);
+        if(json) {
+            console.log("goods_category:",err)
+            res.locals.get_service_area=req.get_service_area = json.data
+            res.locals.get_service_area_success = json.success
+        }
+        next()
+    });
+};
 exports.get_city = function(req,res,next){
     var bizParam = {
         "type":"district", //地区

@@ -10,7 +10,7 @@ exports.get_agency_list = function (req,res,next) {
         var json = JSON.parse(data.toString());
         var data = json.data;
         // console.log("data:",json)
-        console.log("data:",typeof  json);
+        // console.log("data:",typeof  json);
         if(area){
             data = data.filter(function (item,index) {
                 return item.area==area

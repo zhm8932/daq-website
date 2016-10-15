@@ -40,7 +40,7 @@ exports.get_cart_num = function (req,res,next) {
     console.log("req::url:",req.url);
     // console.log("browser:",browser);
     var accountId = req.accountId?req.accountId:req.body.accountId;
-    console.log("accountId:",accountId);
+    // console.log("accountId:",accountId);
     if(accountId){
         if(req.cookies&&req.cookies.cartNum){
             res.locals.cartNum=req.cookies.cartNum;
@@ -70,8 +70,8 @@ exports.get_cart_num = function (req,res,next) {
 }
 
 exports.get_wap_tit = function (req,res,next) {
-    // if(browser.mobile){
-    if(true){
+    if(browser.mobile){
+    // if(true){
         var url = req.url;
         var curTit = '';
         console.log("url:",url);

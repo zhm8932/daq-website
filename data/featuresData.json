@@ -26,7 +26,7 @@
       "des":"以中西医结合诊疗为基础，治疗女性不孕不育及内分泌紊乱的特色专科。能够进行卵泡监测、子宫输卵管超声造影、子宫内膜异位症中医中药、灌肠、埋线治疗。诊室配备一系列的国内先进仪器设备，开展内分泌紊乱、月经不调、排卵障碍、输卵管阻塞、免疫性不孕等各种原因导致的女性不孕的诊疗。",
       "clinics":["卵泡监测","子宫输卵管超声造影","月经不调中西医结合治疗","子宫内膜异位症中西医结合治疗","女性不孕症中西医结合治疗"],
       "imgIndex":"/public/images/department/zljg_img2.png",
-      "doctors":[{"doctorName":"王双","doctorTitle":"医生","imgUrl":"/public/images/features/sz_01.jpg"},{"doctorName":"李洁","doctorTitle":"医生","imgUrl":"/public/images/features/gj_03.jpg"},{"doctorName":"陈薇","doctorTitle":"医生","imgUrl":"/public/images/features/sz_03.jpg"},{"doctorName":"陈悦","doctorTitle":"医生","imgUrl":"/public/images/features/gj_01.jpg"}]
+      "doctors":[{"doctorName":"王双","doctorTitle":"医生","imgUrl":"/public/images/features/sz_01.jpg"},{"doctorName":"李洁","doctorTitle":"医生","imgUrl":"/public/images/features/gj_03.jpg"},{"doctorName":"陈蔚","doctorTitle":"医生","imgUrl":"/public/images/features/sz_03.jpg"},{"doctorName":"陈悦","doctorTitle":"医生","imgUrl":"/public/images/features/gj_01.jpg"}]
 
     },
     {
@@ -36,7 +36,7 @@
       "des":"<p>中医妇科充分发挥中医特色，辨证施治、求因治本、突出了一个“调”字、疗效可靠无明显副作用，同时结合现代诊疗技术，对不孕症、月经失调、女性生殖器官炎症、妇产科血症、多囊卵巢综合症、痛经、子宫腺肌病、子宫内膜异位症有较好的疗效</p>。<p>中医男科以中医、中西医结合为主，以患者安全和可靠疗效为宗旨，中西合璧，优势互补。诊治男科常见病、疑难病，其中尤以前列腺疾病、男性不育症、性功能障碍、男性更年期综合症、男性亚健康、生殖道感染为重点优势。根据不同类型的疾病，从病症、病因病理、危害、治疗、护理等方面，实现专业细分“专科专病专治”目标。<p>",
       "clinics":["中医妇科：不孕症、月经失调、女性生殖器官炎症、妇产科血症、多囊卵巢综合症、痛经、子宫腺肌病、子宫内膜异位症。","中医男科：男性盆底疼痛综合症的中医治疗，前列腺疾病综合治疗，阳痿、早泄、不射精症等性功能障碍治疗，弱精症、少精症等导致男性不育的中医特色治疗。"],
       "imgIndex":"/public/images/department/zljg_img4.png",
-      "doctors":[]
+      "doctors":[{"imgUrl":"/public/images/features/zhongyi_01.jpg"},{"imgUrl":"/public/images/features/zhongyi_02.jpg"},{"imgUrl":"/public/images/features/zhongyi_03.jpg"}]
     },
     {
       "id":"5",
@@ -45,7 +45,7 @@
       "des":"基于精准医疗，与世界顶级医疗企业深入合作并共建了符合国家ISO15189和美国CAP认证的PCR分子实验室，引进Roche Cobas4800 、BD AFFIRM VPⅢ、HOLOGIC PANTHER等国际高端医疗设备,采用基因检测、分子探针等先进的检测技术，开展了高危型HPV基因分型检测、阴道炎三项核酸检测等多种感染性病原体的定性和定量检测项目，与传统检测方法相比，具有灵敏度高、准确性强、窗口期短、报告快速的优势，实验室同时拥有专业经验丰富的检验医师专家团队，在实验室检测基础上，紧随检验发展新理念，检验医师走出实验室，作为实验室与临床之间的纽带，指导检验前端质量管理工作、参与病历点评、提供检验咨询等，与临床密切沟通与交流，深入解读检测报告，为患者的诊治提供更加快速、精准、个体化的体外诊断信息，同时整合线下、线上、邮寄等多种医疗模式，为患者创建了一个更方便、快捷和隐私的高品质检测服务环境。",
       "clinics":["高危型人乳头瘤病毒分型检测(HPV-14型：16、18、31、33、35、39、45、51、52、56、58、59、68 、66）","阴道炎三项核酸检测（BV/TV//VVC-DNA）","人类免疫缺陷病毒RNA核酸定量检测(HIV-RNA)","梅毒螺旋体核酸定性检测(TP-DNA)(待开展)","淋球菌核酸定性检测((NG-DNA)","沙眼衣原体核酸定性检测(CT-DNA)","生殖道支原体核酸定性检测(MG-RNA)","解脲脲原体核酸定性检测(UU-RNA)","乙型肝炎病毒核酸定量（HBV-DNA)","丙型肝炎病毒核酸定量（HCV-RNA）"],
       "imgIndex":"/public/images/department/zljg_img1.png",
-      "doctors":[{"doctorName":"何春承","doctorTitle":"检查师","imgUrl":"/public/images/features/fz_01.jpg"},{"doctorName":"黄增通","doctorTitle":"检查师","imgUrl":"/public/images/features/fz_02.jpg"},{"doctorName":"李结颖","doctorTitle":"检查师","imgUrl":"/public/images/features/fz_03.jpg"}]
+      "doctors":[{"doctorName":"何春承","doctorTitle":"检验师","imgUrl":"/public/images/features/fz_01.jpg"},{"doctorName":"黄增通","doctorTitle":"检验师","imgUrl":"/public/images/features/fz_02.jpg"},{"doctorName":"李结颖","doctorTitle":"检验师","imgUrl":"/public/images/features/fz_03.jpg"}]
     }
 
 

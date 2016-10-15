@@ -442,6 +442,14 @@
         &:last-of-type{margin-right: 0px;}
       }
     }
+    article{
+      h6{line-height:36px;font-size: 18px;border-radius: 5px 5px 0 0;padding-left: 10px;}
+      .area{
+        padding: 10px; font-size: 16px;border-radius: 0 0 5px 5px;
+        strong{padding-bottom:0px;}
+
+      }
+    }
   }
   .health_list{
     width: 100%;
@@ -1434,6 +1442,13 @@
   .agency_box .lr_list figure{
     figcaption{width: 54%;}
     .pic{width: 42%;}
+  }
+
+  .goods_basic dl dd .service_type mark{padding: 0px;}
+  .info_list .lr_list{
+    figure{
+      p{line-height: 20px; font-size: 13px;}
+    }
   }
   .item_list{
     .pic_list{
