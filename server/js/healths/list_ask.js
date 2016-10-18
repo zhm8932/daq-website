@@ -17,7 +17,7 @@ var AskList = React.createClass({displayName: "AskList",
                     return (
                         React.createElement("li", {key: item.id}, 
                             React.createElement("i", {className: "icon"}), 
-                            React.createElement("a", {href: "/healths/list/article/"+item.id}, item.title)
+                            React.createElement("a", {href: "/healths/article/"+item.id+".html"}, item.title)
                         )
                     )
                 })
@@ -53,7 +53,7 @@ var AskBox = React.createClass({displayName: "AskBox",
             return
         }
 
-        var url = '/healths/list/list_ask_web';
+        var url = '/healths/list_ask_web';
         $.ajax({
             type:'post',
             url: url,

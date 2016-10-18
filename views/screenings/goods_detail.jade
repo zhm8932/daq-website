@@ -4,9 +4,8 @@ block content
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
-        |您的位置为：首页 <em>#{sep}</em> 筛查服务 <em>#{sep}</em> #{title}
+        |您的位置为：<a href='/'>首页</a><em>#{sep}</em><a href='/screenings/goods'>筛查服务</a> <em>#{sep}</em> #{title}
     script(src="/public/js/libs/1.8.3/jquery.js")
-
     if get_goods_detail_success
         include goods_mixin
         -var coverImages,detailImages;
@@ -103,9 +102,6 @@ block content
                             button#addCartBtn.addCartBtn.submitBtn 加入购物车
                         form(action="/trade/cart/addItem",method="POST")
                             input(type="hidden",id="address",value="#{addressJSON}")
-
-
-
 
         section.goods_detail.wrapper
             #tab.tab

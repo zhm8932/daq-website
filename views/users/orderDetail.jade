@@ -7,7 +7,7 @@ block content
     .users
         include ../includes/nav
     .positon.wrapper
-        |您的位置：个人中心<em>#{sep}</em>我的订单<em>#{sep}</em>订单详情
+        |您的位置：个人中心<em>#{sep}</em><a href="/trade/order/list">我的订单</a><em>#{sep}</em>订单详情
     section.wrapper.userBox.clearfix
         -var orderStateJSON = {'1':'待支付','2':'已支付','3':'已取消','4':'退款中','5':'已退款'};
         if !data || !data.id

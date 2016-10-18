@@ -1,0 +1,24 @@
+User-agent: *
+Disallow:
+Disallow: /favicon.ico
+Disallow:/node_modules/
+Disallow:/images/
+Disallow:/css/
+Disallow:/config/
+Disallow:/logs/
+Disallow:/handlers/
+Disallow:/bin/
+Disallow:/client/
+Disallow:/requests/
+Disallow:/routes/
+Disallow:/server/
+Disallow:/utils/
+Disallow:/views/
+Disallow: /*.js$
+Disallow:/trade/cart/list/
+Disallow:/users/account/info/
+Disallow:/trade/order/list/
+Disallow:/users/reservation/list/
+Disallow:/users/register/list/
+Disallow:/users/coupon/listView?*
+Sitemap:/sitemap.xml

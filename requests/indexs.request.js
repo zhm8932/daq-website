@@ -4,6 +4,7 @@ var api = require('../utils/api');
 var util = require('../utils/ajax');
 var crypto = require('crypto');
 var dictionnary = require('../requests/dictionary.request');
+var fs = require('fs');
 
 exports.get_goods_list = function (req,res,next) {
     var goodsState = req.params.goodsState||2,
@@ -22,6 +23,32 @@ exports.get_goods_list = function (req,res,next) {
         req.get_goods_list = json;
         next()
     });
+};
+
+//robots抓取
+exports.robots = function (req,res,next) {
+    console.log("req.url:",req.url)
+    // res.send('rebots.txt')
+    var stream=fs.createReadStream('./robots.txt',{flags:'r'});
+    console.log("stream:",stream)
+    stream.pipe(res);
+
+    // fs.readFile("robots.txt", function (error, fileData) {
+    //     if (error) {
+    //         // 出现错误
+    //         console.log("error:",error)
+    //     }
+    //     // 操作fileData
+    //     res.format({
+    //         text: function(){
+    //             res.send(fileData)
+    //         },
+    //
+    //     });
+    //
+    // });
+
+
 };
 
 exports.login = function (req,res,next) {

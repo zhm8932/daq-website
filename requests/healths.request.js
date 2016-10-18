@@ -119,6 +119,7 @@ exports.get_article_list_recommend = function (req,res,next) {
 }
 exports.get_article_detail = function(req,res,next){
     var id = req.params.id;
+    id = id.split('.')[0]
     var bizParam = {"id": id};
     util.ajax('GET', api.ArticleDetail,req,res,bizParam, function (err,data) {
         var json = JSON.parse(data);

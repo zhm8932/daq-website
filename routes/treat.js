@@ -16,6 +16,8 @@ router.get('/regsource/list', function (req, res, next) {
         json.data.data = _tidyRegSourceList(json.data.data);
         res.render('treat/regList', {
             title: '诊疗服务',
+            keywords: '都安全,诊疗服务,宫颈癌预约,女性生殖检查,男性生殖检查',
+            description:'都安全提供两性生殖感染、宫颈癌筛查和女性阴道微生态等筛查诊疗一站式全流程医疗服务。',
             data: json.data
         });
     });

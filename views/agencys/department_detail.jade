@@ -6,7 +6,7 @@ block content
     include ../includes/nav
     .positon.wrapper
         if get_department_detail
-            |您的位置为：首页<em>#{sep}</em>机构网络<em>#{sep}</em>#{get_department_detail.title}
+            |您的位置为：<a href='/'>首页</a><em>#{sep}</em><a href='/agencys'>机构网络</a><em>#{sep}</em>#{get_department_detail.title}
         else
             |您的位置为：首页<em>#{sep}</em>机构网络
     section

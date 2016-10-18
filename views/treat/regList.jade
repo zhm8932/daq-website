@@ -5,14 +5,14 @@ block content
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
-        |您的位置为：首页<em>#{sep}</em>诊疗服务
+        |您的位置为：<a href='/'>首页</a><em>#{sep}</em><a href='#{pUrl}'>诊疗服务</a>
 
     .wrapper
         h2.treat-name 都安全医疗广州区庄诊所
     -var week = ['周日','周一','周二','周三','周四','周五','周六'];
     section.boxBg
         .wrapper.outpatient.clearfix
-            img(src="/public/images/outpatient.png")
+            img(src="/public/images/outpatient.png" alt="都安全医疗广州区庄诊所")
             .outpatient-info
                 .hgroup
                     h4.text-main

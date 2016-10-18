@@ -49,7 +49,7 @@ webpackJsonp([6],[
 	            return React.createElement("p", null, "暂无数据");
 	        }
 	        return React.createElement("ul", null, React.createElement("h3", null, "有问有答"), data.map(function (item) {
-	            return React.createElement("li", { key: item.id }, React.createElement("i", { className: "icon" }), React.createElement("a", { href: "/healths/list/article/" + item.id }, item.title));
+	            return React.createElement("li", { key: item.id }, React.createElement("i", { className: "icon" }), React.createElement("a", { href: "/healths/article/" + item.id + ".html" }, item.title));
 	        }));
 	    }
 	});
@@ -80,7 +80,7 @@ webpackJsonp([6],[
 	            return;
 	        }
 
-	        var url = '/healths/list/list_ask_web';
+	        var url = '/healths/list_ask_web';
 	        $.ajax({
 	            type: 'post',
 	            url: url,

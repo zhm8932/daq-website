@@ -5,7 +5,7 @@ block content
     include ../includes/responsive
     include ../includes/nav
     .positon.wrapper
-        |您的位置为：首页<em>#{sep}</em>健康科普
+        |您的位置为：<a href='/'>首页</a><em>#{sep}</em><a href='#{pUrl}'>健康科普</a>
         if get_goods_category_success
                 each item in get_goods_category
                     if item.id==categoryId
@@ -23,13 +23,13 @@ block content
                 each item in get_article_list
                     figure
                         if item.imgs.length
-                            a(href='/healths/list/article/#{item.id}',target='_blank')
+                            a(href='/healths/article/#{item.id}.html',target='_blank')
                                 if browser.ie
                                     img(src='#{item.imgs[0].imageUrl}',alt='#{item.title}')
                                 else
                                     img(data-original='#{item.imgs[0].imageUrl}',alt='#{item.title}')
                         figcaption
-                            h4: a(href='/healths/list/article/#{item.id}',target='_blank') #{item.title}
+                            h4: a(href='/healths/article/#{item.id}.html',target='_blank') #{item.title}
                             time 发表于：#{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')}
                             p.ellips
                                 |#{item.brief}

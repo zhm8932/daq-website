@@ -9,14 +9,14 @@ block content
         //-.touchslider-viewport
         .slideBox
           p: img(src='/public/images/banner1.jpg',alt='都安全医疗精英团队')
-          p: img(src='/public/images/banner2.jpg',alt='都安全医疗')
+          p: img(src='/public/images/banner2.jpg',alt='都安全医疗服务')
         //-.tit
             span 1
             span 2
     else
       .slideBox
         p: img(src='/public/images/mBanner1.jpg',alt='都安全医疗精英团队')
-        p: img(src='/public/images/mBanner2.jpg',alt='都安全医疗')
+        p: img(src='/public/images/mBanner2.jpg',alt='都安全医疗服务')
       //-img(src='/public/images/BG_small.png')
     //-.wrapper
       dl
@@ -55,19 +55,19 @@ block content
             each item,index in get_department_list
               li
                 if !browser.mobile
-                  a(href='/agencys/department/detail/#{item.id}',target='_blank',index=index)
+                  a(href='/agencys/department/detail/#{item.id}.html',target='_blank',index=index)
                     img(src=item.imgIndex,alt=item.title)
                     h4 #{item.title}
                 else
                   if (index+1)%2==1
-                    a(href='/agencys/department/detail/#{item.id}',target='_blank',index=index)
+                    a(href='/agencys/department/detail/#{item.id}.html',target='_blank',index=index)
                       if browser.mobile
                         img(src=item.imgWapIndex,alt=item.title)
                       else
                         img(src=item.imgIndex,alt=item.title)
                       h4.bgGray #{item.title}
                   else
-                    a(href='/agencys/department/detail/#{item.id}',target='_blank',index=index)
+                    a(href='/agencys/department/detail/#{item.id}.html',target='_blank',index=index)
                       h4 #{item.title}
                       if browser.mobile
                         img(src=item.imgWapIndex,alt=item.title)
@@ -95,23 +95,23 @@ block content
         p 提供宫颈病变、前列腺、生殖健康、中医特色、分子诊断等特色医疗服务。
       .feature
         figure
-          a(href='/agencys/feature/detail/1')
+          a(href='/agencys/feature/detail/1.html')
             span.s01
             figcaption 宫颈病变一体化门诊
         figure
-          a(href='/agencys/feature/detail/2')
+          a(href='/agencys/feature/detail/2.html')
             span.s02
             figcaption 前列腺专业门诊
         figure
-          a(href='/agencys/feature/detail/3')
+          a(href='/agencys/feature/detail/3.html')
             span.s03.on
             figcaption 生殖健康门诊
         figure
-          a(href='/agencys/feature/detail/4')
+          a(href='/agencys/feature/detail/4.html')
             span.s04
             figcaption 中医特色门诊
         figure
-          a(href='/agencys/feature/detail/5')
+          a(href='/agencys/feature/detail/5.html')
             span.s05
             figcaption 分子诊断中心
   section.item_list.clearfix
