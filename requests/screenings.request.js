@@ -10,6 +10,7 @@ exports.get_goods_list = function (req,res,next) {
 
     console.log("query:",query)
     var get_goods_category = req.get_goods_category.data;
+
     if(req.get_goods_category_success){
         fitst_categoryId = get_goods_category[0].id;
     }
@@ -17,7 +18,7 @@ exports.get_goods_list = function (req,res,next) {
 
     // console.log("categoryId:::::",categoryId)
     res.locals.goodsState = goodsState;
-    res.locals.categoryId = categoryId;
+    req.categoryId = res.locals.categoryId = categoryId;
     categoryId = req.url =='/'?'':categoryId;
 
     var bizParam = {

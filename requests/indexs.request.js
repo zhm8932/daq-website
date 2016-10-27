@@ -5,6 +5,7 @@ var util = require('../utils/ajax');
 var crypto = require('crypto');
 var dictionnary = require('../requests/dictionary.request');
 var fs = require('fs');
+var sm = require('sitemap');
 
 exports.get_goods_list = function (req,res,next) {
     var goodsState = req.params.goodsState||2,
@@ -50,6 +51,41 @@ exports.robots = function (req,res,next) {
 
 
 };
+
+var sitemap = sm.createSitemap ({
+    hostname: 'http://beta.douanquan.com',
+    cacheTime: 600000,        // 600 sec - cache purge period
+    urls: [
+        { url: '/',  changefreq: 'always', priority: 0.5,lastmodrealtime: true },
+        { url: '/screenings/goods',  changefreq: 'always', priority: 0.5,lastmodrealtime: true },
+        { url: '/healths',  changefreq: 'always',  priority: 0.5 },
+    ]
+});
+
+exports.sitemap = function (req,res) {
+    const env = process.env.NODE_ENV;
+    const host = req.host;
+    console.log("host:",host);
+    console.log("envenvenv:",env);
+    var xml=null
+    if(env=="production"){
+        xml = host==="rc.douanquan.com"?'./sitemap_rc.xml':'./sitemap.xml';
+        // xml = './sitemap.xml'
+    }else{
+        xml = './sitemap_beta.xml'
+    }
+    var stream = fs.createReadStream(xml,{flags:'r'});
+    stream.pipe(res);
+
+    // sitemap.toXML( function (err, xml) {
+    //     if (err) {
+    //         return res.status(500).end();
+    //     }
+    //     console.log("xml:",xml)
+    //     res.header('Content-Type', 'application/xml');
+    //     res.send( xml );
+    // });
+}
 
 exports.login = function (req,res,next) {
     // console.log('crypto:',crypto);
@@ -131,10 +167,12 @@ exports.retrieve_password = function (req,res,next) {
 exports.checkLogin = function (req,res,next) {
     var _user = req.session.userInfo;
     var json = {"code":"200",login:false,"success":true};
-    
+
+    console.log("_user:",_user)
     if(_user) {
         json.login = true;
     }
+    console.log("登录判断：",json,"_user:",_user)
     res.send(json);
 };
 

@@ -23,11 +23,11 @@ block content
                 each item in get_article_list
                     figure
                         if item.imgs.length
-                            a(href='/healths/article/#{item.id}.html',target='_blank')
+                            a.img(href='/healths/article/#{item.id}.html',target='_blank')
                                 if browser.ie
-                                    img(src='#{item.imgs[0].imageUrl}',alt='#{item.title}')
+                                    img(src='#{item.imgs[0].imageUrl}',alt=item.title)
                                 else
-                                    img(data-original='#{item.imgs[0].imageUrl}',alt='#{item.title}')
+                                    img(data-original='#{item.imgs[0].imageUrl}',alt=item.title)
                         figcaption
                             h4: a(href='/healths/article/#{item.id}.html',target='_blank') #{item.title}
                             time 发表于：#{moment(item.createdAt).format('YYYY-MM-DD HH:mm:ss')}

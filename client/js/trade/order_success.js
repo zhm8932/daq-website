@@ -173,7 +173,7 @@ define(function (require, exports, module) {
         var id = $('#order-detail').data('id');
         utils.SendAjax({
             url: '/trade/order/state',
-            param: {id: id},
+            param: {id: id,time:new Date().getTime()},
             method: 'GET',
             tipText: '查询订单状态',
             callback: function (result) {

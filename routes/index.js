@@ -1,10 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var sm = require('sitemap');
 var Handlers = require('../handlers/index.handler');
 var Requests = require('../requests/indexs.request');
 var UsersRequests = require('../requests/users.request');
-var SiteMapRequests = require('../requests/siteMap.request');
+// var SiteMapRequests = require('../requests/siteMap.request');
 var ScreeningsRequests = require('../requests/screenings.request');
 var Middlewares = require('../requests/middlewares.request.js');
 var authority = require('../handlers/authority.handler');
@@ -15,7 +14,7 @@ var fs = require('fs');
 
 
 global.config=config = require('../config');
-global.api = require('../utils/api')
+global.api = require('../utils/api');
 global.util= util = require('../utils/ajax');
 
 //index.js首先会被加载
@@ -25,8 +24,8 @@ router.use(function(req, res, next) {
     console.log('now:' + Date.now());
     // console.log('req.body',req.body);
     // console.log('req.session',req.session);
-    // console.log('req.url',req.url);
-    // console.log('req.host',req.host);
+    console.log('req.url',req.url);
+    console.log('req.host',req.host);
     // var host = req.host;
     // if(host=='localhost'){
     //     config.options.host=host
@@ -73,39 +72,8 @@ router.get('/',Middlewares.get_goods_category,ScreeningsRequests.get_goods_list,
 router.get('/robots.txt',Requests.robots);
 
 // router.get('/sitemap.xml',SiteMapRequests.siteMap)
-var sitemap = sm.createSitemap ({
-    hostname: 'http://beta.douanquan.com',
-    cacheTime: 600000,        // 600 sec - cache purge period
-    urls: [
-        { url: '/',  changefreq: 'always', priority: 0.5,lastmodrealtime: true },
-        { url: '/screenings/goods',  changefreq: 'always', priority: 0.5,lastmodrealtime: true },
-        { url: '/healths',  changefreq: 'always',  priority: 0.5 },
-        { url: '/page-3/',changefreq: 'always',  priority: 0.5},    // changefreq: 'weekly',  priority: 0.5
-        { url: '/page-4/',   img: "http://urlTest.com" }
-    ]
-});
 
-router.get('/sitemap.xml',function (req,res) {
-    const env = process.env.NODE_ENV;
-    console.log("envenvenv:",env);
-    var xml=null
-    if(env=="production"){
-        xml = './sitemap.xml'
-    }else{
-        xml = './sitemap_beta.xml'
-    }
-    var stream = fs.createReadStream(xml,{flags:'r'});
-    stream.pipe(res);
-
-    // sitemap.toXML( function (err, xml) {
-    //     if (err) {
-    //         return res.status(500).end();
-    //     }
-    //     console.log("xml:",xml)
-    //     res.header('Content-Type', 'application/xml');
-    //     res.send( xml );
-    // });
-})
+router.get('/sitemap.xml',Requests.sitemap);
 
 router.post('/login',Requests.login);
 

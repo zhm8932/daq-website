@@ -459,8 +459,15 @@
         i{display: none;}
       }
     }
-    .lr_list figure img{
-      width: 160px;margin-right: 10px;
+    .lr_list figure{
+      padding-bottom: 20px;
+      p{padding-top: 5px; height: 48px;}
+      img{
+        width:80px;
+        //margin-right: 10px;
+      }
+      h4{margin-bottom: 5px;}
+      .img{margin: 0 10px 20px 0}
     }
   }
   .agencys_com{
@@ -474,7 +481,9 @@
     }
 
   }
-  .health aside{width: 100%}
+  .health aside{width: 100%;
+      .list ul{margin: 0px;}
+  }
   .health_detail{width: 100%;
     article,p{font-size: 18px;}}
 
@@ -1309,7 +1318,7 @@
 
 @media only screen and (width: 375px) {
   .item_list {
-    .department_list ul li h4{min-height: 123px;}
+    .department_list ul li h4{min-height: 181px;}
     .feature figure figcaption{width: 90px;margin: 0 auto}
   }
 }
@@ -1372,11 +1381,11 @@
   }
   .health_list .lr_list figure{
     img{
-      width: 120px;
+      width: 100px;
     }
-    figcaption{position: relative;top:-5px;}
+    figcaption{position: relative;}
     h4{padding: 0px;margin-bottom: 0px;font-size: 18px;}
-    p{padding-top: 0px;height: 48px;overflow: hidden;}
+    p{padding-top: 0px;height: 40px;overflow: hidden; line-height: 20px;}
     time{font-size: 14px;}
   }
   .order-success{
@@ -1444,6 +1453,9 @@
     .pic{width: 42%;}
   }
 
+  .health_list .lr_list figure{
+    p{font-size: 14px;}
+  }
   .goods_basic dl dd .service_type mark{padding: 0px;}
   .info_list .lr_list{
     figure{

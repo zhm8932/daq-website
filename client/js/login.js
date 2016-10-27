@@ -19,9 +19,6 @@ define(function(require,exports,module) {
     var index = '';
     var $prompt = '';
 
-
-
-
     //获取短信验证码
     $('body').on('click','.getCode',function () {
         // var $loginWrap = $('.loginBox,.loginBox2')
@@ -656,7 +653,7 @@ define(function(require,exports,module) {
     //检查登录:已经登录则继续执行callback,没有登录则把callback传到登录函数中去,登录后继续执行
     function checkLogin(callBack){
         utils.SendAjax({
-            url: '/checkLogin',
+            url: '/checkLogin?time='+new Date().getTime(),
             param: {},
             method: 'GET',
             tipText: '检查是否登录',
