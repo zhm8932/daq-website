@@ -47,7 +47,9 @@ gulp.task('webpack', function (callback) {
         console.log(stats.toString());
         if(err) throw new gutil.PluginError("webpack", err);
         gutil.log("[webpack]", stats.toString({
-            colors: true
+            colors: true,
+            chunks: false,
+            children: false,
         }));
         callback();
     })
@@ -71,7 +73,7 @@ gulp.task('watch', function () {
     gulp.watch(srcPaths.sass, ['sass']);
     gulp.watch(srcPaths.js, ['webpack']);
     gulp.watch(srcPaths.jsx, ['jsx','webpack']);
-    gulp.watch(srcPaths.bundledJS, ['js']);
+    // gulp.watch(srcPaths.bundledJS, ['js']);
 });
 
 
@@ -97,5 +99,5 @@ gulp.task('cssmin', function () {
         .pipe(gulp.dest('public/css'));
 });
 
-gulp.task('default', ['sass', 'webpack', 'js','jsx','watch']);
-gulp.task('prod', ['webpack', 'cssmin','jsmin']);
+gulp.task('default', ['sass', 'webpack','jsx','watch']);
+gulp.task('prod', ['webpack', 'cssmin']);

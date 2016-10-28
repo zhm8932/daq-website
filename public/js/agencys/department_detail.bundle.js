@@ -1,1 +1,1 @@
-webpackJsonp([1],{0:function(n,o,c){c(14),n.exports=c(7)},14:function(n,o){$(function(){$("body").on("click",".history",function(){var n=document.referrer;n=n?n:"/agencys/detail/2",window.location.href=n})})}});
+webpackJsonp([1],{0:function(n,exports,o){o(14),n.exports=o(7)},14:function(n,exports){$(function(){$("body").on("click",".history",function(){var n=document.referrer;n=n?n:"/agencys/detail/2",window.location.href=n})})}});

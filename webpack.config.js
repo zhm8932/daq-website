@@ -31,7 +31,7 @@ function getEntry(srcPath,files) {
 
 getEntry('', files);
 
-module.exports = {
+var config = {
     // devtool: "source-map",
     entry: files,
     output: {
@@ -63,13 +63,25 @@ module.exports = {
         }
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin('vendor.js')
+        new webpack.optimize.CommonsChunkPlugin('vendor.js'),
     ],
     module: {
         noParse: [/moment-with-locales/],
         loaders: [
-            {test: /\.jsx$/,loader: 'babel-loader!jsx-loader?harmony',exclude: /node_modules/,include:__dirname}
+            {test: /\.jsx?$/,loader: 'babel-loader!jsx-loader?harmony',exclude: /node_modules/,include:__dirname}
             // {test: /\.js?$/, loaders: ['babel-loader']}
         ]
     }
 };
+// console.log("process.env:",process.env)
+if(process.env.NODE_ENV==='prod'){
+    config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+        mangle: { //这里是不会被混淆压缩
+            except: ['$', 'exports', 'require']
+        },
+        compress: {
+            warnings: false
+        }
+    }))
+}
+module.exports = config;

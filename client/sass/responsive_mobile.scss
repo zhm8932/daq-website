@@ -767,7 +767,7 @@
           .row-col{padding: 0px;}
           .goods-detail{width: 100%;
             img{width: 30%;margin-right: 10px;}
-            h5{float: none;width: auto;font-size: 18px;}
+            h5{float: none;width: auto;font-size: 18px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
           }
           .goods-others{position: absolute;left:33%;top:60px;width: auto;display: none;
             p.text-stress{display: none;}
@@ -1133,7 +1133,7 @@
       tr{display: block;position:relative;padding: 10px 10px 0;
         td{display:table;
           img{width:25%;}
-          span{width: auto;float: none;}
+          span{width: auto;float: none; display: flex;padding-right: 45px; line-height: 24px;}
           p{display: block;line-height: 32px;font-size: 16px;}
           &:nth-child(2){position: absolute;right:15px;top:10px;}
           &.text-stress{line-height: 40px;display: none;}
