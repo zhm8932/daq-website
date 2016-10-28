@@ -1,1 +1,61 @@
-@charset "UTF-8";.health_detail{width:690px;float:left;text-align:center}.health_detail header{margin-top:25px;border-bottom:1px solid #f2f2f2;padding-bottom:20px;margin-bottom:20px}.health_detail header h1{font-size:24px;line-height:50px}.health_detail header time{color:#9B9B9B}.health_detail article{text-align:left}.health_detail article p,.health_detail article pre{word-break:break-word}.health_detail article img{display:block;margin:10px auto}.recommend{padding:30px 0}.recommend h2{padding:0 0 20px;font-size:24px;border-bottom:1px solid #9B9B9B}.recommend ul{font-size:16px;width:690px}.recommend ul i{width:6px;height:6px;border-radius:100%;background-color:#9B9B9B;display:inline-block;margin-right:10px;vertical-align:middle}.recommend ul li{width:50%;float:left;line-height:40px;height:40px;overflow:hidden}.recommend ul li a{display:block}
+@charset "UTF-8";
+/*
+
+
+设备像素\宽度：17种
+
+320 ， 480 ， 540 ， 600 ， 640 ， 720 ， 768 ， 800 ， 1024 ， 1080 ， 1200 ， 1280 ， 1366 ， 1536 ， 1600 ， 1920 ， 2048  2560
+
+
+设备像素\高度：15种
+
+480 ， 600 ， 720 ， 768 ， 800 ， 854 ， 960 ， 1024 ， 1080 ， 1136 ， 1280 ， 1536 ， 1920 ， 2048 ， 2560
+
+*/
+.health_detail {
+  width: 690px;
+  float: left;
+  text-align: center; }
+  .health_detail header {
+    margin-top: 25px;
+    border-bottom: 1px solid #f2f2f2;
+    padding-bottom: 20px;
+    margin-bottom: 20px; }
+    .health_detail header h1 {
+      font-size: 24px;
+      line-height: 50px; }
+    .health_detail header time {
+      color: #9B9B9B; }
+  .health_detail article {
+    text-align: left; }
+    .health_detail article p, .health_detail article pre {
+      word-break: break-word; }
+    .health_detail article img {
+      display: block;
+      margin: 10px auto; }
+
+.recommend {
+  padding: 30px 0; }
+  .recommend h2 {
+    padding: 0 0 20px;
+    font-size: 24px;
+    border-bottom: 1px solid #9B9B9B; }
+  .recommend ul {
+    font-size: 16px;
+    width: 690px; }
+    .recommend ul i {
+      width: 6px;
+      height: 6px;
+      border-radius: 100%;
+      background-color: #9B9B9B;
+      display: inline-block;
+      margin-right: 10px;
+      vertical-align: middle; }
+    .recommend ul li {
+      width: 50%;
+      float: left;
+      line-height: 40px;
+      height: 40px;
+      overflow: hidden; }
+      .recommend ul li a {
+        display: block; }

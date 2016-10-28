@@ -1,1 +1,31 @@
-webpackJsonp([17],{0:function(o,exports,n){n(203),o.exports=n(7)},203:function(o,exports,n){var a;a=function(require){var o=n(9);$(function(){var n=$("#hasBind").val();"true"!=n&&o.showAccountDialog({back:!0,reload:!0})})}.call(exports,n,exports,o),!(void 0!==a&&(o.exports=a))}});
+webpackJsonp([17],{
+
+/***/ 0:
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(203);
+	module.exports = __webpack_require__(7);
+
+
+/***/ },
+
+/***/ 203:
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require) {
+	    var login = __webpack_require__(9);
+
+	    $(function () {
+	        var hasBind = $('#hasBind').val();
+	        if (hasBind != 'true') {
+	            login.showAccountDialog({
+	                back: true,
+	                reload: true
+	            });
+	        }
+	    });
+	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ }
+
+});

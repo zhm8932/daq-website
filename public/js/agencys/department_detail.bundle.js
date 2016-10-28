@@ -1,1 +1,31 @@
-webpackJsonp([1],{0:function(n,exports,o){o(14),n.exports=o(7)},14:function(n,exports){$(function(){$("body").on("click",".history",function(){var n=document.referrer;n=n?n:"/agencys/detail/2",window.location.href=n})})}});
+webpackJsonp([1],{
+
+/***/ 0:
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(14);
+	module.exports = __webpack_require__(7);
+
+
+/***/ },
+
+/***/ 14:
+/***/ function(module, exports) {
+
+	// require('jquery');
+
+
+	$(function () {
+	    $('body').on('click', '.history', function () {
+
+	        var referrer = document.referrer;
+	        referrer = referrer ? referrer : '/agencys/detail/2';
+
+	        // console.log('referrer:',referrer);
+	        window.location.href = referrer;
+	    });
+	});
+
+/***/ }
+
+});

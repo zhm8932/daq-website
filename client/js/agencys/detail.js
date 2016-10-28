@@ -12,7 +12,7 @@ define(function(require){
             var map = new BMap.Map("allmap"); // 创建地图实例
 
             // var point = new BMap.Point(116.404, 39.915);  // 创建点坐标
-            var point = new BMap.Point(113.94212, 22.546162);  // 创建点坐标
+            var point = new BMap.Point(113.302569,23.140314);  // 创建点坐标
             map.centerAndZoom(point,20);                 // 初始化地图，设置中心点坐标和地图级别
 
             map.enableScrollWheelZoom();   //启用滚轮放大缩小，默认禁用
@@ -44,7 +44,7 @@ define(function(require){
             };
             var local = new BMap.LocalSearch(map, options);
             // local.search('大族激光科技中心');
-            local.search('广州市越秀区环市东路422号2楼');
+            local.search('广州市越秀区环市东路422号区庄地铁站A出口星程酒店2楼	');
         }
 
         initBMap();

@@ -1,1 +1,64 @@
-webpackJsonp([4],{0:function(n,exports,e){e(18),n.exports=e(7)},18:function(n,exports,e){e(3);var a=e(4),i=e(13);$(function(){function n(n){new i(".agency_nav",{nextButton:".swiper-button-next",prevButton:".swiper-button-prev",initialSlide:n&&n.i||t,slidesPerView:n&&n.num||6})}var e=window.location;if(curPathname=e.pathname,$agency_nav=$(".agency_nav"),$agency_a=$agency_nav.find("a"),$.each($agency_a,function(n,e){$(e).attr("href")==curPathname&&$(e).addClass("on").siblings().removeClass("on")}),a.browser.mobile){var s=$(window).width();$agency_nav.find("span").addClass("swiper-slide"),$agency_nav.wrapInner("<div class='swiper-wrapper'></div>");var t=0;sessionStorage.getItem("i")&&(t=sessionStorage&&sessionStorage.getItem("i")),$("body").on("click",".agency_nav span",function(){t=$(this).index(),sessionStorage&&sessionStorage.setItem("i",t)}),s>=360?n():n({num:5})}})}});
+webpackJsonp([4],{
+
+/***/ 0:
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(18);
+	module.exports = __webpack_require__(7);
+
+
+/***/ },
+
+/***/ 18:
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(3);
+	var utils = __webpack_require__(4);
+
+	var Swiper = __webpack_require__(13);
+	$(function () {
+
+	    var location = window.location;
+	    curPathname = location.pathname, $agency_nav = $('.agency_nav'), $agency_a = $agency_nav.find('a');
+	    $.each($agency_a, function (index, item) {
+	        // console.log($(item).text(),":",$(item).attr('href'))
+	        if ($(item).attr('href') == curPathname) {
+	            $(item).addClass('on').siblings().removeClass('on');
+	        }
+	    });
+
+	    if (utils.browser.mobile) {
+	        var winW = $(window).width();
+
+	        $agency_nav.find('span').addClass('swiper-slide');
+	        $agency_nav.wrapInner("<div class='swiper-wrapper'></div>");
+	        var i = 0;
+
+	        if (sessionStorage.getItem('i')) {
+	            i = sessionStorage && sessionStorage.getItem('i');
+	        }
+	        $('body').on('click', '.agency_nav span', function () {
+	            i = $(this).index();
+	            sessionStorage && sessionStorage.setItem('i', i);
+	        });
+	        function navCity(obj) {
+	            var mySwiper = new Swiper('.agency_nav', {
+	                nextButton: '.swiper-button-next',
+	                prevButton: '.swiper-button-prev',
+	                initialSlide: obj && obj.i || i, //设定初始化时slide的索引
+	                slidesPerView: obj && obj.num || 6
+	            });
+	        }
+	        if (winW >= 360) {
+	            navCity();
+	        } else {
+	            navCity({
+	                num: 5
+	            });
+	        }
+	    }
+	});
+
+/***/ }
+
+});

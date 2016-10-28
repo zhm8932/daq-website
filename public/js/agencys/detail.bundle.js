@@ -1,4 +1,229 @@
-webpackJsonp([2],{0:function(o,exports,e){e(15),o.exports=e(7)},15:function(o,exports,e){var a;a=function(require){e(3),e(16);var o=e(4);$(function(){function e(){var o=new BMap.Map("allmap"),e=new BMap.Point(113.94212,22.546162);o.centerAndZoom(e,20),o.enableScrollWheelZoom(),o.enableContinuousZoom();var a=new BMap.ScaleControl({anchor:BMAP_ANCHOR_TOP_LEFT});new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_RIGHT,type:BMAP_NAVIGATION_CONTROL_SMALL});o.addControl(a);var t={renderOptions:{map:o,panel:"r-result"},onSearchComplete:function(o){if(i.getStatus()==BMAP_STATUS_SUCCESS)for(var e=[],a=0;a<o.getCurrentNumPois();a++)e.push(o.getPoi(a).title+", "+o.getPoi(a).address)}},i=new BMap.LocalSearch(o,t);i.search("广州市越秀区环市东路422号2楼")}e();var a=$(".wrapper").width();$(window).resize(function(){var o=$(".wrapper").width();o==a&&(a=o,e())}),o.browser.ie?$(".ellips").ellipsis({row:2,"char":"……",callback:function(){}}):o.browser.mobile?$(".ellips").ellipsis({row:2,"char":"…",callback:function(){}}):$(".ellips").ellipsis({row:3,"char":"……",callback:function(){}})})}.call(exports,e,exports,o),!(void 0!==a&&(o.exports=a))},16:function(o,exports,e){var a,t,i,t,i;/*! jQuery ellipsis - v1.1.1 - 2014-02-23
+webpackJsonp([2],{
+
+/***/ 0:
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(15);
+	module.exports = __webpack_require__(7);
+
+
+/***/ },
+
+/***/ 15:
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_RESULT__ = function (require) {
+	    __webpack_require__(3);
+	    __webpack_require__(16);
+	    var utils = __webpack_require__(4);
+
+	    $(function () {
+	        // var BMap = require('../libs/BMap.js');
+	        // console.log(BMap);
+
+
+	        function initBMap() {
+	            var map = new BMap.Map("allmap"); // 创建地图实例
+
+	            // var point = new BMap.Point(116.404, 39.915);  // 创建点坐标
+	            var point = new BMap.Point(113.302569, 23.140314); // 创建点坐标
+	            map.centerAndZoom(point, 20); // 初始化地图，设置中心点坐标和地图级别
+
+	            map.enableScrollWheelZoom(); //启用滚轮放大缩小，默认禁用
+	            map.enableContinuousZoom(); //启用地图惯性拖拽，默认禁用
+
+
+	            var top_left_control = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_TOP_LEFT }); // 左上角，添加比例尺
+	            // var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+	            var top_right_navigation = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL }); //右上角，仅包含平移和缩放按钮
+	            map.addControl(top_left_control);
+	            // map.addControl(top_left_navigation);
+
+	            var options = {
+	                renderOptions: { map: map, panel: "r-result" },
+	                onSearchComplete: function (results) {
+	                    // console.log(results);
+	                    //document.getElementById("log").innerHTML = JSON.stringify(results)
+	                    if (local.getStatus() == BMAP_STATUS_SUCCESS) {
+	                        // 判断状态是否正确
+	                        var s = [];
+	                        for (var i = 0; i < results.getCurrentNumPois(); i++) {
+	                            s.push(results.getPoi(i).title + ", " + results.getPoi(i).address);
+	                        }
+	                        // console.log(s);
+	                        //document.getElementById("log").innerHTML = s.join("<br>");
+	                    }
+	                }
+	            };
+	            var local = new BMap.LocalSearch(map, options);
+	            // local.search('大族激光科技中心');
+	            local.search('广州市越秀区环市东路422号区庄地铁站A出口星程酒店2楼	');
+	        }
+
+	        initBMap();
+
+	        var winWidth = $('.wrapper').width();
+	        $(window).resize(function () {
+	            var wrapperWidth = $('.wrapper').width();
+	            if (wrapperWidth == winWidth) {
+	                winWidth = wrapperWidth;
+	                // console.log(winWidth);
+	                initBMap();
+	            }
+	        });
+
+	        if (utils.browser.ie) {
+	            $('.ellips').ellipsis({
+	                row: 2,
+	                char: '……',
+	                callback: function () {
+	                    // console.log($(this).text());
+	                }
+	            });
+	        } else if (utils.browser.mobile) {
+	            // console.log('mobile')
+	            $('.ellips').ellipsis({
+	                row: 2,
+	                char: '…',
+	                callback: function () {
+	                    // console.log($(this).text());
+	                }
+	            });
+	        } else {
+	            $('.ellips').ellipsis({
+	                row: 3,
+	                char: '……',
+	                callback: function () {
+	                    // console.log($(this).text());
+	                }
+	            });
+	        }
+	    });
+	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+/***/ },
+
+/***/ 16:
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! jQuery ellipsis - v1.1.1 - 2014-02-23
 	* https://github.com/STAR-ZERO/jquery-ellipsis
 	* Copyright (c) 2014 Kenji Abe; Licensed MIT */
-!function(l){t=[e(3)],a=l,i="function"==typeof a?a.apply(exports,t):a,!(void 0!==i&&(o.exports=i)),t=[e(3)],i=function(){return l(window.jQuery,window,document,void 0)}.apply(exports,t),!(void 0!==i&&(o.exports=i))}(function($){$.fn.ellipsis=function(o){var e={row:1,onlyFullWords:!1,"char":"...",callback:function(){},position:"tail"};return o=$.extend(e,o),this.each(function(){var e=$(this),a=e.text(),t=a,i=t.length,l=e.height();e.text("a");var r=parseFloat(e.css("lineHeight"),10),n=e.height(),c=r>n?r-n:0,s=c*(o.row-1)+n*o.row;if(l<=s)return e.text(a),void o.callback.call(this);var h=1,p=0,u=a.length;if("tail"===o.position){for(;h<u;)p=Math.ceil((h+u)/2),e.text(a.slice(0,p)+o["char"]),e.height()<=s?h=p:u=p-1;a=a.slice(0,h),o.onlyFullWords&&(a=a.replace(/[\u00AD\w\uac00-\ud7af]+$/,"")),a+=o["char"]}else if("middle"===o.position){for(var f=0;h<u;)p=Math.ceil((h+u)/2),f=Math.max(i-p,0),e.text(t.slice(0,Math.floor((i-f)/2))+o["char"]+t.slice(Math.floor((i+f)/2),i)),e.height()<=s?h=p:u=p-1;f=Math.max(i-h,0);var w=t.slice(0,Math.floor((i-f)/2)),d=t.slice(Math.floor((i+f)/2),i);o.onlyFullWords&&(w=w.replace(/[\u00AD\w\uac00-\ud7af]+$/,"")),a=w+o["char"]+d}e.text(a),o.callback.call(this)}),this}})}});
+	(function (factory) {
+	    if (true) {
+	        // AMD
+	        // you may need to change `define([------>'jquery'<------], factory)`
+	        // if you use zepto, change it rely name, such as `define(['zepto'], factory)`
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(3)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	        // define(['zepto'], factory)
+	    }if (true) {
+	        // 如果define已被定义，模块化代码
+	        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(3)], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+	            // 返回构造函数 CommonJS
+	            // console.log('CommonJS')
+	            return factory(window.jQuery, window, document, undefined);
+	        }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    } else {
+	        // Global
+	        factory(window.jQuery || window.Zepto);
+	    }
+	})(function ($) {
+	    $.fn.ellipsis = function (options) {
+
+	        // default option
+	        var defaults = {
+	            'row': 1, // show rows
+	            'onlyFullWords': false, // set to true to avoid cutting the text in the middle of a word
+	            'char': '...', // ellipsis
+	            'callback': function () {},
+	            'position': 'tail' // middle, tail
+	        };
+
+	        options = $.extend(defaults, options);
+
+	        this.each(function () {
+	            // get element text
+	            var $this = $(this);
+	            var text = $this.text();
+	            var origText = text;
+	            var origLength = origText.length;
+	            var origHeight = $this.height();
+
+	            // get height
+	            $this.text('a');
+	            var lineHeight = parseFloat($this.css("lineHeight"), 10);
+	            var rowHeight = $this.height();
+	            var gapHeight = lineHeight > rowHeight ? lineHeight - rowHeight : 0;
+	            var targetHeight = gapHeight * (options.row - 1) + rowHeight * options.row;
+
+	            if (origHeight <= targetHeight) {
+	                $this.text(text);
+	                options.callback.call(this);
+	                return;
+	            }
+
+	            var start = 1,
+	                length = 0;
+	            var end = text.length;
+
+	            if (options.position === 'tail') {
+	                while (start < end) {
+	                    // Binary search for max length
+	                    length = Math.ceil((start + end) / 2);
+
+	                    $this.text(text.slice(0, length) + options['char']);
+
+	                    if ($this.height() <= targetHeight) {
+	                        start = length;
+	                    } else {
+	                        end = length - 1;
+	                    }
+	                }
+
+	                text = text.slice(0, start);
+
+	                if (options.onlyFullWords) {
+	                    text = text.replace(/[\u00AD\w\uac00-\ud7af]+$/, ''); // remove fragment of the last word together with possible soft-hyphen characters
+	                }
+	                text += options['char'];
+	            } else if (options.position === 'middle') {
+
+	                var sliceLength = 0;
+	                while (start < end) {
+	                    // Binary search for max length
+	                    length = Math.ceil((start + end) / 2);
+	                    sliceLength = Math.max(origLength - length, 0);
+
+	                    $this.text(origText.slice(0, Math.floor((origLength - sliceLength) / 2)) + options['char'] + origText.slice(Math.floor((origLength + sliceLength) / 2), origLength));
+
+	                    if ($this.height() <= targetHeight) {
+	                        start = length;
+	                    } else {
+	                        end = length - 1;
+	                    }
+	                }
+
+	                sliceLength = Math.max(origLength - start, 0);
+	                var head = origText.slice(0, Math.floor((origLength - sliceLength) / 2));
+	                var tail = origText.slice(Math.floor((origLength + sliceLength) / 2), origLength);
+
+	                if (options.onlyFullWords) {
+	                    // remove fragment of the last or first word together with possible soft-hyphen characters
+	                    head = head.replace(/[\u00AD\w\uac00-\ud7af]+$/, '');
+	                }
+
+	                text = head + options['char'] + tail;
+	            }
+
+	            $this.text(text);
+
+	            options.callback.call(this);
+	        });
+
+	        return this;
+	    };
+	});
+
+/***/ }
+
+});
