@@ -44,7 +44,7 @@ define(function(require){
             };
             var local = new BMap.LocalSearch(map, options);
             // local.search('大族激光科技中心');
-            local.search('广州市越秀区环市东路422号区庄地铁站A出口星程酒店2楼	');
+            local.search('广州市越秀区环市东路422号区庄地铁站A出口星程酒店2楼');
         }
 
         initBMap();
