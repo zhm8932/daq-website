@@ -46,7 +46,11 @@ footer.footer.clearfix
                 figcaption 关注都安全微信
 .copyright
     .wrapper
-        p 深圳市都安全健康产业投资有限公司 版权所有© <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">粤ICP备16013287号-1</a> <a href='/sitemap.xml' target='_blank'>网站地图</a> 版权声明
+        span 深圳市都安全健康产业投资有限公司 版权所有© <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">粤ICP备16013287号-1</a> <a href='/sitemap.xml' target='_blank'>网站地图</a> 版权声明&nbsp;&nbsp;
+        if browser.mobile
+            p 以上部分图片来自网络，版权归原作者所有
+        else
+            span 以上部分图片来自网络，版权归原作者所有
 
 .rightNav
     ul
