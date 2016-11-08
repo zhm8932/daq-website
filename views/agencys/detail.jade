@@ -9,15 +9,41 @@ block content
     section.boxBg
         .wrapper.info_tel.clearfix
             h2 都安全健康产业投资有限公司
+
+
             p
                 em 服务电话：
                 |400-686-9911
             p
                 em 客服服务时间：
-                | 周一至周日 8:30-24:00
+                | 周一至周日 08:30 - 24:00
             p
                 em 门诊营业时间：
-                | 周一至周日 9:00-21:00
+                -var time = null;
+                -var length = null;
+                -var timeDay='';
+                if(get_hospital_time_success)
+                    -time = get_hospital_time[0];
+                    -length = get_hospital_time.length
+
+                    if length-1 == get_hospital_time[length-1].week-get_hospital_time[0].week
+                        -timeDay = CONST.weekCn[get_hospital_time[0].week-1]+"至"+CONST.weekCn[get_hospital_time[length-1].week-1]
+                    else
+                        each item,index in get_hospital_time
+                            if length != index + 1
+                                -timeDay +=CONST.weekCn[item.week-1]+'、'
+                            else
+                                -timeDay +=CONST.weekCn[item.week-1]
+
+
+
+                    | #{timeDay}
+                    |#{time.startTime.replace(/:00/,'')}
+                    |-
+                    |#{time.endTime.replace(/:00/,'')}
+                else
+                    |门诊营业时间获取失败
+                    //| 周一至周日 9:00-21:00
     section.info_detail.clearfix
         .wrapper
             h3 #{get_agency_detail.title}

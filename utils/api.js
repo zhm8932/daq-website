@@ -59,11 +59,13 @@ module.exports = {
     DoctorGet: 'daq.medical.doctor.get',
     DoctorUpdate: 'medical.doctor.update',
     HospitalPage: 'medical.hospital.page',
+    // HospitalPage: 'medical.hospital.page.forAdmin',
     HospitalGet: 'medical.hospital.get',
     HospitalAll: 'medical.hospital.all.list',
     HospitalUpdate: 'medical.hospital.update',
     HospitalOperatingStateUpdate: 'medical.hospital.operatingState.update',
     DepartmentAll: 'medical.department.all.list',
+    HospitalTimeGetByType:'medical.hospitalTime.getByType',
 
     PageQueryCoupon: 'promotion.pageQueryCoupon',
 

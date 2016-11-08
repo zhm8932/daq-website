@@ -18,12 +18,17 @@ block content
                 span: a(href='/agencys/nanjing') 南京
                 span: a(href='/agencys/xian') 西安
             .lr_list
+                //div= JSON.stringify(get_clinic_list)
                 if get_agency_list
                     each item in get_agency_list
                         figure.clearfix
                             -var href = 'javascript:;'
                             if item.isOnline
-                                -href = "/agencys/detail/"+item.id+'.html'
+                                -var id = item.id;
+                                each arr in get_clinic_list
+                                    if item.title==arr.hospitalName
+                                        -id = arr.id;
+                                -href = "/agencys/detail/"+id+'.html'
                             a.pic(href=href,title=item.title)
                                 if browser.ie
                                     img(src=item.imgUrl,alt='#{item.title}')
