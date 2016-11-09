@@ -47,8 +47,9 @@ exports.get_hospital_time = function(req,res,next){
     var hospitalId = req.params.id||query.hospitalId;
     var bizParam = {
         "hospitalId":hospitalId,
-        "timeType":3
+        "timeType":1
     }
+    req.autoHandleError = false;
     util.ajax('GET', api.HospitalTimeGetByType,req,res,bizParam, function (err,data) {
         var json = JSON.parse(data);
         var get_hospital_time_success = res.locals.get_hospital_time_success = json.success;
@@ -57,6 +58,8 @@ exports.get_hospital_time = function(req,res,next){
             res.locals.get_hospital_time=json.data.sort((m,n)=>{
                 return m.week-n.week
             })
+        }else{
+            res.locals.get_hospital_time = json
         }
         next()
 

@@ -75,13 +75,20 @@ var config = {
 };
 // console.log("process.env:",process.env)
 if(process.env.NODE_ENV==='prod'){
-    config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-        mangle: { //这里是不会被混淆压缩
-            except: ['$', 'exports', 'require']
-        },
-        compress: {
-            warnings: false
-        }
-    }))
+    config.plugins.push(
+        new webpack.optimize.UglifyJsPlugin({
+            mangle: { //这里是不会被混淆压缩
+                except: ['$', 'exports', 'require']
+            },
+            compress: {
+                warnings: false
+            }
+        }),
+        new webpack.DefinePlugin({
+                "process.env": {
+                    NODE_ENV: JSON.stringify("production")
+                }
+        })
+    )
 }
 module.exports = config;

@@ -93,7 +93,7 @@ var AskBox = React.createClass({
         return (
             <div>
                 <AskList data={this.state.data}/>
-                <h5>{this.props.pageCount}</h5>
+                {/*<h5>{this.props.pageCount}</h5>*/}
                 <Pager getData={this.getData} data={this.state.data} pageCount={this.props.pageCount} currentPage={this.state.currentPage}/>
             </div>
         )
